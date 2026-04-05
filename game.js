@@ -1372,6 +1372,7 @@ class VNEngine {
         case 'sub':        return `<div class="credits-sub">${item.text}</div>`;
         case 'thanks':     return `<div class="credits-thanks">${item.text}</div>`;
         case 'spacer':     return `<div class="credits-spacer"></div>`;
+        case 'logo':       return `<div class="credits-logo"><img src="${item.text}" alt="logo"></div>`;
         default:           return '';
       }
     }).join('');

@@ -778,6 +778,15 @@ body {
 .credits-spacer {
   height: 32px;
 }
+.credits-logo {
+  text-align: center;
+  padding: 20px 0;
+}
+.credits-logo img {
+  max-width: 260px;
+  width: 60%;
+  opacity: 0.9;
+}
 #btn-credits-skip {
   position: absolute;
   bottom: 28px;
