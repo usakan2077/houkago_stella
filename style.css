@@ -16,7 +16,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   font-family: 'Yu Gothic UI', 'YuGothic', 'Hiragino Sans', 'Noto Sans JP',
                'Meiryo', sans-serif;

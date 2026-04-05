@@ -163,9 +163,12 @@ class VNEngine {
   /** ゲームコンテナをウィンドウサイズに合わせてスケール */
   _resizeGame() {
     const container = document.getElementById('game-container');
-    const scaleX = window.innerWidth  / 1280;
-    const scaleY = window.innerHeight / 720;
-    const scale  = Math.min(scaleX, scaleY, 1.5); // 最大1.5倍まで拡大
+    const vp = window.visualViewport;
+    const W  = vp ? vp.width  : window.innerWidth;
+    const H  = vp ? vp.height : window.innerHeight;
+    const scaleX = W / 1280;
+    const scaleY = H / 720;
+    const scale  = Math.min(scaleX, scaleY, 1.5);
     container.style.transform       = `scale(${scale})`;
     container.style.transformOrigin = 'center center';
   }
