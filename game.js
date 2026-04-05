@@ -170,7 +170,9 @@ class VNEngine {
     const H  = vp ? vp.height : window.innerHeight;
     const scaleX = W / 1280;
     const scaleY = H / 720;
-    const scale  = Math.min(scaleX, scaleY);
+    // 横向きスマホ（W > H）は横幅基準で広げる、縦は overflow:hidden でクリップ
+    const isLandscapeMobile = W > H && W < 1280;
+    const scale = isLandscapeMobile ? scaleX : Math.min(scaleX, scaleY);
     container.style.transform       = `scale(${scale})`;
     container.style.transformOrigin = 'center center';
   }
