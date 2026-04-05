@@ -432,17 +432,26 @@ class VNEngine {
       }, 800);
     };
 
+    let transitioning = false;
+    let transTimer = null;
+
     const showLine = () => {
       if (finished) return;
       if (idx >= lines.length) { finish(); return; }
       if (arrow) arrow.style.visibility = 'hidden';
+      // 切り替え中なら前のタイマーをキャンセルして即テキストをクリア
+      if (transitioning && transTimer) {
+        clearTimeout(transTimer);
+        textEl.innerHTML = '';
+      }
+      transitioning = true;
       textEl.style.transition = 'opacity 0.45s ease';
       textEl.style.opacity = '0';
-      setTimeout(() => {
+      transTimer = setTimeout(() => {
         if (finished) return;
-        textEl.innerHTML = '';
         textEl.innerHTML = lines[idx++];
         textEl.style.opacity = '1';
+        transitioning = false;
         setTimeout(() => {
           if (!finished && arrow) arrow.style.visibility = 'visible';
         }, 500);
