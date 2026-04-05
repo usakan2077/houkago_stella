@@ -33,7 +33,9 @@ body {
 
 /* ---- ゲームコンテナ (1280×720 固定) ---- */
 #game-container {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 1280px;
   height: 720px;
   overflow: hidden;

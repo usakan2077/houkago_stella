@@ -171,9 +171,8 @@ class VNEngine {
     const scaleX = W / 1280;
     const scaleY = H / 720;
     const scale = Math.min(scaleX, scaleY);
-    container.style.transform       = `scale(${scale})`;
+    container.style.transform       = `translate(-50%, -50%) scale(${scale})`;
     container.style.transformOrigin = 'center center';
-    document.body.style.alignItems  = 'center';
   }
 
   /** シナリオ .md ファイルを順番に読み込む */
