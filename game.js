@@ -1224,6 +1224,12 @@ class VNEngine {
   //  セーブ / ロード
   // ============================================================
   _openSaveLoad(mode) {
+    // 選択肢表示中はセーブ/ロード不可
+    const choicesVisible = !document.getElementById('choices-overlay').classList.contains('hidden');
+    if (choicesVisible) {
+      this._showToast('選択肢の選択中はセーブできません');
+      return;
+    }
     document.getElementById('modal-title').textContent = mode === 'save' ? 'SAVE' : 'LOAD';
     const slotsEl = document.getElementById('save-slots');
     slotsEl.innerHTML = '';
