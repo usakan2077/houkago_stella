@@ -170,11 +170,18 @@ class VNEngine {
     const H  = vp ? vp.height : window.innerHeight;
     const scaleX = W / 1280;
     const scaleY = H / 720;
-    // 横向きスマホ（W > H）は横幅基準で広げる、縦は overflow:hidden でクリップ
     const isLandscapeMobile = W > H && W < 1280;
-    const scale = isLandscapeMobile ? scaleX : Math.min(scaleX, scaleY);
-    container.style.transform       = `scale(${scale})`;
-    container.style.transformOrigin = 'center center';
+    if (isLandscapeMobile) {
+      // 横幅いっぱいに広げ、下端（ダイアログ）を基準に上側をクリップ
+      const scale = scaleX;
+      container.style.transform       = `scale(${scale})`;
+      container.style.transformOrigin = 'center bottom';
+      document.body.style.alignItems  = 'flex-end';
+    } else {
+      container.style.transform       = `scale(${Math.min(scaleX, scaleY)})`;
+      container.style.transformOrigin = 'center center';
+      document.body.style.alignItems  = 'center';
+    }
   }
 
   /** シナリオ .md ファイルを順番に読み込む */
