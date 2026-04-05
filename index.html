@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>放課後のステラ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<style>
+  #loading-screen {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, #0d0020 0%, #1a0040 50%, #0d0020 100%);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9000;
+    transition: opacity 0.6s ease;
+  }
+  #loading-screen.hidden { display: none; }
+  #loading-content { text-align: center; width: 400px; }
+  #loading-game-title {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    color: rgba(200, 180, 255, 0.9);
+    font-size: 1.4em;
+    letter-spacing: 0.3em;
+    margin-bottom: 2em;
+  }
+  #loading-bar {
+    width: 100%; height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.8em;
+  }
+  #loading-bar-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #8866ff, #cc88ff);
+    border-radius: 2px;
+    transition: width 0.2s ease;
+  }
+  #loading-percent {
+    color: rgba(200, 180, 255, 0.5);
+    font-size: 0.75em;
+    letter-spacing: 0.15em;
+  }
+  #loading-notice {
+    margin-top: 2.2em;
+    color: rgba(200, 180, 255, 0.55);
+    font-size: 0.72em;
+    letter-spacing: 0.12em;
+    line-height: 1.8;
+  }
+  #btn-loading-ok {
+    margin-top: 1.4em;
+    padding: 10px 40px;
+    background: transparent;
+    border: 1px solid rgba(180, 140, 255, 0.45);
+    color: rgba(200, 170, 255, 0.85);
+    font-size: 0.85em;
+    letter-spacing: 0.3em;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  #btn-loading-ok:hover {
+    border-color: rgba(200, 160, 255, 0.9);
+    color: #fff;
+    box-shadow: 0 0 16px rgba(160, 80, 255, 0.3);
+  }
+
+  /* ======= 縦向き回転促しオーバーレイ ======= */
+  #rotate-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: #0d0020;
+    z-index: 99999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(200, 180, 255, 0.85);
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    text-align: center;
+    gap: 1.6em;
+  }
+  #rotate-overlay .rotate-icon {
+    font-size: 3.2em;
+    animation: rotateAnim 1.6s ease-in-out infinite;
+  }
+  @keyframes rotateAnim {
+    0%   { transform: rotate(0deg); }
+    40%  { transform: rotate(-90deg); }
+    60%  { transform: rotate(-90deg); }
+    100% { transform: rotate(0deg); }
+  }
+  #rotate-overlay p {
+    font-size: 0.9em;
+    letter-spacing: 0.15em;
+    line-height: 2;
+    margin: 0;
+  }
+  @media (orientation: portrait) and (max-width: 1024px) {
+    #rotate-overlay { display: flex; }
+  }
+</style>
+
+<!-- ======= 縦向き回転促しオーバーレイ ======= -->
+<div id="rotate-overlay">
+  <div class="rotate-icon">📱</div>
+  <p>横向きでプレイしてください</p>
+</div>
+
+<div id="game-container">
+
+  <!-- ======= ローディング画面 ======= -->
+  <div id="loading-screen">
+    <div id="loading-content">
+      <div id="loading-game-title">放課後のステラ</div>
+      <div id="loading-bar"><div id="loading-bar-fill"></div></div>
+      <div id="loading-percent">0%</div>
+      <div id="loading-notice">
+        このゲームは音楽・効果音が流れます。<br>
+        あらかじめ音量をご確認ください。
+      </div>
+      <button id="btn-loading-ok">OK</button>
+    </div>
+  </div>
+
+  <!-- ======= オープニングモノローグ ======= -->
+  <div id="opening-screen" class="hidden">
+    <div id="opening-bg"></div>
+    <div id="opening-text-area">
+      <p id="opening-text"></p>
+      <span id="opening-arrow">▼</span>
+    </div>
+    <div id="opening-skip-hint">クリック / Enter: 次へ &nbsp; Esc: スキップ</div>
+  </div>
+
+  <!-- ======= オープニング動画 ======= -->
+  <div id="intro-video-screen" class="hidden">
+    <video id="intro-video" playsinline></video>
+    <div id="intro-skip-hint">クリック / Enter でスキップ</div>
+  </div>
+
+  <!-- ======================================================
+       タイトル画面
+  ====================================================== -->
+  <div id="title-screen" class="hidden">
+    <div id="title-bg"></div>
+    <div id="title-stars"></div>
+    <canvas id="title-canvas"></canvas>
+    <div id="shooting-stars"></div>
+    <div id="title-content">
+      <div id="title-logo">
+        <div id="title-logo-wrapper">
+          <img id="title-logo-img" src="assets/images/bg/title_logo.webp" alt="放課後のステラ">
+        </div>
+      </div>
+      <nav id="title-menu">
+        <button class="title-btn" id="btn-newgame">NEW  GAME</button>
+        <button class="title-btn" id="btn-continue">CONTINUE</button>
+        <button class="title-btn" id="btn-gallery">CG GALLERY</button>
+        <!-- DEBUG: 後で削除 -->
+        <button class="title-btn" id="btn-debug" style="margin-top:1.2em;opacity:.55;font-size:.78em;letter-spacing:.15em;display:none;">⚙ DEBUG JUMP</button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       ゲーム画面
+  ====================================================== -->
+  <div id="game-screen" class="hidden">
+
+    <!-- 背景 -->
+    <div id="background"></div>
+
+    <!-- Canvasエフェクトレイヤー -->
+    <canvas id="canvas-effects"></canvas>
+
+    <!-- キャラクターレイヤー -->
+    <div id="characters">
+      <div id="char-left"   class="character-slot"></div>
+      <div id="char-center" class="character-slot"></div>
+      <div id="char-right"  class="character-slot"></div>
+    </div>
+
+    <!-- スチル (イベントCG) レイヤー -->
+    <div id="still-layer" class="hidden"></div>
+
+    <!-- UIレイヤー -->
+    <div id="ui-layer">
+
+      <!-- 上部メニューバー -->
+      <div id="menu-bar">
+        <button class="menu-btn" id="btn-save" >SAVE</button>
+        <button class="menu-btn" id="btn-load" >LOAD</button>
+        <button class="menu-btn" id="btn-log"  >LOG</button>
+        <button class="menu-btn" id="btn-skip" >SKIP</button>
+        <button class="menu-btn" id="btn-auto" >AUTO</button>
+        <button class="menu-btn" id="btn-to-title">TITLE</button>
+      </div>
+
+      <!-- テキストエリア (クリックで進む) -->
+      <div id="text-area">
+        <div id="char-name-box">
+          <span id="char-name"></span>
+        </div>
+        <div id="text-box">
+          <p id="dialog-text"></p>
+          <span id="next-arrow">▼</span>
+        </div>
+      </div>
+
+    </div><!-- /ui-layer -->
+
+    <!-- シーン切り替えワイプ -->
+    <div id="scene-wipe"></div>
+
+    <!-- トランジションCanvasレイヤー -->
+    <canvas id="transition-canvas"></canvas>
+
+    <!-- 選択肢オーバーレイ -->
+    <div id="choices-overlay" class="hidden">
+      <div id="choices-container"></div>
+    </div>
+
+    <!-- クレジットロール -->
+    <div id="credits-screen" class="hidden">
+      <div id="credits-viewport">
+        <div id="credits-roll"></div>
+      </div>
+      <button id="btn-credits-skip">SKIP</button>
+    </div>
+
+    <!-- エンディング画面（最終エンディング用） -->
+    <div id="ending-screen" class="hidden">
+      <div id="ending-content">
+        <div id="ending-title"></div>
+        <button id="btn-next-chapter" class="hidden" style="display:none!important"></button>
+        <button id="btn-ending-title">タイトルへ戻る</button>
+      </div>
+    </div>
+
+  </div><!-- /game-screen -->
+
+  <!-- ======= モーダル: セーブ/ロード ======= -->
+  <div id="save-load-modal" class="modal hidden">
+    <div class="modal-inner">
+      <h2 id="modal-title">SAVE</h2>
+      <div id="save-slots"></div>
+      <button class="modal-close-btn" id="btn-modal-close">閉じる</button>
+    </div>
+  </div>
+
+  <!-- ======= モーダル: テキストログ ======= -->
+  <div id="log-modal" class="modal hidden">
+    <div class="modal-inner">
+      <h2>テキストログ</h2>
+      <div id="log-content"></div>
+      <button class="modal-close-btn" id="btn-log-close">閉じる</button>
+    </div>
+  </div>
+
+  <!-- ======= モーダル: CGギャラリー ======= -->
+  <div id="gallery-modal" class="modal hidden">
+    <div class="modal-inner">
+      <h2>CG GALLERY</h2>
+      <div id="gallery-content">
+        <p style="color:rgba(255,255,255,0.4); text-align:center; margin-top:40px;">
+          スチル画像を<br>assets/images/stills/ に追加すると<br>ここに表示されます
+        </p>
+      </div>
+      <button class="modal-close-btn" id="btn-gallery-close">閉じる</button>
+    </div>
+  </div>
+
+</div><!-- /game-container -->
+
+<script src="config.js"></script>
+<script src="parser.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

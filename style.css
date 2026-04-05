@@ -1,0 +1,1197 @@
+/* ============================================================
+   style.css - 放課後のステラ UI スタイル
+   ゲームウィンドウ: 1280 × 720px (16:9)
+============================================================ */
+
+/* ---- Google Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap');
+
+/* ---- リセット ---- */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+body {
+  background: #0a0508;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: 'Yu Gothic UI', 'YuGothic', 'Hiragino Sans', 'Noto Sans JP',
+               'Meiryo', sans-serif;
+}
+
+/* ---- ゲームコンテナ (1280×720 固定) ---- */
+#game-container {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  box-shadow: 0 0 80px rgba(200, 100, 180, 0.25),
+              0 0 160px rgba(100, 80, 200, 0.12);
+  transform-origin: center center;
+}
+
+/* ============================================================
+   タイトル画面
+============================================================ */
+#title-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#title-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    url('assets/images/bg/title_bg.webp') center center / cover no-repeat,
+    radial-gradient(ellipse at 40% 40%, #2a0050 0%, #0d0020 50%, #0a0818 100%);
+  animation: titlePulse 10s ease-in-out infinite alternate;
+}
+@keyframes titlePulse {
+  0%   { filter: brightness(1) hue-rotate(0deg); }
+  100% { filter: brightness(1.08) hue-rotate(12deg); }
+}
+
+/* 星パーティクル */
+#title-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at  8%  12%, #fff 0%, transparent 100%),
+    radial-gradient(1px   1px   at 15%  65%, rgba(255,220,255,.9) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 22%  40%, #fff 0%, transparent 100%),
+    radial-gradient(1px   1px   at 35%  80%, rgba(200,200,255,.8) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 42%  25%, #fff 0%, transparent 100%),
+    radial-gradient(1px   1px   at 50%  55%, rgba(255,200,255,.9) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 58%  10%, #fff 0%, transparent 100%),
+    radial-gradient(1px   1px   at 65%  70%, rgba(200,220,255,.8) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 72%  45%, #fff 0%, transparent 100%),
+    radial-gradient(1px   1px   at 80%  20%, rgba(255,200,255,.9) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 88%  60%, #fff 0%, transparent 100%),
+    radial-gradient(1px   1px   at 93%  85%, rgba(220,200,255,.8) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at  5%  90%, #fff 0%, transparent 100%),
+    radial-gradient(1px   1px   at 30%   5%, rgba(255,240,255,.7) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 75%  95%, rgba(200,200,255,.7) 0%, transparent 100%);
+  animation: starTwinkle 6s ease-in-out infinite alternate;
+}
+@keyframes starTwinkle {
+  0%   { opacity: 0.55; }
+  100% { opacity: 1; }
+}
+
+/* タイトルCanvasエフェクトレイヤー (星個別瞬き・雲流れ) */
+#title-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#title-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+#title-logo {
+  margin-bottom: 72px;
+}
+
+#title-logo-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  opacity: 0;
+}
+
+#title-logo-wrapper.logo-entering {
+  animation: titleLogoFadeIn 1.4s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+@keyframes titleLogoFadeIn {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+#title-logo-img {
+  display: block;
+  max-width: 700px;
+  width: 90%;
+  filter: drop-shadow(0 0 10px rgba(255,130,195,.35)) drop-shadow(0 0 25px rgba(220,60,175,.2));
+  animation: titleGlow 3.5s ease-in-out infinite alternate;
+}
+
+#title-main {
+  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho',
+               'Hiragino Mincho ProN', serif;
+  font-size: 72px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: #fff6fa;
+  text-shadow:
+    0 0  3px rgba(255,255,255,.98),
+    0 0 10px rgba(255,210,235,.95),
+    0 0 24px rgba(255,130,195,.9),
+    0 0 52px rgba(255, 60,175,.7),
+    0 0 90px rgba(220, 35,155,.5),
+    0 0 145px rgba(180, 15,130,.28);
+  animation: titleGlow 3.5s ease-in-out infinite alternate;
+  line-height: 1.2;
+}
+@keyframes titleGlow {
+  0% {
+    text-shadow:
+      0 0  3px rgba(255,255,255,.95),
+      0 0 10px rgba(255,200,230,.88),
+      0 0 22px rgba(255,120,190,.82),
+      0 0 48px rgba(255, 55,170,.62),
+      0 0 82px rgba(215, 30,150,.44),
+      0 0 135px rgba(175, 10,125,.22);
+    letter-spacing: 0.42em;
+  }
+  100% {
+    text-shadow:
+      0 0  5px rgba(255,255,255,1),
+      0 0 16px rgba(255,225,245,1),
+      0 0 36px rgba(255,150,210,.98),
+      0 0 72px rgba(255, 85,190,.8),
+      0 0 115px rgba(235, 50,168,.6),
+      0 0 180px rgba(200, 25,145,.38);
+    letter-spacing: 0.44em;
+  }
+}
+
+/* タイトル下グロービームライン */
+#title-main::after {
+  content: '';
+  display: block;
+  width: 360px;
+  height: 2px;
+  background: rgba(255, 228, 245, 0.88);
+  margin: 18px auto 0;
+  box-shadow:
+    0 0  6px 1px rgba(255, 180, 220, .9),
+    0 0 14px 2px rgba(255, 100, 190, .65),
+    0 0 30px 4px rgba(220,  50, 160, .4);
+  animation: beamPulse 3.5s ease-in-out infinite alternate;
+}
+@keyframes beamPulse {
+  0%   { opacity: .75; width: 340px; }
+  100% { opacity:  1;  width: 380px; }
+}
+
+#title-sub {
+  font-family: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
+  font-size: 13.5px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.62em;
+  color: rgba(255,205,235,.8);
+  text-shadow:
+    0 0  6px rgba(255,160,215,.6),
+    0 0 18px rgba(255,100,185,.3);
+  margin-top: 16px;
+}
+
+#title-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.title-btn {
+  width: 300px;
+  padding: 15px 0;
+  background: transparent;
+  border: 1px solid rgba(255,150,210,.45);
+  color: rgba(255,220,240,.9);
+  font-size: 15px;
+  letter-spacing: 0.4em;
+  cursor: pointer;
+  transition: all .35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.title-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,150,210,.12), transparent);
+  transform: translateX(-100%);
+  transition: transform .5s ease;
+}
+.title-btn:hover {
+  border-color: rgba(255,180,220,.9);
+  color: #fff;
+  letter-spacing: 0.6em;
+  box-shadow: 0 0 24px rgba(255,100,180,.3);
+}
+.title-btn:hover::after { transform: translateX(100%); }
+
+/* ---- 流れ星 ---- */
+#shooting-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/*
+ * .shooting-star
+ *  細長い矩形を rotate(45deg) で斜めに傾け、
+ *  translateY(+) でゲーム内座標の左下方向に飛ばす。
+ *  グラデーション: 上(尾)→透明、下(頭)→白
+ */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 100px;           /* JSで上書き */
+  border-radius: 0 0 2px 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent          0%,
+    rgba(255,210,240,.25) 45%,
+    rgba(255,255,255,.95) 100%
+  );
+  transform: rotate(45deg);
+  transform-origin: top center;
+  animation: shootingStarFly var(--dur, 0.9s) ease-out forwards;
+}
+
+/* 先端の輝き */
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 3px rgba(255, 200, 240, .85),
+              0 0 12px 4px rgba(220, 160, 255, .45);
+}
+
+@keyframes shootingStarFly {
+  0%   { opacity: 0;    transform: rotate(45deg) translateY(-20px); }
+  8%   { opacity: 1; }
+  78%  { opacity: .85; }
+  100% { opacity: 0;    transform: rotate(45deg) translateY(380px); }
+}
+
+/* ============================================================
+   ゲーム画面
+============================================================ */
+#game-screen {
+  position: absolute;
+  inset: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---- Canvasエフェクトレイヤー ---- */
+#canvas-effects {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---- 背景 ---- */
+#background {
+  position: absolute;
+  inset: 0;
+  background: #1a1a2e;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---- シーン切り替えワイプ ---- */
+#scene-wipe {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(5, 2, 14, 0)    0%,
+    #05020e             20%,
+    #05020e             80%,
+    rgba(5, 2, 14, 0)  100%
+  );
+  transform: translateX(-100%);
+  z-index: 22;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ---- トランジションCanvasレイヤー ---- */
+#transition-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 35;
+  pointer-events: none;
+}
+
+/* ---- キャラクターレイヤー ---- */
+#characters {
+  position: absolute;
+  inset: 0;  /* 画面全体。テキストボックスの下にもキャラを配置 */
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* 推奨画像サイズ: 512×900px 以上の透過PNG (アスペクト比 ~0.57:1)
+   スロット縦720px = ゲーム画面フルハイト。下端を画面最下端に揃える */
+.character-slot {
+  position: absolute;
+  bottom: 0;
+  width: 420px;
+  height: 720px;
+  opacity: 0;
+  transition: opacity .5s ease, filter .3s ease, transform .4s ease;
+}
+.character-slot.visible  { opacity: 1; }
+.character-slot.dimmed   { filter: brightness(.55) saturate(.6); }
+.character-slot.highlighted { filter: brightness(1) saturate(1.1); }
+
+#char-left   { left: 60px; }
+#char-center { left: 50%; transform: translateX(-50%); }
+#char-right  { right: 60px; }
+
+/* スロット表示中はcenter用のtransformを維持 */
+#char-center.visible { transform: translateX(-50%); }
+#char-center.dimmed  { transform: translateX(-50%); }
+#char-center.highlighted { transform: translateX(-50%); }
+
+/* キャラスプライト内の画像 */
+.char-sprite {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.char-sprite img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+}
+
+/* プレースホルダー (画像なし時) */
+.char-placeholder {
+  width: 220px;
+  height: 560px;
+  border-radius: 110px 110px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 28px;
+  gap: 8px;
+}
+.char-ph-icon  { font-size: 48px; opacity: .8; }
+.char-ph-name  { font-size: 16px; color: rgba(255,255,255,.9); font-weight: bold; }
+.char-ph-expr  { font-size: 12px; color: rgba(255,255,255,.55); }
+
+/* ---- キャラ表示エフェクト (CSS アニメーション) ---- */
+.anim-fade-in        { animation: animFadeIn     .5s ease forwards; }
+.anim-slide-in-left  { animation: animSlideLeft  .45s ease forwards; }
+.anim-slide-in-right { animation: animSlideRight .45s ease forwards; }
+.anim-pop-in         { animation: animPopIn      .4s  cubic-bezier(.34,1.56,.64,1) forwards; }
+.anim-fade-out       { animation: animFadeOut    .5s  ease forwards; }
+.anim-slide-out-left { animation: animSlideOutL  .4s  ease forwards; }
+.anim-slide-out-right{ animation: animSlideOutR  .4s  ease forwards; }
+
+@keyframes animFadeIn      { from { opacity:0; }                 to { opacity:1; } }
+@keyframes animSlideLeft   { from { opacity:0; transform:translateX(-70px); } to { opacity:1; transform:translateX(0); } }
+@keyframes animSlideRight  { from { opacity:0; transform:translateX( 70px); } to { opacity:1; transform:translateX(0); } }
+@keyframes animPopIn       { from { opacity:0; transform:scale(.78); }        to { opacity:1; transform:scale(1); } }
+@keyframes animFadeOut     { from { opacity:1; }                 to { opacity:0; } }
+@keyframes animSlideOutL   { from { opacity:1; transform:translateX(0); }    to { opacity:0; transform:translateX(-80px); } }
+@keyframes animSlideOutR   { from { opacity:1; transform:translateX(0); }    to { opacity:0; transform:translateX( 80px); } }
+
+/* center スロット用エフェクト (translateX(-50%) を維持) */
+#char-center.anim-fade-in        { animation: animFadeIn          .5s ease forwards; }
+#char-center.anim-slide-in-left  { animation: animSlideLeftCenter .45s ease forwards; }
+#char-center.anim-slide-in-right { animation: animSlideRightCenter.45s ease forwards; }
+#char-center.anim-pop-in         { animation: animPopInCenter     .4s  cubic-bezier(.34,1.56,.64,1) forwards; }
+#char-center.anim-fade-out       { animation: animFadeOut         .5s  ease forwards; }
+#char-center.anim-slide-out-left { animation: animSlideOutLCenter .4s  ease forwards; }
+#char-center.anim-slide-out-right{ animation: animSlideOutRCenter .4s  ease forwards; }
+
+@keyframes animSlideLeftCenter    { from { opacity:0; transform:translateX(calc(-50% - 70px)); } to { opacity:1; transform:translateX(-50%); } }
+@keyframes animSlideRightCenter   { from { opacity:0; transform:translateX(calc(-50% + 70px)); } to { opacity:1; transform:translateX(-50%); } }
+@keyframes animPopInCenter        { from { opacity:0; transform:translateX(-50%) scale(.78); }   to { opacity:1; transform:translateX(-50%) scale(1); } }
+@keyframes animSlideOutLCenter    { from { opacity:1; transform:translateX(-50%); } to { opacity:0; transform:translateX(calc(-50% - 80px)); } }
+@keyframes animSlideOutRCenter    { from { opacity:1; transform:translateX(-50%); } to { opacity:0; transform:translateX(calc(-50% + 80px)); } }
+
+/* ---- スチルレイヤー ---- */
+#still-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background-color: rgba(0,0,0,.85);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .5s ease;
+}
+#still-layer.effect-fade-in         { animation: animFadeIn .6s ease forwards; }
+#still-layer.effect-slide-in-bottom { animation: animStillSlideUp .5s ease forwards; }
+@keyframes animStillSlideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+
+.still-placeholder {
+  color: rgba(255,255,255,.4);
+  font-size: 18px;
+  letter-spacing: .2em;
+  border: 1px dashed rgba(255,255,255,.2);
+  padding: 30px 60px;
+}
+
+/* ---- UIレイヤー ---- */
+#ui-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ---- メニューバー ---- */
+#menu-bar {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  display: flex;
+  gap: 8px;
+  pointer-events: all;
+}
+
+.menu-btn {
+  padding: 6px 14px;
+  background: rgba(8, 3, 18, .65);
+  border: 1px solid rgba(200,140,200,.3);
+  color: rgba(240,210,230,.8);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-indent: .12em;   /* letter-spacingで右にずれる分を補正 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .2s;
+  backdrop-filter: blur(4px);
+}
+.menu-btn:hover {
+  background: rgba(180,80,150,.2);
+  border-color: rgba(240,160,210,.8);
+  color: #fff;
+}
+.menu-btn.active {
+  background: rgba(200,80,160,.3);
+  border-color: rgba(255,160,220,.9);
+  color: #fff;
+}
+
+/* ---- テキストエリア ---- */
+#text-area {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 44px 28px;
+  pointer-events: all;
+  cursor: pointer;
+  user-select: none;
+}
+
+#char-name-box {
+  display: block;
+  width: fit-content;
+  position: relative;
+  background: rgba(12, 4, 24, .8);
+  border: none;
+  border-radius: 10px 10px 0 0;
+  padding: 6px 26px 6px 20px;
+  margin-bottom: 0;
+  min-width: 140px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+/* キャラカラーの上アクセントライン */
+#char-name-box::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    var(--accent-color, #ff99bb) 0%,
+    rgba(255,153,187,.3) 75%,
+    transparent 100%);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 8px 1px var(--accent-color, #ff99bb);
+}
+#char-name {
+  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: #ff99bb;  /* キャラ色はJSで上書き */
+}
+
+#text-box {
+  background: rgba(8, 3, 20, .8);
+  border: none;
+  border-radius: 0 10px 10px 10px;
+  padding: 18px 28px 14px;
+  min-height: 128px;
+  position: relative;
+  backdrop-filter: blur(8px);
+}
+
+#dialog-text {
+  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
+  font-size: 21px;
+  line-height: 1.85;
+  color: #f5eaf0;
+  letter-spacing: .06em;
+  min-height: 2.8em;
+}
+
+/* 内心ナレーション（*text*） */
+#dialog-text.narrate-inner {
+  color: rgba(210, 190, 230, 0.72);
+}
+#dialog-text.narrate-inner em {
+  font-style: italic;
+  letter-spacing: .10em;
+}
+
+/* 締めナレーション（**text**） */
+#dialog-text.narrate-climax {
+  text-align: center;
+  font-size: 26px;
+  color: #ffffff;
+  letter-spacing: .18em;
+  text-shadow: 0 0 18px rgba(255, 200, 240, 0.5);
+  animation: climax-fadein 1.2s ease forwards;
+}
+@keyframes climax-fadein {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#next-arrow {
+  position: absolute;
+  right: 22px;
+  bottom: 14px;
+  color: rgba(255,160,210,.7);
+  font-size: 13px;
+  display: none;
+  animation: arrowBounce 1.1s ease-in-out infinite;
+}
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ---- 選択肢 ---- */
+#choices-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.45);
+  z-index: 20;
+}
+#choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 720px;
+}
+.choice-btn {
+  padding: 20px 44px;
+  background: rgba(8, 3, 22, .92);
+  border: 1px solid rgba(220,140,190,.5);
+  color: #f5eaf0;
+  font-size: 19px;
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: all .3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.choice-btn::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0;
+  background: rgba(220,80,160,.18);
+  transition: width .3s ease;
+}
+.choice-btn:hover {
+  border-color: rgba(255,170,220,.9);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(220,80,160,.2);
+}
+.choice-btn:hover::before { width: 100%; }
+
+/* ---- エンディング画面 ---- */
+#ending-screen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #08040e 0%, #12062a 50%, #08040e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+  animation: animFadeIn .8s ease forwards;
+}
+#ending-content {
+  text-align: center;
+}
+#ending-title {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: .35em;
+  color: #ffd0e8;
+  text-shadow: 0 0 30px rgba(255,120,180,.6), 0 0 60px rgba(255,80,160,.3);
+  margin-bottom: 48px;
+  white-space: pre-wrap;
+}
+#btn-ending-title {
+  padding: 14px 48px;
+  background: transparent;
+  border: 1px solid rgba(220,140,190,.5);
+  color: rgba(240,200,220,.9);
+  font-size: 16px;
+  letter-spacing: .3em;
+  cursor: pointer;
+  transition: all .3s;
+}
+#btn-ending-title:hover {
+  border-color: rgba(255,180,220,.9);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(220,80,160,.3);
+}
+
+/* ---- 次のチャプターへボタン ---- */
+#btn-next-chapter {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 14px 48px;
+  background: transparent;
+  border: 1px solid rgba(140,200,255,.5);
+  color: rgba(180,220,255,.9);
+  font-size: 16px;
+  letter-spacing: .3em;
+  cursor: pointer;
+  transition: all .3s;
+}
+#btn-next-chapter:hover {
+  border-color: rgba(180,220,255,.9);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(80,160,255,.3);
+}
+
+/* ---- クレジットロール ---- */
+#credits-screen {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 35;
+  overflow: hidden;
+}
+#credits-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+#credits-roll {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding: 0 60px;
+  box-sizing: border-box;
+  will-change: transform;
+}
+.credits-game-title {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: .5em;
+  color: #ffd0e8;
+  text-shadow: 0 0 30px rgba(255,120,180,.7), 0 0 70px rgba(255,80,160,.4);
+  margin-bottom: 12px;
+  padding-top: 8px;
+}
+.credits-heading {
+  font-size: 11px;
+  letter-spacing: .4em;
+  color: rgba(255,255,255,.4);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  margin-top: 56px;
+}
+.credits-name {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: .25em;
+  color: rgba(255,255,255,.88);
+  margin-bottom: 6px;
+}
+.credits-sub {
+  font-size: 12px;
+  letter-spacing: .15em;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 4px;
+}
+.credits-thanks {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: .5em;
+  color: rgba(255,220,240,.7);
+  margin-top: 32px;
+}
+.credits-spacer {
+  height: 32px;
+}
+#btn-credits-skip {
+  position: absolute;
+  bottom: 28px;
+  right: 32px;
+  padding: 8px 24px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.4);
+  font-size: 12px;
+  letter-spacing: .3em;
+  cursor: pointer;
+  transition: all .25s;
+  z-index: 36;
+}
+#btn-credits-skip:hover {
+  border-color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.8);
+}
+@keyframes creditsScroll {
+  from { transform: translateY(var(--credits-start)); }
+  to   { transform: translateY(var(--credits-end)); }
+}
+
+/* ---- モーダル共通 ---- */
+.modal {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  backdrop-filter: blur(3px);
+}
+.modal-inner {
+  background: rgba(8, 3, 22, .97);
+  border: 1px solid rgba(220,140,190,.5);
+  padding: 32px 36px;
+  width: 640px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+.modal-inner h2 {
+  color: #ffaac8;
+  font-size: 18px;
+  letter-spacing: .35em;
+  margin-bottom: 24px;
+  text-align: center;
+  border-bottom: 1px solid rgba(220,140,190,.3);
+  padding-bottom: 14px;
+}
+.modal-close-btn {
+  display: block;
+  margin: 24px auto 0;
+  padding: 10px 36px;
+  background: transparent;
+  border: 1px solid rgba(220,140,190,.45);
+  color: rgba(240,190,220,.85);
+  font-size: 14px;
+  letter-spacing: .25em;
+  cursor: pointer;
+  transition: all .2s;
+}
+.modal-close-btn:hover {
+  background: rgba(220,80,160,.2);
+  border-color: rgba(255,180,220,.9);
+  color: #fff;
+}
+
+/* ---- セーブ/ロードスロット ---- */
+.save-slot {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 18px;
+  border: 1px solid rgba(220,140,190,.25);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.save-slot:hover {
+  background: rgba(220,80,160,.12);
+  border-color: rgba(255,170,220,.7);
+}
+.slot-num {
+  font-size: 11px;
+  color: #cc88aa;
+  min-width: 52px;
+  letter-spacing: .1em;
+}
+.slot-info { flex: 1; }
+.slot-label   { font-size: 14px; color: #f5eaf0; margin-bottom: 3px; }
+.slot-preview { font-size: 12px; color: rgba(255,255,255,.45); }
+.slot-date  { font-size: 11px; color: rgba(255,255,255,.35); }
+.slot-empty { font-size: 13px; color: rgba(255,255,255,.25); }
+
+/* ---- テキストログ ---- */
+#log-content {
+  max-height: 380px;
+  overflow-y: auto;
+  font-size: 15px;
+  line-height: 2;
+  color: #f0e0ea;
+}
+.log-entry {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(220,140,190,.1);
+}
+.log-name {
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+/* ---- ギャラリー ---- */
+#gallery-content {
+  min-height: 200px;
+}
+
+.cg-total-count {
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,0.3);
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.cg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.cg-thumb {
+  cursor: default;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+
+.cg-thumb.unlocked {
+  cursor: pointer;
+}
+
+.cg-thumb.unlocked:hover .cg-thumb-img {
+  filter: brightness(1.15);
+}
+
+.cg-thumb-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: filter .2s;
+}
+
+.cg-thumb-locked {
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: rgba(255,255,255,0.15);
+}
+
+.cg-thumb-label {
+  font-size: 10px;
+  text-align: center;
+  padding: 4px 4px 5px;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cg-label-locked {
+  color: rgba(255,255,255,0.2);
+}
+
+/* ---- ギャラリービューア (フルスクリーン拡大) ---- */
+#gallery-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#gallery-viewer-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  cursor: pointer;
+}
+
+#gallery-viewer-img {
+  position: relative;
+  width: 90vw;
+  max-width: 1200px;
+  aspect-ratio: 16/9;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#gallery-viewer-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 36px;
+  text-align: center;
+  transition: background .2s;
+}
+
+#gallery-viewer-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ---- ユーティリティ ---- */
+.hidden { display: none !important; }
+
+/* ============================================================
+   オープニング動画
+============================================================ */
+#intro-video-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 300;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease;
+}
+#intro-video-screen.fade-out {
+  opacity: 0;
+}
+#intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#intro-skip-hint {
+  position: absolute;
+  bottom: 22px;
+  right: 30px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+  font-family: 'Yu Gothic UI', sans-serif;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+/* ============================================================
+   オープニングモノローグ
+============================================================ */
+#opening-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.8s ease;
+}
+#opening-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+#opening-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+}
+#opening-text-area {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  width: 90%;
+  text-align: center;
+  /* 固定高さをここで確保することでレイアウトシフトを防ぐ */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  height: 160px;
+}
+#opening-text {
+  color: rgba(255, 255, 255, 0.93);
+  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
+  font-size: 18px;
+  line-height: 2.5;
+  letter-spacing: 0.12em;
+  text-shadow:
+    0 0 32px rgba(160, 120, 220, 0.65),
+    0 2px 10px rgba(0, 0, 0, 0.9);
+  transition: opacity 0.45s ease;
+  /* display: flex を外してインラインテキストの流れを正常に保つ */
+}
+#opening-text strong {
+  color: #e8b8ff;
+  font-weight: normal;
+  white-space: nowrap;
+}
+#opening-arrow {
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 15px;
+  animation: opening-arrow-pulse 1.4s ease-in-out infinite;
+  visibility: hidden; /* display ではなく visibility でレイアウトシフトを防ぐ */
+}
+@keyframes opening-arrow-pulse {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50%       { opacity: 0.65; transform: translateY(5px); }
+}
+#opening-skip-hint {
+  position: absolute;
+  bottom: 22px;
+  right: 30px;
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 12px;
+  font-family: 'Yu Gothic UI', sans-serif;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+/* ============================================================
+   カスタムカーソル
+============================================================ */
+* { cursor: none !important; }
+
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+/* 4芒星本体: top/left で中央寄せ (アニメーションに translate を混在させない) */
+.cursor-core {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: -11px;   /* -(22 / 2) */
+  left: -11px;
+  clip-path: polygon(50% 0%, 59% 41%, 100% 50%, 59% 59%, 50% 100%, 41% 59%, 0% 50%, 41% 41%);
+  background: linear-gradient(135deg, #fff9fc 0%, #ffb8e2 45%, #cc66ff 100%);
+  filter:
+    drop-shadow(0 0 5px rgba(255, 150, 225, 1))
+    drop-shadow(0 0 12px rgba(200, 80, 255, 0.7));
+  animation: cursorSpin 3.5s linear infinite;
+}
+@keyframes cursorSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* 外周リング */
+.cursor-ring {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  top: -17px;   /* -(34 / 2) */
+  left: -17px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 160, 225, 0.7);
+  box-shadow: 0 0 6px rgba(200, 80, 255, 0.35);
+  animation: cursorRingPulse 2.4s ease-in-out infinite;
+}
+@keyframes cursorRingPulse {
+  0%, 100% { transform: scale(1);   opacity: 0.6; }
+  50%       { transform: scale(1.6); opacity: 0.05; }
+}
+
+/* トレイルスパークル */
+.cursor-sparkle {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  animation: sparkleFloat 0.6s ease-out forwards;
+}
+@keyframes sparkleFloat {
+  0%   { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0;   transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.1); }
+}
+
+/* ---- スクロールバー ---- */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,.2); }
+::-webkit-scrollbar-thumb { background: rgba(220,140,190,.45); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,160,210,.7); }
+
+/* ============================================================
+   レスポンシブ: 画面サイズに合わせてスケール
+============================================================ */
+@media screen {
+  body { align-items: center; }
+}

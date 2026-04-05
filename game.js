@@ -1,0 +1,2365 @@
+/**
+ * game.js - ビジュアルノベルエンジン
+ * 放課後のステラ
+ */
+
+class VNEngine {
+
+  constructor() {
+    this.parser      = new ScriptParser();
+    this.labels      = {};           // { labelName: [cmd, ...] }
+    this.currentLabel= 'start';
+    this.currentIndex= 0;
+
+    // 入力待ち / モード
+    this.waitingForInput = false;
+    this.skipMode        = false;
+    this.autoMode        = false;
+
+    // タイマー
+    this.typewriterTimer = null;
+    this.autoTimer       = null;
+    this.skipTimer       = null;   // スキップ時の次行進行タイマー（追跡してキャンセル可能に）
+    this._stillLockUntil = 0;      // スチル表示後の最低表示ロック解除時刻
+
+    // 現在表示中のテキスト
+    this.currentText = '';
+
+    // テキストログ
+    this.textLog = [];
+
+    // ゲームフラグ
+    this.flags = {};
+
+    // BGM
+    this.bgmAudio   = null;
+    this.currentBGM = '';
+
+    // SE（再生中のAudioを追跡して停止できるようにする）
+    this.seAudios = [];
+
+    // 現在の背景キー
+    this.currentBG = '';
+
+    // UI非表示モード
+    this._uiHidden = false;
+
+    // Canvasエフェクトレイヤー (ゲーム中)
+    this.fx = new EffectsCanvas('canvas-effects');
+
+    // トランジションCanvas
+    this.tx = new TransitionCanvas('transition-canvas');
+
+    // タイトル画面Canvasエフェクト (星瞬き・雲流れ)
+    this.titleFx = new TitleEffectsCanvas();
+
+    // キャラ状態: { left/center/right: { charKey, expr } | null }
+    this.charState = { left: null, center: null, right: null };
+
+    // 閲覧済みスチル (CG ギャラリー用)
+    this.seenStills = new Set(
+      JSON.parse(localStorage.getItem('vn_seen_stills') || '[]')
+    );
+
+    this._init();
+  }
+
+  // ============================================================
+  //  初期化
+  // ============================================================
+  async _init() {
+    this._bindEvents();
+    this._resizeGame();
+    this._initCursor();
+    if (VN_CONFIG.settings.debug) this._initDebugPanel();
+    this._tryLockLandscape();
+    window.addEventListener('resize', () => this._resizeGame());
+    await this._loadScenarios();
+    await this._preloadAssets();
+    this._showTitleScreen();
+    this._scheduleShootingStars();
+  }
+
+  // ============================================================
+  //  アセットプリロード
+  // ============================================================
+  async _preloadAssets() {
+    const bar    = document.getElementById('loading-bar-fill');
+    const pctEl  = document.getElementById('loading-percent');
+    const screen = document.getElementById('loading-screen');
+
+    const exts = ['.jpg', '.jpeg', '.png', '.webp'];
+    const tasks = [];
+
+    // 画像を拡張子を並列で試し、どれか1枚読めたら完了とする
+    const tryImg = (basePath) => new Promise(resolve => {
+      let remaining = exts.length;
+      for (const ext of exts) {
+        const img = new Image();
+        img.onload  = () => resolve();
+        img.onerror = () => { if (--remaining === 0) resolve(); }; // 全滅=画像なし→スキップ
+        img.src = basePath + ext;
+      }
+    });
+
+    // 背景
+    for (const key of Object.keys(VN_CONFIG.backgrounds)) {
+      tasks.push(tryImg(`assets/images/bg/${key}`));
+    }
+
+    // キャラクター立ち絵（expressions が定義されているキーのみ）
+    for (const [charKey, charData] of Object.entries(VN_CONFIG.characters)) {
+      for (const expr of (charData.expressions || [])) {
+        tasks.push(tryImg(`assets/images/chars/${charKey}/${expr}`));
+      }
+    }
+
+    // スチル（CG）
+    for (const cg of (VN_CONFIG.cgList || [])) {
+      tasks.push(tryImg(`assets/images/stills/${cg.key}`));
+    }
+
+    // 進捗トラッキング
+    const total = tasks.length;
+    let done = 0;
+    const updateBar = () => {
+      done++;
+      const pct = Math.round(done / total * 100);
+      if (bar)   bar.style.width    = `${pct}%`;
+      if (pctEl) pctEl.textContent  = `${pct}%`;
+    };
+
+    // ロード完了 と OK クリック を並行で待つ
+    const loadDone = Promise.all(tasks.map(t => t.then(updateBar)));
+    const okBtn    = document.getElementById('btn-loading-ok');
+    const okDone   = new Promise(resolve => {
+      if (okBtn) okBtn.addEventListener('click', resolve, { once: true });
+      else resolve();
+    });
+
+    await Promise.all([loadDone, okDone]);
+
+    // ローディング画面をフェードアウトして非表示
+    if (screen) {
+      screen.style.transition = 'opacity 0.6s ease';
+      screen.style.opacity = '0';
+      await new Promise(r => setTimeout(r, 600));
+      screen.classList.add('hidden');
+      screen.style.opacity = '';
+      screen.style.transition = '';
+    }
+  }
+
+  /** スマホ横向きロック（可能な場合）*/
+  _tryLockLandscape() {
+    // Screen Orientation API でロックを試みる（Android Chrome + fullscreen 時に有効）
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape').catch(() => {
+        // ロック不可（iOS等）の場合は CSS の @media portrait オーバーレイで対応
+      });
+    }
+  }
+
+  /** ゲームコンテナをウィンドウサイズに合わせてスケール */
+  _resizeGame() {
+    const container = document.getElementById('game-container');
+    const scaleX = window.innerWidth  / 1280;
+    const scaleY = window.innerHeight / 720;
+    const scale  = Math.min(scaleX, scaleY, 1.5); // 最大1.5倍まで拡大
+    container.style.transform       = `scale(${scale})`;
+    container.style.transformOrigin = 'center center';
+  }
+
+  /** シナリオ .md ファイルを順番に読み込む */
+  async _loadScenarios() {
+    for (const file of VN_CONFIG.scenarioFiles) {
+      try {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const text   = await res.text();
+        const parsed = this.parser.parse(text);
+        Object.assign(this.labels, parsed);
+        console.log(`[Engine] Loaded: ${file}`, Object.keys(parsed));
+      } catch (e) {
+        console.error(`[Engine] Failed to load ${file}:`, e);
+        this._showLoadError(file);
+      }
+    }
+  }
+
+  _showLoadError(file) {
+    const el = document.createElement('div');
+    el.style.cssText = [
+      'position:fixed;top:0;left:0;right:0;',
+      'background:#7a0020;color:#fff;padding:12px;',
+      'text-align:center;z-index:9999;font-size:14px;',
+    ].join('');
+    el.textContent =
+      `スクリプト読み込みエラー: ${file} ` +
+      `— start.bat でサーバーを起動してください。`;
+    document.body.appendChild(el);
+  }
+
+  // ============================================================
+  //  イベントバインド
+  // ============================================================
+  _bindEvents() {
+    const on = (id, ev, fn) => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener(ev, fn);
+    };
+
+    // タイトル
+    on('btn-newgame',  'click', () => this._startNewGame());
+    on('btn-continue', 'click', () => this._openSaveLoad('load'));
+    on('btn-gallery',  'click', () => this._openGallery());
+    if (VN_CONFIG.settings.debug) {
+      on('btn-debug', 'click', () => this._openDebugMenu());
+    } else {
+      const dbgBtn = document.getElementById('btn-debug');
+      if (dbgBtn) dbgBtn.style.display = 'none';
+    }
+
+    // ゲームメニュー
+    on('btn-save',     'click', () => this._openSaveLoad('save'));
+    on('btn-load',     'click', () => this._openSaveLoad('load'));
+    on('btn-log',      'click', () => this._openLog());
+    on('btn-skip',     'click', () => this._toggleSkip());
+    on('btn-auto',     'click', () => this._toggleAuto());
+    on('btn-to-title', 'click', () => this._returnToTitle());
+
+    // テキスト進行 (テキストエリアクリック)
+    const textArea = document.getElementById('text-area');
+    if (textArea) textArea.addEventListener('click', () => this._onAdvance());
+
+    // ゲーム画面背景クリック (テキストボックス外)
+    const gameScreen = document.getElementById('game-screen');
+    if (gameScreen) {
+      gameScreen.addEventListener('click', (e) => {
+        // UI非表示中は再表示して終了
+        if (this._uiHidden) { this._showUI(); return; }
+        const ignore = '#text-area, #choices-overlay, #menu-bar, .modal, #ending-screen, #still-layer';
+        if (!e.target.closest(ignore)) this._onAdvance();
+      });
+
+      // 右クリック → UI切り替え
+      gameScreen.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        const hasModal = document.querySelector('.modal:not(.hidden)');
+        if (hasModal) return;
+        const titleScreen = document.getElementById('title-screen');
+        if (titleScreen && !titleScreen.classList.contains('hidden')) return;
+        this._uiHidden ? this._showUI() : this._hideUI();
+      });
+    }
+
+    // キーボード
+    document.addEventListener('keydown', (e) => {
+      // モーダル / 選択肢表示中は無視
+      const hasModal  = document.querySelector('.modal:not(.hidden)');
+      const hasChoice = !document.getElementById('choices-overlay').classList.contains('hidden');
+      const hasEnding = !document.getElementById('ending-screen').classList.contains('hidden');
+      if (hasModal || hasChoice || hasEnding) return;
+
+      switch (e.code) {
+        case 'Space': case 'Enter': case 'ArrowRight':
+          this._onAdvance(); break;
+        case 'KeyS': this._toggleSkip(); break;
+        case 'KeyA': this._toggleAuto(); break;
+      }
+    });
+
+    // マウスホイール上スクロール → ログ表示
+    if (gameScreen) {
+      gameScreen.addEventListener('wheel', (e) => {
+        if (e.deltaY >= 0) return;
+        const hasModal = document.querySelector('.modal:not(.hidden)');
+        if (hasModal) return;
+        const titleScreen = document.getElementById('title-screen');
+        if (titleScreen && !titleScreen.classList.contains('hidden')) return;
+        e.preventDefault();
+        this._openLog();
+      }, { passive: false });
+    }
+
+    // モーダルクローズ
+    on('btn-modal-close',   'click', () => document.getElementById('save-load-modal').classList.add('hidden'));
+    on('btn-log-close',     'click', () => document.getElementById('log-modal').classList.add('hidden'));
+    on('btn-gallery-close', 'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
+    on('btn-ending-title',  'click', () => this._returnToTitle());
+    on('btn-next-chapter',  'click', () => this._continueToNextChapter());
+    on('btn-credits-skip',  'click', () => this._skipCredits());
+
+    // モーダル外クリックで閉じる
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+      });
+    });
+
+    // ボタンクリック音 (選択肢ボタン含む全ボタンを一括カバー)
+    document.getElementById('game-container').addEventListener('click', (e) => {
+      if (e.target.closest('button') && VN_CONFIG.clickSE) {
+        this._playSE(VN_CONFIG.clickSE);
+      }
+    });
+  }
+
+  // ============================================================
+  //  タイトル / ゲーム開始
+  // ============================================================
+  _showTitleScreen() {
+    document.getElementById('title-screen').classList.remove('hidden');
+    document.getElementById('game-screen').classList.add('hidden');
+    this._startTitleBGM();
+    this._playTitleLogoAnim();
+    this.titleFx.start();
+  }
+
+  _playTitleLogoAnim() {
+    const wrapper = document.getElementById('title-logo-wrapper');
+    if (!wrapper) return;
+
+    // アニメをリセット
+    wrapper.classList.remove('logo-entering');
+
+    // 2フレーム待って確実にリセット状態を描画してからアニメ開始
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        wrapper.classList.add('logo-entering');
+      });
+    });
+  }
+
+  _startTitleBGM() {
+    if (!VN_CONFIG.titleBGM) return;
+    if (this.currentBGM === VN_CONFIG.titleBGM && this.bgmAudio) return;
+
+    this.currentBGM = VN_CONFIG.titleBGM;
+    const audio = new Audio(`assets/audio/bgm/${VN_CONFIG.titleBGM}`);
+    audio.loop   = true;
+    audio.volume = 0;
+    this.bgmAudio = audio;
+
+    const startFade = () => {
+      const target = VN_CONFIG.settings.bgmVolume;
+      const t = setInterval(() => {
+        if (this.bgmAudio !== audio) { clearInterval(t); return; }
+        audio.volume = Math.min(target, audio.volume + 0.05);
+        if (audio.volume >= target) clearInterval(t);
+      }, 80);
+    };
+
+    audio.play().then(startFade).catch(() => {
+      // 自動再生ブロック時: タイトル画面への最初のクリックで再開
+      // ボタンクリックはバブリングでここに届くが、そのときは
+      // _stopBGM() で this.bgmAudio がすでに null になっているので安全
+      document.getElementById('title-screen').addEventListener('click', () => {
+        if (this.bgmAudio !== audio) return;
+        audio.play().then(startFade).catch(() => {});
+      }, { once: true });
+    });
+  }
+
+  _startNewGame() {
+    document.getElementById('title-screen').classList.add('hidden');
+    this.titleFx.stop();
+    this._stopBGM();
+    if (VN_CONFIG.introVideo) {
+      this._playIntroVideo();
+    } else if (VN_CONFIG.openingLines && VN_CONFIG.openingLines.length > 0) {
+      this._playOpeningMonologue();
+    } else {
+      this._beginGame();
+    }
+  }
+
+  _playOpeningMonologue() {
+    const screen = document.getElementById('opening-screen');
+    const textEl  = document.getElementById('opening-text');
+    const bgEl    = document.getElementById('opening-bg');
+    const arrow   = document.getElementById('opening-arrow');
+
+    // 背景: openingBG キーで参照、画像ファイルがあれば上書き
+    const bgKey = VN_CONFIG.openingBG || 'title_bg';
+    const gradient = VN_CONFIG.backgrounds[bgKey];
+    if (gradient) bgEl.style.background = gradient;
+    const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
+    const tryBgImg = (i) => {
+      if (i >= tryExts.length) return;
+      const img = new Image();
+      img.onload = () => {
+        bgEl.style.background    = '';
+        bgEl.style.backgroundImage    = `url(assets/images/bg/${bgKey}${tryExts[i]})`;
+        bgEl.style.backgroundSize     = 'cover';
+        bgEl.style.backgroundPosition = 'center';
+      };
+      img.onerror = () => tryBgImg(i + 1);
+      img.src = `assets/images/bg/${bgKey}${tryExts[i]}`;
+    };
+    tryBgImg(0);
+
+    // 表示初期化
+    textEl.style.opacity = '0';
+    textEl.innerHTML = '';
+    if (arrow) arrow.style.visibility = 'hidden';
+    screen.classList.remove('hidden', 'fade-out');
+
+    // BGM
+    if (VN_CONFIG.openingBGM) this._playBGM(VN_CONFIG.openingBGM);
+
+    const lines = [...(VN_CONFIG.openingLines || [])];
+    let idx      = 0;
+    let finished = false;
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      screen.removeEventListener('click', onAdvance);
+      document.removeEventListener('keydown', onKey);
+      if (arrow) arrow.style.visibility = 'hidden';
+      screen.classList.add('fade-out');
+      setTimeout(() => {
+        screen.classList.add('hidden');
+        screen.classList.remove('fade-out');
+        textEl.innerHTML = '';
+        textEl.style.opacity = '0';
+        this._stopBGM();
+        this._beginGame();
+      }, 800);
+    };
+
+    const showLine = () => {
+      if (finished) return;
+      if (idx >= lines.length) { finish(); return; }
+      if (arrow) arrow.style.visibility = 'hidden';
+      textEl.style.transition = 'opacity 0.45s ease';
+      textEl.style.opacity = '0';
+      setTimeout(() => {
+        if (finished) return;
+        textEl.innerHTML = lines[idx++];
+        textEl.style.opacity = '1';
+        setTimeout(() => {
+          if (!finished && arrow) arrow.style.visibility = 'visible';
+        }, 500);
+      }, 450);
+    };
+
+    const onAdvance = () => showLine();
+    const onKey = (e) => {
+      if (e.code === 'Escape') finish();
+      else if (e.code === 'Space' || e.code === 'Enter') showLine();
+    };
+
+    screen.addEventListener('click', onAdvance);
+    document.addEventListener('keydown', onKey);
+
+    // 最初の行は自動で表示
+    setTimeout(showLine, 700);
+  }
+
+  _playIntroVideo() {
+    const screen = document.getElementById('intro-video-screen');
+    const video  = document.getElementById('intro-video');
+
+    video.src = VN_CONFIG.introVideo;
+    video.currentTime = 0;
+    screen.classList.remove('hidden', 'fade-out');
+
+    const finish = () => {
+      video.pause();
+      screen.removeEventListener('click', onSkip);
+      document.removeEventListener('keydown', onKeySkip);
+      screen.classList.add('fade-out');
+      setTimeout(() => {
+        screen.classList.add('hidden');
+        screen.classList.remove('fade-out');
+        if (VN_CONFIG.openingLines && VN_CONFIG.openingLines.length > 0) {
+          this._playOpeningMonologue();
+        } else {
+          this._beginGame();
+        }
+      }, 800);
+    };
+
+    const onSkip = () => finish();
+    const onKeySkip = (e) => {
+      if (e.code === 'Space' || e.code === 'Enter' || e.code === 'Escape') finish();
+    };
+
+    video.onended = finish;
+    screen.addEventListener('click', onSkip, { once: true });
+    document.addEventListener('keydown', onKeySkip);
+
+    video.play().catch(() => finish()); // 再生不可時はそのままゲームへ
+  }
+
+  _beginGame() {
+    document.getElementById('game-screen').classList.remove('hidden');
+    this._resetGameState();
+    this._gotoLabel(VN_CONFIG.startLabel);
+  }
+
+  _resetGameState() {
+    this.flags       = {};
+    this.textLog     = [];
+    this.charState   = { left: null, center: null, right: null };
+    this.currentBG   = '';
+    this.currentText = '';
+    this._stopTypewriter();
+    this._clearAllChars('instant');
+    this._hideStill();
+    this.skipMode = false;
+    this.autoMode = false;
+    document.getElementById('btn-skip').classList.remove('active');
+    document.getElementById('btn-auto').classList.remove('active');
+    document.getElementById('choices-overlay').classList.add('hidden');
+    document.getElementById('credits-screen').classList.add('hidden');
+    document.getElementById('ending-screen').classList.add('hidden');
+    document.getElementById('next-arrow').style.display = 'none';
+    document.getElementById('dialog-text').textContent  = '';
+    document.getElementById('char-name').textContent    = '';
+    document.getElementById('char-name-box').style.display = 'none';
+    this._stopBGM();
+  }
+
+  // ============================================================
+  //  シーン実行
+  // ============================================================
+  _gotoLabel(label) {
+    if (!this.labels[label]) {
+      console.error(`[Engine] Label not found: "${label}"`);
+      return;
+    }
+    this._stopAllSE();
+    this._stopBGM();
+    this.currentLabel = label;
+    this.currentIndex = 0;
+    this._executeNext();
+  }
+
+  _executeNext() {
+    const cmds = this.labels[this.currentLabel];
+    if (!cmds || this.currentIndex >= cmds.length) {
+      // 選択肢表示中なら誤作動防止のため何もしない
+      const choicesVisible = !document.getElementById('choices-overlay').classList.contains('hidden');
+      if (choicesVisible) {
+        console.warn(`[Engine] _executeNext called at end of label "${this.currentLabel}" while choices are visible — ignoring`);
+        return;
+      }
+      // ラベル末尾に達した → END 扱い
+      console.warn(`[Engine] Label "${this.currentLabel}" ran out of commands without @end/@jump — showing END`);
+      this._displayEnding('END');
+      return;
+    }
+    const cmd = cmds[this.currentIndex++];
+    this._processCommand(cmd);
+  }
+
+  _processCommand(cmd) {
+    switch (cmd.cmd) {
+
+      case 'scene':
+        this._changeBackground(cmd.bg, cmd.effect);
+        this._executeNext();
+        break;
+
+      case 'bgm':
+        if (cmd.action === 'play') { this._stopAllSE(); this._playBGM(cmd.track); }
+        else this._stopBGM();
+        this._executeNext();
+        break;
+
+      case 'se':
+        this._playSE(cmd.file);
+        this._executeNext();
+        break;
+
+      case 'show':
+        this._showChar(cmd.char, cmd.pos, cmd.expr, cmd.effect);
+        this._executeNext();
+        break;
+
+      case 'hide':
+        this._hideChar(cmd.target, cmd.effect);
+        this._executeNext();
+        break;
+
+      case 'hide_all':
+        this._clearAllChars(cmd.effect);
+        this._executeNext();
+        break;
+
+      case 'expr':
+        this._changeExpr(cmd.char, cmd.expr);
+        this._executeNext();
+        break;
+
+      case 'move':
+        this._moveChar(cmd.char, cmd.pos, cmd.effect);
+        this._executeNext();
+        break;
+
+      case 'still':
+        this._showStill(cmd.image, cmd.effect);
+        this._executeNext();
+        break;
+
+      case 'still_hide': {
+        const remaining = this._stillLockUntil - Date.now();
+        if (remaining > 0) {
+          // 最低表示時間が残っている → 解除まで待機（skipTimerで管理）
+          clearTimeout(this.skipTimer);
+          this.skipTimer = setTimeout(() => {
+            this.skipTimer = null;
+            this._hideStill(cmd.effect);
+            this._executeNext();
+          }, remaining);
+        } else {
+          this._hideStill(cmd.effect);
+          this._executeNext();
+        }
+        break;
+      }
+
+      case 'wait':
+        if (this.skipMode) {
+          this._executeNext();
+        } else {
+          setTimeout(() => this._executeNext(), cmd.ms);
+        }
+        break;
+
+      case 'effect':
+        this.fx.setEffect(cmd.type);
+        this._executeNext();
+        break;
+
+      case 'shake':
+        this.fx.shake(cmd.strength, cmd.duration);
+        this._executeNext();
+        break;
+
+      case 'flag':
+        this.flags[cmd.name] = cmd.value;
+        this._executeNext();
+        break;
+
+      case 'flag_add':
+        this.flags[cmd.name] = (Number(this.flags[cmd.name]) || 0) + cmd.amount;
+        this._debugUpdatePanel();
+        this._executeNext();
+        break;
+
+      case 'flag_sub':
+        this.flags[cmd.name] = (Number(this.flags[cmd.name]) || 0) - cmd.amount;
+        this._debugUpdatePanel();
+        this._executeNext();
+        break;
+
+      case 'flag_toggle':
+        this.flags[cmd.name] = !this.flags[cmd.name];
+        this._debugUpdatePanel();
+        this._executeNext();
+        break;
+
+      case 'if': {
+        const flagVal = this.flags[cmd.flag];
+        const numFlag = Number(flagVal);
+        const numVal  = Number(cmd.value);
+        let   cond    = false;
+        switch (cmd.op) {
+          case '==': cond = String(flagVal) === String(cmd.value); break;
+          case '!=': cond = String(flagVal) !== String(cmd.value); break;
+          case '>=': cond = numFlag >= numVal; break;
+          case '>':  cond = numFlag >  numVal; break;
+          case '<=': cond = numFlag <= numVal; break;
+          case '<':  cond = numFlag <  numVal; break;
+          default:   console.warn('[Engine] @if: 不明な演算子:', cmd.op);
+        }
+        if (cond) this._gotoLabel(cmd.to);
+        else      this._executeNext();
+        break;
+      }
+
+      case 'route_select': {
+        // 数値フラグが最大のルートへジャンプ
+        let bestLabel = cmd.fallback;
+        let bestVal   = 0;
+        for (const { flag, label } of cmd.routes) {
+          const val = Number(this.flags[flag]) || 0;
+          if (val > bestVal) { bestVal = val; bestLabel = label; }
+        }
+        console.log(`[Engine] route_select → ${bestLabel} (best=${bestVal})`);
+        this._gotoLabel(bestLabel || 'bad_end');
+        break;
+      }
+
+      case 'jump':
+        this._gotoLabel(cmd.to);
+        break;
+
+      case 'narrate':
+        this._displayDialog(null, cmd.text, cmd.emphasis);
+        break;
+
+      case 'say':
+        this._displayDialog(cmd.char, cmd.text);
+        break;
+
+      case 'choice':
+        this._displayChoices(cmd.options);
+        break;
+
+      case 'credits':
+        this._showCredits(cmd.bgm);
+        break;
+
+      case 'end':
+        this._displayEnding(cmd.title, cmd.next);
+        break;
+
+      default:
+        console.warn('[Engine] Unknown command:', cmd);
+        this._executeNext();
+    }
+  }
+
+  // ============================================================
+  //  背景
+  // ============================================================
+  _changeBackground(bgKey, effect = 'fade') {
+    this._stopAllSE();
+    this.currentBG = bgKey;
+    const el = document.getElementById('background');
+
+    // 背景を適用してコールバックを呼ぶ（画像ロード完了 or グラデーション確定後）
+    const applyBG = (onReady) => {
+      const gradient = VN_CONFIG.backgrounds[bgKey] || '#1a1a2e';
+      const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
+      const tryNext = (i) => {
+        if (i >= tryExts.length) {
+          el.style.backgroundImage = '';
+          el.style.background      = gradient;
+          onReady();
+          return;
+        }
+        const img = new Image();
+        img.onload = () => {
+          el.style.background      = '';
+          el.style.backgroundImage = `url(assets/images/bg/${bgKey}${tryExts[i]})`;
+          el.style.backgroundSize  = 'cover';
+          el.style.backgroundPosition = 'center';
+          onReady();
+        };
+        img.onerror = () => tryNext(i + 1);
+        img.src = `assets/images/bg/${bgKey}${tryExts[i]}`;
+      };
+      tryNext(0);
+    };
+
+    if (effect === 'instant') {
+      applyBG(() => {});
+    } else if (effect === 'fade') {
+      this.tx.diamond(1000, () => applyBG(() => {}), null);
+    } else {
+      applyBG(() => {});
+    }
+  }
+
+  // ============================================================
+  //  キャラクター管理
+  // ============================================================
+  _showChar(charKey, pos, expr, effect = 'fade_in') {
+    const cfg = VN_CONFIG.characters[charKey];
+    if (!cfg) {
+      console.warn(`[Engine] Unknown character: ${charKey}`);
+      return;
+    }
+    const slot = document.getElementById(`char-${pos}`);
+    if (!slot) return;
+
+    this.charState[pos] = { charKey, expr };
+
+    // スプライト構築
+    const sprite = document.createElement('div');
+    sprite.className         = 'char-sprite';
+    sprite.dataset.charKey   = charKey;
+
+    // 画像試行
+    const tryExts = ['.png', '.webp', '.jpg'];
+    const tryImage = (i) => {
+      if (i >= tryExts.length) {
+        // プレースホルダー
+        const ph = document.createElement('div');
+        ph.className = 'char-placeholder';
+        ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
+        ph.innerHTML = `
+          <div class="char-ph-icon">♡</div>
+          <div class="char-ph-name">${cfg.name}</div>
+          <div class="char-ph-expr">[${expr}]</div>
+        `;
+        sprite.appendChild(ph);
+        return;
+      }
+      const imgEl = new Image();
+      imgEl.onload = () => {
+        imgEl.alt = cfg.name;
+        sprite.appendChild(imgEl);
+      };
+      imgEl.onerror = () => tryImage(i + 1);
+      imgEl.src = `assets/images/chars/${charKey}/${expr}${tryExts[i]}`;
+    };
+    tryImage(0);
+
+    slot.innerHTML = '';
+    slot.appendChild(sprite);
+
+    // エフェクトで表示
+    // まずクラスをリセットして visible に
+    slot.className = 'character-slot';
+    void slot.offsetWidth; // reflow
+    slot.classList.add('visible');
+
+    if (effect !== 'instant') {
+      const animClass = {
+        fade_in:         'anim-fade-in',
+        slide_in_left:   'anim-slide-in-left',
+        slide_in_right:  'anim-slide-in-right',
+        pop_in:          'anim-pop-in',
+      }[effect] || 'anim-fade-in';
+      slot.classList.add(animClass);
+      setTimeout(() => slot.classList.remove(animClass),
+                 VN_CONFIG.settings.charFadeTime + 100);
+    }
+  }
+
+  _hideChar(target, effect = 'fade_out') {
+    const positions = ['left', 'center', 'right'];
+    if (positions.includes(target)) {
+      this._doHideSlot(`char-${target}`, effect);
+      this.charState[target] = null;
+    } else {
+      // charKey で検索
+      for (const pos of positions) {
+        const sprite = document.querySelector(`#char-${pos} .char-sprite`);
+        if (sprite && sprite.dataset.charKey === target) {
+          this._doHideSlot(`char-${pos}`, effect);
+          this.charState[pos] = null;
+          break;
+        }
+      }
+    }
+  }
+
+  _doHideSlot(slotId, effect) {
+    const slot = document.getElementById(slotId);
+    if (!slot || !slot.classList.contains('visible')) return;
+
+    if (effect === 'instant') {
+      slot.innerHTML = '';
+      slot.className = 'character-slot';
+      return;
+    }
+
+    const animClass = {
+      fade_out:          'anim-fade-out',
+      slide_out_left:    'anim-slide-out-left',
+      slide_out_right:   'anim-slide-out-right',
+    }[effect] || 'anim-fade-out';
+
+    slot.classList.add(animClass);
+    setTimeout(() => {
+      slot.innerHTML  = '';
+      slot.className  = 'character-slot';
+    }, VN_CONFIG.settings.charFadeTime + 50);
+  }
+
+  _clearAllChars(effect = 'fade_out') {
+    ['left', 'center', 'right'].forEach(pos => this._hideChar(pos, effect));
+  }
+
+  _changeExpr(charKey, expr) {
+    for (const pos of ['left', 'center', 'right']) {
+      if (this.charState[pos]?.charKey === charKey) {
+        this.charState[pos].expr = expr;
+        const slot   = document.getElementById(`char-${pos}`);
+        const sprite = slot?.querySelector('.char-sprite');
+        if (!sprite) return;
+
+        const tryExts = ['.png', '.webp', '.jpg'];
+        const tryImage = (i) => {
+          if (i >= tryExts.length) {
+            const exprEl = sprite.querySelector('.char-ph-expr');
+            if (exprEl) exprEl.textContent = `[${expr}]`;
+            return;
+          }
+          const imgEl = new Image();
+          imgEl.onload = () => {
+            sprite.innerHTML = '';
+            imgEl.alt = charKey;
+            sprite.appendChild(imgEl);
+          };
+          imgEl.onerror = () => tryImage(i + 1);
+          imgEl.src = `assets/images/chars/${charKey}/${expr}${tryExts[i]}`;
+        };
+        tryImage(0);
+        break;
+      }
+    }
+  }
+
+  _moveChar(charKey, newPos, effect = 'slide') {
+    let fromPos = null;
+    for (const pos of ['left', 'center', 'right']) {
+      if (this.charState[pos]?.charKey === charKey) { fromPos = pos; break; }
+    }
+    if (!fromPos) return;
+
+    const state = { ...this.charState[fromPos] };
+    const hideEffect  = effect === 'slide' ? 'fade_out' : 'instant';
+    const showEffect  = effect === 'slide' ? 'fade_in'  : 'instant';
+    const delay       = effect === 'slide' ? 300 : 0;
+
+    this._hideChar(fromPos, hideEffect);
+    setTimeout(() => this._showChar(charKey, newPos, state.expr, showEffect), delay);
+  }
+
+  /** キャラクターをハイライト/ディム */
+  _highlightChar(activeKey) {
+    ['left', 'center', 'right'].forEach(pos => {
+      const slot = document.getElementById(`char-${pos}`);
+      if (!slot.classList.contains('visible')) return;
+      const key = this.charState[pos]?.charKey;
+      slot.classList.toggle('dimmed',      key !== activeKey);
+      slot.classList.toggle('highlighted', key === activeKey);
+    });
+  }
+
+  _clearCharHighlights() {
+    ['left', 'center', 'right'].forEach(pos => {
+      document.getElementById(`char-${pos}`)
+              .classList.remove('dimmed', 'highlighted');
+    });
+  }
+
+  // ============================================================
+  //  スチル (イベントCG)
+  // ============================================================
+  _showStill(imageName, effect = 'fade_in') {
+    this._stillLockUntil = Date.now() + 1500; // 1.5秒間は非表示不可
+    const el = document.getElementById('still-layer');
+    el.className  = '';
+    el.innerHTML  = '';
+    el.style.backgroundImage = '';
+
+    const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
+    const tryImage = (i) => {
+      if (i >= tryExts.length) {
+        // プレースホルダー
+        el.style.backgroundImage = '';
+        el.style.background      = 'rgba(0,0,0,.85)';
+        el.innerHTML = `<div class="still-placeholder">[スチル: ${imageName}]</div>`;
+        return;
+      }
+      const img = new Image();
+      img.onload = () => {
+        el.style.background      = '';
+        el.style.backgroundImage = `url(${img.src})`;
+        el.style.backgroundSize  = 'contain';
+        el.style.backgroundPosition = 'center';
+        el.style.backgroundRepeat   = 'no-repeat';
+        el.style.backgroundColor    = 'rgba(0,0,0,.85)';
+        // 閲覧済みとして記録
+        if (!this.seenStills.has(imageName)) {
+          this.seenStills.add(imageName);
+          localStorage.setItem('vn_seen_stills', JSON.stringify([...this.seenStills]));
+        }
+      };
+      img.onerror = () => tryImage(i + 1);
+      img.src = `assets/images/stills/${imageName}${tryExts[i]}`;
+    };
+    tryImage(0);
+
+    el.classList.remove('hidden');
+    el.classList.add(`effect-${effect}`);
+  }
+
+  _hideStill(effect = 'fade_out') {
+    this._stillLockUntil = 0;
+    const el = document.getElementById('still-layer');
+    if (!el) return;
+    if (effect === 'fade_out') {
+      el.style.transition = 'opacity .5s ease';
+      el.style.opacity    = '0';
+      setTimeout(() => {
+        el.classList.add('hidden');
+        el.style.opacity    = '';
+        el.style.transition = '';
+        el.innerHTML        = '';
+        el.style.backgroundImage = '';
+        el.style.background      = '';
+      }, 500);
+    } else {
+      el.classList.add('hidden');
+      el.innerHTML        = '';
+      el.style.backgroundImage = '';
+    }
+  }
+
+  // ============================================================
+  //  ダイアログ表示
+  // ============================================================
+  _displayDialog(charKey, text, emphasis) {
+    this._stopTypewriter();
+    this.waitingForInput = false;
+
+    const nameBox  = document.getElementById('char-name-box');
+    const nameEl   = document.getElementById('char-name');
+    const textEl   = document.getElementById('dialog-text');
+    const arrow    = document.getElementById('next-arrow');
+
+    arrow.style.display = 'none';
+    textEl.textContent  = '';
+    textEl.classList.remove('narrate-inner', 'narrate-climax');
+
+    const cfg = charKey ? VN_CONFIG.characters[charKey] : null;
+
+    if (cfg && cfg.name) {
+      nameEl.textContent  = cfg.name;
+      nameEl.style.color  = cfg.nameColor || '#ff99bb';
+      nameBox.style.setProperty('--accent-color', cfg.nameColor || '#ff99bb');
+      nameBox.style.display = 'block';
+      this._highlightChar(charKey);
+    } else {
+      nameEl.textContent    = '';
+      nameBox.style.display = 'none';
+      if (!charKey) this._clearCharHighlights();
+    }
+
+    // ログに追加
+    this.textLog.push({ name: cfg?.name || '', text });
+    this.currentText = text;
+
+    if (this.skipMode) {
+      // スキップ中は即表示して次へ
+      if (emphasis === 'inner') {
+        textEl.classList.add('narrate-inner');
+        textEl.innerHTML = `<em>${text}</em>`;
+      } else if (emphasis === 'climax') {
+        textEl.classList.add('narrate-climax');
+        textEl.textContent = text;
+      } else {
+        textEl.textContent = text;
+      }
+      this.waitingForInput = true;
+      arrow.style.display = 'block';
+      this.skipTimer = setTimeout(() => { this.skipTimer = null; this._executeNext(); }, 50);
+      return;
+    }
+
+    const onDone = () => {
+      this.waitingForInput = true;
+      arrow.style.display  = 'block';
+      if (this.autoMode) {
+        const delay = Math.max(text.length * 60, VN_CONFIG.settings.autoDelay);
+        this.autoTimer = setTimeout(() => this._executeNext(), delay);
+      }
+    };
+
+    if (emphasis === 'inner') {
+      // 内心：<em>で包んでタイプライター
+      textEl.classList.add('narrate-inner');
+      textEl.innerHTML = '<em></em>';
+      this._startTypewriter(textEl.querySelector('em'), text, onDone);
+    } else if (emphasis === 'climax') {
+      // 締め：即表示＋CSSフェードイン
+      textEl.classList.add('narrate-climax');
+      textEl.textContent = text;
+      onDone();
+    } else {
+      this._startTypewriter(textEl, text, onDone);
+    }
+  }
+
+  _startTypewriter(el, text, onDone) {
+    let i = 0;
+    const speed = VN_CONFIG.settings.typeSpeed;
+    this.typewriterTimer = setInterval(() => {
+      if (i < text.length) {
+        el.textContent += text[i++];
+      } else {
+        clearInterval(this.typewriterTimer);
+        this.typewriterTimer = null;
+        onDone();
+      }
+    }, speed);
+  }
+
+  _stopTypewriter() {
+    if (this.typewriterTimer) {
+      clearInterval(this.typewriterTimer);
+      this.typewriterTimer = null;
+    }
+    if (this.autoTimer) {
+      clearTimeout(this.autoTimer);
+      this.autoTimer = null;
+    }
+    if (this.skipTimer) {
+      clearTimeout(this.skipTimer);
+      this.skipTimer = null;
+    }
+  }
+
+  /** クリック / スペース / Enter で進む */
+  _onAdvance() {
+    const choicesVisible = !document.getElementById('choices-overlay')
+                                   .classList.contains('hidden');
+    if (choicesVisible) return;
+
+    // スチル最低表示時間中はクリックを無視
+    if (this._stillLockUntil > Date.now()) return;
+
+    if (this.typewriterTimer) {
+      // タイプライター実行中 → 全文即表示
+      this._stopTypewriter();
+      document.getElementById('dialog-text').textContent = this.currentText;
+      this.waitingForInput = true;
+      document.getElementById('next-arrow').style.display = 'block';
+      if (this.autoMode) {
+        const delay = Math.max(this.currentText.length * 60, VN_CONFIG.settings.autoDelay);
+        this.autoTimer = setTimeout(() => this._executeNext(), delay);
+      }
+      return;
+    }
+
+    if (this.waitingForInput) this._executeNext();
+  }
+
+  // ============================================================
+  //  選択肢
+  // ============================================================
+  _displayChoices(options) {
+    this._stopTypewriter();
+    this.waitingForInput = false;
+    document.getElementById('next-arrow').style.display = 'none';
+
+    // スキップ・オートを停止（選択肢は必ず手動で選ばせる）
+    if (this.skipMode) {
+      this.skipMode = false;
+      document.getElementById('btn-skip').classList.remove('active');
+    }
+    if (this.autoMode) {
+      this.autoMode = false;
+      document.getElementById('btn-auto').classList.remove('active');
+    }
+
+    const overlay   = document.getElementById('choices-overlay');
+    const container = document.getElementById('choices-container');
+    container.innerHTML = '';
+
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className   = 'choice-btn';
+      btn.textContent = opt.text;
+      btn.addEventListener('click', () => {
+        overlay.classList.add('hidden');
+        // フラグ修飾子を適用 ([flag+10] など)
+        if (opt.flags && opt.flags.length > 0) {
+          for (const { name, op, amount } of opt.flags) {
+            const cur = Number(this.flags[name]) || 0;
+            this.flags[name] = op === '+' ? cur + amount : cur - amount;
+          }
+          this._debugUpdatePanel();
+        }
+        this._gotoLabel(opt.next);
+      });
+      container.appendChild(btn);
+    });
+
+    overlay.classList.remove('hidden');
+  }
+
+  // ============================================================
+  //  スキップ / オート
+  // ============================================================
+  _toggleSkip() {
+    this.skipMode = !this.skipMode;
+    document.getElementById('btn-skip').classList.toggle('active', this.skipMode);
+    if (this.skipMode) {
+      if (this.autoMode) this._toggleAuto();
+      if (this.typewriterTimer) this._onAdvance();
+      else if (this.waitingForInput) this._executeNext();
+    }
+  }
+
+  _toggleAuto() {
+    this.autoMode = !this.autoMode;
+    document.getElementById('btn-auto').classList.toggle('active', this.autoMode);
+    if (this.autoMode) {
+      if (this.skipMode) this._toggleSkip();
+      if (this.waitingForInput) {
+        this.autoTimer = setTimeout(
+          () => this._executeNext(), VN_CONFIG.settings.autoDelay
+        );
+      }
+    } else {
+      this._stopTypewriter(); // autoTimer もここでキャンセル
+    }
+  }
+
+  // ============================================================
+  //  セーブ / ロード
+  // ============================================================
+  _openSaveLoad(mode) {
+    document.getElementById('modal-title').textContent = mode === 'save' ? 'SAVE' : 'LOAD';
+    const slotsEl = document.getElementById('save-slots');
+    slotsEl.innerHTML = '';
+
+    for (let i = 1; i <= 5; i++) {
+      const raw  = localStorage.getItem(`vn_save_${i}`);
+      const slot = document.createElement('div');
+      slot.className = 'save-slot';
+
+      if (raw) {
+        const d = JSON.parse(raw);
+        slot.innerHTML = `
+          <span class="slot-num">SLOT ${i}</span>
+          <div class="slot-info">
+            <div class="slot-label">${d.label || '?'}</div>
+            <div class="slot-preview">${d.preview || ''}</div>
+          </div>
+          <span class="slot-date">${d.date || ''}</span>
+        `;
+        slot.addEventListener('click', () => {
+          document.getElementById('save-load-modal').classList.add('hidden');
+          if (mode === 'save') this._saveToSlot(i);
+          else                 this._loadFromSlot(i);
+        });
+      } else {
+        slot.innerHTML = `
+          <span class="slot-num">SLOT ${i}</span>
+          <span class="slot-empty">--- Empty ---</span>
+        `;
+        if (mode === 'save') {
+          slot.addEventListener('click', () => {
+            document.getElementById('save-load-modal').classList.add('hidden');
+            this._saveToSlot(i);
+          });
+        }
+      }
+      slotsEl.appendChild(slot);
+    }
+
+    document.getElementById('save-load-modal').classList.remove('hidden');
+  }
+
+  _saveToSlot(slot) {
+    const preview = this.currentText.slice(0, 28) +
+                    (this.currentText.length > 28 ? '…' : '');
+    const data = {
+      label:      this.currentLabel,
+      index:      this.currentIndex - 1, // 現在実行中コマンドの index
+      flags:      { ...this.flags },
+      charState:  JSON.parse(JSON.stringify(this.charState)),
+      currentBG:  this.currentBG,
+      preview,
+      date: new Date().toLocaleString('ja-JP', {
+        month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit',
+      }),
+    };
+    localStorage.setItem(`vn_save_${slot}`, JSON.stringify(data));
+    this._showToast(`SLOT ${slot}  にセーブしました`);
+  }
+
+  _loadFromSlot(slot) {
+    const raw = localStorage.getItem(`vn_save_${slot}`);
+    if (!raw) return;
+    const d = JSON.parse(raw);
+
+    this._resetGameState();
+    document.getElementById('title-screen').classList.add('hidden');
+    document.getElementById('game-screen').classList.remove('hidden');
+
+    // 状態復元
+    this.flags = d.flags || {};
+    if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
+
+    for (const [pos, state] of Object.entries(d.charState || {})) {
+      if (state) this._showChar(state.charKey, pos, state.expr, 'instant');
+    }
+
+    // ラベル・インデックスを復元して再実行
+    this.currentLabel = d.label;
+    this.currentIndex = d.index; // executeNext がインクリメントするので -1 しない
+    this._executeNext();
+  }
+
+  _showToast(msg) {
+    const el = document.createElement('div');
+    el.textContent  = msg;
+    el.style.cssText = [
+      'position:fixed;top:50%;left:50%;',
+      'transform:translate(-50%,-50%);',
+      'background:rgba(0,0,0,.85);',
+      'color:#ffaac8;padding:16px 40px;',
+      'border:1px solid rgba(220,140,190,.5);',
+      'z-index:9999;pointer-events:none;',
+      'font-size:15px;letter-spacing:.2em;',
+      'transition:opacity 1s;',
+    ].join('');
+    document.body.appendChild(el);
+    setTimeout(() => { el.style.opacity = '0'; }, 1200);
+    setTimeout(() => { el.remove(); }, 2200);
+  }
+
+  // ============================================================
+  //  UI 非表示モード（右クリック）
+  // ============================================================
+  _hideUI() {
+    this._uiHidden = true;
+    const ids = ['text-area', 'menu-bar'];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.visibility = 'hidden';
+    });
+  }
+
+  _showUI() {
+    this._uiHidden = false;
+    const ids = ['text-area', 'menu-bar'];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.visibility = '';
+    });
+  }
+
+  // ============================================================
+  //  テキストログ
+  // ============================================================
+  _openLog() {
+    const content = document.getElementById('log-content');
+    content.innerHTML = this.textLog.slice(-40).map(e => `
+      <div class="log-entry">
+        ${e.name ? `<span class="log-name" style="color:#ff99bb">${e.name}</span>` : ''}
+        <span>${e.text}</span>
+      </div>
+    `).join('');
+    content.scrollTop = content.scrollHeight;
+    document.getElementById('log-modal').classList.remove('hidden');
+  }
+
+  // ============================================================
+  //  クレジットロール
+  // ============================================================
+  _showCredits(bgmFile) {
+    this._stopTypewriter();
+    this._clearAllChars('fade_out');
+
+    if (bgmFile) this._playBGM(bgmFile);
+
+    const screen = document.getElementById('credits-screen');
+    const roll   = document.getElementById('credits-roll');
+
+    // クレジット行を生成
+    const lines = VN_CONFIG.credits || [];
+    roll.innerHTML = lines.map(item => {
+      switch (item.type) {
+        case 'game-title': return `<div class="credits-game-title">${item.text}</div>`;
+        case 'heading':    return `<div class="credits-heading">${item.text}</div>`;
+        case 'name':       return `<div class="credits-name">${item.text}</div>`;
+        case 'sub':        return `<div class="credits-sub">${item.text}</div>`;
+        case 'thanks':     return `<div class="credits-thanks">${item.text}</div>`;
+        case 'spacer':     return `<div class="credits-spacer"></div>`;
+        default:           return '';
+      }
+    }).join('');
+
+    screen.classList.remove('hidden');
+
+    // スクロール量を計算して CSS 変数にセット
+    requestAnimationFrame(() => {
+      const vh      = screen.clientHeight;
+      const rollH   = roll.scrollHeight;
+      const speed   = 55; // px/sec
+      const total   = vh + rollH;
+      const dur     = total / speed;
+
+      roll.style.setProperty('--credits-start', `${vh}px`);
+      roll.style.setProperty('--credits-end',   `-${rollH}px`);
+      roll.style.animation = `creditsScroll ${dur}s linear forwards`;
+
+      // アニメーション終了で次へ
+      this._creditsAnimEnd = () => {
+        roll.removeEventListener('animationend', this._creditsAnimEnd);
+        this._endCredits();
+      };
+      roll.addEventListener('animationend', this._creditsAnimEnd);
+    });
+  }
+
+  _skipCredits() {
+    const roll = document.getElementById('credits-roll');
+    if (this._creditsAnimEnd) {
+      roll.removeEventListener('animationend', this._creditsAnimEnd);
+      this._creditsAnimEnd = null;
+    }
+    roll.style.animation = 'none';
+    this._endCredits();
+  }
+
+  _endCredits() {
+    document.getElementById('credits-screen').classList.add('hidden');
+    document.getElementById('credits-roll').style.animation = 'none';
+    this._executeNext();
+  }
+
+  // ============================================================
+  //  エンディング
+  // ============================================================
+  _displayEnding(title, next = null) {
+    this._stopTypewriter();
+    this.waitingForInput = false;
+
+    // スキップ・オートも停止
+    if (this.skipMode) {
+      this.skipMode = false;
+      document.getElementById('btn-skip').classList.remove('active');
+    }
+    if (this.autoMode) {
+      this.autoMode = false;
+      document.getElementById('btn-auto').classList.remove('active');
+    }
+
+    // メッセージウィンドウ・メニューバーをフェードアウト
+    ['text-area', 'menu-bar'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.transition    = 'opacity 0.4s ease';
+      el.style.opacity       = '0';
+      el.style.pointerEvents = 'none';
+    });
+    // キャラをフェードアウト
+    this._clearAllChars('fade_out');
+
+    if (next) {
+      // 背景も暗転フェード（starPan開始までの間に旧背景が残らないよう）
+      const bgEl = document.getElementById('background');
+      bgEl.style.transition = 'opacity 0.6s ease';
+      bgEl.style.opacity    = '0';
+      // ── チャプター切り替え: ボタン不要、自動でstarPan ──
+      setTimeout(() => {
+        this.tx.starPan(title, () => {
+          // canvas が非表示になった直後に旧背景・テキストを即クリア（一瞬残るちらつき防止）
+          const bgEl = document.getElementById('background');
+          bgEl.style.transition      = '';
+          bgEl.style.opacity         = '1';
+          bgEl.style.backgroundImage = '';
+          bgEl.style.background      = '#08060f';
+
+          const textEl   = document.getElementById('dialog-text');
+          const nameBox  = document.getElementById('char-name-box');
+          if (textEl)  textEl.textContent       = '';
+          if (nameBox) nameBox.style.display     = 'none';
+
+          ['text-area', 'menu-bar'].forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.style.transition    = 'opacity 0.4s ease';
+            el.style.opacity       = '1';
+            el.style.pointerEvents = '';
+          });
+          this._gotoLabel(next);
+        });
+      }, 800);
+    } else {
+      // ── 最終エンディング: タイトルへ戻るボタンを表示 ──
+      setTimeout(() => {
+        document.getElementById('ending-title').textContent = title;
+        document.getElementById('btn-next-chapter').classList.add('hidden');
+        document.getElementById('ending-screen').classList.remove('hidden');
+      }, 700);
+    }
+  }
+
+  _continueToNextChapter() {
+    // 現在は最終エンディングのみ使用（チャプター切り替えは_displayEndingで自動化）
+    document.getElementById('ending-screen').classList.add('hidden');
+  }
+
+  // ============================================================
+  //  タイトルに戻る
+  // ============================================================
+  _returnToTitle() {
+    if (!confirm('タイトルに戻りますか？\n（未セーブのデータは失われます）')) return;
+    this._stopAllSE();
+    this._nextChapterLabel = null;
+    this._resetGameState();
+    this._showTitleScreen();
+  }
+
+  // ============================================================
+  //  CG ギャラリー
+  // ============================================================
+  _openGallery() {
+    const content = document.getElementById('gallery-content');
+    const list    = VN_CONFIG.cgList || [];
+    if (list.length === 0) {
+      content.innerHTML = '<p style="color:rgba(255,255,255,0.4);text-align:center;margin-top:40px;">スチル画像がありません</p>';
+      document.getElementById('gallery-modal').classList.remove('hidden');
+      return;
+    }
+
+    const seenCount = list.filter(it => this.seenStills.has(it.key)).length;
+    let html = `<div class="cg-total-count">${seenCount} / ${list.length}</div>`;
+    html += `<div class="cg-grid">`;
+    for (const item of list) {
+      if (this.seenStills.has(item.key)) {
+        html += `<div class="cg-thumb unlocked" data-key="${item.key}" title="${item.label}">
+          <div class="cg-thumb-img" style="background-image:url('assets/images/stills/${item.key}.webp')"></div>
+          <div class="cg-thumb-label">${item.label}</div>
+        </div>`;
+      } else {
+        html += `<div class="cg-thumb locked">
+          <div class="cg-thumb-img cg-thumb-locked">？</div>
+          <div class="cg-thumb-label cg-label-locked">？？？</div>
+        </div>`;
+      }
+    }
+    html += `</div>`;
+    content.innerHTML = html;
+
+    content.querySelectorAll('.cg-thumb.unlocked').forEach(el => {
+      el.addEventListener('click', () => this._openGalleryViewer(el.dataset.key));
+    });
+
+    document.getElementById('gallery-modal').classList.remove('hidden');
+  }
+
+  _openGalleryViewer(key) {
+    const existing = document.getElementById('gallery-viewer');
+    if (existing) existing.remove();
+
+    const viewer = document.createElement('div');
+    viewer.id = 'gallery-viewer';
+    viewer.innerHTML = `
+      <div id="gallery-viewer-bg"></div>
+      <div id="gallery-viewer-img" style="background-image:url('assets/images/stills/${key}.webp')"></div>
+      <button id="gallery-viewer-close">✕</button>
+    `;
+    document.body.appendChild(viewer);
+
+    const close = () => viewer.remove();
+    viewer.querySelector('#gallery-viewer-close').addEventListener('click', close);
+    viewer.querySelector('#gallery-viewer-bg').addEventListener('click', close);
+  }
+
+  // ============================================================
+  //  モーダルを開く (汎用)
+  // ============================================================
+  _openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  // ============================================================
+  //  BGM / SE
+  // ============================================================
+  _playBGM(track) {
+    if (this.currentBGM === track) return; // 同じ曲なら何もしない
+    this.currentBGM = track;
+
+    const fadePrev = this.bgmAudio;
+    if (fadePrev) {
+      const timer = setInterval(() => {
+        fadePrev.volume = Math.max(0, fadePrev.volume - 0.05);
+        if (fadePrev.volume <= 0) { fadePrev.pause(); clearInterval(timer); }
+      }, 60);
+    }
+
+    const audio = new Audio(`assets/audio/bgm/${track}`);
+    audio.loop   = true;
+    audio.volume = 0;
+    this.bgmAudio = audio;
+
+    audio.play().then(() => {
+      const target = VN_CONFIG.settings.bgmVolume;
+      const timer  = setInterval(() => {
+        if (!this.bgmAudio || this.bgmAudio !== audio) { clearInterval(timer); return; }
+        audio.volume = Math.min(target, audio.volume + 0.05);
+        if (audio.volume >= target) clearInterval(timer);
+      }, 80);
+    }).catch(() => {
+      // 自動再生ブロック時は最初のクリックで再生
+      const resume = () => {
+        audio.play().catch(() => {});
+        document.removeEventListener('click', resume);
+      };
+      document.addEventListener('click', resume);
+    });
+  }
+
+  _stopBGM() {
+    this.currentBGM = '';
+    if (this.bgmAudio) {
+      this.bgmAudio.pause();
+      this.bgmAudio = null;
+    }
+  }
+
+  _playSE(file) {
+    try {
+      const audio = new Audio(`assets/audio/se/${file}`);
+      audio.volume = VN_CONFIG.settings.seVolume;
+      this.seAudios.push(audio);
+      audio.addEventListener('ended', () => {
+        this.seAudios = this.seAudios.filter(a => a !== audio);
+      });
+      audio.play().catch(() => {});
+    } catch (e) {}
+  }
+
+  _stopAllSE() {
+    this.seAudios.forEach(a => { a.pause(); a.currentTime = 0; });
+    this.seAudios = [];
+  }
+
+  // ============================================================
+  //  カスタムカーソル
+  // ============================================================
+  _initCursor() {
+    const cursor = document.createElement('div');
+    cursor.id = 'custom-cursor';
+    cursor.innerHTML = '<div class="cursor-ring"></div><div class="cursor-core"></div>';
+    document.body.appendChild(cursor);
+
+    const sparkleColors = ['#ffb8e2', '#e090ff', '#ffffff', '#ffccee', '#bb88ff'];
+    let lastSparkle = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top  = e.clientY + 'px';
+
+      const now = Date.now();
+      if (now - lastSparkle < 55) return;
+      lastSparkle = now;
+
+      const sp = document.createElement('div');
+      sp.className  = 'cursor-sparkle';
+      sp.style.left = e.clientX + 'px';
+      sp.style.top  = e.clientY + 'px';
+      sp.style.background = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
+      const angle = Math.random() * Math.PI * 2;
+      const dist  = Math.random() * 18 + 6;
+      sp.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+      sp.style.setProperty('--dy', `${Math.sin(angle) * dist}px`);
+      document.body.appendChild(sp);
+      setTimeout(() => sp.remove(), 620);
+    });
+  }
+
+  // ============================================================
+  //  DEBUG: チャプタージャンプメニュー (後で削除)
+  // ============================================================
+  _openDebugMenu() {
+    // 既存パネルがあれば閉じる
+    const existing = document.getElementById('debug-jump-overlay');
+    if (existing) { existing.remove(); return; }
+
+    const chapters = [
+      { label: 'Chapter 1 — 星の見えない夜空',   key: 'start' },
+      { label: 'Chapter 2 — 笑顔の境界線',       key: 'chapter2_start' },
+      { label: 'Chapter 3 — 遠くの音',           key: 'chapter3_start' },
+      { label: 'Chapter 4 — 理由を集める日々',   key: 'chapter4_start' },
+      { label: 'Chapter 5 — 水面の午後',         key: 'pool_start' },
+      { label: 'Chapter 6 — それぞれの放課後',   key: 'ch4out_start' },
+      { label: 'Chapter 7 — 重なる孤独',         key: 'chapter7_start' },
+      { label: 'Chapter 8 — 選ぶということ',     key: 'chapter8_start' },
+      { label: '── 分岐: さくらルート',           key: 'sakura_ch9_start' },
+      { label: '── 分岐: ことはルート',           key: 'kotoha_ch9_start' },
+      { label: '── 分岐: まひるルート',           key: 'mahiru_ch9_start' },
+      { label: '── バッドエンド',                 key: 'bad_end_common' },
+    ];
+
+    const overlay = document.createElement('div');
+    overlay.id = 'debug-jump-overlay';
+    overlay.style.cssText = [
+      'position:fixed;inset:0;z-index:9999;',
+      'background:rgba(0,0,0,.78);',
+      'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;',
+    ].join('');
+
+    const title = document.createElement('div');
+    title.textContent = '⚙ DEBUG: チャプタージャンプ';
+    title.style.cssText = 'color:#ff8;font-size:1.1em;font-family:monospace;margin-bottom:8px;';
+    overlay.appendChild(title);
+
+    for (const ch of chapters) {
+      const btn = document.createElement('button');
+      btn.textContent = ch.label;
+      btn.style.cssText = [
+        'width:340px;padding:10px 20px;',
+        'background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);',
+        'color:#eee;font-size:.95em;font-family:monospace;cursor:pointer;',
+        'transition:background .15s;',
+      ].join('');
+      btn.onmouseenter = () => { btn.style.background = 'rgba(255,255,180,.18)'; };
+      btn.onmouseleave = () => { btn.style.background = 'rgba(255,255,255,.08)'; };
+      btn.addEventListener('click', () => {
+        overlay.remove();
+        this._startFromLabel(ch.key);
+      });
+      overlay.appendChild(btn);
+    }
+
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = '閉じる';
+    closeBtn.style.cssText = [
+      'margin-top:12px;padding:6px 24px;',
+      'background:transparent;border:1px solid rgba(255,255,255,.3);',
+      'color:rgba(255,255,255,.5);font-family:monospace;cursor:pointer;',
+    ].join('');
+    closeBtn.addEventListener('click', () => overlay.remove());
+    overlay.appendChild(closeBtn);
+
+    // オーバーレイ外クリックで閉じる
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+
+    document.body.appendChild(overlay);
+  }
+
+  _startFromLabel(label) {
+    document.getElementById('title-screen').classList.add('hidden');
+    this.titleFx.stop();
+    this._stopBGM();
+    document.getElementById('game-screen').classList.remove('hidden');
+    this._resetGameState();
+    // デバッグ用: ルート分岐以降のラベルには好感度を自動設定
+    const favorPresets = {
+      sakura_ch9_start:  { sakura_favor: 12 },
+      kotoha_ch9_start:  { kotoha_favor: 12 },
+      mahiru_ch9_start:  { mahiru_favor: 12 },
+      chapter8_start:    { sakura_favor: 10, kotoha_favor: 10, mahiru_favor: 10 },
+    };
+    if (favorPresets[label]) Object.assign(this.flags, favorPresets[label]);
+    this._gotoLabel(label);
+  }
+
+  // ============================================================
+  //  デバッグ: フラグモニター (F2 でトグル)
+  // ============================================================
+  _initDebugPanel() {
+    const panel = document.createElement('div');
+    panel.id = 'debug-flag-panel';
+    panel.style.cssText = [
+      'position:fixed;top:8px;right:8px;',
+      'background:rgba(8,6,18,.93);',
+      'color:#ccc;font-family:monospace;font-size:11px;',
+      'border:1px solid rgba(120,100,200,.5);border-radius:6px;',
+      'z-index:999999;display:none;',
+      'width:260px;max-height:85vh;overflow-y:auto;',
+      'box-shadow:0 4px 24px rgba(0,0,0,.6);',
+      'user-select:none;',
+    ].join('');
+    document.body.appendChild(panel);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'F2') {
+        e.preventDefault();
+        const titleVisible = !document.getElementById('title-screen').classList.contains('hidden');
+        if (titleVisible) {
+          const dbgBtn = document.getElementById('btn-debug');
+          if (dbgBtn) dbgBtn.style.display = dbgBtn.style.display === 'none' ? '' : 'none';
+        } else {
+          const visible = panel.style.display !== 'none';
+          panel.style.display = visible ? 'none' : 'block';
+          if (!visible) this._debugUpdatePanel();
+        }
+      }
+    });
+
+    this._debugPanel = panel;
+  }
+
+  _debugUpdatePanel() {
+    if (!VN_CONFIG.settings.debug) return;
+    if (!this._debugPanel || this._debugPanel.style.display === 'none') return;
+
+    const entries = Object.entries(this.flags);
+
+    // 好感度フラグ（_favor / _affection）と真偽フラグに分類
+    const favorKeys  = ['sakura_favor', 'kotoha_favor', 'mahiru_favor'];
+    const numEntries = entries.filter(([k, v]) => typeof v === 'number' || (typeof v === 'string' && !isNaN(Number(v)) && v !== ''));
+    const boolEntries = entries.filter(([k, v]) => v === true || v === false || v === 'true' || v === 'false');
+    const otherEntries = entries.filter(([k, v]) =>
+      !numEntries.find(e => e[0] === k) && !boolEntries.find(e => e[0] === k));
+
+    const makeNumRow = ([k, v]) => {
+      const num = Number(v);
+      const isFavor = favorKeys.includes(k);
+      const barMax = isFavor ? 100 : null;
+      const bar = barMax !== null
+        ? `<div style="height:3px;background:#222;border-radius:2px;margin:2px 0 4px;">` +
+          `<div style="height:3px;width:${Math.min(num/barMax*100,100)}%;` +
+          `background:linear-gradient(90deg,#9060d0,#e080ff);border-radius:2px;"></div></div>`
+        : '';
+      return `<div style="margin:3px 0;">` +
+        `<div style="display:flex;justify-content:space-between;align-items:center;">` +
+        `<span style="color:#aaa;">${k}</span>` +
+        `<span style="display:flex;align-items:center;gap:4px;">` +
+        `<button onclick="window._dbg.add('${k}',-1)" style="${btnS('#333')}">−</button>` +
+        `<span style="color:#ffdd66;min-width:28px;text-align:center;">${num}</span>` +
+        `<button onclick="window._dbg.add('${k}',1)"  style="${btnS('#333')}">＋</button>` +
+        `</span></div>${bar}</div>`;
+    };
+
+    const makeBoolRow = ([k, v]) => {
+      const bool = v === true || v === 'true';
+      return `<div style="display:flex;justify-content:space-between;margin:3px 0;">` +
+        `<span style="color:#aaa;">${k}</span>` +
+        `<button onclick="window._dbg.toggle('${k}')" style="${btnS(bool ? '#1a3a1a' : '#2a1a1a')};color:${bool ? '#88ffaa' : '#ff8888'};">` +
+        `${bool ? 'true' : 'false'}</button></div>`;
+    };
+
+    const makeOtherRow = ([k, v]) =>
+      `<div style="display:flex;justify-content:space-between;margin:3px 0;">` +
+      `<span style="color:#aaa;">${k}</span>` +
+      `<span style="color:#ccc;">${v}</span></div>`;
+
+    const section = (title, color, rows) => rows.length === 0 ? '' :
+      `<div style="color:${color};border-bottom:1px solid rgba(255,255,255,.1);` +
+      `padding:6px 12px 3px;font-size:10px;letter-spacing:.1em;">${title}</div>` +
+      `<div style="padding:4px 12px 8px;">` + rows.map(r => r).join('') + `</div>`;
+
+    const btnS = (bg) =>
+      `background:${bg};border:1px solid rgba(255,255,255,.15);color:#ccc;` +
+      `border-radius:3px;padding:1px 5px;cursor:pointer;font-size:10px;font-family:monospace;`;
+
+    this._debugPanel.innerHTML =
+      `<div style="padding:8px 12px;border-bottom:1px solid rgba(120,100,200,.3);` +
+      `display:flex;justify-content:space-between;align-items:center;">` +
+      `<span style="color:#c090ff;font-size:11px;letter-spacing:.05em;">⚙ DEBUG PANEL</span>` +
+      `<span style="color:#555;font-size:10px;">F2</span></div>` +
+
+      // 現在位置
+      `<div style="padding:6px 12px;background:rgba(255,255,255,.04);` +
+      `border-bottom:1px solid rgba(255,255,255,.07);font-size:10px;line-height:1.8;">` +
+      `<span style="color:#6688cc;">label</span>  ${this.currentLabel}<br>` +
+      `<span style="color:#6688cc;">index</span>  ${this.currentIndex}</div>` +
+
+      // 好感度（数値フラグ）
+      section('▸ 数値フラグ', '#ffcc44', numEntries.map(makeNumRow)) +
+
+      // 真偽フラグ
+      section('▸ 真偽フラグ', '#88aaff', boolEntries.map(makeBoolRow)) +
+
+      // その他
+      (otherEntries.length > 0 ? section('▸ その他', '#aaa', otherEntries.map(makeOtherRow)) : '') +
+
+      (entries.length === 0 ? `<div style="padding:12px;color:#555;text-align:center;">フラグなし</div>` : '');
+
+    // 操作ハンドラ
+    window._dbg = {
+      add: (key, delta) => {
+        this.flags[key] = (Number(this.flags[key]) || 0) + delta;
+        this._debugUpdatePanel();
+      },
+      toggle: (key) => {
+        const cur = this.flags[key] === true || this.flags[key] === 'true';
+        this.flags[key] = !cur;
+        this._debugUpdatePanel();
+      },
+    };
+  }
+
+  // ============================================================
+  //  流れ星 (タイトル画面)
+  // ============================================================
+  _createShootingStar() {
+    const container = document.getElementById('shooting-stars');
+    if (!container) return;
+    const star     = document.createElement('div');
+    star.className = 'shooting-star';
+    const x        = Math.random() * 1000 + 150;
+    const y        = Math.random() * 280;
+    const length   = Math.random() * 90 + 55;
+    const duration = (Math.random() * 0.5 + 0.7).toFixed(2);
+    star.style.left   = `${x}px`;
+    star.style.top    = `${y}px`;
+    star.style.height = `${length}px`;
+    star.style.setProperty('--dur', `${duration}s`);
+    container.appendChild(star);
+    setTimeout(() => star.remove(), parseFloat(duration) * 1000 + 300);
+  }
+
+  _scheduleShootingStars() {
+    const spawn = () => {
+      const title = document.getElementById('title-screen');
+      if (title && !title.classList.contains('hidden')) {
+        this._createShootingStar();
+        if (Math.random() < 0.2) {
+          setTimeout(() => this._createShootingStar(), 120 + Math.random() * 180);
+        }
+      }
+      setTimeout(spawn, Math.random() * 4000 + 3000);
+    };
+    setTimeout(spawn, Math.random() * 1500 + 1500);
+  }
+}
+
+// ============================================================
+//  タイトル画面 Canvasエフェクト (星個別瞬き・雲流れ)
+// ============================================================
+class TitleEffectsCanvas {
+  constructor() {
+    this._canvas = null;
+    this._ctx    = null;
+    this._rafId  = null;
+    this._t0     = 0;
+    this._stars  = [];
+    this._w      = 0;
+    this._h      = 0;
+  }
+
+  start() {
+    if (!this._canvas) {
+      this._canvas = document.getElementById('title-canvas');
+      if (!this._canvas) return;
+      this._ctx = this._canvas.getContext('2d');
+      window.addEventListener('resize', () => {
+        this._resize();
+        this._initStars();
+      });
+    }
+    this.stop(); // 多重起動防止
+    // display:none 解除直後はlayout reflowが終わっていないため
+    // 1フレーム遅延してからサイズを取得する
+    requestAnimationFrame(() => {
+      this._resize();
+      this._initStars();
+      this._t0 = performance.now();
+      const loop = (now) => {
+        this._rafId = requestAnimationFrame(loop);
+        this._draw(now);
+      };
+      this._rafId = requestAnimationFrame(loop);
+    });
+  }
+
+  stop() {
+    if (this._rafId) {
+      cancelAnimationFrame(this._rafId);
+      this._rafId = null;
+    }
+    if (this._ctx) this._ctx.clearRect(0, 0, this._w, this._h);
+  }
+
+  _resize() {
+    if (!this._canvas) return;
+    const p = this._canvas.parentElement;
+    const w = (p && p.clientWidth  > 0) ? p.clientWidth  : window.innerWidth;
+    const h = (p && p.clientHeight > 0) ? p.clientHeight : window.innerHeight;
+    this._w = this._canvas.width  = w;
+    this._h = this._canvas.height = h;
+  }
+
+  _initStars() {
+    this._stars = [];
+    const topMargin = 70; // 上部の黒帯を避ける
+    for (let i = 0; i < 55; i++) {
+      this._stars.push({
+        x:     Math.random() * this._w,
+        y:     topMargin + Math.random() * (this._h - topMargin) * 0.88,
+        r:     0.6 + Math.random() * 1.6,
+        phase: Math.random() * Math.PI * 2,
+        freq:  0.3 + Math.random() * 1.1,
+        base:  0.2 + Math.random() * 0.4,
+      });
+    }
+  }
+
+  _draw(now) {
+    const ctx = this._ctx;
+    const t   = (now - this._t0) / 1000;
+    ctx.clearRect(0, 0, this._w, this._h);
+
+    // ── 星 (個別瞬き) ─────────────────────────────────────
+    for (const s of this._stars) {
+      const alpha = s.base + (1 - s.base) * 0.5 *
+        (1 + Math.sin(t * s.freq * Math.PI * 2 + s.phase));
+      ctx.save();
+      ctx.globalAlpha = Math.min(1, alpha);
+      if (s.r > 1.3) {
+        const glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 3.5);
+        glow.addColorStop(0, 'rgba(220,185,255,0.55)');
+        glow.addColorStop(1, 'rgba(200,160,255,0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 3.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+}
+
+// ============================================================
+//  トランジションCanvas（シーン・チャプター切り替え）
+// ============================================================
+class TransitionCanvas {
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    this.ctx    = this.canvas ? this.canvas.getContext('2d') : null;
+    this._resize();
+    window.addEventListener('resize', () => this._resize());
+    // chapter_bg 先読み
+    this._chapterBg = new Image();
+    this._chapterBg.src = 'assets/images/bg/chapter_bg.png';
+  }
+
+  _resize() {
+    if (!this.canvas) return;
+    this.canvas.width  = this.canvas.offsetWidth  || 1280;
+    this.canvas.height = this.canvas.offsetHeight || 720;
+  }
+
+  _clear() {
+    if (this.ctx) this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  _animate(duration, onFrame, onDone) {
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      onFrame(t);
+      if (t < 1) requestAnimationFrame(tick);
+      else if (onDone) onDone();
+    };
+    requestAnimationFrame(tick);
+  }
+
+  _easeIn(t)    { return t * t; }
+  _easeOut(t)   { return t * (2 - t); }
+  _easeInOut(t) { return t < .5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  // ── ダイヤモンドトランジション（シーン切り替え） ───────────
+  diamond(duration, onSwap, onDone) {
+    if (!this.ctx) { onSwap(); if (onDone) onDone(); return; }
+    const W = this.canvas.width, H = this.canvas.height;
+    const SIZE = Math.min(W, H) / 7;
+    const cols = Math.ceil(W / SIZE) + 2;
+    const rows = Math.ceil(H / SIZE) + 2;
+    const half = duration / 2;
+    const ctx  = this.ctx;
+
+    const draw = (progress) => {
+      this._clear();
+      ctx.fillStyle = '#0a0508';
+      ctx.save();
+      ctx.translate(W / 2, H / 2);
+      ctx.rotate(Math.PI / 4);
+      const ox = -Math.ceil(cols / 2) * SIZE;
+      const oy = -Math.ceil(rows / 2) * SIZE;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const delay = (c + r) / (cols + rows);
+          const t = Math.max(0, Math.min(1, (progress - delay * .6) / .4));
+          const s = SIZE * t;
+          ctx.fillRect(ox + c * SIZE + SIZE / 2 - s / 2, oy + r * SIZE + SIZE / 2 - s / 2, s, s);
+        }
+      }
+      ctx.restore();
+    };
+
+    this.canvas.style.display = 'block';
+    this._animate(half, t => draw(this._easeIn(t)), () => {
+      onSwap();
+      this._animate(half, t => draw(1 - this._easeOut(t)), () => {
+        this._clear();
+        this.canvas.style.display = 'none';
+        if (onDone) onDone();
+      });
+    });
+  }
+
+  // ── 星空パン（チャプター切り替え） ─────────────────────────
+  starPan(title, onDone) {
+    if (!this.ctx) { if (onDone) onDone(); return; }
+    const W = this.canvas.width, H = this.canvas.height;
+    const ctx = this.ctx;
+    const img = this._chapterBg;
+
+    const scale  = W / 1536;
+    const dH     = 2752 * scale;
+    const startY = -(dH - H);
+    const endY   = 0;
+
+    const drawBg = (y, alpha) => {
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+      if (img.complete && img.naturalWidth > 0) {
+        ctx.drawImage(img, 0, y, W, dH);
+      } else {
+        const grd = ctx.createLinearGradient(0, 0, 0, H);
+        grd.addColorStop(0,   '#03040f');
+        grd.addColorStop(0.6, '#080c20');
+        grd.addColorStop(1,   '#141828');
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, W, H);
+      }
+      ctx.restore();
+    };
+
+    const drawTitle = (alpha) => {
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+      ctx.textAlign = 'center';
+      ctx.font = `${W * 0.028}px 'Yu Mincho', 'Shippori Mincho B1', serif`;
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = 'rgba(100,120,255,0.5)';
+      ctx.shadowBlur  = 18;
+      ctx.fillText(title, W / 2, H * 0.5);
+      ctx.shadowBlur  = 0;
+      ctx.restore();
+    };
+
+    const drawShootingStar = (progress) => {
+      if (progress <= 0) return;
+      const sx = W * 0.78, sy = H * 0.12;
+      const ex = W * 0.22, ey = H * 0.38;
+      const head = Math.min(progress, 1);
+      const tail = Math.max(0, progress - 0.18);
+      const hx = sx + (ex - sx) * head, hy = sy + (ey - sy) * head;
+      const tx = sx + (ex - sx) * tail, ty = sy + (ey - sy) * tail;
+      ctx.save();
+      const grad = ctx.createLinearGradient(tx, ty, hx, hy);
+      grad.addColorStop(0, 'rgba(180,200,255,0)');
+      grad.addColorStop(1, 'rgba(255,255,255,0.95)');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth   = 1.5;
+      ctx.shadowColor = '#b0c8ff';
+      ctx.shadowBlur  = 10;
+      ctx.beginPath();
+      ctx.moveTo(tx, ty);
+      ctx.lineTo(hx, hy);
+      ctx.stroke();
+      if (head < 1) {
+        ctx.beginPath();
+        ctx.arc(hx, hy, 2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.shadowBlur = 14;
+        ctx.fill();
+      }
+      ctx.restore();
+    };
+
+    const PAN_DUR     = 2000;
+    const TITLE_DUR   = 700;
+    const HOLD_DUR    = 500;
+    const STAR_DUR    = 900;
+    const FADEOUT_DUR = 600;
+
+    this.canvas.style.display       = 'block';
+    this.canvas.style.pointerEvents = 'auto'; // 演出中のクリック貫通を防ぐ
+
+    this._animate(PAN_DUR, t => {
+      this._clear();
+      drawBg(startY + (endY - startY) * this._easeInOut(t), Math.min(t * 5, 1));
+    }, () => {
+      this._animate(TITLE_DUR, t => {
+        this._clear();
+        drawBg(endY, 1);
+        drawTitle(this._easeOut(t));
+      }, () => {
+        this._animate(HOLD_DUR + STAR_DUR, t => {
+          this._clear();
+          drawBg(endY, 1);
+          drawTitle(1);
+          drawShootingStar(Math.max(0, (t * (HOLD_DUR + STAR_DUR) - HOLD_DUR) / STAR_DUR) * 1.2);
+        }, () => {
+          this._animate(FADEOUT_DUR, t => {
+            this._clear();
+            drawBg(endY, 1);
+            ctx.fillStyle = `rgba(0,0,0,${this._easeIn(t)})`;
+            ctx.fillRect(0, 0, W, H);
+          }, () => {
+            this._clear();
+            this.canvas.style.display       = 'none';
+            this.canvas.style.pointerEvents = 'none';
+            if (onDone) onDone();
+          });
+        });
+      });
+    });
+  }
+}
+
+// ============================================================
+//  Canvasエフェクトレイヤー
+// ============================================================
+class EffectsCanvas {
+  constructor(canvasId) {
+    this.canvas  = document.getElementById(canvasId);
+    this.ctx     = this.canvas ? this.canvas.getContext('2d') : null;
+    this.effect  = null;       // 現在のエフェクト名 ('sakura'|'rain'|'snow'|null)
+    this.particles = [];
+    this._shakeEl  = null;     // シェイク対象要素
+    this._rafId    = null;
+    this._resize();
+    window.addEventListener('resize', () => this._resize());
+    this._loop();
+  }
+
+  _resize() {
+    if (!this.canvas) return;
+    this.canvas.width  = this.canvas.offsetWidth  || window.innerWidth;
+    this.canvas.height = this.canvas.offsetHeight || window.innerHeight;
+  }
+
+  // エフェクト設定 ('sakura'|'rain'|'snow'|'stop')
+  setEffect(type) {
+    if (type === 'stop') {
+      this.effect    = null;
+      this.particles = [];
+    } else {
+      this.effect    = type;
+      this.particles = [];
+    }
+  }
+
+  // 画面シェイク
+  shake(strength, duration) {
+    const target = document.getElementById('game-screen');
+    if (!target) return;
+    const start = performance.now();
+    const animate = (now) => {
+      const elapsed = now - start;
+      if (elapsed >= duration) {
+        target.style.transform = '';
+        return;
+      }
+      const decay = 1 - elapsed / duration;
+      const dx = (Math.random() * 2 - 1) * strength * decay;
+      const dy = (Math.random() * 2 - 1) * strength * decay;
+      target.style.transform = `translate(${dx}px,${dy}px)`;
+      requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }
+
+  _spawnParticle() {
+    const w = this.canvas.width;
+    const h = this.canvas.height;
+    if (this.effect === 'sakura') {
+      return {
+        x:     Math.random() * w,
+        y:     -10,
+        size:  Math.random() * 6 + 4,
+        speedX: (Math.random() - 0.4) * 1.2,
+        speedY: Math.random() * 1.5 + 0.8,
+        angle: Math.random() * Math.PI * 2,
+        spin:  (Math.random() - 0.5) * 0.06,
+        alpha: Math.random() * 0.5 + 0.5,
+        color: `hsl(${Math.random() * 20 + 340},${Math.floor(Math.random()*20+70)}%,${Math.floor(Math.random()*10+80)}%)`,
+      };
+    } else if (this.effect === 'rain') {
+      return {
+        x:     Math.random() * w,
+        y:     -20,
+        size:  Math.random() * 10 + 8,
+        speedX: 1.5,
+        speedY: Math.random() * 8 + 12,
+        alpha: Math.random() * 0.3 + 0.2,
+      };
+    } else if (this.effect === 'snow') {
+      return {
+        x:     Math.random() * w,
+        y:     -10,
+        size:  Math.random() * 4 + 2,
+        speedX: (Math.random() - 0.5) * 0.8,
+        speedY: Math.random() * 1.2 + 0.4,
+        alpha: Math.random() * 0.5 + 0.5,
+        sway:  Math.random() * 0.02,
+        age:   0,
+      };
+    }
+  }
+
+  _drawParticle(p) {
+    const ctx = this.ctx;
+    ctx.save();
+    ctx.globalAlpha = p.alpha;
+    if (this.effect === 'sakura') {
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+      ctx.fillStyle = p.color;
+      // 花びら形（楕円）
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (this.effect === 'rain') {
+      ctx.strokeStyle = 'rgba(174,214,241,0.7)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(p.x + p.speedX * 1.5, p.y + p.size);
+      ctx.stroke();
+    } else if (this.effect === 'snow') {
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  _loop() {
+    if (!this.ctx) return;
+    const ctx  = this.ctx;
+    const w    = this.canvas.width;
+    const h    = this.canvas.height;
+
+    ctx.clearRect(0, 0, w, h);
+
+    if (this.effect) {
+      // スポーン
+      const maxParticles = this.effect === 'rain' ? 120 : 60;
+      const spawnRate    = this.effect === 'rain' ? 5 : 1;
+      if (this.particles.length < maxParticles) {
+        for (let i = 0; i < spawnRate; i++) {
+          this.particles.push(this._spawnParticle());
+        }
+      }
+
+      // 更新・描画
+      this.particles = this.particles.filter(p => {
+        if (this.effect === 'sakura') {
+          p.x     += p.speedX + Math.sin(p.age || 0) * 0.4;
+          p.y     += p.speedY;
+          p.angle += p.spin;
+          p.age   = (p.age || 0) + 0.03;
+        } else if (this.effect === 'rain') {
+          p.x += p.speedX;
+          p.y += p.speedY;
+        } else if (this.effect === 'snow') {
+          p.x += p.speedX + Math.sin(p.age) * 0.5;
+          p.y += p.speedY;
+          p.age += p.sway;
+        }
+        this._drawParticle(p);
+        return p.y < h + 20;
+      });
+    }
+
+    this._rafId = requestAnimationFrame(() => this._loop());
+  }
+}
+
+// ============================================================
+//  エンジン起動
+// ============================================================
+const engine = new VNEngine();

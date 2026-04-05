@@ -1,0 +1,25 @@
+# スクリーンショット
+*.png.png
+FireShot*.png
+
+# テスト・開発用
+transition_test.html
+
+# 旧バージョン
+scenarios/old/
+assets/images/bg/old/
+assets/images/stills/old/
+assets/images/chars/*/old/
+
+# 誤配置ファイル
+assets/audio/bgm/*.png
+assets/images/bg/team-logo.png
+
+# 制作メモ
+scenarios/ideas/
+
+# OS・エディタ生成ファイル
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
