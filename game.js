@@ -440,6 +440,7 @@ class VNEngine {
       textEl.style.opacity = '0';
       setTimeout(() => {
         if (finished) return;
+        textEl.innerHTML = '';
         textEl.innerHTML = lines[idx++];
         textEl.style.opacity = '1';
         setTimeout(() => {
