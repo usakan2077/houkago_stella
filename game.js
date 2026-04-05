@@ -170,19 +170,10 @@ class VNEngine {
     const H  = vp ? vp.height : window.innerHeight;
     const scaleX = W / 1280;
     const scaleY = H / 720;
-    const isLandscapeMobile = W > H && W < 1280;
-    if (isLandscapeMobile) {
-      // 縦を画面にフィットさせ、横は引き伸ばして黒帯をなくす
-      const scale = scaleY;
-      const stretchX = scaleX / scaleY; // 横方向の追加伸縮率
-      container.style.transform       = `scale(${scale}) scaleX(${stretchX})`;
-      container.style.transformOrigin = 'center center';
-      document.body.style.alignItems  = 'center';
-    } else {
-      container.style.transform       = `scale(${Math.min(scaleX, scaleY)})`;
-      container.style.transformOrigin = 'center center';
-      document.body.style.alignItems  = 'center';
-    }
+    const scale = Math.min(scaleX, scaleY);
+    container.style.transform       = `scale(${scale})`;
+    container.style.transformOrigin = 'center center';
+    document.body.style.alignItems  = 'center';
   }
 
   /** シナリオ .md ファイルを順番に読み込む */
