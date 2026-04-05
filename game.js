@@ -74,6 +74,8 @@ class VNEngine {
     if (VN_CONFIG.settings.debug) this._initDebugPanel();
     this._tryLockLandscape();
     window.addEventListener('resize', () => this._resizeGame());
+    window.addEventListener('orientationchange', () => setTimeout(() => this._resizeGame(), 300));
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', () => this._resizeGame());
     await this._loadScenarios();
     await this._preloadAssets();
     this._showTitleScreen();
@@ -432,30 +434,27 @@ class VNEngine {
       }, 800);
     };
 
-    let transitioning = false;
     let transTimer = null;
 
     const showLine = () => {
       if (finished) return;
       if (idx >= lines.length) { finish(); return; }
       if (arrow) arrow.style.visibility = 'hidden';
-      // 切り替え中なら前のタイマーをキャンセルして即テキストをクリア
-      if (transitioning && transTimer) {
-        clearTimeout(transTimer);
-        textEl.innerHTML = '';
-      }
-      transitioning = true;
-      textEl.style.transition = 'opacity 0.45s ease';
+      // 前のタイマーをキャンセルし、transitionを切って即クリア
+      if (transTimer) clearTimeout(transTimer);
+      textEl.style.transition = 'none';
       textEl.style.opacity = '0';
+      textEl.innerHTML = '';
+      // 次フレームでtransitionを戻して表示
       transTimer = setTimeout(() => {
         if (finished) return;
         textEl.innerHTML = lines[idx++];
+        textEl.style.transition = 'opacity 0.45s ease';
         textEl.style.opacity = '1';
-        transitioning = false;
         setTimeout(() => {
           if (!finished && arrow) arrow.style.visibility = 'visible';
         }, 500);
-      }, 450);
+      }, 50);
     };
 
     const onAdvance = () => showLine();
