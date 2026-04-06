@@ -1255,7 +1255,9 @@ class VNEngine {
         );
       }
     } else {
-      this._stopTypewriter(); // autoTimer もここでキャンセル
+      // autoTimer のみキャンセル（typewriterTimer は継続させる）
+      // typewriter中にオートを切っても文字表示が止まらないようにする
+      if (this.autoTimer) { clearTimeout(this.autoTimer); this.autoTimer = null; }
     }
   }
 
