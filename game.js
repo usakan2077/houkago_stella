@@ -369,32 +369,7 @@ class VNEngine {
 
   _startTitleBGM() {
     if (!VN_CONFIG.titleBGM) return;
-    if (this.currentBGM === VN_CONFIG.titleBGM && this.bgmAudio) return;
-
-    this.currentBGM = VN_CONFIG.titleBGM;
-    const audio = new Audio(`assets/audio/bgm/${VN_CONFIG.titleBGM}`);
-    audio.loop   = true;
-    audio.volume = 0;
-    this.bgmAudio = audio;
-
-    const startFade = () => {
-      const target = VN_CONFIG.settings.bgmVolume;
-      const t = setInterval(() => {
-        if (this.bgmAudio !== audio) { clearInterval(t); return; }
-        audio.volume = Math.min(target, audio.volume + 0.05);
-        if (audio.volume >= target) clearInterval(t);
-      }, 80);
-    };
-
-    audio.play().then(startFade).catch(() => {
-      // 自動再生ブロック時: タイトル画面への最初のクリックで再開
-      // ボタンクリックはバブリングでここに届くが、そのときは
-      // _stopBGM() で this.bgmAudio がすでに null になっているので安全
-      document.getElementById('title-screen').addEventListener('click', () => {
-        if (this.bgmAudio !== audio) return;
-        audio.play().then(startFade).catch(() => {});
-      }, { once: true });
-    });
+    this._playBGM(VN_CONFIG.titleBGM);
   }
 
   _startNewGame() {
@@ -1717,7 +1692,9 @@ class VNEngine {
       }, 80);
     }).catch(() => {
       // 自動再生ブロック時は最初のクリックで再生
+      // ガード必須: 別のBGMに切り替わっていたらこのAudioは再生しない
       const resume = () => {
+        if (this.bgmAudio !== audio) { document.removeEventListener('click', resume); return; }
         audio.play().catch(() => {});
         document.removeEventListener('click', resume);
       };
