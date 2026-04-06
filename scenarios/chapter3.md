@@ -607,12 +607,13 @@ player: ある
 @wait 200
 
 @still library_hands_overlap
-@wait 1000
+
+> 一瞬、互いの手が重なった。
+
+@wait 1800
 @still_hide
 
 @show kotoha center surprised fade_in
-
-> 一瞬、互いの手が重なった。
 
 @wait 400
 
@@ -636,24 +637,19 @@ player: 音楽の小説か
 
 kotoha: ……はい
 
-player: ピアノやってたのか
-
-@wait 400
-
-> ことはは少しだけ間を置いた。
+player: また音楽の話か
 
 @expr kotoha thinking
 
-kotoha: ……今は弾いていないんですが
+@wait 300
 
-player: 今は？
+kotoha: ……音の話は、読んでいると落ち着くので
 
-kotoha: ……昔は弾いていたので
-kotoha: こういう話だけ、読んでいます
+player: この間もそんなこと言ってたな
 
-player: 弾かないのに読むのか
+kotoha: ……覚えていてくれたんですか
 
-kotoha: はい
+player: まあ
 
 @wait 400
 
@@ -663,6 +659,8 @@ kotoha: はい
 player: なんで弾かないんだ
 
 @wait 300
+
+> ことはの目が、一瞬遠くなった。
 
 @expr kotoha sad
 
