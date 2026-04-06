@@ -100,7 +100,22 @@ class VNEngine {
     const exts = ['.jpg', '.jpeg', '.png', '.webp'];
     const tasks = [];
 
-    // 画像を拡張子を並列で試し、どれか1枚読めたら完了とする
+    // 背景: 解決した拡張子を記録しておき _changeBackground で即適用できるようにする
+    this._resolvedBGExt = {};
+    const tryBG = (key) => new Promise(resolve => {
+      let i = 0;
+      const tryNext = () => {
+        if (i >= exts.length) { resolve(); return; }
+        const ext = exts[i++];
+        const img = new Image();
+        img.onload  = () => { this._resolvedBGExt[key] = ext; resolve(); };
+        img.onerror = tryNext;
+        img.src = `assets/images/bg/${key}${ext}`;
+      };
+      tryNext();
+    });
+
+    // 画像を拡張子を並列で試し、どれか1枚読めたら完了とする（背景以外用）
     const tryImg = (basePath) => new Promise(resolve => {
       let remaining = exts.length;
       for (const ext of exts) {
@@ -113,7 +128,7 @@ class VNEngine {
 
     // 背景
     for (const key of Object.keys(VN_CONFIG.backgrounds)) {
-      tasks.push(tryImg(`assets/images/bg/${key}`));
+      tasks.push(tryBG(key));
     }
 
     // キャラクター立ち絵（expressions が定義されているキーのみ）
@@ -759,29 +774,42 @@ class VNEngine {
     this.currentBG = bgKey;
     const el = document.getElementById('background');
 
-    // 背景を適用してコールバックを呼ぶ（画像ロード完了 or グラデーション確定後）
+    // 背景を適用してコールバックを呼ぶ
     const applyBG = (onReady) => {
       const gradient = VN_CONFIG.backgrounds[bgKey] || '#1a1a2e';
-      const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
-      const tryNext = (i) => {
-        if (i >= tryExts.length) {
-          el.style.backgroundImage = '';
-          el.style.background      = gradient;
-          onReady();
-          return;
-        }
-        const img = new Image();
-        img.onload = () => {
-          el.style.background      = '';
-          el.style.backgroundImage = `url(assets/images/bg/${bgKey}${tryExts[i]})`;
-          el.style.backgroundSize  = 'cover';
-          el.style.backgroundPosition = 'center';
-          onReady();
+      const resolvedExt = this._resolvedBGExt && this._resolvedBGExt[bgKey];
+
+      if (resolvedExt) {
+        // プリロード済み: 即時適用（onload待ち不要）
+        el.style.background         = '';
+        el.style.backgroundImage    = `url(assets/images/bg/${bgKey}${resolvedExt})`;
+        el.style.backgroundSize     = 'cover';
+        el.style.backgroundPosition = 'center';
+        onReady();
+      } else {
+        // フォールバック: 拡張子を順に試す（プリロード前やconfig未登録の場合）
+        const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
+        const tryNext = (i) => {
+          if (i >= tryExts.length) {
+            el.style.backgroundImage = '';
+            el.style.background      = gradient;
+            onReady();
+            return;
+          }
+          const img = new Image();
+          img.onload = () => {
+            if (this._resolvedBGExt) this._resolvedBGExt[bgKey] = tryExts[i];
+            el.style.background         = '';
+            el.style.backgroundImage    = `url(assets/images/bg/${bgKey}${tryExts[i]})`;
+            el.style.backgroundSize     = 'cover';
+            el.style.backgroundPosition = 'center';
+            onReady();
+          };
+          img.onerror = () => tryNext(i + 1);
+          img.src = `assets/images/bg/${bgKey}${tryExts[i]}`;
         };
-        img.onerror = () => tryNext(i + 1);
-        img.src = `assets/images/bg/${bgKey}${tryExts[i]}`;
-      };
-      tryNext(0);
+        tryNext(0);
+      }
     };
 
     if (effect === 'instant') {
