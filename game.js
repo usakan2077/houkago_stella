@@ -986,7 +986,8 @@ class VNEngine {
   //  スチル (イベントCG)
   // ============================================================
   _showStill(imageName, effect = 'fade_in') {
-    this._stillLockUntil = Date.now() + 1500; // 1.5秒間は非表示不可
+    // instant（ロード復元時など）はロック不要、それ以外は1.5秒間クリックで非表示不可
+    this._stillLockUntil = effect === 'instant' ? 0 : Date.now() + 1500;
     const el = document.getElementById('still-layer');
     el.className  = '';
     el.innerHTML  = '';
