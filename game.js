@@ -1670,32 +1670,44 @@ class VNEngine {
     if (this.currentBGM === track) return; // 同じ曲なら何もしない
     this.currentBGM = track;
 
-    const fadePrev = this.bgmAudio;
-    if (fadePrev) {
-      const timer = setInterval(() => {
-        fadePrev.volume = Math.max(0, fadePrev.volume - 0.05);
-        if (fadePrev.volume <= 0) { fadePrev.pause(); clearInterval(timer); }
-      }, 60);
+    // 直前のBGMを即座に停止
+    // ※フェードアウト(setInterval)は iOS で audio.volume が read-only なため
+    //   volume が 0 に達せず pause() が呼ばれずに BGM が積み重なるバグの原因
+    if (this.bgmAudio) {
+      this.bgmAudio.pause();
+      this.bgmAudio = null;
     }
 
     const audio = new Audio(`assets/audio/bgm/${track}`);
-    audio.loop   = true;
-    audio.volume = 0;
+    audio.loop = true;
+    // iOS では volume は read-only のため 0 セットが効かない場合があるが
+    // play() 後にフェードインを試みる（失敗しても音は出る）
+    try { audio.volume = 0; } catch (e) { /* iOS read-only 無視 */ }
     this.bgmAudio = audio;
 
-    audio.play().then(() => {
+    const startFadeIn = () => {
       const target = VN_CONFIG.settings.bgmVolume;
-      const timer  = setInterval(() => {
+      // 一度 volume を変更して iOS の read-only を検出
+      try { audio.volume = 0; } catch (e) { return; } // 例外 = read-only → フェード不要
+      const before = audio.volume;
+      audio.volume = 0.01;
+      if (audio.volume === before) return; // 変化なし = iOS read-only → フェード不要
+      audio.volume = 0;
+      const timer = setInterval(() => {
         if (!this.bgmAudio || this.bgmAudio !== audio) { clearInterval(timer); return; }
-        audio.volume = Math.min(target, audio.volume + 0.05);
+        try {
+          audio.volume = Math.min(target, audio.volume + 0.05);
+        } catch (e) { clearInterval(timer); return; }
         if (audio.volume >= target) clearInterval(timer);
       }, 80);
-    }).catch(() => {
+    };
+
+    audio.play().then(startFadeIn).catch(() => {
       // 自動再生ブロック時は最初のクリックで再生
       // ガード必須: 別のBGMに切り替わっていたらこのAudioは再生しない
       const resume = () => {
         if (this.bgmAudio !== audio) { document.removeEventListener('click', resume); return; }
-        audio.play().catch(() => {});
+        audio.play().then(startFadeIn).catch(() => {});
         document.removeEventListener('click', resume);
       };
       document.addEventListener('click', resume);
