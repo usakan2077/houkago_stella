@@ -517,6 +517,14 @@ body {
   border-color: rgba(240,160,210,.8);
   color: #fff;
 }
+.menu-key {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 9px;
+  color: rgba(200,160,220,.5);
+  letter-spacing: 0;
+  vertical-align: middle;
+}
 .menu-btn.active {
   background: rgba(200,80,160,.3);
   border-color: rgba(255,160,220,.9);
