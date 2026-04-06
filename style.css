@@ -1215,3 +1215,81 @@ body {
 @media screen {
   body { align-items: center; }
 }
+
+/* ---- カスタム確認ダイアログ ---- */
+.confirm-inner {
+  max-width: 400px !important;
+  text-align: center;
+}
+#confirm-message {
+  color: #f0e0ea;
+  font-size: 15px;
+  line-height: 2;
+  letter-spacing: .08em;
+  white-space: pre-line;
+  margin-bottom: 28px;
+}
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.confirm-btn {
+  padding: 10px 40px;
+  background: transparent;
+  border: 1px solid rgba(220,140,190,.45);
+  color: rgba(220,170,210,.9);
+  font-size: 14px;
+  letter-spacing: .25em;
+  cursor: pointer;
+  transition: all .2s;
+}
+.confirm-btn:hover {
+  background: rgba(220,80,160,.18);
+  border-color: rgba(255,170,220,.9);
+  color: #fff;
+}
+.confirm-ok  { border-color: rgba(180,100,230,.6); }
+.confirm-no  { border-color: rgba(160,120,180,.4); }
+
+/* ---- 設定モーダル ---- */
+.settings-list {
+  padding: 10px 0 20px;
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(220,140,190,.12);
+}
+.settings-label {
+  font-size: 13px;
+  color: #cc88aa;
+  letter-spacing: .1em;
+  min-width: 90px;
+}
+.settings-options {
+  display: flex;
+  gap: 10px;
+}
+.settings-opt {
+  padding: 7px 18px;
+  background: transparent;
+  border: 1px solid rgba(220,140,190,.3);
+  color: rgba(220,180,210,.7);
+  font-size: 12px;
+  letter-spacing: .12em;
+  cursor: pointer;
+  transition: all .2s;
+}
+.settings-opt:hover {
+  background: rgba(220,80,160,.12);
+  border-color: rgba(255,170,220,.7);
+  color: #fff;
+}
+.settings-opt.active {
+  background: rgba(180,80,220,.25);
+  border-color: rgba(200,120,255,.8);
+  color: #e8d0ff;
+}

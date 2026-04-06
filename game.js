@@ -64,6 +64,10 @@ class VNEngine {
       JSON.parse(localStorage.getItem('vn_seen_stills') || '[]')
     );
 
+    // オート速度設定の復元
+    const savedDelay = localStorage.getItem('vn_auto_delay');
+    if (savedDelay) VN_CONFIG.settings.autoDelay = parseInt(savedDelay, 10);
+
     this._init();
   }
 
@@ -234,6 +238,7 @@ class VNEngine {
     on('btn-log',      'click', () => this._openLog());
     on('btn-skip',     'click', () => this._toggleSkip());
     on('btn-auto',     'click', () => this._toggleAuto());
+    on('btn-settings', 'click', () => this._openSettings());
     on('btn-to-title', 'click', () => this._returnToTitle());
 
     // テキスト進行 (テキストエリアクリック)
@@ -274,6 +279,12 @@ class VNEngine {
           this._onAdvance(); break;
         case 'KeyS': this._toggleSkip(); break;
         case 'KeyA': this._toggleAuto(); break;
+        case 'F5':
+          e.preventDefault();
+          this._openSaveLoad('save'); break;
+        case 'F7':
+          e.preventDefault();
+          this._openSaveLoad('load'); break;
       }
     });
 
@@ -291,9 +302,10 @@ class VNEngine {
     }
 
     // モーダルクローズ
-    on('btn-modal-close',   'click', () => document.getElementById('save-load-modal').classList.add('hidden'));
-    on('btn-log-close',     'click', () => document.getElementById('log-modal').classList.add('hidden'));
-    on('btn-gallery-close', 'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
+    on('btn-modal-close',    'click', () => document.getElementById('save-load-modal').classList.add('hidden'));
+    on('btn-log-close',      'click', () => document.getElementById('log-modal').classList.add('hidden'));
+    on('btn-gallery-close',  'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
+    on('btn-settings-close', 'click', () => document.getElementById('settings-modal').classList.add('hidden'));
     on('btn-ending-title',  'click', () => this._returnToTitle());
     on('btn-next-chapter',  'click', () => this._continueToNextChapter());
     on('btn-credits-skip',  'click', () => this._skipCredits());
@@ -1133,6 +1145,12 @@ class VNEngine {
                                    .classList.contains('hidden');
     if (choicesVisible) return;
 
+    // スキップ中のクリックでスキップ解除
+    if (this.skipMode) {
+      this._toggleSkip();
+      return;
+    }
+
     // スチル最低表示時間中はクリックを無視
     if (this._stillLockUntil > Date.now()) return;
 
@@ -1243,7 +1261,7 @@ class VNEngine {
     const slotsEl = document.getElementById('save-slots');
     slotsEl.innerHTML = '';
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 10; i++) {
       const raw  = localStorage.getItem(`vn_save_${i}`);
       const slot = document.createElement('div');
       slot.className = 'save-slot';
@@ -1260,8 +1278,11 @@ class VNEngine {
         `;
         slot.addEventListener('click', () => {
           document.getElementById('save-load-modal').classList.add('hidden');
-          if (mode === 'save') this._saveToSlot(i);
-          else                 this._loadFromSlot(i);
+          if (mode === 'save') {
+            this._showConfirm(`SLOT ${i} に上書きしますか？`, () => this._saveToSlot(i));
+          } else {
+            this._loadFromSlot(i);
+          }
         });
       } else {
         slot.innerHTML = `
@@ -1325,6 +1346,29 @@ class VNEngine {
     this.currentLabel = d.label;
     this.currentIndex = d.index; // executeNext がインクリメントするので -1 しない
     this._executeNext();
+  }
+
+  _showConfirm(message, onOk, onCancel) {
+    const modal = document.getElementById('confirm-modal');
+    document.getElementById('confirm-message').textContent = message;
+    modal.classList.remove('hidden');
+
+    const ok  = document.getElementById('btn-confirm-ok');
+    const no  = document.getElementById('btn-confirm-no');
+
+    const cleanup = () => {
+      modal.classList.add('hidden');
+      ok.replaceWith(ok.cloneNode(true));
+      no.replaceWith(no.cloneNode(true));
+    };
+
+    // cloneNode後の要素を再取得
+    document.getElementById('btn-confirm-ok').addEventListener('click', () => {
+      cleanup(); if (onOk) onOk();
+    }, { once: true });
+    document.getElementById('btn-confirm-no').addEventListener('click', () => {
+      cleanup(); if (onCancel) onCancel();
+    }, { once: true });
   }
 
   _showToast(msg) {
@@ -1524,11 +1568,33 @@ class VNEngine {
   //  タイトルに戻る
   // ============================================================
   _returnToTitle() {
-    if (!confirm('タイトルに戻りますか？\n（未セーブのデータは失われます）')) return;
-    this._stopAllSE();
-    this._nextChapterLabel = null;
-    this._resetGameState();
-    this._showTitleScreen();
+    this._showConfirm(
+      'タイトルに戻りますか？\n（未セーブのデータは失われます）',
+      () => {
+        this._stopAllSE();
+        this._nextChapterLabel = null;
+        this._resetGameState();
+        this._showTitleScreen();
+      }
+    );
+  }
+
+  // ============================================================
+  //  設定
+  // ============================================================
+  _openSettings() {
+    const currentDelay = VN_CONFIG.settings.autoDelay;
+    document.querySelectorAll('#auto-speed-options .settings-opt').forEach(btn => {
+      const delay = parseInt(btn.dataset.delay, 10);
+      btn.classList.toggle('active', delay === currentDelay);
+      btn.onclick = () => {
+        VN_CONFIG.settings.autoDelay = delay;
+        localStorage.setItem('vn_auto_delay', delay);
+        document.querySelectorAll('#auto-speed-options .settings-opt')
+          .forEach(b => b.classList.toggle('active', parseInt(b.dataset.delay, 10) === delay));
+      };
+    });
+    document.getElementById('settings-modal').classList.remove('hidden');
   }
 
   // ============================================================

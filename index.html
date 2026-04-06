@@ -215,6 +215,7 @@
         <button class="menu-btn" id="btn-log"  >LOG</button>
         <button class="menu-btn" id="btn-skip" >SKIP</button>
         <button class="menu-btn" id="btn-auto" >AUTO</button>
+        <button class="menu-btn" id="btn-settings">CONFIG</button>
         <button class="menu-btn" id="btn-to-title">TITLE</button>
       </div>
 
@@ -289,6 +290,36 @@
         </p>
       </div>
       <button class="modal-close-btn" id="btn-gallery-close">閉じる</button>
+    </div>
+  </div>
+
+  <!-- ======= カスタム確認ダイアログ ======= -->
+  <div id="confirm-modal" class="modal hidden">
+    <div class="modal-inner confirm-inner">
+      <p id="confirm-message"></p>
+      <div class="confirm-buttons">
+        <button class="confirm-btn confirm-ok"  id="btn-confirm-ok" >はい</button>
+        <button class="confirm-btn confirm-no"  id="btn-confirm-no" >いいえ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= モーダル: 設定 ======= -->
+  <div id="settings-modal" class="modal hidden">
+    <div class="modal-inner">
+      <h2>SETTINGS</h2>
+      <div class="settings-list">
+        <div class="settings-row">
+          <span class="settings-label">オート速度</span>
+          <div class="settings-options" id="auto-speed-options">
+            <button class="settings-opt" data-delay="3500">遅め</button>
+            <button class="settings-opt" data-delay="2000">普通</button>
+            <button class="settings-opt" data-delay="1000">速め</button>
+            <button class="settings-opt" data-delay="500">爆速</button>
+          </div>
+        </div>
+      </div>
+      <button class="modal-close-btn" id="btn-settings-close">閉じる</button>
     </div>
   </div>
 
