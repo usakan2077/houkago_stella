@@ -269,11 +269,9 @@ class VNEngine {
         if (!e.target.closest(ignore)) this._onAdvance();
       });
 
-      // 右クリック → UI切り替え
+      // 右クリック → UI切り替え / モーダルを閉じる
       gameScreen.addEventListener('contextmenu', (e) => {
         e.preventDefault();
-        const hasModal = document.querySelector('.modal:not(.hidden)');
-        if (hasModal) return;
         const titleScreen = document.getElementById('title-screen');
         if (titleScreen && !titleScreen.classList.contains('hidden')) return;
         this._uiHidden ? this._showUI() : this._hideUI();
@@ -324,10 +322,14 @@ class VNEngine {
     on('btn-next-chapter',  'click', () => this._continueToNextChapter());
     on('btn-credits-skip',  'click', () => this._skipCredits());
 
-    // モーダル外クリックで閉じる
+    // モーダル外クリック / 右クリックで閉じる
     document.querySelectorAll('.modal').forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.add('hidden');
+      });
+      modal.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        modal.classList.add('hidden');
       });
     });
 
