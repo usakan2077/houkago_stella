@@ -556,11 +556,15 @@ class VNEngine {
     document.getElementById('dialog-text').textContent  = '';
     document.getElementById('char-name').textContent    = '';
     document.getElementById('char-name-box').style.display = 'none';
-    // UI非表示状態を解除
+    // UI非表示状態を解除（_displayEnding()がセットしたインラインスタイルも全クリア）
     this._uiHidden = false;
     ['text-area', 'menu-bar'].forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.style.visibility = '';
+      if (!el) return;
+      el.style.visibility   = '';
+      el.style.opacity      = '';
+      el.style.transition   = '';
+      el.style.pointerEvents = '';
     });
     this._stopBGM();
   }
@@ -1062,6 +1066,8 @@ class VNEngine {
   // ============================================================
   _displayDialog(charKey, text, emphasis) {
     this._stopTypewriter();
+    // 前行のオートタイマーが残っている場合は破棄（手動進行との二重発火を防ぐ）
+    if (this.autoTimer) { clearTimeout(this.autoTimer); this.autoTimer = null; }
     this.waitingForInput = false;
 
     const nameBox  = document.getElementById('char-name-box');
