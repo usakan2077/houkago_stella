@@ -1023,7 +1023,7 @@ class VNEngine {
     }
 
     el.classList.remove('hidden');
-    el.classList.add(`effect-${effect}`);
+    if (effect !== 'instant') el.classList.add(`effect-${effect}`);
     this.currentStill = imageName;
   }
 
