@@ -556,6 +556,12 @@ class VNEngine {
     document.getElementById('dialog-text').textContent  = '';
     document.getElementById('char-name').textContent    = '';
     document.getElementById('char-name-box').style.display = 'none';
+    // UI非表示状態を解除
+    this._uiHidden = false;
+    ['text-area', 'menu-bar'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.visibility = '';
+    });
     this._stopBGM();
   }
 
