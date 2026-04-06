@@ -1263,12 +1263,6 @@ class VNEngine {
   //  セーブ / ロード
   // ============================================================
   _openSaveLoad(mode) {
-    // 選択肢表示中はセーブ/ロード不可
-    const choicesVisible = !document.getElementById('choices-overlay').classList.contains('hidden');
-    if (choicesVisible) {
-      this._showToast('選択肢の選択中はセーブできません');
-      return;
-    }
     // スキップ中はモーダルを開く前に停止
     if (this.skipMode) {
       this.skipMode = false;
