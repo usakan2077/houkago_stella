@@ -1234,6 +1234,11 @@ class VNEngine {
       this._showToast('選択肢の選択中はセーブできません');
       return;
     }
+    // スキップ中はモーダルを開く前に停止
+    if (this.skipMode) {
+      this.skipMode = false;
+      document.getElementById('btn-skip').classList.remove('active');
+    }
     document.getElementById('modal-title').textContent = mode === 'save' ? 'SAVE' : 'LOAD';
     const slotsEl = document.getElementById('save-slots');
     slotsEl.innerHTML = '';
