@@ -547,7 +547,6 @@ class VNEngine {
       return;
     }
     this._stopAllSE();
-    this._stopBGM();
     this.currentLabel = label;
     this.currentIndex = 0;
     this._executeNext();
