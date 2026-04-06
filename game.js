@@ -41,6 +41,9 @@ class VNEngine {
     // 現在の背景キー
     this.currentBG = '';
 
+    // 現在表示中のスチル
+    this.currentStill = null;
+
     // UI非表示モード
     this._uiHidden = false;
 
@@ -995,10 +998,12 @@ class VNEngine {
 
     el.classList.remove('hidden');
     el.classList.add(`effect-${effect}`);
+    this.currentStill = imageName;
   }
 
   _hideStill(effect = 'fade_out') {
     this._stillLockUntil = 0;
+    this.currentStill = null;
     const el = document.getElementById('still-layer');
     if (!el) return;
     if (effect === 'fade_out') {
@@ -1281,6 +1286,8 @@ class VNEngine {
       flags:      { ...this.flags },
       charState:  JSON.parse(JSON.stringify(this.charState)),
       currentBG:  this.currentBG,
+      currentBGM: this.currentBGM,
+      currentStill: this.currentStill || null,
       preview,
       date: new Date().toLocaleString('ja-JP', {
         month: 'short', day: 'numeric',
@@ -1303,6 +1310,8 @@ class VNEngine {
     // 状態復元
     this.flags = d.flags || {};
     if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
+    if (d.currentBGM) this._playBGM(d.currentBGM);
+    if (d.currentStill) this._showStill(d.currentStill, 'instant');
 
     for (const [pos, state] of Object.entries(d.charState || {})) {
       if (state) this._showChar(state.charKey, pos, state.expr, 'instant');
