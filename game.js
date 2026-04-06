@@ -1377,8 +1377,8 @@ class VNEngine {
         <span>${e.text}</span>
       </div>
     `).join('');
-    content.scrollTop = content.scrollHeight;
     document.getElementById('log-modal').classList.remove('hidden');
+    requestAnimationFrame(() => { content.scrollTop = content.scrollHeight; });
   }
 
   // ============================================================
