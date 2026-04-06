@@ -6,6 +6,7 @@
 class VNEngine {
 
   constructor() {
+    this._debug      = VN_CONFIG.settings?.debug || false;
     this.parser      = new ScriptParser();
     this.labels      = {};           // { labelName: [cmd, ...] }
     this.currentLabel= 'start';
@@ -97,50 +98,47 @@ class VNEngine {
     const pctEl  = document.getElementById('loading-percent');
     const screen = document.getElementById('loading-screen');
 
-    const exts = ['.jpg', '.jpeg', '.png', '.webp'];
+    // 拡張子の優先順位: webp > png > jpg > jpeg（ファイルサイズ・品質で優先）
+    const exts = ['.webp', '.png', '.jpg', '.jpeg'];
     const tasks = [];
 
-    // 背景: 解決した拡張子を記録しておき _changeBackground で即適用できるようにする
-    this._resolvedBGExt = {};
-    const tryBG = (key) => new Promise(resolve => {
+    // 解決済み拡張子をキャッシュ（BG・Still共通ヘルパー）
+    const makeResolver = (map, basePath) => (key) => new Promise(resolve => {
       let i = 0;
       const tryNext = () => {
         if (i >= exts.length) { resolve(); return; }
         const ext = exts[i++];
         const img = new Image();
-        img.onload  = () => { this._resolvedBGExt[key] = ext; resolve(); };
+        img.onload  = () => { map[key] = ext; resolve(); };
         img.onerror = tryNext;
-        img.src = `assets/images/bg/${key}${ext}`;
+        img.src = `${basePath}${key}${ext}`;
       };
       tryNext();
     });
 
-    // 画像を拡張子を並列で試し、どれか1枚読めたら完了とする（背景以外用）
-    const tryImg = (basePath) => new Promise(resolve => {
-      let remaining = exts.length;
-      for (const ext of exts) {
-        const img = new Image();
-        img.onload  = () => resolve();
-        img.onerror = () => { if (--remaining === 0) resolve(); }; // 全滅=画像なし→スキップ
-        img.src = basePath + ext;
-      }
-    });
-
     // 背景
+    this._resolvedBGExt = {};
+    const tryBG = makeResolver(this._resolvedBGExt, 'assets/images/bg/');
     for (const key of Object.keys(VN_CONFIG.backgrounds)) {
       tasks.push(tryBG(key));
     }
 
-    // キャラクター立ち絵（expressions が定義されているキーのみ）
+    // キャラクター立ち絵: すべて PNG なのでプリロードのみ（拡張子解決不要）
     for (const [charKey, charData] of Object.entries(VN_CONFIG.characters)) {
       for (const expr of (charData.expressions || [])) {
-        tasks.push(tryImg(`assets/images/chars/${charKey}/${expr}`));
+        tasks.push(new Promise(resolve => {
+          const img = new Image();
+          img.onload = img.onerror = resolve;
+          img.src = `assets/images/chars/${charKey}/${expr}.png`;
+        }));
       }
     }
 
-    // スチル（CG）
+    // スチル（CG）: 拡張子を解決して記録
+    this._resolvedStillExt = {};
+    const tryStill = makeResolver(this._resolvedStillExt, 'assets/images/stills/');
     for (const cg of (VN_CONFIG.cgList || [])) {
-      tasks.push(tryImg(`assets/images/stills/${cg.key}`));
+      tasks.push(tryStill(cg.key));
     }
 
     // 進捗トラッキング
@@ -206,9 +204,9 @@ class VNEngine {
         const text   = await res.text();
         const parsed = this.parser.parse(text);
         Object.assign(this.labels, parsed);
-        console.log(`[Engine] Loaded: ${file}`, Object.keys(parsed));
+        if (this._debug) console.log(`[Engine] Loaded: ${file}`, Object.keys(parsed));
       } catch (e) {
-        console.error(`[Engine] Failed to load ${file}:`, e);
+        if (this._debug) console.error(`[Engine] Failed to load ${file}:`, e);
         this._showLoadError(file);
       }
     }
@@ -419,20 +417,13 @@ class VNEngine {
     const bgKey = VN_CONFIG.openingBG || 'title_bg';
     const gradient = VN_CONFIG.backgrounds[bgKey];
     if (gradient) bgEl.style.background = gradient;
-    const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
-    const tryBgImg = (i) => {
-      if (i >= tryExts.length) return;
-      const img = new Image();
-      img.onload = () => {
-        bgEl.style.background    = '';
-        bgEl.style.backgroundImage    = `url(assets/images/bg/${bgKey}${tryExts[i]})`;
-        bgEl.style.backgroundSize     = 'cover';
-        bgEl.style.backgroundPosition = 'center';
-      };
-      img.onerror = () => tryBgImg(i + 1);
-      img.src = `assets/images/bg/${bgKey}${tryExts[i]}`;
-    };
-    tryBgImg(0);
+    const resolvedExt = this._resolvedBGExt && this._resolvedBGExt[bgKey];
+    if (resolvedExt) {
+      bgEl.style.background         = '';
+      bgEl.style.backgroundImage    = `url(assets/images/bg/${bgKey}${resolvedExt})`;
+      bgEl.style.backgroundSize     = 'cover';
+      bgEl.style.backgroundPosition = 'center';
+    }
 
     // 表示初期化
     textEl.style.opacity = '0';
@@ -570,7 +561,7 @@ class VNEngine {
   // ============================================================
   _gotoLabel(label) {
     if (!this.labels[label]) {
-      console.error(`[Engine] Label not found: "${label}"`);
+      if (this._debug) console.error(`[Engine] Label not found: "${label}"`);
       return;
     }
     this._stopAllSE();
@@ -585,11 +576,11 @@ class VNEngine {
       // 選択肢表示中なら誤作動防止のため何もしない
       const choicesVisible = !document.getElementById('choices-overlay').classList.contains('hidden');
       if (choicesVisible) {
-        console.warn(`[Engine] _executeNext called at end of label "${this.currentLabel}" while choices are visible — ignoring`);
+        if (this._debug) console.warn(`[Engine] _executeNext called at end of label "${this.currentLabel}" while choices are visible — ignoring`);
         return;
       }
       // ラベル末尾に達した → END 扱い
-      console.warn(`[Engine] Label "${this.currentLabel}" ran out of commands without @end/@jump — showing END`);
+      if (this._debug) console.warn(`[Engine] Label "${this.currentLabel}" ran out of commands without @end/@jump — showing END`);
       this._displayEnding('END');
       return;
     }
@@ -716,7 +707,7 @@ class VNEngine {
           case '>':  cond = numFlag >  numVal; break;
           case '<=': cond = numFlag <= numVal; break;
           case '<':  cond = numFlag <  numVal; break;
-          default:   console.warn('[Engine] @if: 不明な演算子:', cmd.op);
+          default:   if (this._debug) console.warn('[Engine] @if: 不明な演算子:', cmd.op);
         }
         if (cond) this._gotoLabel(cmd.to);
         else      this._executeNext();
@@ -731,7 +722,7 @@ class VNEngine {
           const val = Number(this.flags[flag]) || 0;
           if (val > bestVal) { bestVal = val; bestLabel = label; }
         }
-        console.log(`[Engine] route_select → ${bestLabel} (best=${bestVal})`);
+        if (this._debug) console.log(`[Engine] route_select → ${bestLabel} (best=${bestVal})`);
         this._gotoLabel(bestLabel || 'bad_end');
         break;
       }
@@ -761,7 +752,7 @@ class VNEngine {
         break;
 
       default:
-        console.warn('[Engine] Unknown command:', cmd);
+        if (this._debug) console.warn('[Engine] Unknown command:', cmd);
         this._executeNext();
     }
   }
@@ -827,7 +818,7 @@ class VNEngine {
   _showChar(charKey, pos, expr, effect = 'fade_in') {
     const cfg = VN_CONFIG.characters[charKey];
     if (!cfg) {
-      console.warn(`[Engine] Unknown character: ${charKey}`);
+      if (this._debug) console.warn(`[Engine] Unknown character: ${charKey}`);
       return;
     }
     const slot = document.getElementById(`char-${pos}`);
@@ -840,31 +831,23 @@ class VNEngine {
     sprite.className         = 'char-sprite';
     sprite.dataset.charKey   = charKey;
 
-    // 画像試行
-    const tryExts = ['.png', '.webp', '.jpg'];
-    const tryImage = (i) => {
-      if (i >= tryExts.length) {
-        // プレースホルダー
-        const ph = document.createElement('div');
-        ph.className = 'char-placeholder';
-        ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
-        ph.innerHTML = `
-          <div class="char-ph-icon">♡</div>
-          <div class="char-ph-name">${cfg.name}</div>
-          <div class="char-ph-expr">[${expr}]</div>
-        `;
-        sprite.appendChild(ph);
-        return;
-      }
-      const imgEl = new Image();
-      imgEl.onload = () => {
-        imgEl.alt = cfg.name;
-        sprite.appendChild(imgEl);
-      };
-      imgEl.onerror = () => tryImage(i + 1);
-      imgEl.src = `assets/images/chars/${charKey}/${expr}${tryExts[i]}`;
+    // キャラ画像はすべて PNG
+    const imgEl = new Image();
+    imgEl.alt = cfg.name;
+    imgEl.onerror = () => {
+      // PNG が見つからない場合のみプレースホルダー
+      const ph = document.createElement('div');
+      ph.className = 'char-placeholder';
+      ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
+      ph.innerHTML = `
+        <div class="char-ph-icon">♡</div>
+        <div class="char-ph-name">${cfg.name}</div>
+        <div class="char-ph-expr">[${expr}]</div>
+      `;
+      sprite.appendChild(ph);
     };
-    tryImage(0);
+    imgEl.onload = () => sprite.appendChild(imgEl);
+    imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
 
     slot.innerHTML = '';
     slot.appendChild(sprite);
@@ -941,23 +924,13 @@ class VNEngine {
         const sprite = slot?.querySelector('.char-sprite');
         if (!sprite) return;
 
-        const tryExts = ['.png', '.webp', '.jpg'];
-        const tryImage = (i) => {
-          if (i >= tryExts.length) {
-            const exprEl = sprite.querySelector('.char-ph-expr');
-            if (exprEl) exprEl.textContent = `[${expr}]`;
-            return;
-          }
-          const imgEl = new Image();
-          imgEl.onload = () => {
-            sprite.innerHTML = '';
-            imgEl.alt = charKey;
-            sprite.appendChild(imgEl);
-          };
-          imgEl.onerror = () => tryImage(i + 1);
-          imgEl.src = `assets/images/chars/${charKey}/${expr}${tryExts[i]}`;
+        const imgEl = new Image();
+        imgEl.alt = charKey;
+        imgEl.onload = () => {
+          sprite.innerHTML = '';
+          sprite.appendChild(imgEl);
         };
-        tryImage(0);
+        imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
         break;
       }
     }
@@ -1007,33 +980,41 @@ class VNEngine {
     el.innerHTML  = '';
     el.style.backgroundImage = '';
 
-    const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
-    const tryImage = (i) => {
-      if (i >= tryExts.length) {
-        // プレースホルダー
-        el.style.backgroundImage = '';
-        el.style.background      = 'rgba(0,0,0,.85)';
-        el.innerHTML = `<div class="still-placeholder">[スチル: ${imageName}]</div>`;
-        return;
+    const applyStill = (src) => {
+      el.style.background         = '';
+      el.style.backgroundImage    = `url(${src})`;
+      el.style.backgroundSize     = 'contain';
+      el.style.backgroundPosition = 'center';
+      el.style.backgroundRepeat   = 'no-repeat';
+      el.style.backgroundColor    = 'rgba(0,0,0,.85)';
+      if (!this.seenStills.has(imageName)) {
+        this.seenStills.add(imageName);
+        localStorage.setItem('vn_seen_stills', JSON.stringify([...this.seenStills]));
       }
-      const img = new Image();
-      img.onload = () => {
-        el.style.background      = '';
-        el.style.backgroundImage = `url(${img.src})`;
-        el.style.backgroundSize  = 'contain';
-        el.style.backgroundPosition = 'center';
-        el.style.backgroundRepeat   = 'no-repeat';
-        el.style.backgroundColor    = 'rgba(0,0,0,.85)';
-        // 閲覧済みとして記録
-        if (!this.seenStills.has(imageName)) {
-          this.seenStills.add(imageName);
-          localStorage.setItem('vn_seen_stills', JSON.stringify([...this.seenStills]));
-        }
-      };
-      img.onerror = () => tryImage(i + 1);
-      img.src = `assets/images/stills/${imageName}${tryExts[i]}`;
     };
-    tryImage(0);
+
+    const resolvedExt = this._resolvedStillExt && this._resolvedStillExt[imageName];
+    if (resolvedExt) {
+      applyStill(`assets/images/stills/${imageName}${resolvedExt}`);
+    } else {
+      // フォールバック（config未登録のスチル）
+      const tryExts = ['.webp', '.png', '.jpg', '.jpeg'];
+      const tryImage = (i) => {
+        if (i >= tryExts.length) {
+          el.style.background = 'rgba(0,0,0,.85)';
+          el.innerHTML = `<div class="still-placeholder">[スチル: ${imageName}]</div>`;
+          return;
+        }
+        const img = new Image();
+        img.onload  = () => {
+          if (this._resolvedStillExt) this._resolvedStillExt[imageName] = tryExts[i];
+          applyStill(img.src);
+        };
+        img.onerror = () => tryImage(i + 1);
+        img.src = `assets/images/stills/${imageName}${tryExts[i]}`;
+      };
+      tryImage(0);
+    }
 
     el.classList.remove('hidden');
     el.classList.add(`effect-${effect}`);
