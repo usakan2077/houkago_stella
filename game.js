@@ -20,7 +20,8 @@ class VNEngine {
     // タイマー
     this.typewriterTimer = null;
     this.autoTimer       = null;
-    this.skipTimer       = null;   // スキップ時の次行進行タイマー（追跡してキャンセル可能に）
+    this.skipTimer       = null;
+    this._waitTimer      = null;   // @wait コマンドの setTimeout 参照   // スキップ時の次行進行タイマー（追跡してキャンセル可能に）
     this._stillLockUntil = 0;      // スチル表示後の最低表示ロック解除時刻
 
     // 現在表示中のテキスト
@@ -658,7 +659,10 @@ class VNEngine {
         if (this.skipMode) {
           this._executeNext();
         } else {
-          setTimeout(() => this._executeNext(), cmd.ms);
+          this._waitTimer = setTimeout(() => {
+            this._waitTimer = null;
+            this._executeNext();
+          }, cmd.ms);
         }
         break;
 
@@ -1145,6 +1149,10 @@ class VNEngine {
     if (this.skipTimer) {
       clearTimeout(this.skipTimer);
       this.skipTimer = null;
+    }
+    if (this._waitTimer) {
+      clearTimeout(this._waitTimer);
+      this._waitTimer = null;
     }
   }
 
