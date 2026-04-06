@@ -143,7 +143,6 @@ const VN_CONFIG = {
 
     // ── プール ────────────────────────────────────────────
     pool_outdoor:      'linear-gradient(180deg, #87CEEB 0%, #60b8e0 30%, #40a0d0 60%, #a0d8f0 100%)',
-    pool_side:         'linear-gradient(180deg, #87CEEB 0%, #b0d8f0 30%, #c8e4f8 60%, #d8ecfc 100%)',
 
     // ── モノローグ（内面独白・回想）────────────────────────
     'monologe-bg':         'linear-gradient(180deg, #08060f 0%, #0f0a1a 30%, #160d20 60%, #0a0810 100%)',
