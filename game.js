@@ -523,7 +523,7 @@ class VNEngine {
     this.currentText = '';
     this._stopTypewriter();
     this._clearAllChars('instant');
-    this._hideStill();
+    this._hideStill('instant');
     this.skipMode = false;
     this.autoMode = false;
     document.getElementById('btn-skip').classList.remove('active');
