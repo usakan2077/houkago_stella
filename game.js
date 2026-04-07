@@ -524,6 +524,12 @@ class VNEngine {
     this.charState   = { left: null, center: null, right: null };
     this.currentBG   = '';
     this.currentText = '';
+    // 前回プレイの背景をDOMからクリア（残存背景が一瞬表示されるのを防ぐ）
+    const bgEl = document.getElementById('background');
+    if (bgEl) {
+      bgEl.style.backgroundImage = '';
+      bgEl.style.background      = '';
+    }
     this._stopTypewriter();
     this._clearAllChars('instant');
     this._hideStill('instant');
