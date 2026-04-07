@@ -1085,7 +1085,8 @@ class VNEngine {
 
     // ログに追加
     this.textLog.push({ name: cfg?.name || '', text });
-    this.currentText = text;
+    this.currentText     = text;
+    this.currentEmphasis = emphasis || null;
 
     if (this.skipMode) {
       // スキップ中は即表示して次へ
@@ -1177,9 +1178,16 @@ class VNEngine {
     if (this._stillLockUntil > Date.now()) return;
 
     if (this.typewriterTimer) {
-      // タイプライター実行中 → 全文即表示
+      // タイプライター実行中 → 全文即表示（emphasisに応じて正しいDOM構造を使う）
       this._stopTypewriter();
-      document.getElementById('dialog-text').textContent = this.currentText;
+      const textEl = document.getElementById('dialog-text');
+      if (this.currentEmphasis === 'inner') {
+        // <em>が消えないようinnerHTMLで設定
+        textEl.classList.add('narrate-inner');
+        textEl.innerHTML = `<em>${this.currentText}</em>`;
+      } else {
+        textEl.textContent = this.currentText;
+      }
       this.waitingForInput = true;
       document.getElementById('next-arrow').style.display = 'block';
       if (this.autoMode) {
