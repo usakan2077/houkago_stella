@@ -152,6 +152,9 @@ class VNEngine {
       if (pctEl) pctEl.textContent  = `${pct}%`;
     };
 
+    // フォント読み込み完了を待つ（FOUT防止）
+    tasks.push(document.fonts ? document.fonts.ready : Promise.resolve());
+
     // ロード完了 と OK クリック を並行で待つ
     const loadDone = Promise.all(tasks.map(t => t.then(updateBar)));
     const okBtn    = document.getElementById('btn-loading-ok');
