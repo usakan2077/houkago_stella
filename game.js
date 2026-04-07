@@ -898,6 +898,8 @@ class VNEngine {
 
     slot.classList.add(animClass);
     setTimeout(() => {
+      // タイムアウト発火前に別キャラが表示された場合はスキップ
+      if (!slot.classList.contains(animClass)) return;
       slot.innerHTML  = '';
       slot.className  = 'character-slot';
     }, VN_CONFIG.settings.charFadeTime + 50);

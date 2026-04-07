@@ -1740,6 +1740,7 @@ player: 来るつもりだったから、ここにいる
 @wait 1200
 
 @bgm stop
+@still_hide
 
 @jump sakura_ch12_start
 
@@ -2481,6 +2482,7 @@ player: ……
 
 # sakura_bad_end_alone
 
+@hide sakura instant
 @scene school_gate_autumn_evening fade
 @bgm bad_end_loop.mp3
 @wait 800
