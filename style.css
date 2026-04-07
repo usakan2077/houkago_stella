@@ -641,7 +641,7 @@ body {
   align-items: center;
   justify-content: center;
   background: rgba(0,0,0,.45);
-  z-index: 20;
+  z-index: 9; /* ui-layer(z-index:10)より下にしてmenu-barを常にクリック可能にする */
 }
 #choices-container {
   display: flex;

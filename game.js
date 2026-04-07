@@ -280,10 +280,20 @@ class VNEngine {
 
     // キーボード
     document.addEventListener('keydown', (e) => {
-      // モーダル / 選択肢表示中は無視
       const hasModal  = document.querySelector('.modal:not(.hidden)');
       const hasChoice = !document.getElementById('choices-overlay').classList.contains('hidden');
       const hasEnding = !document.getElementById('ending-screen').classList.contains('hidden');
+
+      // F5/F7はモーダルが出ていなければ選択肢中・エンディング中でも有効
+      if (e.code === 'F5' || e.code === 'F7') {
+        if (hasModal) return;
+        e.preventDefault();
+        if (e.code === 'F5') this._openSaveLoad('save');
+        else                 this._openSaveLoad('load');
+        return;
+      }
+
+      // それ以外はモーダル / 選択肢 / エンディング中は無視
       if (hasModal || hasChoice || hasEnding) return;
 
       switch (e.code) {
@@ -291,12 +301,6 @@ class VNEngine {
           this._onAdvance(); break;
         case 'KeyS': this._toggleSkip(); break;
         case 'KeyA': this._toggleAuto(); break;
-        case 'F5':
-          e.preventDefault();
-          this._openSaveLoad('save'); break;
-        case 'F7':
-          e.preventDefault();
-          this._openSaveLoad('load'); break;
       }
     });
 
@@ -1399,7 +1403,7 @@ class VNEngine {
   // ============================================================
   _hideUI() {
     this._uiHidden = true;
-    const ids = ['text-area', 'menu-bar'];
+    const ids = ['text-area', 'menu-bar', 'choices-overlay'];
     ids.forEach(id => {
       const el = document.getElementById(id);
       if (el) el.style.visibility = 'hidden';
@@ -1408,7 +1412,7 @@ class VNEngine {
 
   _showUI() {
     this._uiHidden = false;
-    const ids = ['text-area', 'menu-bar'];
+    const ids = ['text-area', 'menu-bar', 'choices-overlay'];
     ids.forEach(id => {
       const el = document.getElementById(id);
       if (el) el.style.visibility = '';
