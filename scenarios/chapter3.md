@@ -133,13 +133,11 @@ player: 取れない
 
 sakura: じゃあ商標で！
 
-kotoha: ……桜咲さんは
-kotoha: 言葉の使い方が
-kotoha: その
+kotoha: ……桜咲さんは、言葉の使い方が
 
 @wait 400
 
-kotoha: 独特ですね
+kotoha: その……独特ですね
 
 sakura: えー、ことはちゃんにそう言われると素直に嬉しいかも
 
@@ -499,13 +497,11 @@ mahiru: みんなに
 
 @expr kotoha thinking
 
-kotoha: ……写真を
-kotoha: もらうのは
-kotoha: 少し、その
+kotoha: ……写真を、もらうのは
 
 @wait 400
 
-kotoha: ……嬉しいですね
+kotoha: 少し……嬉しいですね
 
 @expr sakura excited
 
@@ -669,20 +665,17 @@ kotoha: ……わかりません
 @wait 400
 
 kotoha: 弾こうとすると
-kotoha: 手が
-kotoha: 止まるんです
+kotoha: ……手が、止まるんです
 
 @wait 500
 
 player: ……そうか
 
-kotoha: こういう話を読んでいると
-kotoha: 音が聞こえる気がするので
+kotoha: こういう話を読んでいると、音が聞こえる気がするので
 
 @wait 300
 
-kotoha: それが
-kotoha: 今は一番落ち着くんです
+kotoha: それが今は一番落ち着くんです
 
 @wait 500
 
@@ -808,13 +801,11 @@ kotoha: 思い出より先に来るんです
 
 player: 先に？
 
-kotoha: 何かを思い出そうとするとき
-kotoha: 普通は記憶から入ると思うんですが
+kotoha: 何かを思い出そうとするとき、普通は記憶から入ると思うんですが
 
 @wait 400
 
-kotoha: 音は
-kotoha: 記憶が追いつく前に
+kotoha: 音は、記憶が追いつく前に
 kotoha: もう来てしまうので
 
 @wait 500
@@ -829,8 +820,7 @@ kotoha: ……少しだけ
 
 @wait 300
 
-kotoha: 準備ができていないときに
-kotoha: いきなり来るから
+kotoha: 準備ができていないときに、いきなり来るから
 
 player: ……そうか
 

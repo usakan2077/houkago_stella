@@ -721,8 +721,7 @@ kotoha: ……ショパンです
 
 player: え
 
-kotoha: 弾いているの
-kotoha: 夜想曲の二番
+kotoha: 弾いているの、夜想曲の二番
 
 player: わかるのか
 
@@ -773,22 +772,17 @@ player: そうか
 
 @wait 600
 
-kotoha: でも
-
-kotoha: 前より少しだけ
+kotoha: でも、前より少しだけ
 kotoha: 怖くないです
 
 player: なんで
 
 @expr kotoha thinking
 
-kotoha: 図書室で
-
-kotoha: 桐島くんが
+kotoha: 図書室で、桐島くんが
 kotoha: 手を引かなかったので
 
-kotoha: ああいうの
-kotoha: 少し安心するんです
+kotoha: ……ああいうの、少し安心するんです
 
 > 花園は
 > 開きかけたドアを見つめた。
@@ -850,11 +844,9 @@ kotoha: ……そうですか
 > ことははそれ以上聞かなかった。
 > でも、少しだけ肩の力が抜けたように見えた。
 
-kotoha: わたしも
-kotoha: ……わからないんです
+kotoha: わたしも……わからないんです
 
-kotoha: 戻りたいのか、
-kotoha: 戻りたくないのか
+kotoha: 戻りたいのか、戻りたくないのか
 
 kotoha: でも、ここに来てしまう
 
@@ -864,9 +856,7 @@ kotoha: でも、ここに来てしまう
 > それからまた始まった。
 > 同じ曲の、少し前から。
 
-kotoha: いつか
-
-kotoha: 入れる気がします
+kotoha: いつか、入れる気がします
 
 @choice
 - "待ってる" [kotoha_favor+3] -> chapter7_kotoha_warm

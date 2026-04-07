@@ -518,24 +518,21 @@ kotoha: そうですか
 
 @wait 400
 
-kotoha: 音楽って
-kotoha: 演奏しているとき
+kotoha: 音楽って、演奏しているとき
 kotoha: どこかへ消えられる気がするんです
 
 player: 消える？
 
-kotoha: …うまく言えないんですが
+kotoha: ……うまく言えないんですが
 kotoha: 音の中に入ると、そこだけが本当で
-kotoha: 外側のことが少し
-kotoha: 遠くなる感じ
+kotoha: 外側のことが少し、遠くなる感じ
 
 player: ……それは、良いことか
 
 @expr kotoha normal
 
 kotoha: わかりません
-kotoha: ただ
-kotoha: 消えたいわけじゃない、とは思います
+kotoha: ただ……消えたいわけじゃない、とは思います
 
 > そう言って、ことははまた前を向いた。
 > ドア越しに聞こえるピアノの音を、

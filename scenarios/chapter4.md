@@ -377,8 +377,7 @@ player: じゃあなんで入らないんだ
 
 @wait 400
 
-kotoha: ……でも
-kotoha: それだけは
+kotoha: ……でも、それだけは
 kotoha: 音楽にならないんです
 
 player: どういうことだ
@@ -392,18 +391,15 @@ kotoha: ……うまくは言えません
 
 @wait 700
 
-kotoha: ……ピアノをやめてから
-kotoha: 時間が経ちました
+kotoha: ……ピアノをやめてから、時間が経ちました
 
 player: そうか
 
-kotoha: でも
-kotoha: 指が覚えていて
+kotoha: でも、指が覚えていて
 
 @wait 500
 
-kotoha: 覚えているのに弾けない場所に
-kotoha: なってしまったので
+kotoha: 覚えているのに弾けない場所に、なってしまったので
 
 player: 何があったんだ
 
@@ -411,12 +407,11 @@ kotoha: ……
 
 @wait 600
 
-kotoha: 発表会で
-kotoha: 途中でわからなくなったんです
+kotoha: 発表会で、途中でわからなくなったんです
 
 player: わからなくなった
 
-kotoha: 指が
+kotoha: 指が……
 kotoha: 弾いている理由を
 
 @wait 500
@@ -439,15 +434,11 @@ kotoha: 隠れる場所がないので
 
 player: 隠れる場所
 
-kotoha: 早い曲や
-kotoha: 激しい曲は
-kotoha: 勢いで乗れることがあります
+kotoha: 早い曲や激しい曲は、勢いで乗れることがあります
 
-kotoha: でも静かな曲は
-kotoha: 全部聞こえてしまう
+kotoha: でも静かな曲は、全部聞こえてしまう
 
-kotoha: 余分なものが
-kotoha: 全部
+kotoha: 余分なものが、全部
 
 @wait 500
 
