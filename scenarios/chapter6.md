@@ -2,7 +2,7 @@
 //  放課後のステラ — Chapter 6「それぞれの放課後」
 // ===================================================================
 
-# ch4out_start
+# chapter6_start
 
 @scene school_gate_summer_evening fade
 @bgm sunday_afternoon.mp3
@@ -63,10 +63,10 @@ player: （今日はどこへ行こうか……）
 
 @wait 800
 
-@jump ch4out_sakura_gym
+@jump chapter6_sakura_gym
 
 
-# ch4out_sakura_gym
+# chapter6_sakura_gym
 
 @scene gymnasium fade
 @bgm energetic_light.mp3
@@ -237,11 +237,11 @@ player: （声をかけるべきか……）
 @wait 500
 
 @choice
-- "声をかける" [sakura_favor+5] -> ch4out_sakura_talk
-- "そのまま見送る" -> ch4out_sakura_skip
+- "声をかける" [sakura_favor+5] -> chapter6_sakura_talk
+- "そのまま見送る" -> chapter6_sakura_skip
 
 
-# ch4out_sakura_talk
+# chapter6_sakura_talk
 
 @still_hide
 @wait 400
@@ -452,10 +452,10 @@ sakura_sports: じゃあね。また月曜日。
 
 @wait 800
 
-@jump ch4out_kotoha_piano
+@jump chapter6_kotoha_piano
 
 
-# ch4out_sakura_skip
+# chapter6_sakura_skip
 
 @still_hide
 @wait 400
@@ -479,10 +479,10 @@ sakura_sports: じゃあね。また月曜日。
 @hide sakura_sports fade_out
 @wait 600
 
-@jump ch4out_kotoha_piano
+@jump chapter6_kotoha_piano
 
 
-# ch4out_kotoha_piano
+# chapter6_kotoha_piano
 
 @scene commute_road_summer fade
 @bgm town_afternoon.mp3
@@ -578,11 +578,11 @@ player: （……ことは？）
 @wait 500
 
 @choice
-- "声をかける" [kotoha_favor+5] -> ch4out_kotoha_talk
-- "そのまま通り過ぎる" -> ch4out_kotoha_skip
+- "声をかける" [kotoha_favor+5] -> chapter6_kotoha_talk
+- "そのまま通り過ぎる" -> chapter6_kotoha_skip
 
 
-# ch4out_kotoha_talk
+# chapter6_kotoha_talk
 
 @still_hide
 @wait 400
@@ -776,10 +776,10 @@ kotoha: では。
 
 @wait 700
 
-@jump ch4out_mahiru_river
+@jump chapter6_mahiru_river
 
 
-# ch4out_kotoha_skip
+# chapter6_kotoha_skip
 
 @still_hide
 @wait 400
@@ -801,10 +801,10 @@ kotoha: では。
 @hide kotoha fade_out
 @wait 400
 
-@jump ch4out_mahiru_river
+@jump chapter6_mahiru_river
 
 
-# ch4out_mahiru_river
+# chapter6_mahiru_river
 
 @scene riverbank_evening fade
 @bgm river_wind.mp3
@@ -879,11 +879,11 @@ player: （何を撮っているんだろう……）
 @wait 600
 
 @choice
-- "隣に座る" [mahiru_favor+5] -> ch4out_mahiru_talk
-- "そのまま立っている" -> ch4out_mahiru_skip
+- "隣に座る" [mahiru_favor+5] -> chapter6_mahiru_talk
+- "そのまま立っている" -> chapter6_mahiru_skip
 
 
-# ch4out_mahiru_talk
+# chapter6_mahiru_talk
 
 @still_hide
 @wait 400
@@ -1080,10 +1080,10 @@ player: （ここに、誰かいたんだ——）
 @hide mahiru fade_out
 @wait 500
 
-@jump ch4out_evening_walk
+@jump chapter6_evening_walk
 
 
-# ch4out_mahiru_skip
+# chapter6_mahiru_skip
 
 @still_hide
 @wait 400
@@ -1114,10 +1114,10 @@ mahiru: ……あ。勇くん。
 
 @hide mahiru fade_out
 
-@jump ch4out_evening_walk
+@jump chapter6_evening_walk
 
 
-# ch4out_evening_walk
+# chapter6_evening_walk
 
 @scene commute_road_summer_evening fade
 @bgm evening_gentle.mp3
@@ -1299,10 +1299,10 @@ mahiru: 疲れてないときの顔。
 @hide mahiru fade_out
 @wait 600
 
-@jump ch4out_end
+@jump chapter6_end
 
 
-# ch4out_end
+# chapter6_end
 
 @scene school_gate_summer_evening fade
 @bgm stop

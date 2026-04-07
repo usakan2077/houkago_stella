@@ -2,7 +2,7 @@
 //  放課後のステラ — Chapter 5「水面の午後」
 // ===================================================================
 
-# pool_start
+# chapter5_start
 
 @scene classroom fade
 @bgm daily_life.mp3
@@ -35,10 +35,10 @@
 
 @wait 800
 
-@jump pool_morning_class
+@jump chapter5_morning_class
 
 
-# pool_morning_class
+# chapter5_morning_class
 
 @scene classroom fade
 @bgm daily_life.mp3
@@ -137,10 +137,10 @@ sakura: 同じじゃん！
 
 @wait 800
 
-@jump pool_prep
+@jump chapter5_prep
 
 
-# pool_prep
+# chapter5_prep
 
 @scene corridor fade
 @bgm daily_life.mp3
@@ -249,10 +249,10 @@ kotoha: それが取れると、こんなに遠かったんだと、毎年驚き
 
 @wait 500
 
-@jump pool_lesson
+@jump chapter5_lesson
 
 
-# pool_lesson
+# chapter5_lesson
 
 @scene pool_outdoor fade
 @bgm energetic_light.mp3
@@ -317,10 +317,10 @@ sakura: よし、行きますか！
 @hide kotoha_swimsuit fade_out
 @wait 300
 
-@jump pool_sakura_kotoha
+@jump chapter5_sakura_kotoha
 
 
-# pool_sakura_kotoha
+# chapter5_sakura_kotoha
 
 @hide_all fade_out
 @wait 300
@@ -352,10 +352,10 @@ sakura: よし、行きますか！
 
 @wait 600
 
-@jump pool_kotoha_water
+@jump chapter5_kotoha_water
 
 
-# pool_kotoha_water
+# chapter5_kotoha_water
 
 @still_hide
 @wait 300
@@ -497,10 +497,10 @@ kotoha: 少し、楽になります
 
 @wait 500
 
-@jump pool_sakura_scene
+@jump chapter5_sakura_scene
 
 
-# pool_sakura_scene
+# chapter5_sakura_scene
 
 @scene pool_outdoor fade
 @bgm energetic_light.mp3
@@ -560,10 +560,10 @@ sakura: じゃあ受け取ります！　ありがとう！
 
 @wait 600
 
-@jump pool_sakura_kotoha_end
+@jump chapter5_sakura_kotoha_end
 
 
-# pool_sakura_kotoha_end
+# chapter5_sakura_kotoha_end
 
 @scene pool_outdoor fade
 @bgm energetic_light.mp3
@@ -590,11 +590,11 @@ sakura: じゃあ受け取ります！　ありがとう！
 @wait 800
 
 @choice
-- "大丈夫か" [sakura_favor+3] -> pool_sakura_talk
-- "……" -> pool_sakura_skip
+- "大丈夫か" [sakura_favor+3] -> chapter5_sakura_talk
+- "……" -> chapter5_sakura_skip
 
 
-# pool_sakura_talk
+# chapter5_sakura_talk
 
 @show sakura_swimsuit left normal fade_in
 @wait 300
@@ -755,10 +755,10 @@ sakura: ……ありがとね。声かけてくれて。
 @hide sakura_swimsuit fade_out
 @wait 400
 
-@jump pool_kotoha_scene
+@jump chapter5_kotoha_scene
 
 
-# pool_sakura_skip
+# chapter5_sakura_skip
 
 > さくらは俺に気づかないまま立ち上がった。
 
@@ -773,10 +773,10 @@ sakura: ……ありがとね。声かけてくれて。
 
 @wait 400
 
-@jump pool_kotoha_scene
+@jump chapter5_kotoha_scene
 
 
-# pool_kotoha_scene
+# chapter5_kotoha_scene
 
 @scene pool_outdoor fade
 @bgm energetic_light.mp3
@@ -860,10 +860,10 @@ kotoha: あの波が、ここまで来るのを待っていたりします
 @still_hide
 @wait 200
 
-@jump pool_mahiru_window
+@jump chapter5_mahiru_window
 
 
-# pool_mahiru_window
+# chapter5_mahiru_window
 
 @scene corridor fade
 @bgm daily_life.mp3
@@ -946,10 +946,10 @@ kotoha: あの波が、ここまで来るのを待っていたりします
 @still_hide
 @wait 300
 
-@jump pool_after_school
+@jump chapter5_after_school
 
 
-# pool_after_school
+# chapter5_after_school
 
 @scene classroom fade
 @bgm daily_life.mp3
@@ -1108,10 +1108,10 @@ player: ああ
 
 @wait 600
 
-@jump pool_end
+@jump chapter5_end
 
 
-# pool_end
+# chapter5_end
 
 @scene corridor_evening fade
 @bgm evening_piano.mp3
@@ -1215,4 +1215,4 @@ player: ああ
 
 @wait 1000
 
-@end "第五章「水面の午後」" -> ch4out_start
+@end "第五章「水面の午後」" -> chapter6_start
