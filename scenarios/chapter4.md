@@ -1153,4 +1153,4 @@ player: おやすみ
 
 @bgm stop
 
-@end "第四章「理由を集める日々」" -> pool_start
+@end "第四章「理由を集める日々」" -> chapter5_start
