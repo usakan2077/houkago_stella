@@ -522,14 +522,14 @@ sakura: うるさーい！
 @wait 800
 
 > 五時間目は体育だった。
-> 体育館には、シューズの音と笛の音が反響する。
+> 今日は隣の三組と合同授業で、体育館には二クラス分のシューズの音と笛の音が反響する。
 
 > 今日のメニューはバレーボール。
 > さほど好きじゃないが、別に嫌でもない。
 > 適当に動いていれば何とかなる種目だ。
 
 @show sakura_sports right happy fade_in
-@show mahiru center normal fade_in
+@show mahiru_sports center normal fade_in
 
 sakura: 勇くん、バレーできる？
 
