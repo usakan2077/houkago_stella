@@ -45,6 +45,7 @@ class VNEngine {
 
     // 現在表示中のスチル
     this.currentStill = null;
+    this._hideStillTimer = null;
 
     // UI非表示モード
     this._uiHidden = false;
@@ -980,12 +981,16 @@ class VNEngine {
   //  スチル (イベントCG)
   // ============================================================
   _showStill(imageName, effect = 'fade_in') {
+    // ペンディング中の fade_out タイマーをキャンセル（race condition 対策）
+    if (this._hideStillTimer) { clearTimeout(this._hideStillTimer); this._hideStillTimer = null; }
     // instant（ロード復元時など）はロック不要、それ以外は1.5秒間クリックで非表示不可
     this._stillLockUntil = effect === 'instant' ? 0 : Date.now() + 1500;
     const el = document.getElementById('still-layer');
     el.className  = '';
     el.innerHTML  = '';
     el.style.backgroundImage = '';
+    el.style.opacity    = '';
+    el.style.transition = '';
 
     const applyStill = (src) => {
       el.style.background         = '';
@@ -1031,12 +1036,14 @@ class VNEngine {
   _hideStill(effect = 'fade_out') {
     this._stillLockUntil = 0;
     this.currentStill = null;
+    if (this._hideStillTimer) { clearTimeout(this._hideStillTimer); this._hideStillTimer = null; }
     const el = document.getElementById('still-layer');
     if (!el) return;
     if (effect === 'fade_out') {
       el.style.transition = 'opacity .5s ease';
       el.style.opacity    = '0';
-      setTimeout(() => {
+      this._hideStillTimer = setTimeout(() => {
+        this._hideStillTimer = null;
         el.classList.add('hidden');
         el.style.opacity    = '';
         el.style.transition = '';
