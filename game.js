@@ -1578,7 +1578,7 @@ class VNEngine {
     } else {
       // ── 最終エンディング: タイトルへ戻るボタンを表示 ──
       setTimeout(() => {
-        document.getElementById('ending-title').textContent = title;
+        document.getElementById('ending-title').textContent = title.replace(/\s*—\s*/g, '\n— ');
         document.getElementById('btn-next-chapter').classList.add('hidden');
         document.getElementById('ending-screen').classList.remove('hidden');
       }, 700);
