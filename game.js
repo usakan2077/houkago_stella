@@ -1816,8 +1816,8 @@ class VNEngine {
       { label: 'Chapter 2 — 笑顔の境界線',       key: 'chapter2_start' },
       { label: 'Chapter 3 — 遠くの音',           key: 'chapter3_start' },
       { label: 'Chapter 4 — 理由を集める日々',   key: 'chapter4_start' },
-      { label: 'Chapter 5 — 水面の午後',         key: 'pool_start' },
-      { label: 'Chapter 6 — それぞれの放課後',   key: 'ch4out_start' },
+      { label: 'Chapter 5 — 水面の午後',         key: 'chapter5_start' },
+      { label: 'Chapter 6 — それぞれの放課後',   key: 'chapter6_start' },
       { label: 'Chapter 7 — 重なる孤独',         key: 'chapter7_start' },
       { label: 'Chapter 8 — 選ぶということ',     key: 'chapter8_start' },
       { label: '── 分岐: さくらルート',           key: 'sakura_ch9_start' },
@@ -1829,7 +1829,7 @@ class VNEngine {
     const overlay = document.createElement('div');
     overlay.id = 'debug-jump-overlay';
     overlay.style.cssText = [
-      'position:fixed;inset:0;z-index:9999;',
+      'position:fixed;inset:0;z-index:1000000;',
       'background:rgba(0,0,0,.78);',
       'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;',
     ].join('');
