@@ -45,6 +45,7 @@ class VNEngine {
 
     // 現在表示中のスチル
     this.currentStill = null;
+    this._hideStillTimer = null;
 
     // UI非表示モード
     this._uiHidden = false;
@@ -980,12 +981,16 @@ class VNEngine {
   //  スチル (イベントCG)
   // ============================================================
   _showStill(imageName, effect = 'fade_in') {
+    // ペンディング中の fade_out タイマーをキャンセル（race condition 対策）
+    if (this._hideStillTimer) { clearTimeout(this._hideStillTimer); this._hideStillTimer = null; }
     // instant（ロード復元時など）はロック不要、それ以外は1.5秒間クリックで非表示不可
     this._stillLockUntil = effect === 'instant' ? 0 : Date.now() + 1500;
     const el = document.getElementById('still-layer');
     el.className  = '';
     el.innerHTML  = '';
     el.style.backgroundImage = '';
+    el.style.opacity    = '';
+    el.style.transition = '';
 
     const applyStill = (src) => {
       el.style.background         = '';
@@ -1031,12 +1036,14 @@ class VNEngine {
   _hideStill(effect = 'fade_out') {
     this._stillLockUntil = 0;
     this.currentStill = null;
+    if (this._hideStillTimer) { clearTimeout(this._hideStillTimer); this._hideStillTimer = null; }
     const el = document.getElementById('still-layer');
     if (!el) return;
     if (effect === 'fade_out') {
       el.style.transition = 'opacity .5s ease';
       el.style.opacity    = '0';
-      setTimeout(() => {
+      this._hideStillTimer = setTimeout(() => {
+        this._hideStillTimer = null;
         el.classList.add('hidden');
         el.style.opacity    = '';
         el.style.transition = '';
@@ -1578,7 +1585,7 @@ class VNEngine {
     } else {
       // ── 最終エンディング: タイトルへ戻るボタンを表示 ──
       setTimeout(() => {
-        document.getElementById('ending-title').textContent = title;
+        document.getElementById('ending-title').textContent = title.replace(/\s*—\s*/g, '\n— ');
         document.getElementById('btn-next-chapter').classList.add('hidden');
         document.getElementById('ending-screen').classList.remove('hidden');
       }, 700);
@@ -1809,8 +1816,8 @@ class VNEngine {
       { label: 'Chapter 2 — 笑顔の境界線',       key: 'chapter2_start' },
       { label: 'Chapter 3 — 遠くの音',           key: 'chapter3_start' },
       { label: 'Chapter 4 — 理由を集める日々',   key: 'chapter4_start' },
-      { label: 'Chapter 5 — 水面の午後',         key: 'pool_start' },
-      { label: 'Chapter 6 — それぞれの放課後',   key: 'ch4out_start' },
+      { label: 'Chapter 5 — 水面の午後',         key: 'chapter5_start' },
+      { label: 'Chapter 6 — それぞれの放課後',   key: 'chapter6_start' },
       { label: 'Chapter 7 — 重なる孤独',         key: 'chapter7_start' },
       { label: 'Chapter 8 — 選ぶということ',     key: 'chapter8_start' },
       { label: '── 分岐: さくらルート',           key: 'sakura_ch9_start' },
@@ -1822,7 +1829,7 @@ class VNEngine {
     const overlay = document.createElement('div');
     overlay.id = 'debug-jump-overlay';
     overlay.style.cssText = [
-      'position:fixed;inset:0;z-index:9999;',
+      'position:fixed;inset:0;z-index:1000000;',
       'background:rgba(0,0,0,.78);',
       'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;',
     ].join('');

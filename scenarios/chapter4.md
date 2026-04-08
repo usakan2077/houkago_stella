@@ -570,6 +570,9 @@ mahiru: ありがとう
 
 > 一瞬だけ、開いたページが見えた。
 
+@still mahiru_notebook_drop
+@wait 600
+
 > 「今日の良かったこと：勇くんが隣にいてよかった」
 
 @wait 600
@@ -583,6 +586,9 @@ mahiru: ありがとう
 > それだけで、なぜか居場所のない感じがした。
 
 @wait 400
+
+@still_hide
+@wait 200
 
 > まひるは気づかないまま、ノートを閉じた。
 
@@ -1147,4 +1153,4 @@ player: おやすみ
 
 @bgm stop
 
-@end "第四章「理由を集める日々」" -> pool_start
+@end "第四章「理由を集める日々」" -> chapter5_start

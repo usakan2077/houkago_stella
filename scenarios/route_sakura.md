@@ -2282,7 +2282,7 @@ sakura: 本当のことだもん！
 @bgm sakura_good_end.mp3
 
 @credits sakura_good_end.mp3
-@end "第十二章「散らないように、咲く」— Good End"
+@end "第十二章「散らないように、咲く」— さくらルート Good End"
 
 
 // ===================================================================
@@ -2615,4 +2615,4 @@ sakura: （遠くから）勇くーん！　早く行こうよー！
 @bgm stop
 
 @credits bad_end_loop.mp3
-@end "第十二章「誰かのための笑顔」— Bad End"
+@end "第十二章「誰かのための笑顔」— さくらルート Bad End"
