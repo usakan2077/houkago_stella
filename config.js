@@ -20,7 +20,7 @@ const VN_CONFIG = {
       name: '桜咲さくら',
       nameColor: '#ff88aa',
       charColor: 'rgba(255, 140, 170, 0.75)',
-      expressions: ['normal', 'happy', 'excited', 'sad', 'surprised', 'angry', 'shy', 'thinking', 'blank'],
+      expressions: ['normal', 'happy', 'excited', 'sad', 'crying', 'surprised', 'angry', 'shy', 'thinking', 'blank'],
     },
     sakura_sports: {
       name: '桜咲さくら',
@@ -40,7 +40,7 @@ const VN_CONFIG = {
       name: '花園ことは',
       nameColor: '#88aaff',
       charColor: 'rgba(100, 140, 240, 0.75)',
-      expressions: ['normal', 'happy', 'sad', 'surprised', 'thinking', 'shy', 'angry'],
+      expressions: ['normal', 'happy', 'sad', 'crying', 'surprised', 'thinking', 'shy', 'angry'],
     },
     kotoha_swimsuit: {
       name: '花園ことは',
@@ -53,7 +53,7 @@ const VN_CONFIG = {
       name: '月夜野まひる',
       nameColor: '#88ddaa',
       charColor: 'rgba(80, 190, 130, 0.75)',
-      expressions: ['normal', 'happy', 'sad', 'surprised', 'thinking', 'shy'],
+      expressions: ['normal', 'happy', 'sad', 'crying', 'surprised', 'thinking', 'shy'],
     },
     mahiru_sports: {
       name: '月夜野まひる',
