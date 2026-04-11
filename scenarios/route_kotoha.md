@@ -882,7 +882,7 @@ kotoha: 止めた理由が、わからなくなっています。
 
 @still_hide
 
-@show kotoha center sad fade_in
+@show kotoha center crying fade_in
 @wait 600
 
 kotoha: ……父に、聴かせたかったんだと思います
