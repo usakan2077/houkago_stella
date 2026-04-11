@@ -371,14 +371,15 @@ kotoha: 怖くないので
 
 player: 弾けばいいんじゃないのか
 
-kotoha: ……出られます
+kotoha: ……弾けます
 
 player: じゃあなんで入らないんだ
 
 @wait 400
 
-kotoha: ……でも、それだけは
-kotoha: 音楽にならないんです
+kotoha: ……
+kotoha: 弾けるのと、
+kotoha: 音楽になるのは、違うんです
 
 player: どういうことだ
 
