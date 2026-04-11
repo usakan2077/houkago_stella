@@ -246,7 +246,7 @@ mahiru: うん、そうだよね
 
 # chapter8_sakura_cafe
 
-@scene classroom_cafe fade
+@scene classroom_cafe_rainy fade
 @bgm festival_rain.mp3
 @wait 800
 
