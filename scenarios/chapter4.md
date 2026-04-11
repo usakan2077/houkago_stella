@@ -844,9 +844,9 @@ mahiru: また明日
 
 # chapter4_walk
 
-@scene school_gate_summer_evening fade
+@scene school_gate_rainy fade
 @bgm evening_piano.mp3
-@se rain_window.mp3
+@se rain_light.mp3
 @wait 800
 
 > 昇降口を出ると、雨は小降りになっていた。
@@ -864,13 +864,17 @@ mahiru: 今日は同じ方向だね
 
 player: そうだな
 
-@still evening_walk_two
-@wait 1000
-@still_hide
+@se stop
+@scene commute_road_spring_evening fade
 
+> 雨は歩き始めてすぐに止んだ。
 > 夕暮れの道を並んで歩く。
 > 空は雨上がりで、西の方だけ少しだけオレンジが滲んでいた。
 > 濡れたアスファルトに、その色が薄く映っていた。
+
+@still evening_walk_two
+@wait 1000
+@still_hide
 
 mahiru: 勇くんってさ
 
@@ -1014,9 +1018,9 @@ mahiru: 見つかってほしい
 
 @wait 400
 
-mahiru: おやすみ、勇くん
+mahiru: じゃあね、勇くん
 
-player: おやすみ
+player: またな
 
 @hide mahiru fade_out
 @wait 700
