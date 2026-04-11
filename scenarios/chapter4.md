@@ -5,7 +5,7 @@
 
 # chapter4_start
 
-@scene classroom fade
+@scene classroom_rainy fade
 @bgm tension_rain.mp3
 @se rain_window.mp3
 @wait 1200
@@ -119,7 +119,7 @@ sakura: だって頼りになる人が少ないんだもん
 kotoha: 桐島くんは
 kotoha: 便利そうです
 
-player: それことはも言ってたよな
+player: 前も言ってたよな？
 
 kotoha: ……また言いました
 

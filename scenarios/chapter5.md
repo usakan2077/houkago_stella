@@ -1113,7 +1113,7 @@ player: ああ
 
 # chapter5_end
 
-@scene corridor_evening fade
+@scene commute_road_summer_evening fade
 @bgm evening_piano.mp3
 @wait 600
 

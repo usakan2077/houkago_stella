@@ -4,7 +4,7 @@
 
 # chapter6_start
 
-@scene school_gate_summer_evening fade
+@scene commute_road_summer fade
 @bgm sunday_afternoon.mp3
 @se crowd_distant.mp3
 @wait 800
@@ -1304,7 +1304,7 @@ mahiru: 疲れてないときの顔。
 
 # chapter6_end
 
-@scene school_gate_summer_evening fade
+@scene commute_road_summer_evening fade
 @bgm stop
 @wait 500
 
