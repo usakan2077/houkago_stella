@@ -432,6 +432,7 @@ player: 好きにしろ
 
 @wait 600
 
+@se camera_film_shutter.mp3
 mahiru: ……うん、いい
 
 sakura: 見せて見せて！

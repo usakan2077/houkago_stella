@@ -4,7 +4,7 @@
 
 # chapter6_start
 
-@scene school_gate_summer_evening fade
+@scene commute_road_summer fade
 @bgm sunday_afternoon.mp3
 @se crowd_distant.mp3
 @wait 800
@@ -510,7 +510,7 @@ sakura_sports: じゃあね。また月曜日。
 
 > 商店街を抜けようとして、足が止まった。
 
-@scene street_plaza fade
+@scene street_plaza_summer fade
 @wait 500
 
 > 広場の端に、ピアノがある。
@@ -1304,7 +1304,7 @@ mahiru: 疲れてないときの顔。
 
 # chapter6_end
 
-@scene school_gate_summer_evening fade
+@scene commute_road_summer_evening fade
 @bgm stop
 @wait 500
 

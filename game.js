@@ -19,10 +19,11 @@ class VNEngine {
 
     // タイマー
     this.typewriterTimer = null;
-    this.autoTimer       = null;
-    this.skipTimer       = null;
-    this._waitTimer      = null;   // @wait コマンドの setTimeout 参照   // スキップ時の次行進行タイマー（追跡してキャンセル可能に）
-    this._stillLockUntil = 0;      // スチル表示後の最低表示ロック解除時刻
+    this.autoTimer          = null;
+    this.skipTimer          = null;
+    this._waitTimer         = null;   // @wait コマンドの setTimeout 参照
+    this._stillHideWaitTimer = null;  // @still_hide の最低表示時間待機タイマー
+    this._stillLockUntil    = 0;      // スチル表示後の最低表示ロック解除時刻
 
     // 現在表示中のテキスト
     this.currentText = '';
@@ -567,6 +568,7 @@ class VNEngine {
       return;
     }
     this._stopAllSE();
+    this._stopTypewriter(); // 全タイマー（_stillHideWaitTimer含む）をキャンセル
     this.currentLabel = label;
     this.currentIndex = 0;
     this._executeNext();
@@ -642,10 +644,10 @@ class VNEngine {
       case 'still_hide': {
         const remaining = this._stillLockUntil - Date.now();
         if (remaining > 0) {
-          // 最低表示時間が残っている → 解除まで待機（skipTimerで管理）
-          clearTimeout(this.skipTimer);
-          this.skipTimer = setTimeout(() => {
-            this.skipTimer = null;
+          // 最低表示時間が残っている → 解除まで待機（専用タイマーで管理）
+          clearTimeout(this._stillHideWaitTimer);
+          this._stillHideWaitTimer = setTimeout(() => {
+            this._stillHideWaitTimer = null;
             this._hideStill(cmd.effect);
             this._executeNext();
           }, remaining);
@@ -1166,6 +1168,10 @@ class VNEngine {
     if (this._waitTimer) {
       clearTimeout(this._waitTimer);
       this._waitTimer = null;
+    }
+    if (this._stillHideWaitTimer) {
+      clearTimeout(this._stillHideWaitTimer);
+      this._stillHideWaitTimer = null;
     }
   }
 

@@ -140,7 +140,7 @@ sakura: クラスメイトだから当然でしょ！
 
 # chapter8_festival_open
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm festival_rain.mp3
 @wait 800
 
@@ -246,7 +246,7 @@ mahiru: うん、そうだよね
 
 # chapter8_sakura_cafe
 
-@scene classroom_cafe fade
+@scene classroom_cafe_rainy fade
 @bgm festival_rain.mp3
 @wait 800
 
@@ -453,7 +453,7 @@ sakura: これくらい全然！
 
 # chapter8_music_room
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm stop
 @se piano_distant.mp3
 @wait 700
@@ -554,7 +554,7 @@ kotoha: ただ……消えたいわけじゃない、とは思います
 
 # chapter8_mahiru_reason
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm festival_rain.mp3
 @wait 700
 
@@ -679,7 +679,7 @@ mahiru: じゃあ、また後でね
 
 # chapter8_rain_corridor
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 @se rain_window.mp3
 @wait 800
@@ -789,7 +789,7 @@ player: ……
 @still_hide
 @wait 400
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 @se rain_window.mp3
 @wait 800
@@ -820,7 +820,7 @@ player: ……
 
 # chapter8_sakura_crisis
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 @se rain_window.mp3
 @wait 600
@@ -946,7 +946,7 @@ sakura: いつも一人だし！
 
 # chapter8_kotoha_crisis
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm stop
 @se piano_distant.mp3
 @wait 700
@@ -1059,7 +1059,7 @@ kotoha: ……わたしには、できません
 
 # chapter8_mahiru_missing
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 @wait 700
 
@@ -1158,7 +1158,7 @@ kotoha: ……わたしには、できません
 
 # chapter8_branch
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm mystery_shadow.mp3
 @se rain_window.mp3
 @wait 1000
@@ -1227,7 +1227,7 @@ kotoha: ……わたしには、できません
 
 # bad_end_common
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm mystery_shadow.mp3
 @wait 1000
 

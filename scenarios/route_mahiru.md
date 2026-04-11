@@ -964,7 +964,7 @@ player: 間に合わないのが、嫌だった
 
 @wait 600
 
-@expr mahiru sad
+@expr mahiru crying
 
 > 声が、出た。
 
@@ -1071,7 +1071,7 @@ mahiru: ずっとそう思ってた
 
 @wait 600
 
-@show mahiru center sad fade_in
+@show mahiru center crying fade_in
 
 @wait 800
 
@@ -1434,7 +1434,7 @@ mahiru: ありがとう
 @wait 1000
 
 > 言葉は短かった。
-> でも俺には、そのたった三文字が、
+> でも俺には、そのたった五文字が、
 > まひるの何年分かを含んでいる気がした。
 
 @wait 800
@@ -1528,7 +1528,7 @@ mahiru: どんな色になるんだろう
 
 @choice
 - "明日、一緒に朝日を見よう" -> mahiru_good_end
-- （好感度が足りなければ、ここで踏み出せない） -> mahiru_bad_end
+- "……今は、まだ" -> mahiru_bad_end
 
 
 // ===================================================================

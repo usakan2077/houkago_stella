@@ -20,7 +20,7 @@ const VN_CONFIG = {
       name: '桜咲さくら',
       nameColor: '#ff88aa',
       charColor: 'rgba(255, 140, 170, 0.75)',
-      expressions: ['normal', 'happy', 'excited', 'sad', 'surprised', 'angry', 'shy', 'thinking', 'blank'],
+      expressions: ['normal', 'happy', 'excited', 'sad', 'crying', 'surprised', 'angry', 'shy', 'thinking', 'blank'],
     },
     sakura_sports: {
       name: '桜咲さくら',
@@ -40,7 +40,7 @@ const VN_CONFIG = {
       name: '花園ことは',
       nameColor: '#88aaff',
       charColor: 'rgba(100, 140, 240, 0.75)',
-      expressions: ['normal', 'happy', 'sad', 'surprised', 'thinking', 'shy', 'angry'],
+      expressions: ['normal', 'happy', 'sad', 'crying', 'surprised', 'thinking', 'shy', 'angry'],
     },
     kotoha_swimsuit: {
       name: '花園ことは',
@@ -53,7 +53,7 @@ const VN_CONFIG = {
       name: '月夜野まひる',
       nameColor: '#88ddaa',
       charColor: 'rgba(80, 190, 130, 0.75)',
-      expressions: ['normal', 'happy', 'sad', 'surprised', 'thinking', 'shy'],
+      expressions: ['normal', 'happy', 'sad', 'crying', 'surprised', 'thinking', 'shy'],
     },
     mahiru_sports: {
       name: '月夜野まひる',
@@ -80,6 +80,7 @@ const VN_CONFIG = {
     school_gate_summer_evening:  'linear-gradient(180deg, #ff6010 0%, #ff9030 30%, #ffb850 60%, #e8a040 100%)',
     school_gate_autumn:          'linear-gradient(180deg, #f0a830 0%, #e89028 30%, #d07820 60%, #c06010 100%)',
     school_gate_autumn_evening:  'linear-gradient(180deg, #6030a0 0%, #c05020 30%, #e07830 60%, #d09040 100%)',
+    school_gate_rainy:           'linear-gradient(180deg, #506070 0%, #708090 30%, #90a0a8 60%, #a0b0a0 100%)',
 
     // ── 教室 ──────────────────────────────────────────────
     classroom:             'linear-gradient(180deg, #87CEEB 0%, #e8dcc0 50%, #d0c090 100%)',
@@ -88,18 +89,22 @@ const VN_CONFIG = {
     classroom_rainy:       'linear-gradient(180deg, #6080a0 0%, #8090b0 40%, #a0a8b8 70%, #c0c4c8 100%)',
     classroom_festival_prep: 'linear-gradient(180deg, #87CEEB 0%, #d0c890 40%, #c8c080 70%, #b8b070 100%)',
     classroom_cafe:          'linear-gradient(180deg, #87CEEB 0%, #f0e0a0 40%, #ffe0b0 70%, #f0d090 100%)',
-    // 後方互換 (evening_classroom → classroom_evening と同じ画像)
-    evening_classroom:     'linear-gradient(180deg, #ff7020 0%, #ffa030 30%, #ffd080 60%, #e8c890 100%)',
+    classroom_cafe_rainy:    'linear-gradient(180deg, #6080a0 0%, #8090b0 40%, #d0c0a0 70%, #c0b090 100%)',
 
     // ── 通学路 ────────────────────────────────────────────
-    commute_road:          'linear-gradient(180deg, #a8c8e0 0%, #c0d4e0 20%, #d0ccc0 45%, #b8b4a8 65%, #888078 85%, #706860 100%)',
+    commute_road_spring_morning: 'linear-gradient(180deg, #a8c8e0 0%, #c0d4e0 20%, #d0ccc0 45%, #b8b4a8 65%, #888078 85%, #706860 100%)',
+    commute_road_spring:         'linear-gradient(180deg, #87CEEB 0%, #b0d0e0 30%, #d0d8d0 60%, #c0c8b8 100%)',
+    commute_road_spring_evening: 'linear-gradient(180deg, #ff6020 0%, #ff9040 30%, #ffb860 60%, #e8a050 100%)',
     commute_road_summer:         'linear-gradient(180deg, #1e90ff 0%, #87CEEB 30%, #c8e890 60%, #90c850 100%)',
+    commute_road_summer_evening: 'linear-gradient(180deg, #ff5010 0%, #ff8030 30%, #ffa050 60%, #e09040 100%)',
     commute_road_autumn_evening: 'linear-gradient(180deg, #c05020 0%, #e08030 30%, #f0a840 60%, #c89050 100%)',
+    commute_road_winter:         'linear-gradient(180deg, #a0b8d0 0%, #b8cce0 30%, #d0e0f0 60%, #e8f0f8 100%)',
+    commute_road_winter_evening: 'linear-gradient(180deg, #804060 0%, #a06080 30%, #c09090 60%, #d0b0a8 100%)',
 
     // ── 廊下 ──────────────────────────────────────────────
     corridor:              'linear-gradient(180deg, #d8d0b8 0%, #c0b8a0 50%, #b0a888 100%)',
     corridor_evening:      'linear-gradient(180deg, #c06020 0%, #d08040 30%, #e0a060 60%, #c89060 100%)',
-    corridor_festival:     'linear-gradient(180deg, #d8d0b8 0%, #f0e0b0 40%, #ffe8b8 70%, #f0d8a0 100%)',
+    corridor_festival_rainy:     'linear-gradient(180deg, #d8d0b8 0%, #f0e0b0 40%, #ffe8b8 70%, #f0d8a0 100%)',
 
     // ── 屋上 ──────────────────────────────────────────────
     rooftop:               'linear-gradient(180deg, #4a90e2 0%, #87CEEB 50%, #c0e890 80%, #70aa50 100%)',
@@ -107,8 +112,6 @@ const VN_CONFIG = {
     rooftop_night:         'linear-gradient(180deg, #0a0820 0%, #1a1040 30%, #2a1a50 60%, #1a1030 100%)',
     rooftop_predawn:       'linear-gradient(180deg, #080418 0%, #180830 30%, #280c48 60%, #180828 100%)',
     rooftop_dawn:          'linear-gradient(180deg, #1a0838 0%, #6020a0 20%, #d04080 50%, #ff8040 80%, #ffc060 100%)',
-    // 後方互換 (night_rooftop → rooftop_night と同じ画像 / Ch.1で使用)
-    night_rooftop:         'linear-gradient(180deg, #0a0820 0%, #1a1040 30%, #2a1a50 60%, #1a1030 100%)',
 
     // ── 図書室 ────────────────────────────────────────────
     library:               'linear-gradient(180deg, #6b5030 0%, #8b6840 30%, #c09060 70%, #d8a870 100%)',
@@ -145,7 +148,7 @@ const VN_CONFIG = {
 
     // ── 屋外・市街 ────────────────────────────────────────
     gymnasium_back:    'linear-gradient(180deg, #909090 0%, #a0a0a0 30%, #c0c0b8 60%, #a8a89a 100%)',
-    street_plaza:      'linear-gradient(180deg, #87CEEB 0%, #c8d4d8 30%, #d0ccc0 60%, #c8c4b8 100%)',
+    street_plaza_summer:       'linear-gradient(180deg, #87CEEB 0%, #c8d4d8 30%, #d0ccc0 60%, #c8c4b8 100%)',
     riverbank_evening: 'linear-gradient(180deg, #ff8040 0%, #ffb060 30%, #ffd090 60%, #c8e0b8 100%)',
 
     // ── プール ────────────────────────────────────────────
