@@ -321,7 +321,7 @@ sakura: ずるい！
 
 > その事実が、なぜか少しだけ気になった。
 
-@se click.mp3
+@se camera_film_shutter.mp3
 @wait 300
 
 player: ……今の音
@@ -467,7 +467,7 @@ player: なんだ急に
 mahiru: なんとなく
 mahiru: 記録したくなった
 
-@se click.mp3
+@se camera_film_shutter.mp3
 
 > また、シャッター音がした。
 
@@ -899,7 +899,7 @@ kotoha: ……また今度
 
 mahiru: ……
 
-@se click.mp3
+@se camera_film_shutter.mp3
 @wait 500
 
 player: また撮ってたのか
@@ -1030,7 +1030,7 @@ player: わかった
 
 mahiru: じゃあ、また明日
 
-@se click.mp3
+@se camera_film_shutter.mp3
 
 mahiru: ……もう一枚だけ
 
