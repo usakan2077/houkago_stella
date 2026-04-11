@@ -1556,7 +1556,7 @@ player: 行けるのは知ってる
 
 @wait 600
 
-@expr sakura sad
+@expr sakura crying
 
 > でも。
 
@@ -1668,7 +1668,7 @@ sakura: どうしたらいいのかわかんないの
 @still_hide
 @wait 300
 
-@show sakura center sad fade_in
+@show sakura center crying fade_in
 
 @wait 400
 

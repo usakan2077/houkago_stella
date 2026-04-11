@@ -964,7 +964,7 @@ player: 間に合わないのが、嫌だった
 
 @wait 600
 
-@expr mahiru sad
+@expr mahiru crying
 
 > 声が、出た。
 
@@ -1071,7 +1071,7 @@ mahiru: ずっとそう思ってた
 
 @wait 600
 
-@show mahiru center sad fade_in
+@show mahiru center crying fade_in
 
 @wait 800
 
