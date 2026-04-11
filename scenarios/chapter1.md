@@ -93,7 +93,7 @@ player: ……最悪な朝だな
 @bgm stop
 @wait 500
 
-@scene commute_road fade
+@scene commute_road_spring_morning fade
 @bgm spring_breeze.mp3
 @se city_morning.mp3
 @wait 1000

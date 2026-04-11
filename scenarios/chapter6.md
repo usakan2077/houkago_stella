@@ -510,7 +510,7 @@ sakura_sports: じゃあね。また月曜日。
 
 > 商店街を抜けようとして、足が止まった。
 
-@scene street_plaza fade
+@scene street_plaza_summer fade
 @wait 500
 
 > 広場の端に、ピアノがある。
