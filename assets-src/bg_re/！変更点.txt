@@ -43,3 +43,6 @@ commute_road_sprring
 
 protagonist_room_*
   → 本のタイトルを改善。これ以上は画像編集が必要かと。
+
+school_corridor_nightmare
+  →残っていた柵を削除・クラスプレート修正
