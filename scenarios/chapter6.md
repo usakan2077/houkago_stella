@@ -647,7 +647,7 @@ kotoha: 帰ります。
 
 @wait 600
 
-player: 弾けないんですか？
+player: ……弾けないのか？
 
 @wait 500
 
@@ -661,11 +661,11 @@ kotoha: ……弾けないんじゃなくて。
 
 @wait 700
 
-player: ……続き、聞かなくていいですか。
+player: ……続き、言いたくなければいい。
 
 @wait 400
 
-@expr kotoha surprised
+@expr kotoha thinking
 kotoha: ……え。
 
 player: 言いかけて止まるときは、だいたい続きがある。でも言いたくないときもある。
@@ -681,7 +681,7 @@ kotoha: ……そうですね。
 
 @wait 500
 
-player: 聴くのは好きですか。
+player: 聴くのは好きか。
 
 @wait 400
 
@@ -717,7 +717,7 @@ player: ……そうか。
 
 kotoha: ……最近も、ここで、誰かが弾いていて。
 
-player: 聴きましたか。
+player: 聴いたか。
 
 @wait 400
 
