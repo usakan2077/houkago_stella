@@ -95,7 +95,7 @@ player: （今日はどこへ行こうか……）
 
 @wait 600
 
-@show sakura_sports center excited fade_in
+@show sakura_sports center serious fade_in
 @wait 400
 
 > コートの中、さくらが動いている。

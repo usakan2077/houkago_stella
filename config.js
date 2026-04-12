@@ -27,7 +27,7 @@ const VN_CONFIG = {
       nameColor: '#ff88aa',
       charColor: 'rgba(255, 140, 170, 0.75)',
       // バドミントン部スポーツウェア衣装。画像パス: assets/images/chars/sakura_sports/{expr}.png
-      expressions: ['normal', 'happy', 'excited', 'shy'],
+      expressions: ['normal', 'happy', 'excited', 'shy', 'serious', 'thinking'],
     },
     sakura_swimsuit: {
       name: '桜咲さくら',
