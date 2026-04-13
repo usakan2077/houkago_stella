@@ -46,3 +46,7 @@ protagonist_room_*
 
 school_corridor_nightmare
   →残っていた柵を削除・クラスプレート修正
+
+staircase_*
+  → 構造が破綻していたのを修正。
+    →正直まだ微妙だけど…一応粘ってみてはいる
