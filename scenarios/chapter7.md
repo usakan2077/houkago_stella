@@ -1078,9 +1078,24 @@ mahiru: ……うん
 
 > そう言って、
 > まひるは階段を上がった。
+> 先に行く、という感じだった。
 
 @hide mahiru fade_out
 @wait 500
+
+> 廊下を戻ると、さくらとことはがちょうど片付けを終えたところだった。
+
+@show sakura center happy fade_in
+@show kotoha right normal fade_in
+@wait 400
+
+sakura: あ、勇くん！ 屋上行かない？ まひるちゃんもそっち行ったと思うんだけど
+
+player: ちょうどそう思ってた
+
+@hide sakura fade_out
+@hide kotoha fade_out
+@wait 300
 
 @jump chapter7_rooftop
 
