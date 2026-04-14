@@ -890,6 +890,20 @@ kotoha: ……そうですか
 
 # chapter7_kotoha_resume
 
+player: 急がなくていい。
+
+@expr kotoha normal
+@wait 400
+
+kotoha: ……はい。
+
+@wait 500
+
+> それだけだった。
+> でも、それで十分な気がした。
+
+@wait 600
+
 @hide kotoha fade_out
 @wait 500
 
