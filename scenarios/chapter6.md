@@ -633,21 +633,15 @@ player: ……制服なんだな。
 @wait 300
 
 @expr kotoha thinking
-kotoha: ……夏休みでも、特に理由がなければ制服にしています。
-kotoha: 私服を選ぶのが、あまり得意じゃないので。
+kotoha: ……午前中、学校に寄ったので。
+kotoha: 図書室を使うのに学生証が必要で。
 
 @wait 400
 
-player: そういうものか。
-
-kotoha: ……桐島くんは私服ですね。
-
-player: 夏休みだから。
-
-@wait 300
+player: そのまま来たのか。
 
 @expr kotoha normal
-kotoha: ……そうですね。
+kotoha: はい。着替えに戻るのも面倒だったので。
 
 @wait 500
 
