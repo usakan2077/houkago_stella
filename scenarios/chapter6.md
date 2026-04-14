@@ -6,7 +6,7 @@
 
 @scene commute_road_summer fade
 @bgm sunday_afternoon.mp3
-@se city_morning.mp3
+@se semi.mp3
 @wait 800
 
 > 八月。夏休みの中頃だった。
