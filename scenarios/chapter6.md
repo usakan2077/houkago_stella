@@ -1139,7 +1139,7 @@ player: そうみたい。
 
 @wait 500
 
-@still evening_walk_two
+@still evening_walk_private
 @wait 800
 
 > しばらく、言葉はなかった。

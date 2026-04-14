@@ -203,6 +203,7 @@ const VN_CONFIG = {
     { key: 'kotoha_street_piano',       label: 'ことは・街角のピアノ'            },
     { key: 'mahiru_riverbank',          label: 'まひる・兄の場所'                },
     { key: 'evening_walk_two',          label: '二人の夕暮れ散歩'                },
+    { key: 'evening_walk_private',      label: '二人の夕暮れ散歩（夏）'           },
     // Ch.6 プール
     { key: 'pool_sakura_kotoha',        label: 'さくらとことは・水面の午後'       },
     { key: 'pool_mahiru_window',        label: 'まひる・窓越しの水面'            },
