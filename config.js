@@ -62,6 +62,13 @@ const VN_CONFIG = {
       // 体操服衣装。画像パス: assets/images/chars/mahiru_sports/{expr}.png
       expressions: ['normal', 'happy'],
     },
+    mahiru_private: {
+      name: '月夜野まひる',
+      nameColor: '#88ddaa',
+      charColor: 'rgba(80, 190, 130, 0.75)',
+      // 私服衣装。画像パス: assets/images/chars/mahiru_private/{expr}.png
+      expressions: ['normal', 'happy', 'sad', 'surprised', 'thinking'],
+    },
   },
 
   // ===========================================================

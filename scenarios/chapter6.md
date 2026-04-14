@@ -833,7 +833,7 @@ kotoha: では。
 
 @wait 500
 
-@show mahiru center normal fade_in
+@show mahiru_private center normal fade_in
 @wait 500
 
 > まひるが、カメラを向けていた。
@@ -894,7 +894,7 @@ player: （何を撮っているんだろう……）
 
 @wait 500
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: ……勇くん。
 
 player: 邪魔した？
@@ -914,7 +914,7 @@ mahiru: ううん。
 
 @wait 700
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ここ、昔よく来てたんだ。
 
 @wait 500
@@ -923,7 +923,7 @@ player: 一人で？
 
 @wait 600
 
-@expr mahiru sad
+@expr mahiru_private sad
 mahiru: ……ひとりじゃなかった。
 
 @wait 700
@@ -944,7 +944,7 @@ player: 写真、撮らないの？
 
 @wait 400
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: さっき、撮ろうとして——やめた。
 
 player: なんで。
@@ -966,7 +966,7 @@ player: じゃあ、撮らないほうがいいじゃないか。
 
 @wait 400
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……でも、撮らないと消えるから。
 
 @wait 500
@@ -988,14 +988,14 @@ player: 見ていいなら。
 
 @wait 500
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: ここで撮ったやつだよ。この場所、好きなんだ。
 
 player: なんで。
 
 @wait 600
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……理由は、あるんだけど。
 
 @wait 700
@@ -1018,7 +1018,7 @@ mahiru: ……理由は、あるんだけど。
 
 player: 何を撮ったの。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: 川。
 mahiru: あと、空と、風。
 
@@ -1033,7 +1033,7 @@ mahiru: 草が揺れてるとこに、風が写る。
 
 @wait 600
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: ……勇くんも、撮っていい？
 
 player: 俺？
@@ -1048,7 +1048,7 @@ player: ……好きにしていいけど。
 
 @wait 500
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ありがとう。
 
 @wait 500
@@ -1059,7 +1059,7 @@ mahiru: 川の隣に座ってる人の写真。
 
 player: そのまんまじゃないか。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: そのまんまのほうが、いいの。
 
 @wait 600
@@ -1078,7 +1078,7 @@ player: （ここに、誰かいたんだ——）
 
 @wait 600
 
-@hide mahiru fade_out
+@hide mahiru_private fade_out
 @wait 500
 
 @jump chapter6_evening_walk
@@ -1101,7 +1101,7 @@ player: （ここに、誰かいたんだ——）
 
 @wait 500
 
-@expr mahiru surprised
+@expr mahiru_private surprised
 
 player: まひる。
 
@@ -1113,7 +1113,7 @@ mahiru: ……あ。勇くん。
 
 @wait 400
 
-@hide mahiru fade_out
+@hide mahiru_private fade_out
 
 @jump chapter6_evening_walk
 
@@ -1128,7 +1128,7 @@ mahiru: ……あ。勇くん。
 > 日が傾いていた。
 > 橙色が、道の先まで伸びている。
 
-@show mahiru right normal fade_in
+@show mahiru_private right normal fade_in
 @wait 400
 
 > 帰り道、まひると並んで歩いていた。
@@ -1139,7 +1139,7 @@ player: そうみたい。
 
 @wait 500
 
-@still mahiru_riverbank
+@still evening_walk_two
 @wait 800
 
 > しばらく、言葉はなかった。
@@ -1156,7 +1156,7 @@ player: そうみたい。
 
 @wait 600
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: 勇くんって。
 
 @wait 400
@@ -1167,7 +1167,7 @@ mahiru: 以前より、人の話を聞く顔になった気がする。
 
 player: ……そうか？
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: うん。なんか、ちゃんと聴いてる感じがする。
 
 @wait 600
@@ -1182,7 +1182,7 @@ player: まひるは？
 
 @wait 400
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……まひるも、最近ちょっと。
 
 @wait 600
@@ -1193,7 +1193,7 @@ mahiru: 誰かに話を聞いてもらえると、楽になるってわかって
 
 player: 心配してくれてるのか。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: うーん。心配、というか。
 
 @wait 400
@@ -1212,7 +1212,7 @@ mahiru: 違う？
 
 player: ……否定できない。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: ふふ。正直。
 
 @wait 600
@@ -1232,14 +1232,14 @@ player: 体育館。それから商店街。それから河川敷。
 
 @wait 400
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……どれも、ひとりで？
 
 player: さくらとことはには会った。
 
 @wait 500
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: そっか。
 
 @wait 500
@@ -1254,7 +1254,7 @@ mahiru: 三人に会ったんだ。
 
 player: たまたまだけど。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: たまたまって、おもしろいよね。
 mahiru: 会おうとして会うのと、たまたま会うのは、同じ「会う」なのに、違う感じがする。
 
@@ -1262,7 +1262,7 @@ player: どう違うんだ。
 
 @wait 400
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……たまたまのほうが、素の顔を見られる気がする。
 
 @wait 600
@@ -1282,7 +1282,7 @@ mahiru: ふふ。勇くんも、今日、少し素の顔してた。
 
 player: どんな顔。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: 疲れてないときの顔。
 
 @wait 500
@@ -1292,7 +1292,7 @@ mahiru: 疲れてないときの顔。
 
 @wait 600
 
-@hide mahiru fade_out
+@hide mahiru_private fade_out
 @wait 600
 
 @jump chapter6_end
