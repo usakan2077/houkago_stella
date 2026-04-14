@@ -34,6 +34,7 @@ protagonist_room_
 
 classroom_cafe_rainy
   → 窓の外の風景を修正
+    →全端的ににじんでる感じだったので再修正
 
 commute_road_autumn
   → ウォーターマーク削除
