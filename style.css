@@ -571,7 +571,7 @@ body {
 }
 #char-name {
   font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: .12em;
   color: #ff99bb;  /* キャラ色はJSで上書き */
@@ -589,7 +589,7 @@ body {
 
 #dialog-text {
   font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
-  font-size: 21px;
+  font-size: 26px;
   line-height: 1.85;
   color: #f5eaf0;
   letter-spacing: .06em;
@@ -608,7 +608,7 @@ body {
 /* 締めナレーション（**text**） */
 #dialog-text.narrate-climax {
   text-align: center;
-  font-size: 26px;
+  font-size: 32px;
   color: #ffffff;
   letter-spacing: .18em;
   text-shadow: 0 0 18px rgba(255, 200, 240, 0.5);
