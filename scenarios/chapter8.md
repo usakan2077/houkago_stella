@@ -267,7 +267,7 @@ mahiru: うん、そうだよね
 
 >誰かが、きちんと準備したのがわかる空間だった。
 
-@show sakura center excited fade_in
+@show sakura_apron center excited fade_in
 
 sakura: いらっしゃいませー！
 
@@ -313,7 +313,7 @@ player: 似たようなもんだろ
 > 後輩らしき一年生の女子が、
 > 注文を受けたあとオーダーシートをどこに出せばいいかわからず迷っていた。
 
-@expr sakura normal
+@expr sakura_apron normal
 
 > さくらが素早く気づいて、
 > 小声でフォローしながら笑いかける。
@@ -359,13 +359,13 @@ sakura: ありがとうございます！
 > 俺がたまたまそこにいなければ、
 > 見えなかった間だった。
 
-@expr sakura blank
+@expr sakura_apron blank
 
 sakura: ……
 
 @wait 500
 
-@expr sakura happy
+@expr sakura_apron happy
 
 sakura: ……うん！
 sakura: 楽しいですよ！
@@ -382,7 +382,7 @@ player: ……
 
 @wait 600
 
-@expr sakura excited
+@expr sakura_apron excited
 
 sakura: 勇くん！
 sakura: 注文まだー！？
@@ -414,11 +414,11 @@ player: 今行く
 
 player: ……
 
-@expr sakura surprised
+@expr sakura_apron surprised
 
 sakura: あ、勇くんまだいたの
 
-@expr sakura happy
+@expr sakura_apron happy
 
 sakura: どうどう？
 sakura: あたし働き者でしょ！
@@ -432,7 +432,7 @@ sakura: 後でちょっと休憩したい
 
 player: 無理するなよ
 
-@expr sakura happy
+@expr sakura_apron happy
 
 sakura: 無理じゃないよ！
 sakura: これくらい全然！
@@ -441,7 +441,7 @@ sakura: これくらい全然！
 > いつも一人でやってきた。
 > そういう顔だった。
 
-@hide sakura fade_out
+@hide sakura_apron fade_out
 @wait 500
 
 @jump chapter8_music_room

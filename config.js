@@ -69,6 +69,13 @@ const VN_CONFIG = {
       // 私服衣装。画像パス: assets/images/chars/mahiru_private/{expr}.png
       expressions: ['normal', 'happy', 'sad', 'surprised', 'thinking'],
     },
+    sakura_apron: {
+      name: '桜咲さくら',
+      nameColor: '#ff88aa',
+      charColor: 'rgba(255, 140, 170, 0.75)',
+      // カフェエプロン衣装。画像パス: assets/images/chars/sakura_apron/{expr}.png
+      expressions: ['normal', 'happy', 'excited', 'blank'],
+    },
   },
 
   // ===========================================================
