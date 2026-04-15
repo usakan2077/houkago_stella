@@ -706,7 +706,7 @@ sakura: やった！　ありがとう！
 
 # sakura_ch9_choice
 
-@scene gymnasium_back fade
+@scene commute_road_autumn_evening fade
 @bgm sakura_theme.mp3
 @wait 700
 
@@ -881,7 +881,7 @@ sakura: やった！
 
 > さくらのスマホが震えた。
 
-> テーブルの上で、一度だけ。
+> 机の上で、一度だけ。
 
 @wait 300
 
@@ -1162,10 +1162,6 @@ sakura: お疲れ様！　また明日！
 
 > 膝を抱えて、壁に背を預けて。
 > 頭を少しだけ下げて。
-
-@still sakura_corner_resting
-@wait 1200
-@still_hide
 
 > 誰も見ていないと思っているときの姿だった。
 
