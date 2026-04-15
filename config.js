@@ -163,7 +163,8 @@ const VN_CONFIG = {
     overcast_night:        'linear-gradient(180deg, #2a3040 0%, #363d50 20%, #404855 45%, #353c4a 70%, #282e3a 100%)',
 
     // ── 屋外・市街 ────────────────────────────────────────
-    gymnasium_back:    'linear-gradient(180deg, #909090 0%, #a0a0a0 30%, #c0c0b8 60%, #a8a89a 100%)',
+    gymnasium_back:         'linear-gradient(180deg, #909090 0%, #a0a0a0 30%, #c0c0b8 60%, #a8a89a 100%)',
+    gymnasium_back_school:  'linear-gradient(180deg, #c06020 0%, #d08030 30%, #e0a050 60%, #c89040 100%)',
     street_plaza_summer:       'linear-gradient(180deg, #87CEEB 0%, #c8d4d8 30%, #d0ccc0 60%, #c8c4b8 100%)',
     riverbank_evening: 'linear-gradient(180deg, #ff8040 0%, #ffb060 30%, #ffd090 60%, #c8e0b8 100%)',
 

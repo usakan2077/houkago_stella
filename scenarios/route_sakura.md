@@ -429,7 +429,7 @@ sakura: ……ううん
 
 # sakura_ch9_walk
 
-@scene gymnasium_back fade
+@scene gymnasium_back_school fade
 @bgm evening_piano.mp3
 @wait 700
 
