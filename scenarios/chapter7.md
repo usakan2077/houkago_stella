@@ -1296,6 +1296,13 @@ mahiru: じゃあ、さくらちゃんから
 
 @still rooftop_four_wishes
 @scene rooftop_night instant
+
+sakura: ……すっかり暗くなっちゃったね
+
+mahiru: うん。さっきまで夕焼けだったのに
+
+player: 気づいたら夜だった
+
 sakura: なんで！？
 
 mahiru: いちばん言ってくれそうだから
