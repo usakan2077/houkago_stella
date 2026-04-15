@@ -126,6 +126,7 @@ const VN_CONFIG = {
     rooftop_night:         'linear-gradient(180deg, #0a0820 0%, #1a1040 30%, #2a1a50 60%, #1a1030 100%)',
     rooftop_predawn:       'linear-gradient(180deg, #080418 0%, #180830 30%, #280c48 60%, #180828 100%)',
     rooftop_dawn:          'linear-gradient(180deg, #1a0838 0%, #6020a0 20%, #d04080 50%, #ff8040 80%, #ffc060 100%)',
+    rooftop_rainy:         'linear-gradient(180deg, #404850 0%, #505860 30%, #606870 60%, #505860 100%)',
 
     // ── 図書室 ────────────────────────────────────────────
     library:               'linear-gradient(180deg, #6b5030 0%, #8b6840 30%, #c09060 70%, #d8a870 100%)',
