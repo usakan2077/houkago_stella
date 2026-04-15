@@ -94,6 +94,7 @@ const VN_CONFIG = {
     school_gate_summer_evening:  'linear-gradient(180deg, #ff6010 0%, #ff9030 30%, #ffb850 60%, #e8a040 100%)',
     school_gate_autumn:          'linear-gradient(180deg, #f0a830 0%, #e89028 30%, #d07820 60%, #c06010 100%)',
     school_gate_autumn_evening:  'linear-gradient(180deg, #6030a0 0%, #c05020 30%, #e07830 60%, #d09040 100%)',
+    school_gate_autumn_rainy:    'linear-gradient(180deg, #404850 0%, #506070 30%, #607080 60%, #506070 100%)',
     school_gate_rainy:           'linear-gradient(180deg, #506070 0%, #708090 30%, #90a0a8 60%, #a0b0a0 100%)',
 
     // ── 教室 ──────────────────────────────────────────────

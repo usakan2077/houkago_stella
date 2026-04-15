@@ -10,7 +10,7 @@
 
 # sakura_ch9_start
 
-@scene school_gate_autumn_evening fade
+@scene school_gate_autumn_rainy fade
 @bgm sakura_theme.mp3
 @se footsteps.mp3
 @wait 800
