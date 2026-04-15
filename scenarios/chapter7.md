@@ -1295,6 +1295,7 @@ player: ……
 mahiru: じゃあ、さくらちゃんから
 
 @still rooftop_four_wishes
+@scene rooftop_night instant
 sakura: なんで！？
 
 mahiru: いちばん言ってくれそうだから
