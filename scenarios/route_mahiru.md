@@ -257,7 +257,7 @@ mahiru: ん、ちょっとひとりがよかったの
 > カメラがなかった。
 > 手ぶらで廊下を歩いていた。
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 player: ……カメラは
 
@@ -288,7 +288,7 @@ mahiru: なんか、撮るものが見つからなくて
 
 player: そうか
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: うん
 mahiru: そのうち見つかると思うけど
@@ -303,7 +303,7 @@ mahiru: そのうち見つかると思うけど
 
 @wait 600
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 500
 
 @jump mahiru_ch9_reason
@@ -321,14 +321,14 @@ mahiru: そのうち見つかると思うけど
 > 珍しかった。
 >向こうから言ってくるのは、いつも元気なときだった。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > 校門を出て、しばらく黙って歩いた。
 > まひるは少し俯き加減で、空を見上げるいつもの癖がなかった。
 
 @wait 1000
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: ねえ、勇くん
 
@@ -359,7 +359,7 @@ mahiru: 数えようとすると、あんまりなくて
 
 @wait 1000
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: おかしいかな
 
@@ -383,7 +383,7 @@ player: また増やせばいいだけだろ
 > 言ってから、薄い言葉だと気づいた。
 > でもまひるは少しだけ息をついた。
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: そうだよね
 mahiru: そうなんだけど
@@ -403,7 +403,7 @@ mahiru: 増やす気力も、一緒に減るんだよね
 
 @wait 900
 
-@expr mahiru happy
+@expr mahiru_no_camera happy
 
 mahiru: ごめん、なんか暗いこと言った
 
@@ -449,7 +449,7 @@ player: ……
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: まあ、いっか
 mahiru: また走りたくなったら走ればいいし
@@ -465,7 +465,7 @@ mahiru: また走りたくなったら走ればいいし
 
 @wait 1000
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 500
 
 @bgm stop
@@ -486,7 +486,7 @@ mahiru: また走りたくなったら走ればいいし
 > まひると並んで歩いていると、
 > 自然と歩幅が落ちていた。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > まひるに合わせているつもりだった。
 
@@ -507,7 +507,7 @@ mahiru: また走りたくなったら走ればいいし
 
 @wait 700
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: 勇くんって
 
@@ -517,7 +517,7 @@ mahiru: 昔はもっと先に行く人だった気がする
 
 player: ……そうか？
 
-@expr mahiru happy
+@expr mahiru_no_camera happy
 
 mahiru: うん
 mahiru: あっという間に遠くなる人
@@ -539,7 +539,7 @@ player: ……
 
 @wait 600
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 500
 
 @bgm stop
@@ -904,11 +904,11 @@ player: ……
 > まひるがいた、という事実だけが、
 > 体の力を全部抜いた。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > まひるが振り返った。
 
-@expr mahiru surprised
+@expr mahiru_no_camera surprised
 
 mahiru: ……なんで来たの
 
@@ -930,7 +930,7 @@ player: ……嫌だ
 
 @wait 600
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: 嫌？
 
@@ -964,7 +964,7 @@ player: 間に合わないのが、嫌だった
 
 @wait 600
 
-@expr mahiru crying
+@expr mahiru_no_camera crying
 
 > 声が、出た。
 
@@ -1044,7 +1044,7 @@ mahiru: 誰かに来てもらう資格がないって
 
 @wait 1200
 
-@expr mahiru sad
+@expr mahiru_no_camera sad
 
 mahiru: ずっとそう思ってた
 
@@ -1063,7 +1063,7 @@ mahiru: ずっとそう思ってた
 
 @wait 1500
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 300
 @still mahiru_rooftop_night
 @wait 1200
@@ -1071,7 +1071,7 @@ mahiru: ずっとそう思ってた
 
 @wait 600
 
-@show mahiru center crying fade_in
+@show mahiru_no_camera center crying fade_in
 
 @wait 800
 
@@ -1112,7 +1112,7 @@ mahiru: ずっとそう思ってた
 
 @wait 800
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > 夜の虫の声が聞こえていた。
 
@@ -1145,7 +1145,7 @@ mahiru: ずっとそう思ってた
 
 @wait 1000
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: ……お兄ちゃんの部屋に行ったら
 
@@ -1168,7 +1168,7 @@ mahiru: ……それだけ書いてあった
 @wait 1200
 @still_hide
 
-@show mahiru center thinking fade_in
+@show mahiru_no_camera center thinking fade_in
 
 > 星が出ていないのに、
 > まひるはずっと空を見ていた。
@@ -1249,7 +1249,7 @@ player: 怖かった
 
 @wait 1000
 
-@expr mahiru surprised
+@expr mahiru_no_camera surprised
 
 mahiru: ……勇くんも怖いんだ
 
@@ -1275,7 +1275,7 @@ player: 怖かった
 
 @wait 1000
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: 強いと思ってた
 
@@ -1285,7 +1285,7 @@ player: 走れないまま三年いたやつが強いわけない
 
 @wait 1000
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 > まひるは少しだけ、俺を見た。
 
@@ -1315,7 +1315,7 @@ player: お前が消えるほうが、ずっと怖かった
 @bgm night_melody.mp3
 @wait 500
 
-@expr mahiru sad
+@expr mahiru_no_camera sad
 
 mahiru: ……ごめん
 
@@ -1384,7 +1384,7 @@ player: 屋上で空の写真を撮ってたとき
 
 @wait 1000
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 > まひるは少し黙った。
 
@@ -1451,7 +1451,7 @@ player: 三年ぶりに、ちゃんと走れた
 
 @wait 1000
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 > まひるは俺を見た。
 > それからゆっくり、小さく笑った。
@@ -1497,7 +1497,7 @@ mahiru: よかったじゃん
 > 星は出ていなかった。
 > それでもまひるは、空を見ていた。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 @wait 800
 
@@ -1546,7 +1546,7 @@ player: 明日、一緒に朝日を見よう
 
 @wait 1200
 
-@expr mahiru surprised
+@expr mahiru_no_camera surprised
 
 mahiru: ……
 
@@ -1562,7 +1562,7 @@ player: ここで
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: ……うん
 
@@ -1612,13 +1612,13 @@ player: 整理されたか
 
 @wait 600
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: ……少し
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: まだ全部じゃないけど
 
@@ -1676,7 +1676,7 @@ player: そうじゃないかな
 
 @wait 800
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: 二つ、両方
 
@@ -1717,7 +1717,7 @@ mahiru: それなら少しだけ楽
 
 @wait 1000
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > まひるは立ち上がっていた。
 > 柵に手をかけて、遠くを見ていた。
@@ -1751,7 +1751,7 @@ mahiru: じわじわくるね
 
 @wait 600
 
-@expr mahiru happy
+@expr mahiru_no_camera happy
 
 mahiru: 書いていい？
 
@@ -1761,7 +1761,7 @@ player: 書けよ
 
 > まひるは書いた。
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 400
 
 @scene rooftop_dawn fade
@@ -1772,7 +1772,7 @@ player: 書けよ
 @wait 1500
 @still_hide
 
-@show mahiru center happy fade_in
+@show mahiru_no_camera center happy fade_in
 
 > 空が、開いた。
 
@@ -1817,7 +1817,7 @@ mahiru: これだけで、全部入ってる気がする
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: お兄ちゃん
 
@@ -1904,7 +1904,7 @@ mahiru: また理由が増えた
 @bgm mahiru_dawn.mp3
 @wait 800
 
-@expr mahiru happy
+@expr mahiru_no_camera happy
 
 mahiru: 勇くん
 
@@ -1936,7 +1936,7 @@ mahiru: 少しずつ、話せるようになりたい
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: まず、勇くんに話せた
 mahiru: それで充分かな、今日は
