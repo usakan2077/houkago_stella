@@ -504,12 +504,17 @@ sakura: 入り口側に向けてもらった方がいいかな！
 @bgm stop
 @wait 600
 
-@show sakura right normal fade_in
-
 > 教室の隅。
 
 > さくらが壁にもたれて
 > 座り込んでいた。
+
+@still sakura_corner_resting
+@wait 1500
+@still_hide
+@wait 300
+
+@show sakura right normal fade_in
 
 > さっきまでの笑顔はない。
 
