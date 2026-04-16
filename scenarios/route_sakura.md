@@ -1215,6 +1215,8 @@ player: ……
 
 @wait 800
 
+@show sakura center normal fade_in
+
 sakura: ……あたし、今日おかしい
 
 @wait 600
