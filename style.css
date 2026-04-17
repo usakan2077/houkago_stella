@@ -555,6 +555,7 @@ body {
   min-width: 140px;
   overflow: hidden;
   backdrop-filter: blur(8px);
+  transition: background 0.7s ease;
 }
 /* キャラカラーの上アクセントライン */
 #char-name-box::before {
@@ -585,6 +586,7 @@ body {
   min-height: 128px;
   position: relative;
   backdrop-filter: blur(8px);
+  transition: background 0.7s ease, box-shadow 0.7s ease;
 }
 
 #dialog-text {

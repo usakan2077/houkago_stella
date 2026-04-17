@@ -5,6 +5,103 @@
 
 
 // ===================================================================
+//  幕間「桜咲さくらの独白」
+// ===================================================================
+
+# sakura_interlude
+
+@window_color sakura
+@scene classroom_night fade
+@bgm night_melody.mp3
+@wait 1200
+
+> ——笑顔は、夜には脱げる。
+
+@wait 1000
+
+sakura: 疲れた、って言えたら楽なのかな。
+
+@wait 1000
+
+sakura: 別に、バドミントンが嫌いなわけじゃない。
+sakura: クラスのみんなが嫌いなわけでも、ない。
+
+@wait 800
+
+sakura: ただ。
+
+@wait 1200
+
+sakura: 誰かと一緒にいるとき、ずっと何かを演じてる気がする。
+sakura: 笑いやすい空気を作るための笑顔。
+sakura: 誰かが暗くなったときに場を持たせる言葉。
+sakura: 気まずくならないように先読みして、先に動く。
+
+@wait 1000
+
+sakura: それが普通だと思ってた。
+sakura: ずっと、そういうものだと思ってた。
+
+@wait 1200
+
+sakura: ……でも、たまに。
+
+@wait 1000
+
+sakura: すごく、ひとりになりたくなる。
+
+@wait 1500
+
+sakura: お父さんが倒れてから、ちょっとわかんなくなってる。
+
+@wait 800
+
+sakura: 笑ってれば大丈夫、って信じてたのに。
+sakura: 笑ってたのに、ぜんぜん大丈夫じゃなかった。
+
+@wait 1000
+
+sakura: じゃあ、笑顔って何だったんだろう。
+
+@wait 1200
+
+sakura: ……勇くんが、変なんだよね。
+
+@wait 800
+
+sakura: 変っていうか。
+sakura: あの人、笑わせようとしてこない。
+sakura: 場を明るくしようとも、してこない。
+
+@wait 1000
+
+sakura: ただ、見てる。
+sakura: あたしが笑ってても、笑ってなくても、同じ顔で見てる。
+
+@wait 1200
+
+sakura: それが。
+
+@wait 800
+
+sakura: なんか、怖いんだよね。
+sakura: 見透かされてる気がして。
+
+@wait 1000
+
+sakura: ……でも、怖いだけじゃない、のかもしれない。
+
+@wait 1500
+
+@bgm stop
+@wait 800
+
+@window_color reset
+@wait 700
+@jump sakura_ch9_start
+
+
+// ===================================================================
 //  Chapter 9s「誰もいない部屋」
 // ===================================================================
 
@@ -1472,9 +1569,8 @@ sakura: すきだよ、勇くんの
 
 # sakura_ch11_hospital
 
-@scene overcast_sky fade
+@scene commute_road_autumn fade
 @bgm stop
-@se rain_window.mp3
 @wait 1200
 
 > 雨上がりだった。
@@ -1499,12 +1595,6 @@ sakura: すきだよ、勇くんの
 > さくらだった。
 > 鞄を肩にかけて、少しだけ急ぎ足で。
 > 前を向いて、ちゃんと歩いていた。
-
-> いつもの制服じゃなかった。
-> 薄いジャケットに、パンツ。
-> 大人みたいな格好だった。
-
-> 一人で、父を迎えに来るための格好だった。
 
 @wait 600
 
@@ -1571,7 +1661,7 @@ sakura: なんでいてくれるの
 @hide sakura fade_out
 @wait 300
 
-@still sakura_crying_gym
+@still sakura_cant_smile
 @wait 1000
 
 > さくらの声が、詰まった。
@@ -1739,6 +1829,7 @@ player: 来るつもりだったから、ここにいる
 
 @bgm stop
 @still_hide
+@hide sakura fade_out
 
 @jump sakura_ch12_start
 
@@ -1749,7 +1840,7 @@ player: 来るつもりだったから、ここにいる
 
 # sakura_ch12_start
 
-@scene overcast_sky fade
+@scene commute_road_autumn fade
 @bgm sakura_theme.mp3
 @wait 1000
 

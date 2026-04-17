@@ -520,6 +520,40 @@ class VNEngine {
     this._gotoLabel(VN_CONFIG.startLabel);
   }
 
+  _setWindowColor(target) {
+    const COLORS = {
+      sakura: {
+        textBox:  'rgba(20, 4, 14, 0.85)',
+        nameBox:  'rgba(24, 5, 16, 0.85)',
+        shadow:   '0 0 24px 0 rgba(255, 136, 170, 0.10) inset',
+      },
+      kotoha: {
+        textBox:  'rgba(4, 8, 24, 0.85)',
+        nameBox:  'rgba(5, 10, 28, 0.85)',
+        shadow:   '0 0 24px 0 rgba(136, 170, 255, 0.10) inset',
+      },
+      mahiru: {
+        textBox:  'rgba(4, 18, 12, 0.85)',
+        nameBox:  'rgba(5, 22, 14, 0.85)',
+        shadow:   '0 0 24px 0 rgba(136, 221, 170, 0.10) inset',
+      },
+      reset: {
+        textBox:  'rgba(8, 3, 20, 0.8)',
+        nameBox:  'rgba(12, 4, 24, 0.8)',
+        shadow:   '',
+      },
+    };
+    const c = COLORS[target] || COLORS.reset;
+    const textBox = document.getElementById('text-box');
+    const nameBox = document.getElementById('char-name-box');
+    if (textBox) {
+      textBox.style.background = c.textBox;
+      textBox.style.boxShadow  = c.shadow;
+    }
+    if (nameBox) nameBox.style.background = c.nameBox;
+    this.windowColor = target;
+  }
+
   _resetGameState() {
     this.flags       = {};
     this.textLog     = [];
@@ -557,6 +591,7 @@ class VNEngine {
       el.style.pointerEvents = '';
     });
     this._stopBGM();
+    this._setWindowColor('reset');
   }
 
   // ============================================================
@@ -752,6 +787,11 @@ class VNEngine {
 
       case 'credits':
         this._showCredits(cmd.bgm);
+        break;
+
+      case 'window_color':
+        this._setWindowColor(cmd.target);
+        this._executeNext();
         break;
 
       case 'end':
@@ -1349,9 +1389,10 @@ class VNEngine {
       index:      this.currentIndex - 1, // 現在実行中コマンドの index
       flags:      { ...this.flags },
       charState:  JSON.parse(JSON.stringify(this.charState)),
-      currentBG:  this.currentBG,
-      currentBGM: this.currentBGM,
+      currentBG:    this.currentBG,
+      currentBGM:   this.currentBGM,
       currentStill: this.currentStill || null,
+      windowColor:  this.windowColor || 'reset',
       preview,
       date: new Date().toLocaleString('ja-JP', {
         month: 'short', day: 'numeric',
@@ -1376,6 +1417,7 @@ class VNEngine {
     if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
     if (d.currentBGM) this._playBGM(d.currentBGM);
     if (d.currentStill) this._showStill(d.currentStill, 'instant');
+    this._setWindowColor(d.windowColor || 'reset');
 
     for (const [pos, state] of Object.entries(d.charState || {})) {
       if (state) this._showChar(state.charKey, pos, state.expr, 'instant');

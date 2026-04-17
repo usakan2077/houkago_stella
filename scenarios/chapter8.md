@@ -1253,10 +1253,10 @@ kotoha: ……わたしには、できません
 // ===================================================================
 
 # route_sakura_start
-@jump sakura_ch9_start
+@jump sakura_interlude
 
 # route_kotoha_start
-@jump kotoha_ch9_start
+@jump kotoha_interlude
 
 # route_mahiru_start
-@jump mahiru_ch9_start
+@jump mahiru_interlude
