@@ -5,6 +5,106 @@
 
 
 // ===================================================================
+//  幕間「月夜野まひるの独白」
+// ===================================================================
+
+# mahiru_interlude
+
+@window_color mahiru
+@scene rooftop_evening fade
+@bgm rooftop_wind.mp3
+@wait 1200
+
+> ——理由を、今日も一つ集めた。
+
+@wait 1000
+
+mahiru: 今日の良かったこと、三つ書いた。
+
+@wait 1000
+
+mahiru: 一つ目は、給食のデザートがプリンだったこと。
+mahiru: 二つ目は、帰り道に猫を見たこと。白くて、耳だけ灰色の猫。
+mahiru: 三つ目は……
+
+@wait 1200
+
+mahiru: 空が、きれいだったこと。
+
+@wait 1000
+
+mahiru: お兄ちゃんが死んでから、まひるはずっとこれをやってる。
+mahiru: 毎日、何か一つでも良かったことを見つける。
+mahiru: 一つもない日は、「今日も生きてた」って書く。
+
+@wait 1200
+
+mahiru: お兄ちゃんはね、理由が足りなくなったんだと思う。
+mahiru: 消えていい理由は、いつでも作れる。
+mahiru: でも残る理由は、誰かが「これがある」って決めないといけない。
+
+@wait 1500
+
+mahiru: まひるはそれを、毎日集めてる。
+mahiru: 少しずつ、ためてる。
+
+@wait 1200
+
+mahiru: ……十月が、近い。
+
+@wait 1000
+
+mahiru: 毎年、この時期になると空が変わる気がする。
+mahiru: 気がするだけで、空はたぶん何も変わってないんだけど。
+
+@wait 1000
+
+mahiru: 勇くんと、また話すようになった。
+mahiru: 昔と同じで、昔と全然違う。
+
+@wait 1200
+
+mahiru: 昔の勇くんは、もっと遠くにいた。
+mahiru: 先に走って行く人だった。
+mahiru: まひるが立ち止まっても、振り返らずに行ける人だと思ってた。
+
+@wait 1000
+
+mahiru: でも今は、なんか。
+mahiru: 一緒に歩いてる感じがする。
+
+@wait 1200
+
+mahiru: ……それが、怖いんだよね。
+
+@wait 800
+
+mahiru: 大事な人がいると、失うのが怖くなる。
+mahiru: だから最初から、あんまり大事にしないようにしてた。
+
+@wait 1000
+
+mahiru: でも、もう少し遅かったかもしれない。
+
+@wait 1500
+
+mahiru: 今日の良かったこと、四つ目。
+
+@wait 800
+
+mahiru: 勇くんと、話した。
+
+@wait 2000
+
+@bgm stop
+@wait 800
+
+@window_color reset
+@wait 700
+@jump mahiru_ch9_start
+
+
+// ===================================================================
 //  Chapter 9m「秋の深まり」
 // ===================================================================
 
@@ -236,7 +336,7 @@ mahiru: 今日、いい天気だね
 > 一人だった。
 > いつもはさくらか誰かと一緒なのに。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 @wait 600
 
@@ -257,7 +357,7 @@ mahiru: ん、ちょっとひとりがよかったの
 > カメラがなかった。
 > 手ぶらで廊下を歩いていた。
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 player: ……カメラは
 
@@ -288,7 +388,7 @@ mahiru: なんか、撮るものが見つからなくて
 
 player: そうか
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: うん
 mahiru: そのうち見つかると思うけど
@@ -303,7 +403,7 @@ mahiru: そのうち見つかると思うけど
 
 @wait 600
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 500
 
 @jump mahiru_ch9_reason
@@ -321,14 +421,14 @@ mahiru: そのうち見つかると思うけど
 > 珍しかった。
 >向こうから言ってくるのは、いつも元気なときだった。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > 校門を出て、しばらく黙って歩いた。
 > まひるは少し俯き加減で、空を見上げるいつもの癖がなかった。
 
 @wait 1000
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: ねえ、勇くん
 
@@ -359,7 +459,7 @@ mahiru: 数えようとすると、あんまりなくて
 
 @wait 1000
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: おかしいかな
 
@@ -383,7 +483,7 @@ player: また増やせばいいだけだろ
 > 言ってから、薄い言葉だと気づいた。
 > でもまひるは少しだけ息をついた。
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: そうだよね
 mahiru: そうなんだけど
@@ -403,7 +503,7 @@ mahiru: 増やす気力も、一緒に減るんだよね
 
 @wait 900
 
-@expr mahiru happy
+@expr mahiru_no_camera happy
 
 mahiru: ごめん、なんか暗いこと言った
 
@@ -449,7 +549,7 @@ player: ……
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: まあ、いっか
 mahiru: また走りたくなったら走ればいいし
@@ -465,7 +565,7 @@ mahiru: また走りたくなったら走ればいいし
 
 @wait 1000
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 500
 
 @bgm stop
@@ -486,7 +586,7 @@ mahiru: また走りたくなったら走ればいいし
 > まひると並んで歩いていると、
 > 自然と歩幅が落ちていた。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > まひるに合わせているつもりだった。
 
@@ -507,7 +607,7 @@ mahiru: また走りたくなったら走ればいいし
 
 @wait 700
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: 勇くんって
 
@@ -517,7 +617,7 @@ mahiru: 昔はもっと先に行く人だった気がする
 
 player: ……そうか？
 
-@expr mahiru happy
+@expr mahiru_no_camera happy
 
 mahiru: うん
 mahiru: あっという間に遠くなる人
@@ -539,7 +639,7 @@ player: ……
 
 @wait 600
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 500
 
 @bgm stop
@@ -550,11 +650,11 @@ player: ……
 
 # mahiru_ch9_end
 
-@scene school_gate_autumn_evening fade
+@scene commute_road_autumn_evening fade
 @bgm evening_piano.mp3
 @wait 800
 
-> 校門で別れた。
+> 交差点で別れた。
 
 > まひるは少しだけ振り返って、
 > 「また明日ね」と言った。
@@ -602,13 +702,12 @@ player: ……
 # mahiru_ch10_start
 
 @scene school_exterior_night fade
-@bgm stop
+@bgm piano_resonance.mp3
 @wait 1000
 
 > 命日の前夜。
 
-> 今日の文化祭の片付けが終わって、
-> 俺は校舎を出ようとしていた。
+> 委員会の後、俺は一人で校舎を出ようとしていた。
 
 @wait 600
 
@@ -621,9 +720,6 @@ player: ……
 
 @wait 700
 
-> 体育館の片付けを最後まで手伝って、
-> 俺は一人で廊下を歩いていた。
-
 > みんな帰った後の校舎は静かだ。
 > 昼間の熱が抜けると、石の冷たさだけが残る。
 > 足音だけが、廊下を行ったり来たりしていた。
@@ -631,9 +727,9 @@ player: ……
 @wait 800
 
 > まひるのことを、思い出していた。
-> 今日、一日中どこかで気にしていた。
+> 数日前から、ずっとどこかで気にしていた。
 
-> まひるは文化祭に来ていたが、
+> 文化祭の日のまひるは、
 > どこか輪の外にいるような気がした。
 > 笑っていた。でも少し遠かった。
 
@@ -735,7 +831,9 @@ player: ……
 
 > *（動け）*
 
-@jump mahiru_ch10_run
+@choice
+- "（がむしゃらに、走り出した）" -> mahiru_ch10_run
+- "（ここからじゃ、間に合わない）" -> mahiru_bad_end
 
 
 # mahiru_ch10_run
@@ -904,11 +1002,11 @@ player: ……
 > まひるがいた、という事実だけが、
 > 体の力を全部抜いた。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > まひるが振り返った。
 
-@expr mahiru surprised
+@expr mahiru_no_camera surprised
 
 mahiru: ……なんで来たの
 
@@ -930,7 +1028,7 @@ player: ……嫌だ
 
 @wait 600
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: 嫌？
 
@@ -964,7 +1062,7 @@ player: 間に合わないのが、嫌だった
 
 @wait 600
 
-@expr mahiru sad
+@expr mahiru_no_camera crying
 
 > 声が、出た。
 
@@ -1044,7 +1142,7 @@ mahiru: 誰かに来てもらう資格がないって
 
 @wait 1200
 
-@expr mahiru sad
+@expr mahiru_no_camera sad
 
 mahiru: ずっとそう思ってた
 
@@ -1063,7 +1161,7 @@ mahiru: ずっとそう思ってた
 
 @wait 1500
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 300
 @still mahiru_rooftop_night
 @wait 1200
@@ -1071,7 +1169,7 @@ mahiru: ずっとそう思ってた
 
 @wait 600
 
-@show mahiru center sad fade_in
+@show mahiru_no_camera center crying fade_in
 
 @wait 800
 
@@ -1112,7 +1210,7 @@ mahiru: ずっとそう思ってた
 
 @wait 800
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > 夜の虫の声が聞こえていた。
 
@@ -1145,7 +1243,7 @@ mahiru: ずっとそう思ってた
 
 @wait 1000
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: ……お兄ちゃんの部屋に行ったら
 
@@ -1168,7 +1266,7 @@ mahiru: ……それだけ書いてあった
 @wait 1200
 @still_hide
 
-@show mahiru center thinking fade_in
+@show mahiru_no_camera center thinking fade_in
 
 > 星が出ていないのに、
 > まひるはずっと空を見ていた。
@@ -1249,7 +1347,7 @@ player: 怖かった
 
 @wait 1000
 
-@expr mahiru surprised
+@expr mahiru_no_camera surprised
 
 mahiru: ……勇くんも怖いんだ
 
@@ -1275,7 +1373,7 @@ player: 怖かった
 
 @wait 1000
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: 強いと思ってた
 
@@ -1285,7 +1383,7 @@ player: 走れないまま三年いたやつが強いわけない
 
 @wait 1000
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 > まひるは少しだけ、俺を見た。
 
@@ -1315,7 +1413,7 @@ player: お前が消えるほうが、ずっと怖かった
 @bgm night_melody.mp3
 @wait 500
 
-@expr mahiru sad
+@expr mahiru_no_camera sad
 
 mahiru: ……ごめん
 
@@ -1384,7 +1482,7 @@ player: 屋上で空の写真を撮ってたとき
 
 @wait 1000
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 > まひるは少し黙った。
 
@@ -1434,7 +1532,7 @@ mahiru: ありがとう
 @wait 1000
 
 > 言葉は短かった。
-> でも俺には、そのたった三文字が、
+> でも俺には、そのたった五文字が、
 > まひるの何年分かを含んでいる気がした。
 
 @wait 800
@@ -1451,7 +1549,7 @@ player: 三年ぶりに、ちゃんと走れた
 
 @wait 1000
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 > まひるは俺を見た。
 > それからゆっくり、小さく笑った。
@@ -1472,8 +1570,181 @@ mahiru: よかったじゃん
 
 @wait 1200
 
+@hide mahiru_no_camera fade_out
+@wait 500
+
 @bgm stop
 @wait 400
+
+@jump mahiru_ch11_stars
+
+
+// ===================================================================
+//  Chapter 11m-A「夜が明けるまでの会話」
+// ===================================================================
+
+# mahiru_ch11_stars
+
+@scene rooftop_night fade
+@bgm night_melody.mp3
+@se night_insect.mp3
+@wait 800
+
+> 星が出ていなかった。
+> 雲がほとんどを覆っていた。
+> 黒というより、深い灰色の夜空だった。
+
+@show mahiru_no_camera center normal fade_in
+
+@wait 800
+
+@expr mahiru_no_camera thinking
+
+mahiru: ……お兄ちゃん
+
+mahiru: 星が好きだったんだ
+
+@wait 1000
+
+> まひるはそれだけ言った。
+> 星のない夜空を見上げながら。
+
+@wait 700
+
+player: ……知ってる
+
+@wait 600
+
+@expr mahiru_no_camera normal
+
+mahiru: 覚えてるの？
+
+@wait 600
+
+> 覚えていた。
+> 幼なじみとして、自然に覚えていた。
+
+> まひるの家に遊びに行っていた頃、
+> 兄がいた。
+> 夜になるとたまに庭か屋上で空を見ていた。
+
+> 一度だけ、俺とまひるも一緒に見た。
+> 「あれがオリオン座だ」と兄が言った。
+> 「あっちがカシオペアだ」とも言った。
+
+@wait 700
+
+player: 星座を教えてもらったことがあったから
+
+mahiru: そうか、そんなこともあったっけ
+
+@wait 600
+
+@expr mahiru_no_camera thinking
+
+mahiru: 後で本で調べたら
+mahiru: カシオペア座、全然違う形だったんだよね
+
+@wait 500
+
+> まひるが小さく笑った。
+
+@wait 400
+
+player: 知らなかった
+
+mahiru: 「お兄ちゃん、これカシオペアじゃないよ」って言ったら
+mahiru: 「……これからそういうことにしよう」って
+
+@wait 700
+
+> 声の調子が変わっていた。
+> 兄のことを思い出しているときの、やわらかい声だった。
+
+@wait 600
+
+player: 自慢したかったんだろ
+
+@expr mahiru_no_camera normal
+
+mahiru: たぶんね
+mahiru: 嘘は困るけど
+
+@wait 500
+
+@expr mahiru_no_camera thinking
+
+mahiru: ……でも
+mahiru: あのとき三人で空見てたこと
+
+mahiru: まひるが覚えてるんだから
+mahiru: お兄ちゃんも覚えてたと思う
+
+@wait 1200
+
+> 俺はその横顔を見た。
+
+> まひるの目が少し光っていた。
+> 泣いているんじゃなかった。
+> ただ、潤んでいた。
+
+> 嫌いじゃない記憶を、思い出している顔だった。
+
+@wait 1000
+
+@se wind_rooftop.mp3
+@wait 600
+
+mahiru: 今夜、星出てないね
+
+player: 雲が多いんだろ
+
+mahiru: お兄ちゃんがいたら
+mahiru: なんか理由つけて説明しそう
+
+@wait 700
+
+> まひるはもう一度、小さく笑った。
+
+@wait 800
+
+> 俺は何も言わなかった。
+> 言わなくていいと思った。
+
+> まひるが笑っているなら、
+> それでよかった。
+
+@wait 1000
+
+mahiru: ……ねえ
+
+player: なんだ
+
+mahiru: 夜明けまで、ここにいていい？
+
+@wait 1000
+
+> まひるは俺を見た。
+> 頼むような目だった。
+> でも、遠慮もあった。
+
+> 迷惑をかけることへの遠慮。
+> それでも、ここにいたいという気持ち。
+
+@wait 700
+
+player: ああ
+
+@wait 600
+
+@expr mahiru_no_camera happy
+
+mahiru: ……ありがとう
+
+@wait 1200
+
+@bgm stop
+@wait 600
 
 @jump mahiru_ch12_branch
 
@@ -1497,7 +1768,7 @@ mahiru: よかったじゃん
 > 星は出ていなかった。
 > それでもまひるは、空を見ていた。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 @wait 800
 
@@ -1526,9 +1797,7 @@ mahiru: どんな色になるんだろう
 
 @wait 800
 
-@choice
-- "明日、一緒に朝日を見よう" -> mahiru_good_end
-- （好感度が足りなければ、ここで踏み出せない） -> mahiru_bad_end
+@jump mahiru_good_end
 
 
 // ===================================================================
@@ -1546,7 +1815,7 @@ player: 明日、一緒に朝日を見よう
 
 @wait 1200
 
-@expr mahiru surprised
+@expr mahiru_no_camera surprised
 
 mahiru: ……
 
@@ -1562,7 +1831,7 @@ player: ここで
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: ……うん
 
@@ -1612,13 +1881,13 @@ player: 整理されたか
 
 @wait 600
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: ……少し
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: まだ全部じゃないけど
 
@@ -1676,7 +1945,7 @@ player: そうじゃないかな
 
 @wait 800
 
-@expr mahiru thinking
+@expr mahiru_no_camera thinking
 
 mahiru: 二つ、両方
 
@@ -1704,7 +1973,7 @@ mahiru: それなら少しだけ楽
 # mahiru_good_end_dawn
 
 @scene rooftop_predawn fade
-@bgm stop
+@bgm quiet_piano_distant.mp3
 @se wind_rooftop.mp3
 @wait 1200
 
@@ -1717,7 +1986,7 @@ mahiru: それなら少しだけ楽
 
 @wait 1000
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 > まひるは立ち上がっていた。
 > 柵に手をかけて、遠くを見ていた。
@@ -1751,7 +2020,7 @@ mahiru: じわじわくるね
 
 @wait 600
 
-@expr mahiru happy
+@expr mahiru_no_camera happy
 
 mahiru: 書いていい？
 
@@ -1761,7 +2030,7 @@ player: 書けよ
 
 > まひるは書いた。
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 400
 
 @scene rooftop_dawn fade
@@ -1772,7 +2041,7 @@ player: 書けよ
 @wait 1500
 @still_hide
 
-@show mahiru center happy fade_in
+@show mahiru_no_camera center happy fade_in
 
 > 空が、開いた。
 
@@ -1817,7 +2086,7 @@ mahiru: これだけで、全部入ってる気がする
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: お兄ちゃん
 
@@ -1899,12 +2168,7 @@ mahiru: また理由が増えた
 
 @wait 1500
 
-@bgm stop
-@wait 400
-@bgm mahiru_dawn.mp3
-@wait 800
-
-@expr mahiru happy
+@expr mahiru_no_camera happy
 
 mahiru: 勇くん
 
@@ -1936,7 +2200,7 @@ mahiru: 少しずつ、話せるようになりたい
 
 @wait 800
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: まず、勇くんに話せた
 mahiru: それで充分かな、今日は
@@ -2024,17 +2288,278 @@ mahiru: 今日、学校行ったら渡す
 @wait 1000
 
 @still mahiru_rooftop_friends_photo
-@wait 2500
+@wait 3000
 @still_hide
+
+@wait 800
+
+> 写真の中で、俺たちは笑っていた。
+> まひるが、撮った。
+
+@wait 1000
+
+> 七月から、ずっと持っていた。
+
+@wait 1200
+
+> 渡せなかった時間の分だけ、
+> この一枚は重かった。
+> そしてその重さが、今の軽さになっていた。
+
+@wait 1500
+
+@expr mahiru_no_camera happy
+
+mahiru: ……行こっか
+
+player: ああ
+
+@wait 1200
+
+> 屋上の扉を開けると、
+> 朝の空気が中に流れ込んできた。
+
+> まひるが先に歩き出した。
+> 俺は後ろから、その背中を見ていた。
+
+@wait 1200
+
+> 今日は命日だ。
+> でも今年は、まひるは一人じゃなかった。
+
+@wait 1500
+
+@hide mahiru_no_camera fade_out
+@wait 500
+
+@bgm stop
+@wait 800
+
+@jump mahiru_good_end_school
+
+
+// ===================================================================
+//  Good End 後日談「命日の朝に学校へ行く」
+// ===================================================================
+
+# mahiru_good_end_school
+
+@scene classroom fade
+@bgm daily_life.mp3
+@wait 1200
+
+> 命日の朝。
+
+> まひるは学校に来た。
+
+@wait 800
+
+> 普通に来た。
+> それだけのことが、今年は少し違う意味を持っていた。
+
+@wait 1000
+
+@show sakura left happy fade_in
+@show mahiru center normal fade_in
 
 @wait 600
 
-@bgm stop
+sakura: まひる、おはよー
+
+mahiru: おはよ
+
+@wait 600
+
+> さくらは何も聞かなかった。
+> ただ、いつも通りに笑った。
+
+sakura: 昨日LINEしたのに
+sakura: どこにいたの
+
+mahiru: ……屋上
+
+sakura: 屋上！？　一人で？
+
+mahiru: 途中から、勇くんも来た
+
+@wait 600
+
+@expr sakura surprised
+
+sakura: 勇くんが？
+
+mahiru: うん
+
+@wait 700
+
+> さくらはチラリと俺を見た。
+> 何かを察した顔だった。
+
+@expr sakura happy
+
+sakura: ……そっか
+sakura: よかった
+
+@wait 800
+
+> 詳しくは聞かなかった。
+> さくらはそういうやつだ。
+
+@wait 800
+
+@expr mahiru normal
+
+mahiru: ……ねえ、さくらちゃん
+
+sakura: うん？
+
 @wait 500
-@bgm mahiru_dawn.mp3
+
+> まひるはカバンから封筒を取り出した。
+
+mahiru: ずっと渡せなかったんだけど
+mahiru: これ、写真
+
+@wait 700
+
+@expr sakura surprised
+
+sakura: え、写真？
+
+@wait 600
+
+> さくらは封筒を受け取った。
+> 中身を確認して、少しの間黙った。
+
+@wait 700
+
+@expr sakura happy
+
+sakura: ……まひる
+sakura: 七月のじゃん
+
+mahiru: ずっと持ってたんだ
+mahiru: 渡すタイミングが、なくて
+
+sakura: そんなに！
+
+@wait 600
+
+> さくらは笑いながら、写真を大事そうに封筒に戻した。
+
+sakura: ありがとう
+sakura: すごく嬉しい
+
+@wait 800
+
+> まひるも笑っていた。
+> 全部が埋まっている笑顔だった。
+
+@wait 800
+
+@hide sakura fade_out
+@wait 500
+
+> 昼休みに、ことはにも渡した。
+> ことははいつものように静かに受け取って、
+> しばらく写真を見ていた。
+
+@show kotoha left normal fade_in
+@wait 600
+
+kotoha: ……まひる先輩が
+
+kotoha: 笑っています
+
 @wait 1000
 
-@credits mahiru_dawn.mp3
+mahiru: 笑ってるよ
+
+@wait 500
+
+@expr kotoha normal
+
+> ことははもう一度写真を見た。
+> それから、小さく頷いた。
+
+kotoha: ……よかったです
+
+@wait 800
+
+@hide kotoha fade_out
+@hide mahiru fade_out
+@wait 500
+
+@scene school_gate_autumn_evening fade
+@bgm 理由のない明日へ.mp3
+@wait 1000
+
+> 放課後。
+
+@show mahiru center normal fade_in
+
+@wait 600
+
+mahiru: ……今日、来れた
+
+@wait 600
+
+player: 来れたな
+
+@wait 500
+
+mahiru: 去年は休んでたから
+
+@wait 1000
+
+> 昨年の命日は一人だった。
+> その前も、一人だった。
+> 四年間、まひるはこの日を一人で越えてきた。
+
+@wait 700
+
+player: 来年も来いよ
+
+@wait 600
+
+@expr mahiru normal
+
+mahiru: ……うん
+mahiru: たぶんね
+
+@wait 1000
+
+> まひるはカバンからノートを取り出した。
+> 歩きながら、ゆっくりページを開いた。
+
+@wait 600
+
+@expr mahiru happy
+
+mahiru: 今日の良かったこと
+mahiru: 多すぎて書ききれない
+
+@wait 1200
+
+> まひるは笑った。
+> 声に出して笑った。
+
+@wait 800
+
+> 悲しみは消えていない。
+> 今日は命日だった。
+> 来年もこの日は来る。
+> そのたびに重くなる。
+
+> でも今日のまひるは、
+> 書ききれないくらい、今日を生きていた。
+
+@wait 1200
+
+@hide mahiru fade_out
+@wait 600
+
+@credits 理由のない明日へ.mp3 mahiru_good_end
 @end "第十二章「夜明けは、一人では見つけられなかった」— まひるルート Good End"
 
 
@@ -2044,11 +2569,11 @@ mahiru: 今日、学校行ったら渡す
 
 # mahiru_bad_end
 
-@scene rooftop_night fade
+@scene school_exterior_night fade
 @bgm bad_end_loop.mp3
 @wait 1000
 
-> 俺は立ち上がろうとした。
+> 俺は走り出そうとした。
 
 > まひるのところへ行こうとした。
 
@@ -2107,22 +2632,27 @@ mahiru: 今日、学校行ったら渡す
 
 @wait 1500
 
-> わずかに。
-> ほんのわずかに、遅れた。
+> *（ここからじゃ、間に合わない）*
 
 @wait 1200
 
-> 俺が屋上に着いたとき、
-> まひるはすでに踵を返していた。
+> 校舎を見上げた。
+> 屋上の人影は、まだそこにあった。
 
-> 扉に手をかけていた。
-> 帰ろうとしていた。
+> どのくらいそうしていたのかわからない。
+> 時間だけが、冷たく過ぎていった。
 
-@show mahiru center normal fade_in
+@wait 1200
+
+> やがて。
+
+> 玄関の扉が開く音がした。
+
+@show mahiru_no_camera center normal fade_in
 
 @wait 600
 
-@expr mahiru surprised
+@expr mahiru_no_camera surprised
 
 mahiru: ……
 
@@ -2165,7 +2695,7 @@ mahiru: こなくていいのに
 
 @wait 1500
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 mahiru: ……
 
@@ -2185,12 +2715,12 @@ mahiru: 大丈夫だよ
 > それでも笑っていた。
 > まひるはまた笑っていた。
 
-> 俺が来たから、笑わなければならなくなった。
+> 俺がここにいるから、笑わなければならなくなった。
 > そういう顔だった。
 
 @wait 800
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 600
 
 @still bad_end_empty_classroom

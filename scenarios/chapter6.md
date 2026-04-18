@@ -4,9 +4,9 @@
 
 # chapter6_start
 
-@scene school_gate_summer_evening fade
+@scene commute_road_summer fade
 @bgm sunday_afternoon.mp3
-@se crowd_distant.mp3
+@se semi.mp3
 @wait 800
 
 > 八月。夏休みの中頃だった。
@@ -95,7 +95,7 @@ player: （今日はどこへ行こうか……）
 
 @wait 600
 
-@show sakura_sports center excited fade_in
+@show sakura_sports center serious fade_in
 @wait 400
 
 > コートの中、さくらが動いている。
@@ -176,7 +176,55 @@ player: （……知らなかった、こういう顔。）
 > その横顔は穏やかで、いつも通りの顔に見えた。
 > 笑顔で返事をして、また頷いて、それから監督が離れていった。
 
-@wait 600
+@wait 400
+
+橋本: 桜咲。
+
+> ロビーの方から声がした。
+> 三年の橋本先輩——バドミントン部の部長だ。
+
+@wait 400
+
+橋本: 今日の一年の子たち、動き上がってたね。
+橋本: ちゃんと見てくれてるんだなって、思った。
+
+sakura_sports: ありがとうございます。
+sakura_sports: まだ課題は多いですけど。
+
+橋本: いや、ほんとに助かってる。
+橋本: あたし試合のこと考えるのに精いっぱいで、後輩の細かいとこまで手が回らないから。
+
+@wait 400
+
+橋本: あと二ヶ月で引退だし、そのあとのことも含めてよろしく頼んでいい？
+
+sakura_sports: ……はい。任せてください。
+
+@wait 300
+
+> ほんの一瞬、さくらは目を細めた。
+> それだけだった。
+
+> 橋本先輩が「あたしにはできないことをやってくれている」と言っているのは伝わった。
+> それが感謝なのか、委任なのか、当然の期待なのか——
+> さくらには、問い返す気がたぶん最初からなかった。
+
+@wait 500
+
+> 橋本先輩のお母さんが、出口の方から手を振った。
+
+橋本: あ、迎えに来た。じゃあ先ね。
+橋本: 今日お疲れ。また月曜日。
+
+sakura_sports: お疲れさまでした。
+
+> 先輩は駆けていった。
+> さくらは、その背中に向かって静かに頭を下げた。
+
+> 誰かに見せているわけじゃなかった。
+> ただそうするのが当たり前だから、そうしていた。
+
+@wait 700
 
 @hide sakura_sports fade_out
 @wait 600
@@ -191,7 +239,7 @@ player: （……知らなかった、こういう顔。）
 @show sakura_sports center normal fade_in
 @wait 500
 
-> 壁に背をもたれて、空を見ていた。
+> 壁に背中を預けて、座り込んでいた。
 > 誰かを待っている顔じゃない。
 
 > ——待っていない、という顔をしていた。
@@ -214,7 +262,7 @@ player: （……知らなかった、こういう顔。）
 
 > 「迎えに来ない」ということへの怒りも悲しみも、たぶん、もうない。
 > あるとしたら、それは感情じゃなくて、ただの事実として体に馴染んでいる。
-> そういう感じの、立ち方だった。
+> そういう感じの、座り方だった。
 
 @wait 800
 
@@ -367,7 +415,7 @@ sakura_sports: 悪くはないけどね。
 
 @wait 600
 
-sakura_sports: ……でも、見てられると、ちょっとだけ緊張するよ。
+sakura_sports: ……でも、見られてると、ちょっとだけ緊張するよ。
 
 player: 試合中は？
 
@@ -510,12 +558,13 @@ sakura_sports: じゃあね。また月曜日。
 
 > 商店街を抜けようとして、足が止まった。
 
-@scene street_plaza fade
+@scene street_plaza_summer fade
 @wait 500
 
-> 広場の端に、ピアノがある。
-> 「ご自由にどうぞ」と書いた小さな看板。
-> ストリートピアノ。こういうのが増えた、と聞いたことがある。
+> 広場の真ん中に、小さなステージが組まれていた。
+> 木製のプラットフォームの上に、アップライトピアノが一台。
+> 「どなたでもどうぞ」と書いた立て看板。
+> 夏の間だけ設置される、ストリートピアノの特設ステージらしかった。
 
 > 先週、誰かが弾いているのを通りがかりに聞いた。
 > 上手い、とか下手とか、そういうことじゃなかった。
@@ -539,6 +588,11 @@ sakura_sports: じゃあね。また月曜日。
 > 動けない、という感じだった。
 
 @wait 500
+
+> 制服だった。
+> 夏休みの、真昼の商店街に、制服で立っていた。
+
+@wait 400
 
 > まわりの人間は、だいたい通り過ぎていく。
 > ピアノに視線を投げる人もいる。でも立ち止まる人はほとんどいない。
@@ -620,6 +674,23 @@ player: 帰りにたまたま。
 
 kotoha: そうですか。
 
+@wait 400
+
+player: ……制服なんだな。
+
+@wait 300
+
+@expr kotoha thinking
+kotoha: ……午前中、学校に寄ったので。
+kotoha: 図書室を使うのに学生証が必要で。
+
+@wait 400
+
+player: そのまま来たのか。
+
+@expr kotoha normal
+kotoha: はい。着替えに戻るのも面倒だったので。
+
 @wait 500
 
 > ことはは視線をピアノから外そうとして、少しだけ時間がかかった。
@@ -647,7 +718,7 @@ kotoha: 帰ります。
 
 @wait 600
 
-player: 弾けないんですか？
+player: ……弾けないのか？
 
 @wait 500
 
@@ -661,11 +732,11 @@ kotoha: ……弾けないんじゃなくて。
 
 @wait 700
 
-player: ……続き、聞かなくていいですか。
+player: ……続き、言いたくなければいい。
 
 @wait 400
 
-@expr kotoha surprised
+@expr kotoha thinking
 kotoha: ……え。
 
 player: 言いかけて止まるときは、だいたい続きがある。でも言いたくないときもある。
@@ -681,7 +752,7 @@ kotoha: ……そうですね。
 
 @wait 500
 
-player: 聴くのは好きですか。
+player: 聴くのは好きか。
 
 @wait 400
 
@@ -717,7 +788,7 @@ player: ……そうか。
 
 kotoha: ……最近も、ここで、誰かが弾いていて。
 
-player: 聴きましたか。
+player: 聴いたか。
 
 @wait 400
 
@@ -784,13 +855,13 @@ kotoha: では。
 @still_hide
 @wait 400
 
-> 通り過ぎようとして——
-> 通り過ぎた。
+> 声をかけなかった。
+> あの場所に踏み込む言葉が、見つからなかった。
 
-@wait 400
+@wait 500
 
-> 背中で感じた。
-> ことははしばらく、そこから動いていなかった。
+> 足を止めないまま、広場を横切った。
+> ことははこちらに気づいていないか、気づかないふりをしていた。
 
 @wait 700
 
@@ -832,7 +903,7 @@ kotoha: では。
 
 @wait 500
 
-@show mahiru center normal fade_in
+@show mahiru_private center normal fade_in
 @wait 500
 
 > まひるが、カメラを向けていた。
@@ -893,7 +964,7 @@ player: （何を撮っているんだろう……）
 
 @wait 500
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: ……勇くん。
 
 player: 邪魔した？
@@ -913,7 +984,7 @@ mahiru: ううん。
 
 @wait 700
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ここ、昔よく来てたんだ。
 
 @wait 500
@@ -922,7 +993,7 @@ player: 一人で？
 
 @wait 600
 
-@expr mahiru sad
+@expr mahiru_private sad
 mahiru: ……ひとりじゃなかった。
 
 @wait 700
@@ -943,7 +1014,7 @@ player: 写真、撮らないの？
 
 @wait 400
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: さっき、撮ろうとして——やめた。
 
 player: なんで。
@@ -965,7 +1036,7 @@ player: じゃあ、撮らないほうがいいじゃないか。
 
 @wait 400
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……でも、撮らないと消えるから。
 
 @wait 500
@@ -987,14 +1058,14 @@ player: 見ていいなら。
 
 @wait 500
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: ここで撮ったやつだよ。この場所、好きなんだ。
 
 player: なんで。
 
 @wait 600
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……理由は、あるんだけど。
 
 @wait 700
@@ -1017,7 +1088,7 @@ mahiru: ……理由は、あるんだけど。
 
 player: 何を撮ったの。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: 川。
 mahiru: あと、空と、風。
 
@@ -1032,7 +1103,7 @@ mahiru: 草が揺れてるとこに、風が写る。
 
 @wait 600
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: ……勇くんも、撮っていい？
 
 player: 俺？
@@ -1047,7 +1118,7 @@ player: ……好きにしていいけど。
 
 @wait 500
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ありがとう。
 
 @wait 500
@@ -1058,7 +1129,7 @@ mahiru: 川の隣に座ってる人の写真。
 
 player: そのまんまじゃないか。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: そのまんまのほうが、いいの。
 
 @wait 600
@@ -1077,7 +1148,7 @@ player: （ここに、誰かいたんだ——）
 
 @wait 600
 
-@hide mahiru fade_out
+@hide mahiru_private fade_out
 @wait 500
 
 @jump chapter6_evening_walk
@@ -1100,7 +1171,7 @@ player: （ここに、誰かいたんだ——）
 
 @wait 500
 
-@expr mahiru surprised
+@expr mahiru_private surprised
 
 player: まひる。
 
@@ -1112,7 +1183,7 @@ mahiru: ……あ。勇くん。
 
 @wait 400
 
-@hide mahiru fade_out
+@hide mahiru_private fade_out
 
 @jump chapter6_evening_walk
 
@@ -1127,7 +1198,7 @@ mahiru: ……あ。勇くん。
 > 日が傾いていた。
 > 橙色が、道の先まで伸びている。
 
-@show mahiru right normal fade_in
+@show mahiru_private right normal fade_in
 @wait 400
 
 > 帰り道、まひると並んで歩いていた。
@@ -1138,7 +1209,7 @@ player: そうみたい。
 
 @wait 500
 
-@still evening_walk_two
+@still evening_walk_private
 @wait 800
 
 > しばらく、言葉はなかった。
@@ -1155,49 +1226,44 @@ player: そうみたい。
 
 @wait 600
 
-@expr mahiru thinking
-mahiru: 勇くんってさ。
+@expr mahiru_private thinking
+mahiru: 勇くんって。
 
 @wait 400
 
-mahiru: 横を見るようになったね。
+mahiru: 以前より、人の話を聞く顔になった気がする。
 
 @wait 500
 
-player: ……そうかな。
+player: ……そうか？
 
-@expr mahiru happy
-mahiru: うん。前は、まっすぐしか見てなかった。
+@expr mahiru_private normal
+mahiru: うん。なんか、ちゃんと聴いてる感じがする。
 
 @wait 600
 
-> まっすぐ、か。
-> 俺はそんなだっただろうか。
-
-@wait 400
-
-> まっすぐ見ていたとしたら——
-> たぶん俺は、視野が狭かった。
-> 前だけ見ていて、隣を見ていなかった。
+> 悪い意味じゃなさそうだった。
+> でも、そういうことを口にする人間は、
+> たいてい自分も誰かに聴いてほしいことがある。
 
 @wait 500
 
-player: それって、いいこと？
+player: まひるは？
 
 @wait 400
 
-@expr mahiru normal
-mahiru: まひるは、いいと思う。
+@expr mahiru_private thinking
+mahiru: ……まひるも、最近ちょっと。
 
 @wait 600
 
-mahiru: ……でも、横を見すぎると、つかれることもあるから。
+mahiru: 誰かに話を聞いてもらえると、楽になるってわかってきた。
 
 @wait 500
 
 player: 心配してくれてるのか。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: うーん。心配、というか。
 
 @wait 400
@@ -1216,7 +1282,7 @@ mahiru: 違う？
 
 player: ……否定できない。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: ふふ。正直。
 
 @wait 600
@@ -1236,14 +1302,14 @@ player: 体育館。それから商店街。それから河川敷。
 
 @wait 400
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……どれも、ひとりで？
 
 player: さくらとことはには会った。
 
 @wait 500
 
-@expr mahiru normal
+@expr mahiru_private normal
 mahiru: そっか。
 
 @wait 500
@@ -1258,7 +1324,7 @@ mahiru: 三人に会ったんだ。
 
 player: たまたまだけど。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: たまたまって、おもしろいよね。
 mahiru: 会おうとして会うのと、たまたま会うのは、同じ「会う」なのに、違う感じがする。
 
@@ -1266,7 +1332,7 @@ player: どう違うんだ。
 
 @wait 400
 
-@expr mahiru thinking
+@expr mahiru_private thinking
 mahiru: ……たまたまのほうが、素の顔を見られる気がする。
 
 @wait 600
@@ -1286,7 +1352,7 @@ mahiru: ふふ。勇くんも、今日、少し素の顔してた。
 
 player: どんな顔。
 
-@expr mahiru happy
+@expr mahiru_private happy
 mahiru: 疲れてないときの顔。
 
 @wait 500
@@ -1296,7 +1362,7 @@ mahiru: 疲れてないときの顔。
 
 @wait 600
 
-@hide mahiru fade_out
+@hide mahiru_private fade_out
 @wait 600
 
 @jump chapter6_end
@@ -1304,7 +1370,7 @@ mahiru: 疲れてないときの顔。
 
 # chapter6_end
 
-@scene school_gate_summer_evening fade
+@scene commute_road_summer_evening fade
 @bgm stop
 @wait 500
 
@@ -1358,7 +1424,7 @@ mahiru: 疲れてないときの顔。
 
 @wait 700
 
-> 横を見るようになった、とまひるは言った。
+> 人の話を聞く顔になった、とまひるは言った。
 
 > 今日一日で、確かに何かが変わった気がする。
 > 何が変わったのかを言葉にするのは難しい。
@@ -1393,6 +1459,9 @@ player: （今日のことは——）
 player: （しばらく、引っかかりそうだな。）
 
 @wait 700
+
+@scene protagonist_room_night fade
+@wait 500
 
 > 夕暮れが完全に暮れた頃、家に帰り着いた。
 > 玄関の電気をつけて、靴を脱ぐ。

@@ -204,7 +204,7 @@
   <!-- ======= オープニング動画 ======= -->
   <div id="intro-video-screen" class="hidden">
     <video id="intro-video" playsinline></video>
-    <div id="intro-skip-hint">クリック / Enter でスキップ</div>
+    <div id="intro-skip-hint">クリック / Enter /Esc でスキップ</div>
   </div>
 
   <!-- ======================================================
@@ -292,6 +292,15 @@
 
     <!-- クレジットロール -->
     <div id="credits-screen" class="hidden">
+      <div id="credits-memory-stage" aria-hidden="true">
+        <div class="credits-memory-card" id="credits-memory-card-a">
+          <div class="credits-memory-label"></div>
+        </div>
+        <div class="credits-memory-card" id="credits-memory-card-b">
+          <div class="credits-memory-label"></div>
+        </div>
+      </div>
+      <div id="credits-lyrics" class="hidden"></div>
       <div id="credits-viewport">
         <div id="credits-roll"></div>
       </div>

@@ -428,22 +428,15 @@ kotoha: ……さっきまで見ていたので
 
 @wait 600
 
-> ことはがピアノをやめたことは、どこかで聞いた。
-> 詳しいことは知らない。
-> でも今のことはの声には、音楽の話をするとき特有の、
+> 今のことはの声には、音楽の話をするとき特有の、
 > 微妙な間合いがあった。
+> やめても、見え方は変わらないんだ、と思った。
 
 @wait 500
 
-player: ……ピアノは、まだ弾いてるか
+player: ……音楽をやめても、まだそういう目で見るんだな
 
 @expr kotoha_swimsuit surprised
-@wait 400
-
-kotoha: ……どうして、それを
-
-player: 以前、図書室で。音楽の本を持ってたから
-
 @wait 400
 
 kotoha: ……
@@ -451,13 +444,8 @@ kotoha: ……
 @expr kotoha_swimsuit normal
 @wait 500
 
-kotoha: やめました
-kotoha: 少し前に
-
-@wait 300
-
-kotoha: でも、音の話はまだ好きです
-kotoha: やめたからといって、耳が変わるわけじゃないので
+kotoha: やめても、耳は変わらないので
+kotoha: 見えるものも、変わらないのかもしれません
 
 @wait 600
 
@@ -578,7 +566,7 @@ sakura: じゃあ受け取ります！　ありがとう！
 
 @wait 500
 
-> 他のみんなはもう移動していた。
+> ほとんどの人間はもう移動していた。
 > プールサイドの端。
 > コンクリートの壁に背中を預けて、膝を抱えている。
 
@@ -877,7 +865,7 @@ kotoha: あの波が、ここまで来るのを待っていたりします
 @still pool_mahiru_window
 @wait 600
 
-> 別のクラスが、水泳の授業をしていた。
+> 三組が、水泳の授業をしていた。
 
 @wait 400
 
@@ -1113,7 +1101,7 @@ player: ああ
 
 # chapter5_end
 
-@scene corridor_evening fade
+@scene commute_road_summer_evening fade
 @bgm evening_piano.mp3
 @wait 600
 

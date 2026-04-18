@@ -140,7 +140,7 @@ sakura: クラスメイトだから当然でしょ！
 
 # chapter8_festival_open
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm festival_rain.mp3
 @wait 800
 
@@ -246,7 +246,7 @@ mahiru: うん、そうだよね
 
 # chapter8_sakura_cafe
 
-@scene classroom_cafe fade
+@scene classroom_cafe_rainy fade
 @bgm festival_rain.mp3
 @wait 800
 
@@ -267,7 +267,7 @@ mahiru: うん、そうだよね
 
 >誰かが、きちんと準備したのがわかる空間だった。
 
-@show sakura center excited fade_in
+@show sakura_apron center excited fade_in
 
 sakura: いらっしゃいませー！
 
@@ -310,10 +310,10 @@ player: 似たようなもんだろ
 
 @wait 600
 
-> 後輩らしき一年生の女子が、
+> 同じクラスの子が、
 > 注文を受けたあとオーダーシートをどこに出せばいいかわからず迷っていた。
 
-@expr sakura normal
+@expr sakura_apron normal
 
 > さくらが素早く気づいて、
 > 小声でフォローしながら笑いかける。
@@ -322,7 +322,7 @@ player: 似たようなもんだろ
 > さくらはまた次の仕事へ移った。
 
 > 疲れている素振りは、見せない。
-> 後輩に気を遣わせない配慮が、すでに体に染みついているやつの動き方だった。
+> 相手に気を遣わせない配慮が、すでに体に染みついているやつの動き方だった。
 
 @wait 500
 
@@ -359,13 +359,13 @@ sakura: ありがとうございます！
 > 俺がたまたまそこにいなければ、
 > 見えなかった間だった。
 
-@expr sakura blank
+@expr sakura_apron blank
 
 sakura: ……
 
 @wait 500
 
-@expr sakura happy
+@expr sakura_apron happy
 
 sakura: ……うん！
 sakura: 楽しいですよ！
@@ -382,7 +382,7 @@ player: ……
 
 @wait 600
 
-@expr sakura excited
+@expr sakura_apron excited
 
 sakura: 勇くん！
 sakura: 注文まだー！？
@@ -414,11 +414,11 @@ player: 今行く
 
 player: ……
 
-@expr sakura surprised
+@expr sakura_apron surprised
 
 sakura: あ、勇くんまだいたの
 
-@expr sakura happy
+@expr sakura_apron happy
 
 sakura: どうどう？
 sakura: あたし働き者でしょ！
@@ -432,7 +432,7 @@ sakura: 後でちょっと休憩したい
 
 player: 無理するなよ
 
-@expr sakura happy
+@expr sakura_apron happy
 
 sakura: 無理じゃないよ！
 sakura: これくらい全然！
@@ -441,7 +441,7 @@ sakura: これくらい全然！
 > いつも一人でやってきた。
 > そういう顔だった。
 
-@hide sakura fade_out
+@hide sakura_apron fade_out
 @wait 500
 
 @jump chapter8_music_room
@@ -453,7 +453,7 @@ sakura: これくらい全然！
 
 # chapter8_music_room
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm stop
 @se piano_distant.mp3
 @wait 700
@@ -554,7 +554,7 @@ kotoha: ただ……消えたいわけじゃない、とは思います
 
 # chapter8_mahiru_reason
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm festival_rain.mp3
 @wait 700
 
@@ -679,7 +679,7 @@ mahiru: じゃあ、また後でね
 
 # chapter8_rain_corridor
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 @se rain_window.mp3
 @wait 800
@@ -745,8 +745,6 @@ player: ……
 //  回想 — これまでのサイン
 // ===================================================================
 
-@scene protagonist_room_night fade
-@bgm mystery_shadow.mp3
 @wait 1000
 
 > 走馬灯というほど大げさではない。
@@ -789,7 +787,7 @@ player: ……
 @still_hide
 @wait 400
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 @se rain_window.mp3
 @wait 800
@@ -820,7 +818,7 @@ player: ……
 
 # chapter8_sakura_crisis
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 @se rain_window.mp3
 @wait 600
@@ -946,7 +944,7 @@ sakura: いつも一人だし！
 
 # chapter8_kotoha_crisis
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm stop
 @se piano_distant.mp3
 @wait 700
@@ -1059,7 +1057,7 @@ kotoha: ……わたしには、できません
 
 # chapter8_mahiru_missing
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 @wait 700
 
@@ -1069,8 +1067,9 @@ kotoha: ……わたしには、できません
 
 > まひるを探した。
 
-> さっきまで廊下で話していたのに、
-> 気づいたら姿が見えなくなっていた。
+> また後でね、と言って別れてから、
+> ずいぶん時間が経っていた。
+> でも、まひるはまだ現れていなかった。
 
 @wait 400
 
@@ -1158,7 +1157,7 @@ kotoha: ……わたしには、できません
 
 # chapter8_branch
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm mystery_shadow.mp3
 @se rain_window.mp3
 @wait 1000
@@ -1182,7 +1181,7 @@ kotoha: ……わたしには、できません
 > ことはは扉の前で、
 > 入るでも帰るでもなく、止まっている。
 
-> まひるは今日、来ていない。
+> まひるは、いなくなった。
 > 既読がつかない。
 > 十月下旬。
 
@@ -1227,7 +1226,7 @@ kotoha: ……わたしには、できません
 
 # bad_end_common
 
-@scene corridor_festival fade
+@scene corridor_festival_rainy fade
 @bgm mystery_shadow.mp3
 @wait 1000
 
@@ -1254,10 +1253,10 @@ kotoha: ……わたしには、できません
 // ===================================================================
 
 # route_sakura_start
-@jump sakura_ch9_start
+@jump sakura_interlude
 
 # route_kotoha_start
-@jump kotoha_ch9_start
+@jump kotoha_interlude
 
 # route_mahiru_start
-@jump mahiru_ch9_start
+@jump mahiru_interlude

@@ -59,6 +59,11 @@
  * @jump label_name         ← ラベルジャンプ
  * @end "エンディングタイトル"   ← ゲーム終了
  *
+ * ─── 演出 ─────────────────────────────────────────────────
+ * @window_color charKey       ← テキストウィンドウの色をキャラカラーに変更
+ *   charKey: sakura / kotoha / mahiru / reset
+ *   ※幕間・視点切り替えシーンで使用。0.7sでフェード遷移。
+ *
  * ─── 選択肢 ───────────────────────────────────────────────
  * @choice                  ← 選択肢ブロック開始
  * - "選択テキスト" -> label_name
@@ -296,11 +301,15 @@ class ScriptParser {
       }
 
       case 'credits':
-        // @credits bgm_file.mp3
-        return { cmd: 'credits', bgm: args[0] || null };
+        // @credits bgm_file.mp3 [credits_profile_key]
+        return { cmd: 'credits', bgm: args[0] || null, profile: args[1] || null };
 
       case 'choice':
         return { cmd: 'choice' }; // 実際の処理は inChoice フラグで行う
+
+      case 'window_color':
+        // @window_color sakura / kotoha / mahiru / reset
+        return { cmd: 'window_color', target: args[0] || 'reset' };
 
       default:
         console.warn(`[Parser] 不明なコマンド: ${cmdName}`);

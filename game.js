@@ -11,6 +11,9 @@ class VNEngine {
     this.labels      = {};           // { labelName: [cmd, ...] }
     this.currentLabel= 'start';
     this.currentIndex= 0;
+    this._isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    this._longPressTimer = null;
+    this._longPressTriggered = false;
 
     // 入力待ち / モード
     this.waitingForInput = false;
@@ -19,10 +22,11 @@ class VNEngine {
 
     // タイマー
     this.typewriterTimer = null;
-    this.autoTimer       = null;
-    this.skipTimer       = null;
-    this._waitTimer      = null;   // @wait コマンドの setTimeout 参照   // スキップ時の次行進行タイマー（追跡してキャンセル可能に）
-    this._stillLockUntil = 0;      // スチル表示後の最低表示ロック解除時刻
+    this.autoTimer          = null;
+    this.skipTimer          = null;
+    this._waitTimer         = null;   // @wait コマンドの setTimeout 参照
+    this._stillHideWaitTimer = null;  // @still_hide の最低表示時間待機タイマー
+    this._stillLockUntil    = 0;      // スチル表示後の最低表示ロック解除時刻
 
     // 現在表示中のテキスト
     this.currentText = '';
@@ -46,6 +50,10 @@ class VNEngine {
     // 現在表示中のスチル
     this.currentStill = null;
     this._hideStillTimer = null;
+    this._creditsAnimEnd = null;
+    this._creditsTimers = [];
+    this._creditsSession = null;
+    this._creditsMemoryIndex = 0;
 
     // UI非表示モード
     this._uiHidden = false;
@@ -267,6 +275,7 @@ class VNEngine {
     const gameScreen = document.getElementById('game-screen');
     if (gameScreen) {
       gameScreen.addEventListener('click', (e) => {
+        if (this._longPressTriggered) return;
         // UI非表示中は再表示して終了
         if (this._uiHidden) { this._showUI(); return; }
         const ignore = '#text-area, #choices-overlay, #menu-bar, .modal, #ending-screen, #still-layer';
@@ -280,6 +289,45 @@ class VNEngine {
         if (titleScreen && !titleScreen.classList.contains('hidden')) return;
         this._uiHidden ? this._showUI() : this._hideUI();
       });
+
+      if (this._isTouchDevice) {
+        const cancelLongPress = () => {
+          if (this._longPressTimer) {
+            clearTimeout(this._longPressTimer);
+            this._longPressTimer = null;
+          }
+        };
+
+        gameScreen.addEventListener('touchstart', (e) => {
+          if (e.touches.length !== 1) return;
+
+          const titleScreen = document.getElementById('title-screen');
+          if (titleScreen && !titleScreen.classList.contains('hidden')) return;
+
+          this._longPressTriggered = false;
+          const touch = e.touches[0];
+          this._spawnTouchParticles(touch.clientX, touch.clientY);
+          cancelLongPress();
+          this._longPressTimer = setTimeout(() => {
+            this._longPressTriggered = true;
+            this._uiHidden ? this._showUI() : this._hideUI();
+          }, 300);
+        }, { passive: true });
+
+        gameScreen.addEventListener('touchend', () => {
+          cancelLongPress();
+          if (this._longPressTriggered) {
+            setTimeout(() => { this._longPressTriggered = false; }, 350);
+          }
+        }, { passive: true });
+        gameScreen.addEventListener('touchcancel', () => {
+          cancelLongPress();
+          this._longPressTriggered = false;
+        }, { passive: true });
+        gameScreen.addEventListener('touchmove', () => {
+          cancelLongPress();
+        }, { passive: true });
+      }
     }
 
     // キーボード
@@ -519,6 +567,40 @@ class VNEngine {
     this._gotoLabel(VN_CONFIG.startLabel);
   }
 
+  _setWindowColor(target) {
+    const COLORS = {
+      sakura: {
+        textBox:  'rgba(52, 6, 24, 0.88)',
+        nameBox:  'rgba(62, 8, 30, 0.92)',
+        shadow:   '0 0 36px 0 rgba(255, 100, 150, 0.30) inset, 0 0 3px 1px rgba(255, 100, 150, 0.14)',
+      },
+      kotoha: {
+        textBox:  'rgba(6, 14, 58, 0.88)',
+        nameBox:  'rgba(7, 18, 70, 0.92)',
+        shadow:   '0 0 36px 0 rgba(100, 150, 255, 0.30) inset, 0 0 3px 1px rgba(100, 150, 255, 0.14)',
+      },
+      mahiru: {
+        textBox:  'rgba(4, 42, 22, 0.88)',
+        nameBox:  'rgba(5, 52, 28, 0.92)',
+        shadow:   '0 0 36px 0 rgba(80, 220, 140, 0.28) inset, 0 0 3px 1px rgba(80, 220, 140, 0.13)',
+      },
+      reset: {
+        textBox:  'rgba(8, 3, 20, 0.8)',
+        nameBox:  'rgba(12, 4, 24, 0.8)',
+        shadow:   '',
+      },
+    };
+    const c = COLORS[target] || COLORS.reset;
+    const textBox = document.getElementById('text-box');
+    const nameBox = document.getElementById('char-name-box');
+    if (textBox) {
+      textBox.style.background = c.textBox;
+      textBox.style.boxShadow  = c.shadow;
+    }
+    if (nameBox) nameBox.style.background = c.nameBox;
+    this.windowColor = target;
+  }
+
   _resetGameState() {
     this.flags       = {};
     this.textLog     = [];
@@ -541,6 +623,7 @@ class VNEngine {
     document.getElementById('choices-overlay').classList.add('hidden');
     document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('ending-screen').classList.add('hidden');
+    this._clearCreditsPresentation();
     document.getElementById('next-arrow').style.display = 'none';
     document.getElementById('dialog-text').textContent  = '';
     document.getElementById('char-name').textContent    = '';
@@ -556,6 +639,7 @@ class VNEngine {
       el.style.pointerEvents = '';
     });
     this._stopBGM();
+    this._setWindowColor('reset');
   }
 
   // ============================================================
@@ -567,6 +651,7 @@ class VNEngine {
       return;
     }
     this._stopAllSE();
+    this._stopTypewriter(); // 全タイマー（_stillHideWaitTimer含む）をキャンセル
     this.currentLabel = label;
     this.currentIndex = 0;
     this._executeNext();
@@ -642,10 +727,10 @@ class VNEngine {
       case 'still_hide': {
         const remaining = this._stillLockUntil - Date.now();
         if (remaining > 0) {
-          // 最低表示時間が残っている → 解除まで待機（skipTimerで管理）
-          clearTimeout(this.skipTimer);
-          this.skipTimer = setTimeout(() => {
-            this.skipTimer = null;
+          // 最低表示時間が残っている → 解除まで待機（専用タイマーで管理）
+          clearTimeout(this._stillHideWaitTimer);
+          this._stillHideWaitTimer = setTimeout(() => {
+            this._stillHideWaitTimer = null;
             this._hideStill(cmd.effect);
             this._executeNext();
           }, remaining);
@@ -749,7 +834,12 @@ class VNEngine {
         break;
 
       case 'credits':
-        this._showCredits(cmd.bgm);
+        this._showCredits(cmd.bgm, cmd.profile);
+        break;
+
+      case 'window_color':
+        this._setWindowColor(cmd.target);
+        this._executeNext();
         break;
 
       case 'end':
@@ -1167,6 +1257,10 @@ class VNEngine {
       clearTimeout(this._waitTimer);
       this._waitTimer = null;
     }
+    if (this._stillHideWaitTimer) {
+      clearTimeout(this._stillHideWaitTimer);
+      this._stillHideWaitTimer = null;
+    }
   }
 
   /** クリック / スペース / Enter で進む */
@@ -1262,6 +1356,9 @@ class VNEngine {
       if (this.typewriterTimer) this._onAdvance();
       else if (this.waitingForInput) this._executeNext();
     }
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
   }
 
   _toggleAuto() {
@@ -1278,6 +1375,9 @@ class VNEngine {
       // autoTimer のみキャンセル（typewriterTimer は継続させる）
       // typewriter中にオートを切っても文字表示が止まらないようにする
       if (this.autoTimer) { clearTimeout(this.autoTimer); this.autoTimer = null; }
+    }
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
     }
   }
 
@@ -1343,9 +1443,10 @@ class VNEngine {
       index:      this.currentIndex - 1, // 現在実行中コマンドの index
       flags:      { ...this.flags },
       charState:  JSON.parse(JSON.stringify(this.charState)),
-      currentBG:  this.currentBG,
-      currentBGM: this.currentBGM,
+      currentBG:    this.currentBG,
+      currentBGM:   this.currentBGM,
       currentStill: this.currentStill || null,
+      windowColor:  this.windowColor || 'reset',
       preview,
       date: new Date().toLocaleString('ja-JP', {
         month: 'short', day: 'numeric',
@@ -1370,6 +1471,7 @@ class VNEngine {
     if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
     if (d.currentBGM) this._playBGM(d.currentBGM);
     if (d.currentStill) this._showStill(d.currentStill, 'instant');
+    this._setWindowColor(d.windowColor || 'reset');
 
     for (const [pos, state] of Object.entries(d.charState || {})) {
       if (state) this._showChar(state.charKey, pos, state.expr, 'instant');
@@ -1461,14 +1563,20 @@ class VNEngine {
   // ============================================================
   //  クレジットロール
   // ============================================================
-  _showCredits(bgmFile) {
+  async _showCredits(bgmFile, profileKey = null) {
     this._stopTypewriter();
     this._clearAllChars('fade_out');
+    this._hideStill('instant');
+    this._clearCreditsPresentation();
 
-    if (bgmFile) this._playBGM(bgmFile);
+    const screen   = document.getElementById('credits-screen');
+    const roll     = document.getElementById('credits-roll');
+    const profile  = this._resolveCreditsProfile(profileKey, bgmFile);
+    const bgmTrack = profile.themeTrack || bgmFile || null;
+    const session  = Symbol('credits');
+    this._creditsSession = session;
 
-    const screen = document.getElementById('credits-screen');
-    const roll   = document.getElementById('credits-roll');
+    if (bgmTrack) this._playBGM(bgmTrack);
 
     // クレジット行を生成
     const lines = VN_CONFIG.credits || [];
@@ -1484,27 +1592,202 @@ class VNEngine {
         default:           return '';
       }
     }).join('');
+    roll.style.animation = 'none';
+    roll.style.opacity = '0';
 
     screen.classList.remove('hidden');
 
-    // スクロール量を計算して CSS 変数にセット
+    const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 55);
+    const audioDuration = bgmTrack ? await this._getAudioDuration(bgmTrack) : null;
+    if (this._creditsSession !== session) return;
+
     requestAnimationFrame(() => {
+      if (this._creditsSession !== session) return;
+
       const vh      = screen.clientHeight;
       const rollH   = roll.scrollHeight;
-      const speed   = 55; // px/sec
       const total   = vh + rollH;
-      const dur     = total / speed;
+      const speed   = profile.scrollSpeed || 55;
+      const natural = total / speed;
+      const dur     = Math.max(audioDuration || 0, natural, fallbackDuration);
 
       roll.style.setProperty('--credits-start', `${vh}px`);
       roll.style.setProperty('--credits-end',   `-${rollH}px`);
       roll.style.animation = `creditsScroll ${dur}s linear forwards`;
+      roll.style.opacity = '1';
 
-      // アニメーション終了で次へ
+      this._startCreditsPresentation(profile, dur);
+
       this._creditsAnimEnd = () => {
         roll.removeEventListener('animationend', this._creditsAnimEnd);
+        this._creditsAnimEnd = null;
         this._endCredits();
       };
       roll.addEventListener('animationend', this._creditsAnimEnd);
+    });
+  }
+
+  _resolveCreditsProfile(profileKey, bgmFile) {
+    const profile = (VN_CONFIG.creditsProfiles && profileKey)
+      ? (VN_CONFIG.creditsProfiles[profileKey] || {})
+      : {};
+    return {
+      key: profileKey || '',
+      themeTrack: profile.themeTrack || bgmFile || null,
+      themeTitle: profile.themeTitle || '',
+      themeCredit: profile.themeCredit || '',
+      memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
+      lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
+      scrollSpeed: profile.scrollSpeed || 55,
+    };
+  }
+
+  _estimateCreditsDuration(screen, roll, speed) {
+    const vh    = screen.clientHeight || 720;
+    const rollH = roll.scrollHeight || 1080;
+    return (vh + rollH) / speed;
+  }
+
+  _startCreditsPresentation(profile, durationSec) {
+    this._creditsMemoryIndex = 0;
+    this._scheduleCreditsMemories(profile, durationSec);
+    this._scheduleCreditsLyrics(profile, durationSec);
+  }
+
+  _scheduleCreditsMemories(profile, durationSec) {
+    const stills = (profile.memoryStills || []).filter(Boolean);
+    if (stills.length === 0) return;
+
+    const introSec = 1.2;
+    const usableSec = Math.max(durationSec - 3.4, stills.length * 1.8);
+    const slotSec = usableSec / stills.length;
+
+    stills.forEach((stillKey, index) => {
+      const timer = setTimeout(() => {
+        if (!this._creditsSession) return;
+        this._showCreditsMemory(stillKey);
+      }, Math.max(0, (introSec + slotSec * index) * 1000));
+      this._creditsTimers.push(timer);
+    });
+  }
+
+  _showCreditsMemory(stillKey) {
+    const cards = [
+      document.getElementById('credits-memory-card-a'),
+      document.getElementById('credits-memory-card-b'),
+    ].filter(Boolean);
+    if (cards.length === 0) return;
+
+    const next = cards[this._creditsMemoryIndex % cards.length];
+    const prev = cards[(this._creditsMemoryIndex + 1) % cards.length];
+    const src = this._getStillAssetPath(stillKey);
+    if (!src) return;
+
+    next.style.backgroundImage = `url(${src})`;
+    const labelEl = next.querySelector('.credits-memory-label');
+    if (labelEl) labelEl.textContent = this._getStillLabel(stillKey);
+
+    next.classList.add('active');
+    if (prev) prev.classList.remove('active');
+    this._creditsMemoryIndex++;
+  }
+
+  _getStillAssetPath(stillKey) {
+    const resolvedExt = this._resolvedStillExt && this._resolvedStillExt[stillKey];
+    if (resolvedExt) return `assets/images/stills/${stillKey}${resolvedExt}`;
+    return `assets/images/stills/${stillKey}.webp`;
+  }
+
+  _getStillLabel(stillKey) {
+    const item = (VN_CONFIG.cgList || []).find(cg => cg.key === stillKey);
+    return item?.label || stillKey;
+  }
+
+  _scheduleCreditsLyrics(profile, durationSec) {
+    const lyricsEl = document.getElementById('credits-lyrics');
+    const lyrics = (profile.lyrics || []).filter(Boolean);
+    if (!lyricsEl || lyrics.length === 0) return;
+
+    const introSec = 2.4;
+    const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
+    const slotSec = usableSec / lyrics.length;
+    const holdMs = Math.max(3200, Math.min(6200, slotSec * 780));
+
+    lyrics.forEach((entry, index) => {
+      const timer = setTimeout(() => {
+        if (!this._creditsSession) return;
+        this._showCreditsLyric(entry, holdMs);
+      }, Math.max(0, (introSec + slotSec * index) * 1000));
+      this._creditsTimers.push(timer);
+    });
+  }
+
+  _showCreditsLyric(entry, holdMs) {
+    const lyricsEl = document.getElementById('credits-lyrics');
+    if (!lyricsEl) return;
+
+    const lines = Array.isArray(entry) ? entry : [entry];
+    lyricsEl.textContent = lines.join('\n');
+    lyricsEl.classList.remove('hidden');
+    requestAnimationFrame(() => lyricsEl.classList.add('visible'));
+
+    const fadeTimer = setTimeout(() => {
+      lyricsEl.classList.remove('visible');
+    }, holdMs);
+    this._creditsTimers.push(fadeTimer);
+  }
+
+  _clearCreditsPresentation() {
+    this._creditsSession = null;
+    this._creditsTimers.forEach(timer => clearTimeout(timer));
+    this._creditsTimers = [];
+    this._creditsMemoryIndex = 0;
+
+    const roll = document.getElementById('credits-roll');
+    if (roll && this._creditsAnimEnd) {
+      roll.removeEventListener('animationend', this._creditsAnimEnd);
+      this._creditsAnimEnd = null;
+    }
+    if (roll) {
+      roll.style.animation = 'none';
+      roll.style.opacity = '';
+    }
+
+    const lyricsEl = document.getElementById('credits-lyrics');
+    if (lyricsEl) {
+      lyricsEl.textContent = '';
+      lyricsEl.classList.remove('visible');
+      lyricsEl.classList.add('hidden');
+    }
+
+    ['credits-memory-card-a', 'credits-memory-card-b'].forEach(id => {
+      const card = document.getElementById(id);
+      if (!card) return;
+      card.classList.remove('active');
+      card.style.backgroundImage = '';
+      const labelEl = card.querySelector('.credits-memory-label');
+      if (labelEl) labelEl.textContent = '';
+    });
+  }
+
+  async _getAudioDuration(track) {
+    return await new Promise(resolve => {
+      const audio = new Audio();
+      let settled = false;
+      const finish = (value) => {
+        if (settled) return;
+        settled = true;
+        audio.removeEventListener('loadedmetadata', onLoaded);
+        audio.removeEventListener('error', onError);
+        resolve(value);
+      };
+      const onLoaded = () => finish(Number.isFinite(audio.duration) ? audio.duration : null);
+      const onError  = () => finish(null);
+
+      audio.preload = 'metadata';
+      audio.addEventListener('loadedmetadata', onLoaded, { once: true });
+      audio.addEventListener('error', onError, { once: true });
+      audio.src = `assets/audio/bgm/${track}`;
     });
   }
 
@@ -1519,8 +1802,10 @@ class VNEngine {
   }
 
   _endCredits() {
+    this._clearCreditsPresentation();
     document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('credits-roll').style.animation = 'none';
+    document.getElementById('credits-roll').style.opacity = '';
     this._executeNext();
   }
 
@@ -1773,6 +2058,8 @@ class VNEngine {
   //  カスタムカーソル
   // ============================================================
   _initCursor() {
+    if (this._isTouchDevice) return;
+
     const cursor = document.createElement('div');
     cursor.id = 'custom-cursor';
     cursor.innerHTML = '<div class="cursor-ring"></div><div class="cursor-core"></div>';
@@ -1803,6 +2090,32 @@ class VNEngine {
     });
   }
 
+  _spawnTouchParticles(clientX, clientY) {
+    const gameScreen = document.getElementById('game-screen');
+    if (!gameScreen) return;
+
+    const rect = gameScreen.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const count = 5 + Math.floor(Math.random() * 4);
+    const colors = ['#fff6fc', '#ffd5ee', '#ffb6dd', '#e7c6ff', '#fff0a8'];
+
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('span');
+      star.className = 'touch-star';
+      star.textContent = '✦';
+      star.style.left = `${x}px`;
+      star.style.top = `${y}px`;
+      star.style.color = colors[Math.floor(Math.random() * colors.length)];
+      star.style.fontSize = `${12 + Math.random() * 10}px`;
+      star.style.setProperty('--dx', `${(Math.random() - 0.5) * 72}px`);
+      star.style.setProperty('--dy', `${-18 - Math.random() * 44}px`);
+      star.style.setProperty('--rot', `${(Math.random() - 0.5) * 160}deg`);
+      star.addEventListener('animationend', () => star.remove(), { once: true });
+      gameScreen.appendChild(star);
+    }
+  }
+
   // ============================================================
   //  DEBUG: チャプタージャンプメニュー (後で削除)
   // ============================================================
@@ -1820,9 +2133,9 @@ class VNEngine {
       { label: 'Chapter 6 — それぞれの放課後',   key: 'chapter6_start' },
       { label: 'Chapter 7 — 重なる孤独',         key: 'chapter7_start' },
       { label: 'Chapter 8 — 選ぶということ',     key: 'chapter8_start' },
-      { label: '── 分岐: さくらルート',           key: 'sakura_ch9_start' },
-      { label: '── 分岐: ことはルート',           key: 'kotoha_ch9_start' },
-      { label: '── 分岐: まひるルート',           key: 'mahiru_ch9_start' },
+      { label: '── 分岐: さくらルート',           key: 'sakura_interlude' },
+      { label: '── 分岐: ことはルート',           key: 'kotoha_interlude' },
+      { label: '── 分岐: まひるルート',           key: 'mahiru_interlude' },
       { label: '── バッドエンド',                 key: 'bad_end_common' },
     ];
 
@@ -1881,9 +2194,9 @@ class VNEngine {
     this._resetGameState();
     // デバッグ用: ルート分岐以降のラベルには好感度を自動設定
     const favorPresets = {
-      sakura_ch9_start:  { sakura_favor: 12 },
-      kotoha_ch9_start:  { kotoha_favor: 12 },
-      mahiru_ch9_start:  { mahiru_favor: 12 },
+      sakura_interlude:  { sakura_favor: 12 },
+      kotoha_interlude:  { kotoha_favor: 12 },
+      mahiru_interlude:  { mahiru_favor: 12 },
       chapter8_start:    { sakura_favor: 10, kotoha_favor: 10, mahiru_favor: 10 },
     };
     if (favorPresets[label]) Object.assign(this.flags, favorPresets[label]);

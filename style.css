@@ -517,6 +517,13 @@ body {
   border-color: rgba(240,160,210,.8);
   color: #fff;
 }
+@media (hover: none) {
+  .menu-btn:hover {
+    background: rgba(8, 3, 18, .65);
+    border-color: rgba(200,140,200,.3);
+    color: rgba(240,210,230,.8);
+  }
+}
 .menu-key {
   display: inline-block;
   margin-left: 4px;
@@ -555,6 +562,7 @@ body {
   min-width: 140px;
   overflow: hidden;
   backdrop-filter: blur(8px);
+  transition: background 0.7s ease;
 }
 /* キャラカラーの上アクセントライン */
 #char-name-box::before {
@@ -571,7 +579,7 @@ body {
 }
 #char-name {
   font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: .12em;
   color: #ff99bb;  /* キャラ色はJSで上書き */
@@ -585,11 +593,12 @@ body {
   min-height: 128px;
   position: relative;
   backdrop-filter: blur(8px);
+  transition: background 0.7s ease, box-shadow 0.7s ease;
 }
 
 #dialog-text {
   font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
-  font-size: 21px;
+  font-size: 26px;
   line-height: 1.85;
   color: #f5eaf0;
   letter-spacing: .06em;
@@ -608,7 +617,7 @@ body {
 /* 締めナレーション（**text**） */
 #dialog-text.narrate-climax {
   text-align: center;
-  font-size: 26px;
+  font-size: 32px;
   color: #ffffff;
   letter-spacing: .18em;
   text-shadow: 0 0 18px rgba(255, 200, 240, 0.5);
@@ -677,6 +686,16 @@ body {
   box-shadow: 0 0 24px rgba(220,80,160,.2);
 }
 .choice-btn:hover::before { width: 100%; }
+@media (hover: none) {
+  .choice-btn:hover {
+    border-color: rgba(220,140,190,.5);
+    color: #f5eaf0;
+    box-shadow: none;
+  }
+  .choice-btn:hover::before {
+    width: 0;
+  }
+}
 
 /* ---- エンディング画面 ---- */
 #ending-screen {
@@ -747,10 +766,94 @@ body {
   z-index: 35;
   overflow: hidden;
 }
+#credits-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 240, 220, 0.08) 0%, rgba(0, 0, 0, 0) 52%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(10, 7, 4, 0.3) 24%, rgba(0, 0, 0, 0.58) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+#credits-memory-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.credits-memory-card {
+  position: absolute;
+  inset: 11% 17%;
+  opacity: 0;
+  transform: scale(1.045);
+  transition:
+    opacity 1.3s ease,
+    transform 7.8s ease,
+    filter 1.3s ease;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: sepia(0.75) saturate(0.8) brightness(0.48) contrast(1.1) grayscale(0.12);
+}
+.credits-memory-card::before {
+  content: '';
+  position: absolute;
+  inset: -3%;
+  background:
+    linear-gradient(180deg, rgba(24, 15, 10, 0.08) 0%, rgba(0, 0, 0, 0.35) 100%),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0.68) 100%);
+  box-shadow:
+    inset 0 0 100px rgba(0, 0, 0, 0.72),
+    0 0 60px rgba(0, 0, 0, 0.45);
+}
+.credits-memory-card.active {
+  opacity: 0.72;
+  transform: scale(1);
+  filter: sepia(0.92) saturate(0.74) brightness(0.58) contrast(1.08) grayscale(0.08);
+}
+.credits-memory-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: rgba(255, 242, 225, 0.62);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
+}
+#credits-lyrics {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  text-align: right;
+  color: rgba(255, 244, 232, 0.78);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.95);
+}
+#credits-lyrics {
+  right: 38px;
+  bottom: 76px;
+  width: min(340px, 28vw);
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.75;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  white-space: pre-line;
+  background: linear-gradient(180deg, rgba(18, 10, 8, 0.52) 0%, rgba(0, 0, 0, 0.18) 100%);
+  border-left: 1px solid rgba(255, 230, 200, 0.16);
+  backdrop-filter: blur(3px);
+}
+#credits-lyrics.visible {
+  opacity: 1;
+}
 #credits-viewport {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  z-index: 3;
 }
 #credits-roll {
   position: absolute;
@@ -759,6 +862,7 @@ body {
   padding: 0 60px;
   box-sizing: border-box;
   will-change: transform;
+  z-index: 3;
 }
 .credits-game-title {
   font-size: 32px;
@@ -821,7 +925,7 @@ body {
   letter-spacing: .3em;
   cursor: pointer;
   transition: all .25s;
-  z-index: 36;
+  z-index: 5;
 }
 #btn-credits-skip:hover {
   border-color: rgba(255,255,255,.5);
@@ -1150,7 +1254,16 @@ body {
 /* ============================================================
    カスタムカーソル
 ============================================================ */
-* { cursor: none !important; }
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  #game-screen,
+  #game-screen * {
+    cursor: none !important;
+  }
+}
 
 #custom-cursor {
   position: fixed;
@@ -1215,6 +1328,28 @@ body {
 }
 
 /* ---- スクロールバー ---- */
+.touch-star {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 24;
+  pointer-events: none;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(255, 210, 240, 0.85);
+  transform: translate(-50%, -50%);
+  animation: touchStarBurst 0.7s ease-out forwards;
+}
+@keyframes touchStarBurst {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.7) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.2) rotate(var(--rot));
+  }
+}
+
 ::-webkit-scrollbar       { width: 4px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,.2); }
 ::-webkit-scrollbar-thumb { background: rgba(220,140,190,.45); border-radius: 2px; }
@@ -1303,4 +1438,98 @@ body {
   background: rgba(180,80,220,.25);
   border-color: rgba(200,120,255,.8);
   color: #e8d0ff;
+}
+
+@media (max-width: 768px) {
+  .credits-memory-card {
+    inset: 14% 7% 22%;
+  }
+
+  .credits-memory-label {
+    bottom: 22px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+
+  #credits-lyrics {
+    right: 16px;
+    bottom: 84px;
+    width: min(230px, calc(100% - 32px));
+    padding: 10px 12px;
+    font-size: 10px;
+    line-height: 1.65;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  #title-bg,
+  #title-stars,
+  #title-logo-img,
+  #title-main,
+  #title-main::after {
+    animation: none;
+  }
+
+  #title-main {
+    text-shadow:
+      0 0 4px rgba(255,255,255,.95),
+      0 0 14px rgba(255,165,220,.52),
+      0 0 34px rgba(230, 70,170,.28);
+  }
+
+  #title-main::after {
+    width: 340px;
+    opacity: 0.88;
+    box-shadow:
+      0 0 6px rgba(255, 180, 220, .7),
+      0 0 18px rgba(220, 50, 160, .26);
+  }
+
+  #title-logo-img {
+    filter: drop-shadow(0 0 8px rgba(255,130,195,.22));
+  }
+
+  #next-arrow {
+    animation: arrowFadePulse 2.1s ease-in-out infinite;
+  }
+
+  #opening-arrow {
+    animation-duration: 2.2s;
+  }
+
+  #scene-wipe,
+  #credits-roll {
+    will-change: auto;
+  }
+
+  #game-container {
+    box-shadow: 0 0 40px rgba(200, 100, 180, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #title-bg,
+  #title-stars,
+  #title-logo-img,
+  #title-main,
+  #title-main::after,
+  #next-arrow,
+  #opening-arrow,
+  .cursor-core,
+  .cursor-ring,
+  .cursor-sparkle,
+  .touch-star {
+    animation: none !important;
+  }
+
+  #scene-wipe,
+  #credits-roll {
+    will-change: auto;
+  }
+}
+
+@keyframes arrowFadePulse {
+  0%, 100% { opacity: 0.24; }
+  50% { opacity: 0.72; }
 }
