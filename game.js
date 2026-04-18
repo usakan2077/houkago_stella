@@ -1868,9 +1868,9 @@ class VNEngine {
       { label: 'Chapter 6 — それぞれの放課後',   key: 'chapter6_start' },
       { label: 'Chapter 7 — 重なる孤独',         key: 'chapter7_start' },
       { label: 'Chapter 8 — 選ぶということ',     key: 'chapter8_start' },
-      { label: '── 分岐: さくらルート',           key: 'sakura_ch9_start' },
-      { label: '── 分岐: ことはルート',           key: 'kotoha_ch9_start' },
-      { label: '── 分岐: まひるルート',           key: 'mahiru_ch9_start' },
+      { label: '── 分岐: さくらルート',           key: 'sakura_interlude' },
+      { label: '── 分岐: ことはルート',           key: 'kotoha_interlude' },
+      { label: '── 分岐: まひるルート',           key: 'mahiru_interlude' },
       { label: '── バッドエンド',                 key: 'bad_end_common' },
     ];
 
@@ -1929,9 +1929,9 @@ class VNEngine {
     this._resetGameState();
     // デバッグ用: ルート分岐以降のラベルには好感度を自動設定
     const favorPresets = {
-      sakura_ch9_start:  { sakura_favor: 12 },
-      kotoha_ch9_start:  { kotoha_favor: 12 },
-      mahiru_ch9_start:  { mahiru_favor: 12 },
+      sakura_interlude:  { sakura_favor: 12 },
+      kotoha_interlude:  { kotoha_favor: 12 },
+      mahiru_interlude:  { mahiru_favor: 12 },
       chapter8_start:    { sakura_favor: 10, kotoha_favor: 10, mahiru_favor: 10 },
     };
     if (favorPresets[label]) Object.assign(this.flags, favorPresets[label]);

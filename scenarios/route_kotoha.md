@@ -1417,6 +1417,7 @@ player: またそこから始めればいい
 
 @wait 1200
 
+@expr kotoha sad
 > ことははしばらく俯いていた。
 
 @wait 1000
@@ -1576,6 +1577,7 @@ player: 今日始めたんだから当然だろ
 # kotoha_ch12_running
 
 @scene school_grounds_evening fade
+@window_color reset
 @bgm stop
 @wait 800
 
@@ -1583,8 +1585,8 @@ player: 今日始めたんだから当然だろ
 
 @wait 500
 
-> 体育祭のリレーを走ってから、
-> 日課になっていた。
+> 体育祭のリレーに向けて、
+> 感覚を取り戻すつもりで、走っていた。
 > 放課後、校庭を短い距離だけ走る。
 > 速くなくていい。
 > 痛みが出たら止まる。
@@ -1728,6 +1730,95 @@ kotoha: 見ていてください
 
 @hide kotoha fade_out
 @wait 500
+
+@jump kotoha_ch12_practice
+
+
+// ===================================================================
+//  Chapter 12k-Practice「毎日の練習」
+// ===================================================================
+
+# kotoha_ch12_practice
+
+@scene music_room_evening fade
+@bgm daily_life.mp3
+@wait 800
+
+> それからは、毎日だった。
+
+@wait 600
+
+> 放課後になると、音楽準備室から音が聴こえた。
+> 同じフレーズが、何度も繰り返された。
+> 止まって、また始まる。
+> 止まって、また始まる。
+
+@wait 900
+
+@show kotoha center normal fade_in
+@wait 600
+
+kotoha: ……ここ、まだ左手が遅れます
+
+@wait 400
+
+player: 気づいてたのか
+
+@wait 300
+
+kotoha: 毎回、同じところで
+
+@wait 600
+
+> ことはは鍵盤に視線を戻した。
+> もう一度、弾きはじめる。
+
+@wait 800
+
+@hide kotoha fade_out
+@wait 700
+
+@bgm evening_piano.mp3
+@wait 1400
+
+> 完璧じゃなかった。
+> でも、止まらなかった。
+> それだけが、少しずつ積み上がっていった。
+
+@wait 1200
+
+@bgm stop
+@wait 800
+
+> 本番前日。
+
+@wait 600
+
+@show kotoha center thinking fade_in
+@wait 600
+
+kotoha: ……弾けるかどうか、
+kotoha: まだわかりません
+
+@wait 500
+
+player: そうだな
+
+@wait 400
+
+kotoha: ……それでも、
+kotoha: やめようとは思わなかった
+
+@wait 900
+
+> 静かだった。
+> 自分に言い聞かせているわけじゃない。
+> ただ、確かめているような声だった。
+
+@wait 800
+
+@hide kotoha fade_out
+@wait 600
 
 @jump kotoha_ch12_good_end
 
