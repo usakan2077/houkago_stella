@@ -11,6 +11,9 @@ class VNEngine {
     this.labels      = {};           // { labelName: [cmd, ...] }
     this.currentLabel= 'start';
     this.currentIndex= 0;
+    this._isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    this._longPressTimer = null;
+    this._longPressTriggered = false;
 
     // 入力待ち / モード
     this.waitingForInput = false;
@@ -268,6 +271,7 @@ class VNEngine {
     const gameScreen = document.getElementById('game-screen');
     if (gameScreen) {
       gameScreen.addEventListener('click', (e) => {
+        if (this._longPressTriggered) return;
         // UI非表示中は再表示して終了
         if (this._uiHidden) { this._showUI(); return; }
         const ignore = '#text-area, #choices-overlay, #menu-bar, .modal, #ending-screen, #still-layer';
@@ -281,6 +285,45 @@ class VNEngine {
         if (titleScreen && !titleScreen.classList.contains('hidden')) return;
         this._uiHidden ? this._showUI() : this._hideUI();
       });
+
+      if (this._isTouchDevice) {
+        const cancelLongPress = () => {
+          if (this._longPressTimer) {
+            clearTimeout(this._longPressTimer);
+            this._longPressTimer = null;
+          }
+        };
+
+        gameScreen.addEventListener('touchstart', (e) => {
+          if (e.touches.length !== 1) return;
+
+          const titleScreen = document.getElementById('title-screen');
+          if (titleScreen && !titleScreen.classList.contains('hidden')) return;
+
+          this._longPressTriggered = false;
+          const touch = e.touches[0];
+          this._spawnTouchParticles(touch.clientX, touch.clientY);
+          cancelLongPress();
+          this._longPressTimer = setTimeout(() => {
+            this._longPressTriggered = true;
+            this._uiHidden ? this._showUI() : this._hideUI();
+          }, 300);
+        }, { passive: true });
+
+        gameScreen.addEventListener('touchend', () => {
+          cancelLongPress();
+          if (this._longPressTriggered) {
+            setTimeout(() => { this._longPressTriggered = false; }, 350);
+          }
+        }, { passive: true });
+        gameScreen.addEventListener('touchcancel', () => {
+          cancelLongPress();
+          this._longPressTriggered = false;
+        }, { passive: true });
+        gameScreen.addEventListener('touchmove', () => {
+          cancelLongPress();
+        }, { passive: true });
+      }
     }
 
     // キーボード
@@ -1308,6 +1351,9 @@ class VNEngine {
       if (this.typewriterTimer) this._onAdvance();
       else if (this.waitingForInput) this._executeNext();
     }
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
   }
 
   _toggleAuto() {
@@ -1324,6 +1370,9 @@ class VNEngine {
       // autoTimer のみキャンセル（typewriterTimer は継続させる）
       // typewriter中にオートを切っても文字表示が止まらないようにする
       if (this.autoTimer) { clearTimeout(this.autoTimer); this.autoTimer = null; }
+    }
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
     }
   }
 
@@ -1821,6 +1870,8 @@ class VNEngine {
   //  カスタムカーソル
   // ============================================================
   _initCursor() {
+    if (this._isTouchDevice) return;
+
     const cursor = document.createElement('div');
     cursor.id = 'custom-cursor';
     cursor.innerHTML = '<div class="cursor-ring"></div><div class="cursor-core"></div>';
@@ -1849,6 +1900,32 @@ class VNEngine {
       document.body.appendChild(sp);
       setTimeout(() => sp.remove(), 620);
     });
+  }
+
+  _spawnTouchParticles(clientX, clientY) {
+    const gameScreen = document.getElementById('game-screen');
+    if (!gameScreen) return;
+
+    const rect = gameScreen.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const count = 5 + Math.floor(Math.random() * 4);
+    const colors = ['#fff6fc', '#ffd5ee', '#ffb6dd', '#e7c6ff', '#fff0a8'];
+
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('span');
+      star.className = 'touch-star';
+      star.textContent = '✦';
+      star.style.left = `${x}px`;
+      star.style.top = `${y}px`;
+      star.style.color = colors[Math.floor(Math.random() * colors.length)];
+      star.style.fontSize = `${12 + Math.random() * 10}px`;
+      star.style.setProperty('--dx', `${(Math.random() - 0.5) * 72}px`);
+      star.style.setProperty('--dy', `${-18 - Math.random() * 44}px`);
+      star.style.setProperty('--rot', `${(Math.random() - 0.5) * 160}deg`);
+      star.addEventListener('animationend', () => star.remove(), { once: true });
+      gameScreen.appendChild(star);
+    }
   }
 
   // ============================================================

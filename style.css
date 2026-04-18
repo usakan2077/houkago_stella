@@ -517,6 +517,13 @@ body {
   border-color: rgba(240,160,210,.8);
   color: #fff;
 }
+@media (hover: none) {
+  .menu-btn:hover {
+    background: rgba(8, 3, 18, .65);
+    border-color: rgba(200,140,200,.3);
+    color: rgba(240,210,230,.8);
+  }
+}
 .menu-key {
   display: inline-block;
   margin-left: 4px;
@@ -679,6 +686,16 @@ body {
   box-shadow: 0 0 24px rgba(220,80,160,.2);
 }
 .choice-btn:hover::before { width: 100%; }
+@media (hover: none) {
+  .choice-btn:hover {
+    border-color: rgba(220,140,190,.5);
+    color: #f5eaf0;
+    box-shadow: none;
+  }
+  .choice-btn:hover::before {
+    width: 0;
+  }
+}
 
 /* ---- エンディング画面 ---- */
 #ending-screen {
@@ -1152,7 +1169,16 @@ body {
 /* ============================================================
    カスタムカーソル
 ============================================================ */
-* { cursor: none !important; }
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  #game-screen,
+  #game-screen * {
+    cursor: none !important;
+  }
+}
 
 #custom-cursor {
   position: fixed;
@@ -1217,6 +1243,28 @@ body {
 }
 
 /* ---- スクロールバー ---- */
+.touch-star {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 24;
+  pointer-events: none;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(255, 210, 240, 0.85);
+  transform: translate(-50%, -50%);
+  animation: touchStarBurst 0.7s ease-out forwards;
+}
+@keyframes touchStarBurst {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.7) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.2) rotate(var(--rot));
+  }
+}
+
 ::-webkit-scrollbar       { width: 4px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,.2); }
 ::-webkit-scrollbar-thumb { background: rgba(220,140,190,.45); border-radius: 2px; }
@@ -1305,4 +1353,76 @@ body {
   background: rgba(180,80,220,.25);
   border-color: rgba(200,120,255,.8);
   color: #e8d0ff;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  #title-bg,
+  #title-stars,
+  #title-logo-img,
+  #title-main,
+  #title-main::after {
+    animation: none;
+  }
+
+  #title-main {
+    text-shadow:
+      0 0 4px rgba(255,255,255,.95),
+      0 0 14px rgba(255,165,220,.52),
+      0 0 34px rgba(230, 70,170,.28);
+  }
+
+  #title-main::after {
+    width: 340px;
+    opacity: 0.88;
+    box-shadow:
+      0 0 6px rgba(255, 180, 220, .7),
+      0 0 18px rgba(220, 50, 160, .26);
+  }
+
+  #title-logo-img {
+    filter: drop-shadow(0 0 8px rgba(255,130,195,.22));
+  }
+
+  #next-arrow {
+    animation: arrowFadePulse 2.1s ease-in-out infinite;
+  }
+
+  #opening-arrow {
+    animation-duration: 2.2s;
+  }
+
+  #scene-wipe,
+  #credits-roll {
+    will-change: auto;
+  }
+
+  #game-container {
+    box-shadow: 0 0 40px rgba(200, 100, 180, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #title-bg,
+  #title-stars,
+  #title-logo-img,
+  #title-main,
+  #title-main::after,
+  #next-arrow,
+  #opening-arrow,
+  .cursor-core,
+  .cursor-ring,
+  .cursor-sparkle,
+  .touch-star {
+    animation: none !important;
+  }
+
+  #scene-wipe,
+  #credits-roll {
+    will-change: auto;
+  }
+}
+
+@keyframes arrowFadePulse {
+  0%, 100% { opacity: 0.24; }
+  50% { opacity: 0.72; }
 }
