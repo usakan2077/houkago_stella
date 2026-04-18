@@ -2213,7 +2213,7 @@ kotoha: やめようとは思わなかった
 # kotoha_ch12_good_end
 
 @scene stage fade
-@bgm daily_life.mp3
+@bgm kotoha_good_end.mp3
 @wait 800
 
 > 合唱コンクール当日。
@@ -2452,7 +2452,6 @@ player: 聴く
 @wait 600
 
 @still kotoha_one_note
-@bgm kotoha_good_end.mp3
 @wait 1000
 
 kotoha: では、隣へどうぞ
@@ -2502,7 +2501,7 @@ kotoha: では、隣へどうぞ
 @hide kotoha fade_out
 @wait 800
 
-@credits kotoha_good_end.mp3
+@credits kotoha_good_end.mp3 kotoha_good_end
 @end "第十二章「指先は、ずっと音を覚えていた」— ことはルート Good End"
 
 

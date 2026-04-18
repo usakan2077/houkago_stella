@@ -2410,11 +2410,7 @@ sakura: 本当のことだもん！
 
 @wait 1500
 
-@bgm stop
-@wait 300
-@bgm sakura_good_end.mp3
-
-@credits sakura_good_end.mp3
+@credits sakura_good_end.mp3 sakura_good_end
 @end "第十二章「散らないように、咲く」— さくらルート Good End"
 
 

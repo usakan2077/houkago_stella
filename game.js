@@ -50,6 +50,10 @@ class VNEngine {
     // 現在表示中のスチル
     this.currentStill = null;
     this._hideStillTimer = null;
+    this._creditsAnimEnd = null;
+    this._creditsTimers = [];
+    this._creditsSession = null;
+    this._creditsMemoryIndex = 0;
 
     // UI非表示モード
     this._uiHidden = false;
@@ -619,6 +623,7 @@ class VNEngine {
     document.getElementById('choices-overlay').classList.add('hidden');
     document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('ending-screen').classList.add('hidden');
+    this._clearCreditsPresentation();
     document.getElementById('next-arrow').style.display = 'none';
     document.getElementById('dialog-text').textContent  = '';
     document.getElementById('char-name').textContent    = '';
@@ -829,7 +834,7 @@ class VNEngine {
         break;
 
       case 'credits':
-        this._showCredits(cmd.bgm);
+        this._showCredits(cmd.bgm, cmd.profile);
         break;
 
       case 'window_color':
@@ -1558,14 +1563,20 @@ class VNEngine {
   // ============================================================
   //  クレジットロール
   // ============================================================
-  _showCredits(bgmFile) {
+  async _showCredits(bgmFile, profileKey = null) {
     this._stopTypewriter();
     this._clearAllChars('fade_out');
+    this._hideStill('instant');
+    this._clearCreditsPresentation();
 
-    if (bgmFile) this._playBGM(bgmFile);
+    const screen   = document.getElementById('credits-screen');
+    const roll     = document.getElementById('credits-roll');
+    const profile  = this._resolveCreditsProfile(profileKey, bgmFile);
+    const bgmTrack = profile.themeTrack || bgmFile || null;
+    const session  = Symbol('credits');
+    this._creditsSession = session;
 
-    const screen = document.getElementById('credits-screen');
-    const roll   = document.getElementById('credits-roll');
+    if (bgmTrack) this._playBGM(bgmTrack);
 
     // クレジット行を生成
     const lines = VN_CONFIG.credits || [];
@@ -1581,27 +1592,202 @@ class VNEngine {
         default:           return '';
       }
     }).join('');
+    roll.style.animation = 'none';
+    roll.style.opacity = '0';
 
     screen.classList.remove('hidden');
 
-    // スクロール量を計算して CSS 変数にセット
+    const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 55);
+    const audioDuration = bgmTrack ? await this._getAudioDuration(bgmTrack) : null;
+    if (this._creditsSession !== session) return;
+
     requestAnimationFrame(() => {
+      if (this._creditsSession !== session) return;
+
       const vh      = screen.clientHeight;
       const rollH   = roll.scrollHeight;
-      const speed   = 55; // px/sec
       const total   = vh + rollH;
-      const dur     = total / speed;
+      const speed   = profile.scrollSpeed || 55;
+      const natural = total / speed;
+      const dur     = Math.max(audioDuration || 0, natural, fallbackDuration);
 
       roll.style.setProperty('--credits-start', `${vh}px`);
       roll.style.setProperty('--credits-end',   `-${rollH}px`);
       roll.style.animation = `creditsScroll ${dur}s linear forwards`;
+      roll.style.opacity = '1';
 
-      // アニメーション終了で次へ
+      this._startCreditsPresentation(profile, dur);
+
       this._creditsAnimEnd = () => {
         roll.removeEventListener('animationend', this._creditsAnimEnd);
+        this._creditsAnimEnd = null;
         this._endCredits();
       };
       roll.addEventListener('animationend', this._creditsAnimEnd);
+    });
+  }
+
+  _resolveCreditsProfile(profileKey, bgmFile) {
+    const profile = (VN_CONFIG.creditsProfiles && profileKey)
+      ? (VN_CONFIG.creditsProfiles[profileKey] || {})
+      : {};
+    return {
+      key: profileKey || '',
+      themeTrack: profile.themeTrack || bgmFile || null,
+      themeTitle: profile.themeTitle || '',
+      themeCredit: profile.themeCredit || '',
+      memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
+      lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
+      scrollSpeed: profile.scrollSpeed || 55,
+    };
+  }
+
+  _estimateCreditsDuration(screen, roll, speed) {
+    const vh    = screen.clientHeight || 720;
+    const rollH = roll.scrollHeight || 1080;
+    return (vh + rollH) / speed;
+  }
+
+  _startCreditsPresentation(profile, durationSec) {
+    this._creditsMemoryIndex = 0;
+    this._scheduleCreditsMemories(profile, durationSec);
+    this._scheduleCreditsLyrics(profile, durationSec);
+  }
+
+  _scheduleCreditsMemories(profile, durationSec) {
+    const stills = (profile.memoryStills || []).filter(Boolean);
+    if (stills.length === 0) return;
+
+    const introSec = 1.2;
+    const usableSec = Math.max(durationSec - 3.4, stills.length * 1.8);
+    const slotSec = usableSec / stills.length;
+
+    stills.forEach((stillKey, index) => {
+      const timer = setTimeout(() => {
+        if (!this._creditsSession) return;
+        this._showCreditsMemory(stillKey);
+      }, Math.max(0, (introSec + slotSec * index) * 1000));
+      this._creditsTimers.push(timer);
+    });
+  }
+
+  _showCreditsMemory(stillKey) {
+    const cards = [
+      document.getElementById('credits-memory-card-a'),
+      document.getElementById('credits-memory-card-b'),
+    ].filter(Boolean);
+    if (cards.length === 0) return;
+
+    const next = cards[this._creditsMemoryIndex % cards.length];
+    const prev = cards[(this._creditsMemoryIndex + 1) % cards.length];
+    const src = this._getStillAssetPath(stillKey);
+    if (!src) return;
+
+    next.style.backgroundImage = `url(${src})`;
+    const labelEl = next.querySelector('.credits-memory-label');
+    if (labelEl) labelEl.textContent = this._getStillLabel(stillKey);
+
+    next.classList.add('active');
+    if (prev) prev.classList.remove('active');
+    this._creditsMemoryIndex++;
+  }
+
+  _getStillAssetPath(stillKey) {
+    const resolvedExt = this._resolvedStillExt && this._resolvedStillExt[stillKey];
+    if (resolvedExt) return `assets/images/stills/${stillKey}${resolvedExt}`;
+    return `assets/images/stills/${stillKey}.webp`;
+  }
+
+  _getStillLabel(stillKey) {
+    const item = (VN_CONFIG.cgList || []).find(cg => cg.key === stillKey);
+    return item?.label || stillKey;
+  }
+
+  _scheduleCreditsLyrics(profile, durationSec) {
+    const lyricsEl = document.getElementById('credits-lyrics');
+    const lyrics = (profile.lyrics || []).filter(Boolean);
+    if (!lyricsEl || lyrics.length === 0) return;
+
+    const introSec = 2.4;
+    const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
+    const slotSec = usableSec / lyrics.length;
+    const holdMs = Math.max(3200, Math.min(6200, slotSec * 780));
+
+    lyrics.forEach((entry, index) => {
+      const timer = setTimeout(() => {
+        if (!this._creditsSession) return;
+        this._showCreditsLyric(entry, holdMs);
+      }, Math.max(0, (introSec + slotSec * index) * 1000));
+      this._creditsTimers.push(timer);
+    });
+  }
+
+  _showCreditsLyric(entry, holdMs) {
+    const lyricsEl = document.getElementById('credits-lyrics');
+    if (!lyricsEl) return;
+
+    const lines = Array.isArray(entry) ? entry : [entry];
+    lyricsEl.textContent = lines.join('\n');
+    lyricsEl.classList.remove('hidden');
+    requestAnimationFrame(() => lyricsEl.classList.add('visible'));
+
+    const fadeTimer = setTimeout(() => {
+      lyricsEl.classList.remove('visible');
+    }, holdMs);
+    this._creditsTimers.push(fadeTimer);
+  }
+
+  _clearCreditsPresentation() {
+    this._creditsSession = null;
+    this._creditsTimers.forEach(timer => clearTimeout(timer));
+    this._creditsTimers = [];
+    this._creditsMemoryIndex = 0;
+
+    const roll = document.getElementById('credits-roll');
+    if (roll && this._creditsAnimEnd) {
+      roll.removeEventListener('animationend', this._creditsAnimEnd);
+      this._creditsAnimEnd = null;
+    }
+    if (roll) {
+      roll.style.animation = 'none';
+      roll.style.opacity = '';
+    }
+
+    const lyricsEl = document.getElementById('credits-lyrics');
+    if (lyricsEl) {
+      lyricsEl.textContent = '';
+      lyricsEl.classList.remove('visible');
+      lyricsEl.classList.add('hidden');
+    }
+
+    ['credits-memory-card-a', 'credits-memory-card-b'].forEach(id => {
+      const card = document.getElementById(id);
+      if (!card) return;
+      card.classList.remove('active');
+      card.style.backgroundImage = '';
+      const labelEl = card.querySelector('.credits-memory-label');
+      if (labelEl) labelEl.textContent = '';
+    });
+  }
+
+  async _getAudioDuration(track) {
+    return await new Promise(resolve => {
+      const audio = new Audio();
+      let settled = false;
+      const finish = (value) => {
+        if (settled) return;
+        settled = true;
+        audio.removeEventListener('loadedmetadata', onLoaded);
+        audio.removeEventListener('error', onError);
+        resolve(value);
+      };
+      const onLoaded = () => finish(Number.isFinite(audio.duration) ? audio.duration : null);
+      const onError  = () => finish(null);
+
+      audio.preload = 'metadata';
+      audio.addEventListener('loadedmetadata', onLoaded, { once: true });
+      audio.addEventListener('error', onError, { once: true });
+      audio.src = `assets/audio/bgm/${track}`;
     });
   }
 
@@ -1616,8 +1802,10 @@ class VNEngine {
   }
 
   _endCredits() {
+    this._clearCreditsPresentation();
     document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('credits-roll').style.animation = 'none';
+    document.getElementById('credits-roll').style.opacity = '';
     this._executeNext();
   }
 

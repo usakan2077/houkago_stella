@@ -2491,7 +2491,7 @@ kotoha: ……よかったです
 @wait 500
 
 @scene school_gate_autumn_evening fade
-@bgm evening_piano.mp3
+@bgm 理由のない明日へ.mp3
 @wait 1000
 
 > 放課後。
@@ -2559,13 +2559,7 @@ mahiru: 多すぎて書ききれない
 @hide mahiru fade_out
 @wait 600
 
-@bgm stop
-@wait 800
-
-@bgm mahiru_dawn.mp3
-@wait 1200
-
-@credits mahiru_dawn.mp3
+@credits 理由のない明日へ.mp3 mahiru_good_end
 @end "第十二章「夜明けは、一人では見つけられなかった」— まひるルート Good End"
 
 

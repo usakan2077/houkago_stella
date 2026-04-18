@@ -766,10 +766,94 @@ body {
   z-index: 35;
   overflow: hidden;
 }
+#credits-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 240, 220, 0.08) 0%, rgba(0, 0, 0, 0) 52%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(10, 7, 4, 0.3) 24%, rgba(0, 0, 0, 0.58) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+#credits-memory-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.credits-memory-card {
+  position: absolute;
+  inset: 11% 17%;
+  opacity: 0;
+  transform: scale(1.045);
+  transition:
+    opacity 1.3s ease,
+    transform 7.8s ease,
+    filter 1.3s ease;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: sepia(0.75) saturate(0.8) brightness(0.48) contrast(1.1) grayscale(0.12);
+}
+.credits-memory-card::before {
+  content: '';
+  position: absolute;
+  inset: -3%;
+  background:
+    linear-gradient(180deg, rgba(24, 15, 10, 0.08) 0%, rgba(0, 0, 0, 0.35) 100%),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0.68) 100%);
+  box-shadow:
+    inset 0 0 100px rgba(0, 0, 0, 0.72),
+    0 0 60px rgba(0, 0, 0, 0.45);
+}
+.credits-memory-card.active {
+  opacity: 0.72;
+  transform: scale(1);
+  filter: sepia(0.92) saturate(0.74) brightness(0.58) contrast(1.08) grayscale(0.08);
+}
+.credits-memory-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  color: rgba(255, 242, 225, 0.62);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9);
+}
+#credits-lyrics {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  text-align: right;
+  color: rgba(255, 244, 232, 0.78);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.95);
+}
+#credits-lyrics {
+  right: 38px;
+  bottom: 76px;
+  width: min(340px, 28vw);
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.75;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  white-space: pre-line;
+  background: linear-gradient(180deg, rgba(18, 10, 8, 0.52) 0%, rgba(0, 0, 0, 0.18) 100%);
+  border-left: 1px solid rgba(255, 230, 200, 0.16);
+  backdrop-filter: blur(3px);
+}
+#credits-lyrics.visible {
+  opacity: 1;
+}
 #credits-viewport {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  z-index: 3;
 }
 #credits-roll {
   position: absolute;
@@ -778,6 +862,7 @@ body {
   padding: 0 60px;
   box-sizing: border-box;
   will-change: transform;
+  z-index: 3;
 }
 .credits-game-title {
   font-size: 32px;
@@ -840,7 +925,7 @@ body {
   letter-spacing: .3em;
   cursor: pointer;
   transition: all .25s;
-  z-index: 36;
+  z-index: 5;
 }
 #btn-credits-skip:hover {
   border-color: rgba(255,255,255,.5);
@@ -1353,6 +1438,28 @@ body {
   background: rgba(180,80,220,.25);
   border-color: rgba(200,120,255,.8);
   color: #e8d0ff;
+}
+
+@media (max-width: 768px) {
+  .credits-memory-card {
+    inset: 14% 7% 22%;
+  }
+
+  .credits-memory-label {
+    bottom: 22px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+
+  #credits-lyrics {
+    right: 16px;
+    bottom: 84px;
+    width: min(230px, calc(100% - 32px));
+    padding: 10px 12px;
+    font-size: 10px;
+    line-height: 1.65;
+    letter-spacing: 0.06em;
+  }
 }
 
 @media (hover: none) and (pointer: coarse) {

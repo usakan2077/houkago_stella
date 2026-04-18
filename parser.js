@@ -301,8 +301,8 @@ class ScriptParser {
       }
 
       case 'credits':
-        // @credits bgm_file.mp3
-        return { cmd: 'credits', bgm: args[0] || null };
+        // @credits bgm_file.mp3 [credits_profile_key]
+        return { cmd: 'credits', bgm: args[0] || null, profile: args[1] || null };
 
       case 'choice':
         return { cmd: 'choice' }; // 実際の処理は inChoice フラグで行う
