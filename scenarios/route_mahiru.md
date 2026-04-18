@@ -336,7 +336,7 @@ mahiru: 今日、いい天気だね
 > 一人だった。
 > いつもはさくらか誰かと一緒なのに。
 
-@show mahiru center normal fade_in
+@show mahiru_no_camera center normal fade_in
 
 @wait 600
 
@@ -1570,6 +1570,9 @@ mahiru: よかったじゃん
 
 @wait 1200
 
+@hide mahiru_no_camera fade_out
+@wait 500
+
 @bgm stop
 @wait 400
 
@@ -1585,22 +1588,13 @@ mahiru: よかったじゃん
 @scene rooftop_night fade
 @bgm night_melody.mp3
 @se night_insect.mp3
-@wait 1200
-
-> 泣き止んでから、
-> しばらく何も言わなかった。
-
-> 夜の虫の声があった。
-> 遠くで電車が通る音がした。
-> まひるの呼吸が、少しずつ深くなっていった。
-
-@show mahiru_no_camera center normal fade_in
-
-@wait 1200
+@wait 800
 
 > 星が出ていなかった。
 > 雲がほとんどを覆っていた。
 > 黒というより、深い灰色の夜空だった。
+
+@show mahiru_no_camera center normal fade_in
 
 @wait 800
 
@@ -2335,6 +2329,9 @@ player: ああ
 
 @wait 1500
 
+@hide mahiru_no_camera fade_out
+@wait 500
+
 @bgm stop
 @wait 800
 
@@ -2467,7 +2464,7 @@ sakura: すごく嬉しい
 > ことははいつものように静かに受け取って、
 > しばらく写真を見ていた。
 
-@show kotoha center normal fade_in
+@show kotoha left normal fade_in
 @wait 600
 
 kotoha: ……まひる先輩が
