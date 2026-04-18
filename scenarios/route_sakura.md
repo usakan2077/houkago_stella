@@ -906,6 +906,7 @@ sakura: 安心する、かも
 
 # sakura_ch9_end
 
+@hide sakura fade_out
 @scene school_gate_autumn_evening fade
 @bgm evening_piano.mp3
 @wait 800
@@ -1086,8 +1087,6 @@ player: ……
 
 @jump sakura_ch10_gym
 
-@jump sakura_ch10_gym
-
 
 # sakura_ch10_gym
 
@@ -1228,6 +1227,9 @@ sakura: お疲れ様！　また明日！
 > さくらは片付けを続けていた。
 > 一つ一つ、丁寧に。
 
+> 橋本先輩が引退して、もうひと月が経つ。
+> さくらが、部全体を一人で回すようになっていた。
+
 > 誰かがいなくなった後の静けさに、さくらは慣れていた。
 > それが体に染み込んでいるように見えた。
 
@@ -1332,21 +1334,84 @@ sakura: ……笑えないって、こんな感じなんだ
 
 @wait 800
 
-> さくらはゆっくり立ち上がった。
-
-@expr sakura sad
-
-> 少し経ってから、笑った。
-
-> ちゃんと笑った。
-> でも小さかった。
-> 今日、一番小さい笑顔だった。
-
-sakura: ……ありがとね
-
-player: ……
+> でも、立ち上がらなかった。
 
 @wait 600
+
+sakura: ……お母さん
+sakura: まだ連絡してこないんだ
+
+@wait 800
+
+> 静かな声だった。
+> 怒っているでも、悲しんでいるでもなく。
+> ただ、言わずにいられなかった、というように。
+
+@wait 700
+
+sakura: 笑ってれば、いてくれると思ってたのに
+
+@wait 800
+
+sakura: ……全然、そうじゃなかった
+
+@wait 1000
+
+@bgm stop
+@wait 600
+
+@expr sakura crying
+
+> 涙が出ていた。
+> 声を殺していた。
+> 泣いていることに、さくら自身が一番戸惑っているようだった。
+
+@wait 800
+
+> 俺はその場にしゃがんだ。
+> 隣に。
+
+@wait 800
+
+> さくらが少しだけ傾いた。
+> ほんの少しだけ、俺の方に。
+
+@wait 600
+
+> 俺はさくらを抱きしめた。
+
+@still sakura_embrace
+@wait 600
+
+@se heartbeat.mp3
+@wait 800
+
+> さくらはしばらく泣いていた。
+> 笑わなかった。
+> 我慢しなかった。
+
+@wait 1500
+
+@bgm sakura_breakdown.mp3
+@wait 1000
+
+> しばらく経って。
+
+@wait 1200
+
+@expr sakura normal
+
+sakura: ……あったかい
+
+@wait 1000
+
+> 独り言みたいに言った。
+> 自分の体温に、初めて気づいたみたいな声だった。
+
+@wait 1200
+
+@still_hide
+@wait 400
 
 @hide sakura fade_out
 @wait 500
@@ -1354,8 +1419,9 @@ player: ……
 @bgm evening_piano.mp3
 @wait 800
 
-> *（笑えないということを、声に出して言えた）*
-> *（それが何かの始まりなのか、俺にはまだわからなかった）*
+> *（泣けた）*
+> *（笑おうとしないで、泣けた）*
+> *（それがさくらにとって何年ぶりかは、俺にはわからなかった）*
 
 @wait 1000
 
@@ -1658,12 +1724,6 @@ sakura: なんでいてくれるの
 
 @wait 1200
 
-@hide sakura fade_out
-@wait 300
-
-@still sakura_cant_smile
-@wait 1000
-
 > さくらの声が、詰まった。
 
 @wait 600
@@ -1753,13 +1813,6 @@ sakura: どうしたらいいのかわかんないの
 
 @wait 600
 
-@still_hide
-@wait 300
-
-@show sakura center crying fade_in
-
-@wait 400
-
 sakura: ……笑わなくても、いてくれる？
 
 @wait 1000
@@ -1768,21 +1821,9 @@ player: いる
 
 @wait 1200
 
-> 俺はさくらを抱きしめた。
-
-> 言葉じゃなくて、行動で答えた。
-
-@still sakura_embrace
-@wait 1000
-
-@se heartbeat.mp3
-@wait 600
-
-> さくらはしばらくの間、ずっと泣いていた。
-
+> さくらはしばらく泣いていた。
 > 笑わなかった。
 > 我慢しなかった。
-> 止めなかった。
 
 @wait 1500
 
@@ -1795,25 +1836,7 @@ player: いる
 
 @expr sakura normal
 
-sakura: ……あったかい
-
-@wait 1000
-
-> 独り言みたいに言った。
-> 自分の体温に気づいたみたいな声だった。
-
-@wait 800
-
-> さくらはまだ泣いていた。
-> でも声が少しだけ落ち着いていた。
-
-@wait 600
-
-sakura: ……勇くん
-
-player: ……
-
-sakura: 病院、一緒に来てくれる？
+sakura: ……病院、一緒に来てくれる？
 
 @wait 800
 
@@ -1828,8 +1851,8 @@ player: 来るつもりだったから、ここにいる
 @wait 1200
 
 @bgm stop
-@still_hide
 @hide sakura fade_out
+@wait 600
 
 @jump sakura_ch12_start
 
@@ -2209,10 +2232,6 @@ player: それでいい
 
 @wait 800
 
-@still sakura_good_end_rooftop1
-@wait 1500
-@still_hide
-
 > さくらはすでにそこにいた。
 
 @show sakura center normal fade_in
@@ -2324,13 +2343,37 @@ sakura: いてくれる人、いたから
 
 @wait 1000
 
-@still sakura_good_end_rooftop2
-@wait 1500
+@hide sakura fade_out
+@wait 400
+
+@still sakura_good_end_rooftop1_pre1
+@wait 700
+
+> さくらが、ゆっくり手を上げた。
+
+@still sakura_good_end_rooftop1_pre2
+@wait 900
+
+> 結んでいた髪に、指をかける。
+
+@still sakura_good_end_rooftop1_pre3
+@wait 1000
+
+> 横目で、こちらをちらりと見た。
+> 照れていた。
+
+@still sakura_good_end_rooftop1
+@wait 1200
+
+> 髪が、ほどけた。
+
+@wait 800
+
 @still_hide
+@wait 400
 
-@wait 600
-
-@show sakura center shy fade_in
+@still sakura_good_end_rooftop2
+@wait 1000
 
 sakura: ……勇くんのこと、好きです
 
@@ -2339,8 +2382,6 @@ sakura: ……勇くんのこと、好きです
 player: ……俺もだ
 
 @wait 800
-
-@expr sakura happy
 
 sakura: ふふ
 
@@ -2352,6 +2393,9 @@ player: なんだそれ
 
 sakura: 本当のことだもん！
 
+@wait 800
+
+@still_hide
 @wait 600
 
 > さくらは笑った。

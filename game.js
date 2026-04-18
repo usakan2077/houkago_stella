@@ -523,19 +523,19 @@ class VNEngine {
   _setWindowColor(target) {
     const COLORS = {
       sakura: {
-        textBox:  'rgba(20, 4, 14, 0.85)',
-        nameBox:  'rgba(24, 5, 16, 0.85)',
-        shadow:   '0 0 24px 0 rgba(255, 136, 170, 0.10) inset',
+        textBox:  'rgba(52, 6, 24, 0.88)',
+        nameBox:  'rgba(62, 8, 30, 0.92)',
+        shadow:   '0 0 36px 0 rgba(255, 100, 150, 0.30) inset, 0 0 3px 1px rgba(255, 100, 150, 0.14)',
       },
       kotoha: {
-        textBox:  'rgba(4, 8, 24, 0.85)',
-        nameBox:  'rgba(5, 10, 28, 0.85)',
-        shadow:   '0 0 24px 0 rgba(136, 170, 255, 0.10) inset',
+        textBox:  'rgba(6, 14, 58, 0.88)',
+        nameBox:  'rgba(7, 18, 70, 0.92)',
+        shadow:   '0 0 36px 0 rgba(100, 150, 255, 0.30) inset, 0 0 3px 1px rgba(100, 150, 255, 0.14)',
       },
       mahiru: {
-        textBox:  'rgba(4, 18, 12, 0.85)',
-        nameBox:  'rgba(5, 22, 14, 0.85)',
-        shadow:   '0 0 24px 0 rgba(136, 221, 170, 0.10) inset',
+        textBox:  'rgba(4, 42, 22, 0.88)',
+        nameBox:  'rgba(5, 52, 28, 0.92)',
+        shadow:   '0 0 36px 0 rgba(80, 220, 140, 0.28) inset, 0 0 3px 1px rgba(80, 220, 140, 0.13)',
       },
       reset: {
         textBox:  'rgba(8, 3, 20, 0.8)',

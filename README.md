@@ -12,13 +12,14 @@
 
 ```bash
 cd houkago-stella
-python -m http.server 8080
+py -m http.server 8080
 ```
 
 ブラウザで `http://localhost:8080` を開く。
 
+> Windows で `python` コマンドが動かない場合は `py` を使用してください。
 > ポートが使用中のエラー（WinError 10013）が出た場合は番号を変えてください：
-> `python -m http.server 3000` → `http://localhost:3000`
+> `py -m http.server 3000` → `http://localhost:3000`
 
 ### Node.js
 
