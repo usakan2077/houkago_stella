@@ -703,7 +703,7 @@ class VNEngine {
         break;
 
       case 'se':
-        this._playSE(cmd.file);
+        this._playSE(cmd.file, cmd.loop);
         this._executeNext();
         break;
 
@@ -2090,14 +2090,17 @@ class VNEngine {
     }
   }
 
-  _playSE(file) {
+  _playSE(file, loop = false) {
     try {
       const audio = new Audio(`assets/audio/se/${file}`);
       audio.volume = VN_CONFIG.settings.seVolume;
+      audio.loop = loop;
       this.seAudios.push(audio);
-      audio.addEventListener('ended', () => {
-        this.seAudios = this.seAudios.filter(a => a !== audio);
-      });
+      if (!loop) {
+        audio.addEventListener('ended', () => {
+          this.seAudios = this.seAudios.filter(a => a !== audio);
+        });
+      }
       audio.play().catch(() => {});
     } catch (e) {}
   }

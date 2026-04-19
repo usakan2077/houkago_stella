@@ -153,6 +153,8 @@ sakura: 愛と信頼！
 
 @wait 400
 
+> 教室の入口から、月夜野まひるが顔を出した。
+
 @show mahiru center normal fade_in
 
 mahiru: おはよう

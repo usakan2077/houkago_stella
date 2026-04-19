@@ -63,9 +63,8 @@ player: もう決定なのか
 
 sakura: 決定！
 
-player: いつから委員になったんだ
+player: ……あの学活か
 
-sakura: 先週の学活で
 sakura: 立候補する人いないから気まずくなってさ
 sakura: あたし手挙げちゃった
 
@@ -152,9 +151,9 @@ kotoha: ……少しだけ
 
 # chapter4_mahiru_corridor
 
-@scene corridor fade
+@scene corridor_rainy fade
 @bgm tension_rain.mp3
-@se rain_window.mp3
+@se rain_window.mp3 loop
 @wait 700
 
 > 昼休みが終わりに近づいたころ、廊下に出た。
