@@ -1897,8 +1897,8 @@ player: 来るつもりだったから、ここにいる
 @wait 600
 
 @choice
-- "さくらが自分のペースを取り戻していく" -> sakura_good_end
-- "さくらが勇に依存し始める" -> sakura_bad_end
+- "さくらが自分で立てるまで、少し引いていようと思った" -> sakura_good_end
+- "俺がそばにいてやれば、大丈夫だと思った" -> sakura_bad_end
 
 
 // ===================================================================
@@ -1908,6 +1908,8 @@ player: 来るつもりだったから、ここにいる
 # sakura_good_end
 
 @scene classroom_evening fade
+@hide sakura instant
+@hide sakura_sports instant
 @bgm sakura_good_end.mp3
 @wait 1000
 
@@ -1974,6 +1976,8 @@ sakura: ……うん
 # sakura_good_end_daily
 
 @scene corridor fade
+@hide sakura instant
+@hide sakura_sports instant
 @bgm sakura_good_end.mp3
 @wait 800
 
@@ -2040,6 +2044,8 @@ sakura: うん。なんか、言えた
 # sakura_good_end_hospital
 
 @scene overcast_sky fade
+@hide sakura instant
+@hide sakura_sports instant
 @bgm sakura_good_end.mp3
 @wait 800
 
@@ -2094,6 +2100,8 @@ sakura: そうかもなって思う
 # sakura_good_end_club
 
 @scene gymnasium fade
+@hide sakura instant
+@hide sakura_sports instant
 @bgm sakura_good_end.mp3
 @wait 800
 
@@ -2159,6 +2167,8 @@ sakura: たまには、ね
 # sakura_good_end_message
 
 @scene protagonist_room_night fade
+@hide sakura instant
+@hide sakura_sports instant
 @bgm sakura_good_end.mp3
 @wait 800
 
@@ -2220,6 +2230,8 @@ player: それでいい
 # sakura_good_end_rooftop
 
 @scene rooftop_evening fade
+@hide sakura instant
+@hide sakura_sports instant
 @bgm stop
 @se chime_soft.mp3
 @wait 1200
