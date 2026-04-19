@@ -846,7 +846,7 @@ mahiru: また明日
 
 # chapter4_walk
 
-@scene school_gate_rainy fade
+@scene school_gate_june_rainy fade
 @bgm evening_piano.mp3
 @se rain_light.mp3
 @wait 800
@@ -867,7 +867,7 @@ mahiru: 今日は同じ方向だね
 player: そうだな
 
 @se stop
-@scene commute_road_spring_evening fade
+@scene commute_road_june_evening fade
 
 > 雨は歩き始めてすぐに止んだ。
 > 夕暮れの道を並んで歩く。
@@ -1051,7 +1051,7 @@ player: またな
 
 # chapter4_end
 
-@scene school_gate_summer_evening fade
+@scene commute_road_june_evening fade
 @bgm mystery_shadow.mp3
 @wait 1000
 
