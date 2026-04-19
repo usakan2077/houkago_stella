@@ -152,17 +152,18 @@ class VNEngine {
     }
 
     // 進捗トラッキング
+    tasks.push(document.fonts ? document.fonts.ready : Promise.resolve());
+
     const total = tasks.length;
     let done = 0;
     const updateBar = () => {
       done++;
-      const pct = Math.round(done / total * 100);
+      const pct = Math.min(100, Math.round(done / total * 100));
       if (bar)   bar.style.width    = `${pct}%`;
       if (pctEl) pctEl.textContent  = `${pct}%`;
     };
 
     // フォント読み込み完了を待つ（FOUT防止）
-    tasks.push(document.fonts ? document.fonts.ready : Promise.resolve());
 
     // ロード完了 と OK クリック を並行で待つ
     const loadDone = Promise.all(tasks.map(t => t.then(updateBar)));
