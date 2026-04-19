@@ -144,12 +144,15 @@ class VNEngine {
     }
 
     // キャラクター立ち絵: すべて PNG なのでプリロードのみ（拡張子解決不要）
+    // ImageオブジェクトをGC対象にしないよう _preloadedCharImgs に保持する
+    this._preloadedCharImgs = [];
     for (const [charKey, charData] of Object.entries(VN_CONFIG.characters)) {
       for (const expr of (charData.expressions || [])) {
         tasks.push(new Promise(resolve => {
           const img = new Image();
           img.onload = img.onerror = resolve;
           img.src = `assets/images/chars/${charKey}/${expr}.png`;
+          this._preloadedCharImgs.push(img);
         }));
       }
     }
