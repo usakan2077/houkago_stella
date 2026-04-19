@@ -3,8 +3,7 @@
    ゲームウィンドウ: 1280 × 720px (16:9)
 ============================================================ */
 
-/* ---- Google Fonts ---- */
-@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=block');
+/* ---- Google Fonts (index.html <head> で <link> として読み込み済み) ---- */
 
 /* ---- リセット ---- */
 *, *::before, *::after {
@@ -1439,6 +1438,39 @@ body {
   background: rgba(180,80,220,.25);
   border-color: rgba(200,120,255,.8);
   color: #e8d0ff;
+}
+.settings-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 180px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(220,140,190,.3);
+  outline: none;
+  cursor: pointer;
+}
+.settings-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(200,120,255,.85);
+  cursor: pointer;
+  border: none;
+}
+.settings-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(200,120,255,.85);
+  cursor: pointer;
+  border: none;
+}
+.settings-slider-value {
+  font-size: 12px;
+  color: rgba(200,180,255,.7);
+  min-width: 28px;
+  text-align: right;
 }
 
 @media (max-width: 768px) {
