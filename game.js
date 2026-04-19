@@ -650,6 +650,7 @@ class VNEngine {
     }
     this._stopAllSE();
     this._stopTypewriter(); // 全タイマー（_stillHideWaitTimer含む）をキャンセル
+    if (this.currentStill) this._hideStill('instant');
     this.currentLabel = label;
     this.currentIndex = 0;
     this._executeNext();
