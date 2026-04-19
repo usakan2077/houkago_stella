@@ -2091,6 +2091,7 @@ class VNEngine {
   }
 
   _spawnTouchParticles(clientX, clientY) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const gameScreen = document.getElementById('game-screen');
     if (!gameScreen) return;
 
@@ -2112,6 +2113,7 @@ class VNEngine {
       star.style.setProperty('--dy', `${-18 - Math.random() * 44}px`);
       star.style.setProperty('--rot', `${(Math.random() - 0.5) * 160}deg`);
       star.addEventListener('animationend', () => star.remove(), { once: true });
+      setTimeout(() => { if (star.isConnected) star.remove(); }, 900);
       gameScreen.appendChild(star);
     }
   }
