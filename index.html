@@ -28,6 +28,7 @@
   <!-- フォントプリロード: FOUT防止 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=block">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -372,6 +373,29 @@
             <button class="settings-opt" data-delay="2000">普通</button>
             <button class="settings-opt" data-delay="1000">速め</button>
             <button class="settings-opt" data-delay="500">爆速</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">文字速度</span>
+          <div class="settings-options" id="type-speed-options">
+            <button class="settings-opt" data-speed="60">遅め</button>
+            <button class="settings-opt" data-speed="30">普通</button>
+            <button class="settings-opt" data-speed="15">速め</button>
+            <button class="settings-opt" data-speed="0">瞬間</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">BGM音量</span>
+          <div class="settings-options">
+            <input type="range" id="bgm-volume-slider" min="0" max="100" step="5" class="settings-slider">
+            <span id="bgm-volume-value" class="settings-slider-value">65</span>
+          </div>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">SE音量</span>
+          <div class="settings-options">
+            <input type="range" id="se-volume-slider" min="0" max="100" step="5" class="settings-slider">
+            <span id="se-volume-value" class="settings-slider-value">85</span>
           </div>
         </div>
       </div>

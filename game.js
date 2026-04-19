@@ -79,6 +79,16 @@ class VNEngine {
     const savedDelay = localStorage.getItem('vn_auto_delay');
     if (savedDelay) VN_CONFIG.settings.autoDelay = parseInt(savedDelay, 10);
 
+    // 文字表示速度の復元
+    const savedTypeSpeed = localStorage.getItem('vn_type_speed');
+    if (savedTypeSpeed !== null) VN_CONFIG.settings.typeSpeed = parseInt(savedTypeSpeed, 10);
+
+    // BGM/SE音量の復元
+    const savedBgm = localStorage.getItem('vn_bgm_volume');
+    if (savedBgm !== null) VN_CONFIG.settings.bgmVolume = parseFloat(savedBgm);
+    const savedSe = localStorage.getItem('vn_se_volume');
+    if (savedSe !== null) VN_CONFIG.settings.seVolume = parseFloat(savedSe);
+
     this._init();
   }
 
@@ -134,12 +144,15 @@ class VNEngine {
     }
 
     // キャラクター立ち絵: すべて PNG なのでプリロードのみ（拡張子解決不要）
+    // ImageオブジェクトをGC対象にしないよう _preloadedCharImgs に保持する
+    this._preloadedCharImgs = [];
     for (const [charKey, charData] of Object.entries(VN_CONFIG.characters)) {
       for (const expr of (charData.expressions || [])) {
         tasks.push(new Promise(resolve => {
           const img = new Image();
           img.onload = img.onerror = resolve;
           img.src = `assets/images/chars/${charKey}/${expr}.png`;
+          this._preloadedCharImgs.push(img);
         }));
       }
     }
@@ -690,7 +703,7 @@ class VNEngine {
         break;
 
       case 'se':
-        this._playSE(cmd.file);
+        this._playSE(cmd.file, cmd.loop);
         this._executeNext();
         break;
 
@@ -1181,7 +1194,7 @@ class VNEngine {
     }
 
     // ログに追加
-    this.textLog.push({ name: cfg?.name || '', text });
+    this.textLog.push({ name: cfg?.name || '', nameColor: cfg?.nameColor || '', text });
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
 
@@ -1552,7 +1565,7 @@ class VNEngine {
     const content = document.getElementById('log-content');
     content.innerHTML = this.textLog.slice(-40).map(e => `
       <div class="log-entry">
-        ${e.name ? `<span class="log-name" style="color:#ff99bb">${e.name}</span>` : ''}
+        ${e.name ? `<span class="log-name" style="color:${e.nameColor || '#ff99bb'}">${e.name}</span>` : ''}
         <span>${e.text}</span>
       </div>
     `).join('');
@@ -1901,6 +1914,7 @@ class VNEngine {
   //  設定
   // ============================================================
   _openSettings() {
+    // オート速度
     const currentDelay = VN_CONFIG.settings.autoDelay;
     document.querySelectorAll('#auto-speed-options .settings-opt').forEach(btn => {
       const delay = parseInt(btn.dataset.delay, 10);
@@ -1912,6 +1926,45 @@ class VNEngine {
           .forEach(b => b.classList.toggle('active', parseInt(b.dataset.delay, 10) === delay));
       };
     });
+
+    // 文字表示速度
+    const currentSpeed = VN_CONFIG.settings.typeSpeed;
+    document.querySelectorAll('#type-speed-options .settings-opt').forEach(btn => {
+      const speed = parseInt(btn.dataset.speed, 10);
+      btn.classList.toggle('active', speed === currentSpeed);
+      btn.onclick = () => {
+        VN_CONFIG.settings.typeSpeed = speed;
+        localStorage.setItem('vn_type_speed', speed);
+        document.querySelectorAll('#type-speed-options .settings-opt')
+          .forEach(b => b.classList.toggle('active', parseInt(b.dataset.speed, 10) === speed));
+      };
+    });
+
+    // BGM音量スライダー
+    const bgmSlider = document.getElementById('bgm-volume-slider');
+    const bgmVal    = document.getElementById('bgm-volume-value');
+    bgmSlider.value = Math.round(VN_CONFIG.settings.bgmVolume * 100);
+    bgmVal.textContent = bgmSlider.value;
+    bgmSlider.oninput = () => {
+      const v = parseInt(bgmSlider.value, 10) / 100;
+      VN_CONFIG.settings.bgmVolume = v;
+      localStorage.setItem('vn_bgm_volume', v);
+      bgmVal.textContent = bgmSlider.value;
+      if (this.bgmAudio) try { this.bgmAudio.volume = v; } catch (e) {}
+    };
+
+    // SE音量スライダー
+    const seSlider = document.getElementById('se-volume-slider');
+    const seVal    = document.getElementById('se-volume-value');
+    seSlider.value = Math.round(VN_CONFIG.settings.seVolume * 100);
+    seVal.textContent = seSlider.value;
+    seSlider.oninput = () => {
+      const v = parseInt(seSlider.value, 10) / 100;
+      VN_CONFIG.settings.seVolume = v;
+      localStorage.setItem('vn_se_volume', v);
+      seVal.textContent = seSlider.value;
+    };
+
     document.getElementById('settings-modal').classList.remove('hidden');
   }
 
@@ -1933,7 +1986,7 @@ class VNEngine {
     for (const item of list) {
       if (this.seenStills.has(item.key)) {
         html += `<div class="cg-thumb unlocked" data-key="${item.key}" title="${item.label}">
-          <div class="cg-thumb-img" style="background-image:url('assets/images/stills/${item.key}.webp')"></div>
+          <div class="cg-thumb-img" style="background-image:url('${this._getStillAssetPath(item.key)}')"></div>
           <div class="cg-thumb-label">${item.label}</div>
         </div>`;
       } else {
@@ -1961,7 +2014,7 @@ class VNEngine {
     viewer.id = 'gallery-viewer';
     viewer.innerHTML = `
       <div id="gallery-viewer-bg"></div>
-      <div id="gallery-viewer-img" style="background-image:url('assets/images/stills/${key}.webp')"></div>
+      <div id="gallery-viewer-img" style="background-image:url('${this._getStillAssetPath(key)}')"></div>
       <button id="gallery-viewer-close">✕</button>
     `;
     document.body.appendChild(viewer);
@@ -2037,14 +2090,17 @@ class VNEngine {
     }
   }
 
-  _playSE(file) {
+  _playSE(file, loop = false) {
     try {
       const audio = new Audio(`assets/audio/se/${file}`);
       audio.volume = VN_CONFIG.settings.seVolume;
+      audio.loop = loop;
       this.seAudios.push(audio);
-      audio.addEventListener('ended', () => {
-        this.seAudios = this.seAudios.filter(a => a !== audio);
-      });
+      if (!loop) {
+        audio.addEventListener('ended', () => {
+          this.seAudios = this.seAudios.filter(a => a !== audio);
+        });
+      }
       audio.play().catch(() => {});
     } catch (e) {}
   }

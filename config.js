@@ -27,7 +27,7 @@ const VN_CONFIG = {
       nameColor: '#ff88aa',
       charColor: 'rgba(255, 140, 170, 0.75)',
       // バドミントン部スポーツウェア衣装。画像パス: assets/images/chars/sakura_sports/{expr}.png
-      expressions: ['normal', 'happy', 'excited', 'shy', 'serious', 'thinking'],
+      expressions: ['normal', 'happy', 'excited', 'shy', 'serious', 'thinking', 'surprised', 'crying'],
     },
     sakura_swimsuit: {
       name: '桜咲さくら',
@@ -129,6 +129,7 @@ const VN_CONFIG = {
     // ── 廊下 ──────────────────────────────────────────────
     corridor:              'linear-gradient(180deg, #d8d0b8 0%, #c0b8a0 50%, #b0a888 100%)',
     corridor_evening:      'linear-gradient(180deg, #c06020 0%, #d08040 30%, #e0a060 60%, #c89060 100%)',
+    corridor_rainy:        'linear-gradient(180deg, #8090a0 0%, #909aa8 40%, #a0a8b0 70%, #9098a0 100%)',
     corridor_festival_rainy:     'linear-gradient(180deg, #d8d0b8 0%, #f0e0b0 40%, #ffe8b8 70%, #f0d8a0 100%)',
 
     // ── 屋上 ──────────────────────────────────────────────

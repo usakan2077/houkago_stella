@@ -162,8 +162,11 @@ class ScriptParser {
       if (colonIdx > 0 && colonIdx <= 20) {
         const charKey  = line.slice(0, colonIdx).trim();
         const rawText  = line.slice(colonIdx + 1).trim();
-        // 前後の引用符を除去
-        const text = rawText.replace(/^[「"'](.+)[」"']$/, '$1');
+        // 前後の引用符を除去（内部に閉じ引用符を含む場合は除去しない）
+        const text = rawText
+          .replace(/^「((?:(?!」).)*)」$/, '$1')
+          .replace(/^"((?:(?!").)*)"$/, '$1')
+          .replace(/^'((?:(?!'').)*)'$/, '$1');
         currentCmds.push({ cmd: 'say', char: charKey, text });
         continue;
       }
@@ -208,7 +211,7 @@ class ScriptParser {
         return { cmd: 'bgm', action: 'play', track: args[0] };
 
       case 'se':
-        return { cmd: 'se', file: args[0] };
+        return { cmd: 'se', file: args[0], loop: args[1] === 'loop' };
 
       case 'show':
         return {
