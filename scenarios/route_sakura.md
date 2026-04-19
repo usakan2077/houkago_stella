@@ -1255,28 +1255,33 @@ sakura: お疲れ様！　また明日！
 @se footsteps.mp3
 @wait 300
 
-> コートの外の壁際に、さくらがいた。
+> コートの外、体育館の出入口の脇に、さくらがいた。
 
-> しゃがんでいた。
+> 壁際に立っていた。
 
-> 膝を抱えて、壁に背を預けて。
-> 頭を少しだけ下げて。
+> ラケットを持ったまま、壁に背を預けて。
+> 頭を少しだけ下げていた。
 
 > 誰も見ていないと思っているときの姿だった。
 
 @wait 800
 
-@show sakura right normal fade_in
+@still sakura_crying_gym
+@wait 1200
+@still_hide
+@wait 300
+
+@show sakura_sports right normal fade_in
 
 player: ……さくら
 
-@expr sakura surprised
+@expr sakura_sports surprised
 
 sakura: っ
 
 @wait 400
 
-@expr sakura happy
+@expr sakura_sports happy
 
 sakura: うわ、びっくりした！
 sakura: なにどうしたの、帰ったんじゃないの
@@ -1305,7 +1310,7 @@ player: ……
 
 > また止まる。
 
-@hide sakura fade_out
+@hide sakura_sports fade_out
 @wait 300
 
 @still sakura_cant_smile
@@ -1314,7 +1319,7 @@ player: ……
 
 @wait 800
 
-@show sakura center normal fade_in
+@show sakura_sports center normal fade_in
 
 sakura: ……あたし、今日おかしい
 
@@ -1360,7 +1365,7 @@ sakura: ……全然、そうじゃなかった
 @bgm stop
 @wait 600
 
-@expr sakura crying
+@expr sakura_sports crying
 
 > 涙が出ていた。
 > 声を殺していた。
@@ -1399,7 +1404,7 @@ sakura: ……全然、そうじゃなかった
 
 @wait 1200
 
-@expr sakura normal
+@expr sakura_sports normal
 
 sakura: ……あったかい
 
@@ -1413,7 +1418,7 @@ sakura: ……あったかい
 @still_hide
 @wait 400
 
-@hide sakura fade_out
+@hide sakura_sports fade_out
 @wait 500
 
 @bgm evening_piano.mp3

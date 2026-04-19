@@ -1986,7 +1986,7 @@ class VNEngine {
     for (const item of list) {
       if (this.seenStills.has(item.key)) {
         html += `<div class="cg-thumb unlocked" data-key="${item.key}" title="${item.label}">
-          <div class="cg-thumb-img" style="background-image:url('assets/images/stills/${item.key}.webp')"></div>
+          <div class="cg-thumb-img" style="background-image:url('${this._getStillAssetPath(item.key)}')"></div>
           <div class="cg-thumb-label">${item.label}</div>
         </div>`;
       } else {
@@ -2014,7 +2014,7 @@ class VNEngine {
     viewer.id = 'gallery-viewer';
     viewer.innerHTML = `
       <div id="gallery-viewer-bg"></div>
-      <div id="gallery-viewer-img" style="background-image:url('assets/images/stills/${key}.webp')"></div>
+      <div id="gallery-viewer-img" style="background-image:url('${this._getStillAssetPath(key)}')"></div>
       <button id="gallery-viewer-close">✕</button>
     `;
     document.body.appendChild(viewer);
