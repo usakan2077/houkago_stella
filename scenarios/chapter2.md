@@ -1253,7 +1253,7 @@ player: ……ああ
 
 # chapter2_end
 
-@scene corridor_evening fade
+@scene commute_road_spring_evening fade
 @bgm mystery_shadow.mp3
 @wait 1000
 

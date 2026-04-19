@@ -103,6 +103,7 @@ const VN_CONFIG = {
     school_gate_autumn_evening:  'linear-gradient(180deg, #6030a0 0%, #c05020 30%, #e07830 60%, #d09040 100%)',
     school_gate_autumn_rainy:    'linear-gradient(180deg, #404850 0%, #506070 30%, #607080 60%, #506070 100%)',
     school_gate_rainy:           'linear-gradient(180deg, #506070 0%, #708090 30%, #90a0a8 60%, #a0b0a0 100%)',
+    school_gate_june_rainy:      'linear-gradient(180deg, #485860 0%, #607080 30%, #809090 60%, #708090 100%)',
 
     // ── 教室 ──────────────────────────────────────────────
     classroom:             'linear-gradient(180deg, #87CEEB 0%, #e8dcc0 50%, #d0c090 100%)',
@@ -117,6 +118,8 @@ const VN_CONFIG = {
     commute_road_spring_morning: 'linear-gradient(180deg, #a8c8e0 0%, #c0d4e0 20%, #d0ccc0 45%, #b8b4a8 65%, #888078 85%, #706860 100%)',
     commute_road_spring:         'linear-gradient(180deg, #87CEEB 0%, #b0d0e0 30%, #d0d8d0 60%, #c0c8b8 100%)',
     commute_road_spring_evening: 'linear-gradient(180deg, #ff6020 0%, #ff9040 30%, #ffb860 60%, #e8a050 100%)',
+    commute_road_june:           'linear-gradient(180deg, #7090a8 0%, #90a8b8 30%, #b0c0c8 60%, #a8b8b8 100%)',
+    commute_road_june_evening:   'linear-gradient(180deg, #607090 0%, #8090a8 30%, #a0b0b8 60%, #9098a8 100%)',
     commute_road_summer:         'linear-gradient(180deg, #1e90ff 0%, #87CEEB 30%, #c8e890 60%, #90c850 100%)',
     commute_road_summer_evening: 'linear-gradient(180deg, #ff5010 0%, #ff8030 30%, #ffa050 60%, #e09040 100%)',
     commute_road_autumn_evening: 'linear-gradient(180deg, #c05020 0%, #e08030 30%, #f0a840 60%, #c89050 100%)',
