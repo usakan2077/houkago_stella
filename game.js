@@ -290,44 +290,42 @@ class VNEngine {
         this._uiHidden ? this._showUI() : this._hideUI();
       });
 
-      if (this._isTouchDevice) {
-        const cancelLongPress = () => {
-          if (this._longPressTimer) {
-            clearTimeout(this._longPressTimer);
-            this._longPressTimer = null;
-          }
-        };
+      const cancelLongPress = () => {
+        if (this._longPressTimer) {
+          clearTimeout(this._longPressTimer);
+          this._longPressTimer = null;
+        }
+      };
 
-        gameScreen.addEventListener('touchstart', (e) => {
-          if (e.touches.length !== 1) return;
+      gameScreen.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1) return;
 
-          const titleScreen = document.getElementById('title-screen');
-          if (titleScreen && !titleScreen.classList.contains('hidden')) return;
+        const titleScreen = document.getElementById('title-screen');
+        if (titleScreen && !titleScreen.classList.contains('hidden')) return;
 
-          this._longPressTriggered = false;
-          const touch = e.touches[0];
-          this._spawnTouchParticles(touch.clientX, touch.clientY);
-          cancelLongPress();
-          this._longPressTimer = setTimeout(() => {
-            this._longPressTriggered = true;
-            this._uiHidden ? this._showUI() : this._hideUI();
-          }, 300);
-        }, { passive: true });
+        this._longPressTriggered = false;
+        const touch = e.touches[0];
+        this._spawnTouchParticles(touch.clientX, touch.clientY);
+        cancelLongPress();
+        this._longPressTimer = setTimeout(() => {
+          this._longPressTriggered = true;
+          this._uiHidden ? this._showUI() : this._hideUI();
+        }, 300);
+      }, { passive: true });
 
-        gameScreen.addEventListener('touchend', () => {
-          cancelLongPress();
-          if (this._longPressTriggered) {
-            setTimeout(() => { this._longPressTriggered = false; }, 350);
-          }
-        }, { passive: true });
-        gameScreen.addEventListener('touchcancel', () => {
-          cancelLongPress();
-          this._longPressTriggered = false;
-        }, { passive: true });
-        gameScreen.addEventListener('touchmove', () => {
-          cancelLongPress();
-        }, { passive: true });
-      }
+      gameScreen.addEventListener('touchend', () => {
+        cancelLongPress();
+        if (this._longPressTriggered) {
+          setTimeout(() => { this._longPressTriggered = false; }, 350);
+        }
+      }, { passive: true });
+      gameScreen.addEventListener('touchcancel', () => {
+        cancelLongPress();
+        this._longPressTriggered = false;
+      }, { passive: true });
+      gameScreen.addEventListener('touchmove', () => {
+        cancelLongPress();
+      }, { passive: true });
     }
 
     // キーボード
@@ -2091,6 +2089,7 @@ class VNEngine {
   }
 
   _spawnTouchParticles(clientX, clientY) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const gameScreen = document.getElementById('game-screen');
     if (!gameScreen) return;
 
@@ -2112,6 +2111,7 @@ class VNEngine {
       star.style.setProperty('--dy', `${-18 - Math.random() * 44}px`);
       star.style.setProperty('--rot', `${(Math.random() - 0.5) * 160}deg`);
       star.addEventListener('animationend', () => star.remove(), { once: true });
+      setTimeout(() => { if (star.isConnected) star.remove(); }, 900);
       gameScreen.appendChild(star);
     }
   }

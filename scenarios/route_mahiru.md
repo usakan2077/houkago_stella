@@ -2467,7 +2467,7 @@ sakura: すごく嬉しい
 @show kotoha left normal fade_in
 @wait 600
 
-kotoha: ……まひる先輩が
+kotoha: ……まひるさんが
 
 kotoha: 笑っています
 

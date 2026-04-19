@@ -310,6 +310,7 @@ body {
   inset: 0;
   user-select: none;
   -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 /* ---- Canvasエフェクトレイヤー ---- */
@@ -1518,8 +1519,7 @@ body {
   #opening-arrow,
   .cursor-core,
   .cursor-ring,
-  .cursor-sparkle,
-  .touch-star {
+  .cursor-sparkle {
     animation: none !important;
   }
 
