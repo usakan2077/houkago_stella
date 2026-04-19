@@ -89,6 +89,14 @@ class VNEngine {
     const savedSe = localStorage.getItem('vn_se_volume');
     if (savedSe !== null) VN_CONFIG.settings.seVolume = parseFloat(savedSe);
 
+    // 文字サイズの復元
+    const savedFontSize = localStorage.getItem('vn_font_size');
+    if (savedFontSize) document.documentElement.style.setProperty('--vn-font-size', savedFontSize + 'px');
+
+    // ウィンドウカラーパレットの復元
+    const savedPalette = localStorage.getItem('vn_window_palette');
+    if (savedPalette) this._applyWindowPalette(savedPalette);
+
     this._init();
   }
 
@@ -597,8 +605,8 @@ class VNEngine {
         shadow:   '0 0 36px 0 rgba(80, 220, 140, 0.28) inset, 0 0 3px 1px rgba(80, 220, 140, 0.13)',
       },
       reset: {
-        textBox:  'rgba(8, 3, 20, 0.8)',
-        nameBox:  'rgba(12, 4, 24, 0.8)',
+        textBox:  (this._paletteReset || {}).textBox || 'rgba(8, 3, 20, 0.8)',
+        nameBox:  (this._paletteReset || {}).nameBox || 'rgba(12, 4, 24, 0.8)',
         shadow:   '',
       },
     };
@@ -1965,7 +1973,54 @@ class VNEngine {
       seVal.textContent = seSlider.value;
     };
 
+    // 文字サイズ
+    const currentFontSize = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--vn-font-size') || '26', 10
+    );
+    document.querySelectorAll('#font-size-options .settings-opt').forEach(btn => {
+      const size = parseInt(btn.dataset.size, 10);
+      btn.classList.toggle('active', size === currentFontSize);
+      btn.onclick = () => {
+        document.documentElement.style.setProperty('--vn-font-size', size + 'px');
+        localStorage.setItem('vn_font_size', size);
+        document.querySelectorAll('#font-size-options .settings-opt')
+          .forEach(b => b.classList.toggle('active', parseInt(b.dataset.size, 10) === size));
+      };
+    });
+
+    // ウィンドウカラーパレット
+    const currentPalette = localStorage.getItem('vn_window_palette') || 'default';
+    document.querySelectorAll('#palette-options .palette-swatch').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.palette === currentPalette);
+      btn.onclick = () => {
+        this._applyWindowPalette(btn.dataset.palette);
+        localStorage.setItem('vn_window_palette', btn.dataset.palette);
+        document.querySelectorAll('#palette-options .palette-swatch')
+          .forEach(b => b.classList.toggle('active', b.dataset.palette === btn.dataset.palette));
+      };
+    });
+
     document.getElementById('settings-modal').classList.remove('hidden');
+  }
+
+  _applyWindowPalette(palette) {
+    const PALETTES = {
+      default: { textBox: 'rgba(8, 3, 20, 0.80)',  nameBox: 'rgba(12, 4, 24, 0.80)' },
+      navy:    { textBox: 'rgba(3, 8, 40, 0.85)',   nameBox: 'rgba(4, 10, 50, 0.88)' },
+      forest:  { textBox: 'rgba(3, 22, 10, 0.85)',  nameBox: 'rgba(4, 28, 14, 0.88)' },
+      sepia:   { textBox: 'rgba(24, 14, 4, 0.85)',  nameBox: 'rgba(30, 18, 6, 0.88)' },
+      black:   { textBox: 'rgba(0, 0, 0, 0.92)',    nameBox: 'rgba(5, 5, 5, 0.95)'  },
+    };
+    const p = PALETTES[palette] || PALETTES.default;
+    // COLORS.reset を上書きして以降の _setWindowColor('reset') に反映
+    this._paletteReset = p;
+    // 現在 reset 状態なら即時反映
+    if (!this.windowColor || this.windowColor === 'reset') {
+      const textBox = document.getElementById('text-box');
+      const nameBox = document.getElementById('char-name-box');
+      if (textBox) textBox.style.background = p.textBox;
+      if (nameBox) nameBox.style.background = p.nameBox;
+    }
   }
 
   // ============================================================
