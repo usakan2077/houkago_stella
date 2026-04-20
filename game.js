@@ -97,6 +97,11 @@ class VNEngine {
     const savedPalette = localStorage.getItem('vn_window_palette');
     if (savedPalette) this._applyWindowPalette(savedPalette);
 
+    // 連続セリフの2行表示用状態
+    this._prevSpeaker = null;
+    this._dialogRow   = 1;
+    this._line1Text   = '';
+
     this._init();
   }
 
@@ -700,6 +705,8 @@ class VNEngine {
     switch (cmd.cmd) {
 
       case 'scene':
+        this._prevSpeaker = null;
+        this._dialogRow   = 1;
         this._changeBackground(cmd.bg, cmd.effect);
         this._executeNext();
         break;
@@ -1184,7 +1191,6 @@ class VNEngine {
     const arrow    = document.getElementById('next-arrow');
 
     arrow.style.display = 'none';
-    textEl.textContent  = '';
     textEl.classList.remove('narrate-inner', 'narrate-climax');
 
     const cfg = charKey ? VN_CONFIG.characters[charKey] : null;
@@ -1206,6 +1212,25 @@ class VNEngine {
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
 
+    // 同一キャラクターの連続セリフを2行表示する
+    // emphasisモード（内心・クライマックス）は対象外
+    const sameSpeaker = charKey && charKey === this._prevSpeaker && !emphasis;
+    let displayRow;
+    if (sameSpeaker) {
+      displayRow = this._dialogRow === 1 ? 2 : 1;
+    } else {
+      displayRow = 1;
+    }
+    this._prevSpeaker = charKey;
+    this._dialogRow   = displayRow;
+
+    const prefix = displayRow === 2 ? this._line1Text + '\n' : '';
+    if (displayRow === 1) {
+      this._line1Text = text;
+      textEl.textContent = '';
+    }
+    // displayRow===2 のときは行1を残すため textContent をクリアしない
+
     if (this.skipMode) {
       // スキップ中は即表示して次へ
       if (emphasis === 'inner') {
@@ -1213,9 +1238,9 @@ class VNEngine {
         textEl.innerHTML = `<em>${text}</em>`;
       } else if (emphasis === 'climax') {
         textEl.classList.add('narrate-climax');
-        textEl.textContent = text;
+        textEl.textContent = prefix + text;
       } else {
-        textEl.textContent = text;
+        textEl.textContent = prefix + text;
       }
       this.waitingForInput = true;
       arrow.style.display = 'block';
@@ -1240,9 +1265,11 @@ class VNEngine {
     } else if (emphasis === 'climax') {
       // 締め：即表示＋CSSフェードイン
       textEl.classList.add('narrate-climax');
-      textEl.textContent = text;
+      textEl.textContent = prefix + text;
       onDone();
     } else {
+      // 2行目の場合は行1テキスト+改行をプレフィックスとしてセットしてからタイプライター開始
+      textEl.textContent = prefix;
       this._startTypewriter(textEl, text, onDone);
     }
   }
@@ -1303,12 +1330,13 @@ class VNEngine {
       // タイプライター実行中 → 全文即表示（emphasisに応じて正しいDOM構造を使う）
       this._stopTypewriter();
       const textEl = document.getElementById('dialog-text');
+      const prefix = this._dialogRow === 2 ? this._line1Text + '\n' : '';
       if (this.currentEmphasis === 'inner') {
         // <em>が消えないようinnerHTMLで設定
         textEl.classList.add('narrate-inner');
         textEl.innerHTML = `<em>${this.currentText}</em>`;
       } else {
-        textEl.textContent = this.currentText;
+        textEl.textContent = prefix + this.currentText;
       }
       this.waitingForInput = true;
       document.getElementById('next-arrow').style.display = 'block';

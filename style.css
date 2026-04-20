@@ -603,6 +603,7 @@ body {
   color: #f5eaf0;
   letter-spacing: .06em;
   min-height: 2.8em;
+  white-space: pre-line;
 }
 
 /* 内心ナレーション（*text*） */
