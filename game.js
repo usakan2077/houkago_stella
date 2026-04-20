@@ -152,11 +152,12 @@ class VNEngine {
       tryNext();
     });
 
-    // 背景
+    // 背景（gradientOnlyBGs に含まれるキーは画像なしのため除外）
     this._resolvedBGExt = {};
     const tryBG = makeResolver(this._resolvedBGExt, 'assets/images/bg/');
+    const gradientOnly = VN_CONFIG.gradientOnlyBGs || new Set();
     for (const key of Object.keys(VN_CONFIG.backgrounds)) {
-      tasks.push(tryBG(key));
+      if (!gradientOnly.has(key)) tasks.push(tryBG(key));
     }
 
     // キャラクター立ち絵: すべて PNG なのでプリロードのみ（拡張子解決不要）

@@ -87,9 +87,19 @@ const VN_CONFIG = {
 
   // ===========================================================
   // 背景設定
-  // 画像パス: assets/images/bg/{key}.jpg または .png
+  // 画像パス: assets/images/bg/{key}.webp / .png / .jpg
   // 画像がない場合は gradient が使われます
   // ===========================================================
+
+  // 画像ファイルが存在しない（グラデーション専用）BGキーの一覧
+  // ここに列挙するとプリロード時の404を回避できます
+  gradientOnlyBGs: new Set([
+    'school_gate',
+    'school_gate_evening',
+    'school_gate_rainy',
+    'corridor_rainy',
+  ]),
+
   backgrounds: {
     // ── 校門 ──────────────────────────────────────────────
     school_gate:                 'linear-gradient(180deg, #87CEEB 0%, #b8d8f0 40%, #c8e0c0 70%, #90b860 100%)',
