@@ -526,7 +526,7 @@ sakura: 正直でよろしい！
 > 動きに無駄がない。
 > 誰かに頼まれたことを、ちゃんとこなすのが当たり前になっている手つきだった。
 
-@expr sakura normal
+@expr sakura no_light_eyes
 
 sakura: ……あ
 

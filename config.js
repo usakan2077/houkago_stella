@@ -20,7 +20,7 @@ const VN_CONFIG = {
       name: '桜咲さくら',
       nameColor: '#ff88aa',
       charColor: 'rgba(255, 140, 170, 0.75)',
-      expressions: ['normal', 'happy', 'excited', 'sad', 'crying', 'surprised', 'angry', 'shy', 'thinking', 'blank'],
+      expressions: ['normal', 'happy', 'excited', 'sad', 'crying', 'surprised', 'angry', 'shy', 'thinking', 'blank', 'no_light_eyes'],
     },
     sakura_sports: {
       name: '桜咲さくら',
