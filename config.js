@@ -195,6 +195,7 @@ const VN_CONFIG = {
     autoDelay:   2000,    // オートモード: 文字表示完了後の待機時間 (ms)
     bgmVolume:   0.65,    // BGM音量 (0.0 〜 1.0)
     seVolume:    0.85,    // SE音量  (0.0 〜 1.0)
+    chainMode:   'dialogue', // 連続2行表示: 'none' | 'dialogue' | 'all'
     fadeTime:    400,     // 背景フェード時間 (ms)
     charFadeTime:500,     // キャラクターフェード時間 (ms)
 

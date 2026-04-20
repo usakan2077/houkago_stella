@@ -102,6 +102,9 @@ class VNEngine {
     this._dialogRow   = 1;
     this._line1Text   = '';
 
+    // 2行表示モード: 'none' | 'dialogue' | 'all'
+    this._chainMode = localStorage.getItem('vn_chain_mode') || 'dialogue';
+
     this._init();
   }
 
@@ -1212,16 +1215,21 @@ class VNEngine {
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
 
-    // 同一キャラクターの連続セリフを2行表示する
-    // emphasisモード（内心・クライマックス）は対象外
-    const sameSpeaker = charKey && charKey === this._prevSpeaker && !emphasis;
+    // 連続2行表示の制御（emphasisモードは対象外）
+    // 地の文は '__narration__' キーとして扱い、連続判定に使用
+    const speakerKey = charKey || '__narration__';
+    const chainEnabled = !emphasis && (
+      this._chainMode === 'all' ||
+      (this._chainMode === 'dialogue' && charKey !== null)
+    );
+    const sameSpeaker = chainEnabled && speakerKey === this._prevSpeaker;
     let displayRow;
     if (sameSpeaker) {
       displayRow = this._dialogRow === 1 ? 2 : 1;
     } else {
       displayRow = 1;
     }
-    this._prevSpeaker = charKey;
+    this._prevSpeaker = speakerKey;
     this._dialogRow   = displayRow;
 
     const prefix = displayRow === 2 ? this._line1Text + '\n' : '';
@@ -2013,6 +2021,21 @@ class VNEngine {
         localStorage.setItem('vn_font_size', size);
         document.querySelectorAll('#font-size-options .settings-opt')
           .forEach(b => b.classList.toggle('active', parseInt(b.dataset.size, 10) === size));
+      };
+    });
+
+    // ２行表示モード
+    document.querySelectorAll('#chain-mode-options .settings-opt').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.chain === this._chainMode);
+      btn.onclick = () => {
+        this._chainMode = btn.dataset.chain;
+        localStorage.setItem('vn_chain_mode', this._chainMode);
+        // モード変更時は行状態をリセット
+        this._prevSpeaker = null;
+        this._dialogRow   = 1;
+        this._line1Text   = '';
+        document.querySelectorAll('#chain-mode-options .settings-opt')
+          .forEach(b => b.classList.toggle('active', b.dataset.chain === this._chainMode));
       };
     });
 
