@@ -1208,15 +1208,15 @@ kotoha: ……わたしには、できません
 
 
 # chapter8_to_sakura
-@if sakura_favor >= 8 -> sakura_ch9_start
+@if sakura_favor >= 8 -> sakura_interlude
 @jump bad_end_common
 
 # chapter8_to_kotoha
-@if kotoha_favor >= 8 -> kotoha_ch9_start
+@if kotoha_favor >= 8 -> kotoha_interlude
 @jump bad_end_common
 
 # chapter8_to_mahiru
-@if mahiru_favor >= 8 -> mahiru_ch9_start
+@if mahiru_favor >= 8 -> mahiru_interlude
 @jump bad_end_common
 
 
