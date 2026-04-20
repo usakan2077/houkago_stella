@@ -259,6 +259,8 @@ sakura: でしょ！行こう行こう！
 
 @wait 300
 
+@expr sakura no_light_eyes
+
 > また、あの顔が来た。
 
 > 一秒もない。

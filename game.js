@@ -102,6 +102,9 @@ class VNEngine {
     this._dialogRow   = 1;
     this._line1Text   = '';
 
+    // 2行表示モード: 'none' | 'dialogue' | 'all'
+    this._chainMode = localStorage.getItem('vn_chain_mode') || 'dialogue';
+
     this._init();
   }
 
@@ -149,11 +152,12 @@ class VNEngine {
       tryNext();
     });
 
-    // 背景
+    // 背景（gradientOnlyBGs に含まれるキーは画像なしのため除外）
     this._resolvedBGExt = {};
     const tryBG = makeResolver(this._resolvedBGExt, 'assets/images/bg/');
+    const gradientOnly = VN_CONFIG.gradientOnlyBGs || new Set();
     for (const key of Object.keys(VN_CONFIG.backgrounds)) {
-      tasks.push(tryBG(key));
+      if (!gradientOnly.has(key)) tasks.push(tryBG(key));
     }
 
     // キャラクター立ち絵: すべて PNG なのでプリロードのみ（拡張子解決不要）
@@ -969,8 +973,9 @@ class VNEngine {
       `;
       sprite.appendChild(ph);
     };
-    imgEl.onload = () => sprite.appendChild(imgEl);
     imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
+    const appendImg = () => sprite.appendChild(imgEl);
+    (imgEl.decode ? imgEl.decode().then(appendImg).catch(appendImg) : (imgEl.onload = appendImg));
 
     slot.innerHTML = '';
     slot.appendChild(sprite);
@@ -1051,11 +1056,10 @@ class VNEngine {
 
         const imgEl = new Image();
         imgEl.alt = charKey;
-        imgEl.onload = () => {
-          sprite.innerHTML = '';
-          sprite.appendChild(imgEl);
-        };
         imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
+        // decode() でデコード完了を待ってから差し替え（Firefox のチラつき対策）
+        const swap = () => { sprite.innerHTML = ''; sprite.appendChild(imgEl); };
+        (imgEl.decode ? imgEl.decode().then(swap).catch(swap) : (imgEl.onload = swap));
         break;
       }
     }
@@ -1212,16 +1216,21 @@ class VNEngine {
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
 
-    // 同一キャラクターの連続セリフを2行表示する
-    // emphasisモード（内心・クライマックス）は対象外
-    const sameSpeaker = charKey && charKey === this._prevSpeaker && !emphasis;
+    // 連続2行表示の制御（emphasisモードは対象外）
+    // 地の文は '__narration__' キーとして扱い、連続判定に使用
+    const speakerKey = charKey || '__narration__';
+    const chainEnabled = !emphasis && (
+      this._chainMode === 'all' ||
+      (this._chainMode === 'dialogue' && charKey !== null)
+    );
+    const sameSpeaker = chainEnabled && speakerKey === this._prevSpeaker;
     let displayRow;
     if (sameSpeaker) {
       displayRow = this._dialogRow === 1 ? 2 : 1;
     } else {
       displayRow = 1;
     }
-    this._prevSpeaker = charKey;
+    this._prevSpeaker = speakerKey;
     this._dialogRow   = displayRow;
 
     const prefix = displayRow === 2 ? this._line1Text + '\n' : '';
@@ -2013,6 +2022,21 @@ class VNEngine {
         localStorage.setItem('vn_font_size', size);
         document.querySelectorAll('#font-size-options .settings-opt')
           .forEach(b => b.classList.toggle('active', parseInt(b.dataset.size, 10) === size));
+      };
+    });
+
+    // ２行表示モード
+    document.querySelectorAll('#chain-mode-options .settings-opt').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.chain === this._chainMode);
+      btn.onclick = () => {
+        this._chainMode = btn.dataset.chain;
+        localStorage.setItem('vn_chain_mode', this._chainMode);
+        // モード変更時は行状態をリセット
+        this._prevSpeaker = null;
+        this._dialogRow   = 1;
+        this._line1Text   = '';
+        document.querySelectorAll('#chain-mode-options .settings-opt')
+          .forEach(b => b.classList.toggle('active', b.dataset.chain === this._chainMode));
       };
     });
 

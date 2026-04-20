@@ -590,7 +590,8 @@ body {
   border: none;
   border-radius: 0 10px 10px 10px;
   padding: 18px 28px 14px;
-  min-height: 128px;
+  /* フォントサイズに連動：2行分(×1.85 line-height)＋上下パディング32px */
+  min-height: calc(var(--vn-font-size, 26px) * 3.7 + 32px);
   position: relative;
   backdrop-filter: blur(8px);
   transition: background 0.7s ease, box-shadow 0.7s ease;
@@ -602,7 +603,8 @@ body {
   line-height: 1.85;
   color: #f5eaf0;
   letter-spacing: .06em;
-  min-height: 2.8em;
+  /* 常に2行分の高さを確保してレイアウトシフトを防ぐ */
+  min-height: calc(var(--vn-font-size, 26px) * 3.7);
   white-space: pre-line;
 }
 

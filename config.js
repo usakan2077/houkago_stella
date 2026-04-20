@@ -20,7 +20,7 @@ const VN_CONFIG = {
       name: '桜咲さくら',
       nameColor: '#ff88aa',
       charColor: 'rgba(255, 140, 170, 0.75)',
-      expressions: ['normal', 'happy', 'excited', 'sad', 'crying', 'surprised', 'angry', 'shy', 'thinking', 'blank'],
+      expressions: ['normal', 'happy', 'excited', 'sad', 'crying', 'surprised', 'angry', 'shy', 'thinking', 'blank', 'no_light_eyes'],
     },
     sakura_sports: {
       name: '桜咲さくら',
@@ -87,9 +87,19 @@ const VN_CONFIG = {
 
   // ===========================================================
   // 背景設定
-  // 画像パス: assets/images/bg/{key}.jpg または .png
+  // 画像パス: assets/images/bg/{key}.webp / .png / .jpg
   // 画像がない場合は gradient が使われます
   // ===========================================================
+
+  // 画像ファイルが存在しない（グラデーション専用）BGキーの一覧
+  // ここに列挙するとプリロード時の404を回避できます
+  gradientOnlyBGs: new Set([
+    'school_gate',
+    'school_gate_evening',
+    'school_gate_rainy',
+    'corridor_rainy',
+  ]),
+
   backgrounds: {
     // ── 校門 ──────────────────────────────────────────────
     school_gate:                 'linear-gradient(180deg, #87CEEB 0%, #b8d8f0 40%, #c8e0c0 70%, #90b860 100%)',
@@ -195,6 +205,7 @@ const VN_CONFIG = {
     autoDelay:   2000,    // オートモード: 文字表示完了後の待機時間 (ms)
     bgmVolume:   0.65,    // BGM音量 (0.0 〜 1.0)
     seVolume:    0.85,    // SE音量  (0.0 〜 1.0)
+    chainMode:   'dialogue', // 連続2行表示: 'none' | 'dialogue' | 'all'
     fadeTime:    400,     // 背景フェード時間 (ms)
     charFadeTime:500,     // キャラクターフェード時間 (ms)
 
