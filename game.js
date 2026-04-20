@@ -973,8 +973,9 @@ class VNEngine {
       `;
       sprite.appendChild(ph);
     };
-    imgEl.onload = () => sprite.appendChild(imgEl);
     imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
+    const appendImg = () => sprite.appendChild(imgEl);
+    (imgEl.decode ? imgEl.decode().then(appendImg).catch(appendImg) : (imgEl.onload = appendImg));
 
     slot.innerHTML = '';
     slot.appendChild(sprite);
@@ -1055,11 +1056,10 @@ class VNEngine {
 
         const imgEl = new Image();
         imgEl.alt = charKey;
-        imgEl.onload = () => {
-          sprite.innerHTML = '';
-          sprite.appendChild(imgEl);
-        };
         imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
+        // decode() でデコード完了を待ってから差し替え（Firefox のチラつき対策）
+        const swap = () => { sprite.innerHTML = ''; sprite.appendChild(imgEl); };
+        (imgEl.decode ? imgEl.decode().then(swap).catch(swap) : (imgEl.onload = swap));
         break;
       }
     }
