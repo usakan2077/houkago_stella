@@ -331,7 +331,9 @@ const VN_CONFIG = {
   // type: 'game-title' | 'heading' | 'name' | 'sub' | 'spacer' | 'thanks'
   // ===========================================================
   credits: [
-    { type: 'game-title', text: 'エンディングクレジット（制作・使用ツール）' },
+    { type: 'game-title', text: 'エンディングクレジット' },
+    { type: 'spacer' },
+    { type: 'game-title', text: '（制作・使用ツール）' },
     { type: 'spacer' },
     { type: 'spacer' },
     { type: 'heading', text: '企画' },
@@ -414,6 +416,11 @@ const VN_CONFIG = {
       themeTrack: 'そのままで、咲ける.mp3',
       themeTitle: 'Ending Theme「そのままで、咲ける」',
       themeCredit: 'Sakura Good End Memorial Roll',
+      scrollSpeed: 55,
+      // 歌詞表示タイミング（秒）: lyrics配列と同じ順番でセット。未設定は均等割り。
+      lyricTimes: [
+        0, 14, 28, 43, 58, 73, 88, 103, 118, 133, 148, 163, 178, 193, 208,
+      ],
       memoryStills: [
         'sakura_blank_moment',
         'sakura_after_match',
@@ -450,6 +457,10 @@ const VN_CONFIG = {
       themeTrack: 'きみと触れる音.mp3',
       themeTitle: 'Ending Theme「きみと触れる音」',
       themeCredit: 'Kotoha Good End Memorial Roll',
+      scrollSpeed: 55,
+      lyricTimes: [
+        0, 14, 28, 43, 58, 73, 88, 103, 118, 133, 148, 163, 178, 193, 208,
+      ],
       memoryStills: [
         'kotoha_window_ch1',
         'kotoha_library_headphones',
@@ -485,6 +496,10 @@ const VN_CONFIG = {
       themeTrack: '理由のない明日へ.mp3',
       themeTitle: 'Ending Theme「理由のない明日へ」',
       themeCredit: 'Mahiru Good End Memorial Roll',
+      scrollSpeed: 55,
+      lyricTimes: [
+        0, 14, 28, 43, 58, 73, 88, 103, 118, 133, 148, 163, 178, 193,
+      ],
       memoryStills: [
         'mahiru_notebook_drop',
         'mahiru_rooftop_photo',

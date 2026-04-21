@@ -97,10 +97,18 @@ class VNEngine {
     const savedPalette = localStorage.getItem('vn_window_palette');
     if (savedPalette) this._applyWindowPalette(savedPalette);
 
+    // ページ離脱ロック（ゲームプレイ中のみ有効）
+    this._gameActive = false;
+    window.addEventListener('beforeunload', (e) => {
+      if (!this._gameActive) return;
+      e.preventDefault();
+    });
+
     // 連続セリフの2行表示用状態
-    this._prevSpeaker = null;
-    this._dialogRow   = 1;
-    this._line1Text   = '';
+    this._prevSpeaker   = null;
+    this._dialogRow     = 1;
+    this._line1Text     = '';
+    this._line1Emphasis = null;
 
     // 2行表示モード: 'none' | 'dialogue' | 'all'
     this._chainMode = localStorage.getItem('vn_chain_mode') || 'dialogue';
@@ -182,7 +190,11 @@ class VNEngine {
     }
 
     // 進捗トラッキング
-    tasks.push(document.fonts ? document.fonts.ready : Promise.resolve());
+    if (document.fonts) {
+      tasks.push(
+        document.fonts.load('400 1em "Shippori Mincho B1"'),
+      );
+    }
 
     const total = tasks.length;
     let done = 0;
@@ -195,15 +207,16 @@ class VNEngine {
 
     // フォント読み込み完了を待つ（FOUT防止）
 
-    // ロード完了 と OK クリック を並行で待つ
+    const okBtn = document.getElementById('btn-loading-ok');
+
+    // ロード完了後にOKボタンを表示してクリックを待つ
     const loadDone = Promise.all(tasks.map(t => t.then(updateBar)));
-    const okBtn    = document.getElementById('btn-loading-ok');
-    const okDone   = new Promise(resolve => {
+    await loadDone;
+    if (okBtn) okBtn.style.visibility = '';
+    await new Promise(resolve => {
       if (okBtn) okBtn.addEventListener('click', resolve, { once: true });
       else resolve();
     });
-
-    await Promise.all([loadDone, okDone]);
 
     // ローディング画面をフェードアウトして非表示
     if (screen) {
@@ -393,6 +406,8 @@ class VNEngine {
         if (hasModal) return;
         const titleScreen = document.getElementById('title-screen');
         if (titleScreen && !titleScreen.classList.contains('hidden')) return;
+        const creditsScreen = document.getElementById('credits-screen');
+        if (creditsScreen && !creditsScreen.classList.contains('hidden')) return;
         e.preventDefault();
         this._openLog();
       }, { passive: false });
@@ -430,6 +445,7 @@ class VNEngine {
   //  タイトル / ゲーム開始
   // ============================================================
   _showTitleScreen() {
+    this._gameActive = false;
     document.getElementById('title-screen').classList.remove('hidden');
     document.getElementById('game-screen').classList.add('hidden');
     this._startTitleBGM();
@@ -591,6 +607,7 @@ class VNEngine {
   }
 
   _beginGame() {
+    this._gameActive = true;
     document.getElementById('game-screen').classList.remove('hidden');
     this._resetGameState();
     this._gotoLabel(VN_CONFIG.startLabel);
@@ -696,9 +713,9 @@ class VNEngine {
         if (this._debug) console.warn(`[Engine] _executeNext called at end of label "${this.currentLabel}" while choices are visible — ignoring`);
         return;
       }
-      // ラベル末尾に達した → END 扱い
-      if (this._debug) console.warn(`[Engine] Label "${this.currentLabel}" ran out of commands without @end/@jump — showing END`);
-      this._displayEnding('END');
+      // ラベル末尾に達した → タイトルへ戻す（@endなし終端）
+      if (this._debug) console.warn(`[Engine] Label "${this.currentLabel}" ran out of commands without @end/@jump — returning to title`);
+      this._returnToTitle();
       return;
     }
     const cmd = cmds[this.currentIndex++];
@@ -973,30 +990,40 @@ class VNEngine {
       `;
       sprite.appendChild(ph);
     };
+    const showSlot = () => {
+      sprite.appendChild(imgEl);
+      slot.innerHTML = '';
+      slot.appendChild(sprite);
+      // エフェクトで表示（decode完了後に行うことで空スプライトの表示を防ぐ）
+      slot.className = 'character-slot';
+      void slot.offsetWidth; // reflow
+      slot.classList.add('visible');
+      if (effect !== 'instant') {
+        const animClass = {
+          fade_in:         'anim-fade-in',
+          slide_in_left:   'anim-slide-in-left',
+          slide_in_right:  'anim-slide-in-right',
+          pop_in:          'anim-pop-in',
+        }[effect] || 'anim-fade-in';
+        slot.classList.add(animClass);
+        setTimeout(() => slot.classList.remove(animClass),
+                   VN_CONFIG.settings.charFadeTime + 100);
+      }
+    };
+    imgEl.onerror = () => {
+      const ph = document.createElement('div');
+      ph.className = 'char-placeholder';
+      ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
+      ph.innerHTML = `
+        <div class="char-ph-icon">♡</div>
+        <div class="char-ph-name">${cfg.name}</div>
+        <div class="char-ph-expr">[${expr}]</div>
+      `;
+      sprite.appendChild(ph);
+      showSlot();
+    };
     imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
-    const appendImg = () => sprite.appendChild(imgEl);
-    (imgEl.decode ? imgEl.decode().then(appendImg).catch(appendImg) : (imgEl.onload = appendImg));
-
-    slot.innerHTML = '';
-    slot.appendChild(sprite);
-
-    // エフェクトで表示
-    // まずクラスをリセットして visible に
-    slot.className = 'character-slot';
-    void slot.offsetWidth; // reflow
-    slot.classList.add('visible');
-
-    if (effect !== 'instant') {
-      const animClass = {
-        fade_in:         'anim-fade-in',
-        slide_in_left:   'anim-slide-in-left',
-        slide_in_right:  'anim-slide-in-right',
-        pop_in:          'anim-pop-in',
-      }[effect] || 'anim-fade-in';
-      slot.classList.add(animClass);
-      setTimeout(() => slot.classList.remove(animClass),
-                 VN_CONFIG.settings.charFadeTime + 100);
-    }
+    (imgEl.decode ? imgEl.decode().then(showSlot).catch(showSlot) : (imgEl.onload = showSlot));
   }
 
   _hideChar(target, effect = 'fade_out') {
@@ -1057,8 +1084,11 @@ class VNEngine {
         const imgEl = new Image();
         imgEl.alt = charKey;
         imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
-        // decode() でデコード完了を待ってから差し替え（Firefox のチラつき対策）
-        const swap = () => { sprite.innerHTML = ''; sprite.appendChild(imgEl); };
+        // 新画像を先に追加してから旧画像を削除（空白フレームを防ぐ）
+        const swap = () => {
+          sprite.appendChild(imgEl);
+          while (sprite.childNodes.length > 1) sprite.removeChild(sprite.firstChild);
+        };
         (imgEl.decode ? imgEl.decode().then(swap).catch(swap) : (imgEl.onload = swap));
         break;
       }
@@ -1223,7 +1253,7 @@ class VNEngine {
       this._chainMode === 'all' ||
       (this._chainMode === 'dialogue' && charKey !== null)
     );
-    const sameSpeaker = chainEnabled && speakerKey === this._prevSpeaker;
+    const sameSpeaker = chainEnabled && speakerKey === this._prevSpeaker && !this._line1Emphasis;
     let displayRow;
     if (sameSpeaker) {
       displayRow = this._dialogRow === 1 ? 2 : 1;
@@ -1235,8 +1265,9 @@ class VNEngine {
 
     const prefix = displayRow === 2 ? this._line1Text + '\n' : '';
     if (displayRow === 1) {
-      this._line1Text = text;
-      textEl.textContent = '';
+      this._line1Text     = text;
+      this._line1Emphasis = emphasis || null;
+      textEl.textContent  = '';
     }
     // displayRow===2 のときは行1を残すため textContent をクリアしない
 
@@ -1284,8 +1315,13 @@ class VNEngine {
   }
 
   _startTypewriter(el, text, onDone) {
-    let i = 0;
     const speed = VN_CONFIG.settings.typeSpeed;
+    if (speed === 0) {
+      el.textContent += text;
+      onDone();
+      return;
+    }
+    let i = 0;
     this.typewriterTimer = setInterval(() => {
       if (i < text.length) {
         el.textContent += text[i++];
@@ -1521,6 +1557,7 @@ class VNEngine {
     const d = JSON.parse(raw);
 
     this._resetGameState();
+    this._gameActive = true;
     document.getElementById('title-screen').classList.add('hidden');
     document.getElementById('game-screen').classList.remove('hidden');
 
@@ -1655,7 +1692,7 @@ class VNEngine {
 
     screen.classList.remove('hidden');
 
-    const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 55);
+    const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 100);
     const audioDuration = bgmTrack ? await this._getAudioDuration(bgmTrack) : null;
     if (this._creditsSession !== session) return;
 
@@ -1665,7 +1702,7 @@ class VNEngine {
       const vh      = screen.clientHeight;
       const rollH   = roll.scrollHeight;
       const total   = vh + rollH;
-      const speed   = profile.scrollSpeed || 55;
+      const speed   = profile.scrollSpeed || 100;
       const natural = total / speed;
       const dur     = Math.max(audioDuration || 0, natural, fallbackDuration);
 
@@ -1696,7 +1733,7 @@ class VNEngine {
       themeCredit: profile.themeCredit || '',
       memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
       lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
-      scrollSpeed: profile.scrollSpeed || 55,
+      scrollSpeed: profile.scrollSpeed || 100,
     };
   }
 
@@ -1766,16 +1803,33 @@ class VNEngine {
     const lyrics = (profile.lyrics || []).filter(Boolean);
     if (!lyricsEl || lyrics.length === 0) return;
 
-    const introSec = 2.4;
-    const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
-    const slotSec = usableSec / lyrics.length;
-    const holdMs = Math.max(3200, Math.min(6200, slotSec * 780));
+    const times = Array.isArray(profile.lyricTimes) && profile.lyricTimes.length > 0
+      ? profile.lyricTimes
+      : null;
 
     lyrics.forEach((entry, index) => {
+      let startSec, holdMs;
+
+      if (times) {
+        // タイムスタンプ指定あり: 曲に合わせたタイミングで表示
+        startSec = times[index] ?? (durationSec * 0.8);
+        const nextTime = times[index + 1];
+        holdMs = nextTime != null
+          ? Math.max(2000, (nextTime - startSec) * 1000 - 600)
+          : 5500;
+      } else {
+        // フォールバック: 均等割り
+        const introSec  = 2.4;
+        const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
+        const slotSec   = usableSec / lyrics.length;
+        startSec = introSec + slotSec * index;
+        holdMs   = Math.max(3200, Math.min(6200, slotSec * 780));
+      }
+
       const timer = setTimeout(() => {
         if (!this._creditsSession) return;
         this._showCreditsLyric(entry, holdMs);
-      }, Math.max(0, (introSec + slotSec * index) * 1000));
+      }, Math.max(0, startSec * 1000));
       this._creditsTimers.push(timer);
     });
   }
@@ -1931,7 +1985,7 @@ class VNEngine {
         document.getElementById('ending-title').textContent = title.replace(/\s*—\s*/g, '\n— ');
         document.getElementById('btn-next-chapter').classList.add('hidden');
         document.getElementById('ending-screen').classList.remove('hidden');
-      }, 700);
+      }, 1200);
     }
   }
 
@@ -2032,9 +2086,10 @@ class VNEngine {
         this._chainMode = btn.dataset.chain;
         localStorage.setItem('vn_chain_mode', this._chainMode);
         // モード変更時は行状態をリセット
-        this._prevSpeaker = null;
-        this._dialogRow   = 1;
-        this._line1Text   = '';
+        this._prevSpeaker   = null;
+        this._dialogRow     = 1;
+        this._line1Text     = '';
+        this._line1Emphasis = null;
         document.querySelectorAll('#chain-mode-options .settings-opt')
           .forEach(b => b.classList.toggle('active', b.dataset.chain === this._chainMode));
       };
