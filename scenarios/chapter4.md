@@ -512,6 +512,7 @@ kotoha: 何に対して、でしょうね
 # chapter4_corridor
 
 @scene corridor_evening fade
+@bgm tension_rain.mp3
 @se footsteps.mp3
 @wait 700
 
