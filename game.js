@@ -190,7 +190,12 @@ class VNEngine {
     }
 
     // 進捗トラッキング
-    tasks.push(document.fonts ? document.fonts.ready : Promise.resolve());
+    if (document.fonts) {
+      tasks.push(
+        document.fonts.load('400 1em "Shippori Mincho B1"'),
+        document.fonts.load('500 1em "Shippori Mincho B1"'),
+      );
+    }
 
     const total = tasks.length;
     let done = 0;
