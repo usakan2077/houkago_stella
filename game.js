@@ -193,7 +193,6 @@ class VNEngine {
     if (document.fonts) {
       tasks.push(
         document.fonts.load('400 1em "Shippori Mincho B1"'),
-        document.fonts.load('500 1em "Shippori Mincho B1"'),
       );
     }
 

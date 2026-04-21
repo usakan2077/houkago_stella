@@ -568,7 +568,7 @@ body {
 #char-name {
   font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: .12em;
   color: #ff99bb;  /* キャラ色はJSで上書き */
 }
