@@ -207,15 +207,16 @@ class VNEngine {
 
     // フォント読み込み完了を待つ（FOUT防止）
 
-    // ロード完了 と OK クリック を並行で待つ
+    const okBtn = document.getElementById('btn-loading-ok');
+
+    // ロード完了後にOKボタンを表示してクリックを待つ
     const loadDone = Promise.all(tasks.map(t => t.then(updateBar)));
-    const okBtn    = document.getElementById('btn-loading-ok');
-    const okDone   = new Promise(resolve => {
+    await loadDone;
+    if (okBtn) okBtn.style.visibility = '';
+    await new Promise(resolve => {
       if (okBtn) okBtn.addEventListener('click', resolve, { once: true });
       else resolve();
     });
-
-    await Promise.all([loadDone, okDone]);
 
     // ローディング画面をフェードアウトして非表示
     if (screen) {
