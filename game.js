@@ -712,9 +712,9 @@ class VNEngine {
         if (this._debug) console.warn(`[Engine] _executeNext called at end of label "${this.currentLabel}" while choices are visible — ignoring`);
         return;
       }
-      // ラベル末尾に達した → END 扱い
-      if (this._debug) console.warn(`[Engine] Label "${this.currentLabel}" ran out of commands without @end/@jump — showing END`);
-      this._displayEnding('END');
+      // ラベル末尾に達した → タイトルへ戻す（@endなし終端）
+      if (this._debug) console.warn(`[Engine] Label "${this.currentLabel}" ran out of commands without @end/@jump — returning to title`);
+      this._returnToTitle();
       return;
     }
     const cmd = cmds[this.currentIndex++];
@@ -1967,7 +1967,7 @@ class VNEngine {
         document.getElementById('ending-title').textContent = title.replace(/\s*—\s*/g, '\n— ');
         document.getElementById('btn-next-chapter').classList.add('hidden');
         document.getElementById('ending-screen').classList.remove('hidden');
-      }, 700);
+      }, 1200);
     }
   }
 
