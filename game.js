@@ -98,9 +98,10 @@ class VNEngine {
     if (savedPalette) this._applyWindowPalette(savedPalette);
 
     // 連続セリフの2行表示用状態
-    this._prevSpeaker = null;
-    this._dialogRow   = 1;
-    this._line1Text   = '';
+    this._prevSpeaker   = null;
+    this._dialogRow     = 1;
+    this._line1Text     = '';
+    this._line1Emphasis = null;
 
     // 2行表示モード: 'none' | 'dialogue' | 'all'
     this._chainMode = localStorage.getItem('vn_chain_mode') || 'dialogue';
@@ -1223,7 +1224,7 @@ class VNEngine {
       this._chainMode === 'all' ||
       (this._chainMode === 'dialogue' && charKey !== null)
     );
-    const sameSpeaker = chainEnabled && speakerKey === this._prevSpeaker;
+    const sameSpeaker = chainEnabled && speakerKey === this._prevSpeaker && !this._line1Emphasis;
     let displayRow;
     if (sameSpeaker) {
       displayRow = this._dialogRow === 1 ? 2 : 1;
@@ -1235,8 +1236,9 @@ class VNEngine {
 
     const prefix = displayRow === 2 ? this._line1Text + '\n' : '';
     if (displayRow === 1) {
-      this._line1Text = text;
-      textEl.textContent = '';
+      this._line1Text     = text;
+      this._line1Emphasis = emphasis || null;
+      textEl.textContent  = '';
     }
     // displayRow===2 のときは行1を残すため textContent をクリアしない
 
@@ -2032,9 +2034,10 @@ class VNEngine {
         this._chainMode = btn.dataset.chain;
         localStorage.setItem('vn_chain_mode', this._chainMode);
         // モード変更時は行状態をリセット
-        this._prevSpeaker = null;
-        this._dialogRow   = 1;
-        this._line1Text   = '';
+        this._prevSpeaker   = null;
+        this._dialogRow     = 1;
+        this._line1Text     = '';
+        this._line1Emphasis = null;
         document.querySelectorAll('#chain-mode-options .settings-opt')
           .forEach(b => b.classList.toggle('active', b.dataset.chain === this._chainMode));
       };
