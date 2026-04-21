@@ -1299,8 +1299,13 @@ class VNEngine {
   }
 
   _startTypewriter(el, text, onDone) {
-    let i = 0;
     const speed = VN_CONFIG.settings.typeSpeed;
+    if (speed === 0) {
+      el.textContent += text;
+      onDone();
+      return;
+    }
+    let i = 0;
     this.typewriterTimer = setInterval(() => {
       if (i < text.length) {
         el.textContent += text[i++];
