@@ -405,6 +405,8 @@ class VNEngine {
         if (hasModal) return;
         const titleScreen = document.getElementById('title-screen');
         if (titleScreen && !titleScreen.classList.contains('hidden')) return;
+        const creditsScreen = document.getElementById('credits-screen');
+        if (creditsScreen && !creditsScreen.classList.contains('hidden')) return;
         e.preventDefault();
         this._openLog();
       }, { passive: false });
@@ -1689,7 +1691,7 @@ class VNEngine {
 
     screen.classList.remove('hidden');
 
-    const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 55);
+    const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 100);
     const audioDuration = bgmTrack ? await this._getAudioDuration(bgmTrack) : null;
     if (this._creditsSession !== session) return;
 
@@ -1699,7 +1701,7 @@ class VNEngine {
       const vh      = screen.clientHeight;
       const rollH   = roll.scrollHeight;
       const total   = vh + rollH;
-      const speed   = profile.scrollSpeed || 55;
+      const speed   = profile.scrollSpeed || 100;
       const natural = total / speed;
       const dur     = Math.max(audioDuration || 0, natural, fallbackDuration);
 
@@ -1730,7 +1732,7 @@ class VNEngine {
       themeCredit: profile.themeCredit || '',
       memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
       lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
-      scrollSpeed: profile.scrollSpeed || 55,
+      scrollSpeed: profile.scrollSpeed || 100,
     };
   }
 
