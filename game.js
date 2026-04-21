@@ -987,30 +987,40 @@ class VNEngine {
       `;
       sprite.appendChild(ph);
     };
+    const showSlot = () => {
+      sprite.appendChild(imgEl);
+      slot.innerHTML = '';
+      slot.appendChild(sprite);
+      // エフェクトで表示（decode完了後に行うことで空スプライトの表示を防ぐ）
+      slot.className = 'character-slot';
+      void slot.offsetWidth; // reflow
+      slot.classList.add('visible');
+      if (effect !== 'instant') {
+        const animClass = {
+          fade_in:         'anim-fade-in',
+          slide_in_left:   'anim-slide-in-left',
+          slide_in_right:  'anim-slide-in-right',
+          pop_in:          'anim-pop-in',
+        }[effect] || 'anim-fade-in';
+        slot.classList.add(animClass);
+        setTimeout(() => slot.classList.remove(animClass),
+                   VN_CONFIG.settings.charFadeTime + 100);
+      }
+    };
+    imgEl.onerror = () => {
+      const ph = document.createElement('div');
+      ph.className = 'char-placeholder';
+      ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
+      ph.innerHTML = `
+        <div class="char-ph-icon">♡</div>
+        <div class="char-ph-name">${cfg.name}</div>
+        <div class="char-ph-expr">[${expr}]</div>
+      `;
+      sprite.appendChild(ph);
+      showSlot();
+    };
     imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
-    const appendImg = () => sprite.appendChild(imgEl);
-    (imgEl.decode ? imgEl.decode().then(appendImg).catch(appendImg) : (imgEl.onload = appendImg));
-
-    slot.innerHTML = '';
-    slot.appendChild(sprite);
-
-    // エフェクトで表示
-    // まずクラスをリセットして visible に
-    slot.className = 'character-slot';
-    void slot.offsetWidth; // reflow
-    slot.classList.add('visible');
-
-    if (effect !== 'instant') {
-      const animClass = {
-        fade_in:         'anim-fade-in',
-        slide_in_left:   'anim-slide-in-left',
-        slide_in_right:  'anim-slide-in-right',
-        pop_in:          'anim-pop-in',
-      }[effect] || 'anim-fade-in';
-      slot.classList.add(animClass);
-      setTimeout(() => slot.classList.remove(animClass),
-                 VN_CONFIG.settings.charFadeTime + 100);
-    }
+    (imgEl.decode ? imgEl.decode().then(showSlot).catch(showSlot) : (imgEl.onload = showSlot));
   }
 
   _hideChar(target, effect = 'fade_out') {
@@ -1071,8 +1081,11 @@ class VNEngine {
         const imgEl = new Image();
         imgEl.alt = charKey;
         imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
-        // decode() でデコード完了を待ってから差し替え（Firefox のチラつき対策）
-        const swap = () => { sprite.innerHTML = ''; sprite.appendChild(imgEl); };
+        // 新画像を先に追加してから旧画像を削除（空白フレームを防ぐ）
+        const swap = () => {
+          sprite.appendChild(imgEl);
+          while (sprite.childNodes.length > 1) sprite.removeChild(sprite.firstChild);
+        };
         (imgEl.decode ? imgEl.decode().then(swap).catch(swap) : (imgEl.onload = swap));
         break;
       }
