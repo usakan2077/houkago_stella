@@ -848,7 +848,7 @@ mahiru: また明日
 
 @scene school_gate_june_rainy fade
 @bgm evening_piano.mp3
-@se rain_light.mp3
+@se rain_window.mp3 loop
 @wait 800
 
 > 昇降口を出ると、雨は小降りになっていた。
