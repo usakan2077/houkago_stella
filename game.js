@@ -97,6 +97,13 @@ class VNEngine {
     const savedPalette = localStorage.getItem('vn_window_palette');
     if (savedPalette) this._applyWindowPalette(savedPalette);
 
+    // ページ離脱ロック（ゲームプレイ中のみ有効）
+    this._gameActive = false;
+    window.addEventListener('beforeunload', (e) => {
+      if (!this._gameActive) return;
+      e.preventDefault();
+    });
+
     // 連続セリフの2行表示用状態
     this._prevSpeaker   = null;
     this._dialogRow     = 1;
@@ -431,6 +438,7 @@ class VNEngine {
   //  タイトル / ゲーム開始
   // ============================================================
   _showTitleScreen() {
+    this._gameActive = false;
     document.getElementById('title-screen').classList.remove('hidden');
     document.getElementById('game-screen').classList.add('hidden');
     this._startTitleBGM();
@@ -592,6 +600,7 @@ class VNEngine {
   }
 
   _beginGame() {
+    this._gameActive = true;
     document.getElementById('game-screen').classList.remove('hidden');
     this._resetGameState();
     this._gotoLabel(VN_CONFIG.startLabel);
@@ -1523,6 +1532,7 @@ class VNEngine {
     const d = JSON.parse(raw);
 
     this._resetGameState();
+    this._gameActive = true;
     document.getElementById('title-screen').classList.add('hidden');
     document.getElementById('game-screen').classList.remove('hidden');
 
