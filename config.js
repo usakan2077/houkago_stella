@@ -417,6 +417,10 @@ const VN_CONFIG = {
       themeTitle: 'Ending Theme「そのままで、咲ける」',
       themeCredit: 'Sakura Good End Memorial Roll',
       scrollSpeed: 55,
+      // 歌詞表示タイミング（秒）: lyrics配列と同じ順番でセット。未設定は均等割り。
+      lyricTimes: [
+        0, 14, 28, 43, 58, 73, 88, 103, 118, 133, 148, 163, 178, 193, 208,
+      ],
       memoryStills: [
         'sakura_blank_moment',
         'sakura_after_match',
@@ -454,6 +458,9 @@ const VN_CONFIG = {
       themeTitle: 'Ending Theme「きみと触れる音」',
       themeCredit: 'Kotoha Good End Memorial Roll',
       scrollSpeed: 55,
+      lyricTimes: [
+        0, 14, 28, 43, 58, 73, 88, 103, 118, 133, 148, 163, 178, 193, 208,
+      ],
       memoryStills: [
         'kotoha_window_ch1',
         'kotoha_library_headphones',
@@ -490,6 +497,9 @@ const VN_CONFIG = {
       themeTitle: 'Ending Theme「理由のない明日へ」',
       themeCredit: 'Mahiru Good End Memorial Roll',
       scrollSpeed: 55,
+      lyricTimes: [
+        0, 14, 28, 43, 58, 73, 88, 103, 118, 133, 148, 163, 178, 193,
+      ],
       memoryStills: [
         'mahiru_notebook_drop',
         'mahiru_rooftop_photo',

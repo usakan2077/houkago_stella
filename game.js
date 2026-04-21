@@ -1802,16 +1802,33 @@ class VNEngine {
     const lyrics = (profile.lyrics || []).filter(Boolean);
     if (!lyricsEl || lyrics.length === 0) return;
 
-    const introSec = 2.4;
-    const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
-    const slotSec = usableSec / lyrics.length;
-    const holdMs = Math.max(3200, Math.min(6200, slotSec * 780));
+    const times = Array.isArray(profile.lyricTimes) && profile.lyricTimes.length > 0
+      ? profile.lyricTimes
+      : null;
 
     lyrics.forEach((entry, index) => {
+      let startSec, holdMs;
+
+      if (times) {
+        // タイムスタンプ指定あり: 曲に合わせたタイミングで表示
+        startSec = times[index] ?? (durationSec * 0.8);
+        const nextTime = times[index + 1];
+        holdMs = nextTime != null
+          ? Math.max(2000, (nextTime - startSec) * 1000 - 600)
+          : 5500;
+      } else {
+        // フォールバック: 均等割り
+        const introSec  = 2.4;
+        const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
+        const slotSec   = usableSec / lyrics.length;
+        startSec = introSec + slotSec * index;
+        holdMs   = Math.max(3200, Math.min(6200, slotSec * 780));
+      }
+
       const timer = setTimeout(() => {
         if (!this._creditsSession) return;
         this._showCreditsLyric(entry, holdMs);
-      }, Math.max(0, (introSec + slotSec * index) * 1000));
+      }, Math.max(0, startSec * 1000));
       this._creditsTimers.push(timer);
     });
   }
