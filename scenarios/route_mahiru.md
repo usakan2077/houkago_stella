@@ -842,7 +842,7 @@ player: ……
 @se heartbeat.mp3
 @wait 300
 
-@scene corridor cut
+@scene corridor_rainy cut
 @wait 200
 
 @scene staircase_night cut
@@ -973,7 +973,7 @@ player: ……
 
 @wait 500
 
-@still mahiru_rooftop_reach
+@still mahiru_rooftop_night
 @wait 1000
 @still_hide
 
@@ -1163,7 +1163,7 @@ mahiru: ずっとそう思ってた
 
 @hide mahiru_no_camera fade_out
 @wait 300
-@still mahiru_rooftop_night
+@still mahiru_rooftop_reach
 @wait 1200
 @still_hide
 
@@ -1199,7 +1199,7 @@ mahiru: ずっとそう思ってた
 # mahiru_ch11_start
 
 @scene rooftop_night fade
-@bgm stop
+@bgm night_melody.mp3
 @se night_insect.mp3
 @wait 1200
 
@@ -1261,10 +1261,6 @@ mahiru: ……それだけ書いてあった
 
 > まひるは空を見ていた。
 > 星のない夜空だった。
-
-@still night_sky_no_stars
-@wait 1200
-@still_hide
 
 @show mahiru_no_camera center thinking fade_in
 
@@ -1636,7 +1632,7 @@ mahiru: 覚えてるの？
 
 player: 星座を教えてもらったことがあったから
 
-mahiru: そうか、そんなこともあったっけ
+mahiru: そっか、そんなこともあったっけ
 
 @wait 600
 
@@ -1756,7 +1752,7 @@ mahiru: ……ありがとう
 # mahiru_ch12_branch
 
 @scene rooftop_night fade
-@bgm stop
+@bgm night_melody.mp3
 @se night_insect.mp3
 @wait 1000
 
@@ -1807,27 +1803,17 @@ mahiru: どんな色になるんだろう
 # mahiru_good_end
 
 @scene rooftop_night fade
-@bgm stop
+@bgm night_melody.mp3
 @se night_insect.mp3
 @wait 600
 
-player: 明日、一緒に朝日を見よう
+player: 朝日まで、一緒にいる
 
 @wait 1200
 
-@expr mahiru_no_camera surprised
+@expr mahiru_no_camera thinking
 
 mahiru: ……
-
-@wait 800
-
-mahiru: ここで？
-
-player: ここで
-
-@wait 1000
-
-> まひるはしばらく俺を見ていた。
 
 @wait 800
 
@@ -2364,7 +2350,7 @@ player: ああ
 
 @wait 600
 
-sakura: まひる、おはよー
+sakura: まひるちゃん、おはよー
 
 mahiru: おはよ
 
@@ -2435,7 +2421,7 @@ sakura: え、写真？
 
 @expr sakura happy
 
-sakura: ……まひる
+sakura: ……まひるちゃん
 sakura: 七月のじゃん
 
 mahiru: ずっと持ってたんだ
@@ -2467,6 +2453,9 @@ sakura: すごく嬉しい
 @show kotoha left normal fade_in
 @wait 600
 
+> ことははやがて顔を上げた。
+> まひるを、見た。
+
 kotoha: ……まひるさんが
 
 kotoha: 笑っています
@@ -2491,7 +2480,7 @@ kotoha: ……よかったです
 @wait 500
 
 @scene school_gate_autumn_evening fade
-@bgm 理由のない明日へ.mp3
+@bgm mahiru_theme.mp3
 @wait 1000
 
 > 放課後。

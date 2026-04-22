@@ -130,7 +130,7 @@ kotoha（OFF）: ……できません。
 
 @wait 600
 
-@scene rooftop_rainy instant
+@scene rooftop instant
 @show mahiru center normal fade_in
 
 > ——朝のことを思い出した。
@@ -351,7 +351,7 @@ sakura: そっか！ じゃ、次の授業行こ。
 
 > 文化祭の翌日。
 > その次の日も。
-> 席は空いたままだった。
+> まひるの気配がどこにもなかった。
 
 @wait 700
 
