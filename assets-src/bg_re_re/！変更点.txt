@@ -1,0 +1,16 @@
+
+cafeteria.png
+  → 時間の調整…したがった画質と両立できないので画像編集用に綺麗な時計・メニューと綺麗な背景を用意。
+
+classroom
+classroom_evening
+  → 黒板の○○月という書き込み消去・時計の時間と調整
+
+commute_road_*
+ → それぞれ信号色調整。
+
+commute_road_june_cloudy
+commute_road_june_evening_cloudy
+commute_road_june_rainy
+  → 元のcommute_road_june_eveningは曇り空のわりに夕日が差し込みすぎな感じなので一応別枠で再生成。
+    あまり6月っぽさはないが。
