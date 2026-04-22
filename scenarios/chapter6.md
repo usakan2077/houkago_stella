@@ -448,7 +448,38 @@ player: ……ちょっと寄り道してから。
 
 sakura_sports: そっか。
 
+@wait 500
+
+player: ……「桐島くん」なんだな、今日。
+
 @wait 300
+
+@expr sakura_sports thinking
+sakura_sports: ……あ。
+
+@wait 500
+
+@expr sakura_sports shy
+sakura_sports: ずっと言ってた。気づかなかった。
+
+@wait 400
+
+sakura_sports: ……試合のあとって、なんかこうなるかも。
+sakura_sports: 気持ちの切り替えが間に合ってない。
+
+@wait 400
+
+player: …………
+
+@wait 300
+
+sakura_sports: ……勇くん。
+
+@wait 400
+
+> 今度は、ちゃんと「勇くん」だった。
+
+@wait 400
 
 sakura_sports: ……あたしも、ちょっと病院寄ってくし。
 
@@ -462,7 +493,7 @@ player: ……そうか
 @wait 400
 
 @expr sakura_sports happy
-sakura_sports: じゃあね。また月曜日。
+sakura_sports: じゃあね、勇くん。また月曜日。
 
 @se footsteps_leave.mp3
 @wait 500
