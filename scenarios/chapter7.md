@@ -133,7 +133,7 @@ sakura: 効率重視ってことで！
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
 
-sakura: 勇くん脚立持って！
+sakura: 勇くん！　その机もう少し端に寄せて！
 
 player: 俺雑用係か
 
@@ -407,7 +407,7 @@ sakura: 追加発注しなきゃ
 player: 俺が言ってこようか
 
 sakura: ありがとう、でも大丈夫
-sakura: 廊下に追加の段ボールが来てるはずだから、ちょっと確認してくる
+sakura: 男子班に段ボールの追加、頼んでくるね
 
 > さくらが教室を出ていく。
 > 足取りは速かった。
@@ -1064,13 +1064,13 @@ mahiru: また走るかもって、思ってる
 > だから余計に、その言葉が静かに落ちてきた。
 
 @choice
-- "一緒に行こう" [mahiru_favor+3] -> chapter7_mahiru_warm
+- "先行っといて" [mahiru_favor+3] -> chapter7_mahiru_warm
 - "わかった" -> chapter7_mahiru_resume
 
 
 # chapter7_mahiru_warm
 
-player: 一緒に行こう
+player: 先行っといて
 
 @expr mahiru happy
 
@@ -1146,10 +1146,14 @@ mahiru: ……うん
 
 > それ以上は聞かなかった。
 
+@wait 600
+
+> さくらが少し間を置いてから、声のトーンを上げた。
+
 @expr sakura happy
 @expr mahiru happy
-@wait 400
-sakura: でもなんか、今日ちょっとがんばった感ある！
+@wait 300
+sakura: なんか、今日ちょっとがんばった感ある！
 
 player: ちょっとどころじゃなかっただろ
 player: お前、一人で三人分くらい動いてたぞ
@@ -1297,8 +1301,6 @@ player: ……
 @expr mahiru happy
 @wait 300
 
-mahiru: じゃあ、さくらちゃんから
-
 @still rooftop_four_wishes
 @scene rooftop_night instant
 
@@ -1307,6 +1309,10 @@ sakura: ……すっかり暗くなっちゃったね
 mahiru: うん。さっきまで夕焼けだったのに
 
 player: 気づいたら夜だった
+
+@wait 500
+
+mahiru: じゃあ、さくらちゃんから
 
 sakura: なんで！？
 
