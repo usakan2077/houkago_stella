@@ -211,6 +211,8 @@ class ScriptParser {
         return { cmd: 'bgm', action: 'play', track: args[0] };
 
       case 'se':
+        if (!args[0] || args[0] === 'stop')
+          return { cmd: 'se', action: 'stop' };
         return { cmd: 'se', file: args[0], loop: args[1] === 'loop' };
 
       case 'show':

@@ -133,7 +133,7 @@ sakura: 効率重視ってことで！
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
 
-sakura: 勇くん脚立持って！
+sakura: 勇くん！　その机もう少し端に寄せて！
 
 player: 俺雑用係か
 
@@ -407,7 +407,7 @@ sakura: 追加発注しなきゃ
 player: 俺が言ってこようか
 
 sakura: ありがとう、でも大丈夫
-sakura: 廊下に追加の段ボールが来てるはずだから、ちょっと確認してくる
+sakura: 男子班に段ボールの追加、頼んでくるね
 
 > さくらが教室を出ていく。
 > 足取りは速かった。
@@ -1064,13 +1064,13 @@ mahiru: また走るかもって、思ってる
 > だから余計に、その言葉が静かに落ちてきた。
 
 @choice
-- "一緒に行こう" [mahiru_favor+3] -> chapter7_mahiru_warm
+- "先行っといて" [mahiru_favor+3] -> chapter7_mahiru_warm
 - "わかった" -> chapter7_mahiru_resume
 
 
 # chapter7_mahiru_warm
 
-player: 一緒に行こう
+player: 先行っといて
 
 @expr mahiru happy
 
@@ -1146,10 +1146,14 @@ mahiru: ……うん
 
 > それ以上は聞かなかった。
 
+@wait 600
+
+> さくらが少し間を置いてから、声のトーンを上げた。
+
 @expr sakura happy
 @expr mahiru happy
-@wait 400
-sakura: でもなんか、今日ちょっとがんばった感ある！
+@wait 300
+sakura: なんか、今日ちょっとがんばった感ある！
 
 player: ちょっとどころじゃなかっただろ
 player: お前、一人で三人分くらい動いてたぞ
@@ -1297,8 +1301,6 @@ player: ……
 @expr mahiru happy
 @wait 300
 
-mahiru: じゃあ、さくらちゃんから
-
 @still rooftop_four_wishes
 @scene rooftop_night instant
 
@@ -1307,6 +1309,10 @@ sakura: ……すっかり暗くなっちゃったね
 mahiru: うん。さっきまで夕焼けだったのに
 
 player: 気づいたら夜だった
+
+@wait 500
+
+mahiru: じゃあ、さくらちゃんから
 
 sakura: なんで！？
 
@@ -1553,9 +1559,9 @@ sakura: ひどっ！
 > 帰り支度の途中で、
 > 教室に荷物を忘れていたことに気づいた。
 
-> 戻ると、まだ三人ともそこにいた。
-> 特に示し合わせたわけじゃないのに、
-> 自然にそうなっていた。
+> 戻ると、三人ともまだ話しながら片付けをしていた。
+> 屋上からそのまま流れてきたような、
+> なんとなくの続きだった。
 
 @show sakura left normal fade_in
 @show kotoha right normal fade_in
@@ -1584,26 +1590,20 @@ sakura: するする！
 @wait 400
 
 sakura: ね、ことはちゃん
-sakura: テーブルクロス、明後日までに届くって確認できたよ
+sakura: シフト表、明日の分ちゃんと掲示板に貼った？
 
-kotoha: よかったです
-kotoha: 間に合いますね
+kotoha: 今日の準備のあとに貼ってきました
 
-sakura: ちょっとひやっとしたー
-sakura: 発注ミスかと思って
+sakura: じゃあ大丈夫か
+sakura: ……なんかまだ何か忘れてる気がして
 
-kotoha: 先生の計算間違いだったようです
+kotoha: チェックリストは全部埋まってます
 
-sakura: ……先生が？
+sakura: ……そっか
 
-kotoha: はい
+sakura: じゃあ私が心配性なだけか
 
-sakura: じゃあ怒れないじゃん
-
-player: なんで怒る前提なんだ
-
-sakura: だってー
-sakura: 責任の所在は大事でしょ
+player: 毎年そう言ってるよな
 
 @expr kotoha thinking
 
@@ -1833,7 +1833,7 @@ player: ……そうだな
 
 @wait 500
 
-> 四人で屋上をあとにする。
+> 四人で、学校をあとにした。
 
 > 流れ星は、もう見えなかった。
 > たった一瞬だけ現れて、

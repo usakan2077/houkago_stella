@@ -739,7 +739,8 @@ class VNEngine {
         break;
 
       case 'se':
-        this._playSE(cmd.file, cmd.loop);
+        if (cmd.action === 'stop') this._stopAllSE();
+        else this._playSE(cmd.file, cmd.loop);
         this._executeNext();
         break;
 

@@ -448,7 +448,38 @@ player: ……ちょっと寄り道してから。
 
 sakura_sports: そっか。
 
+@wait 500
+
+player: ……「桐島くん」なんだな、今日。
+
 @wait 300
+
+@expr sakura_sports thinking
+sakura_sports: ……あ。
+
+@wait 500
+
+@expr sakura_sports shy
+sakura_sports: ずっと言ってた。気づかなかった。
+
+@wait 400
+
+sakura_sports: ……試合のあとって、なんかこうなるかも。
+sakura_sports: 気持ちの切り替えが間に合ってない。
+
+@wait 400
+
+player: …………
+
+@wait 300
+
+sakura_sports: ……勇くん。
+
+@wait 400
+
+> 今度は、ちゃんと「勇くん」だった。
+
+@wait 400
 
 sakura_sports: ……あたしも、ちょっと病院寄ってくし。
 
@@ -462,7 +493,7 @@ player: ……そうか
 @wait 400
 
 @expr sakura_sports happy
-sakura_sports: じゃあね。また月曜日。
+sakura_sports: じゃあね、勇くん。また月曜日。
 
 @se footsteps_leave.mp3
 @wait 500
@@ -537,7 +568,7 @@ sakura_sports: じゃあね。また月曜日。
 @se shopping_street_ambient.mp3
 @wait 600
 
-> 図書館の帰り道。
+> 体育館からの帰り道。
 > 商店街に入ると、夏の熱が少しだけ変わる。
 > アーケードの屋根が日差しを遮って、代わりにいろんな声と匂いが溜まっている。
 
@@ -548,10 +579,10 @@ sakura_sports: じゃあね。また月曜日。
 
 @wait 600
 
-> 図書館に寄ったのは、涼しいからだ、と最初は思っていた。
-> でも気づいたら二時間半いた。
+> 試合を最後まで観ていたのは、なんとなくそこにいたからだ、と最初は思っていた。
+> でも気づいたら、終わりまで目で追っていた。
 > 涼しいとか暑いとか、そういう話じゃなかった。
-> ただ、本を読んでいると、時間の流れが違う速度になる。
+> ただ、誰かが全力で動くのを見ていると、時間の流れが違う速度になる。
 > 夏休みの宙吊り感から、少しだけ逃げられる。
 
 @wait 500
@@ -645,7 +676,7 @@ player: ことは。
 
 @wait 400
 
-@expr kotoha surprised
+@expr kotoha thinking
 @wait 300
 
 > ことははゆっくりと、手を閉じた。
@@ -668,9 +699,9 @@ kotoha: ……桐島くん。
 
 @wait 500
 
-kotoha: ……図書館、ですか。
+kotoha: ……こんなところで。
 
-player: 帰りにたまたま。
+player: 帰り道にたまたま。
 
 kotoha: そうですか。
 
