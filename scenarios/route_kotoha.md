@@ -111,8 +111,8 @@ kotoha: それは多分、怖さだけじゃない。
 
 # kotoha_ch9_start
 
-@scene corridor_evening fade
-@bgm stop
+@scene corridor_festival_rainy fade
+@bgm festival_rain.mp3
 @se piano_distant.mp3
 @wait 800
 
@@ -561,7 +561,7 @@ kotoha: ……借りてみます
 # kotoha_ch9_daily3
 
 @scene commute_road_autumn fade
-@bgm stop
+@bgm daily_life.mp3
 @se wind_leaves.mp3
 @wait 900
 
@@ -696,7 +696,7 @@ kotoha: ……銀杏の葉が落ちる音です
 # kotoha_ch10_start
 
 @scene classroom fade
-@bgm stop
+@bgm daily_life.mp3
 @wait 900
 
 > 翌日。
@@ -793,7 +793,7 @@ kotoha: ……そうですね
 > 遠い。
 > この部屋だけが、別の時間の中にある気がした。
 
-@bgm stop
+@bgm quiet_piano_distant.mp3
 @wait 500
 
 kotoha: ……コンクールの日のことを、
@@ -1912,7 +1912,7 @@ player: 今日始めたんだから当然だろ
 
 @scene school_grounds_evening fade
 @window_color reset
-@bgm stop
+@bgm kotoha_theme.mp3
 @wait 800
 
 > 翌日の放課後。
@@ -2121,7 +2121,7 @@ kotoha: 毎回、同じところで
 
 @wait 1200
 
-@bgm stop
+@bgm quiet_piano_distant.mp3
 @wait 800
 
 > 本番前日。
@@ -2167,7 +2167,7 @@ kotoha: やめようとは思わなかった
 @bgm kotoha_theme.mp3
 @wait 1000
 
-> 文化祭が終わった。
+> 文化祭から、ひと月が経った。
 
 > ことはとの時間は続いていた。
 > 毎日というわけじゃない。
@@ -2175,7 +2175,7 @@ kotoha: やめようとは思わなかった
 
 @wait 800
 
-> 一ヶ月後に合唱コンクールがある。
+> 来週に合唱コンクールがある。
 > 担任がことはに伴奏を頼んだのは、文化祭前のことだった。
 
 > ことはは断った。
@@ -2213,7 +2213,7 @@ kotoha: やめようとは思わなかった
 # kotoha_ch12_good_end
 
 @scene stage fade
-@bgm kotoha_good_end.mp3
+@bgm kotoha_theme.mp3
 @wait 800
 
 > 合唱コンクール当日。
