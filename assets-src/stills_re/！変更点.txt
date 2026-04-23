@@ -1,2 +1,5 @@
 evening_walk_two
   →メッセージウィンドウらしきものがあったので削除
+
+evening_walk_private
+  →ウォーターマーク削除
