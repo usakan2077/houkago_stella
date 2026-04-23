@@ -4,7 +4,7 @@ cafeteria.png
 
 classroom
 classroom_evening
-  → 黒板の○○月という書き込み消去・時計の時間と調整
+  → 黒板の○○月という書き込み消去・時計の時刻調整
 
 commute_road_*
  → それぞれ信号色調整。
@@ -14,3 +14,24 @@ commute_road_june_evening_cloudy
 commute_road_june_rainy
   → 元のcommute_road_june_eveningは曇り空のわりに夕日が差し込みすぎな感じなので一応別枠で再生成。
     あまり6月っぽさはないが。
+
+gymnasium_back
+gymnasium_back_school
+  → 元画像の体育館があまりにぼろかったんで一応。好み次第。
+
+library
+library_evening
+  → 本棚から余分な小物削除、時計の時刻調整
+
+
+music_room
+music_room_evening
+ → 時計の時刻調整
+
+
+
+
+
+
+
+-
