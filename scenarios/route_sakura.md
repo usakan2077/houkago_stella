@@ -2428,6 +2428,73 @@ sakura: 本当のことだもん！
 @wait 1500
 
 @credits sakura_good_end.mp3 sakura_good_end
+
+@scene school_grounds_evening fade
+
+> 夕方のグラウンド。
+> オレンジの光がトラックを斜めに切っている。
+
+@wait 1200
+
+> ゴールもないまま、減速する。
+
+@wait 1000
+
+@show sakura center normal fade_in
+
+> 少し離れた場所で、さくらが手を振っている。
+> 大きくは振らない。呼びもしない。
+> ただ、そこにいる。
+
+@wait 1200
+
+@hide sakura fade_out
+@wait 600
+
+> 木陰。
+> 主人公がそのまま座り込む。
+
+@wait 800
+
+> さくらが隣に来て、自然に膝を貸す。
+> 主人公は前髪に顔を隠すように目を閉じる。
+
+@wait 1200
+
+@show sakura center thinking fade_in
+
+sakura: ……まけっちゃったねー
+
+@wait 600
+
+> 声は軽い。
+> でも無理に明るくはない。
+
+sakura: でも、ちゃんと走ってた
+
+@wait 1500
+
+@hide sakura fade_out
+@wait 400
+
+> 風が葉を揺らす。
+
+@wait 1000
+
+> 会話が途切れる。
+> それでも気まずくない。
+
+@wait 1200
+
+> さくらは空を見ている。
+> 主人公は目を閉じたまま。
+
+@wait 1500
+
+> 同じ時間の中にいる。
+
+@wait 2500
+
 @end "第十二章「散らないように、咲く」— さくらルート Good End"
 
 

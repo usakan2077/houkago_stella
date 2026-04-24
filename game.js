@@ -1955,6 +1955,7 @@ class VNEngine {
 
   _endCredits() {
     this._clearCreditsPresentation();
+    this._stopBGM();
     document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('credits-roll').style.animation = 'none';
     document.getElementById('credits-roll').style.opacity = '';
