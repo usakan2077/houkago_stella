@@ -2124,6 +2124,7 @@ class VNEngine {
       const speed = parseInt(btn.dataset.speed, 10);
       btn.classList.toggle('active', speed === currentSpeed);
       btn.onclick = () => {
+        if (this._skipLocked || this._inputLocked) return;
         VN_CONFIG.settings.typeSpeed = speed;
         localStorage.setItem('vn_type_speed', speed);
         document.querySelectorAll('#type-speed-options .settings-opt')
