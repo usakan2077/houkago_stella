@@ -907,11 +907,11 @@ sakura: 安心する、かも
 # sakura_ch9_end
 
 @hide sakura fade_out
-@scene school_gate_autumn_evening fade
+@scene commute_road_autumn_evening fade
 @bgm evening_piano.mp3
 @wait 800
 
-> 校門で別れた。
+> 途中で別れた。
 
 > 「また明日ね！」と言って、さくらは帰っていった。
 > いつもの声だった。
@@ -1233,6 +1233,18 @@ sakura: お疲れ様！　また明日！
 > 誰かがいなくなった後の静けさに、さくらは慣れていた。
 > それが体に染み込んでいるように見えた。
 
+@wait 600
+
+> 帰り支度をして、出口へ向かった。
+
+> さくらがドアの前で立ち止まっていた。
+> 出口のすぐそばで、ラケットを持ったまま。
+
+@still sakura_crying_gym
+@wait 1000
+@still_hide
+@wait 300
+
 @hide sakura_sports fade_out
 @wait 500
 
@@ -1246,30 +1258,12 @@ sakura: お疲れ様！　また明日！
 @se footsteps_leave.mp3
 @wait 700
 
-> 後輩たちが帰って、体育館の外に出た。
+> 体育館の外に出た。
 
-> さくらの姿が見えなかった。
+> さくらが後ろからついてきた。
+> 外の空気に、少し肩の力が抜けた気がした。
 
-@wait 500
-
-@se footsteps.mp3
-@wait 300
-
-> コートの外、体育館の出入口の脇に、さくらがいた。
-
-> 壁際に立っていた。
-
-> ラケットを持ったまま、壁に背を預けて。
-> 頭を少しだけ下げていた。
-
-> 誰も見ていないと思っているときの姿だった。
-
-@wait 800
-
-@still sakura_crying_gym
-@wait 1200
-@still_hide
-@wait 300
+@wait 400
 
 @show sakura_sports right normal fade_in
 
@@ -1295,6 +1289,12 @@ player: ……
 
 @bgm stop
 @wait 600
+
+> 一緒に帰り始めた。
+> 廊下を抜けて、階段へ。
+
+@scene staircase_evening fade
+@wait 500
 
 > 口の端が上がりかける。
 
@@ -2048,15 +2048,15 @@ sakura: うん。なんか、言えた
 
 # sakura_good_end_hospital
 
-@scene overcast_sky fade
+@scene classroom_evening fade
 @hide sakura instant
 @hide sakura_sports instant
 @bgm sakura_good_end.mp3
 @wait 800
 
-> 病院の見舞いに行く日。
+> さくらが話してくれた、見舞いの日のこと。
 
-> さくらは入院中の父の前で、少しだけ言葉を探してから、言った。
+> 父の前で、少しだけ言葉を探してから、言ったのだと。
 
 @show sakura center normal fade_in
 
@@ -2589,10 +2589,6 @@ player: ……
 
 @wait 500
 
-@still bad_end_empty_classroom
-@wait 1500
-@still_hide
-
 @wait 600
 
 @show sakura center happy fade_in
@@ -2734,6 +2730,11 @@ sakura: やった！
 @wait 800
 
 @hide sakura fade_out
+@wait 600
+
+@still bad_end_empty_classroom
+@wait 2000
+@still_hide
 @wait 600
 
 @bgm bad_end_loop.mp3

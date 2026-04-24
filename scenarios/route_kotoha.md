@@ -111,8 +111,8 @@ kotoha: それは多分、怖さだけじゃない。
 
 # kotoha_ch9_start
 
-@scene corridor_evening fade
-@bgm stop
+@scene corridor_festival_rainy fade
+@bgm festival_rain.mp3
 @se piano_distant.mp3
 @wait 800
 
@@ -366,6 +366,12 @@ kotoha: でも来てしまうんです。
 @se piano_distant.mp3
 @wait 800
 
+> 文化祭は、そのまま終わった。
+> さくらのこと。まひるのこと。
+> いろいろなことが未解決のまま、学校は次の週に戻った。
+
+@wait 800
+
 > 気づいたら、習慣になっていた。
 
 > 放課後、帰り支度をしながら廊下を歩くと、
@@ -561,7 +567,7 @@ kotoha: ……借りてみます
 # kotoha_ch9_daily3
 
 @scene commute_road_autumn fade
-@bgm stop
+@bgm daily_life.mp3
 @se wind_leaves.mp3
 @wait 900
 
@@ -696,7 +702,7 @@ kotoha: ……銀杏の葉が落ちる音です
 # kotoha_ch10_start
 
 @scene classroom fade
-@bgm stop
+@bgm daily_life.mp3
 @wait 900
 
 > 翌日。
@@ -793,7 +799,7 @@ kotoha: ……そうですね
 > 遠い。
 > この部屋だけが、別の時間の中にある気がした。
 
-@bgm stop
+@bgm quiet_piano_distant.mp3
 @wait 500
 
 kotoha: ……コンクールの日のことを、
@@ -1144,7 +1150,7 @@ player: ……足首が、な
 > 相手はすぐに引いた。
 > 責める気配もなかった。
 
-@bgm stop
+@bgm quiet_piano_distant.mp3
 @scene commute_road_autumn fade
 @wait 1000
 
@@ -1208,8 +1214,50 @@ player: ……足首が、な
 @wait 800
 
 @choice
-- 走ることにした -> kotoha_ch10_decide
+- 走ることにした -> kotoha_ch10_accept
 - 今更走るなんて無理だ -> kotoha_ch10_bad
+
+
+// ===================================================================
+//  Chapter 10k-C「やっぱり出る」
+// ===================================================================
+
+# kotoha_ch10_accept
+
+@scene corridor_evening fade
+@bgm daily_life.mp3
+@wait 500
+
+> 翌朝。
+> 廊下であいつを見かけた。
+
+@wait 400
+
+player: あのさ、リレーの件
+クラスメイト: ん？
+
+@wait 300
+
+player: やっぱり出る
+
+@wait 600
+
+> 少し間があった。
+
+@wait 400
+
+クラスメイト: ……まじか
+クラスメイト: 助かる。ありがとな
+
+@wait 600
+
+> 「足首、大丈夫か」と聞かれると思った。
+> 聞かれなかった。
+> それがちょうどよかった。
+
+@wait 800
+
+@jump kotoha_ch10_decide
 
 
 // ===================================================================
@@ -1912,7 +1960,7 @@ player: 今日始めたんだから当然だろ
 
 @scene school_grounds_evening fade
 @window_color reset
-@bgm stop
+@bgm kotoha_theme.mp3
 @wait 800
 
 > 翌日の放課後。
@@ -2121,7 +2169,7 @@ kotoha: 毎回、同じところで
 
 @wait 1200
 
-@bgm stop
+@bgm quiet_piano_distant.mp3
 @wait 800
 
 > 本番前日。
@@ -2167,7 +2215,7 @@ kotoha: やめようとは思わなかった
 @bgm kotoha_theme.mp3
 @wait 1000
 
-> 文化祭が終わった。
+> 文化祭から、ひと月が経った。
 
 > ことはとの時間は続いていた。
 > 毎日というわけじゃない。
@@ -2175,7 +2223,7 @@ kotoha: やめようとは思わなかった
 
 @wait 800
 
-> 一ヶ月後に合唱コンクールがある。
+> 来週に合唱コンクールがある。
 > 担任がことはに伴奏を頼んだのは、文化祭前のことだった。
 
 > ことはは断った。
@@ -2213,7 +2261,7 @@ kotoha: やめようとは思わなかった
 # kotoha_ch12_good_end
 
 @scene stage fade
-@bgm kotoha_good_end.mp3
+@bgm kotoha_theme.mp3
 @wait 800
 
 > 合唱コンクール当日。
