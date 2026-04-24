@@ -1697,7 +1697,11 @@ class VNEngine {
     this._creditsSession = session;
 
     // 同一トラックが既に再生中の場合は再起動しない（@bgm_sync連携）
-    if (bgmTrack && this.currentBGM !== bgmTrack) this._playBGM(bgmTrack);
+    // bgmAudioがnullなら同一トラックでも再生する（安全策）
+    if (bgmTrack && (this.currentBGM !== bgmTrack || !this.bgmAudio)) {
+      this.currentBGM = '';
+      this._playBGM(bgmTrack);
+    }
 
     // クレジット行を生成
     const lines = VN_CONFIG.credits || [];
@@ -1978,18 +1982,16 @@ class VNEngine {
 
   _bgmSync(targetSec) {
     this.skipMode = false;
-    this.autoMode = false;
     document.getElementById('btn-skip').classList.remove('active');
-    document.getElementById('btn-auto').classList.remove('active');
     this._inputLocked = true;
 
     const session = Symbol('bgmSync');
     this._bgmSyncSession = session;
+    const deadline = performance.now() + targetSec * 1000;
 
     const check = () => {
       if (this._bgmSyncSession !== session) return;
-      const t = this.bgmAudio ? this.bgmAudio.currentTime : Infinity;
-      if (t >= targetSec) {
+      if (performance.now() >= deadline) {
         this._inputLocked = false;
         this._bgmSyncSession = null;
         this._executeNext();
@@ -2013,6 +2015,7 @@ class VNEngine {
   _endCredits() {
     this._clearCreditsPresentation();
     this._stopBGM();
+    this._skipLocked = false;
     document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('credits-roll').style.animation = 'none';
     document.getElementById('credits-roll').style.opacity = '';
