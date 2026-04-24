@@ -454,10 +454,158 @@ body {
   align-items: center;
   justify-content: center;
   transition: opacity .5s ease;
+  overflow: hidden;
+  isolation: isolate;
 }
 #still-layer.effect-fade-in         { animation: animFadeIn .6s ease forwards; }
 #still-layer.effect-slide-in-bottom { animation: animStillSlideUp .5s ease forwards; }
 @keyframes animStillSlideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+
+#still-layer.ending-intro-still {
+  transform-origin: center center;
+  will-change: transform, filter, opacity;
+}
+#still-layer.ending-intro-still::before,
+#still-layer.ending-intro-still::after {
+  content: '';
+  position: absolute;
+  inset: -8%;
+  pointer-events: none;
+}
+#still-layer.ending-intro-still::before {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 244, 218, 0.8) 0 0.3%, transparent 1.3%),
+    radial-gradient(circle at 72% 28%, rgba(255, 226, 196, 0.62) 0 0.28%, transparent 1.1%),
+    radial-gradient(circle at 36% 64%, rgba(255, 245, 235, 0.7) 0 0.22%, transparent 1.1%),
+    radial-gradient(circle at 84% 70%, rgba(255, 228, 210, 0.62) 0 0.24%, transparent 1.2%),
+    radial-gradient(circle at 58% 48%, rgba(255, 249, 240, 0.42) 0 0.16%, transparent 0.9%);
+  mix-blend-mode: screen;
+  opacity: 0.58;
+  animation: endingSparkleFloat 7.2s linear infinite;
+}
+#still-layer.ending-intro-still::after {
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 235, 215, 0.12) 0%, rgba(255, 235, 215, 0.04) 28%, rgba(0, 0, 0, 0) 56%),
+    linear-gradient(180deg, rgba(255, 244, 230, 0.08) 0%, rgba(255, 255, 255, 0) 34%, rgba(8, 4, 14, 0.22) 100%);
+  opacity: 0.9;
+  animation: endingGlowPulse 4.8s ease-in-out infinite alternate;
+}
+#still-layer.ending-intro-kotoha {
+  animation: endingStillPanKotoha 13s ease-in-out forwards;
+}
+#still-layer.ending-intro-sakura {
+  animation: endingStillPanSakura 10s ease-in-out forwards;
+}
+#still-layer.ending-intro-mahiru {
+  animation: endingStillPanMahiru 14s ease-in-out forwards;
+}
+#still-layer.ending-intro-out {
+  animation: endingStillBlurOut .82s cubic-bezier(.3, .02, .18, 1) forwards !important;
+}
+#still-layer.ending-intro-out::before {
+  animation: endingSparkleOut .82s ease forwards;
+}
+#still-layer.ending-intro-out::after {
+  animation: endingGlowOut .82s ease forwards;
+}
+@keyframes endingStillPanKotoha {
+  from {
+    transform: scale(1.02) translate3d(0, 0, 0);
+    filter: brightness(0.96) saturate(1.02);
+  }
+  45% {
+    transform: scale(1.055) translate3d(-1.2%, -0.8%, 0);
+    filter: brightness(1.01) saturate(1.05);
+  }
+  to {
+    transform: scale(1.09) translate3d(-2.4%, -1.7%, 0);
+    filter: brightness(1.05) saturate(1.08);
+  }
+}
+@keyframes endingStillPanMahiru {
+  from {
+    transform: scale(1.018) translate3d(0, 0, 0);
+    filter: brightness(0.97) saturate(1.01);
+  }
+  42% {
+    transform: scale(1.05) translate3d(1.1%, -0.6%, 0);
+    filter: brightness(1.01) saturate(1.04);
+  }
+  to {
+    transform: scale(1.085) translate3d(2.2%, -1.4%, 0);
+    filter: brightness(1.05) saturate(1.07);
+  }
+}
+@keyframes endingStillPanSakura {
+  from {
+    transform: scale(1.022) translate3d(0, 0, 0);
+    filter: brightness(0.98) saturate(1.03);
+  }
+  48% {
+    transform: scale(1.058) translate3d(-0.8%, -1.1%, 0);
+    filter: brightness(1.03) saturate(1.08);
+  }
+  to {
+    transform: scale(1.094) translate3d(-1.6%, -2.1%, 0);
+    filter: brightness(1.08) saturate(1.12);
+  }
+}
+@keyframes endingSparkleFloat {
+  0% {
+    transform: translate3d(-1.5%, 1.2%, 0) scale(1);
+    opacity: 0.32;
+  }
+  35% {
+    transform: translate3d(1.1%, -0.8%, 0) scale(1.04);
+    opacity: 0.62;
+  }
+  70% {
+    transform: translate3d(-0.6%, -1.4%, 0) scale(1.08);
+    opacity: 0.48;
+  }
+  100% {
+    transform: translate3d(1.8%, 0.7%, 0) scale(1.03);
+    opacity: 0.3;
+  }
+}
+@keyframes endingGlowPulse {
+  from {
+    opacity: 0.66;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.96;
+    transform: scale(1.03);
+  }
+}
+@keyframes endingStillBlurOut {
+  from {
+    opacity: 1;
+    filter: blur(0px) brightness(1.04) saturate(1.06);
+  }
+  to {
+    opacity: 0;
+    filter: blur(16px) brightness(1.18) saturate(1.12);
+  }
+}
+@keyframes endingSparkleOut {
+  from {
+    opacity: 0.58;
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+@keyframes endingGlowOut {
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 .still-placeholder {
   color: rgba(255,255,255,.4);

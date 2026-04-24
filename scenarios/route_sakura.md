@@ -2386,12 +2386,6 @@ sakura: いてくれる人、いたから
 
 @wait 800
 
-@still_hide
-@wait 400
-
-@still sakura_good_end_rooftop2
-@wait 1000
-
 sakura: ……勇くんのこと、好きです
 
 @wait 800
@@ -2427,7 +2421,8 @@ sakura: 本当のことだもん！
 
 @wait 1500
 
-@credits sakura_good_end.mp3 sakura_good_end
+@still sakura_good_end_rooftop2
+@ending_intro current sakura_good_end 10000
 
 @scene school_grounds_evening fade
 @bgm epilogue_sunset_for_each.mp3
@@ -2498,6 +2493,8 @@ sakura: でも、ちゃんと走ってた
 
 @wait 2500
 
+@still sakura_epilogue fade_in
+@wait 1500
 @end "第十二章「散らないように、咲く」— さくらルート Good End"
 
 

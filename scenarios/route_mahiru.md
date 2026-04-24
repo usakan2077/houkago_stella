@@ -2271,13 +2271,7 @@ mahiru: 今日、学校行ったら渡す
 > その笑顔に、余白はなかった。
 > 全部が埋まっていた。
 
-@wait 1000
-
-@still mahiru_rooftop_friends_photo
-@wait 3000
-@still_hide
-
-@wait 800
+@wait 1200
 
 > 写真の中で、俺たちは笑っていた。
 > まひるが、撮った。
@@ -2548,10 +2542,8 @@ mahiru: 多すぎて書ききれない
 @hide mahiru fade_out
 @wait 600
 
-@bgm 理由のない明日へ.mp3
-@skip_lock
-@bgm_sync 14
-@credits 理由のない明日へ.mp3 mahiru_good_end
+@still mahiru_rooftop_friends_photo
+@ending_intro 理由のない明日へ.mp3 mahiru_good_end 14000
 
 @scene commute_road_autumn_evening fade
 @bgm epilogue_sunset_for_each.mp3
@@ -2653,6 +2645,8 @@ mahiru: どっちでもいい日が、増えるといいね
 @hide mahiru_no_camera fade_out
 @wait 500
 
+@still mahiru_epilogue fade_in
+@wait 1500
 @end "第十二章「夜明けは、一人では見つけられなかった」— まひるルート Good End"
 
 

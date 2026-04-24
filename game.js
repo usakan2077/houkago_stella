@@ -27,6 +27,7 @@ class VNEngine {
     this._waitTimer         = null;   // @wait コマンドの setTimeout 参照
     this._stillHideWaitTimer = null;  // @still_hide の最低表示時間待機タイマー
     this._stillLockUntil    = 0;      // スチル表示後の最低表示ロック解除時刻
+    this._advanceToken      = 0;      // 古い非同期進行コールバックの無効化用
 
     // 現在表示中のテキスト
     this.currentText = '';
@@ -40,6 +41,7 @@ class VNEngine {
     // BGM
     this.bgmAudio    = null;
     this.currentBGM  = '';
+    this.currentBGMLoop = true;
     this._inputLocked = false;
     this._skipLocked  = false;
 
@@ -56,6 +58,8 @@ class VNEngine {
     this._creditsTimers = [];
     this._creditsSession = null;
     this._creditsMemoryIndex = 0;
+    this._endingIntroTimer = null;
+    this._endingIntroSession = null;
 
     // UI非表示モード
     this._uiHidden = false;
@@ -664,6 +668,7 @@ class VNEngine {
     this._stopTypewriter();
     this._clearAllChars('instant');
     this._hideStill('instant');
+    this._clearEndingIntro();
     this.skipMode     = false;
     this.autoMode     = false;
     this._inputLocked = false;
@@ -672,7 +677,9 @@ class VNEngine {
     document.getElementById('btn-auto').classList.remove('active');
     document.getElementById('choices-overlay').classList.add('hidden');
     document.getElementById('credits-screen').classList.add('hidden');
-    document.getElementById('ending-screen').classList.add('hidden');
+    const endingEl = document.getElementById('ending-screen');
+    endingEl.classList.add('hidden');
+    endingEl.classList.remove('has-still');
     this._clearCreditsPresentation();
     document.getElementById('next-arrow').style.display = 'none';
     document.getElementById('dialog-text').textContent  = '';
@@ -709,6 +716,7 @@ class VNEngine {
   }
 
   _executeNext() {
+    this._advanceToken += 1;
     const cmds = this.labels[this.currentLabel];
     if (!cmds || this.currentIndex >= cmds.length) {
       // 選択肢表示中なら誤作動防止のため何もしない
@@ -724,6 +732,12 @@ class VNEngine {
     }
     const cmd = cmds[this.currentIndex++];
     this._processCommand(cmd);
+  }
+
+  _continueIfAdvanceTokenMatches(token) {
+    if (this._advanceToken !== token) return false;
+    this._executeNext();
+    return true;
   }
 
   _processCommand(cmd) {
@@ -781,9 +795,11 @@ class VNEngine {
       case 'still_hide': {
         const remaining = this._stillLockUntil - Date.now();
         if (remaining > 0) {
+          const token = this._advanceToken;
           // 最低表示時間が残っている → 解除まで待機（専用タイマーで管理）
           clearTimeout(this._stillHideWaitTimer);
           this._stillHideWaitTimer = setTimeout(() => {
+            if (this._advanceToken !== token) return;
             this._stillHideWaitTimer = null;
             this._hideStill(cmd.effect);
             this._executeNext();
@@ -799,7 +815,9 @@ class VNEngine {
         if (this.skipMode) {
           this._executeNext();
         } else {
+          const token = this._advanceToken;
           this._waitTimer = setTimeout(() => {
+            if (this._advanceToken !== token) return;
             this._waitTimer = null;
             this._executeNext();
           }, cmd.ms);
@@ -891,7 +909,21 @@ class VNEngine {
         this._showCredits(cmd.bgm, cmd.profile);
         break;
 
+      case 'ending_intro':
+        this._startEndingIntro(cmd.track, cmd.profile, cmd.ms);
+        break;
+
       case 'skip_lock':
+        if (this.autoTimer) {
+          clearTimeout(this.autoTimer);
+          this.autoTimer = null;
+        }
+        if (this.skipTimer) {
+          clearTimeout(this.skipTimer);
+          this.skipTimer = null;
+        }
+        this.waitingForInput = false;
+        document.getElementById('next-arrow').style.display = 'none';
         // スキップを無効化
         this.skipMode = false;
         document.getElementById('btn-skip').classList.remove('active');
@@ -1207,6 +1239,23 @@ class VNEngine {
     this.currentStill = imageName;
   }
 
+  _clearStillFxClasses(el = document.getElementById('still-layer')) {
+    if (!el) return;
+    el.classList.remove(
+      'effect-fade-in',
+      'effect-slide-in-bottom',
+      'ending-intro-still',
+      'ending-intro-kotoha',
+      'ending-intro-sakura',
+      'ending-intro-mahiru',
+      'ending-intro-out'
+    );
+    el.style.opacity = '';
+    el.style.transition = '';
+    el.style.transform = '';
+    el.style.filter = '';
+  }
+
   _hideStill(effect = 'fade_out') {
     this._stillLockUntil = 0;
     this.currentStill = null;
@@ -1219,6 +1268,7 @@ class VNEngine {
       this._hideStillTimer = setTimeout(() => {
         this._hideStillTimer = null;
         el.classList.add('hidden');
+        this._clearStillFxClasses(el);
         el.style.opacity    = '';
         el.style.transition = '';
         el.innerHTML        = '';
@@ -1227,9 +1277,41 @@ class VNEngine {
       }, 500);
     } else {
       el.classList.add('hidden');
+      this._clearStillFxClasses(el);
       el.innerHTML        = '';
       el.style.backgroundImage = '';
     }
+  }
+
+  _applyEndingIntroStillFx() {
+    const el = document.getElementById('still-layer');
+    if (!el || !this.currentStill) return;
+
+    this._clearStillFxClasses(el);
+    el.classList.add('ending-intro-still');
+    if (this.currentStill === 'kotoha_piano_side') {
+      el.classList.add('ending-intro-kotoha');
+    } else if (this.currentStill === 'sakura_good_end_rooftop2') {
+      el.classList.add('ending-intro-sakura');
+    } else if (this.currentStill === 'mahiru_rooftop_friends_photo') {
+      el.classList.add('ending-intro-mahiru');
+    }
+  }
+
+  async _playEndingIntroStillOutro() {
+    const el = document.getElementById('still-layer');
+    if (!el || !this.currentStill || !el.classList.contains('ending-intro-still')) return;
+
+    const computed = window.getComputedStyle(el);
+    el.style.transform = computed.transform === 'none' ? '' : computed.transform;
+    el.style.filter = computed.filter === 'none' ? '' : computed.filter;
+    el.style.opacity = computed.opacity;
+    el.classList.add('ending-intro-out');
+    await new Promise(resolve => setTimeout(resolve, 820));
+    this._clearStillFxClasses(el);
+    el.style.backgroundImage = '';
+    el.style.background = 'rgba(0,0,0,1)';
+    el.style.opacity = '1';
   }
 
   // ============================================================
@@ -1294,6 +1376,7 @@ class VNEngine {
     // displayRow===2 のときは行1を残すため textContent をクリアしない
 
     if (this.skipMode) {
+      const token = this._advanceToken;
       // スキップ中は即表示して次へ
       if (emphasis === 'inner') {
         textEl.classList.add('narrate-inner');
@@ -1306,16 +1389,24 @@ class VNEngine {
       }
       this.waitingForInput = true;
       arrow.style.display = 'block';
-      this.skipTimer = setTimeout(() => { this.skipTimer = null; this._executeNext(); }, 50);
+      this.skipTimer = setTimeout(() => {
+        if (this._advanceToken !== token) return;
+        this.skipTimer = null;
+        this._executeNext();
+      }, 50);
       return;
     }
 
     const onDone = () => {
+      const token = this._advanceToken;
       this.waitingForInput = true;
       arrow.style.display  = 'block';
       if (this.autoMode) {
         const delay = Math.max(text.length * 60, VN_CONFIG.settings.autoDelay);
-        this.autoTimer = setTimeout(() => this._executeNext(), delay);
+        this.autoTimer = setTimeout(() => {
+          if (this._advanceToken !== token) return;
+          this._executeNext();
+        }, delay);
       }
     };
 
@@ -1410,7 +1501,11 @@ class VNEngine {
       document.getElementById('next-arrow').style.display = 'block';
       if (this.autoMode) {
         const delay = Math.max(this.currentText.length * 60, VN_CONFIG.settings.autoDelay);
-        this.autoTimer = setTimeout(() => this._executeNext(), delay);
+        const token = this._advanceToken;
+        this.autoTimer = setTimeout(() => {
+          if (this._advanceToken !== token) return;
+          this._executeNext();
+        }, delay);
       }
       return;
     }
@@ -1486,8 +1581,12 @@ class VNEngine {
     if (this.autoMode) {
       if (this.skipMode) this._toggleSkip();
       if (this.waitingForInput) {
+        const token = this._advanceToken;
         this.autoTimer = setTimeout(
-          () => this._executeNext(), VN_CONFIG.settings.autoDelay
+          () => {
+            if (this._advanceToken !== token) return;
+            this._executeNext();
+          }, VN_CONFIG.settings.autoDelay
         );
       }
     } else {
@@ -1564,6 +1663,7 @@ class VNEngine {
       charState:  JSON.parse(JSON.stringify(this.charState)),
       currentBG:    this.currentBG,
       currentBGM:   this.currentBGM,
+      currentBGMLoop: this.currentBGMLoop,
       currentStill: this.currentStill || null,
       windowColor:  this.windowColor || 'reset',
       preview,
@@ -1589,7 +1689,7 @@ class VNEngine {
     // 状態復元
     this.flags = d.flags || {};
     if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
-    if (d.currentBGM) this._playBGM(d.currentBGM);
+    if (d.currentBGM) this._playBGM(d.currentBGM, { loop: d.currentBGMLoop !== false });
     if (d.currentStill) this._showStill(d.currentStill, 'instant');
     this._setWindowColor(d.windowColor || 'reset');
 
@@ -1684,10 +1784,15 @@ class VNEngine {
   //  クレジットロール
   // ============================================================
   async _showCredits(bgmFile, profileKey = null) {
+    this._clearEndingIntro();
     this._stopTypewriter();
+    await this._playEndingIntroStillOutro();
     this._clearAllChars('fade_out');
-    this._hideStill('instant');
     this._clearCreditsPresentation();
+    this._bgmSyncSession = null;
+    this.waitingForInput = false;
+    this._inputLocked = true;
+    document.getElementById('next-arrow').style.display = 'none';
 
     const screen   = document.getElementById('credits-screen');
     const roll     = document.getElementById('credits-roll');
@@ -1698,9 +1803,9 @@ class VNEngine {
 
     // 同一トラックが既に再生中の場合は再起動しない（@bgm_sync連携）
     // bgmAudioがnullなら同一トラックでも再生する（安全策）
-    if (bgmTrack && (this.currentBGM !== bgmTrack || !this.bgmAudio)) {
+    if (bgmTrack && (this.currentBGM !== bgmTrack || !this.bgmAudio || this.currentBGMLoop !== false)) {
       this.currentBGM = '';
-      this._playBGM(bgmTrack);
+      this._playBGM(bgmTrack, { loop: false });
     }
 
     // クレジット行を生成
@@ -1721,16 +1826,13 @@ class VNEngine {
     roll.style.opacity = '0';
 
     screen.classList.remove('hidden');
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    this._hideStill('instant');
 
     const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 100);
     let audioDuration = null;
     if (bgmTrack) {
-      // 同一トラックが既に再生中なら残り時間を使用（@bgm_sync連携）
-      if (this.currentBGM === bgmTrack && this.bgmAudio && Number.isFinite(this.bgmAudio.duration)) {
-        audioDuration = this.bgmAudio.duration - this.bgmAudio.currentTime;
-      } else {
-        audioDuration = await this._getAudioDuration(bgmTrack);
-      }
+      audioDuration = await this._getRemainingBGMDuration(bgmTrack);
     }
     if (this._creditsSession !== session) return;
 
@@ -1966,12 +2068,16 @@ class VNEngine {
       const finish = (value) => {
         if (settled) return;
         settled = true;
+        clearTimeout(timer);
         audio.removeEventListener('loadedmetadata', onLoaded);
         audio.removeEventListener('error', onError);
         resolve(value);
       };
       const onLoaded = () => finish(Number.isFinite(audio.duration) ? audio.duration : null);
       const onError  = () => finish(null);
+      const timer    = setTimeout(() => finish(
+        Number.isFinite(audio.duration) ? audio.duration : null
+      ), 2000);
 
       audio.preload = 'metadata';
       audio.addEventListener('loadedmetadata', onLoaded, { once: true });
@@ -1980,18 +2086,73 @@ class VNEngine {
     });
   }
 
+  async _getAudioElementDuration(audio) {
+    if (!audio) return null;
+    if (Number.isFinite(audio.duration) && audio.duration > 0) return audio.duration;
+
+    return await new Promise(resolve => {
+      let settled = false;
+      const finish = (value) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        audio.removeEventListener('loadedmetadata', onLoaded);
+        audio.removeEventListener('error', onError);
+        resolve(value);
+      };
+      const onLoaded = () => finish(Number.isFinite(audio.duration) ? audio.duration : null);
+      const onError  = () => finish(null);
+      const timer    = setTimeout(() => finish(
+        Number.isFinite(audio.duration) ? audio.duration : null
+      ), 2000);
+
+      audio.addEventListener('loadedmetadata', onLoaded, { once: true });
+      audio.addEventListener('error', onError, { once: true });
+    });
+  }
+
+  async _getRemainingBGMDuration(track) {
+    const currentAudio = (this.currentBGM === track) ? this.bgmAudio : null;
+    if (currentAudio) {
+      const duration = await this._getAudioElementDuration(currentAudio);
+      if (this.currentBGM === track && this.bgmAudio === currentAudio && Number.isFinite(duration)) {
+        return Math.max(0, duration - currentAudio.currentTime);
+      }
+    }
+
+    const duration = await this._getAudioDuration(track);
+    return Number.isFinite(duration) ? duration : null;
+  }
+
   _bgmSync(targetSec) {
+    if (this.autoTimer) {
+      clearTimeout(this.autoTimer);
+      this.autoTimer = null;
+    }
+    if (this.skipTimer) {
+      clearTimeout(this.skipTimer);
+      this.skipTimer = null;
+    }
+    this.waitingForInput = false;
+    document.getElementById('next-arrow').style.display = 'none';
     this.skipMode = false;
     document.getElementById('btn-skip').classList.remove('active');
     this._inputLocked = true;
 
     const session = Symbol('bgmSync');
     this._bgmSyncSession = session;
-    const deadline = performance.now() + targetSec * 1000;
+    const goal = Math.max(0, Number(targetSec) || 0);
+    if (goal === 0) {
+      this._inputLocked = false;
+      this._bgmSyncSession = null;
+      this._executeNext();
+      return;
+    }
 
     const check = () => {
       if (this._bgmSyncSession !== session) return;
-      if (performance.now() >= deadline) {
+      const currentTime = this.bgmAudio ? (Number(this.bgmAudio.currentTime) || 0) : 0;
+      if (currentTime >= goal - 0.05) {
         this._inputLocked = false;
         this._bgmSyncSession = null;
         this._executeNext();
@@ -2000,6 +2161,45 @@ class VNEngine {
       requestAnimationFrame(check);
     };
     requestAnimationFrame(check);
+  }
+
+  _clearEndingIntro() {
+    if (this._endingIntroTimer) {
+      clearTimeout(this._endingIntroTimer);
+      this._endingIntroTimer = null;
+    }
+    this._endingIntroSession = null;
+  }
+
+  _startEndingIntro(track, profileKey, waitMs = 0) {
+    this._clearEndingIntro();
+    this._stopTypewriter();
+    this.waitingForInput = false;
+    document.getElementById('next-arrow').style.display = 'none';
+
+    this.skipMode = false;
+    this.autoMode = false;
+    document.getElementById('btn-skip').classList.remove('active');
+    document.getElementById('btn-auto').classList.remove('active');
+    this._inputLocked = true;
+    this._skipLocked = true;
+
+    if (track && (this.currentBGM !== track || !this.bgmAudio || this.currentBGMLoop !== false)) {
+      this.currentBGM = '';
+      this._playBGM(track, { loop: false });
+    }
+
+    this._applyEndingIntroStillFx();
+
+    const delay = Math.max(0, Number(waitMs) || 0);
+    const session = Symbol('endingIntro');
+    this._endingIntroSession = session;
+    this._endingIntroTimer = setTimeout(() => {
+      if (this._endingIntroSession !== session) return;
+      this._endingIntroTimer = null;
+      this._endingIntroSession = null;
+      this._showCredits(track, profileKey);
+    }, delay);
   }
 
   _skipCredits() {
@@ -2015,6 +2215,7 @@ class VNEngine {
   _endCredits() {
     this._clearCreditsPresentation();
     this._stopBGM();
+    this._inputLocked = false;
     this._skipLocked = false;
     document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('credits-roll').style.animation = 'none';
@@ -2082,10 +2283,16 @@ class VNEngine {
       }, 800);
     } else {
       // ── 最終エンディング: タイトルへ戻るボタンを表示 ──
+      const endingEl = document.getElementById('ending-screen');
+      if (this.currentStill) {
+        endingEl.classList.add('has-still');
+      } else {
+        endingEl.classList.remove('has-still');
+      }
       setTimeout(() => {
         document.getElementById('ending-title').textContent = title.replace(/\s*—\s*/g, '\n— ');
         document.getElementById('btn-next-chapter').classList.add('hidden');
-        document.getElementById('ending-screen').classList.remove('hidden');
+        endingEl.classList.remove('hidden');
       }, 1200);
     }
   }
@@ -2298,9 +2505,11 @@ class VNEngine {
   // ============================================================
   //  BGM / SE
   // ============================================================
-  _playBGM(track) {
-    if (this.currentBGM === track) return; // 同じ曲なら何もしない
+  _playBGM(track, options = {}) {
+    const loop = options.loop !== false;
+    if (this.currentBGM === track && this.currentBGMLoop === loop) return; // 同じ曲なら何もしない
     this.currentBGM = track;
+    this.currentBGMLoop = loop;
 
     // 直前のBGMを即座に停止
     // ※フェードアウト(setInterval)は iOS で audio.volume が read-only なため
@@ -2311,7 +2520,7 @@ class VNEngine {
     }
 
     const audio = new Audio(`assets/audio/bgm/${track}`);
-    audio.loop = true;
+    audio.loop = loop;
     // iOS では volume は read-only のため 0 セットが効かない場合があるが
     // play() 後にフェードインを試みる（失敗しても音は出る）
     try { audio.volume = 0; } catch (e) { /* iOS read-only 無視 */ }
@@ -2348,6 +2557,7 @@ class VNEngine {
 
   _stopBGM() {
     this.currentBGM = '';
+    this.currentBGMLoop = true;
     if (this.bgmAudio) {
       this.bgmAudio.pause();
       this.bgmAudio = null;

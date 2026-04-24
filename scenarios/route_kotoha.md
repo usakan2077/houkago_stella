@@ -2507,10 +2507,6 @@ kotoha: では、隣へどうぞ
 @wait 1000
 
 @still_hide
-@still kotoha_piano_side
-@wait 2000
-
-@still_hide
 @wait 500
 
 @show kotoha center normal fade_in
@@ -2549,10 +2545,8 @@ kotoha: では、隣へどうぞ
 @hide kotoha fade_out
 @wait 800
 
-@bgm きみと触れる音.mp3
-@skip_lock
-@bgm_sync 13
-@credits きみと触れる音.mp3 kotoha_good_end
+@still kotoha_piano_side
+@ending_intro きみと触れる音.mp3 kotoha_good_end 13000
 
 @scene street_plaza_summer fade
 @bgm epilogue_sunset_for_each.mp3
@@ -2650,6 +2644,8 @@ kotoha: ……続きは、また今度にします
 
 @wait 2500
 
+@still kotoha_epilogue fade_in
+@wait 1500
 @end "第十二章「指先は、ずっと音を覚えていた」— ことはルート Good End"
 
 
