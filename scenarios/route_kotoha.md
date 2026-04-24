@@ -2514,8 +2514,6 @@ kotoha: では、隣へどうぞ
 @wait 500
 
 @show kotoha center normal fade_in
-@bgm きみと触れる音.mp3
-@skip_lock
 @wait 400
 
 > 音が、部屋に広がっていく。
@@ -2551,6 +2549,8 @@ kotoha: では、隣へどうぞ
 @hide kotoha fade_out
 @wait 800
 
+@bgm きみと触れる音.mp3
+@skip_lock
 @bgm_sync 13
 @credits きみと触れる音.mp3 kotoha_good_end
 
