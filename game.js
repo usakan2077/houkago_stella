@@ -38,8 +38,10 @@ class VNEngine {
     this.flags = {};
 
     // BGM
-    this.bgmAudio   = null;
-    this.currentBGM = '';
+    this.bgmAudio    = null;
+    this.currentBGM  = '';
+    this._inputLocked = false;
+    this._skipLocked  = false;
 
     // SE（再生中のAudioを追跡して停止できるようにする）
     this.seAudios = [];
@@ -662,8 +664,10 @@ class VNEngine {
     this._stopTypewriter();
     this._clearAllChars('instant');
     this._hideStill('instant');
-    this.skipMode = false;
-    this.autoMode = false;
+    this.skipMode     = false;
+    this.autoMode     = false;
+    this._inputLocked = false;
+    this._skipLocked  = false;
     document.getElementById('btn-skip').classList.remove('active');
     document.getElementById('btn-auto').classList.remove('active');
     document.getElementById('choices-overlay').classList.add('hidden');
@@ -886,6 +890,17 @@ class VNEngine {
       case 'credits':
         this._showCredits(cmd.bgm, cmd.profile);
         break;
+
+      case 'skip_lock':
+        if (this.skipMode) this._toggleSkip();
+        if (this.autoMode) this._toggleAuto();
+        this._skipLocked = true;
+        this._executeNext();
+        break;
+
+      case 'bgm_sync':
+        this._bgmSync(cmd.seconds);
+        return;
 
       case 'window_color':
         this._setWindowColor(cmd.target);
@@ -1359,6 +1374,7 @@ class VNEngine {
 
   /** クリック / スペース / Enter で進む */
   _onAdvance() {
+    if (this._inputLocked) return;
     const choicesVisible = !document.getElementById('choices-overlay')
                                    .classList.contains('hidden');
     if (choicesVisible) return;
@@ -1444,6 +1460,7 @@ class VNEngine {
   //  スキップ / オート
   // ============================================================
   _toggleSkip() {
+    if (this._inputLocked || this._skipLocked) return;
     this.skipMode = !this.skipMode;
     document.getElementById('btn-skip').classList.toggle('active', this.skipMode);
     if (this.skipMode) {
@@ -1457,6 +1474,7 @@ class VNEngine {
   }
 
   _toggleAuto() {
+    if (this._inputLocked) return;
     this.autoMode = !this.autoMode;
     document.getElementById('btn-auto').classList.toggle('active', this.autoMode);
     if (this.autoMode) {
@@ -1672,7 +1690,8 @@ class VNEngine {
     const session  = Symbol('credits');
     this._creditsSession = session;
 
-    if (bgmTrack) this._playBGM(bgmTrack);
+    // 同一トラックが既に再生中の場合は再起動しない（@bgm_sync連携）
+    if (bgmTrack && this.currentBGM !== bgmTrack) this._playBGM(bgmTrack);
 
     // クレジット行を生成
     const lines = VN_CONFIG.credits || [];
@@ -1694,7 +1713,15 @@ class VNEngine {
     screen.classList.remove('hidden');
 
     const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 100);
-    const audioDuration = bgmTrack ? await this._getAudioDuration(bgmTrack) : null;
+    let audioDuration = null;
+    if (bgmTrack) {
+      // 同一トラックが既に再生中なら残り時間を使用（@bgm_sync連携）
+      if (this.currentBGM === bgmTrack && this.bgmAudio && Number.isFinite(this.bgmAudio.duration)) {
+        audioDuration = this.bgmAudio.duration - this.bgmAudio.currentTime;
+      } else {
+        audioDuration = await this._getAudioDuration(bgmTrack);
+      }
+    }
     if (this._creditsSession !== session) return;
 
     requestAnimationFrame(() => {
@@ -1941,6 +1968,30 @@ class VNEngine {
       audio.addEventListener('error', onError, { once: true });
       audio.src = `assets/audio/bgm/${track}`;
     });
+  }
+
+  _bgmSync(targetSec) {
+    this.skipMode = false;
+    this.autoMode = false;
+    document.getElementById('btn-skip').classList.remove('active');
+    document.getElementById('btn-auto').classList.remove('active');
+    this._inputLocked = true;
+
+    const session = Symbol('bgmSync');
+    this._bgmSyncSession = session;
+
+    const check = () => {
+      if (this._bgmSyncSession !== session) return;
+      const t = this.bgmAudio ? this.bgmAudio.currentTime : Infinity;
+      if (t >= targetSec) {
+        this._inputLocked = false;
+        this._bgmSyncSession = null;
+        this._executeNext();
+        return;
+      }
+      requestAnimationFrame(check);
+    };
+    requestAnimationFrame(check);
   }
 
   _skipCredits() {

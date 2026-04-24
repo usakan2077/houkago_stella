@@ -2490,6 +2490,8 @@ kotoha: ……よかったです
 @wait 600
 
 mahiru: ……今日、来れた
+@bgm 理由のない明日へ.mp3
+@skip_lock
 
 @wait 600
 
@@ -2548,6 +2550,7 @@ mahiru: 多すぎて書ききれない
 @hide mahiru fade_out
 @wait 600
 
+@bgm_sync 14
 @credits 理由のない明日へ.mp3 mahiru_good_end
 
 @scene commute_road_autumn_evening fade
