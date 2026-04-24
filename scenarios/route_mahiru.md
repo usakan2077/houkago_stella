@@ -2551,6 +2551,7 @@ mahiru: 多すぎて書ききれない
 @credits 理由のない明日へ.mp3 mahiru_good_end
 
 @scene commute_road_autumn_evening fade
+@bgm epilogue_sunset_for_each.mp3
 
 > 夕方の帰り道。
 > 風が少しだけ冷たい。

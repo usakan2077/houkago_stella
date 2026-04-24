@@ -2430,6 +2430,7 @@ sakura: 本当のことだもん！
 @credits sakura_good_end.mp3 sakura_good_end
 
 @scene school_grounds_evening fade
+@bgm epilogue_sunset_for_each.mp3
 
 > 夕方のグラウンド。
 > オレンジの光がトラックを斜めに切っている。

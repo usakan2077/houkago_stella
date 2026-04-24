@@ -2552,6 +2552,7 @@ kotoha: では、隣へどうぞ
 @credits kotoha_good_end.mp3 kotoha_good_end
 
 @scene street_plaza_summer fade
+@bgm epilogue_sunset_for_each.mp3
 
 > 夕方の商店街。
 > シャッターの半分降りた店、ゆるい人通り。
