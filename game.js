@@ -1786,27 +1786,19 @@ class VNEngine {
   async _showCredits(bgmFile, profileKey = null) {
     this._clearEndingIntro();
     this._stopTypewriter();
-    await this._playEndingIntroStillOutro();
+    const screen   = document.getElementById('credits-screen');
+    const roll     = document.getElementById('credits-roll');
+    const profile  = this._resolveCreditsProfile(profileKey, bgmFile);
+    const bgmTrack = profile.themeTrack || bgmFile || null;
+    const session  = Symbol('credits');
+
     this._clearAllChars('fade_out');
     this._clearCreditsPresentation();
     this._bgmSyncSession = null;
     this.waitingForInput = false;
     this._inputLocked = true;
     document.getElementById('next-arrow').style.display = 'none';
-
-    const screen   = document.getElementById('credits-screen');
-    const roll     = document.getElementById('credits-roll');
-    const profile  = this._resolveCreditsProfile(profileKey, bgmFile);
-    const bgmTrack = profile.themeTrack || bgmFile || null;
-    const session  = Symbol('credits');
     this._creditsSession = session;
-
-    // 同一トラックが既に再生中の場合は再起動しない（@bgm_sync連携）
-    // bgmAudioがnullなら同一トラックでも再生する（安全策）
-    if (bgmTrack && (this.currentBGM !== bgmTrack || !this.bgmAudio || this.currentBGMLoop !== false)) {
-      this.currentBGM = '';
-      this._playBGM(bgmTrack, { loop: false });
-    }
 
     // クレジット行を生成
     const lines = VN_CONFIG.credits || [];
@@ -1826,8 +1818,16 @@ class VNEngine {
     roll.style.opacity = '0';
 
     screen.classList.remove('hidden');
-    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    await new Promise(resolve => requestAnimationFrame(resolve));
+    await this._playEndingIntroStillOutro();
     this._hideStill('instant');
+
+    // 同一トラックが既に再生中の場合は再起動しない（@bgm_sync連携）
+    // bgmAudioがnullなら同一トラックでも再生する（安全策）
+    if (bgmTrack && (this.currentBGM !== bgmTrack || !this.bgmAudio || this.currentBGMLoop !== false)) {
+      this.currentBGM = '';
+      this._playBGM(bgmTrack, { loop: false });
+    }
 
     const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 100);
     let audioDuration = null;
@@ -1887,11 +1887,12 @@ class VNEngine {
 
   _startCreditsPresentation(profile, durationSec) {
     this._creditsMemoryIndex = 0;
-    this._scheduleCreditsMemories(profile, durationSec);
-    this._scheduleCreditsLyrics(profile, durationSec);
+    const session = this._creditsSession;
+    this._scheduleCreditsMemories(profile, durationSec, session);
+    this._scheduleCreditsLyrics(profile, durationSec, session);
   }
 
-  _scheduleCreditsMemories(profile, durationSec) {
+  _scheduleCreditsMemories(profile, durationSec, session) {
     const stills = (profile.memoryStills || []).filter(Boolean);
     if (stills.length === 0) return;
 
@@ -1901,7 +1902,7 @@ class VNEngine {
 
     stills.forEach((stillKey, index) => {
       const timer = setTimeout(() => {
-        if (!this._creditsSession) return;
+        if (!session || this._creditsSession !== session) return;
         this._showCreditsMemory(stillKey);
       }, Math.max(0, (introSec + slotSec * index) * 1000));
       this._creditsTimers.push(timer);
@@ -1940,7 +1941,7 @@ class VNEngine {
     return item?.label || stillKey;
   }
 
-  _scheduleCreditsLyrics(profile, durationSec) {
+  _scheduleCreditsLyrics(profile, durationSec, session) {
     const lyricsEl = document.getElementById('credits-lyrics');
 
     // 歌詞データが存在しない、または空の場合は何もしない
@@ -2004,7 +2005,7 @@ class VNEngine {
       }
 
       const timer = setTimeout(() => {
-        if (this._creditsSession) {
+        if (session && this._creditsSession === session) {
           this._showCreditsLyric(item.entry, holdMs);
         }
       }, Math.max(0, startSec * 1000));
