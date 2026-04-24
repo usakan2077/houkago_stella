@@ -1734,6 +1734,7 @@ class VNEngine {
       themeCredit: profile.themeCredit || '',
       memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
       lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
+      lyricTimes: Array.isArray(profile.lyricTimes) ? profile.lyricTimes : null,
       scrollSpeed: profile.scrollSpeed || 100,
     };
   }
@@ -1808,29 +1809,39 @@ class VNEngine {
       ? profile.lyricTimes
       : null;
 
+    // タイマーのクリア（重要）
+    if (typeof this._clearCreditsTimers === 'function') {
+      this._clearCreditsTimers();
+    }
+    this._creditsTimers = [];
+
     lyrics.forEach((entry, index) => {
       let startSec, holdMs;
 
       if (times) {
-        // タイムスタンプ指定あり: 曲に合わせたタイミングで表示
+        // タイミング指定モード
         startSec = times[index] ?? (durationSec * 0.8);
+
         const nextTime = times[index + 1];
         holdMs = nextTime != null
-          ? Math.max(2000, (nextTime - startSec) * 1000 - 600)
+          ? Math.max(3500, (nextTime - startSec) * 1000 - 700)   // 次の歌詞より少し早く消す
           : 5500;
       } else {
-        // フォールバック: 均等割り
+        // 均等割りフォールバック
         const introSec  = 2.4;
         const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
         const slotSec   = usableSec / lyrics.length;
+
         startSec = introSec + slotSec * index;
         holdMs   = Math.max(3200, Math.min(6200, slotSec * 780));
       }
 
       const timer = setTimeout(() => {
-        if (!this._creditsSession) return;
-        this._showCreditsLyric(entry, holdMs);
+        if (this._creditsSession) {
+          this._showCreditsLyric(entry, holdMs);
+        }
       }, Math.max(0, startSec * 1000));
+
       this._creditsTimers.push(timer);
     });
   }
