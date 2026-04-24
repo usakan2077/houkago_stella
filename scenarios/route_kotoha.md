@@ -2507,10 +2507,6 @@ kotoha: では、隣へどうぞ
 @wait 1000
 
 @still_hide
-@still kotoha_piano_side
-@wait 2000
-
-@still_hide
 @wait 500
 
 @show kotoha center normal fade_in
@@ -2549,7 +2545,107 @@ kotoha: では、隣へどうぞ
 @hide kotoha fade_out
 @wait 800
 
-@credits kotoha_good_end.mp3 kotoha_good_end
+@still kotoha_piano_side
+@ending_intro きみと触れる音.mp3 kotoha_good_end 13000
+
+@scene street_plaza_summer fade
+@bgm epilogue_sunset_for_each.mp3
+
+> 夕方の商店街。
+> シャッターの半分降りた店、ゆるい人通り。
+
+@wait 1000
+
+> 広場の端に、ストリートピアノ。
+> 誰も弾いていない。
+
+@show kotoha center normal fade_in
+
+> ことはが立ち止まる。
+> 以前と同じ距離。
+
+@wait 800
+
+> 少しだけ、近づく。
+
+@wait 800
+
+> 指が鍵盤の上で止まる。
+
+@wait 1000
+
+> ほんの一音。
+> 短く、乾いた音。
+> 止まる。
+
+@wait 1000
+
+> 周囲の誰かが一瞬だけ視線を向ける。
+> すぐにそれぞれの方向へ戻る。
+
+@wait 1000
+
+> 音は、残らない。
+> 流れていく。
+
+@wait 600
+
+> ことは、もう一度だけ弾く。
+> 今度は、短いフレーズ。
+> 途中で止める。
+
+@wait 800
+
+kotoha: ……こういう場所だと
+
+@wait 800
+
+kotoha: 音が、誰のものでもなくなる気がします
+
+@wait 1000
+
+> 視線は鍵盤のまま。
+
+kotoha: だから……少しだけ、平気です
+
+@wait 800
+
+@expr kotoha shy
+
+> 主人公を見る。
+
+kotoha: ……一人じゃないから、かもしれません
+
+@wait 800
+
+@expr kotoha normal
+
+> すぐに目を逸らす。
+
+@wait 800
+
+> もう一度、鍵盤に触れる。
+> 今度は弾かない。
+> 手を離す。
+
+kotoha: ……続きは、また今度にします
+
+@wait 1500
+
+@hide kotoha fade_out
+@wait 400
+
+> 夕焼けが鍵盤に反射する。
+
+@wait 1200
+
+> 音は鳴らない。
+> でも、そこに残っている。
+
+@wait 2500
+
+@still kotoha_epilogue fade_in
+@wait 1500
 @end "第十二章「指先は、ずっと音を覚えていた」— ことはルート Good End"
 
 

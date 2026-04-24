@@ -210,6 +210,20 @@ class ScriptParser {
           return { cmd: 'bgm', action: 'stop' };
         return { cmd: 'bgm', action: 'play', track: args[0] };
 
+      case 'bgm_sync':
+        return { cmd: 'bgm_sync', seconds: parseFloat(args[0]) || 0 };
+
+      case 'ending_intro':
+        return {
+          cmd: 'ending_intro',
+          track: (!args[0] || args[0] === 'current') ? null : args[0],
+          profile: args[1] || null,
+          ms: parseInt(args[2], 10) || 0,
+        };
+
+      case 'skip_lock':
+        return { cmd: 'skip_lock' };
+
       case 'se':
         if (!args[0] || args[0] === 'stop')
           return { cmd: 'se', action: 'stop' };

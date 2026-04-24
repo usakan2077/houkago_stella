@@ -2271,13 +2271,7 @@ mahiru: 今日、学校行ったら渡す
 > その笑顔に、余白はなかった。
 > 全部が埋まっていた。
 
-@wait 1000
-
-@still mahiru_rooftop_friends_photo
-@wait 3000
-@still_hide
-
-@wait 800
+@wait 1200
 
 > 写真の中で、俺たちは笑っていた。
 > まひるが、撮った。
@@ -2548,7 +2542,111 @@ mahiru: 多すぎて書ききれない
 @hide mahiru fade_out
 @wait 600
 
-@credits 理由のない明日へ.mp3 mahiru_good_end
+@still mahiru_rooftop_friends_photo
+@ending_intro 理由のない明日へ.mp3 mahiru_good_end 14000
+
+@scene commute_road_autumn_evening fade
+@bgm epilogue_sunset_for_each.mp3
+
+> 夕方の帰り道。
+> 風が少しだけ冷たい。
+
+@show mahiru_no_camera center normal fade_in
+
+> 並んで歩く。
+> 歩幅は自然に揃っている。
+
+@wait 1000
+
+player: ……今日は書かないのか
+
+mahiru: ん？
+
+player: ノート
+
+@wait 800
+
+@expr mahiru_no_camera thinking
+
+> まひる、少し考える。
+
+@wait 800
+
+mahiru: ……うん
+
+@wait 600
+
+mahiru: 今日は、いいかなって
+
+@wait 800
+
+mahiru: 書かなくても、忘れなさそうだから
+
+player: そうか
+
+@wait 600
+
+@expr mahiru_no_camera happy
+
+> まひる、小さく笑う。
+
+mahiru: でも、また書くかもしれないよ
+
+mahiru: そういう日もあるし
+
+@wait 800
+
+> 風が吹く。
+
+@wait 600
+
+mahiru: 今日のいいこと、もう決まってるし
+
+player: 何だ
+
+@wait 800
+
+mahiru: ……内緒
+
+@wait 1000
+
+@expr mahiru_no_camera thinking
+
+> 歩きながら、まひるが手を出す。
+> 主人公が取る。
+
+@wait 800
+
+mahiru: ……こういうの、前は書いてたんだよ
+
+player: ……そうか
+
+@wait 1000
+
+> まひるは空を見る。
+> 夕焼けが少し薄れている。
+
+@expr mahiru_no_camera normal
+
+@wait 800
+
+mahiru: 明日は、書くかも
+
+@wait 400
+
+mahiru: 書かないかも
+
+@wait 400
+
+mahiru: どっちでもいい日が、増えるといいね
+
+@wait 2500
+
+@hide mahiru_no_camera fade_out
+@wait 500
+
+@still mahiru_epilogue fade_in
+@wait 1500
 @end "第十二章「夜明けは、一人では見つけられなかった」— まひるルート Good End"
 
 

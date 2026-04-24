@@ -27,6 +27,7 @@ class VNEngine {
     this._waitTimer         = null;   // @wait コマンドの setTimeout 参照
     this._stillHideWaitTimer = null;  // @still_hide の最低表示時間待機タイマー
     this._stillLockUntil    = 0;      // スチル表示後の最低表示ロック解除時刻
+    this._advanceToken      = 0;      // 古い非同期進行コールバックの無効化用
 
     // 現在表示中のテキスト
     this.currentText = '';
@@ -38,8 +39,11 @@ class VNEngine {
     this.flags = {};
 
     // BGM
-    this.bgmAudio   = null;
-    this.currentBGM = '';
+    this.bgmAudio    = null;
+    this.currentBGM  = '';
+    this.currentBGMLoop = true;
+    this._inputLocked = false;
+    this._skipLocked  = false;
 
     // SE（再生中のAudioを追跡して停止できるようにする）
     this.seAudios = [];
@@ -54,6 +58,8 @@ class VNEngine {
     this._creditsTimers = [];
     this._creditsSession = null;
     this._creditsMemoryIndex = 0;
+    this._endingIntroTimer = null;
+    this._endingIntroSession = null;
 
     // UI非表示モード
     this._uiHidden = false;
@@ -662,13 +668,18 @@ class VNEngine {
     this._stopTypewriter();
     this._clearAllChars('instant');
     this._hideStill('instant');
-    this.skipMode = false;
-    this.autoMode = false;
+    this._clearEndingIntro();
+    this.skipMode     = false;
+    this.autoMode     = false;
+    this._inputLocked = false;
+    this._skipLocked  = false;
     document.getElementById('btn-skip').classList.remove('active');
     document.getElementById('btn-auto').classList.remove('active');
     document.getElementById('choices-overlay').classList.add('hidden');
     document.getElementById('credits-screen').classList.add('hidden');
-    document.getElementById('ending-screen').classList.add('hidden');
+    const endingEl = document.getElementById('ending-screen');
+    endingEl.classList.add('hidden');
+    endingEl.classList.remove('has-still');
     this._clearCreditsPresentation();
     document.getElementById('next-arrow').style.display = 'none';
     document.getElementById('dialog-text').textContent  = '';
@@ -705,6 +716,7 @@ class VNEngine {
   }
 
   _executeNext() {
+    this._advanceToken += 1;
     const cmds = this.labels[this.currentLabel];
     if (!cmds || this.currentIndex >= cmds.length) {
       // 選択肢表示中なら誤作動防止のため何もしない
@@ -720,6 +732,12 @@ class VNEngine {
     }
     const cmd = cmds[this.currentIndex++];
     this._processCommand(cmd);
+  }
+
+  _continueIfAdvanceTokenMatches(token) {
+    if (this._advanceToken !== token) return false;
+    this._executeNext();
+    return true;
   }
 
   _processCommand(cmd) {
@@ -777,9 +795,11 @@ class VNEngine {
       case 'still_hide': {
         const remaining = this._stillLockUntil - Date.now();
         if (remaining > 0) {
+          const token = this._advanceToken;
           // 最低表示時間が残っている → 解除まで待機（専用タイマーで管理）
           clearTimeout(this._stillHideWaitTimer);
           this._stillHideWaitTimer = setTimeout(() => {
+            if (this._advanceToken !== token) return;
             this._stillHideWaitTimer = null;
             this._hideStill(cmd.effect);
             this._executeNext();
@@ -795,7 +815,9 @@ class VNEngine {
         if (this.skipMode) {
           this._executeNext();
         } else {
+          const token = this._advanceToken;
           this._waitTimer = setTimeout(() => {
+            if (this._advanceToken !== token) return;
             this._waitTimer = null;
             this._executeNext();
           }, cmd.ms);
@@ -886,6 +908,37 @@ class VNEngine {
       case 'credits':
         this._showCredits(cmd.bgm, cmd.profile);
         break;
+
+      case 'ending_intro':
+        this._startEndingIntro(cmd.track, cmd.profile, cmd.ms);
+        break;
+
+      case 'skip_lock':
+        if (this.autoTimer) {
+          clearTimeout(this.autoTimer);
+          this.autoTimer = null;
+        }
+        if (this.skipTimer) {
+          clearTimeout(this.skipTimer);
+          this.skipTimer = null;
+        }
+        this.waitingForInput = false;
+        document.getElementById('next-arrow').style.display = 'none';
+        // スキップを無効化
+        this.skipMode = false;
+        document.getElementById('btn-skip').classList.remove('active');
+        this._skipLocked = true;
+        // AUTOを強制ON（ページ送りを自動化）
+        if (!this.autoMode) {
+          this.autoMode = true;
+          document.getElementById('btn-auto').classList.add('active');
+        }
+        this._executeNext();
+        break;
+
+      case 'bgm_sync':
+        this._bgmSync(cmd.seconds);
+        return;
 
       case 'window_color':
         this._setWindowColor(cmd.target);
@@ -1186,6 +1239,23 @@ class VNEngine {
     this.currentStill = imageName;
   }
 
+  _clearStillFxClasses(el = document.getElementById('still-layer')) {
+    if (!el) return;
+    el.classList.remove(
+      'effect-fade-in',
+      'effect-slide-in-bottom',
+      'ending-intro-still',
+      'ending-intro-kotoha',
+      'ending-intro-sakura',
+      'ending-intro-mahiru',
+      'ending-intro-out'
+    );
+    el.style.opacity = '';
+    el.style.transition = '';
+    el.style.transform = '';
+    el.style.filter = '';
+  }
+
   _hideStill(effect = 'fade_out') {
     this._stillLockUntil = 0;
     this.currentStill = null;
@@ -1198,6 +1268,7 @@ class VNEngine {
       this._hideStillTimer = setTimeout(() => {
         this._hideStillTimer = null;
         el.classList.add('hidden');
+        this._clearStillFxClasses(el);
         el.style.opacity    = '';
         el.style.transition = '';
         el.innerHTML        = '';
@@ -1206,9 +1277,41 @@ class VNEngine {
       }, 500);
     } else {
       el.classList.add('hidden');
+      this._clearStillFxClasses(el);
       el.innerHTML        = '';
       el.style.backgroundImage = '';
     }
+  }
+
+  _applyEndingIntroStillFx() {
+    const el = document.getElementById('still-layer');
+    if (!el || !this.currentStill) return;
+
+    this._clearStillFxClasses(el);
+    el.classList.add('ending-intro-still');
+    if (this.currentStill === 'kotoha_piano_side') {
+      el.classList.add('ending-intro-kotoha');
+    } else if (this.currentStill === 'sakura_good_end_rooftop2') {
+      el.classList.add('ending-intro-sakura');
+    } else if (this.currentStill === 'mahiru_rooftop_friends_photo') {
+      el.classList.add('ending-intro-mahiru');
+    }
+  }
+
+  async _playEndingIntroStillOutro() {
+    const el = document.getElementById('still-layer');
+    if (!el || !this.currentStill || !el.classList.contains('ending-intro-still')) return;
+
+    const computed = window.getComputedStyle(el);
+    el.style.transform = computed.transform === 'none' ? '' : computed.transform;
+    el.style.filter = computed.filter === 'none' ? '' : computed.filter;
+    el.style.opacity = computed.opacity;
+    el.classList.add('ending-intro-out');
+    await new Promise(resolve => setTimeout(resolve, 820));
+    this._clearStillFxClasses(el);
+    el.style.backgroundImage = '';
+    el.style.background = 'rgba(0,0,0,1)';
+    el.style.opacity = '1';
   }
 
   // ============================================================
@@ -1273,6 +1376,7 @@ class VNEngine {
     // displayRow===2 のときは行1を残すため textContent をクリアしない
 
     if (this.skipMode) {
+      const token = this._advanceToken;
       // スキップ中は即表示して次へ
       if (emphasis === 'inner') {
         textEl.classList.add('narrate-inner');
@@ -1285,16 +1389,24 @@ class VNEngine {
       }
       this.waitingForInput = true;
       arrow.style.display = 'block';
-      this.skipTimer = setTimeout(() => { this.skipTimer = null; this._executeNext(); }, 50);
+      this.skipTimer = setTimeout(() => {
+        if (this._advanceToken !== token) return;
+        this.skipTimer = null;
+        this._executeNext();
+      }, 50);
       return;
     }
 
     const onDone = () => {
+      const token = this._advanceToken;
       this.waitingForInput = true;
       arrow.style.display  = 'block';
       if (this.autoMode) {
         const delay = Math.max(text.length * 60, VN_CONFIG.settings.autoDelay);
-        this.autoTimer = setTimeout(() => this._executeNext(), delay);
+        this.autoTimer = setTimeout(() => {
+          if (this._advanceToken !== token) return;
+          this._executeNext();
+        }, delay);
       }
     };
 
@@ -1359,6 +1471,7 @@ class VNEngine {
 
   /** クリック / スペース / Enter で進む */
   _onAdvance() {
+    if (this._inputLocked || this._skipLocked) return;
     const choicesVisible = !document.getElementById('choices-overlay')
                                    .classList.contains('hidden');
     if (choicesVisible) return;
@@ -1388,7 +1501,11 @@ class VNEngine {
       document.getElementById('next-arrow').style.display = 'block';
       if (this.autoMode) {
         const delay = Math.max(this.currentText.length * 60, VN_CONFIG.settings.autoDelay);
-        this.autoTimer = setTimeout(() => this._executeNext(), delay);
+        const token = this._advanceToken;
+        this.autoTimer = setTimeout(() => {
+          if (this._advanceToken !== token) return;
+          this._executeNext();
+        }, delay);
       }
       return;
     }
@@ -1444,6 +1561,7 @@ class VNEngine {
   //  スキップ / オート
   // ============================================================
   _toggleSkip() {
+    if (this._inputLocked || this._skipLocked) return;
     this.skipMode = !this.skipMode;
     document.getElementById('btn-skip').classList.toggle('active', this.skipMode);
     if (this.skipMode) {
@@ -1457,13 +1575,18 @@ class VNEngine {
   }
 
   _toggleAuto() {
+    if (this._inputLocked || this._skipLocked) return;
     this.autoMode = !this.autoMode;
     document.getElementById('btn-auto').classList.toggle('active', this.autoMode);
     if (this.autoMode) {
       if (this.skipMode) this._toggleSkip();
       if (this.waitingForInput) {
+        const token = this._advanceToken;
         this.autoTimer = setTimeout(
-          () => this._executeNext(), VN_CONFIG.settings.autoDelay
+          () => {
+            if (this._advanceToken !== token) return;
+            this._executeNext();
+          }, VN_CONFIG.settings.autoDelay
         );
       }
     } else {
@@ -1540,6 +1663,7 @@ class VNEngine {
       charState:  JSON.parse(JSON.stringify(this.charState)),
       currentBG:    this.currentBG,
       currentBGM:   this.currentBGM,
+      currentBGMLoop: this.currentBGMLoop,
       currentStill: this.currentStill || null,
       windowColor:  this.windowColor || 'reset',
       preview,
@@ -1565,7 +1689,7 @@ class VNEngine {
     // 状態復元
     this.flags = d.flags || {};
     if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
-    if (d.currentBGM) this._playBGM(d.currentBGM);
+    if (d.currentBGM) this._playBGM(d.currentBGM, { loop: d.currentBGMLoop !== false });
     if (d.currentStill) this._showStill(d.currentStill, 'instant');
     this._setWindowColor(d.windowColor || 'reset');
 
@@ -1660,10 +1784,15 @@ class VNEngine {
   //  クレジットロール
   // ============================================================
   async _showCredits(bgmFile, profileKey = null) {
+    this._clearEndingIntro();
     this._stopTypewriter();
+    await this._playEndingIntroStillOutro();
     this._clearAllChars('fade_out');
-    this._hideStill('instant');
     this._clearCreditsPresentation();
+    this._bgmSyncSession = null;
+    this.waitingForInput = false;
+    this._inputLocked = true;
+    document.getElementById('next-arrow').style.display = 'none';
 
     const screen   = document.getElementById('credits-screen');
     const roll     = document.getElementById('credits-roll');
@@ -1672,7 +1801,12 @@ class VNEngine {
     const session  = Symbol('credits');
     this._creditsSession = session;
 
-    if (bgmTrack) this._playBGM(bgmTrack);
+    // 同一トラックが既に再生中の場合は再起動しない（@bgm_sync連携）
+    // bgmAudioがnullなら同一トラックでも再生する（安全策）
+    if (bgmTrack && (this.currentBGM !== bgmTrack || !this.bgmAudio || this.currentBGMLoop !== false)) {
+      this.currentBGM = '';
+      this._playBGM(bgmTrack, { loop: false });
+    }
 
     // クレジット行を生成
     const lines = VN_CONFIG.credits || [];
@@ -1692,9 +1826,14 @@ class VNEngine {
     roll.style.opacity = '0';
 
     screen.classList.remove('hidden');
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    this._hideStill('instant');
 
     const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 100);
-    const audioDuration = bgmTrack ? await this._getAudioDuration(bgmTrack) : null;
+    let audioDuration = null;
+    if (bgmTrack) {
+      audioDuration = await this._getRemainingBGMDuration(bgmTrack);
+    }
     if (this._creditsSession !== session) return;
 
     requestAnimationFrame(() => {
@@ -1733,8 +1872,10 @@ class VNEngine {
       themeTitle: profile.themeTitle || '',
       themeCredit: profile.themeCredit || '',
       memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
-      lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
       scrollSpeed: profile.scrollSpeed || 100,
+      lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
+      //lyricTimes: Array.isArray(profile.lyricTimes) ? profile.lyricTimes : null,
+
     };
   }
 
@@ -1801,36 +1942,73 @@ class VNEngine {
 
   _scheduleCreditsLyrics(profile, durationSec) {
     const lyricsEl = document.getElementById('credits-lyrics');
-    const lyrics = (profile.lyrics || []).filter(Boolean);
-    if (!lyricsEl || lyrics.length === 0) return;
 
-    const times = Array.isArray(profile.lyricTimes) && profile.lyricTimes.length > 0
-      ? profile.lyricTimes
-      : null;
+    // 歌詞データが存在しない、または空の場合は何もしない
+    if (!lyricsEl || !profile.lyrics || profile.lyrics.length === 0) {
+      return;
+    }
 
-    lyrics.forEach((entry, index) => {
-      let startSec, holdMs;
+    const rawLyrics = profile.lyrics;
 
-      if (times) {
-        // タイムスタンプ指定あり: 曲に合わせたタイミングで表示
-        startSec = times[index] ?? (durationSec * 0.8);
-        const nextTime = times[index + 1];
-        holdMs = nextTime != null
-          ? Math.max(2000, (nextTime - startSec) * 1000 - 600)
-          : 5500;
-      } else {
-        // フォールバック: 均等割り
+    // 新形式かどうかを判定（最初の要素に time プロパティがあるか）
+    const isNewFormat = rawLyrics.length > 0 &&
+                        typeof rawLyrics[0] === 'object' &&
+                        rawLyrics[0].time !== undefined;
+
+    let normalized = [];
+
+    if (isNewFormat) {
+      // 新形式
+      normalized = rawLyrics.map(item => ({
+        startSec: Number(item.time) || 0,
+        entry: Array.isArray(item.text) ? item.text : [String(item.text || '')]
+      })).filter(item => item.entry[0] !== ''); // 空の歌詞を除外
+    } else {
+      // 旧形式（後方互換性のために残す）
+      const times = Array.isArray(profile.lyricTimes) && profile.lyricTimes.length > 0
+        ? profile.lyricTimes
+        : null;
+
+      normalized = rawLyrics.map((entry, index) => ({
+        startSec: times ? (times[index] ?? durationSec * 0.8) : null,
+        entry: Array.isArray(entry) ? entry : [String(entry || '')]
+      }));
+    }
+
+    if (normalized.length === 0) return;
+
+    // タイマーのクリア
+    if (typeof this._clearCreditsTimers === 'function') this._clearCreditsTimers();
+    this._creditsTimers = [];
+
+    normalized.forEach((item, index) => {
+      let startSec = item.startSec;
+      let holdMs;
+
+      // 均等割り（タイミングが指定されていない場合）
+      if (startSec == null || isNaN(startSec)) {
         const introSec  = 2.4;
-        const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
-        const slotSec   = usableSec / lyrics.length;
+        const usableSec = Math.max(durationSec - 5.0, normalized.length * 4.0);
+        const slotSec   = usableSec / normalized.length;
         startSec = introSec + slotSec * index;
-        holdMs   = Math.max(3200, Math.min(6200, slotSec * 780));
+      }
+
+      // holdMs の計算
+      const nextItem = normalized[index + 1];
+      if (nextItem && nextItem.startSec != null) {
+        holdMs = Math.max(3500, (nextItem.startSec - startSec) * 1000 - 700);
+      } else {
+        // 最後の歌詞は長めに
+        const remaining = durationSec - startSec;
+        holdMs = Math.max(6500, Math.min(12000, remaining * 1000 * 0.65));
       }
 
       const timer = setTimeout(() => {
-        if (!this._creditsSession) return;
-        this._showCreditsLyric(entry, holdMs);
+        if (this._creditsSession) {
+          this._showCreditsLyric(item.entry, holdMs);
+        }
       }, Math.max(0, startSec * 1000));
+
       this._creditsTimers.push(timer);
     });
   }
@@ -1890,18 +2068,138 @@ class VNEngine {
       const finish = (value) => {
         if (settled) return;
         settled = true;
+        clearTimeout(timer);
         audio.removeEventListener('loadedmetadata', onLoaded);
         audio.removeEventListener('error', onError);
         resolve(value);
       };
       const onLoaded = () => finish(Number.isFinite(audio.duration) ? audio.duration : null);
       const onError  = () => finish(null);
+      const timer    = setTimeout(() => finish(
+        Number.isFinite(audio.duration) ? audio.duration : null
+      ), 2000);
 
       audio.preload = 'metadata';
       audio.addEventListener('loadedmetadata', onLoaded, { once: true });
       audio.addEventListener('error', onError, { once: true });
       audio.src = `assets/audio/bgm/${track}`;
     });
+  }
+
+  async _getAudioElementDuration(audio) {
+    if (!audio) return null;
+    if (Number.isFinite(audio.duration) && audio.duration > 0) return audio.duration;
+
+    return await new Promise(resolve => {
+      let settled = false;
+      const finish = (value) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        audio.removeEventListener('loadedmetadata', onLoaded);
+        audio.removeEventListener('error', onError);
+        resolve(value);
+      };
+      const onLoaded = () => finish(Number.isFinite(audio.duration) ? audio.duration : null);
+      const onError  = () => finish(null);
+      const timer    = setTimeout(() => finish(
+        Number.isFinite(audio.duration) ? audio.duration : null
+      ), 2000);
+
+      audio.addEventListener('loadedmetadata', onLoaded, { once: true });
+      audio.addEventListener('error', onError, { once: true });
+    });
+  }
+
+  async _getRemainingBGMDuration(track) {
+    const currentAudio = (this.currentBGM === track) ? this.bgmAudio : null;
+    if (currentAudio) {
+      const duration = await this._getAudioElementDuration(currentAudio);
+      if (this.currentBGM === track && this.bgmAudio === currentAudio && Number.isFinite(duration)) {
+        return Math.max(0, duration - currentAudio.currentTime);
+      }
+    }
+
+    const duration = await this._getAudioDuration(track);
+    return Number.isFinite(duration) ? duration : null;
+  }
+
+  _bgmSync(targetSec) {
+    if (this.autoTimer) {
+      clearTimeout(this.autoTimer);
+      this.autoTimer = null;
+    }
+    if (this.skipTimer) {
+      clearTimeout(this.skipTimer);
+      this.skipTimer = null;
+    }
+    this.waitingForInput = false;
+    document.getElementById('next-arrow').style.display = 'none';
+    this.skipMode = false;
+    document.getElementById('btn-skip').classList.remove('active');
+    this._inputLocked = true;
+
+    const session = Symbol('bgmSync');
+    this._bgmSyncSession = session;
+    const goal = Math.max(0, Number(targetSec) || 0);
+    if (goal === 0) {
+      this._inputLocked = false;
+      this._bgmSyncSession = null;
+      this._executeNext();
+      return;
+    }
+
+    const check = () => {
+      if (this._bgmSyncSession !== session) return;
+      const currentTime = this.bgmAudio ? (Number(this.bgmAudio.currentTime) || 0) : 0;
+      if (currentTime >= goal - 0.05) {
+        this._inputLocked = false;
+        this._bgmSyncSession = null;
+        this._executeNext();
+        return;
+      }
+      requestAnimationFrame(check);
+    };
+    requestAnimationFrame(check);
+  }
+
+  _clearEndingIntro() {
+    if (this._endingIntroTimer) {
+      clearTimeout(this._endingIntroTimer);
+      this._endingIntroTimer = null;
+    }
+    this._endingIntroSession = null;
+  }
+
+  _startEndingIntro(track, profileKey, waitMs = 0) {
+    this._clearEndingIntro();
+    this._stopTypewriter();
+    this.waitingForInput = false;
+    document.getElementById('next-arrow').style.display = 'none';
+
+    this.skipMode = false;
+    this.autoMode = false;
+    document.getElementById('btn-skip').classList.remove('active');
+    document.getElementById('btn-auto').classList.remove('active');
+    this._inputLocked = true;
+    this._skipLocked = true;
+
+    if (track && (this.currentBGM !== track || !this.bgmAudio || this.currentBGMLoop !== false)) {
+      this.currentBGM = '';
+      this._playBGM(track, { loop: false });
+    }
+
+    this._applyEndingIntroStillFx();
+
+    const delay = Math.max(0, Number(waitMs) || 0);
+    const session = Symbol('endingIntro');
+    this._endingIntroSession = session;
+    this._endingIntroTimer = setTimeout(() => {
+      if (this._endingIntroSession !== session) return;
+      this._endingIntroTimer = null;
+      this._endingIntroSession = null;
+      this._showCredits(track, profileKey);
+    }, delay);
   }
 
   _skipCredits() {
@@ -1916,6 +2214,9 @@ class VNEngine {
 
   _endCredits() {
     this._clearCreditsPresentation();
+    this._stopBGM();
+    this._inputLocked = false;
+    this._skipLocked = false;
     document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('credits-roll').style.animation = 'none';
     document.getElementById('credits-roll').style.opacity = '';
@@ -1982,10 +2283,16 @@ class VNEngine {
       }, 800);
     } else {
       // ── 最終エンディング: タイトルへ戻るボタンを表示 ──
+      const endingEl = document.getElementById('ending-screen');
+      if (this.currentStill) {
+        endingEl.classList.add('has-still');
+      } else {
+        endingEl.classList.remove('has-still');
+      }
       setTimeout(() => {
         document.getElementById('ending-title').textContent = title.replace(/\s*—\s*/g, '\n— ');
         document.getElementById('btn-next-chapter').classList.add('hidden');
-        document.getElementById('ending-screen').classList.remove('hidden');
+        endingEl.classList.remove('hidden');
       }, 1200);
     }
   }
@@ -2033,6 +2340,7 @@ class VNEngine {
       const speed = parseInt(btn.dataset.speed, 10);
       btn.classList.toggle('active', speed === currentSpeed);
       btn.onclick = () => {
+        if (this._skipLocked || this._inputLocked) return;
         VN_CONFIG.settings.typeSpeed = speed;
         localStorage.setItem('vn_type_speed', speed);
         document.querySelectorAll('#type-speed-options .settings-opt')
@@ -2197,9 +2505,11 @@ class VNEngine {
   // ============================================================
   //  BGM / SE
   // ============================================================
-  _playBGM(track) {
-    if (this.currentBGM === track) return; // 同じ曲なら何もしない
+  _playBGM(track, options = {}) {
+    const loop = options.loop !== false;
+    if (this.currentBGM === track && this.currentBGMLoop === loop) return; // 同じ曲なら何もしない
     this.currentBGM = track;
+    this.currentBGMLoop = loop;
 
     // 直前のBGMを即座に停止
     // ※フェードアウト(setInterval)は iOS で audio.volume が read-only なため
@@ -2210,7 +2520,7 @@ class VNEngine {
     }
 
     const audio = new Audio(`assets/audio/bgm/${track}`);
-    audio.loop = true;
+    audio.loop = loop;
     // iOS では volume は read-only のため 0 セットが効かない場合があるが
     // play() 後にフェードインを試みる（失敗しても音は出る）
     try { audio.volume = 0; } catch (e) { /* iOS read-only 無視 */ }
@@ -2247,6 +2557,7 @@ class VNEngine {
 
   _stopBGM() {
     this.currentBGM = '';
+    this.currentBGMLoop = true;
     if (this.bgmAudio) {
       this.bgmAudio.pause();
       this.bgmAudio = null;
@@ -2838,7 +3149,7 @@ class TransitionCanvas {
 
     const PAN_DUR     = 2000;
     const TITLE_DUR   = 700;
-    const HOLD_DUR    = 500;
+    const HOLD_DUR    = 1200;
     const STAR_DUR    = 900;
     const FADEOUT_DUR = 600;
 
