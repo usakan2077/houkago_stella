@@ -2552,7 +2552,7 @@ kotoha: では、隣へどうぞ
 @wait 800
 
 @bgm_sync 13
-@credits kotoha_good_end.mp3 kotoha_good_end
+@credits きみと触れる音.mp3 kotoha_good_end
 
 @scene street_plaza_summer fade
 @bgm epilogue_sunset_for_each.mp3
