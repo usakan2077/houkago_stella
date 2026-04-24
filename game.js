@@ -2849,7 +2849,7 @@ class TransitionCanvas {
 
     const PAN_DUR     = 2000;
     const TITLE_DUR   = 700;
-    const HOLD_DUR    = 500;
+    const HOLD_DUR    = 1200;
     const STAR_DUR    = 900;
     const FADEOUT_DUR = 600;
 
