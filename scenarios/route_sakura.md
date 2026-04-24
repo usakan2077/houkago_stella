@@ -2471,6 +2471,8 @@ sakura: ……まけっちゃったねー
 > 声は軽い。
 > でも無理に明るくはない。
 
+@expr sakura normal
+
 sakura: でも、ちゃんと走ってた
 
 @wait 1500
