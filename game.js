@@ -1809,6 +1809,20 @@ class VNEngine {
       ? profile.lyricTimes
       : null;
 
+    // === 追加：要素数不一致の警告と安全対策 ===
+    if (times && times.length !== lyrics.length) {
+      console.warn(`[Lyrics Warning] 要素数が一致しません！ lyrics: ${lyrics.length}個, lyricTimes: ${times.length}個`);
+
+      // lyricTimesが少ない場合は、足りない分を後ろに自動延長（簡易対策）
+      if (times.length < lyrics.length) {
+        const lastTime = times[times.length - 1] || (durationSec * 0.7);
+        while (times.length < lyrics.length) {
+          times.push(lastTime + 8);   // 最低8秒間隔で自動追加（調整可能）
+        }
+      }
+      // lyricTimesが多い場合は後ろを無視（そのまま）
+    }
+
     // タイマーのクリア（重要）
     if (typeof this._clearCreditsTimers === 'function') {
       this._clearCreditsTimers();
