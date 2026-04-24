@@ -892,9 +892,15 @@ class VNEngine {
         break;
 
       case 'skip_lock':
-        if (this.skipMode) this._toggleSkip();
-        if (this.autoMode) this._toggleAuto();
+        // スキップを無効化
+        this.skipMode = false;
+        document.getElementById('btn-skip').classList.remove('active');
         this._skipLocked = true;
+        // AUTOを強制ON（ページ送りを自動化）
+        if (!this.autoMode) {
+          this.autoMode = true;
+          document.getElementById('btn-auto').classList.add('active');
+        }
         this._executeNext();
         break;
 
@@ -1374,7 +1380,7 @@ class VNEngine {
 
   /** クリック / スペース / Enter で進む */
   _onAdvance() {
-    if (this._inputLocked) return;
+    if (this._inputLocked || this._skipLocked) return;
     const choicesVisible = !document.getElementById('choices-overlay')
                                    .classList.contains('hidden');
     if (choicesVisible) return;
@@ -1474,7 +1480,7 @@ class VNEngine {
   }
 
   _toggleAuto() {
-    if (this._inputLocked) return;
+    if (this._inputLocked || this._skipLocked) return;
     this.autoMode = !this.autoMode;
     document.getElementById('btn-auto').classList.toggle('active', this.autoMode);
     if (this.autoMode) {
