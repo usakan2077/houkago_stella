@@ -462,6 +462,7 @@ body {
 @keyframes animStillSlideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
 
 #still-layer.ending-intro-still {
+  z-index: 40;
   transform-origin: center center;
   will-change: transform, filter, opacity;
 }
@@ -964,7 +965,7 @@ body {
 }
 #credits-lyrics {
   position: absolute;
-  z-index: 4;
+  z-index: 2;
   pointer-events: none;
   text-align: right;
   color: rgba(255, 244, 232, 0.78);
@@ -992,7 +993,7 @@ body {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  z-index: 3;
+  z-index: 4;
 }
 #credits-roll {
   position: absolute;
@@ -1001,7 +1002,7 @@ body {
   padding: 0 60px;
   box-sizing: border-box;
   will-change: transform;
-  z-index: 3;
+  z-index: 4;
 }
 .credits-game-title {
   font-size: 32px;
