@@ -2514,7 +2514,7 @@ kotoha: では、隣へどうぞ
 @wait 500
 
 @show kotoha center normal fade_in
-@bgm kotoha_good_end.mp3
+@bgm きみと触れる音.mp3
 @skip_lock
 @wait 400
 
