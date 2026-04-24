@@ -1733,9 +1733,10 @@ class VNEngine {
       themeTitle: profile.themeTitle || '',
       themeCredit: profile.themeCredit || '',
       memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
-      lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
-      lyricTimes: Array.isArray(profile.lyricTimes) ? profile.lyricTimes : null,
       scrollSpeed: profile.scrollSpeed || 100,
+      lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
+      //lyricTimes: Array.isArray(profile.lyricTimes) ? profile.lyricTimes : null,
+
     };
   }
 
@@ -1802,57 +1803,70 @@ class VNEngine {
 
   _scheduleCreditsLyrics(profile, durationSec) {
     const lyricsEl = document.getElementById('credits-lyrics');
-    const lyrics = (profile.lyrics || []).filter(Boolean);
-    if (!lyricsEl || lyrics.length === 0) return;
 
-    const times = Array.isArray(profile.lyricTimes) && profile.lyricTimes.length > 0
-      ? profile.lyricTimes
-      : null;
-
-    // === 追加：要素数不一致の警告と安全対策 ===
-    if (times && times.length !== lyrics.length) {
-      console.warn(`[Lyrics Warning] 要素数が一致しません！ lyrics: ${lyrics.length}個, lyricTimes: ${times.length}個`);
-
-      // lyricTimesが少ない場合は、足りない分を後ろに自動延長（簡易対策）
-      if (times.length < lyrics.length) {
-        const lastTime = times[times.length - 1] || (durationSec * 0.7);
-        while (times.length < lyrics.length) {
-          times.push(lastTime + 8);   // 最低8秒間隔で自動追加（調整可能）
-        }
-      }
-      // lyricTimesが多い場合は後ろを無視（そのまま）
+    // 歌詞データが存在しない、または空の場合は何もしない
+    if (!lyricsEl || !profile.lyrics || profile.lyrics.length === 0) {
+      return;
     }
 
-    // タイマーのクリア（重要）
-    if (typeof this._clearCreditsTimers === 'function') {
-      this._clearCreditsTimers();
+    const rawLyrics = profile.lyrics;
+
+    // 新形式かどうかを判定（最初の要素に time プロパティがあるか）
+    const isNewFormat = rawLyrics.length > 0 &&
+                        typeof rawLyrics[0] === 'object' &&
+                        rawLyrics[0].time !== undefined;
+
+    let normalized = [];
+
+    if (isNewFormat) {
+      // 新形式
+      normalized = rawLyrics.map(item => ({
+        startSec: Number(item.time) || 0,
+        entry: Array.isArray(item.text) ? item.text : [String(item.text || '')]
+      })).filter(item => item.entry[0] !== ''); // 空の歌詞を除外
+    } else {
+      // 旧形式（後方互換性のために残す）
+      const times = Array.isArray(profile.lyricTimes) && profile.lyricTimes.length > 0
+        ? profile.lyricTimes
+        : null;
+
+      normalized = rawLyrics.map((entry, index) => ({
+        startSec: times ? (times[index] ?? durationSec * 0.8) : null,
+        entry: Array.isArray(entry) ? entry : [String(entry || '')]
+      }));
     }
+
+    if (normalized.length === 0) return;
+
+    // タイマーのクリア
+    if (typeof this._clearCreditsTimers === 'function') this._clearCreditsTimers();
     this._creditsTimers = [];
 
-    lyrics.forEach((entry, index) => {
-      let startSec, holdMs;
+    normalized.forEach((item, index) => {
+      let startSec = item.startSec;
+      let holdMs;
 
-      if (times) {
-        // タイミング指定モード
-        startSec = times[index] ?? (durationSec * 0.8);
-
-        const nextTime = times[index + 1];
-        holdMs = nextTime != null
-          ? Math.max(3500, (nextTime - startSec) * 1000 - 700)   // 次の歌詞より少し早く消す
-          : 5500;
-      } else {
-        // 均等割りフォールバック
+      // 均等割り（タイミングが指定されていない場合）
+      if (startSec == null || isNaN(startSec)) {
         const introSec  = 2.4;
-        const usableSec = Math.max(durationSec - 5.0, lyrics.length * 4.0);
-        const slotSec   = usableSec / lyrics.length;
-
+        const usableSec = Math.max(durationSec - 5.0, normalized.length * 4.0);
+        const slotSec   = usableSec / normalized.length;
         startSec = introSec + slotSec * index;
-        holdMs   = Math.max(3200, Math.min(6200, slotSec * 780));
+      }
+
+      // holdMs の計算
+      const nextItem = normalized[index + 1];
+      if (nextItem && nextItem.startSec != null) {
+        holdMs = Math.max(3500, (nextItem.startSec - startSec) * 1000 - 700);
+      } else {
+        // 最後の歌詞は長めに
+        const remaining = durationSec - startSec;
+        holdMs = Math.max(6500, Math.min(12000, remaining * 1000 * 0.65));
       }
 
       const timer = setTimeout(() => {
         if (this._creditsSession) {
-          this._showCreditsLyric(entry, holdMs);
+          this._showCreditsLyric(item.entry, holdMs);
         }
       }, Math.max(0, startSec * 1000));
 
