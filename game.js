@@ -1949,32 +1949,13 @@ class VNEngine {
       return;
     }
 
-    const rawLyrics = profile.lyrics;
-
-    // 新形式かどうかを判定（最初の要素に time プロパティがあるか）
-    const isNewFormat = rawLyrics.length > 0 &&
-                        typeof rawLyrics[0] === 'object' &&
-                        rawLyrics[0].time !== undefined;
-
-    let normalized = [];
-
-    if (isNewFormat) {
-      // 新形式
-      normalized = rawLyrics.map(item => ({
+    // 新形式（{time, text}）を前提にデータを正規化
+    const normalized = profile.lyrics
+      .map(item => ({
         startSec: Number(item.time) || 0,
         entry: Array.isArray(item.text) ? item.text : [String(item.text || '')]
-      })).filter(item => item.entry[0] !== ''); // 空の歌詞を除外
-    } else {
-      // 旧形式（後方互換性のために残す）
-      const times = Array.isArray(profile.lyricTimes) && profile.lyricTimes.length > 0
-        ? profile.lyricTimes
-        : null;
-
-      normalized = rawLyrics.map((entry, index) => ({
-        startSec: times ? (times[index] ?? durationSec * 0.8) : null,
-        entry: Array.isArray(entry) ? entry : [String(entry || '')]
-      }));
-    }
+      }))
+      .filter(item => item.entry[0] !== ''); // 空の歌詞を除外
 
     if (normalized.length === 0) return;
 
@@ -1983,23 +1964,16 @@ class VNEngine {
     this._creditsTimers = [];
 
     normalized.forEach((item, index) => {
-      let startSec = item.startSec;
+      const startSec = item.startSec;
       let holdMs;
 
-      // 均等割り（タイミングが指定されていない場合）
-      if (startSec == null || isNaN(startSec)) {
-        const introSec  = 2.4;
-        const usableSec = Math.max(durationSec - 5.0, normalized.length * 4.0);
-        const slotSec   = usableSec / normalized.length;
-        startSec = introSec + slotSec * index;
-      }
-
-      // holdMs の計算
+      // 次の歌詞がある場合はその差分から表示時間を計算、ない場合は最終行の計算を適用
       const nextItem = normalized[index + 1];
-      if (nextItem && nextItem.startSec != null) {
+      if (nextItem) {
+        // 次の歌詞までの時間（最低3.5秒、切り替わり用に0.7秒引く）
         holdMs = Math.max(3500, (nextItem.startSec - startSec) * 1000 - 700);
       } else {
-        // 最後の歌詞は長めに
+        // 最後の歌詞は残り時間に応じて長めに表示
         const remaining = durationSec - startSec;
         holdMs = Math.max(6500, Math.min(12000, remaining * 1000 * 0.65));
       }
