@@ -259,6 +259,9 @@ class ScriptParser {
       case 'wait':
         return { cmd: 'wait', ms: parseInt(args[0]) || 1000 };
 
+      case 'click_wait':
+        return { cmd: 'click_wait' };
+
       case 'effect':
         // @effect sakura / @effect rain / @effect snow / @effect stop
         return { cmd: 'effect', type: args[0] || 'stop' };

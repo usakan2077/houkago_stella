@@ -42,6 +42,7 @@ class VNEngine {
     this.bgmAudio    = null;
     this.currentBGM  = '';
     this.currentBGMLoop = true;
+    this._bgmFadeTimer = null;
     this._inputLocked = false;
     this._skipLocked  = false;
 
@@ -822,6 +823,16 @@ class VNEngine {
             this._executeNext();
           }, cmd.ms);
         }
+        break;
+
+      case 'click_wait':
+        this._stopTypewriter();
+        this.waitingForInput = true;
+        this.skipMode = false;
+        this.autoMode = false;
+        document.getElementById('btn-skip').classList.remove('active');
+        document.getElementById('btn-auto').classList.remove('active');
+        document.getElementById('next-arrow').style.display = 'block';
         break;
 
       case 'effect':
@@ -2176,6 +2187,57 @@ class VNEngine {
     this._endingIntroSession = null;
   }
 
+  _cancelBGMFade() {
+    if (this._bgmFadeTimer) {
+      clearInterval(this._bgmFadeTimer);
+      this._bgmFadeTimer = null;
+    }
+  }
+
+  _fadeCurrentBGM(durationMs, options = {}) {
+    const audio = this.bgmAudio;
+    if (!audio) return;
+
+    this._cancelBGMFade();
+
+    let startVolume;
+    try {
+      startVolume = Number(audio.volume);
+    } catch (e) {
+      return;
+    }
+    if (!Number.isFinite(startVolume)) return;
+
+    const total = Math.max(100, Number(durationMs) || 0);
+    const stopAtEnd = options.stopAtEnd === true;
+    const startedAt = performance.now();
+
+    this._bgmFadeTimer = setInterval(() => {
+      if (this.bgmAudio !== audio) {
+        this._cancelBGMFade();
+        return;
+      }
+
+      const elapsed = performance.now() - startedAt;
+      const progress = Math.min(1, elapsed / total);
+      const nextVolume = Math.max(0, startVolume * (1 - progress));
+
+      try {
+        audio.volume = nextVolume;
+      } catch (e) {
+        this._cancelBGMFade();
+        return;
+      }
+
+      if (progress >= 1) {
+        this._cancelBGMFade();
+        if (stopAtEnd && this.bgmAudio === audio) {
+          audio.pause();
+        }
+      }
+    }, 80);
+  }
+
   _startEndingIntro(track, profileKey, waitMs = 0) {
     this._clearEndingIntro();
     this._stopTypewriter();
@@ -2192,6 +2254,8 @@ class VNEngine {
     if (track && (this.currentBGM !== track || !this.bgmAudio || this.currentBGMLoop !== false)) {
       this.currentBGM = '';
       this._playBGM(track, { loop: false });
+    } else if (!track && this.bgmAudio) {
+      this._fadeCurrentBGM(waitMs);
     }
 
     this._applyEndingIntroStillFx();
@@ -2293,10 +2357,14 @@ class VNEngine {
     } else {
       // ── 最終エンディング: タイトルへ戻るボタンを表示 ──
       const endingEl = document.getElementById('ending-screen');
+      endingEl.classList.remove('good-end-epilogue-bg');
       if (this.currentStill) {
         endingEl.classList.add('has-still');
       } else {
         endingEl.classList.remove('has-still');
+      }
+      if (['kotoha_epilogue', 'mahiru_epilogue', 'sakura_epilogue'].includes(this.currentStill) && /Good End/.test(title)) {
+        endingEl.classList.add('good-end-epilogue-bg');
       }
       setTimeout(() => {
         document.getElementById('ending-title').textContent = title.replace(/\s*—\s*/g, '\n— ');
@@ -2517,6 +2585,7 @@ class VNEngine {
   _playBGM(track, options = {}) {
     const loop = options.loop !== false;
     if (this.currentBGM === track && this.currentBGMLoop === loop) return; // 同じ曲なら何もしない
+    this._cancelBGMFade();
     this.currentBGM = track;
     this.currentBGMLoop = loop;
 
@@ -2565,6 +2634,7 @@ class VNEngine {
   }
 
   _stopBGM() {
+    this._cancelBGMFade();
     this.currentBGM = '';
     this.currentBGMLoop = true;
     if (this.bgmAudio) {

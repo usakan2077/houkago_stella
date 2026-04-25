@@ -2494,7 +2494,7 @@ sakura: でも、ちゃんと走ってた
 @wait 2500
 
 @still sakura_epilogue fade_in
-@wait 1500
+@click_wait
 @end "第十二章「散らないように、咲く」— さくらルート Good End"
 
 

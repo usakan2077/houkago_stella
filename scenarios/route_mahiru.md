@@ -2646,7 +2646,7 @@ mahiru: どっちでもいい日が、増えるといいね
 @wait 500
 
 @still mahiru_epilogue fade_in
-@wait 1500
+@click_wait
 @end "第十二章「夜明けは、一人では見つけられなかった」— まひるルート Good End"
 
 

@@ -2645,7 +2645,7 @@ kotoha: ……続きは、また今度にします
 @wait 2500
 
 @still kotoha_epilogue fade_in
-@wait 1500
+@click_wait
 @end "第十二章「指先は、ずっと音を覚えていた」— ことはルート Good End"
 
 
