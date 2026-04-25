@@ -1827,6 +1827,10 @@ class VNEngine {
     if (bgmTrack && (this.currentBGM !== bgmTrack || !this.bgmAudio || this.currentBGMLoop !== false)) {
       this.currentBGM = '';
       this._playBGM(bgmTrack, { loop: false });
+      // ▼ 新規追加：直接呼び出された場合はオフセットを0にリセット
+      this._creditsExpectedAudioOffset = 0;
+    } else if (this._creditsExpectedAudioOffset === undefined) {
+      this._creditsExpectedAudioOffset = 0;
     }
 
     const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 100);
@@ -1941,66 +1945,92 @@ class VNEngine {
     return item?.label || stillKey;
   }
 
+
+
   _scheduleCreditsLyrics(profile, durationSec, session) {
     const lyricsEl = document.getElementById('credits-lyrics');
 
-    // 歌詞データが存在しない、または空の場合は何もしない
     if (!lyricsEl || !profile.lyrics || profile.lyrics.length === 0) {
       return;
     }
 
-    // 新形式（{time, text}）を前提にデータを正規化
     const normalized = profile.lyrics
       .map(item => ({
         startSec: Number(item.time) || 0,
         entry: Array.isArray(item.text) ? item.text : [String(item.text || '')]
       }))
-      .filter(item => item.entry[0] !== ''); // 空の歌詞を除外
+      .filter(item => item.entry[0] !== '');
 
     if (normalized.length === 0) return;
 
-    // タイマーのクリア
-    if (typeof this._clearCreditsTimers === 'function') this._clearCreditsTimers();
-    this._creditsTimers = [];
-
-    normalized.forEach((item, index) => {
+    const lyricsWithTimes = normalized.map((item, index) => {
       const startSec = item.startSec;
-      let holdMs;
-
-      // 次の歌詞がある場合はその差分から表示時間を計算、ない場合は最終行の計算を適用
+      let endSec;
       const nextItem = normalized[index + 1];
       if (nextItem) {
-        // 次の歌詞までの時間（最低3.5秒、切り替わり用に0.7秒引く）
-        holdMs = Math.max(3500, (nextItem.startSec - startSec) * 1000 - 700);
+        endSec = startSec + Math.max(3.5, (nextItem.startSec - startSec) - 0.7);
       } else {
-        // 最後の歌詞は残り時間に応じて長めに表示
-        const remaining = durationSec - startSec;
-        holdMs = Math.max(6500, Math.min(12000, remaining * 1000 * 0.65));
+        const remaining = Math.max(0, durationSec - startSec);
+        endSec = startSec + Math.max(6.5, Math.min(12.0, remaining * 0.65));
+      }
+      return { ...item, endSec };
+    });
+
+    // ▼ 修正：動的取得をやめ、エンジンに記録された「本来のオフセット」を絶対基準にする
+    const initialAudioTime = this._creditsExpectedAudioOffset || 0;
+    const virtualStartTime = performance.now();
+
+    let currentIndex = -1;
+
+    const checkSync = () => {
+      if (!session || this._creditsSession !== session) return;
+
+      let elapsedSec;
+      // ▼ 修正：BGMが存在すれば、pause状態であっても常にcurrentTime基準にする（曲と完全に同期させるため）
+      if (this.bgmAudio) {
+        elapsedSec = this.bgmAudio.currentTime - initialAudioTime;
+      } else {
+        elapsedSec = (performance.now() - virtualStartTime) / 1000;
       }
 
-      const timer = setTimeout(() => {
-        if (session && this._creditsSession === session) {
-          this._showCreditsLyric(item.entry, holdMs);
+      const activeIndex = lyricsWithTimes.findIndex(
+        lyric => elapsedSec >= lyric.startSec && elapsedSec < lyric.endSec
+      );
+
+      if (activeIndex !== currentIndex) {
+        if (activeIndex !== -1) {
+          this._showCreditsLyricSync(lyricsWithTimes[activeIndex].entry);
+        } else {
+          this._hideCreditsLyricSync();
         }
-      }, Math.max(0, startSec * 1000));
+        currentIndex = activeIndex;
+      }
 
-      this._creditsTimers.push(timer);
-    });
+      requestAnimationFrame(checkSync);
+    };
+
+    checkSync();
   }
+  // 古い _showCreditsLyric の代わりに、同期表示用のメソッドを2つ追加します
 
-  _showCreditsLyric(entry, holdMs) {
+  _showCreditsLyricSync(entry) {
     const lyricsEl = document.getElementById('credits-lyrics');
     if (!lyricsEl) return;
 
     const lines = Array.isArray(entry) ? entry : [entry];
     lyricsEl.textContent = lines.join('\n');
+
+    // 非表示状態を解除してフェードイン
     lyricsEl.classList.remove('hidden');
     requestAnimationFrame(() => lyricsEl.classList.add('visible'));
+  }
 
-    const fadeTimer = setTimeout(() => {
-      lyricsEl.classList.remove('visible');
-    }, holdMs);
-    this._creditsTimers.push(fadeTimer);
+  _hideCreditsLyricSync() {
+    const lyricsEl = document.getElementById('credits-lyrics');
+    if (!lyricsEl) return;
+
+    // .visible クラスを外すことで CSS の transition によりフェードアウトさせる
+    lyricsEl.classList.remove('visible');
   }
 
   _clearCreditsPresentation() {
@@ -2169,6 +2199,10 @@ class VNEngine {
     const delay = Math.max(0, Number(waitMs) || 0);
     const session = Symbol('endingIntro');
     this._endingIntroSession = session;
+
+    // ▼ 新規追加：エンディングロール開始時点での「本来のオーディオ時間(秒)」を設計値として記録
+    this._creditsExpectedAudioOffset = delay / 1000;
+
     this._endingIntroTimer = setTimeout(() => {
       if (this._endingIntroSession !== session) return;
       this._endingIntroTimer = null;
