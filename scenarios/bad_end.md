@@ -130,7 +130,7 @@ kotoha（OFF）: ……できません。
 
 @wait 600
 
-@scene rooftop instant
+@scene rooftop_rainy instant
 @show mahiru center normal fade_in
 
 > ——朝のことを思い出した。
@@ -138,9 +138,8 @@ kotoha（OFF）: ……できません。
 @wait 800
 
 > 開場前、ここに来たとき。
-> まだ雨は降っていなかった。
 > 屋上の柵に寄りかかって、
-> まひるは曇り空をずっと見ていた。
+> まひるは灰色の空をずっと見ていた。
 
 @wait 600
 
