@@ -983,7 +983,6 @@ body {
   transition: opacity 0.7s ease;
   white-space: pre-line;
   background: linear-gradient(180deg, rgba(18, 10, 8, 0.52) 0%, rgba(0, 0, 0, 0.18) 100%);
-  border-left: 1px solid rgba(255, 230, 200, 0.16);
   backdrop-filter: blur(3px);
 }
 #credits-lyrics.visible {
