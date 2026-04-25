@@ -1949,77 +1949,84 @@ class VNEngine {
       return;
     }
 
-    // 新形式（{ time, text }）のみを処理
-    const normalized = profile.lyrics.map(item => ({
-      startSec: Number(item.time) || 0,
-      entry: Array.isArray(item.text) ? item.text : [String(item.text || '')]
-    })).filter(item => item.entry[0] !== '');
+    const rawLyrics = profile.lyrics;
+
+    // 新形式かどうかを判定（最初の要素に time プロパティがあるか）
+    const isNewFormat = rawLyrics.length > 0 &&
+                        typeof rawLyrics[0] === 'object' &&
+                        rawLyrics[0].time !== undefined;
+
+    let normalized = [];
+
+    if (isNewFormat) {
+      // 新形式
+      normalized = rawLyrics.map(item => ({
+        startSec: Number(item.time) || 0,
+        entry: Array.isArray(item.text) ? item.text : [String(item.text || '')]
+      })).filter(item => item.entry[0] !== ''); // 空の歌詞を除外
+    } else {
+      // 旧形式（後方互換性のために残す）
+      const times = Array.isArray(profile.lyricTimes) && profile.lyricTimes.length > 0
+        ? profile.lyricTimes
+        : null;
+
+      normalized = rawLyrics.map((entry, index) => ({
+        startSec: times ? (times[index] ?? durationSec * 0.8) : null,
+        entry: Array.isArray(entry) ? entry : [String(entry || '')]
+      }));
+    }
 
     if (normalized.length === 0) return;
 
-    // 1. 各歌詞の表示期間（タイムライン）を構築する
-    const timeline = [];
+    // タイマーのクリア
+    if (typeof this._clearCreditsTimers === 'function') this._clearCreditsTimers();
+    this._creditsTimers = [];
+
     normalized.forEach((item, index) => {
-      const startSec = item.startSec;
+      let startSec = item.startSec;
       let holdMs;
 
+      // 均等割り（タイミングが指定されていない場合）
+      if (startSec == null || isNaN(startSec)) {
+        const introSec  = 2.4;
+        const usableSec = Math.max(durationSec - 5.0, normalized.length * 4.0);
+        const slotSec   = usableSec / normalized.length;
+        startSec = introSec + slotSec * index;
+      }
+
+      // holdMs の計算
       const nextItem = normalized[index + 1];
       if (nextItem && nextItem.startSec != null) {
-        // 次の歌詞の開始時間から逆算して表示時間を決定
         holdMs = Math.max(3500, (nextItem.startSec - startSec) * 1000 - 700);
       } else {
-        // 最後の歌詞は曲の残りの長さに合わせる
+        // 最後の歌詞は長めに
         const remaining = durationSec - startSec;
         holdMs = Math.max(6500, Math.min(12000, remaining * 1000 * 0.65));
       }
 
-      timeline.push({
-        start: startSec,
-        end: startSec + (holdMs / 1000),
-        entry: item.entry
-      });
-    });
-
-    let currentIndex = -1;
-    const startTime = Date.now();
-
-    // 2. 毎フレーム実行してBGMの再生時間と同期する
-    const updateLyrics = () => {
-      // セッションが変わっていたら（スキップ時など）ループ終了
-      if (!session || this._creditsSession !== session) return;
-
-      // 現在のBGM再生時間（秒）を取得
-      let currentTime = 0;
-      if (this.bgmAudio) {
-        currentTime = this.bgmAudio.currentTime;
-      } else {
-        currentTime = (Date.now() - startTime) / 1000;
-      }
-
-      // 現在の時間に該当する歌詞のインデックスを探す
-      const activeIndex = timeline.findIndex(lyric => currentTime >= lyric.start && currentTime <= lyric.end);
-
-      // 状態が変わった場合のみDOMを更新する
-      if (activeIndex !== currentIndex) {
-        if (activeIndex === -1) {
-          // 該当する歌詞がない（空白期間）場合はフェードアウト
-          lyricsEl.classList.remove('visible');
-        } else {
-          // 新しい歌詞をセットしてフェードイン
-          const lines = timeline[activeIndex].entry;
-          lyricsEl.textContent = lines.join('\n');
-          lyricsEl.classList.remove('hidden');
-          requestAnimationFrame(() => lyricsEl.classList.add('visible'));
+      const timer = setTimeout(() => {
+        if (session && this._creditsSession === session) {
+          this._showCreditsLyric(item.entry, holdMs);
         }
-        currentIndex = activeIndex;
-      }
+      }, Math.max(0, startSec * 1000));
 
-      // 次のフレームを予約
-      requestAnimationFrame(updateLyrics);
-    };
+      this._creditsTimers.push(timer);
+    });
+  }
 
-    // 監視スタート
-    updateLyrics();
+  _showCreditsLyric(entry, holdMs) {
+    const lyricsEl = document.getElementById('credits-lyrics');
+    if (!lyricsEl) return;
+
+    const lines = Array.isArray(entry) ? entry : [entry];
+    lyricsEl.textContent = lines.join('\n');
+    lyricsEl.classList.remove('hidden');
+    requestAnimationFrame(() => lyricsEl.classList.add('visible'));
+
+    const fadeTimer = setTimeout(() => {
+      lyricsEl.classList.remove('visible');
+    }, holdMs);
+    this._creditsTimers.push(fadeTimer);
   }
 
   _clearCreditsPresentation() {
