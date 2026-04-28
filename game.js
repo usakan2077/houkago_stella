@@ -2812,6 +2812,7 @@ class VNEngine {
     this._stopBGM();
     document.getElementById('game-screen').classList.remove('hidden');
     this._resetGameState();
+    this._gameActive = true;
     // デバッグ用: ルート分岐以降のラベルには好感度を自動設定
     const favorPresets = {
       sakura_interlude:  { sakura_favor: 12 },
@@ -3239,7 +3240,7 @@ class TransitionCanvas {
     const TITLE_DUR   = 700;
     const HOLD_DUR    = 1200;
     const STAR_DUR    = 900;
-    const FADEOUT_DUR = 600;
+    const FADEOUT_DUR = 1400;
 
     this.canvas.style.display       = 'block';
     this.canvas.style.pointerEvents = 'auto'; // 演出中のクリック貫通を防ぐ
