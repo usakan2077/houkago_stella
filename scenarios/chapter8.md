@@ -455,7 +455,7 @@ sakura: これくらい全然！
 
 @scene corridor_festival_rainy fade
 @bgm stop
-@se piano_distant.mp3
+@bgm piano_distant.mp3 noloop
 @wait 700
 
 @show kotoha center normal fade_in
@@ -946,7 +946,7 @@ sakura: いつも一人だし！
 
 @scene corridor_festival_rainy fade
 @bgm stop
-@se piano_distant.mp3
+@bgm piano_distant.mp3 noloop
 @wait 700
 
 > 昼過ぎ。

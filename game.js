@@ -425,7 +425,12 @@ class VNEngine {
     on('btn-log-close',      'click', () => document.getElementById('log-modal').classList.add('hidden'));
     on('btn-gallery-close',  'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
     on('btn-settings-close', 'click', () => document.getElementById('settings-modal').classList.add('hidden'));
-    on('btn-ending-title',  'click', () => this._returnToTitle());
+    on('btn-ending-title',  'click', () => {
+      this._stopAllSE();
+      this._nextChapterLabel = null;
+      this._resetGameState();
+      this._showTitleScreen();
+    });
     on('btn-next-chapter',  'click', () => this._continueToNextChapter());
     on('btn-credits-skip',  'click', () => this._skipCredits());
 
@@ -696,6 +701,10 @@ class VNEngine {
       el.style.transition   = '';
       el.style.pointerEvents = '';
     });
+    this._prevSpeaker   = null;
+    this._dialogRow     = 1;
+    this._line1Text     = '';
+    this._line1Emphasis = null;
     this._stopBGM();
     this._setWindowColor('reset');
   }
@@ -752,7 +761,7 @@ class VNEngine {
         break;
 
       case 'bgm':
-        if (cmd.action === 'play') { this._stopAllSE(); this._playBGM(cmd.track); }
+        if (cmd.action === 'play') { this._stopAllSE(); this._playBGM(cmd.track, { loop: cmd.loop !== false }); }
         else this._stopBGM();
         this._executeNext();
         break;

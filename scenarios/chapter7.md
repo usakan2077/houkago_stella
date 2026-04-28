@@ -702,7 +702,7 @@ sakura: ……行こっか
 
 @scene corridor_evening fade
 @bgm stop
-@se piano_distant.mp3
+@bgm piano_distant.mp3 noloop
 @wait 800
 
 @show kotoha center normal fade_in

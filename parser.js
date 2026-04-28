@@ -208,7 +208,7 @@ class ScriptParser {
       case 'bgm':
         if (!args[0] || args[0] === 'stop')
           return { cmd: 'bgm', action: 'stop' };
-        return { cmd: 'bgm', action: 'play', track: args[0] };
+        return { cmd: 'bgm', action: 'play', track: args[0], loop: args[1] !== 'noloop' };
 
       case 'bgm_sync':
         return { cmd: 'bgm_sync', seconds: parseFloat(args[0]) || 0 };
