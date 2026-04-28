@@ -1554,7 +1554,7 @@ sakura: ひどっ！
 
 # chapter7_evening_classroom
 
-@scene classroom_evening fade
+@scene classroom_night fade
 @bgm evening_piano.mp3
 @wait 800
 
@@ -1814,7 +1814,7 @@ player: ……そうだな
 
 # chapter7_mahiru_notebook
 
-@scene corridor_evening fade
+@scene corridor_night fade
 @bgm stop
 @wait 600
 
