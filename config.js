@@ -4,6 +4,12 @@
  */
 const VN_CONFIG = {
 
+  analytics: {
+    enabled: true,
+    measurementId: 'G-FFXERBV0T5',
+    progressCheckpointInterval: 25,
+  },
+
   // ===========================================================
   // キャラクター設定
   // images: 画像が存在しない場合はプレースホルダーを表示
