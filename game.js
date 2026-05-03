@@ -3471,10 +3471,13 @@ class TransitionCanvas {
           drawShootingStar(Math.max(0, (t * (HOLD_DUR + STAR_DUR) - HOLD_DUR) / STAR_DUR) * 1.2);
         }, () => {
           this._animate(FADEOUT_DUR, t => {
+            const ease = this._easeIn(t);
             this._clear();
             drawBg(endY, 1);
-            ctx.fillStyle = `rgba(0,0,0,${this._easeIn(t)})`;
-            ctx.fillRect(0, 0, W, H);
+            ctx.save();
+            ctx.filter = `blur(${ease * 20}px)`;
+            drawTitle(1 - ease);
+            ctx.restore();
           }, () => {
             this._clear();
             this.canvas.style.display       = 'none';
