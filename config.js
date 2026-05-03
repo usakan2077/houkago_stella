@@ -97,8 +97,16 @@ const VN_CONFIG = {
     'school_gate',
     'school_gate_evening',
     'school_gate_rainy',
-    'corridor_rainy',
   ]),
+
+  // 一部の差し替え素材は、WebP変換前のPNGを優先して使う
+  backgroundExtOverrides: {
+    staircase_rainy: '.png',
+  },
+
+  stillExtOverrides: {
+    evening_walk_private: '.png',
+  },
 
   backgrounds: {
     // ── 校門 ──────────────────────────────────────────────

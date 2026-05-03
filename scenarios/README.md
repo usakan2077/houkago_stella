@@ -216,6 +216,8 @@ charkey「セリフテキスト」
 |------|------|
 | `corridor` | 昼 |
 | `corridor_evening` | 夕方 |
+| `corridor_night` | 夜 |
+| `corridor_rainy` | 雨天 |
 | `corridor_festival` | 文化祭 |
 
 ### 屋上
@@ -246,6 +248,7 @@ charkey「セリフテキスト」
 | `staircase` | 昼 |
 | `staircase_evening` | 夕方 |
 | `staircase_night` | 夜 |
+| `staircase_rainy` | 雨天 |
 
 ### 校舎外・空
 | キー | 説明 |

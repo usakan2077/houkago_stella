@@ -1066,39 +1066,49 @@ mahiru: また走るかもって、思ってる
 > だから余計に、その言葉が静かに落ちてきた。
 
 @choice
-- "先行っといて" [mahiru_favor+3] -> chapter7_mahiru_warm
-- "わかった" -> chapter7_mahiru_resume
+- "さくらたちにも声をかけてくる" [mahiru_favor+3] -> chapter7_mahiru_warm
+- "わかった" -> chapter7_mahiru_normal
 
 
 # chapter7_mahiru_warm
 
-player: 先行っといて
+player: さくらたちにも声をかけてくる
 
 @expr mahiru happy
 
 mahiru: ……うん
+mahiru: じゃあ、先に空の様子見てる
+
+@jump chapter7_mahiru_resume
+
+
+# chapter7_mahiru_normal
+
+player: わかった
 
 @jump chapter7_mahiru_resume
 
 
 # chapter7_mahiru_resume
 
-> そう言って、
-> まひるは階段を上がった。
-> 先に行く、という感じだった。
+> まひるは小さく頷いて、階段を上がった。
+> 先に空の様子を見に行く、という感じだった。
 
 @hide mahiru fade_out
 @wait 500
 
-> 廊下を戻ると、さくらとことはがちょうど片付けを終えたところだった。
+> 俺は一度、廊下へ戻った。
+> さくらとことはにも声をかけてから行こうと思った。
+
+> さくらとことはは、ちょうど片付けを終えたところだった。
 
 @show sakura center happy fade_in
 @show kotoha right normal fade_in
 @wait 400
 
-sakura: あ、勇くん！ 屋上行かない？ まひるちゃんもそっち行ったと思うんだけど
+sakura: あ、勇くん！ 屋上行かない？ まひるちゃんもそっち行った？
 
-player: ちょうどそう思ってた
+player: ちょうどその話をしてた
 
 @hide sakura fade_out
 @hide kotoha fade_out
@@ -1136,9 +1146,9 @@ player: ちょうどそう思ってた
 @still mahiru_evening_rooftop
 @show mahiru center normal fade_in
 
-mahiru: あ、さくらちゃんたちも来てたんだ
+mahiru: あ、さくらちゃんたちも来てくれたんだ
 
-sakura: まひるちゃん！ 何してるの？
+sakura: まひるちゃん！ 何撮ってるの？
 
 mahiru: 写真部の展示用って言えば怒られないから
 
@@ -1568,10 +1578,10 @@ sakura: ひどっ！
 @show kotoha right normal fade_in
 @show mahiru center happy fade_in
 
-> 夕方の光が斜めに入り込んで、
-> 机の表面を橙色に染めていた。
+> 夜の窓ガラスに、教室の明かりが薄く映っていた。
+> 机の表面に、白い光が静かに落ちている。
 > 文化祭の装飾がまだ途中のまま積まれている。
-> くっきりとした影が床に落ちていた。
+> 窓の向こうはもう暗かった。
 
 sakura: ……なんか
 
@@ -1751,7 +1761,7 @@ sakura: そういうこと
 > 三人とも黙った。
 > 俺も黙った。
 
-> 夕方の教室。
+> 夜の教室。
 > 片付けかけの文化祭の荷物。
 > 机の上の影。
 
@@ -1795,7 +1805,7 @@ player: ……そうだな
 
 @wait 600
 
-> 何もない夕方だった。
+> 何もない夜だった。
 > 何もなかったけれど、
 > ここにいた。
 

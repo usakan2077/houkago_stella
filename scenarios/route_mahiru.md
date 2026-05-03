@@ -321,7 +321,7 @@ mahiru: 今日、いい天気だね
 
 @wait 700
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 500
 
 @jump mahiru_ch9_corridor
