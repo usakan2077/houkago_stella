@@ -11,6 +11,7 @@ class VNEngine {
     this.labels      = {};           // { labelName: [cmd, ...] }
     this.currentLabel= 'start';
     this.currentIndex= 0;
+    this._lastAnalyticsCheckpoint = '';
     this._isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
     this._longPressTimer = null;
     this._longPressTriggered = false;
@@ -259,6 +260,45 @@ class VNEngine {
   }
 
   /** ゲームコンテナをウィンドウサイズに合わせてスケール */
+  _trackEvent(name, params = {}) {
+    if (!VN_CONFIG.analytics?.enabled || typeof window.gtag !== 'function') return;
+    window.gtag('event', name, {
+      game_title: 'houkago_stella',
+      ...params,
+    });
+  }
+
+  _getAnalyticsStage(label = this.currentLabel) {
+    if (!label) return 'unknown';
+    if (label === 'start' || label.startsWith('chapter1_')) return 'chapter1';
+    if (label.startsWith('chapter2_')) return 'chapter2';
+    if (label.startsWith('chapter3_')) return 'chapter3';
+    if (label.startsWith('chapter4_')) return 'chapter4';
+    if (label.startsWith('chapter5_')) return 'chapter5';
+    if (label.startsWith('chapter6_')) return 'chapter6';
+    if (label.startsWith('chapter7_')) return 'chapter7';
+    if (label.startsWith('chapter8_')) return 'chapter8';
+    if (label.startsWith('sakura_')) return 'route_sakura';
+    if (label.startsWith('kotoha_')) return 'route_kotoha';
+    if (label.startsWith('mahiru_')) return 'route_mahiru';
+    if (label.startsWith('bad_end_')) return 'bad_end';
+    return 'other';
+  }
+
+  _trackProgress(reason = 'checkpoint') {
+    const label = this.currentLabel || 'unknown';
+    const index = Math.max(0, Number(this.currentIndex) || 0);
+    const checkpoint = `${reason}:${label}:${index}`;
+    if (checkpoint === this._lastAnalyticsCheckpoint) return;
+    this._lastAnalyticsCheckpoint = checkpoint;
+    this._trackEvent('vn_progress', {
+      progress_reason: reason,
+      scenario_stage: this._getAnalyticsStage(label),
+      scenario_label: label,
+      command_index: index,
+    });
+  }
+
   _resizeGame() {
     const container = document.getElementById('game-container');
     const vp = window.visualViewport;
@@ -784,6 +824,7 @@ class VNEngine {
     if (this.currentStill) this._hideStill('instant');
     this.currentLabel = label;
     this.currentIndex = 0;
+    this._trackProgress('label_enter');
     this._executeNext();
   }
 
@@ -803,6 +844,10 @@ class VNEngine {
       return;
     }
     const cmd = cmds[this.currentIndex++];
+    const interval = VN_CONFIG.analytics?.progressCheckpointInterval || 0;
+    if (interval > 0 && this.currentIndex % interval === 0) {
+      this._trackProgress('checkpoint');
+    }
     this._processCommand(cmd);
   }
 
@@ -1269,6 +1314,12 @@ class VNEngine {
   //  スチル (イベントCG)
   // ============================================================
   _showStill(imageName, effect = 'fade_in') {
+    this._trackEvent('vn_still_show', {
+      scenario_stage: this._getAnalyticsStage(),
+      scenario_label: this.currentLabel,
+      command_index: this.currentIndex,
+      still_key: imageName,
+    });
     // ペンディング中の fade_out タイマーをキャンセル（race condition 対策）
     if (this._hideStillTimer) { clearTimeout(this._hideStillTimer); this._hideStillTimer = null; }
     // instant（ロード復元時など）はロック不要、それ以外は1.5秒間クリックで非表示不可
@@ -1619,12 +1670,25 @@ class VNEngine {
     const overlay   = document.getElementById('choices-overlay');
     const container = document.getElementById('choices-container');
     container.innerHTML = '';
+    this._trackEvent('vn_choice_show', {
+      scenario_stage: this._getAnalyticsStage(),
+      scenario_label: this.currentLabel,
+      command_index: this.currentIndex,
+      choice_count: options.length,
+    });
 
     options.forEach(opt => {
       const btn = document.createElement('button');
       btn.className   = 'choice-btn';
       btn.textContent = opt.text;
       btn.addEventListener('click', () => {
+        this._trackEvent('vn_choice_select', {
+          scenario_stage: this._getAnalyticsStage(),
+          scenario_label: this.currentLabel,
+          command_index: this.currentIndex,
+          choice_text: String(opt.text || '').slice(0, 100),
+          next_label: opt.next || '',
+        });
         overlay.classList.add('hidden');
         // フラグ修飾子を適用 ([flag+10] など)
         if (opt.flags && opt.flags.length > 0) {
@@ -1812,6 +1876,12 @@ class VNEngine {
       }),
     };
     localStorage.setItem(`vn_save_${slot}`, JSON.stringify(data));
+    this._trackEvent('vn_save', {
+      slot: String(slot),
+      scenario_stage: this._getAnalyticsStage(),
+      scenario_label: this.currentLabel,
+      command_index: this.currentIndex,
+    });
     this._showToast(`${slotLabel} にセーブしました`);
   }
 
@@ -1827,6 +1897,8 @@ class VNEngine {
 
     // 状態復元
     this.flags = d.flags || {};
+    this.currentLabel = d.label;
+    this.currentIndex = d.index;
     if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
     if (d.currentBGM) this._playBGM(d.currentBGM, { loop: d.currentBGMLoop !== false });
     if (d.currentStill) this._showStill(d.currentStill, 'instant');
@@ -1839,6 +1911,13 @@ class VNEngine {
     // ラベル・インデックスを復元して再実行
     this.currentLabel = d.label;
     this.currentIndex = d.index; // executeNext がインクリメントするので -1 しない
+    this._trackEvent('vn_load', {
+      slot: String(slot),
+      scenario_stage: this._getAnalyticsStage(),
+      scenario_label: this.currentLabel,
+      command_index: this.currentIndex,
+    });
+    this._trackProgress('load');
     this._executeNext();
     if (slotLabel) this._showToast(`${slotLabel} しました`);
   }
@@ -2432,6 +2511,13 @@ class VNEngine {
   _displayEnding(title, next = null) {
     this._stopTypewriter();
     this.waitingForInput = false;
+    this._trackEvent('vn_end', {
+      scenario_stage: this._getAnalyticsStage(),
+      scenario_label: this.currentLabel,
+      command_index: this.currentIndex,
+      ending_title: String(title || '').slice(0, 100),
+      next_label: next || '',
+    });
 
     // スキップ・オートも停止
     if (this.skipMode) {
