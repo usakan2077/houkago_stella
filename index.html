@@ -256,24 +256,37 @@
     <!-- UIレイヤー -->
     <div id="ui-layer">
 
-      <!-- 上部メニューバー -->
-      <div id="menu-bar">
-        <button class="menu-btn" id="btn-save" >SAVE<span class="menu-key">F5</span></button>
-        <button class="menu-btn" id="btn-load" >LOAD<span class="menu-key">F7</span></button>
-        <button class="menu-btn" id="btn-log"  >LOG</button>
-        <button class="menu-btn" id="btn-skip" >SKIP<span class="menu-key">S</span></button>
-        <button class="menu-btn" id="btn-auto" >AUTO<span class="menu-key">A</span></button>
-        <button class="menu-btn" id="btn-settings">CONFIG</button>
-        <button class="menu-btn" id="btn-to-title">TITLE</button>
+      <!-- 右サイド円周メニュー -->
+      <div id="menu-bar" aria-label="ゲームメニュー">
+        <button id="btn-menu-toggle" class="radial-tab" type="button" aria-expanded="false" aria-label="メニューを開く">
+          <span class="menu-icon"><span></span></span>
+          <span class="menu-label">menu</span>
+        </button>
+        <div class="radial-list">
+          <button class="menu-btn radial-item" id="btn-to-title">TITLE</button>
+          <button class="menu-btn radial-item" id="btn-settings">CONFIG</button>
+          <button class="menu-btn radial-item" id="btn-log">LOG</button>
+          <button class="menu-btn radial-item" id="btn-load">LOAD<span class="menu-key">F7</span></button>
+          <button class="menu-btn radial-item" id="btn-save">SAVE<span class="menu-key">F5</span></button>
+        </div>
       </div>
 
       <!-- テキストエリア (クリックで進む) -->
       <div id="text-area">
-        <div id="char-name-box">
-          <span id="char-name"></span>
-        </div>
         <div id="text-box">
+          <div id="window-top">
+            <div id="char-name-box">
+              <span id="char-name"></span>
+            </div>
+            <div id="quick-command-row">
+              <button class="menu-btn quick-menu-btn" id="btn-quick-save">Q.SAVE<span class="menu-key">F6</span></button>
+              <button class="menu-btn quick-menu-btn" id="btn-quick-load">Q.LOAD<span class="menu-key">F8</span></button>
+              <button class="menu-btn quick-menu-btn" id="btn-auto">AUTO<span class="menu-key">A</span></button>
+              <button class="menu-btn quick-menu-btn" id="btn-skip">SKIP<span class="menu-key">S</span></button>
+            </div>
+          </div>
           <p id="dialog-text"></p>
+          <div id="menu-dim" aria-hidden="true"></div>
           <span id="next-arrow">▼</span>
         </div>
       </div>

@@ -41,6 +41,8 @@
 |--------|---------|------|
 | `corridor` | corridor.webp | 廊下（昼） |
 | `corridor_evening` | corridor_evening.webp | 廊下（夕方） |
+| `corridor_night` | corridor_night.webp | 廊下（夜） |
+| `corridor_rainy` | corridor_rainy.webp | 廊下（雨天） |
 | `corridor_festival` | corridor_festival.webp | 廊下（文化祭・装飾あり・生徒あり） |
 | `school_corridor_nightmare` | school_corridor_nightmare.webp | 廊下（悪夢・歪んだ演出） |
 
@@ -86,6 +88,7 @@
 | `staircase` | staircase.webp | 階段（昼） |
 | `staircase_evening` | staircase_evening.webp | 階段（夕方） |
 | `staircase_night` | staircase_night.webp | 階段（夜） |
+| `staircase_rainy` | staircase_rainy.png | 階段（雨天・補正版） |
 
 ### 通学路
 

@@ -112,7 +112,7 @@ kotoha（OFF）: ……できません。
 
 # bad_end_festival_mahiru
 
-@scene staircase fade
+@scene staircase_rainy fade
 @wait 800
 
 > まひるを探した。
@@ -162,7 +162,7 @@ kotoha（OFF）: ……できません。
 > そのあと、ずっと姿が見えない。
 
 @hide mahiru fade_out
-@scene staircase instant
+@scene staircase_rainy instant
 @wait 1000
 
 > スマホを見た。

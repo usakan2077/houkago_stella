@@ -113,7 +113,7 @@ kotoha: それは多分、怖さだけじゃない。
 
 @scene corridor_festival_rainy fade
 @bgm festival_rain.mp3
-@se piano_distant.mp3
+@bgm piano_distant.mp3 noloop
 @wait 800
 
 > 音楽準備室の前に、
@@ -363,7 +363,7 @@ kotoha: でも来てしまうんです。
 
 @scene corridor_evening fade
 @bgm stop
-@se piano_distant.mp3
+@bgm piano_distant.mp3 noloop
 @wait 800
 
 > 文化祭は、そのまま終わった。

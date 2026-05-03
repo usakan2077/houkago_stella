@@ -154,11 +154,15 @@ class VNEngine {
     const tasks = [];
 
     // 解決済み拡張子をキャッシュ（BG・Still共通ヘルパー）
-    const makeResolver = (map, basePath) => (key) => new Promise(resolve => {
+    const makeResolver = (map, basePath, extOverrides = {}) => (key) => new Promise(resolve => {
+      const preferredExt = extOverrides[key];
+      const keyExts = preferredExt
+        ? [preferredExt, ...exts.filter(ext => ext !== preferredExt)]
+        : exts;
       let i = 0;
       const tryNext = () => {
-        if (i >= exts.length) { resolve(); return; }
-        const ext = exts[i++];
+        if (i >= keyExts.length) { resolve(); return; }
+        const ext = keyExts[i++];
         const img = new Image();
         img.onload  = () => { map[key] = ext; resolve(); };
         img.onerror = tryNext;
@@ -169,7 +173,11 @@ class VNEngine {
 
     // 背景（gradientOnlyBGs に含まれるキーは画像なしのため除外）
     this._resolvedBGExt = {};
-    const tryBG = makeResolver(this._resolvedBGExt, 'assets/images/bg/');
+    const tryBG = makeResolver(
+      this._resolvedBGExt,
+      'assets/images/bg/',
+      VN_CONFIG.backgroundExtOverrides || {}
+    );
     const gradientOnly = VN_CONFIG.gradientOnlyBGs || new Set();
     for (const key of Object.keys(VN_CONFIG.backgrounds)) {
       if (!gradientOnly.has(key)) tasks.push(tryBG(key));
@@ -191,7 +199,11 @@ class VNEngine {
 
     // スチル（CG）: 拡張子を解決して記録
     this._resolvedStillExt = {};
-    const tryStill = makeResolver(this._resolvedStillExt, 'assets/images/stills/');
+    const tryStill = makeResolver(
+      this._resolvedStillExt,
+      'assets/images/stills/',
+      VN_CONFIG.stillExtOverrides || {}
+    );
     for (const cg of (VN_CONFIG.cgList || [])) {
       tasks.push(tryStill(cg.key));
     }
@@ -312,15 +324,43 @@ class VNEngine {
     // ゲームメニュー
     on('btn-save',     'click', () => this._openSaveLoad('save'));
     on('btn-load',     'click', () => this._openSaveLoad('load'));
+    on('btn-quick-save', 'click', () => this._quickSave());
+    on('btn-quick-load', 'click', () => this._quickLoad());
     on('btn-log',      'click', () => this._openLog());
     on('btn-skip',     'click', () => this._toggleSkip());
     on('btn-auto',     'click', () => this._toggleAuto());
     on('btn-settings', 'click', () => this._openSettings());
     on('btn-to-title', 'click', () => this._returnToTitle());
 
+    const menuBar = document.getElementById('menu-bar');
+    const menuToggle = document.getElementById('btn-menu-toggle');
+    if (menuBar && menuToggle) {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this._setGameMenuOpen(!menuBar.classList.contains('is-open'));
+      });
+      menuBar.addEventListener('click', (e) => {
+        if (e.target.closest('.radial-item')) this._setGameMenuOpen(false);
+        e.stopPropagation();
+      });
+      document.addEventListener('click', (e) => {
+        if (!menuBar.classList.contains('is-open')) return;
+        if (!menuBar.contains(e.target)) this._setGameMenuOpen(false);
+      });
+    }
+
     // テキスト進行 (テキストエリアクリック)
     const textArea = document.getElementById('text-area');
-    if (textArea) textArea.addEventListener('click', () => this._onAdvance());
+    if (textArea) {
+      textArea.addEventListener('click', (e) => {
+        if (e.target.closest('button, #window-top')) return;
+        if (document.getElementById('menu-bar')?.classList.contains('is-open')) {
+          this._setGameMenuOpen(false);
+          return;
+        }
+        this._onAdvance();
+      });
+    }
 
     // ゲーム画面背景クリック (テキストボックス外)
     const gameScreen = document.getElementById('game-screen');
@@ -329,6 +369,10 @@ class VNEngine {
         if (this._longPressTriggered) return;
         // UI非表示中は再表示して終了
         if (this._uiHidden) { this._showUI(); return; }
+        if (document.getElementById('menu-bar')?.classList.contains('is-open')) {
+          this._setGameMenuOpen(false);
+          return;
+        }
         const ignore = '#text-area, #choices-overlay, #menu-bar, .modal, #ending-screen, #still-layer';
         if (!e.target.closest(ignore)) this._onAdvance();
       });
@@ -384,13 +428,28 @@ class VNEngine {
       const hasModal  = document.querySelector('.modal:not(.hidden)');
       const hasChoice = !document.getElementById('choices-overlay').classList.contains('hidden');
       const hasEnding = !document.getElementById('ending-screen').classList.contains('hidden');
+      const menuOpen = document.getElementById('menu-bar')?.classList.contains('is-open');
+
+      if (e.code === 'Escape' && menuOpen) {
+        e.preventDefault();
+        this._setGameMenuOpen(false);
+        return;
+      }
+
+      if (menuOpen && !['F5', 'F6', 'F7', 'F8'].includes(e.code)) {
+        e.preventDefault();
+        return;
+      }
 
       // F5/F7はモーダルが出ていなければ選択肢中・エンディング中でも有効
-      if (e.code === 'F5' || e.code === 'F7') {
+      if (['F5', 'F6', 'F7', 'F8'].includes(e.code)) {
         if (hasModal) return;
         e.preventDefault();
+        this._setGameMenuOpen(false);
         if (e.code === 'F5') this._openSaveLoad('save');
-        else                 this._openSaveLoad('load');
+        else if (e.code === 'F6') this._quickSave();
+        else if (e.code === 'F7') this._openSaveLoad('load');
+        else this._quickLoad();
         return;
       }
 
@@ -425,7 +484,12 @@ class VNEngine {
     on('btn-log-close',      'click', () => document.getElementById('log-modal').classList.add('hidden'));
     on('btn-gallery-close',  'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
     on('btn-settings-close', 'click', () => document.getElementById('settings-modal').classList.add('hidden'));
-    on('btn-ending-title',  'click', () => this._returnToTitle());
+    on('btn-ending-title',  'click', () => {
+      this._stopAllSE();
+      this._nextChapterLabel = null;
+      this._resetGameState();
+      this._showTitleScreen();
+    });
     on('btn-next-chapter',  'click', () => this._continueToNextChapter());
     on('btn-credits-skip',  'click', () => this._skipCredits());
 
@@ -685,7 +749,10 @@ class VNEngine {
     document.getElementById('next-arrow').style.display = 'none';
     document.getElementById('dialog-text').textContent  = '';
     document.getElementById('char-name').textContent    = '';
-    document.getElementById('char-name-box').style.display = 'none';
+    const nameBox = document.getElementById('char-name-box');
+    nameBox.classList.add('no-speaker');
+    nameBox.style.display = '';
+    this._setGameMenuOpen(false);
     // UI非表示状態を解除（_displayEnding()がセットしたインラインスタイルも全クリア）
     this._uiHidden = false;
     ['text-area', 'menu-bar'].forEach(id => {
@@ -696,6 +763,10 @@ class VNEngine {
       el.style.transition   = '';
       el.style.pointerEvents = '';
     });
+    this._prevSpeaker   = null;
+    this._dialogRow     = 1;
+    this._line1Text     = '';
+    this._line1Emphasis = null;
     this._stopBGM();
     this._setWindowColor('reset');
   }
@@ -752,7 +823,7 @@ class VNEngine {
         break;
 
       case 'bgm':
-        if (cmd.action === 'play') { this._stopAllSE(); this._playBGM(cmd.track); }
+        if (cmd.action === 'play') { this._stopAllSE(); this._playBGM(cmd.track, { loop: cmd.loop !== false }); }
         else this._stopBGM();
         this._executeNext();
         break;
@@ -1348,11 +1419,14 @@ class VNEngine {
       nameEl.textContent  = cfg.name;
       nameEl.style.color  = cfg.nameColor || '#ff99bb';
       nameBox.style.setProperty('--accent-color', cfg.nameColor || '#ff99bb');
-      nameBox.style.display = 'block';
+      nameBox.classList.remove('no-speaker');
+      nameBox.style.display = '';
       this._highlightChar(charKey);
     } else {
       nameEl.textContent    = '';
-      nameBox.style.display = 'none';
+      nameBox.style.setProperty('--accent-color', '#ff99bb');
+      nameBox.classList.add('no-speaker');
+      nameBox.style.display = '';
       if (!charKey) this._clearCharHighlights();
     }
 
@@ -1610,10 +1684,42 @@ class VNEngine {
     }
   }
 
+  _setGameMenuOpen(open) {
+    const menuBar = document.getElementById('menu-bar');
+    const menuToggle = document.getElementById('btn-menu-toggle');
+    const uiLayer = document.getElementById('ui-layer');
+    if (!menuBar) return;
+
+    menuBar.classList.toggle('is-open', open);
+    if (uiLayer) uiLayer.classList.toggle('menu-open', open);
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuToggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    }
+  }
+
+  _quickSave() {
+    if (!this._gameActive || !this.currentLabel) {
+      this._showToast('現在はセーブできません');
+      return;
+    }
+    this._saveToSlot('quick', 'Q.SAVE');
+  }
+
+  _quickLoad() {
+    const raw = localStorage.getItem('vn_save_quick');
+    if (!raw) {
+      this._showToast('Q.SAVEのデータがありません');
+      return;
+    }
+    this._loadFromSlot('quick', 'Q.LOAD');
+  }
+
   // ============================================================
   //  セーブ / ロード
   // ============================================================
   _openSaveLoad(mode) {
+    this._setGameMenuOpen(false);
     // スキップ中はモーダルを開く前に停止
     if (this.skipMode) {
       this.skipMode = false;
@@ -1622,6 +1728,28 @@ class VNEngine {
     document.getElementById('modal-title').textContent = mode === 'save' ? 'SAVE' : 'LOAD';
     const slotsEl = document.getElementById('save-slots');
     slotsEl.innerHTML = '';
+
+    if (mode === 'load') {
+      const rawQuick = localStorage.getItem('vn_save_quick');
+      if (rawQuick) {
+        const d = JSON.parse(rawQuick);
+        const quickSlot = document.createElement('div');
+        quickSlot.className = 'save-slot quick-save-slot';
+        quickSlot.innerHTML = `
+          <span class="slot-num">Q.SAVE</span>
+          <div class="slot-info">
+            <div class="slot-label">${d.label || '?'}</div>
+            <div class="slot-preview">${d.preview || ''}</div>
+          </div>
+          <span class="slot-date">${d.date || ''}</span>
+        `;
+        quickSlot.addEventListener('click', () => {
+          document.getElementById('save-load-modal').classList.add('hidden');
+          this._loadFromSlot('quick', 'Q.LOAD');
+        });
+        slotsEl.appendChild(quickSlot);
+      }
+    }
 
     for (let i = 1; i <= 10; i++) {
       const raw  = localStorage.getItem(`vn_save_${i}`);
@@ -1664,7 +1792,7 @@ class VNEngine {
     document.getElementById('save-load-modal').classList.remove('hidden');
   }
 
-  _saveToSlot(slot) {
+  _saveToSlot(slot, slotLabel = `SLOT ${slot}`) {
     const preview = this.currentText.slice(0, 28) +
                     (this.currentText.length > 28 ? '…' : '');
     const data = {
@@ -1684,10 +1812,10 @@ class VNEngine {
       }),
     };
     localStorage.setItem(`vn_save_${slot}`, JSON.stringify(data));
-    this._showToast(`SLOT ${slot}  にセーブしました`);
+    this._showToast(`${slotLabel} にセーブしました`);
   }
 
-  _loadFromSlot(slot) {
+  _loadFromSlot(slot, slotLabel = '') {
     const raw = localStorage.getItem(`vn_save_${slot}`);
     if (!raw) return;
     const d = JSON.parse(raw);
@@ -1712,6 +1840,7 @@ class VNEngine {
     this.currentLabel = d.label;
     this.currentIndex = d.index; // executeNext がインクリメントするので -1 しない
     this._executeNext();
+    if (slotLabel) this._showToast(`${slotLabel} しました`);
   }
 
   _showConfirm(message, onOk, onCancel) {
@@ -1759,6 +1888,7 @@ class VNEngine {
   //  UI 非表示モード（右クリック）
   // ============================================================
   _hideUI() {
+    this._setGameMenuOpen(false);
     this._uiHidden = true;
     const ids = ['text-area', 'menu-bar', 'choices-overlay'];
     ids.forEach(id => {
@@ -2342,7 +2472,10 @@ class VNEngine {
           const textEl   = document.getElementById('dialog-text');
           const nameBox  = document.getElementById('char-name-box');
           if (textEl)  textEl.textContent       = '';
-          if (nameBox) nameBox.style.display     = 'none';
+          if (nameBox) {
+            nameBox.classList.add('no-speaker');
+            nameBox.style.display = '';
+          }
 
           ['text-area', 'menu-bar'].forEach(id => {
             const el = document.getElementById(id);
@@ -2803,6 +2936,7 @@ class VNEngine {
     this._stopBGM();
     document.getElementById('game-screen').classList.remove('hidden');
     this._resetGameState();
+    this._gameActive = true;
     // デバッグ用: ルート分岐以降のラベルには好感度を自動設定
     const favorPresets = {
       sakura_interlude:  { sakura_favor: 12 },
@@ -3230,7 +3364,7 @@ class TransitionCanvas {
     const TITLE_DUR   = 700;
     const HOLD_DUR    = 1200;
     const STAR_DUR    = 900;
-    const FADEOUT_DUR = 600;
+    const FADEOUT_DUR = 1400;
 
     this.canvas.style.display       = 'block';
     this.canvas.style.pointerEvents = 'auto'; // 演出中のクリック貫通を防ぐ

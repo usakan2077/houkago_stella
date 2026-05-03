@@ -402,17 +402,19 @@ kotoha: テーブルクロスの枚数、
 kotoha: 一枚足りません
 
 sakura: あ、ほんと？
-sakura: 追加発注しなきゃ
 
 player: 俺が言ってこようか
 
 sakura: ありがとう、でも大丈夫
-sakura: 男子班に段ボールの追加、頼んでくるね
 
-> さくらが教室を出ていく。
-> 足取りは速かった。
+> さくらは立ち上がって、教室の奥に向かった。
 
-@wait 500
+sakura: 男子班ー！ テーブルクロス一枚足りなかった！
+sakura: 倉庫の予備、出してきてもらえる？
+
+> クラスメイト「りょーかい！」
+
+@wait 400
 
 > ことはは棚卸しの続きをしている。
 > 鉛筆を動かしながら、ときどき手が止まる。
@@ -447,16 +449,16 @@ kotoha: あまり考えていませんでした
 
 @wait 800
 
-> 数人のクラスメイト「段ボール追加で持ってきたー！」
+> クラスメイト「テーブルクロス持ってきたー！」
 
 sakura: ありがとー！
-sakura: じゃあそっちは男子班でよろしく！
+sakura: じゃあ配置はこっちに合わせてね！
 
-> 段ボールを受け取って、さくらが戻ってきた。
+> テーブルクロスを受け取って、さくらが席に戻ってきた。
 > いつも通りの声。
 > いつも通りのテンポ。
 
-> でも教室に入ったとき、
+> でも席に着くとき、
 > 一拍だけ、動きが止まった。
 > 誰も見ていない一瞬だった。
 
@@ -702,7 +704,7 @@ sakura: ……行こっか
 
 @scene corridor_evening fade
 @bgm stop
-@se piano_distant.mp3
+@bgm piano_distant.mp3 noloop
 @wait 800
 
 @show kotoha center normal fade_in
@@ -1064,39 +1066,49 @@ mahiru: また走るかもって、思ってる
 > だから余計に、その言葉が静かに落ちてきた。
 
 @choice
-- "先行っといて" [mahiru_favor+3] -> chapter7_mahiru_warm
-- "わかった" -> chapter7_mahiru_resume
+- "さくらたちにも声をかけてくる" [mahiru_favor+3] -> chapter7_mahiru_warm
+- "わかった" -> chapter7_mahiru_normal
 
 
 # chapter7_mahiru_warm
 
-player: 先行っといて
+player: さくらたちにも声をかけてくる
 
 @expr mahiru happy
 
 mahiru: ……うん
+mahiru: じゃあ、先に空の様子見てる
+
+@jump chapter7_mahiru_resume
+
+
+# chapter7_mahiru_normal
+
+player: わかった
 
 @jump chapter7_mahiru_resume
 
 
 # chapter7_mahiru_resume
 
-> そう言って、
-> まひるは階段を上がった。
-> 先に行く、という感じだった。
+> まひるは小さく頷いて、階段を上がった。
+> 先に空の様子を見に行く、という感じだった。
 
 @hide mahiru fade_out
 @wait 500
 
-> 廊下を戻ると、さくらとことはがちょうど片付けを終えたところだった。
+> 俺は一度、廊下へ戻った。
+> さくらとことはにも声をかけてから行こうと思った。
+
+> さくらとことはは、ちょうど片付けを終えたところだった。
 
 @show sakura center happy fade_in
 @show kotoha right normal fade_in
 @wait 400
 
-sakura: あ、勇くん！ 屋上行かない？ まひるちゃんもそっち行ったと思うんだけど
+sakura: あ、勇くん！ 屋上行かない？ まひるちゃんもそっち行った？
 
-player: ちょうどそう思ってた
+player: ちょうどその話をしてた
 
 @hide sakura fade_out
 @hide kotoha fade_out
@@ -1134,9 +1146,9 @@ player: ちょうどそう思ってた
 @still mahiru_evening_rooftop
 @show mahiru center normal fade_in
 
-mahiru: あ、勇くんたちも来てたんだ
+mahiru: あ、さくらちゃんたちも来てくれたんだ
 
-sakura: まひるちゃん！ 何してるの？
+sakura: まひるちゃん！ 何撮ってるの？
 
 mahiru: 写真部の展示用って言えば怒られないから
 
@@ -1552,7 +1564,7 @@ sakura: ひどっ！
 
 # chapter7_evening_classroom
 
-@scene classroom_evening fade
+@scene classroom_night fade
 @bgm evening_piano.mp3
 @wait 800
 
@@ -1566,10 +1578,10 @@ sakura: ひどっ！
 @show kotoha right normal fade_in
 @show mahiru center happy fade_in
 
-> 夕方の光が斜めに入り込んで、
-> 机の表面を橙色に染めていた。
+> 夜の窓ガラスに、教室の明かりが薄く映っていた。
+> 机の表面に、白い光が静かに落ちている。
 > 文化祭の装飾がまだ途中のまま積まれている。
-> くっきりとした影が床に落ちていた。
+> 窓の向こうはもう暗かった。
 
 sakura: ……なんか
 
@@ -1602,7 +1614,7 @@ sakura: ……そっか
 
 sakura: じゃあ私が心配性なだけか
 
-player: 毎年そう言ってるよな
+player: いつもそう言ってるよな
 
 @expr kotoha thinking
 
@@ -1749,7 +1761,7 @@ sakura: そういうこと
 > 三人とも黙った。
 > 俺も黙った。
 
-> 夕方の教室。
+> 夜の教室。
 > 片付けかけの文化祭の荷物。
 > 机の上の影。
 
@@ -1793,7 +1805,7 @@ player: ……そうだな
 
 @wait 600
 
-> 何もない夕方だった。
+> 何もない夜だった。
 > 何もなかったけれど、
 > ここにいた。
 
@@ -1812,7 +1824,7 @@ player: ……そうだな
 
 # chapter7_mahiru_notebook
 
-@scene corridor_evening fade
+@scene corridor_night fade
 @bgm stop
 @wait 600
 

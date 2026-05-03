@@ -56,13 +56,6 @@ sakura: そうそう！
 > 余分な動作をしない人間だ。
 > 少ない言葉で意外とちゃんと会話に参加する。
 
-sakura: というわけで勇くん
-sakura: 手伝って！
-
-player: もう決定なのか
-
-sakura: 決定！
-
 player: ……あの学活か
 
 sakura: 立候補する人いないから気まずくなってさ
@@ -103,7 +96,7 @@ kotoha: ええ
 @expr sakura happy
 
 sakura: まあいいか
-sakura: とにかく手伝って！
+sakura: というわけで、手伝って！
 
 player: どんな仕事があるんだ
 
@@ -325,7 +318,7 @@ mahiru: うん
 
 @scene corridor_evening fade
 @bgm stop
-@se piano_distant.mp3
+@bgm piano_distant.mp3 noloop
 @wait 700
 
 > 放課後。

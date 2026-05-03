@@ -292,7 +292,7 @@ mahiru: ……うん
 
 @wait 1000
 
-@show mahiru center happy fade_in
+@show mahiru_no_camera center happy fade_in
 
 mahiru: 勇くん、おはよ
 
@@ -302,7 +302,7 @@ mahiru: 今日、いい天気だね
 
 @wait 400
 
-@expr mahiru normal
+@expr mahiru_no_camera normal
 
 > まひるは笑っていた。
 > いつもみたいに、ゆっくりと。
@@ -321,7 +321,7 @@ mahiru: 今日、いい天気だね
 
 @wait 700
 
-@hide mahiru fade_out
+@hide mahiru_no_camera fade_out
 @wait 500
 
 @jump mahiru_ch9_corridor
