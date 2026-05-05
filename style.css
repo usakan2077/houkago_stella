@@ -3,7 +3,15 @@
    ゲームウィンドウ: 1280 × 720px (16:9)
 ============================================================ */
 
-/* ---- Google Fonts (index.html <head> で <link> として読み込み済み) ---- */
+/* ---- Fonts ---- */
+:root {
+  --vn-serif-font: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho',
+                   'Hiragino Mincho ProN', serif;
+}
+
+html.is-firefox {
+  --vn-serif-font: 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', 'Noto Serif JP', serif;
+}
 
 /* ---- リセット ---- */
 *, *::before, *::after {
@@ -141,8 +149,7 @@ body {
 }
 
 #title-main {
-  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho',
-               'Hiragino Mincho ProN', serif;
+  font-family: var(--vn-serif-font);
   font-size: 72px;
   font-weight: 400;
   letter-spacing: 0.42em;
@@ -950,7 +957,7 @@ body {
   background: rgba(255, 170, 204, 0.28);
 }
 #char-name {
-  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
+  font-family: var(--vn-serif-font);
   font-size: 22px;
   font-weight: 400;
   letter-spacing: .12em;
@@ -1022,7 +1029,7 @@ body {
 
 
 #dialog-text {
-  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
+  font-family: var(--vn-serif-font);
   font-size: var(--vn-font-size, 26px);
   line-height: 1.85;
   color: #f5eaf0;
@@ -1134,6 +1141,20 @@ body {
   justify-content: center;
   z-index: 30;
   animation: animFadeIn .8s ease forwards;
+}
+#ending-screen.ending-exit {
+  pointer-events: none;
+  animation: endingReturnFade 1.2s ease forwards;
+}
+@keyframes endingReturnFade {
+  0% {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(12px) brightness(0.62);
+  }
 }
 #ending-screen.has-still.good-end-epilogue-bg {
   background: linear-gradient(180deg, rgba(8, 4, 14, 0.42) 0%, rgba(18, 6, 42, 0.52) 52%, rgba(8, 4, 14, 0.68) 100%);
@@ -1388,12 +1409,13 @@ body {
   backdrop-filter: blur(3px);
 }
 .modal-inner {
-  background: rgba(8, 3, 22, .97);
-  border: 1px solid rgba(220,140,190,.5);
+  background: linear-gradient(180deg, rgba(14, 8, 30, .985), rgba(6, 4, 16, .985));
+  border: 1px solid rgba(245,180,215,.62);
   padding: 32px 36px;
   width: 640px;
   max-height: 80%;
   overflow-y: auto;
+  box-shadow: 0 28px 90px rgba(0,0,0,.58), inset 0 1px 0 rgba(255,255,255,.06);
 }
 .modal-inner h2 {
   color: #ffaac8;
@@ -1668,7 +1690,7 @@ body {
 }
 #opening-text {
   color: rgba(255, 255, 255, 0.93);
-  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
+  font-family: var(--vn-serif-font);
   font-size: 18px;
   line-height: 2.5;
   letter-spacing: 0.12em;
@@ -1785,12 +1807,14 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 24;
+  z-index: 45;
   pointer-events: none;
   line-height: 1;
-  text-shadow: 0 0 10px rgba(255, 210, 240, 0.85);
+  text-shadow:
+    0 0 7px rgba(255, 255, 255, 0.95),
+    0 0 16px rgba(255, 185, 225, 0.9);
   transform: translate(-50%, -50%);
-  animation: touchStarBurst 0.7s ease-out forwards;
+  animation: touchStarBurst 0.82s ease-out forwards;
 }
 @keyframes touchStarBurst {
   0% {
@@ -1864,9 +1888,10 @@ body {
 }
 .settings-label {
   font-size: 13px;
-  color: #cc88aa;
+  color: #f0b9d3;
   letter-spacing: .1em;
   min-width: 90px;
+  text-shadow: 0 1px 10px rgba(0,0,0,.75);
 }
 .settings-options {
   display: flex;
@@ -1874,9 +1899,9 @@ body {
 }
 .settings-opt {
   padding: 7px 18px;
-  background: transparent;
-  border: 1px solid rgba(220,140,190,.3);
-  color: rgba(220,180,210,.7);
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(245,180,215,.46);
+  color: rgba(255,228,242,.88);
   font-size: 12px;
   letter-spacing: .12em;
   cursor: pointer;
@@ -1888,9 +1913,10 @@ body {
   color: #fff;
 }
 .settings-opt.active {
-  background: rgba(180,80,220,.25);
-  border-color: rgba(200,120,255,.8);
-  color: #e8d0ff;
+  background: rgba(236,110,178,.34);
+  border-color: rgba(255,210,236,.86);
+  color: #fff8fc;
+  box-shadow: 0 0 14px rgba(236,110,178,.22);
 }
 .settings-slider {
   -webkit-appearance: none;
@@ -1898,7 +1924,7 @@ body {
   width: 180px;
   height: 4px;
   border-radius: 2px;
-  background: rgba(220,140,190,.3);
+  background: rgba(245,180,215,.42);
   outline: none;
   cursor: pointer;
 }
@@ -1921,7 +1947,7 @@ body {
 }
 .settings-slider-value {
   font-size: 12px;
-  color: rgba(200,180,255,.7);
+  color: rgba(255,232,244,.86);
   min-width: 28px;
   text-align: right;
 }
@@ -1973,6 +1999,61 @@ body {
 @media (hover: none) and (pointer: coarse) {
   .menu-key {
     display: none;
+  }
+
+  #menu-bar {
+    top: 14px;
+    right: 10px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .radial-tab {
+    width: 58px;
+    height: 58px;
+    min-height: 58px;
+    color: rgba(255, 240, 246, 0.78);
+    opacity: 0.86;
+  }
+
+  .menu-icon {
+    width: 18px;
+    height: 13px;
+  }
+
+  .menu-icon::before,
+  .menu-icon::after,
+  .menu-icon span {
+    width: 18px;
+  }
+
+  .menu-icon span { top: 5.5px; }
+  .menu-icon::after { top: 11px; }
+
+  .menu-label {
+    font-size: 8px;
+    color: rgba(255, 234, 242, 0.72);
+  }
+
+  .radial-item {
+    min-width: 112px;
+    min-height: 46px;
+    font-size: 12px;
+  }
+
+  .settings-row {
+    gap: 16px;
+    padding: 16px 0;
+  }
+
+  .settings-label {
+    font-size: 14px;
+  }
+
+  .settings-opt {
+    min-height: 38px;
+    padding: 8px 14px;
+    font-size: 13px;
   }
 
   #title-bg,
