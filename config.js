@@ -176,6 +176,7 @@ const VN_CONFIG = {
     // ── その他 ────────────────────────────────────────────
     gymnasium:             'linear-gradient(180deg, #c0b090 0%, #d0c0a0 40%, #e0d0b0 70%, #f0e0c0 100%)',
     gymnasium_evening:     'linear-gradient(180deg, #3a2810 0%, #5a4020 30%, #7a5830 60%, #6a4820 100%)',
+    gymnasium_storage_room: 'linear-gradient(180deg, #171c24 0%, #2b3037 34%, #5a4a38 68%, #2a2420 100%)',
     stage:                 'linear-gradient(180deg, #1a0808 0%, #2a1010 30%, #3a1818 60%, #280f0f 100%)',
     protagonist_room_night:  'linear-gradient(180deg, #050810 0%, #0a1020 30%, #0d1530 60%, #080f1e 100%)',
     protagonist_room_morning:'linear-gradient(180deg, #fde8c8 0%, #fdf0d8 30%, #fff8ec 60%, #fffdf8 100%)',

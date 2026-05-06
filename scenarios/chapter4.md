@@ -646,10 +646,7 @@ mahiru: ちょっと安心するから
 
 mahiru: うん
 
-mahiru: ……大丈夫な日と
-mahiru: 大丈夫じゃない日があって
-
-mahiru: 大丈夫な日の理由をたくさん集めると
+mahiru: ……大丈夫な日の理由をたくさん集めると
 mahiru: 少しだけ均衡するの
 
 player: 均衡

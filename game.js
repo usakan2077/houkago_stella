@@ -15,6 +15,7 @@ class VNEngine {
     this._isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
     this._longPressTimer = null;
     this._longPressTriggered = false;
+    this._resizeRaf = null;
 
     // 入力待ち / モード
     this.waitingForInput = false;
@@ -133,9 +134,9 @@ class VNEngine {
     this._initCursor();
     if (VN_CONFIG.settings.debug) this._initDebugPanel();
     this._tryLockLandscape();
-    window.addEventListener('resize', () => this._resizeGame());
-    window.addEventListener('orientationchange', () => setTimeout(() => this._resizeGame(), 300));
-    if (window.visualViewport) window.visualViewport.addEventListener('resize', () => this._resizeGame());
+    window.addEventListener('resize', () => this._scheduleResizeGame());
+    window.addEventListener('orientationchange', () => setTimeout(() => this._scheduleResizeGame(), 300));
+    if (window.visualViewport) window.visualViewport.addEventListener('resize', () => this._scheduleResizeGame());
     await this._loadScenarios();
     await this._preloadAssets();
     this._showTitleScreen();
@@ -209,11 +210,9 @@ class VNEngine {
       tasks.push(tryStill(cg.key));
     }
 
-    // 進捗トラッキング
+    // 進捗トラッキング: FirefoxではGoogle Fontsを読まず、他ブラウザではShipporiの準備も待つ。
     if (document.fonts) {
-      tasks.push(
-        document.fonts.load('400 1em "Shippori Mincho B1"'),
-      );
+      tasks.push(document.fonts.ready);
     }
 
     const total = tasks.length;
@@ -259,7 +258,15 @@ class VNEngine {
     }
   }
 
-  /** ゲームコンテナをウィンドウサイズに合わせてスケール */
+  _scheduleResizeGame() {
+    if (this._resizeRaf) return;
+    this._resizeRaf = requestAnimationFrame(() => {
+      this._resizeRaf = null;
+      this._resizeGame();
+    });
+  }
+
+  /** GA4イベント送信 */
   _trackEvent(name, params = {}) {
     if (!VN_CONFIG.analytics?.enabled || typeof window.gtag !== 'function') return;
     window.gtag('event', name, {
@@ -299,14 +306,17 @@ class VNEngine {
     });
   }
 
+  /** ゲームコンテナをウィンドウサイズに合わせてスケール */
   _resizeGame() {
     const container = document.getElementById('game-container');
-    const vp = window.visualViewport;
-    const W  = vp ? vp.width  : window.innerWidth;
-    const H  = vp ? vp.height : window.innerHeight;
+    if (!container) return;
+    // visualViewport はピンチズーム中に激しく変動するため、固定ゲーム画面の基準には layout viewport を使う。
+    const W  = window.innerWidth  || document.documentElement.clientWidth  || 1280;
+    const H  = window.innerHeight || document.documentElement.clientHeight || 720;
     const scaleX = W / 1280;
     const scaleY = H / 720;
-    const scale = Math.min(scaleX, scaleY);
+    const scale = Math.max(0.1, Math.min(scaleX, scaleY));
+    if (!Number.isFinite(scale)) return;
     container.style.transform       = `translate(-50%, -50%) scale(${scale})`;
     container.style.transformOrigin = 'center center';
   }
@@ -524,12 +534,7 @@ class VNEngine {
     on('btn-log-close',      'click', () => document.getElementById('log-modal').classList.add('hidden'));
     on('btn-gallery-close',  'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
     on('btn-settings-close', 'click', () => document.getElementById('settings-modal').classList.add('hidden'));
-    on('btn-ending-title',  'click', () => {
-      this._stopAllSE();
-      this._nextChapterLabel = null;
-      this._resetGameState();
-      this._showTitleScreen();
-    });
+    on('btn-ending-title',  'click', () => this._returnFromEndingToTitle());
     on('btn-next-chapter',  'click', () => this._continueToNextChapter());
     on('btn-credits-skip',  'click', () => this._skipCredits());
 
@@ -784,7 +789,7 @@ class VNEngine {
     document.getElementById('credits-screen').classList.add('hidden');
     const endingEl = document.getElementById('ending-screen');
     endingEl.classList.add('hidden');
-    endingEl.classList.remove('has-still');
+    endingEl.classList.remove('has-still', 'ending-exit');
     this._clearCreditsPresentation();
     document.getElementById('next-arrow').style.display = 'none';
     document.getElementById('dialog-text').textContent  = '';
@@ -2601,6 +2606,25 @@ class VNEngine {
   // ============================================================
   //  タイトルに戻る
   // ============================================================
+  _returnFromEndingToTitle() {
+    const endingEl = document.getElementById('ending-screen');
+    this._stopAllSE();
+    this._nextChapterLabel = null;
+
+    if (!endingEl || endingEl.classList.contains('hidden')) {
+      this._resetGameState();
+      this._showTitleScreen();
+      return;
+    }
+    if (endingEl.classList.contains('ending-exit')) return;
+
+    endingEl.classList.add('ending-exit');
+    setTimeout(() => {
+      this._resetGameState();
+      this._showTitleScreen();
+    }, 1200);
+  }
+
   _returnToTitle() {
     this._showConfirm(
       'タイトルに戻りますか？\n（未セーブのデータは失われます）',
@@ -2924,9 +2948,11 @@ class VNEngine {
     if (!gameScreen) return;
 
     const rect = gameScreen.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-    const count = 5 + Math.floor(Math.random() * 4);
+    const scaleX = rect.width  ? gameScreen.offsetWidth  / rect.width  : 1;
+    const scaleY = rect.height ? gameScreen.offsetHeight / rect.height : 1;
+    const x = (clientX - rect.left) * scaleX;
+    const y = (clientY - rect.top)  * scaleY;
+    const count = 6 + Math.floor(Math.random() * 5);
     const colors = ['#fff6fc', '#ffd5ee', '#ffb6dd', '#e7c6ff', '#fff0a8'];
 
     for (let i = 0; i < count; i++) {
@@ -2936,9 +2962,9 @@ class VNEngine {
       star.style.left = `${x}px`;
       star.style.top = `${y}px`;
       star.style.color = colors[Math.floor(Math.random() * colors.length)];
-      star.style.fontSize = `${12 + Math.random() * 10}px`;
-      star.style.setProperty('--dx', `${(Math.random() - 0.5) * 72}px`);
-      star.style.setProperty('--dy', `${-18 - Math.random() * 44}px`);
+      star.style.fontSize = `${18 + Math.random() * 14}px`;
+      star.style.setProperty('--dx', `${(Math.random() - 0.5) * 92}px`);
+      star.style.setProperty('--dy', `${-24 - Math.random() * 56}px`);
       star.style.setProperty('--rot', `${(Math.random() - 0.5) * 160}deg`);
       star.addEventListener('animationend', () => star.remove(), { once: true });
       setTimeout(() => { if (star.isConnected) star.remove(); }, 900);
@@ -3407,12 +3433,37 @@ class TransitionCanvas {
       ctx.save();
       ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
       ctx.textAlign = 'center';
-      ctx.font = `${W * 0.028}px 'Yu Mincho', 'Shippori Mincho B1', serif`;
+      ctx.font = `${W * 0.028}px 'Shippori Mincho B1', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', serif`;
       ctx.fillStyle = '#ffffff';
       ctx.shadowColor = 'rgba(100,120,255,0.5)';
       ctx.shadowBlur  = 18;
       ctx.fillText(title, W / 2, H * 0.5);
       ctx.shadowBlur  = 0;
+      ctx.restore();
+    };
+
+    const drawTitleDissolve = (alpha, amount) => {
+      const a = Math.max(0, Math.min(1, alpha));
+      const spread = 8 + amount * 34;
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.font = `${W * 0.028}px 'Shippori Mincho B1', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', serif`;
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = 'rgba(180,200,255,0.42)';
+      ctx.shadowBlur = 22 + amount * 28;
+
+      for (let i = 0; i < 12; i++) {
+        const angle = (i / 12) * Math.PI * 2;
+        const wave = Math.sin(amount * Math.PI + i) * 0.35 + 0.65;
+        const dx = Math.cos(angle) * spread * wave;
+        const dy = Math.sin(angle) * spread * wave * 0.46;
+        ctx.globalAlpha = a * (0.08 + amount * 0.08);
+        ctx.fillText(title, W / 2 + dx, H * 0.5 + dy);
+      }
+
+      if ('filter' in ctx) ctx.filter = `blur(${amount * 28}px)`;
+      ctx.globalAlpha = a;
+      ctx.fillText(title, W / 2, H * 0.5);
       ctx.restore();
     };
 
@@ -3471,10 +3522,10 @@ class TransitionCanvas {
           drawShootingStar(Math.max(0, (t * (HOLD_DUR + STAR_DUR) - HOLD_DUR) / STAR_DUR) * 1.2);
         }, () => {
           this._animate(FADEOUT_DUR, t => {
+            const ease = this._easeIn(t);
             this._clear();
             drawBg(endY, 1);
-            ctx.fillStyle = `rgba(0,0,0,${this._easeIn(t)})`;
-            ctx.fillRect(0, 0, W, H);
+            drawTitleDissolve(1 - ease, ease);
           }, () => {
             this._clear();
             this.canvas.style.display       = 'none';

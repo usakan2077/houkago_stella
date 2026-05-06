@@ -80,6 +80,7 @@
 | `gymnasium` | gymnasium.webp | 体育館（バドミントンコート・昼） |
 | `gymnasium_back` | gymnasium_back.webp | 体育館（裏手・出入口付近） |
 | `gymnasium_evening` | gymnasium_evening.webp | 体育館（夕方） |
+| `gymnasium_storage_room` | gymnasium_storage_room.webp | 体育館倉庫（夕方） |
 
 ### 階段
 

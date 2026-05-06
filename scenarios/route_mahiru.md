@@ -844,9 +844,6 @@ player: ……
 @se heartbeat.mp3
 @wait 300
 
-@scene corridor_rainy cut
-@wait 200
-
 @scene staircase_night cut
 @wait 200
 
@@ -2570,7 +2567,7 @@ player: ノート
 
 @expr mahiru_no_camera thinking
 
-> まひる、少し考える。
+> まひるは目を伏せて、指先でノートの角をなぞった。
 
 @wait 800
 
