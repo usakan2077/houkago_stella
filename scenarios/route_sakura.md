@@ -1253,7 +1253,7 @@ sakura: お疲れ様！　また明日！
 
 # sakura_ch10_outside
 
-@scene gymnasium_evening fade
+@scene gymnasium_storage_room fade
 @bgm sakura_theme.mp3
 @se door_open.mp3
 @wait 700
