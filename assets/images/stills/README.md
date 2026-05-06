@@ -371,12 +371,12 @@ Close-medium shot. Emotional, breakthrough moment. visual novel CG style, anime 
 
 #### `sakura_cant_smile`
 ```
-School exterior or stairwell, evening.
+Gym storage room, evening.
 A 17-year-old Japanese schoolgirl, face streaked with tears she can no longer hold back.
 She is trying to smile — mouth halfway there — but the smile won't come.
 This is her first time failing to smile. First time saying sorry without performing it.
 Expression: broken, honest, relieved and terrified at the same time.
-Golden evening light. The boy (tall, dark hair) is barely visible at the edge, facing her.
+Golden evening light through a high barred window. Stacked gym mats, shelves, mops and ball carts around her.
 Close-up on her face. The most emotionally important image in her route.
 Visual novel CG style, anime illustration, high emotional impact.
 ```
