@@ -130,13 +130,15 @@ class VNEngine {
   // ============================================================
   async _init() {
     this._bindEvents();
+    this._preventMobileZoomGestures();
     this._resizeGame();
     this._initCursor();
     if (VN_CONFIG.settings.debug) this._initDebugPanel();
     this._tryLockLandscape();
     window.addEventListener('resize', () => this._scheduleResizeGame());
     window.addEventListener('orientationchange', () => setTimeout(() => this._scheduleResizeGame(), 300));
-    if (window.visualViewport) window.visualViewport.addEventListener('resize', () => this._scheduleResizeGame());
+    const touchDevice = window.matchMedia?.('(hover: none) and (pointer: coarse)')?.matches;
+    if (window.visualViewport && !touchDevice) window.visualViewport.addEventListener('resize', () => this._scheduleResizeGame());
     await this._loadScenarios();
     await this._preloadAssets();
     this._showTitleScreen();
@@ -319,6 +321,27 @@ class VNEngine {
     if (!Number.isFinite(scale)) return;
     container.style.transform       = `translate(-50%, -50%) scale(${scale})`;
     container.style.transformOrigin = 'center center';
+  }
+
+  _preventMobileZoomGestures() {
+    const touchDevice = window.matchMedia?.('(hover: none) and (pointer: coarse)')?.matches;
+    if (!touchDevice) return;
+
+    const prevent = (e) => e.preventDefault();
+    ['gesturestart', 'gesturechange', 'gestureend'].forEach(type => {
+      document.addEventListener(type, prevent, { passive: false });
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches.length > 1) e.preventDefault();
+    }, { passive: false });
+
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+      const now = Date.now();
+      if (now - lastTouchEnd < 320) e.preventDefault();
+      lastTouchEnd = now;
+    }, { passive: false });
   }
 
   /** シナリオ .md ファイルを順番に読み込む */
@@ -2179,11 +2202,36 @@ class VNEngine {
       return;
     }
 
-    const normalized = profile.lyrics
-      .map(item => ({
-        startSec: Number(item.time) || 0,
-        entry: Array.isArray(item.text) ? item.text : [String(item.text || '')]
-      }))
+    const rawLyrics = profile.lyrics || [];
+    const hasExplicitTimes = rawLyrics.some(item =>
+      item && !Array.isArray(item) && Number.isFinite(Number(item.time))
+    );
+    const introSec = hasExplicitTimes ? 0 : Math.min(2.5, durationSec * 0.08);
+    const outroSec = hasExplicitTimes ? 0 : Math.min(4.0, durationSec * 0.10);
+    const usableSec = Math.max(1, durationSec - introSec - outroSec);
+    const slotSec = usableSec / Math.max(1, rawLyrics.length);
+
+    const normalized = rawLyrics
+      .map((item, index) => {
+        let entry;
+        let explicitTime = null;
+
+        if (Array.isArray(item)) {
+          entry = item;
+        } else if (item && typeof item === 'object') {
+          entry = Array.isArray(item.text) ? item.text : [String(item.text || '')];
+          explicitTime = Number(item.time);
+        } else {
+          entry = [String(item || '')];
+        }
+
+        return {
+          startSec: hasExplicitTimes && Number.isFinite(explicitTime)
+            ? explicitTime
+            : introSec + slotSec * index,
+          entry,
+        };
+      })
       .filter(item => item.entry[0] !== '');
 
     if (normalized.length === 0) return;
@@ -2193,7 +2241,10 @@ class VNEngine {
       let endSec;
       const nextItem = normalized[index + 1];
       if (nextItem) {
-        endSec = startSec + Math.max(3.5, (nextItem.startSec - startSec) - 0.7);
+        const gapSec = nextItem.startSec - startSec;
+        endSec = gapSec > 0
+          ? startSec + Math.max(3.5, gapSec - 0.7)
+          : startSec + 4.0;
       } else {
         const remaining = Math.max(0, durationSec - startSec);
         endSec = startSec + Math.max(6.5, Math.min(12.0, remaining * 0.65));
@@ -2622,7 +2673,7 @@ class VNEngine {
     setTimeout(() => {
       this._resetGameState();
       this._showTitleScreen();
-    }, 1200);
+    }, 1800);
   }
 
   _returnToTitle() {

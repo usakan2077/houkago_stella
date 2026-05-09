@@ -1144,16 +1144,33 @@ body {
 }
 #ending-screen.ending-exit {
   pointer-events: none;
-  animation: endingReturnFade 1.2s ease forwards;
+  animation: endingReturnFade 1.8s cubic-bezier(.24, .02, .16, 1) forwards;
+}
+#ending-screen.ending-exit #ending-content {
+  animation: endingContentDrift 1.8s cubic-bezier(.24, .02, .16, 1) forwards;
 }
 @keyframes endingReturnFade {
   0% {
     opacity: 1;
     filter: blur(0) brightness(1);
   }
+  45% {
+    opacity: 0.78;
+    filter: blur(5px) brightness(0.82);
+  }
   100% {
     opacity: 0;
-    filter: blur(12px) brightness(0.62);
+    filter: blur(22px) brightness(0.36);
+  }
+}
+@keyframes endingContentDrift {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-18px) scale(1.04);
   }
 }
 #ending-screen.has-still.good-end-epilogue-bg {
@@ -1287,7 +1304,7 @@ body {
 }
 #credits-lyrics {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
   text-align: right;
   color: rgba(255, 244, 232, 0.78);
@@ -2009,36 +2026,93 @@ body {
   }
 
   .radial-tab {
-    width: 58px;
-    height: 58px;
-    min-height: 58px;
-    color: rgba(255, 240, 246, 0.78);
-    opacity: 0.86;
+    width: 62px;
+    height: 62px;
+    min-height: 62px;
+    color: rgba(255, 246, 250, 0.94);
+    background: linear-gradient(180deg, rgba(35, 21, 57, 0.96), rgba(13, 9, 24, 0.92));
+    border-color: rgba(255, 216, 235, 0.52);
+    opacity: 1;
   }
 
   .menu-icon {
-    width: 18px;
-    height: 13px;
+    width: 20px;
+    height: 14px;
   }
 
   .menu-icon::before,
   .menu-icon::after,
   .menu-icon span {
-    width: 18px;
+    width: 20px;
+    height: 2.5px;
+    background: rgba(255, 248, 251, 0.94);
   }
 
-  .menu-icon span { top: 5.5px; }
-  .menu-icon::after { top: 11px; }
+  .menu-icon span { top: 6px; }
+  .menu-icon::after { top: 12px; }
 
   .menu-label {
-    font-size: 8px;
-    color: rgba(255, 234, 242, 0.72);
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 244, 249, 0.94);
   }
 
   .radial-item {
-    min-width: 112px;
-    min-height: 46px;
+    min-width: 124px;
+    min-height: 52px;
+    font-size: 14px;
+    background: rgba(18, 10, 32, 0.94);
+  }
+
+  .modal-inner {
+    width: min(92vw, 680px);
+    padding: 34px 38px;
+    background: linear-gradient(180deg, rgba(18, 10, 36, .992), rgba(7, 4, 18, .992));
+    border-color: rgba(255, 204, 232, .76);
+  }
+
+  .modal-inner h2 {
+    font-size: 20px;
+    color: #ffc4dc;
+  }
+
+  .save-slot {
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.045);
+    border-color: rgba(255, 204, 232, 0.38);
+  }
+
+  .slot-num {
+    font-size: 13px;
+    color: rgba(255, 198, 226, 0.96);
+  }
+
+  .slot-label {
+    font-size: 16px;
+    color: #fff6fb;
+  }
+
+  .slot-preview {
+    font-size: 14px;
+    color: rgba(255, 255, 255, .68);
+  }
+
+  .slot-date {
     font-size: 12px;
+    color: rgba(255, 230, 242, .58);
+  }
+
+  .slot-empty {
+    font-size: 15px;
+    color: rgba(255, 232, 244, .58);
+  }
+
+  .modal-close-btn {
+    min-height: 44px;
+    font-size: 16px;
+    color: rgba(255, 226, 240, .94);
+    border-color: rgba(255, 204, 232, .58);
   }
 
   .settings-row {
