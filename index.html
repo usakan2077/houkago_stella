@@ -150,6 +150,26 @@
     line-height: 2;
     margin: 0;
   }
+  #rotate-overlay .home-guide {
+    width: min(82vw, 420px);
+    padding: 1.1em 1.2em;
+    border: 1px solid rgba(200, 180, 255, 0.22);
+    background: rgba(255, 255, 255, 0.055);
+    color: rgba(230, 220, 255, 0.76);
+    font-size: 0.72em;
+    letter-spacing: 0.06em;
+    line-height: 1.8;
+  }
+  #rotate-overlay .home-guide strong {
+    display: block;
+    margin-bottom: 0.55em;
+    color: rgba(245, 235, 255, 0.92);
+    font-size: 1.05em;
+    letter-spacing: 0.12em;
+  }
+  #rotate-overlay .home-guide span {
+    display: block;
+  }
   @media (orientation: portrait) and (max-width: 1024px) {
     #rotate-overlay { display: flex; }
   }
@@ -159,6 +179,12 @@
 <div id="rotate-overlay">
   <div class="rotate-icon">📱</div>
   <p>横向きでプレイしてください</p>
+  <div class="home-guide">
+    <strong>スマホではホーム画面からの起動がおすすめです</strong>
+    <span>iPhone: Safariの共有ボタン →「ホーム画面に追加」→「追加」</span>
+    <span>Android: Chromeのメニュー →「ホーム画面に追加」→「追加」</span>
+    <span>追加後は、ホーム画面のアイコンから起動してください。</span>
+  </div>
 </div>
 
 <div id="game-container">
