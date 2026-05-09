@@ -842,8 +842,9 @@ h3 {
   }
 
   .hero {
-    min-height: 82svh;
-    padding: 128px 18px 72px;
+    display: block;
+    min-height: 100svh;
+    padding: 120px 18px 68px;
   }
 
   .hero-art {
@@ -851,15 +852,24 @@ h3 {
   }
 
   .hero-poster {
-    right: -24vw;
-    bottom: 0;
-    width: 96vw;
-    opacity: 0.38;
+    top: 96px;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    width: min(86vw, 390px);
+    max-height: 58svh;
+    transform: translateX(-50%);
+    opacity: 0.72;
+    object-position: center top;
   }
 
   .hero-shade {
     background:
-      linear-gradient(180deg, rgba(8, 11, 24, 0.62) 0%, rgba(8, 11, 24, 0.78) 54%, rgba(16, 21, 38, 0.98) 100%);
+      linear-gradient(180deg, rgba(8, 11, 24, 0.34) 0%, rgba(8, 11, 24, 0.42) 42%, rgba(16, 21, 38, 0.96) 72%, rgba(16, 21, 38, 1) 100%);
+  }
+
+  .hero-inner {
+    margin-top: min(58svh, 430px);
   }
 
   .hero h1 {
