@@ -553,6 +553,7 @@ h3 {
 
 .gallery-section .section-kicker,
 .mood-section .section-kicker,
+.social-section .section-kicker,
 .system-section .section-kicker {
   color: var(--amber);
 }
@@ -605,6 +606,98 @@ h3 {
 
 .features-section {
   background: linear-gradient(180deg, rgba(12, 19, 36, 0.42) 0%, rgba(7, 11, 22, 0.72) 100%);
+}
+
+.social-section {
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.36), rgba(7, 11, 22, 0.68));
+  overflow: hidden;
+}
+
+.social-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1.18fr);
+  gap: 44px;
+  align-items: center;
+}
+
+.social-copy {
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03)),
+    rgba(7, 11, 22, 0.48);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px) saturate(1.1);
+  clip-path: polygon(0 0, 100% 3%, 96% 100%, 4% 96%);
+}
+
+.social-lead {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.social-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.x-embed-shell {
+  position: relative;
+  min-height: 560px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(160deg, rgba(142, 213, 219, 0.12), transparent 42%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+    rgba(5, 8, 18, 0.55);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px) saturate(1.12);
+}
+
+.x-embed-shell::before {
+  content: "";
+  position: absolute;
+  inset: -28px 12% auto auto;
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(245, 179, 197, 0.2), transparent 68%);
+  filter: blur(2px);
+}
+
+.x-embed-title {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+  color: #fff;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.twitter-timeline {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 486px;
+  place-items: center;
+  padding: 30px;
+  border: 1px dashed rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+.x-embed-shell iframe {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto !important;
 }
 
 .feature-cards {
@@ -809,8 +902,13 @@ h3 {
   .story-grid,
   .mood-layout,
   .feature-cards,
+  .social-layout,
   .system-grid {
     grid-template-columns: 1fr;
+  }
+
+  .x-embed-shell {
+    min-height: 500px;
   }
 
   .character-grid {
@@ -900,6 +998,11 @@ h3 {
 
   .feature-list {
     grid-template-columns: 1fr;
+  }
+
+  .social-copy,
+  .x-embed-shell {
+    padding: 24px;
   }
 
   .gallery-grid {
