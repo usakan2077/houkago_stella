@@ -283,6 +283,9 @@ const VN_CONFIG = {
     { key: 'mahiru_dawn_two',           label: 'まひる・夜明けの二人'            },
     { key: 'sakura_good_end_rooftop2',  label: 'さくら・ふたりの朝'              },
     { key: 'kotoha_piano_side',         label: 'ことは・隣で聴く'                },
+    { key: 'sakura_epilogue',           label: 'さくら・エピローグ'              },
+    { key: 'kotoha_epilogue',           label: 'ことは・エピローグ'              },
+    { key: 'mahiru_epilogue',           label: 'まひる・エピローグ'              },
   ],
 
   // ===========================================================

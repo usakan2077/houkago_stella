@@ -2479,7 +2479,7 @@ sakura: 本当のことだもん！
 
 @show sakura center thinking fade_in
 
-sakura: ……まけっちゃったねー
+sakura: ……負けちゃったねー
 
 @wait 600
 
