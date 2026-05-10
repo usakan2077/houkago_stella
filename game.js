@@ -83,6 +83,14 @@ class VNEngine {
     this.seenStills = new Set(
       JSON.parse(localStorage.getItem('vn_seen_stills') || '[]')
     );
+    this.goodEndEpilogueStills = {
+      sakura: 'sakura_epilogue',
+      kotoha: 'kotoha_epilogue',
+      mahiru: 'mahiru_epilogue',
+    };
+    this.seenGoodEnds = new Set(
+      JSON.parse(localStorage.getItem('vn_seen_good_ends') || '[]')
+    );
 
     // オート速度設定の復元
     const savedDelay = localStorage.getItem('vn_auto_delay');
@@ -446,7 +454,7 @@ class VNEngine {
           this._setGameMenuOpen(false);
           return;
         }
-        const ignore = '#text-area, #choices-overlay, #menu-bar, .modal, #ending-screen, #still-layer';
+        const ignore = '#text-area, #choices-overlay, #menu-bar, .modal, #ending-screen';
         if (!e.target.closest(ignore)) this._onAdvance();
       });
 
@@ -585,11 +593,32 @@ class VNEngine {
   // ============================================================
   _showTitleScreen() {
     this._gameActive = false;
-    document.getElementById('title-screen').classList.remove('hidden');
+    const titleScreen = document.getElementById('title-screen');
+    titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
+    titleScreen.classList.remove('hidden');
     document.getElementById('game-screen').classList.add('hidden');
     this._startTitleBGM();
     this._playTitleLogoAnim();
     this.titleFx.start();
+  }
+
+  _hasAllGoodEndsSeen() {
+    const routes = Object.keys(this.goodEndEpilogueStills);
+    return routes.every(route =>
+      this.seenGoodEnds.has(route) || this.seenStills.has(this.goodEndEpilogueStills[route])
+    );
+  }
+
+  _markGoodEndSeen(route) {
+    if (!route || this.seenGoodEnds.has(route)) return;
+    this.seenGoodEnds.add(route);
+    localStorage.setItem('vn_seen_good_ends', JSON.stringify([...this.seenGoodEnds]));
+  }
+
+  _getGoodEndRouteFromEnding(title) {
+    if (!/Good End/.test(title || '')) return null;
+    return Object.entries(this.goodEndEpilogueStills)
+      .find(([, stillKey]) => stillKey === this.currentStill)?.[0] || null;
   }
 
   _playTitleLogoAnim() {
@@ -1350,8 +1379,8 @@ class VNEngine {
     });
     // ペンディング中の fade_out タイマーをキャンセル（race condition 対策）
     if (this._hideStillTimer) { clearTimeout(this._hideStillTimer); this._hideStillTimer = null; }
-    // instant（ロード復元時など）はロック不要、それ以外は1.5秒間クリックで非表示不可
-    this._stillLockUntil = effect === 'instant' ? 0 : Date.now() + 1500;
+    // instant（ロード復元時など）はロック不要、それ以外は連打でスチルが即流れないよう最低表示時間を設ける
+    this._stillLockUntil = effect === 'instant' ? 0 : Date.now() + 2200;
     const el = document.getElementById('still-layer');
     el.className  = '';
     el.innerHTML  = '';
@@ -2631,6 +2660,7 @@ class VNEngine {
       }, 800);
     } else {
       // ── 最終エンディング: タイトルへ戻るボタンを表示 ──
+      this._markGoodEndSeen(this._getGoodEndRouteFromEnding(title));
       const endingEl = document.getElementById('ending-screen');
       endingEl.classList.remove('good-end-epilogue-bg');
       if (this.currentStill) {
@@ -2669,11 +2699,21 @@ class VNEngine {
     }
     if (endingEl.classList.contains('ending-exit')) return;
 
+    const stillEl = document.getElementById('still-layer');
+    if (stillEl && this.currentStill) {
+      stillEl.classList.add('ending-return-still');
+    }
+
     endingEl.classList.add('ending-exit');
     setTimeout(() => {
       this._resetGameState();
       this._showTitleScreen();
-    }, 1800);
+      const titleEl = document.getElementById('title-screen');
+      if (titleEl) {
+        titleEl.classList.add('title-return-reveal');
+        setTimeout(() => titleEl.classList.remove('title-return-reveal'), 1800);
+      }
+    }, 2800);
   }
 
   _returnToTitle() {

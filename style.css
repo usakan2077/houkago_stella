@@ -71,9 +71,20 @@ body {
     radial-gradient(ellipse at 40% 40%, #2a0050 0%, #0d0020 50%, #0a0818 100%);
   animation: titlePulse 10s ease-in-out infinite alternate;
 }
+#title-screen.all-good-ends-cleared #title-bg {
+  background:
+    linear-gradient(180deg, rgba(255, 244, 225, 0.05) 0%, rgba(255, 210, 236, 0.08) 48%, rgba(255, 255, 255, 0.02) 100%),
+    url('assets/images/bg/title_end.webp') center center / cover no-repeat,
+    linear-gradient(180deg, #8fd3ff 0%, #ffe7c8 100%);
+  animation: titleEndPulse 12s ease-in-out infinite alternate;
+}
 @keyframes titlePulse {
   0%   { filter: brightness(1) hue-rotate(0deg); }
   100% { filter: brightness(1.08) hue-rotate(12deg); }
+}
+@keyframes titleEndPulse {
+  0%   { filter: brightness(1.02) saturate(1.02); }
+  100% { filter: brightness(1.1) saturate(1.08); }
 }
 
 /* 星パーティクル */
@@ -97,6 +108,10 @@ body {
     radial-gradient(1px   1px   at 30%   5%, rgba(255,240,255,.7) 0%, transparent 100%),
     radial-gradient(1px   1px   at 75%  95%, rgba(200,200,255,.7) 0%, transparent 100%);
   animation: starTwinkle 6s ease-in-out infinite alternate;
+}
+#title-screen.all-good-ends-cleared #title-stars {
+  opacity: 0.38;
+  mix-blend-mode: screen;
 }
 @keyframes starTwinkle {
   0%   { opacity: 0.55; }
@@ -213,6 +228,9 @@ body {
   align-items: center;
   gap: 18px;
 }
+#title-screen.all-good-ends-cleared #title-menu {
+  padding: 0;
+}
 
 .title-btn {
   width: 300px;
@@ -227,6 +245,17 @@ body {
   position: relative;
   overflow: hidden;
 }
+#title-screen.all-good-ends-cleared .title-btn {
+  color: rgba(255, 250, 255, 0.98);
+  background: rgba(25, 30, 58, 0.42);
+  border-color: rgba(255, 242, 250, 0.62);
+  text-shadow:
+    0 2px 8px rgba(33, 24, 54, 0.9),
+    0 0 18px rgba(120, 82, 130, 0.55);
+  box-shadow:
+    0 10px 30px rgba(45, 36, 72, 0.22),
+    0 0 0 1px rgba(70, 48, 86, 0.18) inset;
+}
 .title-btn::after {
   content: '';
   position: absolute;
@@ -235,11 +264,21 @@ body {
   transform: translateX(-100%);
   transition: transform .5s ease;
 }
+#title-screen.all-good-ends-cleared .title-btn::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 246, 250, 0.28), transparent);
+}
 .title-btn:hover {
   border-color: rgba(255,180,220,.9);
   color: #fff;
   letter-spacing: 0.6em;
   box-shadow: 0 0 24px rgba(255,100,180,.3);
+}
+#title-screen.all-good-ends-cleared .title-btn:hover {
+  background: rgba(70, 52, 88, 0.54);
+  border-color: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 0 30px rgba(255, 230, 245, 0.36),
+    0 12px 36px rgba(54, 42, 84, 0.28);
 }
 .title-btn:hover::after { transform: translateX(100%); }
 
@@ -466,7 +505,29 @@ body {
 }
 #still-layer.effect-fade-in         { animation: animFadeIn .6s ease forwards; }
 #still-layer.effect-slide-in-bottom { animation: animStillSlideUp .5s ease forwards; }
+#still-layer.ending-return-still {
+  pointer-events: none;
+  z-index: 29;
+  animation: endingStillReturnFade 2.8s cubic-bezier(.24, .02, .16, 1) forwards !important;
+}
 @keyframes animStillSlideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@keyframes endingStillReturnFade {
+  0% {
+    opacity: 1;
+    filter: blur(0) brightness(1) saturate(1);
+    transform: scale(1);
+  }
+  55% {
+    opacity: 0.62;
+    filter: blur(8px) brightness(0.68) saturate(0.8);
+    transform: scale(1.025);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(28px) brightness(0.22) saturate(0.45);
+    transform: scale(1.06);
+  }
+}
 
 #still-layer.ending-intro-still {
   z-index: 40;
@@ -1144,10 +1205,18 @@ body {
 }
 #ending-screen.ending-exit {
   pointer-events: none;
-  animation: endingReturnFade 1.8s cubic-bezier(.24, .02, .16, 1) forwards;
+  animation: endingReturnFade 2.8s cubic-bezier(.24, .02, .16, 1) forwards;
+}
+#ending-screen.ending-exit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #05020e;
+  animation: endingReturnVeil 2.8s cubic-bezier(.24, .02, .16, 1) forwards;
 }
 #ending-screen.ending-exit #ending-content {
-  animation: endingContentDrift 1.8s cubic-bezier(.24, .02, .16, 1) forwards;
+  animation: endingContentDrift 2.8s cubic-bezier(.24, .02, .16, 1) forwards;
 }
 @keyframes endingReturnFade {
   0% {
@@ -1159,8 +1228,19 @@ body {
     filter: blur(5px) brightness(0.82);
   }
   100% {
+    opacity: 1;
+    filter: blur(0) brightness(0.72);
+  }
+}
+@keyframes endingReturnVeil {
+  0% {
     opacity: 0;
-    filter: blur(22px) brightness(0.36);
+  }
+  54% {
+    opacity: 0.24;
+  }
+  100% {
+    opacity: 1;
   }
 }
 @keyframes endingContentDrift {
@@ -1171,6 +1251,19 @@ body {
   100% {
     opacity: 0;
     transform: translateY(-18px) scale(1.04);
+  }
+}
+#title-screen.title-return-reveal {
+  animation: titleReturnReveal 1.6s cubic-bezier(.24, .02, .16, 1) forwards;
+}
+@keyframes titleReturnReveal {
+  0% {
+    opacity: 0;
+    filter: blur(18px) brightness(0.48);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0) brightness(1);
   }
 }
 #ending-screen.has-still.good-end-epilogue-bg {
