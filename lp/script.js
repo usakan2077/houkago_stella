@@ -10,6 +10,7 @@ const translations = {
       '.site-nav a[href="#story"]': "物語",
       '.site-nav a[href="#characters"]': "登場人物",
       '.site-nav a[href="#gallery"]': "ギャラリー",
+      '.site-nav a[href="#social"]': "X",
       '.site-nav a[href="#system"]': "動作環境",
       ".hero .eyebrow": "Browser Visual Novel",
       "#hero-title": "放課後のステラ",
@@ -51,6 +52,12 @@ const translations = {
       ".feature-list article:nth-child(3) p": "読後に印象的なスチルを振り返れるコレクション機能。",
       ".feature-list article:nth-child(4) h3": "BGM / SE",
       ".feature-list article:nth-child(4) p": "星空、放課後、沈黙の温度を音で支える演出。",
+      "#social-title": "#放課後のステラ の公式ポスト",
+      ".social-lead": "制作のお知らせ、更新情報、放課後の余韻を届けるポストをここに表示します。公式アカウントからハッシュタグ付きで投稿し、作品の空気を少しずつ広げていきます。",
+      ".social-actions .button-primary": "#放課後のステラ で投稿",
+      ".social-actions .button-ghost": "Xで見る",
+      ".x-embed-title": "#放課後のステラ",
+      ".twitter-timeline": "#放課後のステラ の公式ポスト",
       "#system-title": "動作環境",
       ".system-lead": "Web公開版をそのままブラウザでプレイできます。PCでは広い画面、スマートフォンではホーム画面に追加してからの起動を推奨します。",
       ".spec-list div:nth-child(1) dt": "対応ブラウザ",
@@ -79,6 +86,7 @@ const translations = {
       '.site-nav a[href="#story"]': "Story",
       '.site-nav a[href="#characters"]': "Characters",
       '.site-nav a[href="#gallery"]': "Gallery",
+      '.site-nav a[href="#social"]': "X",
       '.site-nav a[href="#system"]': "System",
       ".hero .eyebrow": "Browser Visual Novel",
       "#hero-title": "After School Stella",
@@ -120,6 +128,12 @@ const translations = {
       ".feature-list article:nth-child(3) p": "Revisit memorable stills after reading through the story.",
       ".feature-list article:nth-child(4) h3": "BGM / SE",
       ".feature-list article:nth-child(4) p": "Music and sound effects support the temperature of stars, after school, and silence.",
+      "#social-title": "Official Posts for #AfterSchoolStella",
+      ".social-lead": "News, updates, and after-school echoes will appear here. Posts from the official account will carry the hashtag and let the atmosphere of the story spread little by little.",
+      ".social-actions .button-primary": "Post with #放課後のステラ",
+      ".social-actions .button-ghost": "View on X",
+      ".x-embed-title": "#放課後のステラ",
+      ".twitter-timeline": "Official posts for #放課後のステラ",
       "#system-title": "System Requirements",
       ".system-lead": "The published web version can be played directly in your browser. A larger screen is recommended on PC; on smartphones, add it to your home screen for the best experience.",
       ".spec-list div:nth-child(1) dt": "Supported Browsers",
@@ -180,6 +194,7 @@ const sections = navLinks
 const revealNodes = [
   ...document.querySelectorAll(
     ".story-copy, .feature-image, .mood-layout, .character-card, .gallery-item, .feature-list article, .system-grid"
+    + ", .social-copy, .x-embed-shell"
   ),
 ];
 
