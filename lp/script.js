@@ -207,13 +207,30 @@ const revealNodes = [
 revealNodes.forEach((node) => node.classList.add("reveal"));
 
 if ("IntersectionObserver" in window) {
+  const isRevealVisible = (entry) => entry.target.classList.contains("is-visible");
+  const shouldShowReveal = (entry) => entry.intersectionRatio >= 0.16;
+  const shouldHideReveal = (entry) => {
+    const viewportHeight = entry.rootBounds?.height || window.innerHeight;
+    const { top, bottom } = entry.boundingClientRect;
+    return entry.intersectionRatio <= 0.01 || bottom < viewportHeight * 0.04 || top > viewportHeight * 0.96;
+  };
+
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        entry.target.classList.toggle("is-visible", entry.isIntersecting);
+        if (isRevealVisible(entry)) {
+          if (shouldHideReveal(entry)) {
+            entry.target.classList.remove("is-visible");
+          }
+          return;
+        }
+
+        if (shouldShowReveal(entry)) {
+          entry.target.classList.add("is-visible");
+        }
       });
     },
-    { rootMargin: "-8% 0px -10% 0px", threshold: 0.18 }
+    { rootMargin: "0px", threshold: [0, 0.01, 0.16, 0.35] }
   );
 
   revealNodes.forEach((node) => revealObserver.observe(node));
