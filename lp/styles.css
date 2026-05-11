@@ -680,23 +680,45 @@ h3 {
   font-weight: 800;
 }
 
-.twitter-timeline {
+.pinned-post,
+.x-link-panel {
   position: relative;
   z-index: 1;
-  display: grid;
-  min-height: 486px;
-  place-items: center;
-  padding: 30px;
-  border: 1px dashed rgba(255, 255, 255, 0.24);
+}
+
+.pinned-post {
+  overflow: hidden;
   border-radius: 8px;
-  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.pinned-post .twitter-tweet {
+  margin: 0 auto !important;
+}
+
+.x-link-panel {
+  margin-top: 18px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.06);
-  text-align: center;
+}
+
+.x-link-panel p {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.x-link-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 .x-embed-shell iframe {
   position: relative;
   z-index: 1;
+  display: block !important;
   margin: 0 auto !important;
 }
 
