@@ -1,7 +1,7 @@
 const translations = {
   ja: {
     title: "放課後のステラ 嘘と願いのバウンドリー",
-    description: "ブラウザで遊べる恋愛アドベンチャーゲーム『放課後のステラ 嘘と願いのバウンドリー』公式紹介ページ。",
+    description: "無料で遊べる全年齢ブラウザ恋愛アドベンチャーゲーム『放課後のステラ 嘘と願いのバウンドリー』公式紹介ページ。",
     current: "JP",
     pressed: "false",
     lang: "ja",
@@ -15,8 +15,11 @@ const translations = {
       ".hero .eyebrow": "Browser Visual Novel",
       "#hero-title": "放課後のステラ",
       ".hero-subtitle": "嘘と願いのバウンドリー",
-      ".hero-copy": "放課後の屋上で見上げた星空は、隠してきた本音を少しずつ照らしていく。笑顔、音、夜明け。三つの願いが、ひとつの季節を変えていく恋愛アドベンチャー。",
-      ".hero-actions .button-primary": "ゲームを開く",
+      ".hero-copy": "無料で遊べる全年齢ブラウザ恋愛アドベンチャー。放課後の屋上で見上げた星空は、隠してきた本音を少しずつ照らしていく。笑顔、音、夜明け。三つの願いが、ひとつの季節を変えていく。",
+      ".hero-badges span:nth-child(1)": "無料プレイ",
+      ".hero-badges span:nth-child(2)": "全年齢対象",
+      ".hero-badges span:nth-child(3)": "ブラウザ対応",
+      ".hero-actions .button-primary": "無料でプレイ",
       ".hero-actions .button-ghost": "作品を知る",
       "#story-title": "言えなかったことが、星の下で輪郭を取り戻す。",
       ".story-copy p:nth-of-type(2)": "主人公・桐島勇の放課後は、ほんの少しずつ色を失っていた。けれど屋上で交わした約束、部室に残る沈黙、夜明けを待つ横顔が、止まっていた時間をもう一度動かしていく。",
@@ -52,6 +55,10 @@ const translations = {
       ".feature-list article:nth-child(3) p": "読後に印象的なスチルを振り返れるコレクション機能。",
       ".feature-list article:nth-child(4) h3": "BGM / SE",
       ".feature-list article:nth-child(4) p": "星空、放課後、沈黙の温度を音で支える演出。",
+      ".feature-list article:nth-child(5) h3": "無料プレイ",
+      ".feature-list article:nth-child(5) p": "インストール不要。公開ページからそのまま最後まで無料でプレイできます。",
+      ".feature-list article:nth-child(6) h3": "全年齢対象",
+      ".feature-list article:nth-child(6) p": "幅広い方に読んでもらえる、全年齢向けのブラウザノベルです。",
       "#social-title": "#放課後のステラ の公式ポスト",
       ".social-lead": "制作のお知らせ、更新情報、放課後の余韻を届けるポストをここに表示します。公式アカウントからハッシュタグ付きで投稿し、作品の空気を少しずつ広げていきます。",
       ".social-actions .button-primary": "#放課後のステラ で投稿",
@@ -71,6 +78,10 @@ const translations = {
       ".spec-list div:nth-child(3) dd": "iPhoneはSafariの共有から「ホーム画面に追加」、AndroidはChromeのメニューから「ホーム画面に追加」",
       ".spec-list div:nth-child(4) dt": "ゲーム形式",
       ".spec-list div:nth-child(4) dd": "HTML / CSS / JavaScript 製ブラウザノベル",
+      ".spec-list div:nth-child(5) dt": "価格",
+      ".spec-list div:nth-child(5) dd": "無料",
+      ".spec-list div:nth-child(6) dt": "対象年齢",
+      ".spec-list div:nth-child(6) dd": "全年齢",
       "#cta-title": "放課後の星空へ。",
       ".final-inner p:not(.section-kicker)": "すれ違った言葉も、遅すぎた願いも、まだ物語の中でなら拾い上げられる。あなたの選択で、彼女たちの放課後を見届けてください。",
       ".final-inner .button-primary": "ゲーム本体へ",
@@ -80,7 +91,7 @@ const translations = {
   },
   en: {
     title: "After School Stella: Boundary of Lies and Wishes",
-    description: "A one-page introduction to After School Stella, a browser-based romance visual novel.",
+    description: "The official page for After School Stella, a free all-ages browser romance visual novel.",
     current: "EN",
     pressed: "true",
     lang: "en",
@@ -94,8 +105,11 @@ const translations = {
       ".hero .eyebrow": "Browser Visual Novel",
       "#hero-title": "After School Stella",
       ".hero-subtitle": "Boundary of Lies and Wishes",
-      ".hero-copy": "Beneath the after-school stars, words kept hidden begin to find their shape. Smiles, music, and dawn: three wishes quietly change one season.",
-      ".hero-actions .button-primary": "Play the Game",
+      ".hero-copy": "A free all-ages browser romance visual novel. Beneath the after-school stars, words kept hidden begin to find their shape. Smiles, music, and dawn: three wishes quietly change one season.",
+      ".hero-badges span:nth-child(1)": "Free to Play",
+      ".hero-badges span:nth-child(2)": "All Ages",
+      ".hero-badges span:nth-child(3)": "Browser Game",
+      ".hero-actions .button-primary": "Play for Free",
       ".hero-actions .button-ghost": "Explore the Story",
       "#story-title": "Things left unsaid regain their outline beneath the stars.",
       ".story-copy p:nth-of-type(2)": "For protagonist Yu Kirishima, after school had slowly begun to lose its color. A promise on the rooftop, a silence left in a clubroom, and a profile waiting for dawn start time moving again.",
@@ -131,6 +145,10 @@ const translations = {
       ".feature-list article:nth-child(3) p": "Revisit memorable stills after reading through the story.",
       ".feature-list article:nth-child(4) h3": "BGM / SE",
       ".feature-list article:nth-child(4) p": "Music and sound effects support the temperature of stars, after school, and silence.",
+      ".feature-list article:nth-child(5) h3": "Free to Play",
+      ".feature-list article:nth-child(5) p": "No installation required. Play through the public web version for free.",
+      ".feature-list article:nth-child(6) h3": "All Ages",
+      ".feature-list article:nth-child(6) p": "An all-ages browser visual novel made for a wide range of readers.",
       "#social-title": "Official Posts for #AfterSchoolStella",
       ".social-lead": "News, updates, and after-school echoes will appear here. Posts from the official account will carry the hashtag and let the atmosphere of the story spread little by little.",
       ".social-actions .button-primary": "Post with #放課後のステラ",
@@ -150,6 +168,10 @@ const translations = {
       ".spec-list div:nth-child(3) dd": "On iPhone, use Safari’s Share menu and Add to Home Screen. On Android, use Chrome’s menu and Add to Home screen.",
       ".spec-list div:nth-child(4) dt": "Game Format",
       ".spec-list div:nth-child(4) dd": "HTML / CSS / JavaScript browser visual novel",
+      ".spec-list div:nth-child(5) dt": "Price",
+      ".spec-list div:nth-child(5) dd": "Free",
+      ".spec-list div:nth-child(6) dt": "Age Rating",
+      ".spec-list div:nth-child(6) dd": "All Ages",
       "#cta-title": "Step into the after-school stars.",
       ".final-inner p:not(.section-kicker)": "Words that missed each other, wishes that arrived too late: in this story, they can still be picked up. Let your choices watch over their after school.",
       ".final-inner .button-primary": "Open the Game",
@@ -169,6 +191,8 @@ function applyLanguage(language) {
   document.querySelector('meta[name="description"]')?.setAttribute("content", locale.description);
   document.querySelector('meta[property="og:title"]')?.setAttribute("content", locale.title);
   document.querySelector('meta[property="og:description"]')?.setAttribute("content", locale.description);
+  document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", locale.title);
+  document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", locale.description);
 
   Object.entries(locale.text).forEach(([selector, value]) => {
     const node = document.querySelector(selector);

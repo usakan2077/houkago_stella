@@ -231,6 +231,29 @@ code {
   text-shadow: 0 8px 28px rgba(0, 0, 0, 0.64);
 }
 
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.hero-badges span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(7, 11, 22, 0.38);
+  box-shadow: 0 12px 30px rgba(4, 8, 20, 0.22);
+  backdrop-filter: blur(10px);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
