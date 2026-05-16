@@ -10,127 +10,127 @@
 @se rain_window.mp3
 @wait 1200
 
-> 六月に入っていた。
-> 梅雨の雨が、窓を細かく叩いている。
+> $chapter4.chapter4_start.t001
+> $chapter4.chapter4_start.t002
 
-> 五月の風は完全に消えた。
-> 空気が重くなって、廊下の匂いも変わった。
-> 濡れた傘と、蒸れた教科書と、
-> どこかへ向かっている途中みたいな湿り気。
+> $chapter4.chapter4_start.t003
+> $chapter4.chapter4_start.t004
+> $chapter4.chapter4_start.t005
+> $chapter4.chapter4_start.t006
 
-> クラスの空気は、もうほとんど固定されていた。
-> 誰が誰と話すか。
-> 昼休みをどこで過ごすか。
-> そういうものは、思ったより早く決まる。
+> $chapter4.chapter4_start.t007
+> $chapter4.chapter4_start.t008
+> $chapter4.chapter4_start.t009
+> $chapter4.chapter4_start.t010
 
-> 窓の外は白く霞んでいて、
-> グラウンドの向こうの木の輪郭が滲んでいる。
-> 雨粒が窓ガラスの上を流れるたびに、外の景色が少しだけ揺れた。
+> $chapter4.chapter4_start.t011
+> $chapter4.chapter4_start.t012
+> $chapter4.chapter4_start.t013
 
 @show sakura right happy fade_in
 @show kotoha left normal fade_in
 
 @wait 500
 
-sakura: 勇くんおはよー！
+sakura: $chapter4.chapter4_start.t014
 
-player: ……おはよう
+player: $chapter4.chapter4_start.t015
 
-sakura: 今日ちょっと眠い
+sakura: $chapter4.chapter4_start.t016
 
-player: 昨日遅かったのか
+player: $chapter4.chapter4_start.t017
 
-sakura: 文化祭委員になっちゃってさ
+sakura: $chapter4.chapter4_start.t018
 
-player: もうそんな話してるのか
+player: $chapter4.chapter4_start.t019
 
-sakura: 学校はイベントが早いの！
+sakura: $chapter4.chapter4_start.t020
 
-kotoha: 文化祭は
-kotoha: この学校の大きな行事ですから
+kotoha: $chapter4.chapter4_start.t021
+kotoha: $chapter4.chapter4_start.t022
 
-sakura: そうそう！
+sakura: $chapter4.chapter4_start.t023
 
-> 花園ことははそう言いながら、
-> 机の上の教科書の角を、静かに揃えていた。
-> 余分な動作をしない人間だ。
-> 少ない言葉で意外とちゃんと会話に参加する。
+> $chapter4.chapter4_start.t024
+> $chapter4.chapter4_start.t025
+> $chapter4.chapter4_start.t026
+> $chapter4.chapter4_start.t027
 
-player: ……あの学活か
+player: $chapter4.chapter4_start.t028
 
-sakura: 立候補する人いないから気まずくなってさ
-sakura: あたし手挙げちゃった
+sakura: $chapter4.chapter4_start.t029
+sakura: $chapter4.chapter4_start.t030
 
-player: お前らしいな
+player: $chapter4.chapter4_start.t031
 
-sakura: そう？
+sakura: $chapter4.chapter4_start.t032
 
-player: 沈黙に耐えられないだろ
+player: $chapter4.chapter4_start.t033
 
 @expr sakura thinking
 
-sakura: ……む
-sakura: 否定できないのが悔しい
+sakura: $chapter4.chapter4_start.t034
+sakura: $chapter4.chapter4_start.t035
 
-kotoha: 桜咲さんは
-kotoha: 静かな空間を
-kotoha: 放置できない人ですね
+kotoha: $chapter4.chapter4_start.t036
+kotoha: $chapter4.chapter4_start.t037
+kotoha: $chapter4.chapter4_start.t038
 
-sakura: なんか言い方が複雑！
+sakura: $chapter4.chapter4_start.t039
 
-kotoha: ……褒めています
+kotoha: $chapter4.chapter4_start.t040
 
-sakura: ほんとに？
+sakura: $chapter4.chapter4_start.t041
 
-kotoha: ええ
+kotoha: $chapter4.chapter4_start.t042
 
 @wait 400
 
-> ことはの相槌は、抑揚がほとんどない。
-> だからこそ、いつどこで本音が混じっているかが読みにくい。
-> さくらはそれが掴み切れないらしく、
-> 毎回少しだけ首を傾けてからまた笑う。
+> $chapter4.chapter4_start.t043
+> $chapter4.chapter4_start.t044
+> $chapter4.chapter4_start.t045
+> $chapter4.chapter4_start.t046
 
-> それが面白くて、見ていた。
+> $chapter4.chapter4_start.t047
 
 @expr sakura happy
 
-sakura: まあいいか
-sakura: というわけで、手伝って！
+sakura: $chapter4.chapter4_start.t048
+sakura: $chapter4.chapter4_start.t049
 
-player: どんな仕事があるんだ
+player: $chapter4.chapter4_start.t050
 
-sakura: まずは飾りつけの計画
-sakura: 体育館と廊下の装飾班が必要で
-sakura: 勇くんは力仕事担当
+sakura: $chapter4.chapter4_start.t051
+sakura: $chapter4.chapter4_start.t052
+sakura: $chapter4.chapter4_start.t053
 
-player: 役割早すぎだろ
+player: $chapter4.chapter4_start.t054
 
-sakura: だって頼りになる人が少ないんだもん
+sakura: $chapter4.chapter4_start.t055
 
-kotoha: 桐島くんは
-kotoha: 便利そうです
+kotoha: $chapter4.chapter4_start.t056
+kotoha: $chapter4.chapter4_start.t057
 
-player: 前も言ってたよな？
+player: $chapter4.chapter4_start.t058
 
-kotoha: ……また言いました
+kotoha: $chapter4.chapter4_start.t059
 
-player: 反省してないだろ
+player: $chapter4.chapter4_start.t060
 
-kotoha: ……少しだけ
+kotoha: $chapter4.chapter4_start.t061
 
-> さくらは声を上げて笑った。
-> 雨が続いている朝の教室に、
-> その笑い声だけがやけに明るく広がっていく。
+> $chapter4.chapter4_start.t062
+> $chapter4.chapter4_start.t063
+> $chapter4.chapter4_start.t064
 
-> さくらは楽しそうだった。
+> $chapter4.chapter4_start.t065
 
-> ……少しだけ、
-> 無理しているようにも見えた。
+> $chapter4.chapter4_start.t066
+> $chapter4.chapter4_start.t067
 
 @wait 400
 
-> 窓の雨粒が一本の線になって、流れ落ちた。
+> $chapter4.chapter4_start.t068
 
 @hide_all fade_out
 @wait 600
@@ -149,163 +149,163 @@ kotoha: ……少しだけ
 @se rain_window.mp3 loop
 @wait 700
 
-> 昼休みが終わりに近づいたころ、廊下に出た。
+> $chapter4.chapter4_mahiru_corridor.t001
 
-> 準備で汚れた手を洗いに洗面所へ向かっていると、
-> 曲がり角の向こうから聞き覚えのある声がした。
+> $chapter4.chapter4_mahiru_corridor.t002
+> $chapter4.chapter4_mahiru_corridor.t003
 
 @show mahiru center normal fade_in
 
-mahiru: あ
+mahiru: $chapter4.chapter4_mahiru_corridor.t004
 
-mahiru: 勇くん
+mahiru: $chapter4.chapter4_mahiru_corridor.t005
 
-player: 月夜野
-player: 別クラスだろ、こっちまで来てたのか
+player: $chapter4.chapter4_mahiru_corridor.t006
+player: $chapter4.chapter4_mahiru_corridor.t007
 
-mahiru: 友達に用があってね
-mahiru: ちょうどよかった
+mahiru: $chapter4.chapter4_mahiru_corridor.t008
+mahiru: $chapter4.chapter4_mahiru_corridor.t009
 
-> まひるはカメラを首から提げていた。
-> 梅雨の日なのに、外へ出ていたのかもしれない。
+> $chapter4.chapter4_mahiru_corridor.t010
+> $chapter4.chapter4_mahiru_corridor.t011
 
-player: 雨の日に写真撮るのか
+player: $chapter4.chapter4_mahiru_corridor.t012
 
-mahiru: 雨の日の方がいい写真が撮れるから
+mahiru: $chapter4.chapter4_mahiru_corridor.t013
 
-player: なんで
+player: $chapter4.chapter4_mahiru_corridor.t014
 
 @expr mahiru thinking
 
-mahiru: ……輪郭が、柔らかくなるから
-mahiru: 晴れてると全部はっきり見えすぎて
-mahiru: 見えなくていいものまで見えちゃう
+mahiru: $chapter4.chapter4_mahiru_corridor.t015
+mahiru: $chapter4.chapter4_mahiru_corridor.t016
+mahiru: $chapter4.chapter4_mahiru_corridor.t017
 
-player: 見えなくていいもの
+player: $chapter4.chapter4_mahiru_corridor.t018
 
-mahiru: うん
-mahiru: ごみ箱の汚れとか
-mahiru: 誰かの落書きとか
+mahiru: $chapter4.chapter4_mahiru_corridor.t019
+mahiru: $chapter4.chapter4_mahiru_corridor.t020
+mahiru: $chapter4.chapter4_mahiru_corridor.t021
 
 @expr mahiru happy
 
-mahiru: 雨の日は、全部少しだけ優しくなる気がする
+mahiru: $chapter4.chapter4_mahiru_corridor.t022
 
-> その言い方は少しだけ詩的すぎた。
-> でも、否定するには届きすぎていた。
+> $chapter4.chapter4_mahiru_corridor.t023
+> $chapter4.chapter4_mahiru_corridor.t024
 
-player: ……なんか、文系っぽいな
+player: $chapter4.chapter4_mahiru_corridor.t025
 
-mahiru: 勇くんは理系っぽい
+mahiru: $chapter4.chapter4_mahiru_corridor.t026
 
-player: どこが
+player: $chapter4.chapter4_mahiru_corridor.t027
 
-mahiru: 観察するとき、説明しようとするから
+mahiru: $chapter4.chapter4_mahiru_corridor.t028
 
-player: そうか？
+player: $chapter4.chapter4_mahiru_corridor.t029
 
-mahiru: さっきも「なんで」って聞いたよ
-mahiru: 「そうか」じゃなくて「なんで」
+mahiru: $chapter4.chapter4_mahiru_corridor.t030
+mahiru: $chapter4.chapter4_mahiru_corridor.t031
 
 @wait 400
 
-> 言われてみると、そうかもしれない。
-> 理解しないと落ち着かない。
-> わかったつもりにしないと、先へ進めない。
-> それは性格なのか、あるいは慎のことから来ているのかは、
-> 自分でもまだよくわからなかった。
+> $chapter4.chapter4_mahiru_corridor.t032
+> $chapter4.chapter4_mahiru_corridor.t033
+> $chapter4.chapter4_mahiru_corridor.t034
+> $chapter4.chapter4_mahiru_corridor.t035
+> $chapter4.chapter4_mahiru_corridor.t036
 
-player: ……文句は言うな
+player: $chapter4.chapter4_mahiru_corridor.t037
 
-mahiru: 言ってないよ
+mahiru: $chapter4.chapter4_mahiru_corridor.t038
 
 @expr mahiru happy
 
-mahiru: 好きだよ、そういうの
+mahiru: $chapter4.chapter4_mahiru_corridor.t039
 
 @wait 500
 
-> まひるは廊下の窓の外を一瞬見た。
-> 雨が窓を叩いていて、その向こうは白い。
+> $chapter4.chapter4_mahiru_corridor.t040
+> $chapter4.chapter4_mahiru_corridor.t041
 
-mahiru: 最近どう
+mahiru: $chapter4.chapter4_mahiru_corridor.t042
 
-player: どうって
+player: $chapter4.chapter4_mahiru_corridor.t043
 
-mahiru: うん、なんかそれだけ
+mahiru: $chapter4.chapter4_mahiru_corridor.t044
 
-player: ……悪くはない
+player: $chapter4.chapter4_mahiru_corridor.t045
 
-mahiru: そっか
+mahiru: $chapter4.chapter4_mahiru_corridor.t046
 
 @wait 400
 
 @expr mahiru normal
 
-mahiru: あのね、勇くん
+mahiru: $chapter4.chapter4_mahiru_corridor.t047
 
-player: なんだ
+player: $chapter4.chapter4_mahiru_corridor.t048
 
-mahiru: 大丈夫な日と
-mahiru: 大丈夫じゃない日があって
+mahiru: $chapter4.chapter4_mahiru_corridor.t049
+mahiru: $chapter4.chapter4_mahiru_corridor.t050
 
-> 唐突な言い方だった。
-> でも遮れなかった。
+> $chapter4.chapter4_mahiru_corridor.t051
+> $chapter4.chapter4_mahiru_corridor.t052
 
-mahiru: 大丈夫な日は
-mahiru: 何でもないことが楽しく見える
+mahiru: $chapter4.chapter4_mahiru_corridor.t053
+mahiru: $chapter4.chapter4_mahiru_corridor.t054
 
-mahiru: 大丈夫じゃない日は
-mahiru: 何でもないことが全部重い
+mahiru: $chapter4.chapter4_mahiru_corridor.t055
+mahiru: $chapter4.chapter4_mahiru_corridor.t056
 
 @wait 600
 
-player: ……今日はどっちだ
+player: $chapter4.chapter4_mahiru_corridor.t057
 
 @expr mahiru happy
 
-mahiru: 今日は大丈夫な日
-mahiru: 勇くんに会えたから
+mahiru: $chapter4.chapter4_mahiru_corridor.t058
+mahiru: $chapter4.chapter4_mahiru_corridor.t059
 
-player: ……そういう言い方はやめてくれ
+player: $chapter4.chapter4_mahiru_corridor.t060
 
-mahiru: なんで
+mahiru: $chapter4.chapter4_mahiru_corridor.t061
 
-player: 重さが合わない
+player: $chapter4.chapter4_mahiru_corridor.t062
 
-mahiru: ……むずかしいな、勇くんは
+mahiru: $chapter4.chapter4_mahiru_corridor.t063
 
-> でも笑っていた。
-> 困ったような笑い方で、でもちゃんと笑っていた。
+> $chapter4.chapter4_mahiru_corridor.t064
+> $chapter4.chapter4_mahiru_corridor.t065
 
 @wait 500
 
-mahiru: じゃあまた
-mahiru: ちゃんと話しに来る
+mahiru: $chapter4.chapter4_mahiru_corridor.t066
+mahiru: $chapter4.chapter4_mahiru_corridor.t067
 
-player: 別クラスだろ
+player: $chapter4.chapter4_mahiru_corridor.t068
 
-mahiru: 廊下は共有スペースだから
+mahiru: $chapter4.chapter4_mahiru_corridor.t069
 
-player: ……それはそうだな
+player: $chapter4.chapter4_mahiru_corridor.t070
 
 @expr mahiru happy
 
-mahiru: うん
+mahiru: $chapter4.chapter4_mahiru_corridor.t071
 
 @hide mahiru fade_out
 @wait 500
 
-> 廊下に雨の音だけが残った。
+> $chapter4.chapter4_mahiru_corridor.t072
 
-> 大丈夫な日と、大丈夫じゃない日がある。
-> それを当たり前みたいに言っていた。
-> 当たり前のことだから。
-> あるいは、当たり前のことにしないと言えないから。
+> $chapter4.chapter4_mahiru_corridor.t073
+> $chapter4.chapter4_mahiru_corridor.t074
+> $chapter4.chapter4_mahiru_corridor.t075
+> $chapter4.chapter4_mahiru_corridor.t076
 
-> まひるが何かを隠しているとは思わない。
-> でも、あの言い方には、
-> まだ続きがある気がした。
+> $chapter4.chapter4_mahiru_corridor.t077
+> $chapter4.chapter4_mahiru_corridor.t078
+> $chapter4.chapter4_mahiru_corridor.t079
 
 @jump chapter4_music_room
 
@@ -321,179 +321,179 @@ mahiru: うん
 @bgm piano_distant.mp3 noloop
 @wait 700
 
-> 放課後。
-> 帰り支度をしながら廊下へ出ると、
-> 音楽室の方から、かすかにピアノの音がした。
+> $chapter4.chapter4_music_room.t001
+> $chapter4.chapter4_music_room.t002
+> $chapter4.chapter4_music_room.t003
 
-> いつもとは違うルートだった。
-> 図書室に返却しなければいけない本があって、
-> 普段通らない廊下を歩いていた。
+> $chapter4.chapter4_music_room.t004
+> $chapter4.chapter4_music_room.t005
+> $chapter4.chapter4_music_room.t006
 
-> 音楽室の前を通りかかると、
-> ドアの外に人影があった。
+> $chapter4.chapter4_music_room.t007
+> $chapter4.chapter4_music_room.t008
 
 @show kotoha center normal fade_in
 
-> 花園ことはが立ち止まっていた。
-> 壁に背中を預けるわけでもなく、
-> ただ廊下の中央に立って、
-> ドアの向こうの音を聞いていた。
+> $chapter4.chapter4_music_room.t009
+> $chapter4.chapter4_music_room.t010
+> $chapter4.chapter4_music_room.t011
+> $chapter4.chapter4_music_room.t012
 
-player: またここか
+player: $chapter4.chapter4_music_room.t013
 
-kotoha: ……そうですね
+kotoha: $chapter4.chapter4_music_room.t014
 
 @wait 500
 
-player: 入らないのか
+player: $chapter4.chapter4_music_room.t015
 
-kotoha: ……まだ
+kotoha: $chapter4.chapter4_music_room.t016
 
-player: まだ？
+player: $chapter4.chapter4_music_room.t017
 
 @expr kotoha thinking
 
-kotoha: 音を聞くだけなら
-kotoha: 怖くないので
+kotoha: $chapter4.chapter4_music_room.t018
+kotoha: $chapter4.chapter4_music_room.t019
 
-> その言い方は、
-> 少しだけ不自然だった。
-> 「怖くない」という否定は、
-> 怖いという前提がないと出てこない。
+> $chapter4.chapter4_music_room.t020
+> $chapter4.chapter4_music_room.t021
+> $chapter4.chapter4_music_room.t022
+> $chapter4.chapter4_music_room.t023
 
-player: 弾けばいいんじゃないのか
+player: $chapter4.chapter4_music_room.t024
 
-kotoha: ……弾けます
+kotoha: $chapter4.chapter4_music_room.t025
 
-player: じゃあなんで入らないんだ
+player: $chapter4.chapter4_music_room.t026
 
 @wait 400
 
-kotoha: ……
-kotoha: 弾けるのと、
-kotoha: 音楽になるのは、違うんです
+kotoha: $chapter4.chapter4_music_room.t027
+kotoha: $chapter4.chapter4_music_room.t028
+kotoha: $chapter4.chapter4_music_room.t029
 
-player: どういうことだ
+player: $chapter4.chapter4_music_room.t030
 
-kotoha: ……うまくは言えません
+kotoha: $chapter4.chapter4_music_room.t031
 
-> 少し待った。
-> ことはは急かしても、答えが増えない。
-> でも、黙って待つと、
-> 少しだけ続きが来ることがある。
+> $chapter4.chapter4_music_room.t032
+> $chapter4.chapter4_music_room.t033
+> $chapter4.chapter4_music_room.t034
+> $chapter4.chapter4_music_room.t035
 
 @wait 700
 
-kotoha: ……ピアノをやめてから、時間が経ちました
+kotoha: $chapter4.chapter4_music_room.t036
 
-player: そうか
+player: $chapter4.chapter4_music_room.t037
 
-kotoha: でも、指が覚えていて
+kotoha: $chapter4.chapter4_music_room.t038
 
 @wait 500
 
-kotoha: 覚えているのに弾けない場所に、なってしまったので
+kotoha: $chapter4.chapter4_music_room.t039
 
-player: 何があったんだ
+player: $chapter4.chapter4_music_room.t040
 
-kotoha: ……
+kotoha: $chapter4.chapter4_music_room.t041
 
 @wait 600
 
-kotoha: 発表会で、途中でわからなくなったんです
+kotoha: $chapter4.chapter4_music_room.t042
 
-player: わからなくなった
+player: $chapter4.chapter4_music_room.t043
 
-kotoha: 指が……
-kotoha: 弾いている理由を
-
-@wait 500
-
-> ピアノの音が続いていた。
-> 今日は、静かな曲だった。
-
-player: 静かな曲だな
-
-kotoha: ……ええ
-
-kotoha: 静かな曲の方が
-kotoha: 弾くのは難しいんです
-
-player: そうなのか
-
-kotoha: 隠れる場所がないので
-
-@wait 400
-
-player: 隠れる場所
-
-kotoha: 早い曲や激しい曲は、勢いで乗れることがあります
-
-kotoha: でも静かな曲は、全部聞こえてしまう
-
-kotoha: 余分なものが、全部
+kotoha: $chapter4.chapter4_music_room.t044
+kotoha: $chapter4.chapter4_music_room.t045
 
 @wait 500
 
-> 余分なもの。
-> ことはが余分だと思っているのが、
-> 技術なのか、感情なのか、あるいはもっと別の何かなのかは、
-> 聞いてもたぶん答えてくれなかった。
+> $chapter4.chapter4_music_room.t046
+> $chapter4.chapter4_music_room.t047
 
-player: ……そうか
+player: $chapter4.chapter4_music_room.t048
 
-kotoha: ……はい
+kotoha: $chapter4.chapter4_music_room.t049
+
+kotoha: $chapter4.chapter4_music_room.t050
+kotoha: $chapter4.chapter4_music_room.t051
+
+player: $chapter4.chapter4_music_room.t052
+
+kotoha: $chapter4.chapter4_music_room.t053
 
 @wait 400
 
-player: 入らないのは、お前の選択だろ
+player: $chapter4.chapter4_music_room.t054
 
-kotoha: ……そうですね
+kotoha: $chapter4.chapter4_music_room.t055
 
-player: 無理に入ることもない
+kotoha: $chapter4.chapter4_music_room.t056
 
-kotoha: ……
+kotoha: $chapter4.chapter4_music_room.t057
 
 @wait 500
 
-kotoha: 桐島くんは
-kotoha: 優しいのか厳しいのか
-kotoha: よくわかりません
+> $chapter4.chapter4_music_room.t058
+> $chapter4.chapter4_music_room.t059
+> $chapter4.chapter4_music_room.t060
+> $chapter4.chapter4_music_room.t061
 
-player: どっちでもない
+player: $chapter4.chapter4_music_room.t062
 
-kotoha: そうでしょうか
-
-player: ただ見てるだけだ
+kotoha: $chapter4.chapter4_music_room.t063
 
 @wait 400
 
-> ことははもう一度、音楽室のドアを見た。
-> 向こうで誰かが弾いているピアノの音は、
-> 変わらず静かに続いている。
+player: $chapter4.chapter4_music_room.t064
+
+kotoha: $chapter4.chapter4_music_room.t065
+
+player: $chapter4.chapter4_music_room.t066
+
+kotoha: $chapter4.chapter4_music_room.t067
+
+@wait 500
+
+kotoha: $chapter4.chapter4_music_room.t068
+kotoha: $chapter4.chapter4_music_room.t069
+kotoha: $chapter4.chapter4_music_room.t070
+
+player: $chapter4.chapter4_music_room.t071
+
+kotoha: $chapter4.chapter4_music_room.t072
+
+player: $chapter4.chapter4_music_room.t073
+
+@wait 400
+
+> $chapter4.chapter4_music_room.t074
+> $chapter4.chapter4_music_room.t075
+> $chapter4.chapter4_music_room.t076
 
 @expr kotoha normal
 
-kotoha: ……ありがとうございます
+kotoha: $chapter4.chapter4_music_room.t077
 
-player: 何に対して
+player: $chapter4.chapter4_music_room.t078
 
-kotoha: 何に対して、でしょうね
+kotoha: $chapter4.chapter4_music_room.t079
 
-> 少しだけ、ことはの表情が柔らかくなった気がした。
-> たぶん、俺が見間違えただけかもしれない。
+> $chapter4.chapter4_music_room.t080
+> $chapter4.chapter4_music_room.t081
 
 @hide kotoha fade_out
 @wait 600
 
-> 廊下を一人で歩きながら、思った。
-> 弾いている理由がわからなくなった、という言葉。
-> ことはにとってのピアノは、
-> 技術とか習慣とかじゃなくて、
-> もっと深いところにある何かだったんだろう。
+> $chapter4.chapter4_music_room.t082
+> $chapter4.chapter4_music_room.t083
+> $chapter4.chapter4_music_room.t084
+> $chapter4.chapter4_music_room.t085
+> $chapter4.chapter4_music_room.t086
 
-> 理由を失った場所には、
-> 入れなくなる。
+> $chapter4.chapter4_music_room.t087
+> $chapter4.chapter4_music_room.t088
 
 @jump chapter4_corridor
 
@@ -509,133 +509,133 @@ kotoha: 何に対して、でしょうね
 @se footsteps.mp3
 @wait 700
 
-> 帰ろうとして、ポケットに手を入れたときに気づいた。
+> $chapter4.chapter4_corridor.t001
 
-> 昨日、昇降口の近くの床に落ちていたノートを、
-> 拾ったまま持ち歩いていた。
+> $chapter4.chapter4_corridor.t002
+> $chapter4.chapter4_corridor.t003
 
-> 薄い水色の表紙のノート。
-> 名前の記入欄には、小さな文字で「月夜野まひる」と書いてあった。
+> $chapter4.chapter4_corridor.t004
+> $chapter4.chapter4_corridor.t005
 
-> 返せばいいだけのことだ。
-> まひるのクラスは三組で、昇降口の方向が少し違う。
+> $chapter4.chapter4_corridor.t006
+> $chapter4.chapter4_corridor.t007
 
-> 別に急がなくてもよかった。
-> ただ、ポケットに入れたまま帰るのも変な気がして、
-> 廊下をそちらへ向かって歩き出した。
+> $chapter4.chapter4_corridor.t008
+> $chapter4.chapter4_corridor.t009
+> $chapter4.chapter4_corridor.t010
 
 @show mahiru center normal fade_in
 
-mahiru: あ、勇くん
+mahiru: $chapter4.chapter4_corridor.t011
 
-player: 月夜野
+player: $chapter4.chapter4_corridor.t012
 
-mahiru: 今帰り？
+mahiru: $chapter4.chapter4_corridor.t013
 
-player: まあな
+player: $chapter4.chapter4_corridor.t014
 
 @wait 400
 
-player: ……これ
+player: $chapter4.chapter4_corridor.t015
 
-> ポケットから、
-> 拾ったままにしていたノートを取り出した。
+> $chapter4.chapter4_corridor.t016
+> $chapter4.chapter4_corridor.t017
 
-player: 昨日、昇降口に落ちてた
+player: $chapter4.chapter4_corridor.t018
 
 @expr mahiru surprised
 
-mahiru: あ——
+mahiru: $chapter4.chapter4_corridor.t019
 
 @wait 300
 
-> まひるに渡そうとして、
-> 手が滑った。
+> $chapter4.chapter4_corridor.t020
+> $chapter4.chapter4_corridor.t021
 
 @se notebook_open.mp3
 
-> ノートが床に落ちて、ページが開いた。
+> $chapter4.chapter4_corridor.t022
 
 @still mahiru_notebook_drop
 @wait 600
 
-> 一瞬だけ——
-> 「今日の良かったこと：勇くんが隣にいてよかった」
+> $chapter4.chapter4_corridor.t023
+> $chapter4.chapter4_corridor.t024
 
 @wait 600
 
-> 丸い文字だった。
-> 几帳面に書かれているのに、
-> 行の最後だけ少し上がっていて、
-> そこだけ気持ちが先に行ったみたいな字だった。
+> $chapter4.chapter4_corridor.t025
+> $chapter4.chapter4_corridor.t026
+> $chapter4.chapter4_corridor.t027
+> $chapter4.chapter4_corridor.t028
 
-> 自分の名前が書いてある。
-> それだけで、なぜか居場所のない感じがした。
+> $chapter4.chapter4_corridor.t029
+> $chapter4.chapter4_corridor.t030
 
 @wait 400
 
 @still_hide
 @wait 200
 
-> 拾って、何も見なかったふりで渡した。
-> まひるは気づかないまま、ノートを受け取った。
+> $chapter4.chapter4_corridor.t031
+> $chapter4.chapter4_corridor.t032
 
 @wait 300
 
-mahiru: ありがとう
+mahiru: $chapter4.chapter4_corridor.t033
 
 @wait 400
 
-> まひるは表紙を少しだけ撫でて、鞄にしまった。
+> $chapter4.chapter4_corridor.t034
 
 @wait 500
 
-player: 毎日書いてるのか
+player: $chapter4.chapter4_corridor.t035
 
-mahiru: うん
+mahiru: $chapter4.chapter4_corridor.t036
 
-player: 大変じゃないか
+player: $chapter4.chapter4_corridor.t037
 
-mahiru: 大変だよ
+mahiru: $chapter4.chapter4_corridor.t038
 
 @expr mahiru happy
 
-mahiru: でも
+mahiru: $chapter4.chapter4_corridor.t039
 
-mahiru: 集めてるの
+mahiru: $chapter4.chapter4_corridor.t040
 
-player: 何を
+player: $chapter4.chapter4_corridor.t041
 
-mahiru: 理由
+mahiru: $chapter4.chapter4_corridor.t042
 
-player: 理由
+player: $chapter4.chapter4_corridor.t043
 
-mahiru: 今日、生きててよかった理由
+mahiru: $chapter4.chapter4_corridor.t044
 
 @wait 600
 
-mahiru: たくさんあると
+mahiru: $chapter4.chapter4_corridor.t045
 
-mahiru: ちょっと安心するから
+mahiru: $chapter4.chapter4_corridor.t046
 
 @wait 500
 
-> 生きててよかった理由を毎日集めている。
-> その言葉を聞いたとき、
-> 胸のどこかに小さなものが引っかかった。
+> $chapter4.chapter4_corridor.t047
+> $chapter4.chapter4_corridor.t048
+> $chapter4.chapter4_corridor.t049
 
-> 安心するため、ということは、
-> 安心できない瞬間がある、ということだ。
+> $chapter4.chapter4_corridor.t050
+> $chapter4.chapter4_corridor.t051
 
-> 聞けない、とは思わなかった。
-> ただ、ここで聞いてしまったら、
-> もう引き返せない気がした。
+> $chapter4.chapter4_corridor.t052
+> $chapter4.chapter4_corridor.t053
+> $chapter4.chapter4_corridor.t054
 
 @wait 400
 
 @choice
-- "……その理由、もう少し聞かせてくれるか" [mahiru_favor+5] -> chapter4_corridor_talk
-- "そうか" -> chapter4_corridor_end
+- $choices.chapter4.ask_reason [mahiru_favor+5] -> chapter4_corridor_talk
+- $choices.chapter4.i_see -> chapter4_corridor_end
 
 
 // ===================================================================
@@ -644,92 +644,92 @@ mahiru: ちょっと安心するから
 
 # chapter4_corridor_talk
 
-mahiru: うん
+mahiru: $chapter4.chapter4_corridor_talk.t001
 
-mahiru: ……大丈夫な日の理由をたくさん集めると
-mahiru: 少しだけ均衡するの
+mahiru: $chapter4.chapter4_corridor_talk.t002
+mahiru: $chapter4.chapter4_corridor_talk.t003
 
-player: 均衡
+player: $chapter4.chapter4_corridor_talk.t004
 
-mahiru: うん
-mahiru: 倒れないくらいに
+mahiru: $chapter4.chapter4_corridor_talk.t005
+mahiru: $chapter4.chapter4_corridor_talk.t006
 
 @wait 500
 
-player: ……いつからそういうことをしてるんだ
+player: $chapter4.chapter4_corridor_talk.t007
 
 @expr mahiru thinking
 
-mahiru: 中学のとき
-mahiru: 少し、しんどかった時期があって
+mahiru: $chapter4.chapter4_corridor_talk.t008
+mahiru: $chapter4.chapter4_corridor_talk.t009
 
-mahiru: そのとき先生に教えてもらったの
-mahiru: 良かったことを書く習慣
+mahiru: $chapter4.chapter4_corridor_talk.t010
+mahiru: $chapter4.chapter4_corridor_talk.t011
 
 @wait 400
 
-player: 今もしんどいのか
+player: $chapter4.chapter4_corridor_talk.t012
 
-mahiru: ……今は、大丈夫な日の方が多いよ
+mahiru: $chapter4.chapter4_corridor_talk.t013
 
-mahiru: でも
-mahiru: ゼロにはなってないから
+mahiru: $chapter4.chapter4_corridor_talk.t014
+mahiru: $chapter4.chapter4_corridor_talk.t015
 
-mahiru: 集めることはやめられない
+mahiru: $chapter4.chapter4_corridor_talk.t016
 
 @wait 600
 
-> まひるが「しんどかった」と言ったのを、
-> 俺は聞いていた。
-> 過去形だった。
-> だから安心するべきなのかもしれない。
+> $chapter4.chapter4_corridor_talk.t017
+> $chapter4.chapter4_corridor_talk.t018
+> $chapter4.chapter4_corridor_talk.t019
+> $chapter4.chapter4_corridor_talk.t020
 
-> でも慎のことを思うと、
-> 過去形が本当に過去かどうかは、
-> 外から見てわかるものじゃないとも知っていた。
+> $chapter4.chapter4_corridor_talk.t021
+> $chapter4.chapter4_corridor_talk.t022
+> $chapter4.chapter4_corridor_talk.t023
 
-player: そのノート
-player: 誰かに見せることはあるのか
+player: $chapter4.chapter4_corridor_talk.t024
+player: $chapter4.chapter4_corridor_talk.t025
 
-mahiru: ないよ
-mahiru: 自分だけのもの
+mahiru: $chapter4.chapter4_corridor_talk.t026
+mahiru: $chapter4.chapter4_corridor_talk.t027
 
 @wait 400
 
-mahiru: ……でも
-mahiru: 今日は少しだけ、話せたかな
+mahiru: $chapter4.chapter4_corridor_talk.t028
+mahiru: $chapter4.chapter4_corridor_talk.t029
 
 @expr mahiru happy
 
-mahiru: ……なんか変なこと話したね
+mahiru: $chapter4.chapter4_corridor_talk.t030
 
-player: 変じゃない
+player: $chapter4.chapter4_corridor_talk.t031
 
-mahiru: そう？
+mahiru: $chapter4.chapter4_corridor_talk.t032
 
-player: ちゃんと聞けて、よかったと思ってる
+player: $chapter4.chapter4_corridor_talk.t033
 
 @wait 500
 
-> まひるはしばらく黙って、
-> ノートの表紙を撫でていた。
+> $chapter4.chapter4_corridor_talk.t034
+> $chapter4.chapter4_corridor_talk.t035
 
-mahiru: ……勇くんに言われると
-mahiru: 少し重いな
+mahiru: $chapter4.chapter4_corridor_talk.t036
+mahiru: $chapter4.chapter4_corridor_talk.t037
 
-player: 重い？
+player: $chapter4.chapter4_corridor_talk.t038
 
-mahiru: うん
-mahiru: 軽くあしらってくれた方が
-mahiru: 楽なこともある
+mahiru: $chapter4.chapter4_corridor_talk.t039
+mahiru: $chapter4.chapter4_corridor_talk.t040
+mahiru: $chapter4.chapter4_corridor_talk.t041
 
-player: そういうもんか
+player: $chapter4.chapter4_corridor_talk.t042
 
-mahiru: そういうこともある
+mahiru: $chapter4.chapter4_corridor_talk.t043
 
-> 笑い方が、さっきと少しだけ違った。
-> さっきの笑い方は、外に向けた笑い方だった。
-> さっきのは、もう少し内側に向いていた。
+> $chapter4.chapter4_corridor_talk.t044
+> $chapter4.chapter4_corridor_talk.t045
+> $chapter4.chapter4_corridor_talk.t046
 
 @jump chapter4_corridor_end
 
@@ -742,90 +742,90 @@ mahiru: そういうこともある
 
 @expr mahiru normal
 
-mahiru: 勇くんも
+mahiru: $chapter4.chapter4_corridor_end.t001
 
-mahiru: 見つけたほうがいいよ
+mahiru: $chapter4.chapter4_corridor_end.t002
 
-player: 何を
+player: $chapter4.chapter4_corridor_end.t003
 
-mahiru: 今日の理由
+mahiru: $chapter4.chapter4_corridor_end.t004
 
 @wait 400
 
-player: ……すぐには見つからないかもしれないな
+player: $chapter4.chapter4_corridor_end.t005
 
-mahiru: 小さくていいんだよ
+mahiru: $chapter4.chapter4_corridor_end.t006
 
-mahiru: 雨が今日だけの匂いをしてたとか
-mahiru: 授業中窓の外にカラスがいたとか
+mahiru: $chapter4.chapter4_corridor_end.t007
+mahiru: $chapter4.chapter4_corridor_end.t008
 
-mahiru: 理由って
-mahiru: 探せばけっこうあるから
+mahiru: $chapter4.chapter4_corridor_end.t009
+mahiru: $chapter4.chapter4_corridor_end.t010
 
 @wait 500
 
-player: ……お前のノートに書いてあった
+player: $chapter4.chapter4_corridor_end.t011
 
-mahiru: え
+mahiru: $chapter4.chapter4_corridor_end.t012
 
-player: 「勇くんが隣にいてよかった」
+player: $chapter4.chapter4_corridor_end.t013
 
 @wait 400
 
 @expr mahiru surprised
 
-mahiru: ……見た
+mahiru: $chapter4.chapter4_corridor_end.t014
 
-player: 一瞬だけ
+player: $chapter4.chapter4_corridor_end.t015
 
-mahiru: ……
+mahiru: $chapter4.chapter4_corridor_end.t016
 
 @wait 600
 
 @expr mahiru shy
 
-mahiru: ……それは
-mahiru: 内緒にしてほしかったかも
+mahiru: $chapter4.chapter4_corridor_end.t017
+mahiru: $chapter4.chapter4_corridor_end.t018
 
-player: 悪かった
+player: $chapter4.chapter4_corridor_end.t019
 
-mahiru: ……ううん
+mahiru: $chapter4.chapter4_corridor_end.t020
 
-mahiru: 書いたのは本当のことだから
+mahiru: $chapter4.chapter4_corridor_end.t021
 
 @wait 500
 
-> まひるはノートを胸元で抱えた。
-> その仕草が、本当に大切にしているということを教えていた。
+> $chapter4.chapter4_corridor_end.t022
+> $chapter4.chapter4_corridor_end.t023
 
-mahiru: じゃあね、勇くん
-mahiru: また明日
+mahiru: $chapter4.chapter4_corridor_end.t024
+mahiru: $chapter4.chapter4_corridor_end.t025
 
 @hide mahiru fade_out
 @wait 600
 
-> 廊下に一人残った。
+> $chapter4.chapter4_corridor_end.t026
 
-> さっき見えたページが、頭の中に残っていた。
-> 「勇くんが隣にいてよかった」
+> $chapter4.chapter4_corridor_end.t027
+> $chapter4.chapter4_corridor_end.t028
 
-> 自分の名前が、誰かの「良かったこと」になっている。
-> それが怖かった。
-> 怖い、という感覚を持ったことに、気づくのに少し時間がかかった。
+> $chapter4.chapter4_corridor_end.t029
+> $chapter4.chapter4_corridor_end.t030
+> $chapter4.chapter4_corridor_end.t031
 
-> 慎のノートは、見たことがなかった。
-> あいつが毎日何を思っていたか、
-> 何を良かったと思っていたか、
-> 俺は何も知らないまま終わった。
+> $chapter4.chapter4_corridor_end.t032
+> $chapter4.chapter4_corridor_end.t033
+> $chapter4.chapter4_corridor_end.t034
+> $chapter4.chapter4_corridor_end.t035
 
-> まひるのノートに名前があることが、
-> だから怖い。
-> 見えてしまった重さが、今の俺には合わないかもしれない。
+> $chapter4.chapter4_corridor_end.t036
+> $chapter4.chapter4_corridor_end.t037
+> $chapter4.chapter4_corridor_end.t038
 
-> ……でも。
+> $chapter4.chapter4_corridor_end.t039
 
-> 合わなかったとしても、
-> 目を逸らす気にはなれなかった。
+> $chapter4.chapter4_corridor_end.t040
+> $chapter4.chapter4_corridor_end.t041
 
 @jump chapter4_walk
 
@@ -841,196 +841,196 @@ mahiru: また明日
 @se rain_window.mp3 loop
 @wait 800
 
-> 昇降口を出ると、雨は小降りになっていた。
+> $chapter4.chapter4_walk.t001
 
 @show mahiru center happy fade_in
 
-mahiru: あれ、まだいたの
+mahiru: $chapter4.chapter4_walk.t002
 
-player: お前もだろ
+player: $chapter4.chapter4_walk.t003
 
-mahiru: 傘借りてたの
-mahiru: 友達に
+mahiru: $chapter4.chapter4_walk.t004
+mahiru: $chapter4.chapter4_walk.t005
 
-mahiru: 今日は同じ方向だね
+mahiru: $chapter4.chapter4_walk.t006
 
-player: そうだな
+player: $chapter4.chapter4_walk.t007
 
 @se stop
 @scene commute_road_june_evening fade
 
-> 雨は歩き始めてすぐに止んだ。
-> 夕暮れの道を並んで歩く。
-> 空は雨上がりで、西の方だけ少しだけオレンジが滲んでいた。
-> 濡れたアスファルトに、その色が薄く映っていた。
+> $chapter4.chapter4_walk.t008
+> $chapter4.chapter4_walk.t009
+> $chapter4.chapter4_walk.t010
+> $chapter4.chapter4_walk.t011
 
 @still evening_walk_two
 @wait 1000
 @still_hide
 
-mahiru: 勇くんってさ
+mahiru: $chapter4.chapter4_walk.t012
 
-player: なんだ
+player: $chapter4.chapter4_walk.t013
 
-mahiru: 変わったね
+mahiru: $chapter4.chapter4_walk.t014
 
-player: そうか？
+player: $chapter4.chapter4_walk.t015
 
-mahiru: 昔はもっと
+mahiru: $chapter4.chapter4_walk.t016
 
-mahiru: 前を見て歩く人だった
+mahiru: $chapter4.chapter4_walk.t017
 
 @wait 400
 
-player: ……そうかもな
+player: $chapter4.chapter4_walk.t018
 
 @expr mahiru normal
 
-mahiru: 今は
+mahiru: $chapter4.chapter4_walk.t019
 
-mahiru: 横を見るようになった
+mahiru: $chapter4.chapter4_walk.t020
 
-player: 横？
+player: $chapter4.chapter4_walk.t021
 
-mahiru: うん
+mahiru: $chapter4.chapter4_walk.t022
 
-mahiru: 人のほう
+mahiru: $chapter4.chapter4_walk.t023
 
 @wait 500
 
-> そう言って、
-> まひるは少しだけ笑った。
+> $chapter4.chapter4_walk.t024
+> $chapter4.chapter4_walk.t025
 
-> 前を見て歩く。
-> 小学生のころの俺はたぶんそうだった。
-> 目標を見ている人間だった。
-> 足首を痛める前、走っていたころは特に。
+> $chapter4.chapter4_walk.t026
+> $chapter4.chapter4_walk.t027
+> $chapter4.chapter4_walk.t028
+> $chapter4.chapter4_walk.t029
 
-> 今は確かに、横を見るようになった気がする。
-> それが成長なのか後退なのかは、まだよくわからない。
-> ただ、まひるはそれを悪いこととして言っていないと思った。
+> $chapter4.chapter4_walk.t030
+> $chapter4.chapter4_walk.t031
+> $chapter4.chapter4_walk.t032
 
-player: 変わることは、悪いことか
+player: $chapter4.chapter4_walk.t033
 
-mahiru: ううん
+mahiru: $chapter4.chapter4_walk.t034
 
-mahiru: 良いか悪いかじゃなくて
+mahiru: $chapter4.chapter4_walk.t035
 
-mahiru: ちゃんとわかるから
-mahiru: 変わったかどうかが
+mahiru: $chapter4.chapter4_walk.t036
+mahiru: $chapter4.chapter4_walk.t037
 
 @wait 400
 
-player: お前は変わったか
+player: $chapter4.chapter4_walk.t038
 
 @expr mahiru thinking
 
-mahiru: ……変わったよ
-mahiru: 中学のころよりは
+mahiru: $chapter4.chapter4_walk.t039
+mahiru: $chapter4.chapter4_walk.t040
 
-player: どう変わった
+player: $chapter4.chapter4_walk.t041
 
-mahiru: 昔は
-mahiru: もっと自分しか見てなかった
-
-@wait 500
-
-mahiru: 今は
-mahiru: 周りを見ながら歩けるから
-
-mahiru: それは良かったと思ってる
-
-@wait 400
-
-> まひるが言う「見る」という言葉は、
-> いつも少し深いところを指しているような気がした。
-> カメラを持ち歩いているのも、
-> 理由を集めているのも、
-> 全部同じ方向を向いている気がした。
-
-> 見ることで、留まれる。
-
-> あるいは、見ることでしか、前へ進めない。
+mahiru: $chapter4.chapter4_walk.t042
+mahiru: $chapter4.chapter4_walk.t043
 
 @wait 500
 
-mahiru: 雨上がりって
-mahiru: 空気が違うよね
+mahiru: $chapter4.chapter4_walk.t044
+mahiru: $chapter4.chapter4_walk.t045
 
-player: どう違う
-
-mahiru: なんか、全部洗われた感じ
-
-mahiru: 明日の分の空気みたいな
-
-player: 詩的だな
-
-mahiru: ふふ
-mahiru: 勇くんに言われると最高に褒めてもらった気がする
-
-player: 褒めてない
-
-mahiru: でも「詩的だな」って言った
-
-player: それは
-
-mahiru: 事実を言ったって顔してる
+mahiru: $chapter4.chapter4_walk.t046
 
 @wait 400
 
-> なぜか笑いが込み上げてきた。
-> 声には出さなかった。
-> ただ、少しだけ表情が動いたのは、まひるに見えたかもしれない。
+> $chapter4.chapter4_walk.t047
+> $chapter4.chapter4_walk.t048
+> $chapter4.chapter4_walk.t049
+> $chapter4.chapter4_walk.t050
+> $chapter4.chapter4_walk.t051
+
+> $chapter4.chapter4_walk.t052
+
+> $chapter4.chapter4_walk.t053
+
+@wait 500
+
+mahiru: $chapter4.chapter4_walk.t054
+mahiru: $chapter4.chapter4_walk.t055
+
+player: $chapter4.chapter4_walk.t056
+
+mahiru: $chapter4.chapter4_walk.t057
+
+mahiru: $chapter4.chapter4_walk.t058
+
+player: $chapter4.chapter4_walk.t059
+
+mahiru: $chapter4.chapter4_walk.t060
+mahiru: $chapter4.chapter4_walk.t061
+
+player: $chapter4.chapter4_walk.t062
+
+mahiru: $chapter4.chapter4_walk.t063
+
+player: $chapter4.chapter4_walk.t064
+
+mahiru: $chapter4.chapter4_walk.t065
+
+@wait 400
+
+> $chapter4.chapter4_walk.t066
+> $chapter4.chapter4_walk.t067
+> $chapter4.chapter4_walk.t068
 
 @expr mahiru happy
 
-mahiru: ちょっと笑ったよね
+mahiru: $chapter4.chapter4_walk.t069
 
-player: 笑ってない
+player: $chapter4.chapter4_walk.t070
 
-mahiru: 口元
+mahiru: $chapter4.chapter4_walk.t071
 
-player: ……気のせいだろ
+player: $chapter4.chapter4_walk.t072
 
-mahiru: うん、そういうことにしておく
+mahiru: $chapter4.chapter4_walk.t073
 
-> 雨上がりの道を並んで歩いた。
-> 足音が濡れたアスファルトに吸い込まれていく。
-> 交差点の手前で、まひるが立ち止まった。
+> $chapter4.chapter4_walk.t074
+> $chapter4.chapter4_walk.t075
+> $chapter4.chapter4_walk.t076
 
-mahiru: あたしここで曲がるから
+mahiru: $chapter4.chapter4_walk.t077
 
-player: ああ
+player: $chapter4.chapter4_walk.t078
 
-mahiru: 今日も理由、見つかるといいね
+mahiru: $chapter4.chapter4_walk.t079
 
-player: ……どうかな
+player: $chapter4.chapter4_walk.t080
 
-mahiru: 見つかってほしい
+mahiru: $chapter4.chapter4_walk.t081
 
 @wait 400
 
-mahiru: じゃあね、勇くん
+mahiru: $chapter4.chapter4_walk.t082
 
-player: またな
+player: $chapter4.chapter4_walk.t083
 
 @hide mahiru fade_out
 @wait 700
 
-> 雨上がりの夕空に、
-> まひるの言葉が少し残った。
+> $chapter4.chapter4_walk.t084
+> $chapter4.chapter4_walk.t085
 
-> 今日、生きててよかった理由。
+> $chapter4.chapter4_walk.t086
 
-> 探してみようと思ったわけじゃない。
-> ただ、歩きながら思い返した。
+> $chapter4.chapter4_walk.t087
+> $chapter4.chapter4_walk.t088
 
-> ことはが、音楽室の前で少しだけ緩めた表情。
-> さくらが文化祭の準備で笑い声を上げていたこと。
-> まひるが、ノートを胸元で抱えた仕草。
+> $chapter4.chapter4_walk.t089
+> $chapter4.chapter4_walk.t090
+> $chapter4.chapter4_walk.t091
 
-> ……理由と呼ぶには、小さすぎるかもしれない。
-> それでも、確かに今日あったことだった。
+> $chapter4.chapter4_walk.t092
+> $chapter4.chapter4_walk.t093
 
 @jump chapter4_end
 
@@ -1045,109 +1045,109 @@ player: またな
 @bgm mystery_shadow.mp3
 @wait 1000
 
-> 一人になると、頭がいつもと違う速さで動き出す。
+> $chapter4.chapter4_end.t001
 
-> まひるのノートに書いてあった言葉を、
-> もう一度思い出した。
+> $chapter4.chapter4_end.t002
+> $chapter4.chapter4_end.t003
 
-> 「今日の良かったこと：勇くんが隣にいてよかった」
+> $chapter4.chapter4_end.t004
 
-> 自分がどこかの理由になっている。
-> それが、どうしてこんなに重いのか。
+> $chapter4.chapter4_end.t005
+> $chapter4.chapter4_end.t006
 
-> 考えながら歩くうちに、わかった気がした。
+> $chapter4.chapter4_end.t007
 
-> 誰かにとっての理由になるということは、
-> その人の「今日」に関わっているということだ。
+> $chapter4.chapter4_end.t008
+> $chapter4.chapter4_end.t009
 
-> 慎の今日に、俺はいなかった。
-> あいつが何を良かったと思って、何を辛いと思っていたか、
-> 最後まで俺は知らなかった。
+> $chapter4.chapter4_end.t010
+> $chapter4.chapter4_end.t011
+> $chapter4.chapter4_end.t012
 
-> 隣にいたはずなのに。
-> 同じ時間を過ごしていたはずなのに。
+> $chapter4.chapter4_end.t013
+> $chapter4.chapter4_end.t014
 
 @wait 600
 
-> まひるが理由を集める理由を、
-> 今日少しだけ理解した気がした。
+> $chapter4.chapter4_end.t015
+> $chapter4.chapter4_end.t016
 
-> 大丈夫な日と大丈夫じゃない日がある。
-> その均衡を保つために、理由を集める。
+> $chapter4.chapter4_end.t017
+> $chapter4.chapter4_end.t018
 
-> ということは。
+> $chapter4.chapter4_end.t019
 
-> 理由が集まらなくなった日には、
-> 均衡が崩れる。
+> $chapter4.chapter4_end.t020
+> $chapter4.chapter4_end.t021
 
-> 理由が消えたとき、人はどうなるのか。
+> $chapter4.chapter4_end.t022
 
 @wait 500
 
-> 慎は、最後の日、
-> 何を良かったと思っていたんだろう。
+> $chapter4.chapter4_end.t023
+> $chapter4.chapter4_end.t024
 
-> あるいは、
-> 何も見つけられなかったんだろうか。
+> $chapter4.chapter4_end.t025
+> $chapter4.chapter4_end.t026
 
-> それを知る方法は、今の俺にはない。
-> 知ることができない場所に、慎はいる。
+> $chapter4.chapter4_end.t027
+> $chapter4.chapter4_end.t028
 
 @wait 700
 
-> だから怖い、のかもしれない。
-> まひるのノートが怖い理由は、そこだった。
+> $chapter4.chapter4_end.t029
+> $chapter4.chapter4_end.t030
 
-> あのノートに名前が書いてある間は、
-> まひるには理由がある。
-> 俺という理由が。
+> $chapter4.chapter4_end.t031
+> $chapter4.chapter4_end.t032
+> $chapter4.chapter4_end.t033
 
-> でも、俺は慎のときも、
-> 誰かの理由のはずだったのかもしれない。
-> それでも間に合わなかった。
-
-@wait 600
-
-> ……だから。
-
-> もし隣にいることで何か変わるなら、
-> それをやめる理由はない。
+> $chapter4.chapter4_end.t034
+> $chapter4.chapter4_end.t035
+> $chapter4.chapter4_end.t036
 
 @wait 600
 
-> 気づくことと、
-> 隣にいることは、
-> 違う。
+> $chapter4.chapter4_end.t037
 
-> 気づいていても、
-> 動けなかったことがある。
-> 慎のときも、そうだった。
+> $chapter4.chapter4_end.t038
+> $chapter4.chapter4_end.t039
+
+@wait 600
+
+> $chapter4.chapter4_end.t040
+> $chapter4.chapter4_end.t041
+> $chapter4.chapter4_end.t042
+
+> $chapter4.chapter4_end.t043
+> $chapter4.chapter4_end.t044
+> $chapter4.chapter4_end.t045
 
 @wait 500
 
-> 気づくだけじゃ、足りなかった。
+> $chapter4.chapter4_end.t046
 
 @wait 600
 
-> まひるのノートに俺の名前が書いてあった。
-> それが、今日わかったことの全部だった。
+> $chapter4.chapter4_end.t047
+> $chapter4.chapter4_end.t048
 
-> 俺が何かすごいことをしたわけじゃない。
-> ただ、そこにいた。
-> それだけで、誰かの「理由」になれるなら。
+> $chapter4.chapter4_end.t049
+> $chapter4.chapter4_end.t050
+> $chapter4.chapter4_end.t051
 
 @wait 700
 
-> ……隣にいることを、
-> 選び続けようと思った。
+> $chapter4.chapter4_end.t052
+> $chapter4.chapter4_end.t053
 
-> 感情じゃなくて、意志として。
+> $chapter4.chapter4_end.t054
 
 @wait 500
 
-> 今日の自分には、
-> それだけで充分だった。
+> $chapter4.chapter4_end.t055
+> $chapter4.chapter4_end.t056
 
 @bgm stop
 
-@end "第四章「理由を集める日々」" -> chapter5_start
+@end "$chapter4.chapter4_end.end_title" -> chapter5_start

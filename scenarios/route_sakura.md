@@ -15,81 +15,81 @@
 @bgm night_melody.mp3
 @wait 1200
 
-> ——笑顔は、夜には脱げる。
+> $route_sakura.sakura_interlude.t001
 
 @wait 1000
 
-sakura: 疲れた、って言えたら楽なのかな。
+sakura: $route_sakura.sakura_interlude.t002
 
 @wait 1000
 
-sakura: 別に、バドミントンが嫌いなわけじゃない。
-sakura: クラスのみんなが嫌いなわけでも、ない。
+sakura: $route_sakura.sakura_interlude.t003
+sakura: $route_sakura.sakura_interlude.t004
 
 @wait 800
 
-sakura: ただ。
+sakura: $route_sakura.sakura_interlude.t005
 
 @wait 1200
 
-sakura: 誰かと一緒にいるとき、ずっと何かを演じてる気がする。
-sakura: 笑いやすい空気を作るための笑顔。
-sakura: 誰かが暗くなったときに場を持たせる言葉。
-sakura: 気まずくならないように先読みして、先に動く。
+sakura: $route_sakura.sakura_interlude.t006
+sakura: $route_sakura.sakura_interlude.t007
+sakura: $route_sakura.sakura_interlude.t008
+sakura: $route_sakura.sakura_interlude.t009
 
 @wait 1000
 
-sakura: それが普通だと思ってた。
-sakura: ずっと、そういうものだと思ってた。
+sakura: $route_sakura.sakura_interlude.t010
+sakura: $route_sakura.sakura_interlude.t011
 
 @wait 1200
 
-sakura: ……でも、たまに。
+sakura: $route_sakura.sakura_interlude.t012
 
 @wait 1000
 
-sakura: すごく、ひとりになりたくなる。
+sakura: $route_sakura.sakura_interlude.t013
 
 @wait 1500
 
-sakura: お父さんが倒れてから、ちょっとわかんなくなってる。
+sakura: $route_sakura.sakura_interlude.t014
 
 @wait 800
 
-sakura: 笑ってれば大丈夫、って信じてたのに。
-sakura: 笑ってたのに、ぜんぜん大丈夫じゃなかった。
+sakura: $route_sakura.sakura_interlude.t015
+sakura: $route_sakura.sakura_interlude.t016
 
 @wait 1000
 
-sakura: じゃあ、笑顔って何だったんだろう。
+sakura: $route_sakura.sakura_interlude.t017
 
 @wait 1200
 
-sakura: ……勇くんが、変なんだよね。
+sakura: $route_sakura.sakura_interlude.t018
 
 @wait 800
 
-sakura: 変っていうか。
-sakura: あの人、笑わせようとしてこない。
-sakura: 場を明るくしようとも、してこない。
+sakura: $route_sakura.sakura_interlude.t019
+sakura: $route_sakura.sakura_interlude.t020
+sakura: $route_sakura.sakura_interlude.t021
 
 @wait 1000
 
-sakura: ただ、見てる。
-sakura: あたしが笑ってても、笑ってなくても、同じ顔で見てる。
+sakura: $route_sakura.sakura_interlude.t022
+sakura: $route_sakura.sakura_interlude.t023
 
 @wait 1200
 
-sakura: それが。
+sakura: $route_sakura.sakura_interlude.t024
 
 @wait 800
 
-sakura: なんか、怖いんだよね。
-sakura: 見透かされてる気がして。
+sakura: $route_sakura.sakura_interlude.t025
+sakura: $route_sakura.sakura_interlude.t026
 
 @wait 1000
 
-sakura: ……でも、怖いだけじゃない、のかもしれない。
+sakura: $route_sakura.sakura_interlude.t027
 
 @wait 1500
 
@@ -112,79 +112,79 @@ sakura: ……でも、怖いだけじゃない、のかもしれない。
 @se footsteps.mp3
 @wait 800
 
-> さくらが行った方向へ、俺は走った。
+> $route_sakura.sakura_ch9_start.t001
 
-> 音楽準備室の前に、ことはがいるはずだった。
-> まひるは、まだどこにもいない。
+> $route_sakura.sakura_ch9_start.t002
+> $route_sakura.sakura_ch9_start.t003
 
-> 俺の足は、さくらの方へ動いていた。
+> $route_sakura.sakura_ch9_start.t004
 
-> 「いつも一人だし！」
+> $route_sakura.sakura_ch9_start.t005
 
-> あの笑顔が頭から離れなかった。
-> 笑えていた。ちゃんと笑っていた。
-> でも、かばんを握る手が白くなっていた。
+> $route_sakura.sakura_ch9_start.t006
+> $route_sakura.sakura_ch9_start.t007
+> $route_sakura.sakura_ch9_start.t008
 
-> 白くなっていたのに、俺は一歩遅れた。
+> $route_sakura.sakura_ch9_start.t009
 
 @se footsteps.mp3
 @wait 600
 
-> 雨の中を走った。
-> 文化祭の音が遠ざかっていく。
+> $route_sakura.sakura_ch9_start.t010
+> $route_sakura.sakura_ch9_start.t011
 
 @wait 1000
 
-> 校門を出たところに、さくらがいた。
+> $route_sakura.sakura_ch9_start.t012
 
 @show sakura center normal fade_in
 
-> 立ち止まっている。
-> 傘を出そうとして、
-> その手が止まっていた。
+> $route_sakura.sakura_ch9_start.t013
+> $route_sakura.sakura_ch9_start.t014
+> $route_sakura.sakura_ch9_start.t015
 
 @wait 600
 
-player: ……さくら
+player: $route_sakura.sakura_ch9_start.t016
 
 @expr sakura surprised
 
-sakura: え
+sakura: $route_sakura.sakura_ch9_start.t017
 
-sakura: なんで
+sakura: $route_sakura.sakura_ch9_start.t018
 
-sakura: 文化祭まだあるじゃん
+sakura: $route_sakura.sakura_ch9_start.t019
 
-player: 行く
+player: $route_sakura.sakura_ch9_start.t020
 
 @wait 500
 
-sakura: え、でも
+sakura: $route_sakura.sakura_ch9_start.t021
 
-sakura: 大丈夫だよ、あたし一人で
+sakura: $route_sakura.sakura_ch9_start.t022
 
-player: わかってる
+player: $route_sakura.sakura_ch9_start.t023
 
-sakura: ……
+sakura: $route_sakura.sakura_ch9_start.t024
 
-player: 傘、出せなかっただろ
+player: $route_sakura.sakura_ch9_start.t025
 
 @wait 700
 
 @expr sakura blank
 
-> さくらは何も言わなかった。
+> $route_sakura.sakura_ch9_start.t026
 
-> 雨が降っていた。
-> 細かく、静かに。
+> $route_sakura.sakura_ch9_start.t027
+> $route_sakura.sakura_ch9_start.t028
 
 @wait 1000
 
 @expr sakura happy
 
-sakura: ……もう
+sakura: $route_sakura.sakura_ch9_start.t029
 
-sakura: しょうがないな
+sakura: $route_sakura.sakura_ch9_start.t030
 
 @se footsteps.mp3
 @wait 500
@@ -192,8 +192,8 @@ sakura: しょうがないな
 @hide sakura slide_out_left
 @wait 400
 
-> 並んで歩いた。
-> 病院の名前だけ確かめて、それ以上は何も言わなかった。
+> $route_sakura.sakura_ch9_start.t031
+> $route_sakura.sakura_ch9_start.t032
 
 @bgm stop
 @wait 300
@@ -208,61 +208,61 @@ sakura: しょうがないな
 @se school_bell.mp3
 @wait 1000
 
-> 父親は軽症だった。
+> $route_sakura.sakura_ch9_days.t001
 
-> 心臓に少し負担がかかっていた、ということで、
-> 数週間の入院が必要だということ。
+> $route_sakura.sakura_ch9_days.t002
+> $route_sakura.sakura_ch9_days.t003
 
-> その話をさくらは、翌日の放課後に教えてくれた。
-> 「大したことなかったよ！　よかったよかった！」と言いながら。
+> $route_sakura.sakura_ch9_days.t004
+> $route_sakura.sakura_ch9_days.t005
 
 @show sakura right happy fade_in
 
-sakura: だから本当に大丈夫だったんだって
+sakura: $route_sakura.sakura_ch9_days.t006
 
-player: 入院するんだろ
+player: $route_sakura.sakura_ch9_days.t007
 
-sakura: でもそれって念のためで
+sakura: $route_sakura.sakura_ch9_days.t008
 
-player: 一人で家のこと、全部やるのか
+player: $route_sakura.sakura_ch9_days.t009
 
 @wait 400
 
 @expr sakura normal
 
-sakura: ……まあ、うん
+sakura: $route_sakura.sakura_ch9_days.t010
 
-sakura: 別に大したことないし
-sakura: ごはんとか洗濯とか、もともと手伝ってたから
+sakura: $route_sakura.sakura_ch9_days.t011
+sakura: $route_sakura.sakura_ch9_days.t012
 
-player: お母さんには連絡したか
+player: $route_sakura.sakura_ch9_days.t013
 
 @wait 500
 
 @expr sakura thinking
 
-sakura: ……したよ
+sakura: $route_sakura.sakura_ch9_days.t014
 
-sakura: 既読がつくかどうかわかんないけど
+sakura: $route_sakura.sakura_ch9_days.t015
 
 @wait 400
 
-player: ついたか
+player: $route_sakura.sakura_ch9_days.t016
 
-sakura: ……まだ
+sakura: $route_sakura.sakura_ch9_days.t017
 
 @wait 600
 
 @expr sakura happy
 
-sakura: でも大丈夫！
-sakura: お父さん元気だって書いておいたし
+sakura: $route_sakura.sakura_ch9_days.t018
+sakura: $route_sakura.sakura_ch9_days.t019
 
-> *（元気じゃないから入院しているのに）*
+> *$route_sakura.sakura_ch9_days.t020*
 
-player: ……そうか
+player: $route_sakura.sakura_ch9_days.t021
 
-sakura: うん！
+sakura: $route_sakura.sakura_ch9_days.t022
 
 @hide sakura fade_out
 @wait 500
@@ -276,47 +276,47 @@ sakura: うん！
 @bgm daily_life.mp3
 @wait 800
 
-> 入院が始まった最初の週。
+> $route_sakura.sakura_ch9_daily_life.t001
 
-> さくらはいつも通りだった。
-> 朝は俺より早く来て、席で課題をやっていた。
-> 昼休みは友達と話して笑っていた。
-> 帰りは部活。
+> $route_sakura.sakura_ch9_daily_life.t002
+> $route_sakura.sakura_ch9_daily_life.t003
+> $route_sakura.sakura_ch9_daily_life.t004
+> $route_sakura.sakura_ch9_daily_life.t005
 
-> 何一つ変わっていなかった。
-> 変わらないように、していた。
+> $route_sakura.sakura_ch9_daily_life.t006
+> $route_sakura.sakura_ch9_daily_life.t007
 
 @show sakura left happy fade_in
 
-sakura: あ、勇くん！　朝ごはん食べた？
+sakura: $route_sakura.sakura_ch9_daily_life.t008
 
-player: 食べた
+player: $route_sakura.sakura_ch9_daily_life.t009
 
-sakura: ほんとに？　ちゃんと食べた？
+sakura: $route_sakura.sakura_ch9_daily_life.t010
 
-player: 食べたと言ってる
+player: $route_sakura.sakura_ch9_daily_life.t011
 
-sakura: パンだけとかじゃないよね
+sakura: $route_sakura.sakura_ch9_daily_life.t012
 
-player: 米だ
+player: $route_sakura.sakura_ch9_daily_life.t013
 
-sakura: えらい！
+sakura: $route_sakura.sakura_ch9_daily_life.t014
 
 @wait 400
 
-> いつものやり取りだった。
-> いつものさくらだった。
+> $route_sakura.sakura_ch9_daily_life.t015
+> $route_sakura.sakura_ch9_daily_life.t016
 
 @wait 500
 
 @expr sakura normal
 
-> でもさくらの目の下に、うっすらと色があった。
-> 疲れているのに、睡眠が足りていないのに、
-> 気づかないふりをしている。
+> $route_sakura.sakura_ch9_daily_life.t017
+> $route_sakura.sakura_ch9_daily_life.t018
+> $route_sakura.sakura_ch9_daily_life.t019
 
-> 俺も気づかないふりをした。
-> まだ聞く言葉を持っていなかったから。
+> $route_sakura.sakura_ch9_daily_life.t020
+> $route_sakura.sakura_ch9_daily_life.t021
 
 @hide sakura fade_out
 @wait 500
@@ -330,91 +330,91 @@ sakura: えらい！
 @bgm daily_life.mp3
 @wait 700
 
-> 一週間が経った。
+> $route_sakura.sakura_ch9_daily2.t001
 
-> 昼食を一緒に食べることになった。
-> どちらが誘ったわけでもなかった。
-> なんとなく、そうなっていた。
+> $route_sakura.sakura_ch9_daily2.t002
+> $route_sakura.sakura_ch9_daily2.t003
+> $route_sakura.sakura_ch9_daily2.t004
 
 @show sakura center happy fade_in
 
-sakura: 今日の唐揚げ、いつもより小さくない？
+sakura: $route_sakura.sakura_ch9_daily2.t005
 
-player: 気のせいだろ
+player: $route_sakura.sakura_ch9_daily2.t006
 
-sakura: いや絶対小さい！　先週の方が大きかった
+sakura: $route_sakura.sakura_ch9_daily2.t007
 
-player: 覚えてるのか
+player: $route_sakura.sakura_ch9_daily2.t008
 
-sakura: そりゃ覚えてるよ！　毎週楽しみにしてるもん
+sakura: $route_sakura.sakura_ch9_daily2.t009
 
 @wait 400
 
-player: お前が楽しみにしてるのは唐揚げか
+player: $route_sakura.sakura_ch9_daily2.t010
 
-sakura: ご飯全体！
+sakura: $route_sakura.sakura_ch9_daily2.t011
 
 @wait 500
 
-> さくらは笑った。
-> 本物の笑顔だった。
+> $route_sakura.sakura_ch9_daily2.t012
+> $route_sakura.sakura_ch9_daily2.t013
 
 @wait 400
 
 @expr sakura normal
 
-sakura: ……ねえ、勇くんって
+sakura: $route_sakura.sakura_ch9_daily2.t014
 
-sakura: お父さんとご飯食べる？
+sakura: $route_sakura.sakura_ch9_daily2.t015
 
 @wait 500
 
-player: たまに
+player: $route_sakura.sakura_ch9_daily2.t016
 
-sakura: そっか
+sakura: $route_sakura.sakura_ch9_daily2.t017
 
 @wait 600
 
-player: お前は
+player: $route_sakura.sakura_ch9_daily2.t018
 
 @wait 300
 
 @expr sakura thinking
 
-sakura: ……今は一人だから
+sakura: $route_sakura.sakura_ch9_daily2.t019
 
-sakura: 食べ終わる時間ってよくわかんなくなるよね
+sakura: $route_sakura.sakura_ch9_daily2.t020
 
-sakura: あ、食べてないわけじゃないよ！　ちゃんと作って食べてるよ
+sakura: $route_sakura.sakura_ch9_daily2.t021
 
-player: ……
+player: $route_sakura.sakura_ch9_daily2.t022
 
-sakura: ほんとだって！
+sakura: $route_sakura.sakura_ch9_daily2.t023
 
 @wait 500
 
-> *（「ちゃんと」って言うとき、だいたいちゃんとしていない）*
-> *（でも今はそれを言う場所じゃないと思った）*
+> *$route_sakura.sakura_ch9_daily2.t024*
+> *$route_sakura.sakura_ch9_daily2.t025*
 
-player: 何が得意なんだ、料理
+player: $route_sakura.sakura_ch9_daily2.t026
 
 @expr sakura happy
 
-sakura: え？　えーと、炒め物かな。あとスープ
+sakura: $route_sakura.sakura_ch9_daily2.t027
 
-player: 炒め物とスープの組み合わせなら栄養は取れる
+player: $route_sakura.sakura_ch9_daily2.t028
 
-sakura: ……勇くん、なんか変なとこで合理的だよね
+sakura: $route_sakura.sakura_ch9_daily2.t029
 
-player: そうか
+player: $route_sakura.sakura_ch9_daily2.t030
 
-sakura: でも、ありがとう
+sakura: $route_sakura.sakura_ch9_daily2.t031
 
 @wait 600
 
-> ありがとう、の意味が、俺にはわかっていた。
-> 食べてるかどうかを確認してくれたことへの礼だ。
-> さくらはそういうことをちゃんと聞いている。
+> $route_sakura.sakura_ch9_daily2.t032
+> $route_sakura.sakura_ch9_daily2.t033
+> $route_sakura.sakura_ch9_daily2.t034
 
 @hide sakura fade_out
 @wait 500
@@ -428,95 +428,95 @@ sakura: でも、ありがとう
 @bgm daily_life.mp3
 @wait 800
 
-> さくらはいつも通りだった。
+> $route_sakura.sakura_ch9_gym.t001
 
-> クラスの係も、委員会の仕事も、ちゃんとこなしていた。
-> バドミントン部の練習では後輩の面倒を見て、
-> 誰かが悩んでいたら声をかけて。
+> $route_sakura.sakura_ch9_gym.t002
+> $route_sakura.sakura_ch9_gym.t003
+> $route_sakura.sakura_ch9_gym.t004
 
-> 誰にも、何も言っていないはずだった。
+> $route_sakura.sakura_ch9_gym.t005
 
 @show sakura_sports left happy fade_in
 
-sakura: 花見、シャトル落としすぎ！
-sakura: もっと打点上げて！　手首じゃなくて肘から！
+sakura: $route_sakura.sakura_ch9_gym.t006
+sakura: $route_sakura.sakura_ch9_gym.t007
 
-> 後輩「は、はい！」
+> $route_sakura.sakura_ch9_gym.t008
 
-sakura: できてる、その感じ！　続けて！
+sakura: $route_sakura.sakura_ch9_gym.t009
 
-> 声が明るい。
-> 走る。返す。指示する。笑う。
-> 全部を、全力でやっていた。
+> $route_sakura.sakura_ch9_gym.t010
+> $route_sakura.sakura_ch9_gym.t011
+> $route_sakura.sakura_ch9_gym.t012
 
 @wait 800
 
 @expr sakura_sports normal
 
-> 副部長としての仕事は、ちゃんとやっていた。
-> 練習メニューを組んで、後輩の様子を見て、
-> 次の大会に向けたスケジュールを顧問と確認して。
+> $route_sakura.sakura_ch9_gym.t013
+> $route_sakura.sakura_ch9_gym.t014
+> $route_sakura.sakura_ch9_gym.t015
 
-> 全部ひとりでこなしていた。
-> 「大丈夫です」という返事と一緒に。
+> $route_sakura.sakura_ch9_gym.t016
+> $route_sakura.sakura_ch9_gym.t017
 
 @wait 600
 
 @expr sakura_sports happy
 
-sakura: 倉橋、今日フットワーク速くなってたよ！
-sakura: この前と全然違う！
+sakura: $route_sakura.sakura_ch9_gym.t018
+sakura: $route_sakura.sakura_ch9_gym.t019
 
-> 後輩「……ほんとですか！　嬉しい！」
+> $route_sakura.sakura_ch9_gym.t020
 
-sakura: ほんとほんと！　わかりやすく変わってた
+sakura: $route_sakura.sakura_ch9_gym.t021
 
-> 後輩が照れながら笑う。
-> さくらも笑う。
+> $route_sakura.sakura_ch9_gym.t022
+> $route_sakura.sakura_ch9_gym.t023
 
 @wait 500
 
-> 俺は壁際から見ていた。
-> さくらの笑顔は本物だった。
-> 後輩が上達したことは、本当に嬉しいんだと思う。
+> $route_sakura.sakura_ch9_gym.t024
+> $route_sakura.sakura_ch9_gym.t025
+> $route_sakura.sakura_ch9_gym.t026
 
-> でも、その笑顔の端に。
-> 疲れが、こびりついていた。
+> $route_sakura.sakura_ch9_gym.t027
+> $route_sakura.sakura_ch9_gym.t028
 
 @wait 400
 
-> この後、文化祭委員会の反省会がある。
-> 昨日の放課後もそうだった。
-> それなのに、ここでも後輩の前では全力だ。
+> $route_sakura.sakura_ch9_gym.t029
+> $route_sakura.sakura_ch9_gym.t030
+> $route_sakura.sakura_ch9_gym.t031
 
 @se footsteps.mp3
 @wait 400
 
-> 練習が終わって、後輩たちが帰っていく。
+> $route_sakura.sakura_ch9_gym.t032
 
 @expr sakura_sports normal
 
-> さくらはコートの端で、一人でシャトルを拾い集めていた。
+> $route_sakura.sakura_ch9_gym.t033
 
-> 一つ。また一つ。
-> 黙って、丁寧に。
+> $route_sakura.sakura_ch9_gym.t034
+> $route_sakura.sakura_ch9_gym.t035
 
-> 誰も見ていないときの手つきだった。
+> $route_sakura.sakura_ch9_gym.t036
 
 @wait 800
 
-player: ……手伝うか
+player: $route_sakura.sakura_ch9_gym.t037
 
 @expr sakura_sports normal
 
-sakura: あ、勇くんまだいたの？
+sakura: $route_sakura.sakura_ch9_gym.t038
 
-player: 邪魔か
+player: $route_sakura.sakura_ch9_gym.t039
 
-sakura: ……ううん
+sakura: $route_sakura.sakura_ch9_gym.t040
 
-> さくらはまた笑った。
-> でもその笑顔は、ほんの少しだけ遅れて出てきた。
+> $route_sakura.sakura_ch9_gym.t041
+> $route_sakura.sakura_ch9_gym.t042
 
 @hide sakura_sports fade_out
 @wait 500
@@ -530,95 +530,95 @@ sakura: ……ううん
 @bgm evening_piano.mp3
 @wait 700
 
-> シャトルを片付けて、二人で体育館を出た。
+> $route_sakura.sakura_ch9_walk.t001
 
-> 夕方の光が斜めに差し込んでいた。
-> 秋の終わりの空気は、指先が少し冷たい。
+> $route_sakura.sakura_ch9_walk.t002
+> $route_sakura.sakura_ch9_walk.t003
 
 @show sakura right normal fade_in
 
-sakura: 今日の花見ちゃん、上手くなってきてるんだよね
+sakura: $route_sakura.sakura_ch9_walk.t004
 
-player: さっきそう言ってたな
+player: $route_sakura.sakura_ch9_walk.t005
 
-sakura: うん。でもまだ体幹がね、足りなくて
+sakura: $route_sakura.sakura_ch9_walk.t006
 
-player: 足りなくなるのは疲れてるときだ
+player: $route_sakura.sakura_ch9_walk.t007
 
-sakura: ……そうかも
+sakura: $route_sakura.sakura_ch9_walk.t008
 
 @wait 400
 
-sakura: 勇くん、バドミントン詳しいの？
+sakura: $route_sakura.sakura_ch9_walk.t009
 
-player: 詳しくない。でも疲れてる人間の動きは見ればわかる
+player: $route_sakura.sakura_ch9_walk.t010
 
 @wait 500
 
 @expr sakura thinking
 
-sakura: ……そっか
+sakura: $route_sakura.sakura_ch9_walk.t011
 
-sakura: 疲れてると動きに出るよね、確かに
+sakura: $route_sakura.sakura_ch9_walk.t012
 
 @wait 400
 
 @expr sakura happy
 
-sakura: あたしは大丈夫だけど
+sakura: $route_sakura.sakura_ch9_walk.t013
 
-player: ……
+player: $route_sakura.sakura_ch9_walk.t014
 
 @wait 600
 
-> *（「大丈夫」という言葉を、さくらはどれだけ使ってきたんだろう）*
+> *$route_sakura.sakura_ch9_walk.t015*
 
-> *（「大丈夫」と言えば、続けられる）*
-> *（「大丈夫」と言えば、心配させない）*
-> *（「大丈夫」と言えば、誰もいなくならない）*
+> *$route_sakura.sakura_ch9_walk.t016*
+> *$route_sakura.sakura_ch9_walk.t017*
+> *$route_sakura.sakura_ch9_walk.t018*
 
-> *（そういう使い方を、もう何年もしてきた言葉だ）*
+> *$route_sakura.sakura_ch9_walk.t019*
 
-player: ……ちゃんと食えてるか
+player: $route_sakura.sakura_ch9_walk.t020
 
-sakura: え、ちゃんと食べてるよ！
+sakura: $route_sakura.sakura_ch9_walk.t021
 
-player: 何を食べた
+player: $route_sakura.sakura_ch9_walk.t022
 
-sakura: ……ゆうべは炒飯
+sakura: $route_sakura.sakura_ch9_walk.t023
 
-player: 今日の朝は
+player: $route_sakura.sakura_ch9_walk.t024
 
-sakura: ……ヨーグルト
+sakura: $route_sakura.sakura_ch9_walk.t025
 
 @wait 500
 
-player: 少ないな
+player: $route_sakura.sakura_ch9_walk.t026
 
 @expr sakura shy
 
-sakura: ……朝は別にいいじゃん
+sakura: $route_sakura.sakura_ch9_walk.t027
 
-player: よくない
+player: $route_sakura.sakura_ch9_walk.t028
 
-sakura: 勇くんって意外とうるさいよね
+sakura: $route_sakura.sakura_ch9_walk.t029
 
-player: そういうことにしておく
+player: $route_sakura.sakura_ch9_walk.t030
 
 @wait 500
 
 @expr sakura normal
 
-sakura: ……ありがとね
+sakura: $route_sakura.sakura_ch9_walk.t031
 
 @wait 600
 
-> また、ありがとうだった。
-> さくらはこういうとき必ず礼を言う。
-> 心配してもらうことを、申し訳ないと思っているから。
+> $route_sakura.sakura_ch9_walk.t032
+> $route_sakura.sakura_ch9_walk.t033
+> $route_sakura.sakura_ch9_walk.t034
 
-> 謝る必要のないことで、さくらは謝り続けている。
-> ありがとうという言葉の裏に、すみません、が透けて見えた。
+> $route_sakura.sakura_ch9_walk.t035
+> $route_sakura.sakura_ch9_walk.t036
 
 @hide sakura fade_out
 @wait 500
@@ -632,76 +632,76 @@ sakura: ……ありがとね
 @bgm night_melody.mp3
 @wait 800
 
-> 夜。
+> $route_sakura.sakura_ch9_mother.t001
 
-> さくらからメッセージが届いた。
-> 「今日のごはん写真撮ったよ」
+> $route_sakura.sakura_ch9_mother.t002
+> $route_sakura.sakura_ch9_mother.t003
 
-> 画像が一枚。
-> 小さな鍋にスープ。卵焼き。炊きたての米。
+> $route_sakura.sakura_ch9_mother.t004
+> $route_sakura.sakura_ch9_mother.t005
 
 @wait 600
 
-player: 食えてるじゃないか
+player: $route_sakura.sakura_ch9_mother.t006
 
 @wait 400
 
-> 返信が来た。
-> 「勇くんにうるさいって言われたから　笑」
+> $route_sakura.sakura_ch9_mother.t007
+> $route_sakura.sakura_ch9_mother.t008
 
-> 絵文字が一個ついていた。
+> $route_sakura.sakura_ch9_mother.t009
 
 @wait 500
 
-player: うるさくてよかった
+player: $route_sakura.sakura_ch9_mother.t010
 
-> 「あははそれな」
+> $route_sakura.sakura_ch9_mother.t011
 
 @wait 600
 
-> それからしばらくして、もう一通来た。
+> $route_sakura.sakura_ch9_mother.t012
 
-> 「お母さん、まだ既読ついてない」
+> $route_sakura.sakura_ch9_mother.t013
 
 @wait 1000
 
 @bgm stop
 @wait 400
 
-> 一行だけ。
-> 絵文字なし。
+> $route_sakura.sakura_ch9_mother.t014
+> $route_sakura.sakura_ch9_mother.t015
 
 @wait 800
 
-> *（病院に運ばれた父の話を送って、もう十日が経っていた）*
-> *（「お父さん倒れた」「今は病院にいる」「少し大変だけど大丈夫」）*
-> *（そう送って。既読がつかなかった）*
+> *$route_sakura.sakura_ch9_mother.t016*
+> *$route_sakura.sakura_ch9_mother.t017*
+> *$route_sakura.sakura_ch9_mother.t018*
 
 @wait 600
 
-> 何を送れば正解か、俺にはわからなかった。
+> $route_sakura.sakura_ch9_mother.t019
 
-> 「大丈夫か」と聞けば「大丈夫」と返ってくる。
-> 「辛いな」と言えば「そんなことないよ！」と返ってくる。
+> $route_sakura.sakura_ch9_mother.t020
+> $route_sakura.sakura_ch9_mother.t021
 
-> さくらはすごく速く笑顔を作る。
-> 文字の上でも、それは変わらない。
+> $route_sakura.sakura_ch9_mother.t022
+> $route_sakura.sakura_ch9_mother.t023
 
 @wait 700
 
-> 俺はしばらく画面を見つめて。
+> $route_sakura.sakura_ch9_mother.t024
 
-player: ……スープうまそうだったな
+player: $route_sakura.sakura_ch9_mother.t025
 
 @wait 400
 
-> 返信が来た。
-> 「うん、うまかった」
+> $route_sakura.sakura_ch9_mother.t026
+> $route_sakura.sakura_ch9_mother.t027
 
 @wait 500
 
-> それだけだった。
-> でも、それだけでよかった。
+> $route_sakura.sakura_ch9_mother.t028
+> $route_sakura.sakura_ch9_mother.t029
 
 @bgm night_melody.mp3
 @wait 600
@@ -715,85 +715,85 @@ player: ……スープうまそうだったな
 @bgm daily_life.mp3
 @wait 800
 
-> また一週間が経った。
+> $route_sakura.sakura_ch9_daily3.t001
 
-> さくらの目の下の色は、まだそこにあった。
-> でも笑顔の速さは変わらなかった。
+> $route_sakura.sakura_ch9_daily3.t002
+> $route_sakura.sakura_ch9_daily3.t003
 
 @show sakura right happy fade_in
 
-sakura: 勇くん、週末どうしてた？
+sakura: $route_sakura.sakura_ch9_daily3.t004
 
-player: 特に何もしてない
+player: $route_sakura.sakura_ch9_daily3.t005
 
-sakura: え、ほんとに？　ゲームとか？
+sakura: $route_sakura.sakura_ch9_daily3.t006
 
-player: 本を読んでた
+player: $route_sakura.sakura_ch9_daily3.t007
 
-sakura: え、何の本？
+sakura: $route_sakura.sakura_ch9_daily3.t008
 
-player: 推理小説
+player: $route_sakura.sakura_ch9_daily3.t009
 
-sakura: 面白い？
+sakura: $route_sakura.sakura_ch9_daily3.t010
 
-player: まあな
+player: $route_sakura.sakura_ch9_daily3.t011
 
 @wait 400
 
-sakura: あたしも読んでみようかな
-sakura: 最近なんか、夜に時間があるんだよね
+sakura: $route_sakura.sakura_ch9_daily3.t012
+sakura: $route_sakura.sakura_ch9_daily3.t013
 
 @wait 500
 
-player: ……寝られてるか
+player: $route_sakura.sakura_ch9_daily3.t014
 
 @expr sakura thinking
 
-sakura: うーん
+sakura: $route_sakura.sakura_ch9_daily3.t015
 
-sakura: 眠れてはいるんだけど
-sakura: なんか変な夢見るんだよ
+sakura: $route_sakura.sakura_ch9_daily3.t016
+sakura: $route_sakura.sakura_ch9_daily3.t017
 
-player: 変な夢
+player: $route_sakura.sakura_ch9_daily3.t018
 
-sakura: うん、内容はよく覚えてないんだけど
-sakura: なんか追いかけられてる感じの
+sakura: $route_sakura.sakura_ch9_daily3.t019
+sakura: $route_sakura.sakura_ch9_daily3.t020
 
 @wait 600
 
 @expr sakura happy
 
-sakura: でも大丈夫！　朝ちゃんと起きられてるし
+sakura: $route_sakura.sakura_ch9_daily3.t021
 
-player: ……
+player: $route_sakura.sakura_ch9_daily3.t022
 
 @wait 400
 
-> *（「追いかけられる夢」を「大丈夫」と言える人間が、大丈夫なわけがない）*
+> *$route_sakura.sakura_ch9_daily3.t023*
 
-> *（でも、それを言えば「大丈夫だって！」が返ってくる）*
+> *$route_sakura.sakura_ch9_daily3.t024*
 
-player: 推理小説、貸してやる
+player: $route_sakura.sakura_ch9_daily3.t025
 
 @expr sakura surprised
 
-sakura: え、いいの？
+sakura: $route_sakura.sakura_ch9_daily3.t026
 
-player: 読み終わったから
+player: $route_sakura.sakura_ch9_daily3.t027
 
-sakura: やった！　ありがとう！
+sakura: $route_sakura.sakura_ch9_daily3.t028
 
 @wait 500
 
-> さくらは少し嬉しそうだった。
-> たぶん本の話をするのが久しぶりだったから。
+> $route_sakura.sakura_ch9_daily3.t029
+> $route_sakura.sakura_ch9_daily3.t030
 
-> 父が入院してから、さくらは「自分のこと」をあまり話さなくなっていた。
-> 部活のこと、後輩のこと、クラスのこと。
-> それは話す。
+> $route_sakura.sakura_ch9_daily3.t031
+> $route_sakura.sakura_ch9_daily3.t032
+> $route_sakura.sakura_ch9_daily3.t033
 
-> でも、自分が好きなもの、自分が楽しいと思うことは、
-> 少しずつ減っていっていた。
+> $route_sakura.sakura_ch9_daily3.t034
+> $route_sakura.sakura_ch9_daily3.t035
 
 @hide sakura fade_out
 @wait 500
@@ -807,99 +807,99 @@ sakura: やった！　ありがとう！
 @bgm sakura_theme.mp3
 @wait 700
 
-> 帰り道、並んで歩いていると、
-> さくらのスマホが一度だけ光った。
+> $route_sakura.sakura_ch9_choice.t001
+> $route_sakura.sakura_ch9_choice.t002
 
 @show sakura right normal fade_in
 
-> さくらはそれを見て、
-> 一秒だけ、顔が止まった。
+> $route_sakura.sakura_ch9_choice.t003
+> $route_sakura.sakura_ch9_choice.t004
 
-> 既読がついていない。
-> そう、ひと目でわかった。
+> $route_sakura.sakura_ch9_choice.t005
+> $route_sakura.sakura_ch9_choice.t006
 
 @wait 600
 
 @expr sakura happy
 
-sakura: なんでもない！　迷惑メールかな
+sakura: $route_sakura.sakura_ch9_choice.t007
 
-player: ……
+player: $route_sakura.sakura_ch9_choice.t008
 
 @wait 400
 
 @choice
-- "大丈夫か、と聞く" -> sakura_ch9_ask
-- "何も言わないでいる" -> sakura_ch9_silent
+- $choices.route_sakura.ask_okay -> sakura_ch9_ask
+- $choices.route_sakura.say_nothing -> sakura_ch9_silent
 
 
 # sakura_ch9_ask
 
-player: ……大丈夫か
+player: $route_sakura.sakura_ch9_ask.t001
 
 @wait 500
 
 @expr sakura surprised
 
-sakura: え？
+sakura: $route_sakura.sakura_ch9_ask.t002
 
 @wait 300
 
 @expr sakura happy
 
-sakura: うん、全然大丈夫！
-sakura: ありがとね
+sakura: $route_sakura.sakura_ch9_ask.t003
+sakura: $route_sakura.sakura_ch9_ask.t004
 
 @wait 700
 
-> *（「全然」って言うやつが大丈夫だったことはない）*
+> *$route_sakura.sakura_ch9_ask.t005*
 
-player: ……そうか
+player: $route_sakura.sakura_ch9_ask.t006
 
-sakura: そうだよ！
+sakura: $route_sakura.sakura_ch9_ask.t007
 
 @wait 600
 
-> さくらは笑い続けていた。
+> $route_sakura.sakura_ch9_ask.t008
 
-> 全然、と言った。
-> 全然、大丈夫。
+> $route_sakura.sakura_ch9_ask.t009
+> $route_sakura.sakura_ch9_ask.t010
 
-> そういう言葉の使い方を、
-> 大丈夫な人間はしない。
+> $route_sakura.sakura_ch9_ask.t011
+> $route_sakura.sakura_ch9_ask.t012
 
 @jump sakura_ch9_end
 
 
 # sakura_ch9_silent
 
-> 何も言わなかった。
+> $route_sakura.sakura_ch9_silent.t001
 
-> 聞こえていた。
-> でも、聞いてしまったら、
-> さくらが答えを作らなければいけなくなる。
+> $route_sakura.sakura_ch9_silent.t002
+> $route_sakura.sakura_ch9_silent.t003
+> $route_sakura.sakura_ch9_silent.t004
 
 @wait 600
 
-sakura: ……勇くんって
+sakura: $route_sakura.sakura_ch9_silent.t005
 
-sakura: 変なとこで黙るよね
+sakura: $route_sakura.sakura_ch9_silent.t006
 
-player: そうか？
+player: $route_sakura.sakura_ch9_silent.t007
 
-sakura: うん
+sakura: $route_sakura.sakura_ch9_silent.t008
 
 @wait 400
 
 @expr sakura normal
 
-sakura: ……でもなんか
+sakura: $route_sakura.sakura_ch9_silent.t009
 
-sakura: 安心する、かも
+sakura: $route_sakura.sakura_ch9_silent.t010
 
 @wait 600
 
-> *（俺には何もできていない。それでも、それだけが今できることだった）*
+> *$route_sakura.sakura_ch9_silent.t011*
 
 @jump sakura_ch9_end
 
@@ -911,26 +911,26 @@ sakura: 安心する、かも
 @bgm evening_piano.mp3
 @wait 800
 
-> 途中で別れた。
+> $route_sakura.sakura_ch9_end.t001
 
-> 「また明日ね！」と言って、さくらは帰っていった。
-> いつもの声だった。
-> いつもの笑顔だった。
+> $route_sakura.sakura_ch9_end.t002
+> $route_sakura.sakura_ch9_end.t003
+> $route_sakura.sakura_ch9_end.t004
 
-> でも誰もいない方向へ歩く後ろ姿は、
-> 少しだけ、小さかった。
+> $route_sakura.sakura_ch9_end.t005
+> $route_sakura.sakura_ch9_end.t006
 
 @wait 1000
 
-> *（誰もいない部屋に帰っていく）*
-> *（それが何日目かも、俺は知らない）*
+> *$route_sakura.sakura_ch9_end.t007*
+> *$route_sakura.sakura_ch9_end.t008*
 
-> *（洗濯をして、ご飯を作って、食べて、寝る）*
-> *（それを一人でこなして、「大丈夫」と言い続けていた）*
+> *$route_sakura.sakura_ch9_end.t009*
+> *$route_sakura.sakura_ch9_end.t010*
 
-> *（謝る必要のないことで、さくらは謝り続けている）*
-> *（「心配かけてごめんね」「大丈夫だから気にしないで」）*
-> *（そのたびに、俺は何も言えなかった）*
+> *$route_sakura.sakura_ch9_end.t011*
+> *$route_sakura.sakura_ch9_end.t012*
+> *$route_sakura.sakura_ch9_end.t013*
 
 @wait 1000
 
@@ -951,57 +951,57 @@ sakura: 安心する、かも
 @se school_bell.mp3
 @wait 800
 
-> また数日が経った。
+> $route_sakura.sakura_ch10_start.t001
 
-> 父親の入院は続いていた。
-> さくらは何も言わなかった。
-> 俺も聞かなかった。
+> $route_sakura.sakura_ch10_start.t002
+> $route_sakura.sakura_ch10_start.t003
+> $route_sakura.sakura_ch10_start.t004
 
-> 聞いたところで、「大丈夫」と言う。
-> その答えは最初からわかっていたから。
+> $route_sakura.sakura_ch10_start.t005
+> $route_sakura.sakura_ch10_start.t006
 
 @show sakura right happy fade_in
 
-sakura: 勇くん、今日の数学の課題もう終わった？
+sakura: $route_sakura.sakura_ch10_start.t007
 
-player: まだ
+player: $route_sakura.sakura_ch10_start.t008
 
-sakura: あたしも！
-sakura: 放課後一緒にやろうよ
+sakura: $route_sakura.sakura_ch10_start.t009
+sakura: $route_sakura.sakura_ch10_start.t010
 
-player: いいけど
+player: $route_sakura.sakura_ch10_start.t011
 
-sakura: やった！
+sakura: $route_sakura.sakura_ch10_start.t012
 
 @wait 400
 
 @expr sakura normal
 
-> さくらのスマホが震えた。
+> $route_sakura.sakura_ch10_start.t013
 
-> 机の上で、一度だけ。
+> $route_sakura.sakura_ch10_start.t014
 
 @wait 300
 
 @expr sakura blank
 
-> さくらの手が止まった。
+> $route_sakura.sakura_ch10_start.t015
 
-> 見た。読んだ。
-> 何秒かかけて、読んだ。
+> $route_sakura.sakura_ch10_start.t016
+> $route_sakura.sakura_ch10_start.t017
 
 @wait 800
 
 @expr sakura happy
 
-sakura: あ、ごめんごめん！　どこまで話してたっけ
+sakura: $route_sakura.sakura_ch10_start.t018
 
-player: ……
+player: $route_sakura.sakura_ch10_start.t019
 
 @wait 400
 
-> *（切り替えが速すぎる。慣れすぎている）*
-> *（何年も、それでやってきたんだろう）*
+> *$route_sakura.sakura_ch10_start.t020*
+> *$route_sakura.sakura_ch10_start.t021*
 
 @hide sakura fade_out
 @wait 500
@@ -1015,72 +1015,72 @@ player: ……
 @bgm night_melody.mp3
 @wait 800
 
-> 夜。
+> $route_sakura.sakura_ch10_message.t001
 
-> さくらからメッセージが届いた。
+> $route_sakura.sakura_ch10_message.t002
 
-> 「お母さんからLINEきた」
+> $route_sakura.sakura_ch10_message.t003
 
-> 一行だけ。
-> それ以上は書かれていなかった。
+> $route_sakura.sakura_ch10_message.t004
+> $route_sakura.sakura_ch10_message.t005
 
 @wait 600
 
-player: 何て書いてあったんだ
+player: $route_sakura.sakura_ch10_message.t006
 
 @wait 400
 
-> しばらくして返信が来た。
+> $route_sakura.sakura_ch10_message.t007
 
-> 「しばらく連絡できないかも　って」
+> $route_sakura.sakura_ch10_message.t008
 
 @wait 800
 
-> *（一行のメッセージ）*
-> *（それだけで、数ヶ月の沈黙に答えが出た）*
+> *$route_sakura.sakura_ch10_message.t009*
+> *$route_sakura.sakura_ch10_message.t010*
 
 @bgm stop
 @wait 300
 
-> さくらが八歳のとき、母は家を出た。
-> 「歌手になる夢を追う」と言って。
+> $route_sakura.sakura_ch10_message.t011
+> $route_sakura.sakura_ch10_message.t012
 
-> それから年に数回、メッセージが来る。
-> 「元気にしてる？」「寒くなったね」「ごめんね」
-> そういうものが来る。
+> $route_sakura.sakura_ch10_message.t013
+> $route_sakura.sakura_ch10_message.t014
+> $route_sakura.sakura_ch10_message.t015
 
-> 既読がつくのは、数日後だった。
+> $route_sakura.sakura_ch10_message.t016
 
 @wait 600
 
-> 父が倒れたとき、さくらはすぐ母に連絡した。
-> たぶん、来てほしかったから。
-> 父のためか、自分のためかはわからないけど。
+> $route_sakura.sakura_ch10_message.t017
+> $route_sakura.sakura_ch10_message.t018
+> $route_sakura.sakura_ch10_message.t019
 
-> でも「しばらく連絡できないかも」という返信が来た。
-> それだけが来た。
+> $route_sakura.sakura_ch10_message.t020
+> $route_sakura.sakura_ch10_message.t021
 
 @wait 800
 
-player: ……
+player: $route_sakura.sakura_ch10_message.t022
 
 @wait 500
 
-> 何を返せばいいか、わからなかった。
+> $route_sakura.sakura_ch10_message.t023
 
-> 大丈夫か、と聞けばいい。
-> でも「全然大丈夫！」が返ってくる。
+> $route_sakura.sakura_ch10_message.t024
+> $route_sakura.sakura_ch10_message.t025
 
-> そうか、と言えばいい。
-> でもそれは何も言わないのと同じだ。
+> $route_sakura.sakura_ch10_message.t026
+> $route_sakura.sakura_ch10_message.t027
 
 @wait 600
 
-> 俺はしばらく画面を見つめて、
-> 結局、何も送らなかった。
+> $route_sakura.sakura_ch10_message.t028
+> $route_sakura.sakura_ch10_message.t029
 
-> 翌朝、さくらは「おはよう！」と言いながら教室に来た。
-> いつも通りだった。
+> $route_sakura.sakura_ch10_message.t030
+> $route_sakura.sakura_ch10_message.t031
 
 @bgm night_melody.mp3
 @wait 500
@@ -1094,99 +1094,99 @@ player: ……
 @bgm daily_life.mp3
 @wait 800
 
-> 翌日の部活。
+> $route_sakura.sakura_ch10_gym.t001
 
-> さくらはいつも通りだった。
-> いつも通り、すべてをこなしていた。
+> $route_sakura.sakura_ch10_gym.t002
+> $route_sakura.sakura_ch10_gym.t003
 
 @show sakura_sports center happy fade_in
 
-sakura: もっと体幹意識して！　打った後の姿勢！
+sakura: $route_sakura.sakura_ch10_gym.t004
 
-> 後輩たちが走り回っている。
+> $route_sakura.sakura_ch10_gym.t005
 
-sakura: 上手くなってるよ、ちゃんとわかるから！
+sakura: $route_sakura.sakura_ch10_gym.t006
 
 @wait 500
 
 @expr sakura_sports normal
 
-> さくらは副部長として、練習全体を見ていた。
+> $route_sakura.sakura_ch10_gym.t007
 
-> 動ける子、動けていない子。
-> 疲れている子、気合いが入っている子。
-> さくらはそれを全部見ながら、声をかけ続けた。
+> $route_sakura.sakura_ch10_gym.t008
+> $route_sakura.sakura_ch10_gym.t009
+> $route_sakura.sakura_ch10_gym.t010
 
 @expr sakura_sports happy
 
-sakura: 松田、いいよそのフォーム！　それで続けて！
+sakura: $route_sakura.sakura_ch10_gym.t011
 
-> 後輩「はい！」
+> $route_sakura.sakura_ch10_gym.t012
 
-sakura: 森川、ちょっとラケットの角度が！　見てて
+sakura: $route_sakura.sakura_ch10_gym.t013
 
 @wait 400
 
-> 自分のラケットを取り出して、デモンストレーションをする。
-> 後輩が真剣な目で見ている。
+> $route_sakura.sakura_ch10_gym.t014
+> $route_sakura.sakura_ch10_gym.t015
 
-sakura: こう。わかった？
+sakura: $route_sakura.sakura_ch10_gym.t016
 
-> 後輩「……あ、なんか違う感じします」
+> $route_sakura.sakura_ch10_gym.t017
 
-sakura: そそ！　やってみて
+sakura: $route_sakura.sakura_ch10_gym.t018
 
 @wait 600
 
-> 後輩が打つ。さくらが頷く。
+> $route_sakura.sakura_ch10_gym.t019
 
-sakura: いいじゃん！
+sakura: $route_sakura.sakura_ch10_gym.t020
 
 @wait 500
 
-> 後輩の一人が転んだ。
+> $route_sakura.sakura_ch10_gym.t021
 
 @se footsteps.mp3
 @wait 300
 
 @expr sakura_sports normal
 
-> 後輩「……っ」
+> $route_sakura.sakura_ch10_gym.t022
 
-> 泣いていた。
-> 疲れと、悔しさと、もっと別の何かで。
+> $route_sakura.sakura_ch10_gym.t023
+> $route_sakura.sakura_ch10_gym.t024
 
 @expr sakura_sports happy
 
-sakura: ……おーい、大丈夫？
+sakura: $route_sakura.sakura_ch10_gym.t025
 
 @wait 400
 
-> さくらは迷わずしゃがんで、後輩の肩を抱いた。
+> $route_sakura.sakura_ch10_gym.t026
 
-sakura: 大丈夫大丈夫！　痛い？　どこ当たった？
+sakura: $route_sakura.sakura_ch10_gym.t027
 
-> 後輩「……ふくらはぎで」
+> $route_sakura.sakura_ch10_gym.t028
 
-sakura: じゃあ骨は大丈夫だよ、立てる？
+sakura: $route_sakura.sakura_ch10_gym.t029
 
-> 後輩「……はい」
+> $route_sakura.sakura_ch10_gym.t030
 
-sakura: えらい。
-sakura: もう少ししたら帰っていいからね。
-sakura: 今日よく動けてたから
+sakura: $route_sakura.sakura_ch10_gym.t031
+sakura: $route_sakura.sakura_ch10_gym.t032
+sakura: $route_sakura.sakura_ch10_gym.t033
 
 @wait 500
 
-> 後輩は泣きながら、小さく笑っていた。
+> $route_sakura.sakura_ch10_gym.t034
 
-> さくらの声のせいだと思う。
-> あの声は、人を落ち着かせる。
+> $route_sakura.sakura_ch10_gym.t035
+> $route_sakura.sakura_ch10_gym.t036
 
 @wait 600
 
-> *（誰かを安心させるのが、うまい）*
-> *（自分が安心する場所を知らないのに）*
+> *$route_sakura.sakura_ch10_gym.t037*
+> *$route_sakura.sakura_ch10_gym.t038*
 
 @hide sakura_sports fade_out
 @wait 500
@@ -1200,46 +1200,46 @@ sakura: 今日よく動けてたから
 @bgm daily_life.mp3
 @wait 700
 
-> 練習が終わった。
+> $route_sakura.sakura_ch10_after_practice.t001
 
-> 後輩たちが荷物をまとめて、挨拶をして、出ていく。
+> $route_sakura.sakura_ch10_after_practice.t002
 
 @show sakura_sports right normal fade_in
 
-> さくらはコートの後片付けをしていた。
-> ネットを畳んで、ラインテープを確認して。
+> $route_sakura.sakura_ch10_after_practice.t003
+> $route_sakura.sakura_ch10_after_practice.t004
 
 @expr sakura_sports happy
 
-sakura: お疲れ様！　また明日！
+sakura: $route_sakura.sakura_ch10_after_practice.t005
 
-> 後輩「お疲れ様でした！」
+> $route_sakura.sakura_ch10_after_practice.t006
 
-> 次々と帰っていく。
-> 声が遠くなっていく。
+> $route_sakura.sakura_ch10_after_practice.t007
+> $route_sakura.sakura_ch10_after_practice.t008
 
 @wait 600
 
 @expr sakura_sports normal
 
-> 体育館が静かになった。
+> $route_sakura.sakura_ch10_after_practice.t009
 
-> さくらは片付けを続けていた。
-> 一つ一つ、丁寧に。
+> $route_sakura.sakura_ch10_after_practice.t010
+> $route_sakura.sakura_ch10_after_practice.t011
 
-> 橋本先輩が引退して、もうひと月が経つ。
-> 次の部長が正式に決まるまでは、副部長のさくらが練習を見ることになっていた。
-> けれど実際には、部全体を一人で回しているのとほとんど変わらなかった。
+> $route_sakura.sakura_ch10_after_practice.t012
+> $route_sakura.sakura_ch10_after_practice.t013
+> $route_sakura.sakura_ch10_after_practice.t014
 
-> 誰かがいなくなった後の静けさに、さくらは慣れていた。
-> それが体に染み込んでいるように見えた。
+> $route_sakura.sakura_ch10_after_practice.t015
+> $route_sakura.sakura_ch10_after_practice.t016
 
 @wait 600
 
-> 帰り支度をする前に、倉庫へ寄った。
+> $route_sakura.sakura_ch10_after_practice.t017
 
-> さくらが倉庫の入口で立ち止まっていた。
-> ラケットを抱えたまま、棚の奥を見ていた。
+> $route_sakura.sakura_ch10_after_practice.t018
+> $route_sakura.sakura_ch10_after_practice.t019
 
 @still sakura_crying_gym
 @wait 1000
@@ -1259,55 +1259,55 @@ sakura: お疲れ様！　また明日！
 @se door_open.mp3
 @wait 700
 
-> 体育館脇の倉庫に入った。
+> $route_sakura.sakura_ch10_outside.t001
 
-> 使い古したマットと、ボールのかご。
-> 夕方の光が、高い窓から細く差し込んでいた。
-> 体育館の音は、扉一枚向こうで遠かった。
+> $route_sakura.sakura_ch10_outside.t002
+> $route_sakura.sakura_ch10_outside.t003
+> $route_sakura.sakura_ch10_outside.t004
 
 @wait 400
 
 @show sakura_sports right normal fade_in
 
-player: ……さくら
+player: $route_sakura.sakura_ch10_outside.t005
 
 @expr sakura_sports surprised
 
-sakura: っ
+sakura: $route_sakura.sakura_ch10_outside.t006
 
 @wait 400
 
 @expr sakura_sports happy
 
-sakura: うわ、びっくりした！ ぼーっとしてた
-sakura: 先帰ったと思ってた
+sakura: $route_sakura.sakura_ch10_outside.t007
+sakura: $route_sakura.sakura_ch10_outside.t008
 
-player: いなくなったから探した
+player: $route_sakura.sakura_ch10_outside.t009
 
-sakura: あー、片付け残ってたの思い出しただけだよ
-sakura: 大丈夫大丈夫！
+sakura: $route_sakura.sakura_ch10_outside.t010
+sakura: $route_sakura.sakura_ch10_outside.t011
 
-player: ……
+player: $route_sakura.sakura_ch10_outside.t012
 
 @bgm stop
 @wait 600
 
-> さくらはラケットを棚に戻した。
-> けれど、倉庫の奥から動かなかった。
+> $route_sakura.sakura_ch10_outside.t013
+> $route_sakura.sakura_ch10_outside.t014
 
-> 口の端が上がりかける。
+> $route_sakura.sakura_ch10_outside.t015
 
 @wait 400
 
-> 止まる。
+> $route_sakura.sakura_ch10_outside.t016
 
 @wait 500
 
-> また上がりかける。
+> $route_sakura.sakura_ch10_outside.t017
 
 @wait 400
 
-> また止まる。
+> $route_sakura.sakura_ch10_outside.t018
 
 @hide sakura_sports fade_out
 @wait 300
@@ -1320,44 +1320,44 @@ player: ……
 
 @show sakura_sports center normal fade_in
 
-sakura: ……あたし、今日おかしい
+sakura: $route_sakura.sakura_ch10_outside.t019
 
 @wait 600
 
-player: おかしくない
+player: $route_sakura.sakura_ch10_outside.t020
 
 @wait 500
 
-sakura: ……笑えないって、こんな感じなんだ
+sakura: $route_sakura.sakura_ch10_outside.t021
 
 @wait 1000
 
-> 独り言みたいに言った。
-> 俺への言葉なのか、自分への言葉なのか、
-> 境界線がなかった。
+> $route_sakura.sakura_ch10_outside.t022
+> $route_sakura.sakura_ch10_outside.t023
+> $route_sakura.sakura_ch10_outside.t024
 
 @wait 800
 
-> でも、その場を離れなかった。
+> $route_sakura.sakura_ch10_outside.t025
 
 @wait 600
 
-sakura: ……お母さん
-sakura: まだ連絡してこないんだ
+sakura: $route_sakura.sakura_ch10_outside.t026
+sakura: $route_sakura.sakura_ch10_outside.t027
 
 @wait 800
 
-> 静かな声だった。
-> 怒っているでも、悲しんでいるでもなく。
-> ただ、言わずにいられなかった、というように。
+> $route_sakura.sakura_ch10_outside.t028
+> $route_sakura.sakura_ch10_outside.t029
+> $route_sakura.sakura_ch10_outside.t030
 
 @wait 700
 
-sakura: 笑ってれば、いてくれると思ってたのに
+sakura: $route_sakura.sakura_ch10_outside.t031
 
 @wait 800
 
-sakura: ……全然、そうじゃなかった
+sakura: $route_sakura.sakura_ch10_outside.t032
 
 @wait 1000
 
@@ -1366,23 +1366,23 @@ sakura: ……全然、そうじゃなかった
 
 @expr sakura_sports crying
 
-> 涙が出ていた。
-> 声を殺していた。
-> 泣いていることに、さくら自身が一番戸惑っているようだった。
+> $route_sakura.sakura_ch10_outside.t033
+> $route_sakura.sakura_ch10_outside.t034
+> $route_sakura.sakura_ch10_outside.t035
 
 @wait 800
 
-> 俺はさくらに歩み寄った。
-> すぐそばに。
+> $route_sakura.sakura_ch10_outside.t036
+> $route_sakura.sakura_ch10_outside.t037
 
 @wait 800
 
-> さくらが少しだけ傾いた。
-> ほんの少しだけ、俺の方に。
+> $route_sakura.sakura_ch10_outside.t038
+> $route_sakura.sakura_ch10_outside.t039
 
 @wait 600
 
-> 俺はさくらを抱きしめた。
+> $route_sakura.sakura_ch10_outside.t040
 
 @still sakura_embrace
 @wait 600
@@ -1390,27 +1390,27 @@ sakura: ……全然、そうじゃなかった
 @se heartbeat.mp3
 @wait 800
 
-> さくらはしばらく泣いていた。
-> 笑わなかった。
-> 我慢しなかった。
+> $route_sakura.sakura_ch10_outside.t041
+> $route_sakura.sakura_ch10_outside.t042
+> $route_sakura.sakura_ch10_outside.t043
 
 @wait 1500
 
 @bgm sakura_breakdown.mp3
 @wait 1000
 
-> しばらく経って。
+> $route_sakura.sakura_ch10_outside.t044
 
 @wait 1200
 
 @expr sakura_sports normal
 
-sakura: ……あったかい
+sakura: $route_sakura.sakura_ch10_outside.t045
 
 @wait 1000
 
-> 独り言みたいに言った。
-> 自分の体温に、初めて気づいたみたいな声だった。
+> $route_sakura.sakura_ch10_outside.t046
+> $route_sakura.sakura_ch10_outside.t047
 
 @wait 1200
 
@@ -1423,24 +1423,24 @@ sakura: ……あったかい
 @bgm evening_piano.mp3
 @wait 800
 
-> *（泣けた）*
-> *（笑おうとしないで、泣けた）*
-> *（それがさくらにとって何年ぶりかは、俺にはわからなかった）*
+> *$route_sakura.sakura_ch10_outside.t048*
+> *$route_sakura.sakura_ch10_outside.t049*
+> *$route_sakura.sakura_ch10_outside.t050*
 
 @wait 1000
 
-> そのあと、互いに何も言わないまま倉庫を出た。
-> 着替えを済ませた。
+> $route_sakura.sakura_ch10_outside.t051
+> $route_sakura.sakura_ch10_outside.t052
 
 @scene gymnasium_back fade
 @wait 600
 
-> 体育館の裏手に出ると、夕方の空気が少し冷たかった。
-> さくらは目元を指で押さえてから、ゆっくり歩き出した。
+> $route_sakura.sakura_ch10_outside.t053
+> $route_sakura.sakura_ch10_outside.t054
 
 @wait 700
 
-> 校門を出るころには、空の色が少し深くなっていた。
+> $route_sakura.sakura_ch10_outside.t055
 
 @wait 700
 
@@ -1453,88 +1453,88 @@ sakura: ……あったかい
 @bgm evening_piano.mp3
 @wait 700
 
-> 帰り道。
-> 二人で並んで、ゆっくり歩いていた。
+> $route_sakura.sakura_ch10_walk.t001
+> $route_sakura.sakura_ch10_walk.t002
 
 @show sakura left normal fade_in
 
-> さくらはずっと黙っていた。
-> 喋ることを探しているわけでもなかった。
-> ただ歩いていた。
+> $route_sakura.sakura_ch10_walk.t003
+> $route_sakura.sakura_ch10_walk.t004
+> $route_sakura.sakura_ch10_walk.t005
 
 @wait 800
 
-> 俺も何も言わなかった。
+> $route_sakura.sakura_ch10_walk.t006
 
-> 夕方の空気が冷たかった。
-> 街灯がひとつ、ついた。
+> $route_sakura.sakura_ch10_walk.t007
+> $route_sakura.sakura_ch10_walk.t008
 
 @wait 600
 
-sakura: ……ねえ
+sakura: $route_sakura.sakura_ch10_walk.t009
 
-player: なんだ
+player: $route_sakura.sakura_ch10_walk.t010
 
-sakura: 後輩が泣いてたじゃん、今日
+sakura: $route_sakura.sakura_ch10_walk.t011
 
-player: ああ
+player: $route_sakura.sakura_ch10_walk.t012
 
-sakura: あたし、ちゃんと声かけられたと思う？
+sakura: $route_sakura.sakura_ch10_walk.t013
 
 @wait 500
 
-player: 見てたけど、よかったと思う
+player: $route_sakura.sakura_ch10_walk.t014
 
 @expr sakura thinking
 
-sakura: ……そっか
+sakura: $route_sakura.sakura_ch10_walk.t015
 
-sakura: なんか最近、ちゃんとできてるかどうか不安で
+sakura: $route_sakura.sakura_ch10_walk.t016
 
-player: 不安になるなら、ちゃんとやってる証拠だろ
+player: $route_sakura.sakura_ch10_walk.t017
 
 @wait 400
 
-sakura: ……勇くんってさ
+sakura: $route_sakura.sakura_ch10_walk.t018
 
-sakura: そういうこと、どこで覚えたの
+sakura: $route_sakura.sakura_ch10_walk.t019
 
-player: 覚えた覚えはない
+player: $route_sakura.sakura_ch10_walk.t020
 
 @expr sakura normal
 
-sakura: じゃあなんで言えるの
+sakura: $route_sakura.sakura_ch10_walk.t021
 
-player: わからない。でも思ったから言った
+player: $route_sakura.sakura_ch10_walk.t022
 
 @wait 600
 
-> さくらはしばらく黙っていた。
+> $route_sakura.sakura_ch10_walk.t023
 
 @wait 500
 
-sakura: ……そういうとこ
+sakura: $route_sakura.sakura_ch10_walk.t024
 
-sakura: すきだよ、勇くんの
+sakura: $route_sakura.sakura_ch10_walk.t025
 
 @wait 700
 
-> 淡々と言った。
-> 特別な意味があるとも、ないとも取れた。
+> $route_sakura.sakura_ch10_walk.t026
+> $route_sakura.sakura_ch10_walk.t027
 
-> でも、俺はそれを大事に受け取った。
+> $route_sakura.sakura_ch10_walk.t028
 
 @wait 600
 
 @expr sakura normal
 
-> 笑わなかった。
-> 今日、笑えなかった日に。
-> さくらは、すきだと言った。
+> $route_sakura.sakura_ch10_walk.t029
+> $route_sakura.sakura_ch10_walk.t030
+> $route_sakura.sakura_ch10_walk.t031
 
-> 笑顔じゃない言葉だった。
-> だからかもしれない。
-> それが、一番本物に見えた。
+> $route_sakura.sakura_ch10_walk.t032
+> $route_sakura.sakura_ch10_walk.t033
+> $route_sakura.sakura_ch10_walk.t034
 
 @hide sakura fade_out
 @wait 500
@@ -1555,51 +1555,51 @@ sakura: すきだよ、勇くんの
 @bgm night_melody.mp3
 @wait 1000
 
-> 父親の退院日が決まった。
+> $route_sakura.sakura_ch11_start.t001
 
-> さくらはそれをさらっと教えてくれた。
-> 「来週の水曜日らしい！　よかったよかった！」と。
+> $route_sakura.sakura_ch11_start.t002
+> $route_sakura.sakura_ch11_start.t003
 
-> 一人で迎えに行くつもりだ、と言っていた。
-> 「もう慣れてるし、全然平気だから」と。
+> $route_sakura.sakura_ch11_start.t004
+> $route_sakura.sakura_ch11_start.t005
 
 @wait 600
 
-> 俺は「そうか」と言った。
+> $route_sakura.sakura_ch11_start.t006
 
 @wait 500
 
-> ……それだけ言って、黙った。
+> $route_sakura.sakura_ch11_start.t007
 
 @bgm stop
 @wait 400
 
-> 全然平気。
-> 全然大丈夫。
-> 全然慣れてる。
+> $route_sakura.sakura_ch11_start.t008
+> $route_sakura.sakura_ch11_start.t009
+> $route_sakura.sakura_ch11_start.t010
 
-> 「全然」ってつけるとき、
-> だいたい全然じゃない。
+> $route_sakura.sakura_ch11_start.t011
+> $route_sakura.sakura_ch11_start.t012
 
-> もう知っていた。
-> 知っていて、俺はまだ何もしていない。
+> $route_sakura.sakura_ch11_start.t013
+> $route_sakura.sakura_ch11_start.t014
 
 @wait 800
 
 @bgm night_melody.mp3
 
-> 窓の外を見た。
-> 街灯の光だけが浮かんでいた。
+> $route_sakura.sakura_ch11_start.t015
+> $route_sakura.sakura_ch11_start.t016
 
 @wait 600
 
-> *（慎が消えたとき、俺は隣にいなかった）*
+> *$route_sakura.sakura_ch11_start.t017*
 
-> *（気づいていた。何かがおかしいと気づいていた）*
-> *（それでも声をかけるのが一日遅れた）*
+> *$route_sakura.sakura_ch11_start.t018*
+> *$route_sakura.sakura_ch11_start.t019*
 
-> *（一日だけ）*
-> *（たった一日）*
+> *$route_sakura.sakura_ch11_start.t020*
+> *$route_sakura.sakura_ch11_start.t021*
 
 @wait 1000
 
@@ -1616,38 +1616,38 @@ sakura: すきだよ、勇くんの
 @se chime_soft.mp3
 @wait 800
 
-> 水曜日。
+> $route_sakura.sakura_ch11_morning.t001
 
-> 朝の六時半。
-> 目が覚めた。
+> $route_sakura.sakura_ch11_morning.t002
+> $route_sakura.sakura_ch11_morning.t003
 
-> 起き上がって、カーテンを開けた。
-> 雨上がりの空だった。
-> アスファルトがまだ光を反射していて、
-> 空気が少しだけ冷たかった。
+> $route_sakura.sakura_ch11_morning.t004
+> $route_sakura.sakura_ch11_morning.t005
+> $route_sakura.sakura_ch11_morning.t006
+> $route_sakura.sakura_ch11_morning.t007
 
 @wait 800
 
-> 着替えて、家を出た。
+> $route_sakura.sakura_ch11_morning.t008
 
-> 病院の開院は八時。
-> 父親の退院手続きには、一時間くらいかかるかもしれない。
+> $route_sakura.sakura_ch11_morning.t009
+> $route_sakura.sakura_ch11_morning.t010
 
-> さくらは一人で全部やるつもりだった。
-> 退院の書類も、荷物も、タクシーの手配も。
+> $route_sakura.sakura_ch11_morning.t011
+> $route_sakura.sakura_ch11_morning.t012
 
 @wait 600
 
-> *（俺がいてもいなくても、さくらはできる）*
-> *（それはわかってる）*
+> *$route_sakura.sakura_ch11_morning.t013*
+> *$route_sakura.sakura_ch11_morning.t014*
 
-> *（でも「できる」と「一人でやらなくていい」は、別の話だ）*
+> *$route_sakura.sakura_ch11_morning.t015*
 
 @wait 800
 
-> 電車に乗った。
-> 病院のある駅で降りた。
-> 空気がまだ少し濡れていた。
+> $route_sakura.sakura_ch11_morning.t016
+> $route_sakura.sakura_ch11_morning.t017
+> $route_sakura.sakura_ch11_morning.t018
 
 @jump sakura_ch11_hospital
 
@@ -1658,214 +1658,214 @@ sakura: すきだよ、勇くんの
 @bgm stop
 @wait 1200
 
-> 雨上がりだった。
+> $route_sakura.sakura_ch11_hospital.t001
 
-> アスファルトがまだ光を反射していて、
-> 空気が少しだけ冷たかった。
-> 朝の八時。
+> $route_sakura.sakura_ch11_hospital.t002
+> $route_sakura.sakura_ch11_hospital.t003
+> $route_sakura.sakura_ch11_hospital.t004
 
 @wait 800
 
-> 病院の自動ドアが開くたびに、消毒液のにおいが流れてくる。
+> $route_sakura.sakura_ch11_hospital.t005
 
 @wait 600
 
 @se footsteps.mp3
 @wait 400
 
-> 足音が聞こえた。
+> $route_sakura.sakura_ch11_hospital.t006
 
 @show sakura left normal fade_in
 
-> さくらだった。
-> 鞄を肩にかけて、少しだけ急ぎ足で。
-> 前を向いて、ちゃんと歩いていた。
+> $route_sakura.sakura_ch11_hospital.t007
+> $route_sakura.sakura_ch11_hospital.t008
+> $route_sakura.sakura_ch11_hospital.t009
 
 @wait 600
 
-> 俺に気づいた瞬間、足が止まった。
+> $route_sakura.sakura_ch11_hospital.t010
 
 @expr sakura surprised
 
-sakura: ……なんでいるの
+sakura: $route_sakura.sakura_ch11_hospital.t011
 
-player: 一人で行くのかと思って
+player: $route_sakura.sakura_ch11_hospital.t012
 
-sakura: 一人で行けるよ
+sakura: $route_sakura.sakura_ch11_hospital.t013
 
-player: 行けるのは知ってる
+player: $route_sakura.sakura_ch11_hospital.t014
 
 @wait 800
 
-> さくらは俺を見ていた。
+> $route_sakura.sakura_ch11_hospital.t015
 
-> 怒っているのか、驚いているのか、
-> その顔からはわからなかった。
+> $route_sakura.sakura_ch11_hospital.t016
+> $route_sakura.sakura_ch11_hospital.t017
 
 @wait 600
 
-> 雨上がりの空を、細い風が渡っていく。
+> $route_sakura.sakura_ch11_hospital.t018
 
 @wait 500
 
 @bgm stop
 
-> さくらの喉が動いた。
+> $route_sakura.sakura_ch11_hospital.t019
 
 @wait 400
 
-> 何かを言おうとした。
-> 「大丈夫」か、「ありがとね」か、
-> そういう言葉を作ろうとしていた。
+> $route_sakura.sakura_ch11_hospital.t020
+> $route_sakura.sakura_ch11_hospital.t021
+> $route_sakura.sakura_ch11_hospital.t022
 
 @wait 700
 
-> 何度もそうしてきた。
-> 何年も、そうしてきた。
+> $route_sakura.sakura_ch11_hospital.t023
+> $route_sakura.sakura_ch11_hospital.t024
 
-> 笑顔を出して、「大丈夫」と言って、
-> 誰かに「そっか、よかった」と言ってもらって。
-> それで終わりにしてきた。
+> $route_sakura.sakura_ch11_hospital.t025
+> $route_sakura.sakura_ch11_hospital.t026
+> $route_sakura.sakura_ch11_hospital.t027
 
 @wait 600
 
 @expr sakura crying
 
-> でも。
+> $route_sakura.sakura_ch11_hospital.t028
 
 @wait 600
 
-sakura: ……なんで
+sakura: $route_sakura.sakura_ch11_hospital.t029
 
 @wait 300
 
-sakura: なんでいてくれるの
+sakura: $route_sakura.sakura_ch11_hospital.t030
 
 @wait 1200
 
-> さくらの声が、詰まった。
+> $route_sakura.sakura_ch11_hospital.t031
 
 @wait 600
 
-> 笑おうとしなかった。
-> 笑顔を探さなかった。
+> $route_sakura.sakura_ch11_hospital.t032
+> $route_sakura.sakura_ch11_hospital.t033
 
 @wait 500
 
-> ただ、泣いていた。
+> $route_sakura.sakura_ch11_hospital.t034
 
 @wait 800
 
-> 声を殺さない。
-> 止まらない。
+> $route_sakura.sakura_ch11_hospital.t035
+> $route_sakura.sakura_ch11_hospital.t036
 
 @wait 1000
 
 @se heartbeat.mp3
 @wait 400
 
-sakura: あたしさ
+sakura: $route_sakura.sakura_ch11_hospital.t037
 
-sakura: お母さんがいなくなったのって
+sakura: $route_sakura.sakura_ch11_hospital.t038
 
 @wait 700
 
-sakura: 泣き虫だったからだって
+sakura: $route_sakura.sakura_ch11_hospital.t039
 
-sakura: ずっと思ってたんだよね
+sakura: $route_sakura.sakura_ch11_hospital.t040
 
 @wait 1000
 
-player: ……
+player: $route_sakura.sakura_ch11_hospital.t041
 
 @wait 600
 
-sakura: だから笑ってたの
+sakura: $route_sakura.sakura_ch11_hospital.t042
 
-sakura: 笑ってれば、誰もいなくならないって
+sakura: $route_sakura.sakura_ch11_hospital.t043
 
 @wait 800
 
-sakura: でもお父さん倒れたじゃん
+sakura: $route_sakura.sakura_ch11_hospital.t044
 
 @wait 500
 
-sakura: 笑ってたのに
+sakura: $route_sakura.sakura_ch11_hospital.t045
 
 @wait 400
 
-sakura: 笑ってたのに、全然足りなかった
+sakura: $route_sakura.sakura_ch11_hospital.t046
 
 @wait 800
 
-> *（全然）*
-> *（また全然だ）*
-> *（でも今回の全然は、ちゃんと全然だった）*
+> *$route_sakura.sakura_ch11_hospital.t047*
+> *$route_sakura.sakura_ch11_hospital.t048*
+> *$route_sakura.sakura_ch11_hospital.t049*
 
 @wait 500
 
-sakura: ……笑えなくなったら
+sakura: $route_sakura.sakura_ch11_hospital.t050
 
 @wait 600
 
-sakura: どうしたらいいのかわかんないの
+sakura: $route_sakura.sakura_ch11_hospital.t051
 
 @wait 1500
 
-> 声が、そこで折れた。
+> $route_sakura.sakura_ch11_hospital.t052
 
-> 「わかんない」という言葉は、
-> さくらの口からたぶん初めて出た言葉だった。
+> $route_sakura.sakura_ch11_hospital.t053
+> $route_sakura.sakura_ch11_hospital.t054
 
 @wait 1000
 
-> *（慎が消えたとき、俺は隣にいなかった）*
-> *（今日は、いる）*
+> *$route_sakura.sakura_ch11_hospital.t055*
+> *$route_sakura.sakura_ch11_hospital.t056*
 
 @wait 800
 
-> 俺は何も言わなかった。
+> $route_sakura.sakura_ch11_hospital.t057
 
-> 言葉は何も持っていなかった。
-> 慰める言葉も、答えも、
-> 何も持っていなかった。
+> $route_sakura.sakura_ch11_hospital.t058
+> $route_sakura.sakura_ch11_hospital.t059
+> $route_sakura.sakura_ch11_hospital.t060
 
 @wait 600
 
-sakura: ……笑わなくても、いてくれる？
+sakura: $route_sakura.sakura_ch11_hospital.t061
 
 @wait 1000
 
-player: いる
+player: $route_sakura.sakura_ch11_hospital.t062
 
 @wait 1200
 
-> さくらはしばらく泣いていた。
-> 笑わなかった。
-> 我慢しなかった。
+> $route_sakura.sakura_ch11_hospital.t063
+> $route_sakura.sakura_ch11_hospital.t064
+> $route_sakura.sakura_ch11_hospital.t065
 
 @wait 1500
 
 @bgm sakura_breakdown.mp3
 @wait 1000
 
-> しばらく経って。
+> $route_sakura.sakura_ch11_hospital.t066
 
 @wait 1200
 
 @expr sakura normal
 
-sakura: ……病院、一緒に来てくれる？
+sakura: $route_sakura.sakura_ch11_hospital.t067
 
 @wait 800
 
-player: 来るつもりだったから、ここにいる
+player: $route_sakura.sakura_ch11_hospital.t068
 
 @wait 1000
 
-> さくらは何も言わなかった。
+> $route_sakura.sakura_ch11_hospital.t069
 
-> ただ、少しだけ力を抜いた。
+> $route_sakura.sakura_ch11_hospital.t070
 
 @wait 1200
 
@@ -1886,18 +1886,18 @@ player: 来るつもりだったから、ここにいる
 @bgm sakura_theme.mp3
 @wait 1000
 
-> 父親は元気そうだった。
+> $route_sakura.sakura_ch12_start.t001
 
-> 顔色もよくて、さくらを見て「大げさに泣くなよ」と笑った。
-> さくらは「泣いてないし！」と言って、少しだけ笑った。
+> $route_sakura.sakura_ch12_start.t002
+> $route_sakura.sakura_ch12_start.t003
 
 @show sakura center happy fade_in
 
 @wait 600
 
-> その笑顔は、いつものやつと少し違った。
-> 眩しさが一段落ちていた。
-> その分だけ、本物に近かった。
+> $route_sakura.sakura_ch12_start.t004
+> $route_sakura.sakura_ch12_start.t005
+> $route_sakura.sakura_ch12_start.t006
 
 @hide sakura fade_out
 @wait 500
@@ -1911,13 +1911,13 @@ player: 来るつもりだったから、ここにいる
 @bgm daily_life.mp3
 @wait 800
 
-> それから、少しずつ変わっていった。
+> $route_sakura.sakura_ch12_branch.t001
 
 @wait 600
 
 @choice
-- "さくらが自分で立てるまで、少し引いていようと思った" -> sakura_good_end
-- "俺がそばにいてやれば、大丈夫だと思った" -> sakura_bad_end
+- $choices.route_sakura.step_back -> sakura_good_end
+- $choices.route_sakura.stay_close -> sakura_bad_end
 
 
 // ===================================================================
@@ -1932,59 +1932,59 @@ player: 来るつもりだったから、ここにいる
 @bgm sakura_good_end.mp3
 @wait 1000
 
-> さくらは泣けるようになった。
+> $route_sakura.sakura_good_end.t001
 
-> 少しずつ。
-> 急にではなく。
+> $route_sakura.sakura_good_end.t002
+> $route_sakura.sakura_good_end.t003
 
-> 笑っているときも泣くやつだったから、
-> 泣きながら笑うこともあった。
-> それがさくららしいとも思った。
+> $route_sakura.sakura_good_end.t004
+> $route_sakura.sakura_good_end.t005
+> $route_sakura.sakura_good_end.t006
 
 @show sakura right normal fade_in
 
-sakura: ねえ勇くん
+sakura: $route_sakura.sakura_good_end.t007
 
-player: なんだ
+player: $route_sakura.sakura_good_end.t008
 
-sakura: あのさ
+sakura: $route_sakura.sakura_good_end.t009
 
 @wait 400
 
 @expr sakura thinking
 
-sakura: お母さんにさ
+sakura: $route_sakura.sakura_good_end.t010
 
-sakura: 返信した
+sakura: $route_sakura.sakura_good_end.t011
 
-player: ……なんて
+player: $route_sakura.sakura_good_end.t012
 
 @wait 600
 
-sakura: 「……うん」って
+sakura: $route_sakura.sakura_good_end.t013
 
 @wait 800
 
-player: ……
+player: $route_sakura.sakura_good_end.t014
 
-sakura: 「うん、元気だよ！」って書きたかったんだけど
+sakura: $route_sakura.sakura_good_end.t015
 
-sakura: なんか
+sakura: $route_sakura.sakura_good_end.t016
 
-sakura: 「うん」だけでいいかなって
+sakura: $route_sakura.sakura_good_end.t017
 
 @wait 600
 
-player: よかったんじゃないか
+player: $route_sakura.sakura_good_end.t018
 
 @expr sakura normal
 
-sakura: ……うん
+sakura: $route_sakura.sakura_good_end.t019
 
 @wait 600
 
-> 笑わなかった。
-> でも、ちゃんとここにいた。
+> $route_sakura.sakura_good_end.t020
+> $route_sakura.sakura_good_end.t021
 
 @hide sakura fade_out
 @wait 500
@@ -2000,59 +2000,59 @@ sakura: ……うん
 @bgm sakura_good_end.mp3
 @wait 800
 
-> 父が退院してから、さくらの毎日が少しずつ変わっていった。
+> $route_sakura.sakura_good_end_daily.t001
 
-> 変わった、というより。
-> 戻っていった、が正しいかもしれない。
+> $route_sakura.sakura_good_end_daily.t002
+> $route_sakura.sakura_good_end_daily.t003
 
 @show sakura left normal fade_in
 
-sakura: 昨日、お父さんと二人でご飯食べたんだよ
+sakura: $route_sakura.sakura_good_end_daily.t004
 
-player: 久しぶりか
+player: $route_sakura.sakura_good_end_daily.t005
 
-sakura: うん。久しぶり。なんか変な感じした
+sakura: $route_sakura.sakura_good_end_daily.t006
 
-player: 変な感じ
+player: $route_sakura.sakura_good_end_daily.t007
 
-sakura: なんか、こんなに二人でいいのかなって
+sakura: $route_sakura.sakura_good_end_daily.t008
 
 @wait 500
 
-player: いいだろ
+player: $route_sakura.sakura_good_end_daily.t009
 
 @expr sakura happy
 
-sakura: ……うん、そうだよね
+sakura: $route_sakura.sakura_good_end_daily.t010
 
-sakura: 天ぷら揚げたんだよ、二人で
+sakura: $route_sakura.sakura_good_end_daily.t011
 
-player: 食べられたか
+player: $route_sakura.sakura_good_end_daily.t012
 
-sakura: めっちゃ食べた！　お父さんも嬉しそうだったし
+sakura: $route_sakura.sakura_good_end_daily.t013
 
 @wait 600
 
-player: そうか
+player: $route_sakura.sakura_good_end_daily.t014
 
 @expr sakura normal
 
-sakura: ……退院してから、お父さんなんか優しくなったんだよね
+sakura: $route_sakura.sakura_good_end_daily.t015
 
-player: 心配させたからじゃないか
+player: $route_sakura.sakura_good_end_daily.t016
 
-sakura: そうかな
+sakura: $route_sakura.sakura_good_end_daily.t017
 
-sakura: あたしも、ちゃんと心配してたって言ったよ
+sakura: $route_sakura.sakura_good_end_daily.t018
 
-player: ……言えたのか
+player: $route_sakura.sakura_good_end_daily.t019
 
-sakura: うん。なんか、言えた
+sakura: $route_sakura.sakura_good_end_daily.t020
 
 @wait 600
 
-> 当然のことのように言った。
-> でも、さくらにとって「言えた」は簡単なことじゃなかったはずだ。
+> $route_sakura.sakura_good_end_daily.t021
+> $route_sakura.sakura_good_end_daily.t022
 
 @hide sakura fade_out
 @wait 500
@@ -2068,45 +2068,45 @@ sakura: うん。なんか、言えた
 @bgm sakura_good_end.mp3
 @wait 800
 
-> さくらが話してくれた、見舞いの日のこと。
+> $route_sakura.sakura_good_end_hospital.t001
 
-> 父の前で、少しだけ言葉を探してから、言ったのだと。
+> $route_sakura.sakura_good_end_hospital.t002
 
 @show sakura center normal fade_in
 
-sakura: ……ちょっと怖かった
+sakura: $route_sakura.sakura_good_end_hospital.t003
 
 @wait 1000
 
-> 笑顔なしで。
-> 「大丈夫だったよ」なしで。
+> $route_sakura.sakura_good_end_hospital.t004
+> $route_sakura.sakura_good_end_hospital.t005
 
-> ただ、怖かった、と。
+> $route_sakura.sakura_good_end_hospital.t006
 
 @wait 800
 
-player: ……
+player: $route_sakura.sakura_good_end_hospital.t007
 
 @expr sakura shy
 
-sakura: 父親に言うのって、恥ずかしいな
+sakura: $route_sakura.sakura_good_end_hospital.t008
 
-player: そうか？
+player: $route_sakura.sakura_good_end_hospital.t009
 
-sakura: だってなんか、弱いじゃん
+sakura: $route_sakura.sakura_good_end_hospital.t010
 
-player: 弱くないだろ
+player: $route_sakura.sakura_good_end_hospital.t011
 
 @wait 500
 
-sakura: ……勇くんに言われると
+sakura: $route_sakura.sakura_good_end_hospital.t012
 
-sakura: そうかもなって思う
+sakura: $route_sakura.sakura_good_end_hospital.t013
 
 @wait 600
 
-> 父は何も言わなかった。
-> ただ、さくらの頭に手を置いた。
+> $route_sakura.sakura_good_end_hospital.t014
+> $route_sakura.sakura_good_end_hospital.t015
 
 @wait 1000
 
@@ -2124,64 +2124,64 @@ sakura: そうかもなって思う
 @bgm sakura_good_end.mp3
 @wait 800
 
-> 部活の日。
+> $route_sakura.sakura_good_end_club.t001
 
 @show sakura_sports center happy fade_in
 
-> 副部長の腕章は、まださくらの腕にあった。
-> 次の部長が決まるまでの、預かりの立場。
-> けれど今日は、それが「一人で全部やる」ための印には見えなかった。
+> $route_sakura.sakura_good_end_club.t002
+> $route_sakura.sakura_good_end_club.t003
+> $route_sakura.sakura_good_end_club.t004
 
-> 後輩たちが残って居残り練習をしようとしていた。
+> $route_sakura.sakura_good_end_club.t005
 
-sakura: ……今日はもう帰っていいよ
+sakura: $route_sakura.sakura_good_end_club.t006
 
-> 後輩「え、でも先輩」
+> $route_sakura.sakura_good_end_club.t007
 
-sakura: あたしも帰るから
+sakura: $route_sakura.sakura_good_end_club.t008
 
 @wait 500
 
 @expr sakura_sports normal
 
-sakura: 疲れてるときって体の動き見てもわかるから
-sakura: 今日は休んで、次でちゃんとやろう
+sakura: $route_sakura.sakura_good_end_club.t009
+sakura: $route_sakura.sakura_good_end_club.t010
 
-> 後輩「……はい、ありがとうございます！」
+> $route_sakura.sakura_good_end_club.t011
 
 @wait 600
 
-> 後輩たちが出ていく。
+> $route_sakura.sakura_good_end_club.t012
 
 @expr sakura_sports happy
 
-> さくらは少しだけ、息を吐いた。
+> $route_sakura.sakura_good_end_club.t013
 
 @wait 500
 
-> 俺が近づいていくと、さくらは振り返った。
+> $route_sakura.sakura_good_end_club.t014
 
-sakura: 帰ろ、勇くん
+sakura: $route_sakura.sakura_good_end_club.t015
 
-player: もう片付けはいいのか
+player: $route_sakura.sakura_good_end_club.t016
 
-sakura: 今日はいい。明日やる
+sakura: $route_sakura.sakura_good_end_club.t017
 
 @wait 400
 
-player: ……珍しいな
+player: $route_sakura.sakura_good_end_club.t018
 
 @expr sakura_sports normal
 
-sakura: たまには、ね
+sakura: $route_sakura.sakura_good_end_club.t019
 
 @wait 500
 
-> *（「大丈夫」じゃなくても、後輩の面倒は見られる）*
-> *（副部長のままでも、部を見られる）*
-> *（全部を背負わなくても、誰かの前に立てる）*
-> *（帰っていい、と言えたことが、たぶん今日の一歩だった）*
-> *（片付けを後回しにできたことが、もう一歩だった）*
+> *$route_sakura.sakura_good_end_club.t020*
+> *$route_sakura.sakura_good_end_club.t021*
+> *$route_sakura.sakura_good_end_club.t022*
+> *$route_sakura.sakura_good_end_club.t023*
+> *$route_sakura.sakura_good_end_club.t024*
 
 @hide sakura_sports fade_out
 @wait 500
@@ -2197,54 +2197,54 @@ sakura: たまには、ね
 @bgm sakura_good_end.mp3
 @wait 800
 
-> その夜。
+> $route_sakura.sakura_good_end_message.t001
 
-> さくらからメッセージが来た。
+> $route_sakura.sakura_good_end_message.t002
 
-> 「お母さんに追加で送った」
+> $route_sakura.sakura_good_end_message.t003
 
 @wait 600
 
-player: 何て
+player: $route_sakura.sakura_good_end_message.t004
 
 @wait 400
 
-> 「お父さん退院したよ」
-> 「怖かったって言えなかったけど、少し怖かった」
-> 「あと、元気じゃないとき元気だよって言ってたごめん」
+> $route_sakura.sakura_good_end_message.t005
+> $route_sakura.sakura_good_end_message.t006
+> $route_sakura.sakura_good_end_message.t007
 
 @wait 1000
 
-> *（元気だよ！　じゃない）*
-> *（ごめん、を言えた）*
+> *$route_sakura.sakura_good_end_message.t008*
+> *$route_sakura.sakura_good_end_message.t009*
 
 @wait 600
 
-player: 送れてよかったな
+player: $route_sakura.sakura_good_end_message.t010
 
 @wait 400
 
-> しばらくして返信が来た。
+> $route_sakura.sakura_good_end_message.t011
 
-> 「まだ既読ついてないけど　笑」
-> 「でもなんか、すっきりした」
+> $route_sakura.sakura_good_end_message.t012
+> $route_sakura.sakura_good_end_message.t013
 
 @wait 800
 
-player: それでいい
+player: $route_sakura.sakura_good_end_message.t014
 
 @wait 400
 
-> 「うん」
+> $route_sakura.sakura_good_end_message.t015
 
 @wait 500
 
-> 「ありがとね　勇くん」
+> $route_sakura.sakura_good_end_message.t016
 
 @wait 600
 
-> *（ありがとう、の意味が変わってきた気がした）*
-> *（申し訳なさじゃなくて、ちゃんとした礼だった）*
+> *$route_sakura.sakura_good_end_message.t017*
+> *$route_sakura.sakura_good_end_message.t018*
 
 @bgm stop
 @wait 500
@@ -2261,122 +2261,122 @@ player: それでいい
 @se chime_soft.mp3
 @wait 1200
 
-> 屋上に出た。
+> $route_sakura.sakura_good_end_rooftop.t001
 
-> 夕方の空が広がっていた。
-> 薄い橙と、青の残りと。
-> その境目がゆっくりにじんでいく。
+> $route_sakura.sakura_good_end_rooftop.t002
+> $route_sakura.sakura_good_end_rooftop.t003
+> $route_sakura.sakura_good_end_rooftop.t004
 
 @wait 800
 
-> さくらはすでにそこにいた。
+> $route_sakura.sakura_good_end_rooftop.t005
 
 @show sakura center normal fade_in
 
-sakura: ……勇くん
+sakura: $route_sakura.sakura_good_end_rooftop.t006
 
-player: 先にいたのか
+player: $route_sakura.sakura_good_end_rooftop.t007
 
-sakura: うん。なんか来たくなって
+sakura: $route_sakura.sakura_good_end_rooftop.t008
 
 @wait 600
 
 @expr sakura happy
 
-sakura: 今日の空、わりときれいだね
+sakura: $route_sakura.sakura_good_end_rooftop.t009
 
 @wait 500
 
-player: そうだな
+player: $route_sakura.sakura_good_end_rooftop.t010
 
-sakura: 雨上がりって空気が違う気がする
-sakura: なんか洗われた感じ？
+sakura: $route_sakura.sakura_good_end_rooftop.t011
+sakura: $route_sakura.sakura_good_end_rooftop.t012
 
-player: 詩人みたいなこと言うな
+player: $route_sakura.sakura_good_end_rooftop.t013
 
-sakura: えー、わかんない？
+sakura: $route_sakura.sakura_good_end_rooftop.t014
 
 @wait 600
 
 @expr sakura normal
 
-> さくらは空を見ていた。
+> $route_sakura.sakura_good_end_rooftop.t015
 
-> 笑っていた。
-> 今日の笑顔は、全力じゃなかった。
-> でも、本物だった。
+> $route_sakura.sakura_good_end_rooftop.t016
+> $route_sakura.sakura_good_end_rooftop.t017
+> $route_sakura.sakura_good_end_rooftop.t018
 
 @wait 800
 
-sakura: ……ねえ、勇くん
+sakura: $route_sakura.sakura_good_end_rooftop.t019
 
-player: なんだ
+player: $route_sakura.sakura_good_end_rooftop.t020
 
-sakura: 今日、後輩が泣いてたんだよね
+sakura: $route_sakura.sakura_good_end_rooftop.t021
 
-player: また転んだか
+player: $route_sakura.sakura_good_end_rooftop.t022
 
-sakura: ちがう！　悔しくて泣いてたの
+sakura: $route_sakura.sakura_good_end_rooftop.t023
 
-player: ああ
+player: $route_sakura.sakura_good_end_rooftop.t024
 
 @wait 400
 
-sakura: 慰めたんだけどね
-sakura: 慰めながらちょっと泣きそうになった
+sakura: $route_sakura.sakura_good_end_rooftop.t025
+sakura: $route_sakura.sakura_good_end_rooftop.t026
 
-player: …慰めながら？
+player: $route_sakura.sakura_good_end_rooftop.t027
 
 @expr sakura shy
 
-sakura: なんかね、「先輩も大変なのに来てくれてありがとう」って言われて
+sakura: $route_sakura.sakura_good_end_rooftop.t028
 
-sakura: 知ってたんだ、あの子。あたしのこと
+sakura: $route_sakura.sakura_good_end_rooftop.t029
 
 @wait 600
 
-player: ……
+player: $route_sakura.sakura_good_end_rooftop.t030
 
-sakura: なんか嬉しくてさ
-sakura: 泣き虫だなあって思った
+sakura: $route_sakura.sakura_good_end_rooftop.t031
+sakura: $route_sakura.sakura_good_end_rooftop.t032
 
 @wait 500
 
 @expr sakura normal
 
-sakura: でも
+sakura: $route_sakura.sakura_good_end_rooftop.t033
 
-sakura: 泣きたいときに泣ける方が、いいよね
+sakura: $route_sakura.sakura_good_end_rooftop.t034
 
 @wait 700
 
-player: そうだな
+player: $route_sakura.sakura_good_end_rooftop.t035
 
-sakura: うん
+sakura: $route_sakura.sakura_good_end_rooftop.t036
 
 @wait 500
 
 @bgm sakura_good_end.mp3
 
-sakura: ねえ
+sakura: $route_sakura.sakura_good_end_rooftop.t037
 
-player: なんだ
+player: $route_sakura.sakura_good_end_rooftop.t038
 
-sakura: あたし、ずっと
+sakura: $route_sakura.sakura_good_end_rooftop.t039
 
-sakura: 笑い続けてたら、誰もいなくならないって思ってたじゃん
+sakura: $route_sakura.sakura_good_end_rooftop.t040
 
-player: ああ
+player: $route_sakura.sakura_good_end_rooftop.t041
 
-sakura: ……それ、違ったな
+sakura: $route_sakura.sakura_good_end_rooftop.t042
 
 @wait 800
 
-player: ……
+player: $route_sakura.sakura_good_end_rooftop.t043
 
-sakura: 笑えなくても
+sakura: $route_sakura.sakura_good_end_rooftop.t044
 
-sakura: いてくれる人、いたから
+sakura: $route_sakura.sakura_good_end_rooftop.t045
 
 @wait 1000
 
@@ -2386,58 +2386,58 @@ sakura: いてくれる人、いたから
 @still sakura_good_end_rooftop1_pre1
 @wait 700
 
-> さくらが、ゆっくり手を上げた。
+> $route_sakura.sakura_good_end_rooftop.t046
 
 @still sakura_good_end_rooftop1_pre2
 @wait 900
 
-> 結んでいた髪に、指をかける。
+> $route_sakura.sakura_good_end_rooftop.t047
 
 @still sakura_good_end_rooftop1_pre3
 @wait 1000
 
-> 横目で、こちらをちらりと見た。
-> 照れていた。
+> $route_sakura.sakura_good_end_rooftop.t048
+> $route_sakura.sakura_good_end_rooftop.t049
 
 @still sakura_good_end_rooftop1
 @wait 1200
 
-> 髪が、ほどけた。
+> $route_sakura.sakura_good_end_rooftop.t050
 
 @wait 800
 
-sakura: ……勇くんのこと、好きです
+sakura: $route_sakura.sakura_good_end_rooftop.t051
 
 @wait 800
 
-player: ……俺もだ
+player: $route_sakura.sakura_good_end_rooftop.t052
 
 @wait 800
 
-sakura: ふふ
+sakura: $route_sakura.sakura_good_end_rooftop.t053
 
-sakura: なんか勇くんに言われると
+sakura: $route_sakura.sakura_good_end_rooftop.t054
 
-sakura: もっと笑えそうな気がする
+sakura: $route_sakura.sakura_good_end_rooftop.t055
 
-player: なんだそれ
+player: $route_sakura.sakura_good_end_rooftop.t056
 
-sakura: 本当のことだもん！
+sakura: $route_sakura.sakura_good_end_rooftop.t057
 
 @wait 800
 
 @still_hide
 @wait 600
 
-> さくらは笑った。
+> $route_sakura.sakura_good_end_rooftop.t058
 
-> 空に向かって、少しだけ顔を上げて。
+> $route_sakura.sakura_good_end_rooftop.t059
 
-> 今日の笑顔は、世界一眩しいわけじゃなかった。
-> でも世界一、本物だった。
+> $route_sakura.sakura_good_end_rooftop.t060
+> $route_sakura.sakura_good_end_rooftop.t061
 
-> 散らないように。
-> でも、ちゃんと咲いていた。
+> $route_sakura.sakura_good_end_rooftop.t062
+> $route_sakura.sakura_good_end_rooftop.t063
 
 @wait 1500
 
@@ -2447,75 +2447,75 @@ sakura: 本当のことだもん！
 @scene school_grounds_evening fade
 @bgm epilogue_sunset_for_each.mp3
 
-> 夕方のグラウンド。
-> オレンジの光がトラックを斜めに切っている。
+> $route_sakura.sakura_good_end_rooftop.t064
+> $route_sakura.sakura_good_end_rooftop.t065
 
 @wait 1200
 
-> ゴールもないまま、減速する。
+> $route_sakura.sakura_good_end_rooftop.t066
 
 @wait 1000
 
 @show sakura center normal fade_in
 
-> 少し離れた場所で、さくらが手を振っている。
-> 大きくは振らない。呼びもしない。
-> ただ、そこにいる。
+> $route_sakura.sakura_good_end_rooftop.t067
+> $route_sakura.sakura_good_end_rooftop.t068
+> $route_sakura.sakura_good_end_rooftop.t069
 
 @wait 1200
 
 @hide sakura fade_out
 @wait 600
 
-> 木陰。
-> 主人公がそのまま座り込む。
+> $route_sakura.sakura_good_end_rooftop.t070
+> $route_sakura.sakura_good_end_rooftop.t071
 
 @wait 800
 
-> さくらが隣に来て、自然に膝を貸す。
-> 主人公は前髪に顔を隠すように目を閉じる。
+> $route_sakura.sakura_good_end_rooftop.t072
+> $route_sakura.sakura_good_end_rooftop.t073
 
 @wait 1200
 
 @show sakura center thinking fade_in
 
-sakura: ……負けちゃったねー
+sakura: $route_sakura.sakura_good_end_rooftop.t074
 
 @wait 600
 
-> 声は軽い。
-> でも無理に明るくはない。
+> $route_sakura.sakura_good_end_rooftop.t075
+> $route_sakura.sakura_good_end_rooftop.t076
 
 @expr sakura normal
 
-sakura: でも、ちゃんと走ってた
+sakura: $route_sakura.sakura_good_end_rooftop.t077
 
 @wait 1500
 
 @hide sakura fade_out
 @wait 400
 
-> 風が葉を揺らす。
+> $route_sakura.sakura_good_end_rooftop.t078
 
 @wait 1000
 
-> 会話が途切れる。
-> それでも気まずくない。
+> $route_sakura.sakura_good_end_rooftop.t079
+> $route_sakura.sakura_good_end_rooftop.t080
 
 @wait 1200
 
-> さくらは空を見ている。
-> 主人公は目を閉じたまま。
+> $route_sakura.sakura_good_end_rooftop.t081
+> $route_sakura.sakura_good_end_rooftop.t082
 
 @wait 1500
 
-> 同じ時間の中にいる。
+> $route_sakura.sakura_good_end_rooftop.t083
 
 @wait 2500
 
 @still sakura_epilogue fade_in
 @click_wait
-@end "第十二章「散らないように、咲く」— さくらルート Good End"
+@end "$route_sakura.sakura_good_end_rooftop.end_title"
 
 
 // ===================================================================
@@ -2528,55 +2528,55 @@ sakura: でも、ちゃんと走ってた
 @bgm bad_end_loop.mp3
 @wait 1000
 
-> 勇がいれば大丈夫だった。
+> $route_sakura.sakura_bad_end.t001
 
-> さくらはそう思い始めていた。
+> $route_sakura.sakura_bad_end.t002
 
-> 病院の前で泣いてから。
-> 抱きしめてもらってから。
-> 「いる」と言ってもらってから。
+> $route_sakura.sakura_bad_end.t003
+> $route_sakura.sakura_bad_end.t004
+> $route_sakura.sakura_bad_end.t005
 
-> その一点に、さくらはしがみついていた。
+> $route_sakura.sakura_bad_end.t006
 
 @show sakura center happy fade_in
 
-sakura: 勇くんがいてくれるから大丈夫！
-sakura: 今日も大丈夫！
-sakura: 全然大丈夫！
+sakura: $route_sakura.sakura_bad_end.t007
+sakura: $route_sakura.sakura_bad_end.t008
+sakura: $route_sakura.sakura_bad_end.t009
 
 @wait 600
 
-player: ……
+player: $route_sakura.sakura_bad_end.t010
 
-sakura: ね、放課後どうする？
+sakura: $route_sakura.sakura_bad_end.t011
 
-player: 少し一人の時間がほしいんだが
+player: $route_sakura.sakura_bad_end.t012
 
 @wait 400
 
 @expr sakura surprised
 
-sakura: え
+sakura: $route_sakura.sakura_bad_end.t013
 
 @wait 500
 
 @expr sakura happy
 
-sakura: あ、そっか！　ごめんごめん！
-sakura: あたし先帰るね！
+sakura: $route_sakura.sakura_bad_end.t014
+sakura: $route_sakura.sakura_bad_end.t015
 
-player: ……
+player: $route_sakura.sakura_bad_end.t016
 
 @hide sakura fade_out
 @wait 500
 
-> *（さくらの笑顔に、何かが戻っていた）*
-> *（でも、そこに自分がいない気がした）*
+> *$route_sakura.sakura_bad_end.t017*
+> *$route_sakura.sakura_bad_end.t018*
 
 @wait 600
 
-> *（何かのために笑っている顔だった）*
-> *（それが俺のためになっていた）*
+> *$route_sakura.sakura_bad_end.t019*
+> *$route_sakura.sakura_bad_end.t020*
 
 @jump sakura_bad_end_dependency
 
@@ -2587,49 +2587,49 @@ player: ……
 @bgm bad_end_loop.mp3
 @wait 800
 
-> 少しずつ、見えてきた。
+> $route_sakura.sakura_bad_end_dependency.t001
 
 @show sakura right happy fade_in
 
-> 勇が来ると、さくらは明るくなった。
-> 勇が傍にいると、さくらは元気になった。
+> $route_sakura.sakura_bad_end_dependency.t002
+> $route_sakura.sakura_bad_end_dependency.t003
 
-> その変化は最初、うれしかった。
-> 役に立てている気がした。
+> $route_sakura.sakura_bad_end_dependency.t004
+> $route_sakura.sakura_bad_end_dependency.t005
 
 @wait 600
 
-sakura: 勇くん！　今日の授業聞いてた？
-sakura: ノート貸してほしいんだけど
+sakura: $route_sakura.sakura_bad_end_dependency.t006
+sakura: $route_sakura.sakura_bad_end_dependency.t007
 
-player: いいけど
+player: $route_sakura.sakura_bad_end_dependency.t008
 
-sakura: やった！　ありがとう！
+sakura: $route_sakura.sakura_bad_end_dependency.t009
 
 @wait 400
 
-sakura: 今日の放課後は？
+sakura: $route_sakura.sakura_bad_end_dependency.t010
 
-player: 特に何も
+player: $route_sakura.sakura_bad_end_dependency.t011
 
-sakura: じゃあ一緒にいよ！
+sakura: $route_sakura.sakura_bad_end_dependency.t012
 
-player: ……ああ
+player: $route_sakura.sakura_bad_end_dependency.t013
 
 @wait 500
 
 @expr sakura happy
 
-sakura: やった！
+sakura: $route_sakura.sakura_bad_end_dependency.t014
 
 @wait 600
 
-> 笑顔だった。
-> 全力の笑顔だった。
+> $route_sakura.sakura_bad_end_dependency.t015
+> $route_sakura.sakura_bad_end_dependency.t016
 
-> *（その笑顔は、きれいだった）*
-> *（でも何かが引っかかっていた）*
-> *（引っかかりの正体が、まだわからなかった）*
+> *$route_sakura.sakura_bad_end_dependency.t017*
+> *$route_sakura.sakura_bad_end_dependency.t018*
+> *$route_sakura.sakura_bad_end_dependency.t019*
 
 @hide sakura fade_out
 @wait 500
@@ -2643,36 +2643,36 @@ sakura: やった！
 @bgm bad_end_loop.mp3
 @wait 1000
 
-> 少しずつ変わっていった。
+> $route_sakura.sakura_bad_end_scene.t001
 
-> でも、変わったのはさくらじゃなかった。
+> $route_sakura.sakura_bad_end_scene.t002
 
-> 笑っていた。ずっと笑っていた。
-> ただし今度は、俺のために笑っていた。
+> $route_sakura.sakura_bad_end_scene.t003
+> $route_sakura.sakura_bad_end_scene.t004
 
-> 勇がいない日は、何もできなくなった。
+> $route_sakura.sakura_bad_end_scene.t005
 
 @wait 800
 
 @show sakura center normal fade_in
 
-> ある日の放課後。
-> 俺が少し遅れて教室に来たとき、
-> さくらは窓際でじっとしていた。
+> $route_sakura.sakura_bad_end_scene.t006
+> $route_sakura.sakura_bad_end_scene.t007
+> $route_sakura.sakura_bad_end_scene.t008
 
-sakura: ……あ、勇くん
+sakura: $route_sakura.sakura_bad_end_scene.t009
 
-player: ……遅かったか
+player: $route_sakura.sakura_bad_end_scene.t010
 
-sakura: ううん！　全然！
+sakura: $route_sakura.sakura_bad_end_scene.t011
 
 @wait 600
 
 @expr sakura happy
 
-sakura: 待ってたよ！　ずっと待ってた！
+sakura: $route_sakura.sakura_bad_end_scene.t012
 
-player: ……
+player: $route_sakura.sakura_bad_end_scene.t013
 
 @wait 500
 
@@ -2680,29 +2680,29 @@ player: ……
 
 @show sakura center happy fade_in
 
-> さくらは笑っていた。
+> $route_sakura.sakura_bad_end_scene.t014
 
-> でもその目に、
-> 光がなかった。
+> $route_sakura.sakura_bad_end_scene.t015
+> $route_sakura.sakura_bad_end_scene.t016
 
 @wait 1000
 
 @bgm stop
 @wait 300
 
-> 笑えないって、こんな感じなんだ。
+> $route_sakura.sakura_bad_end_scene.t017
 
-> あの夜、さくらが言っていた。
+> $route_sakura.sakura_bad_end_scene.t018
 
-> 今のさくらは笑っていた。
-> でも、俺には届いていなかった。
+> $route_sakura.sakura_bad_end_scene.t019
+> $route_sakura.sakura_bad_end_scene.t020
 
 @wait 800
 
-> 笑えなかったのに、
-> 笑えるようになった。
-> でも何のために笑っているのかが、
-> 消えていた。
+> $route_sakura.sakura_bad_end_scene.t021
+> $route_sakura.sakura_bad_end_scene.t022
+> $route_sakura.sakura_bad_end_scene.t023
+> $route_sakura.sakura_bad_end_scene.t024
 
 @wait 1200
 
@@ -2716,37 +2716,37 @@ player: ……
 @bgm bad_end_loop.mp3
 @wait 800
 
-> 勇がいない日のことを、後から聞いた。
+> $route_sakura.sakura_bad_end_alone.t001
 
-> 委員会の仕事があって、俺が先に帰った日。
-> さくらはその日、一人で教室に残って、
-> 何もしないまま二時間いたらしかった。
+> $route_sakura.sakura_bad_end_alone.t002
+> $route_sakura.sakura_bad_end_alone.t003
+> $route_sakura.sakura_bad_end_alone.t004
 
 @wait 600
 
 @show sakura left blank fade_in
 
-> 後輩がたまたま声をかけて、初めて気づいた。
+> $route_sakura.sakura_bad_end_alone.t005
 
-> 後輩「先輩、どうかしましたか」
+> $route_sakura.sakura_bad_end_alone.t006
 
 @wait 500
 
 @expr sakura happy
 
-sakura: あ、なんでもない！　ちょっと考えごとしてただけ！
+sakura: $route_sakura.sakura_bad_end_alone.t007
 
 @wait 600
 
-> 後輩は心配そうにしていた。
+> $route_sakura.sakura_bad_end_alone.t008
 
-> でも「大丈夫」と言われたから、帰っていった。
+> $route_sakura.sakura_bad_end_alone.t009
 
 @wait 800
 
-> *（また大丈夫）*
-> *（また笑顔）*
-> *（また誰も気づかない）*
+> *$route_sakura.sakura_bad_end_alone.t010*
+> *$route_sakura.sakura_bad_end_alone.t011*
+> *$route_sakura.sakura_bad_end_alone.t012*
 
 @hide sakura fade_out
 @wait 500
@@ -2760,59 +2760,59 @@ sakura: あ、なんでもない！　ちょっと考えごとしてただけ！
 @bgm bad_end_loop.mp3
 @wait 1000
 
-> 何も変わらなかった。
+> $route_sakura.sakura_bad_end_final.t001
 
-> いや。何かが変わった。
+> $route_sakura.sakura_bad_end_final.t002
 
-> 元に戻ってしまった。
+> $route_sakura.sakura_bad_end_final.t003
 
 @wait 800
 
 @show sakura center happy fade_in
 
-> さくらは笑っていた。
-> 部活でも、授業でも、友達との会話でも。
+> $route_sakura.sakura_bad_end_final.t004
+> $route_sakura.sakura_bad_end_final.t005
 
-> ただ、それは誰かのための笑顔だった。
-> 病院の前に泣く前のさくらが「誰もいなくならないため」に笑っていたように。
-> 今のさくらは、俺のために笑っていた。
+> $route_sakura.sakura_bad_end_final.t006
+> $route_sakura.sakura_bad_end_final.t007
+> $route_sakura.sakura_bad_end_final.t008
 
 @wait 600
 
-sakura: 勇くん、今日も一緒に帰ろ！
+sakura: $route_sakura.sakura_bad_end_final.t009
 
-player: ……
+player: $route_sakura.sakura_bad_end_final.t010
 
-sakura: ね、いいでしょ？
+sakura: $route_sakura.sakura_bad_end_final.t011
 
-player: ……ああ
+player: $route_sakura.sakura_bad_end_final.t012
 
 @expr sakura happy
 
-sakura: やった！
+sakura: $route_sakura.sakura_bad_end_final.t013
 
 @wait 800
 
-> やった、と言う。
-> でも何を得たかを、さくらは知らないかもしれない。
+> $route_sakura.sakura_bad_end_final.t014
+> $route_sakura.sakura_bad_end_final.t015
 
 @wait 600
 
 @bgm stop
 @wait 300
 
-> 笑えないって、こんな感じなんだ。
+> $route_sakura.sakura_bad_end_final.t016
 
-> あの言葉が蘇った。
+> $route_sakura.sakura_bad_end_final.t017
 
-> 笑えなかったさくらが、笑えるようになった。
-> でも今のさくらの笑顔には、さくらがいなかった。
+> $route_sakura.sakura_bad_end_final.t018
+> $route_sakura.sakura_bad_end_final.t019
 
 @wait 1000
 
 @expr sakura blank
 
-> 笑顔の端が、少しだけ硬かった。
+> $route_sakura.sakura_bad_end_final.t020
 
 @wait 800
 
@@ -2827,26 +2827,26 @@ sakura: やった！
 @bgm bad_end_loop.mp3
 @wait 800
 
-sakura: （遠くから）勇くーん！　早く行こうよー！
+sakura: $route_sakura.sakura_bad_end_final.t021
 
 @wait 800
 
-> 手を振る声だった。
-> 笑顔の声だった。
+> $route_sakura.sakura_bad_end_final.t022
+> $route_sakura.sakura_bad_end_final.t023
 
 @wait 600
 
-> でも、その声は
-> 俺に向かって降ってくるというより、
-> どこかへ溶けていくみたいに聞こえた。
+> $route_sakura.sakura_bad_end_final.t024
+> $route_sakura.sakura_bad_end_final.t025
+> $route_sakura.sakura_bad_end_final.t026
 
 @wait 1000
 
-> *（誰かのための笑顔は、やがて誰のものでもなくなる）*
+> *$route_sakura.sakura_bad_end_final.t027*
 
 @wait 1500
 
 @bgm stop
 
 @credits bad_end_loop.mp3
-@end "第十二章「誰かのための笑顔」— さくらルート Bad End"
+@end "$route_sakura.sakura_bad_end_final.end_title"

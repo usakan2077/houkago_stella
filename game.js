@@ -9,6 +9,7 @@ class VNEngine {
     this._debug      = VN_CONFIG.settings?.debug || false;
     this.parser      = new ScriptParser();
     this.labels      = {};           // { labelName: [cmd, ...] }
+    this.scenarioTexts = {};
     this.currentLabel= 'start';
     this.currentIndex= 0;
     this._lastAnalyticsCheckpoint = '';
@@ -16,6 +17,9 @@ class VNEngine {
     this._longPressTimer = null;
     this._longPressTriggered = false;
     this._resizeRaf = null;
+    this.currentLanguage = this._normalizeLanguage(
+      localStorage.getItem('vn_language') || VN_CONFIG.i18n?.defaultLanguage || 'ja'
+    );
 
     // 入力待ち / モード
     this.waitingForInput = false;
@@ -147,10 +151,190 @@ class VNEngine {
     window.addEventListener('orientationchange', () => setTimeout(() => this._scheduleResizeGame(), 300));
     const touchDevice = window.matchMedia?.('(hover: none) and (pointer: coarse)')?.matches;
     if (window.visualViewport && !touchDevice) window.visualViewport.addEventListener('resize', () => this._scheduleResizeGame());
+    this._applyStaticI18n();
+    await this._loadScenarioTexts();
     await this._loadScenarios();
     await this._preloadAssets();
     this._showTitleScreen();
     this._scheduleShootingStars();
+  }
+
+  _normalizeLanguage(language) {
+    const supported = VN_CONFIG.i18n?.supportedLanguages || ['ja'];
+    return supported.includes(language) ? language : (VN_CONFIG.i18n?.defaultLanguage || 'ja');
+  }
+
+  _t(path) {
+    const labels = VN_CONFIG.i18n?.labels || {};
+    const current = labels[this.currentLanguage] || labels.ja || {};
+    const fallback = labels[VN_CONFIG.i18n?.defaultLanguage || 'ja'] || labels.ja || {};
+    const resolve = (obj) => path.split('.').reduce((acc, key) => acc && acc[key], obj);
+    return resolve(current) ?? resolve(fallback) ?? path;
+  }
+
+  _tf(path, vars = {}) {
+    return String(this._t(path)).replace(/\{(\w+)\}/g, (_, key) => vars[key] ?? '');
+  }
+
+  _getScenarioFiles() {
+    const byLanguage = VN_CONFIG.scenarioFilesByLanguage || {};
+    return byLanguage[this.currentLanguage] || VN_CONFIG.scenarioFiles || [];
+  }
+
+  _getScenarioTextFile(language = this.currentLanguage) {
+    const files = VN_CONFIG.scenarioTextFiles || {};
+    return files[language] || files[VN_CONFIG.i18n?.defaultLanguage || 'ja'] || null;
+  }
+
+  _getOpeningLines() {
+    return (VN_CONFIG.openingLinesByLanguage || {})[this.currentLanguage]
+      || VN_CONFIG.openingLines
+      || [];
+  }
+
+  _getCharacterDisplayName(charKey) {
+    const cfg = charKey ? VN_CONFIG.characters[charKey] : null;
+    if (!cfg) return '';
+    if (this.currentLanguage === 'en' && cfg.nameEn) return cfg.nameEn;
+    return cfg.name || '';
+  }
+
+  _applyStaticI18n() {
+    document.documentElement.lang = this.currentLanguage === 'en' ? 'en' : 'ja';
+    const setText = (id, text) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    };
+
+    setText('btn-newgame', this._t('titleNewGame'));
+    setText('btn-continue', this._t('titleContinue'));
+    setText('btn-gallery', this._t('titleGallery'));
+    setText('btn-modal-close', this._t('close'));
+    setText('btn-log-close', this._t('close'));
+    setText('btn-gallery-close', this._t('close'));
+    setText('btn-settings-close', this._t('close'));
+    setText('btn-confirm-ok', this._t('yes'));
+    setText('btn-confirm-no', this._t('no'));
+
+    const logTitle = document.querySelector('#log-modal h2');
+    if (logTitle) logTitle.textContent = this._t('textLog');
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      el.textContent = this._t(el.dataset.i18n);
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      el.innerHTML = this._t(el.dataset.i18nHtml);
+    });
+
+    document.querySelectorAll('[data-language]').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.language === this.currentLanguage);
+    });
+
+    this._applyTitleLogo();
+  }
+
+  _getTitleLogoConfig() {
+    const logos = VN_CONFIG.titleLogos || {};
+    const defaultLanguage = VN_CONFIG.i18n?.defaultLanguage || 'ja';
+    return logos[this.currentLanguage] || logos[defaultLanguage] || null;
+  }
+
+  _applyTitleLogo() {
+    const img = document.getElementById('title-logo-img');
+    const logo = this._getTitleLogoConfig();
+    if (!img || !logo) return;
+    img.alt = logo.alt || '';
+
+    const currentSrc = img.getAttribute('src');
+    const targetSrc = logo.src;
+    if (currentSrc === targetSrc) {
+      this._titleLogoApplied = true;
+      return;
+    }
+
+    // 初回適用（インラインHTMLの初期srcと一致しない場合など）はフェードなしで即時切替
+    if (!this._titleLogoApplied) {
+      img.src = targetSrc;
+      this._titleLogoApplied = true;
+      return;
+    }
+
+    // 言語切替などによる差替え: 新画像をプリロード → フェードアウト → 差替え → フェードイン
+    const preload = new Image();
+    const restoreOpacity = () => { img.style.opacity = ''; };
+    preload.onload = () => {
+      let done = false;
+      const swap = () => {
+        if (done) return;
+        done = true;
+        img.removeEventListener('transitionend', swap);
+        img.src = targetSrc;
+        // 次フレームでフェードイン（src差替え直後は念のため1フレーム待つ）
+        requestAnimationFrame(restoreOpacity);
+      };
+      img.addEventListener('transitionend', swap, { once: true });
+      img.style.opacity = '0';
+      // transitionend が来ないケースのフォールバック（CSSのtransitionより少し長め）
+      setTimeout(swap, 380);
+    };
+    preload.onerror = () => {
+      // プリロード失敗時は無理に演出せず即時切替
+      restoreOpacity();
+      img.src = targetSrc;
+    };
+    preload.src = targetSrc;
+  }
+
+  _getLocalizedConfigText(item, key = 'text') {
+    if (!item) return '';
+    if (this.currentLanguage === 'en' && item[`${key}En`]) return item[`${key}En`];
+    return item[key] || '';
+  }
+
+  async _setLanguage(language, options = {}) {
+    const next = this._normalizeLanguage(language);
+    if (next === this.currentLanguage) {
+      this._applyStaticI18n();
+      return;
+    }
+
+    this.currentLanguage = next;
+    localStorage.setItem('vn_language', next);
+    this._applyStaticI18n();
+    await this._loadScenarioTexts();
+    await this._loadScenarios();
+
+    if (options.returnToTitle && this._gameActive) {
+      this._resetGameState();
+      this._showTitleScreen();
+    }
+  }
+
+  async _loadScenarioTexts() {
+    const defaultLanguage = VN_CONFIG.i18n?.defaultLanguage || 'ja';
+    const defaultFile = this._getScenarioTextFile(defaultLanguage);
+    const currentFile = this._getScenarioTextFile(this.currentLanguage);
+
+    const loadJson = async (file) => {
+      if (!file) return {};
+      try {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (err) {
+        console.warn('[i18n] scenario text load failed:', file, err);
+        return {};
+      }
+    };
+
+    const fallback = await loadJson(defaultFile);
+    const current = currentFile === defaultFile ? fallback : await loadJson(currentFile);
+    this.scenarioTexts = { ...fallback, ...current };
+  }
+
+  _resolveScenarioText(text) {
+    if (typeof text !== 'string' || !text.startsWith('$')) return text;
+    const key = text.slice(1);
+    return this.scenarioTexts[key] ?? key;
   }
 
   // ============================================================
@@ -281,6 +465,7 @@ class VNEngine {
     if (!VN_CONFIG.analytics?.enabled || typeof window.gtag !== 'function') return;
     window.gtag('event', name, {
       game_title: 'houkago_stella',
+      language: this.currentLanguage,
       ...params,
     });
   }
@@ -354,7 +539,8 @@ class VNEngine {
 
   /** シナリオ .md ファイルを順番に読み込む */
   async _loadScenarios() {
-    for (const file of VN_CONFIG.scenarioFiles) {
+    this.labels = {};
+    for (const file of this._getScenarioFiles()) {
       try {
         const res = await fetch(file);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -376,9 +562,7 @@ class VNEngine {
       'background:#7a0020;color:#fff;padding:12px;',
       'text-align:center;z-index:9999;font-size:14px;',
     ].join('');
-    el.textContent =
-      `スクリプト読み込みエラー: ${file} ` +
-      `— start.bat でサーバーを起動してください。`;
+    el.textContent = this._tf('loadError', { file });
     document.body.appendChild(el);
   }
 
@@ -395,6 +579,9 @@ class VNEngine {
     on('btn-newgame',  'click', () => this._startNewGame());
     on('btn-continue', 'click', () => this._openSaveLoad('load'));
     on('btn-gallery',  'click', () => this._openGallery());
+    document.querySelectorAll('#title-language-switch [data-language]').forEach(btn => {
+      btn.addEventListener('click', () => this._setLanguage(btn.dataset.language));
+    });
     if (VN_CONFIG.settings.debug) {
       on('btn-debug', 'click', () => this._openDebugMenu());
     } else {
@@ -593,6 +780,7 @@ class VNEngine {
   // ============================================================
   _showTitleScreen() {
     this._gameActive = false;
+    this._applyStaticI18n();
     const titleScreen = document.getElementById('title-screen');
     titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
     titleScreen.classList.remove('hidden');
@@ -647,7 +835,7 @@ class VNEngine {
     this._stopBGM();
     if (VN_CONFIG.introVideo) {
       this._playIntroVideo();
-    } else if (VN_CONFIG.openingLines && VN_CONFIG.openingLines.length > 0) {
+    } else if (this._getOpeningLines().length > 0) {
       this._playOpeningMonologue();
     } else {
       this._beginGame();
@@ -681,7 +869,7 @@ class VNEngine {
     // BGM
     if (VN_CONFIG.openingBGM) this._playBGM(VN_CONFIG.openingBGM);
 
-    const lines = [...(VN_CONFIG.openingLines || [])];
+    const lines = [...this._getOpeningLines()];
     let idx      = 0;
     let finished = false;
 
@@ -754,7 +942,7 @@ class VNEngine {
       setTimeout(() => {
         screen.classList.add('hidden');
         screen.classList.remove('fade-out');
-        if (VN_CONFIG.openingLines && VN_CONFIG.openingLines.length > 0) {
+        if (this._getOpeningLines().length > 0) {
           this._playOpeningMonologue();
         } else {
           this._beginGame();
@@ -1078,11 +1266,11 @@ class VNEngine {
         break;
 
       case 'narrate':
-        this._displayDialog(null, cmd.text, cmd.emphasis);
+        this._displayDialog(null, this._resolveScenarioText(cmd.text), cmd.emphasis);
         break;
 
       case 'say':
-        this._displayDialog(cmd.char, cmd.text);
+        this._displayDialog(cmd.char, this._resolveScenarioText(cmd.text));
         break;
 
       case 'choice':
@@ -1130,7 +1318,7 @@ class VNEngine {
         break;
 
       case 'end':
-        this._displayEnding(cmd.title, cmd.next);
+        this._displayEnding(this._resolveScenarioText(cmd.title), cmd.next);
         break;
 
       default:
@@ -1524,7 +1712,7 @@ class VNEngine {
     const cfg = charKey ? VN_CONFIG.characters[charKey] : null;
 
     if (cfg && cfg.name) {
-      nameEl.textContent  = cfg.name;
+      nameEl.textContent  = this._getCharacterDisplayName(charKey);
       nameEl.style.color  = cfg.nameColor || '#ff99bb';
       nameBox.style.setProperty('--accent-color', cfg.nameColor || '#ff99bb');
       nameBox.classList.remove('no-speaker');
@@ -1539,7 +1727,7 @@ class VNEngine {
     }
 
     // ログに追加
-    this.textLog.push({ name: cfg?.name || '', nameColor: cfg?.nameColor || '', text });
+    this.textLog.push({ name: cfg ? this._getCharacterDisplayName(charKey) : '', nameColor: cfg?.nameColor || '', text });
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
 
@@ -1735,15 +1923,16 @@ class VNEngine {
     });
 
     options.forEach(opt => {
+      const choiceText = this._resolveScenarioText(opt.text);
       const btn = document.createElement('button');
       btn.className   = 'choice-btn';
-      btn.textContent = opt.text;
+      btn.textContent = choiceText;
       btn.addEventListener('click', () => {
         this._trackEvent('vn_choice_select', {
           scenario_stage: this._getAnalyticsStage(),
           scenario_label: this.currentLabel,
           command_index: this.currentIndex,
-          choice_text: String(opt.text || '').slice(0, 100),
+          choice_text: String(choiceText || '').slice(0, 100),
           next_label: opt.next || '',
         });
         overlay.classList.add('hidden');
@@ -1890,7 +2079,7 @@ class VNEngine {
         slot.addEventListener('click', () => {
           document.getElementById('save-load-modal').classList.add('hidden');
           if (mode === 'save') {
-            this._showConfirm(`SLOT ${i} に上書きしますか？`, () => this._saveToSlot(i));
+            this._showConfirm(this._tf('saveOverwrite', { slot: i }), () => this._saveToSlot(i));
           } else {
             this._loadFromSlot(i);
           }
@@ -1926,6 +2115,7 @@ class VNEngine {
       currentBGMLoop: this.currentBGMLoop,
       currentStill: this.currentStill || null,
       windowColor:  this.windowColor || 'reset',
+      language: this.currentLanguage,
       preview,
       date: new Date().toLocaleString('ja-JP', {
         month: 'short', day: 'numeric',
@@ -1939,13 +2129,16 @@ class VNEngine {
       scenario_label: this.currentLabel,
       command_index: this.currentIndex,
     });
-    this._showToast(`${slotLabel} にセーブしました`);
+    this._showToast(this._tf('saveDone', { slotLabel }));
   }
 
-  _loadFromSlot(slot, slotLabel = '') {
+  async _loadFromSlot(slot, slotLabel = '') {
     const raw = localStorage.getItem(`vn_save_${slot}`);
     if (!raw) return;
     const d = JSON.parse(raw);
+    if (d.language && d.language !== this.currentLanguage) {
+      await this._setLanguage(d.language);
+    }
 
     this._resetGameState();
     this._gameActive = true;
@@ -1976,7 +2169,7 @@ class VNEngine {
     });
     this._trackProgress('load');
     this._executeNext();
-    if (slotLabel) this._showToast(`${slotLabel} しました`);
+    if (slotLabel) this._showToast(this._tf('loadDone', { slotLabel }));
   }
 
   _showConfirm(message, onOk, onCancel) {
@@ -2080,12 +2273,13 @@ class VNEngine {
     // クレジット行を生成
     const lines = VN_CONFIG.credits || [];
     roll.innerHTML = lines.map(item => {
+      const text = this._getLocalizedConfigText(item);
       switch (item.type) {
-        case 'game-title': return `<div class="credits-game-title">${item.text}</div>`;
-        case 'heading':    return `<div class="credits-heading">${item.text}</div>`;
-        case 'name':       return `<div class="credits-name">${item.text}</div>`;
-        case 'sub':        return `<div class="credits-sub">${item.text}</div>`;
-        case 'thanks':     return `<div class="credits-thanks">${item.text}</div>`;
+        case 'game-title': return `<div class="credits-game-title">${text}</div>`;
+        case 'heading':    return `<div class="credits-heading">${text}</div>`;
+        case 'name':       return `<div class="credits-name">${text}</div>`;
+        case 'sub':        return `<div class="credits-sub">${text}</div>`;
+        case 'thanks':     return `<div class="credits-thanks">${text}</div>`;
         case 'spacer':     return `<div class="credits-spacer"></div>`;
         case 'logo':       return `<div class="credits-logo"><img src="${item.text}" alt="logo"></div>`;
         default:           return '';
@@ -2155,6 +2349,8 @@ class VNEngine {
       memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
       scrollSpeed: profile.scrollSpeed || 100,
       lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
+      lyricsRomaji: Array.isArray(profile.lyricsRomaji) ? profile.lyricsRomaji : [],
+      lyricsEn: Array.isArray(profile.lyricsEn) ? profile.lyricsEn : [],
       //lyricTimes: Array.isArray(profile.lyricTimes) ? profile.lyricTimes : null,
 
     };
@@ -2219,7 +2415,7 @@ class VNEngine {
 
   _getStillLabel(stillKey) {
     const item = (VN_CONFIG.cgList || []).find(cg => cg.key === stillKey);
-    return item?.label || stillKey;
+    return this._getLocalizedConfigText(item, 'label') || stillKey;
   }
 
 
@@ -2232,6 +2428,8 @@ class VNEngine {
     }
 
     const rawLyrics = profile.lyrics || [];
+    const romajiLyrics = Array.isArray(profile.lyricsRomaji) ? profile.lyricsRomaji : [];
+    const englishLyrics = Array.isArray(profile.lyricsEn) ? profile.lyricsEn : [];
     const hasExplicitTimes = rawLyrics.some(item =>
       item && !Array.isArray(item) && Number.isFinite(Number(item.time))
     );
@@ -2248,7 +2446,13 @@ class VNEngine {
         if (Array.isArray(item)) {
           entry = item;
         } else if (item && typeof item === 'object') {
-          entry = Array.isArray(item.text) ? item.text : [String(item.text || '')];
+          const romaji = Array.isArray(item.romaji) ? item.romaji : romajiLyrics[index];
+          const en = Array.isArray(item.en) ? item.en : englishLyrics[index];
+          entry = {
+            ja: Array.isArray(item.text) ? item.text : [String(item.text || '')],
+            romaji: Array.isArray(romaji) ? romaji : null,
+            en: Array.isArray(en) ? en : null,
+          };
           explicitTime = Number(item.time);
         } else {
           entry = [String(item || '')];
@@ -2261,7 +2465,10 @@ class VNEngine {
           entry,
         };
       })
-      .filter(item => item.entry[0] !== '');
+      .filter(item => {
+        const first = Array.isArray(item.entry) ? item.entry[0] : item.entry?.ja?.[0];
+        return first !== '';
+      });
 
     if (normalized.length === 0) return;
 
@@ -2322,8 +2529,20 @@ class VNEngine {
     const lyricsEl = document.getElementById('credits-lyrics');
     if (!lyricsEl) return;
 
-    const lines = Array.isArray(entry) ? entry : [entry];
-    lyricsEl.textContent = lines.join('\n');
+    if (entry && typeof entry === 'object' && !Array.isArray(entry)) {
+      const lines = [];
+      if (this.currentLanguage === 'en') {
+        if (entry.romaji && entry.romaji.length) lines.push(...entry.romaji);
+        if (entry.en && entry.en.length) lines.push('', ...entry.en);
+        if (lines.length === 0) lines.push(...(entry.ja || []));
+      } else {
+        lines.push(...(entry.ja || []));
+      }
+      lyricsEl.textContent = lines.join('\n');
+    } else {
+      const lines = Array.isArray(entry) ? entry : [entry];
+      lyricsEl.textContent = lines.join('\n');
+    }
 
     // 非表示状態を解除してフェードイン
     lyricsEl.classList.remove('hidden');
@@ -2718,7 +2937,7 @@ class VNEngine {
 
   _returnToTitle() {
     this._showConfirm(
-      'タイトルに戻りますか？\n（未セーブのデータは失われます）',
+      this._t('returnTitleConfirm'),
       () => {
         this._stopAllSE();
         this._nextChapterLabel = null;
@@ -2732,6 +2951,22 @@ class VNEngine {
   //  設定
   // ============================================================
   _openSettings() {
+    this._applyStaticI18n();
+    document.querySelectorAll('#language-options .settings-opt').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.language === this.currentLanguage);
+      btn.onclick = () => {
+        const next = btn.dataset.language;
+        if (next === this.currentLanguage) return;
+        const change = () => this._setLanguage(next, { returnToTitle: true });
+        if (this._gameActive) {
+          document.getElementById('settings-modal').classList.add('hidden');
+          this._showConfirm(this._t('languageSwitchConfirm'), change);
+        } else {
+          change();
+        }
+      };
+    });
+
     // オート速度
     const currentDelay = VN_CONFIG.settings.autoDelay;
     document.querySelectorAll('#auto-speed-options .settings-opt').forEach(btn => {
@@ -2857,7 +3092,7 @@ class VNEngine {
     const content = document.getElementById('gallery-content');
     const list    = VN_CONFIG.cgList || [];
     if (list.length === 0) {
-      content.innerHTML = '<p style="color:rgba(255,255,255,0.4);text-align:center;margin-top:40px;">スチル画像がありません</p>';
+      content.innerHTML = `<p style="color:rgba(255,255,255,0.4);text-align:center;margin-top:40px;">${this._t('galleryEmpty')}</p>`;
       document.getElementById('gallery-modal').classList.remove('hidden');
       return;
     }
@@ -2866,10 +3101,11 @@ class VNEngine {
     let html = `<div class="cg-total-count">${seenCount} / ${list.length}</div>`;
     html += `<div class="cg-grid">`;
     for (const item of list) {
+      const label = this._getStillLabel(item.key);
       if (this.seenStills.has(item.key)) {
-        html += `<div class="cg-thumb unlocked" data-key="${item.key}" title="${item.label}">
+        html += `<div class="cg-thumb unlocked" data-key="${item.key}" title="${label}">
           <div class="cg-thumb-img" style="background-image:url('${this._getStillAssetPath(item.key)}')"></div>
-          <div class="cg-thumb-label">${item.label}</div>
+          <div class="cg-thumb-label">${label}</div>
         </div>`;
       } else {
         html += `<div class="cg-thumb locked">

@@ -10,123 +10,123 @@
 @se crowd_festival.mp3
 @wait 1000
 
-> 十月。
-> 文化祭当日。
+> $chapter8.chapter8_start.t001
+> $chapter8.chapter8_start.t002
 
-> 校舎は朝から騒がしかった。
+> $chapter8.chapter8_start.t003
 
-> 普段より少し派手な飾り。
-> 見慣れない服装の生徒。
-> 廊下に広がる人の流れ。
+> $chapter8.chapter8_start.t004
+> $chapter8.chapter8_start.t005
+> $chapter8.chapter8_start.t006
 
-> そして――
+> $chapter8.chapter8_start.t007
 
 @se rain_window.mp3
 @wait 600
 
-> 外は雨だった。
+> $chapter8.chapter8_start.t008
 
-> 小さく、静かに降り続く雨。
+> $chapter8.chapter8_start.t009
 
-> 文化祭には、あまり似合わない天気だ。
+> $chapter8.chapter8_start.t010
 
 @wait 800
 
-> 朝はまだ曇りだった。
-> 開場と同時くらいに、ぽつりと降り始めた。
-> それでも誰も中止にはしない。
-> 何週間もかけて準備してきた文化祭を、
-> 雨ごときで潰すわけにはいかないのだろう。
+> $chapter8.chapter8_start.t011
+> $chapter8.chapter8_start.t012
+> $chapter8.chapter8_start.t013
+> $chapter8.chapter8_start.t014
+> $chapter8.chapter8_start.t015
 
-> 正面玄関に貼り出されたポスター。
-> 吹奏楽部の演奏告知。
-> 模擬店の案内。
-> 色とりどりの手書き文字が、雨の朝に妙に鮮やかだった。
+> $chapter8.chapter8_start.t016
+> $chapter8.chapter8_start.t017
+> $chapter8.chapter8_start.t018
+> $chapter8.chapter8_start.t019
 
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
 
-sakura: 勇くんおはよー！　雨だよ！
+sakura: $chapter8.chapter8_start.t020
 
-player: ……おはよう。知ってる
+player: $chapter8.chapter8_start.t021
 
-sakura: ちゃんと傘さしてきた？
+sakura: $chapter8.chapter8_start.t022
 
-player: それ子供に言うやつじゃないか
+player: $chapter8.chapter8_start.t023
 
-sakura: 子供に限らず大事なことだと思うけど！
+sakura: $chapter8.chapter8_start.t024
 
-> さくらは今日も、いつも通りだった。
-> よく通る声。
-> 迷いのない笑顔。
-> 雨の月曜日さえ、なんとかしてしまえそうな明るさ。
+> $chapter8.chapter8_start.t025
+> $chapter8.chapter8_start.t026
+> $chapter8.chapter8_start.t027
+> $chapter8.chapter8_start.t028
 
-> けれど俺は、今日はその明るさを少しだけ違う目で見ていた。
+> $chapter8.chapter8_start.t029
 
-sakura: 文化祭だよ文化祭！　一年間でここが一番楽しいんだから！
+sakura: $chapter8.chapter8_start.t030
 
-player: 雨だけどな
+player: $chapter8.chapter8_start.t031
 
-sakura: まあそこは仕方ない！
+sakura: $chapter8.chapter8_start.t032
 
-sakura: でもさ
-sakura: 雨の日の文化祭って、なんかドラマっぽくない？
+sakura: $chapter8.chapter8_start.t033
+sakura: $chapter8.chapter8_start.t034
 
 @expr kotoha normal
 
-kotoha: ……どんなドラマですか
+kotoha: $chapter8.chapter8_start.t035
 
-sakura: さあ？
+sakura: $chapter8.chapter8_start.t036
 
-player: 適当だな
+player: $chapter8.chapter8_start.t037
 
-sakura: ノリ大事！
+sakura: $chapter8.chapter8_start.t038
 
 @wait 400
 
-> ことははその横で、廊下の窓を見ていた。
-> 雨粒が筋を引いて流れる窓。
-> それを眺める目が、少しだけ遠かった。
+> $chapter8.chapter8_start.t039
+> $chapter8.chapter8_start.t040
+> $chapter8.chapter8_start.t041
 
-player: ことはは今日、何か出し物あったか
+player: $chapter8.chapter8_start.t042
 
 @expr kotoha thinking
 
-kotoha: ……わたしは、展示の受付を少し
-kotoha: お手伝い程度です
+kotoha: $chapter8.chapter8_start.t043
+kotoha: $chapter8.chapter8_start.t044
 
-sakura: ことはちゃんって合唱部じゃなかったっけ？
+sakura: $chapter8.chapter8_start.t045
 
 @expr kotoha normal
 
-kotoha: ……部員ではないです
-kotoha: ただ、見学を
+kotoha: $chapter8.chapter8_start.t046
+kotoha: $chapter8.chapter8_start.t047
 
-sakura: あ、そっか！
+sakura: $chapter8.chapter8_start.t048
 
-> さくらはそれ以上追わなかった。
-> 気を遣ったのか、関心がなかったのかはわからない。
-> ただ、ことはの返事の間が、ほんの少し長かったことには気づいていたと思う。
+> $chapter8.chapter8_start.t049
+> $chapter8.chapter8_start.t050
+> $chapter8.chapter8_start.t051
 
 @wait 600
 
-> 廊下の向こうから、クラスの連中が呼ぶ声がした。
+> $chapter8.chapter8_start.t052
 
-sakura: あ、準備！　行かなきゃ。勇くんも来て来て！
+sakura: $chapter8.chapter8_start.t053
 
-player: 俺まで引っ張るな
+player: $chapter8.chapter8_start.t054
 
-sakura: クラスメイトだから当然でしょ！
+sakura: $chapter8.chapter8_start.t055
 
-> さくらは走っていく。
-> その背中を見送りながら、俺はもう一度、
-> 今日の天気のことを考えた。
+> $chapter8.chapter8_start.t056
+> $chapter8.chapter8_start.t057
+> $chapter8.chapter8_start.t058
 
-> 雨。
-> 文化祭。
-> 今日。
+> $chapter8.chapter8_start.t059
+> $chapter8.chapter8_start.t060
+> $chapter8.chapter8_start.t061
 
-> 何も起きない、とは思えなかった。
+> $chapter8.chapter8_start.t062
 
 @hide_all fade_out
 @wait 500
@@ -144,95 +144,95 @@ sakura: クラスメイトだから当然でしょ！
 @bgm festival_rain.mp3
 @wait 800
 
-> 開場の時間になると、
-> 廊下は一気に人で埋まった。
+> $chapter8.chapter8_festival_open.t001
+> $chapter8.chapter8_festival_open.t002
 
-> 他校の制服。
-> 家族連れ。
-> 写真を撮る生徒。
+> $chapter8.chapter8_festival_open.t003
+> $chapter8.chapter8_festival_open.t004
+> $chapter8.chapter8_festival_open.t005
 
-> 学校なのに、
-> 少しだけ違う場所みたいだった。
+> $chapter8.chapter8_festival_open.t006
+> $chapter8.chapter8_festival_open.t007
 
 @wait 600
 
-> 正面玄関のあたりは特に混んでいた。
-> 傘を畳む音。
-> 濡れた靴が床を踏む音。
-> 受付の生徒が「いらっしゃいませー！」と声を張り上げている。
+> $chapter8.chapter8_festival_open.t008
+> $chapter8.chapter8_festival_open.t009
+> $chapter8.chapter8_festival_open.t010
+> $chapter8.chapter8_festival_open.t011
 
-> にぎやかで、雑然としていて、
-> 少しだけくたびれた雨の匂いが漂っていた。
+> $chapter8.chapter8_festival_open.t012
+> $chapter8.chapter8_festival_open.t013
 
 @show mahiru center happy fade_in
 
-mahiru: にぎやかだね
+mahiru: $chapter8.chapter8_festival_open.t014
 
-player: そうだな
+player: $chapter8.chapter8_festival_open.t015
 
-mahiru: 雨でも人多い
+mahiru: $chapter8.chapter8_festival_open.t016
 
-player: 文化祭だからな
+player: $chapter8.chapter8_festival_open.t017
 
 @expr mahiru normal
 
-mahiru: 雨の日って
+mahiru: $chapter8.chapter8_festival_open.t018
 
-mahiru: みんな少しだけ
-mahiru: 声が小さくなる気がする
+mahiru: $chapter8.chapter8_festival_open.t019
+mahiru: $chapter8.chapter8_festival_open.t020
 
-player: そうか？
+player: $chapter8.chapter8_festival_open.t021
 
-mahiru: うん
+mahiru: $chapter8.chapter8_festival_open.t022
 
-mahiru: 雨の音が
-mahiru: 会話を吸い込むから
+mahiru: $chapter8.chapter8_festival_open.t023
+mahiru: $chapter8.chapter8_festival_open.t024
 
-player: 詩人みたいなこと言うな
+player: $chapter8.chapter8_festival_open.t025
 
 @expr mahiru happy
 
-mahiru: 観察だよ
+mahiru: $chapter8.chapter8_festival_open.t026
 
 @wait 600
 
-> まひるは今日、どこか落ち着いて見えた。
-> 落ち着いているというより、何かと折り合いをつけている、という言い方のほうが正しいかもしれない。
+> $chapter8.chapter8_festival_open.t027
+> $chapter8.chapter8_festival_open.t028
 
-> 十月下旬。
-> 少しずつ、そのことを意識していた。
+> $chapter8.chapter8_festival_open.t029
+> $chapter8.chapter8_festival_open.t030
 
 @expr mahiru thinking
 
-mahiru: 今日、勇くんは何かやること決めてる？
+mahiru: $chapter8.chapter8_festival_open.t031
 
-player: 特には。クラスの手伝いくらい
+player: $chapter8.chapter8_festival_open.t032
 
-mahiru: そっか
+mahiru: $chapter8.chapter8_festival_open.t033
 
-> まひるは少しだけ視線を落とした。
-> 窓の外。
-> そこには雨が降り続いている。
+> $chapter8.chapter8_festival_open.t034
+> $chapter8.chapter8_festival_open.t035
+> $chapter8.chapter8_festival_open.t036
 
-mahiru: 文化祭って
-mahiru: なんか、終わりみたいだよね
+mahiru: $chapter8.chapter8_festival_open.t037
+mahiru: $chapter8.chapter8_festival_open.t038
 
-player: 終わり？
+player: $chapter8.chapter8_festival_open.t039
 
-mahiru: 夏が終わって、秋になって
-mahiru: その最後に賑やかなことをして
-mahiru: それから静かになっていく感じ
+mahiru: $chapter8.chapter8_festival_open.t040
+mahiru: $chapter8.chapter8_festival_open.t041
+mahiru: $chapter8.chapter8_festival_open.t042
 
-player: 秋はまだ続くだろ
+player: $chapter8.chapter8_festival_open.t043
 
 @expr mahiru happy
 
-mahiru: そうだね
+mahiru: $chapter8.chapter8_festival_open.t044
 
-mahiru: うん、そうだよね
+mahiru: $chapter8.chapter8_festival_open.t045
 
-> そう言って、まひるは笑った。
-> 少しだけ、無理やり戻ってきたみたいな笑顔だった。
+> $chapter8.chapter8_festival_open.t046
+> $chapter8.chapter8_festival_open.t047
 
 @hide mahiru fade_out
 @wait 500
@@ -250,196 +250,196 @@ mahiru: うん、そうだよね
 @bgm festival_rain.mp3
 @wait 800
 
-> クラスの出し物は喫茶店だった。
+> $chapter8.chapter8_sakura_cafe.t001
 
-> 簡単なメニューと、
-> 紙の飾りと、
-> それっぽいエプロン。
+> $chapter8.chapter8_sakura_cafe.t002
+> $chapter8.chapter8_sakura_cafe.t003
+> $chapter8.chapter8_sakura_cafe.t004
 
-> 手作り感のある店だ。
+> $chapter8.chapter8_sakura_cafe.t005
 
 @wait 600
 
-> とはいえ、中に入ると印象が少し変わった。
-> テーブルを工夫して配置して、雰囲気を作ろうとしている。
-> 窓辺に小さな飾りつけ。
-> カウンター代わりの机には手書きのメニュー表。
+> $chapter8.chapter8_sakura_cafe.t006
+> $chapter8.chapter8_sakura_cafe.t007
+> $chapter8.chapter8_sakura_cafe.t008
+> $chapter8.chapter8_sakura_cafe.t009
 
 >誰かが、きちんと準備したのがわかる空間だった。
 
 @show sakura_apron center excited fade_in
 
-sakura: いらっしゃいませー！
+sakura: $chapter8.chapter8_sakura_cafe.t010
 
-> さくらは忙しそうに走り回っている。
+> $chapter8.chapter8_sakura_cafe.t011
 
-> エプロン姿のさくらは、
-> 喫茶店が似合う人間というより、
-> どんな場所でも自分のペースを作ってしまう人間だった。
+> $chapter8.chapter8_sakura_cafe.t012
+> $chapter8.chapter8_sakura_cafe.t013
+> $chapter8.chapter8_sakura_cafe.t014
 
-> テーブルの客に笑いかけて、
-> 注文を取って、
-> 厨房代わりの机にオーダーを届けて、
-> また別の客のところへ走る。
+> $chapter8.chapter8_sakura_cafe.t015
+> $chapter8.chapter8_sakura_cafe.t016
+> $chapter8.chapter8_sakura_cafe.t017
+> $chapter8.chapter8_sakura_cafe.t018
 
-> 息継ぎする暇があるのか、
-> 見ているこっちが心配になる動き方だった。
+> $chapter8.chapter8_sakura_cafe.t019
+> $chapter8.chapter8_sakura_cafe.t020
 
-sakura: 勇くん！
+sakura: $chapter8.chapter8_sakura_cafe.t021
 
-player: なんだ
+player: $chapter8.chapter8_sakura_cafe.t022
 
-sakura: 水三つお願い！
+sakura: $chapter8.chapter8_sakura_cafe.t023
 
-player: 店員扱いか
+player: $chapter8.chapter8_sakura_cafe.t024
 
-sakura: クラスメイト扱い！
+sakura: $chapter8.chapter8_sakura_cafe.t025
 
-player: 似たようなもんだろ
+player: $chapter8.chapter8_sakura_cafe.t026
 
 @wait 400
 
-> さくらは笑って、また次の客のほうへ走っていった。
+> $chapter8.chapter8_sakura_cafe.t027
 
-> 俺はしかたなく水を用意しながら、
-> さくらの動き方を目で追っていた。
+> $chapter8.chapter8_sakura_cafe.t028
+> $chapter8.chapter8_sakura_cafe.t029
 
-> 動いている間は問題ない。
-> 止まったとき、何かが出る。
-> そういう人間がいる。
+> $chapter8.chapter8_sakura_cafe.t030
+> $chapter8.chapter8_sakura_cafe.t031
+> $chapter8.chapter8_sakura_cafe.t032
 
 @wait 600
 
-> 同じクラスの子が、
-> 注文を受けたあとオーダーシートをどこに出せばいいかわからず迷っていた。
+> $chapter8.chapter8_sakura_cafe.t033
+> $chapter8.chapter8_sakura_cafe.t034
 
 @expr sakura_apron normal
 
-> さくらが素早く気づいて、
-> 小声でフォローしながら笑いかける。
+> $chapter8.chapter8_sakura_cafe.t035
+> $chapter8.chapter8_sakura_cafe.t036
 
-> 相手が少し安堵した顔になるのを確認してから、
-> さくらはまた次の仕事へ移った。
+> $chapter8.chapter8_sakura_cafe.t037
+> $chapter8.chapter8_sakura_cafe.t038
 
-> 疲れている素振りは、見せない。
-> 相手に気を遣わせない配慮が、すでに体に染みついているやつの動き方だった。
+> $chapter8.chapter8_sakura_cafe.t039
+> $chapter8.chapter8_sakura_cafe.t040
 
 @wait 500
 
-> 注文の声。
-> 笑い声。
-> 食器の音。
+> $chapter8.chapter8_sakura_cafe.t041
+> $chapter8.chapter8_sakura_cafe.t042
+> $chapter8.chapter8_sakura_cafe.t043
 
-> 文化祭の喫茶店は、
-> 思っていたより、ちゃんと店だった。
+> $chapter8.chapter8_sakura_cafe.t044
+> $chapter8.chapter8_sakura_cafe.t045
 
 @wait 800
 
-> 来客の一人が、
-> さくらに話しかけた。
+> $chapter8.chapter8_sakura_cafe.t046
+> $chapter8.chapter8_sakura_cafe.t047
 
 @bgm stop
 @wait 300
 
-> 客「すごいね、文化祭。楽しそうだね」
+> $chapter8.chapter8_sakura_cafe.t048
 
-sakura: ありがとうございます！
+sakura: $chapter8.chapter8_sakura_cafe.t049
 
-> 客「君たちも楽しい？」
+> $chapter8.chapter8_sakura_cafe.t050
 
 @wait 400
 
-> さくらの動きが止まった。
+> $chapter8.chapter8_sakura_cafe.t051
 
-> ほんの一瞬。
+> $chapter8.chapter8_sakura_cafe.t052
 
-> 手に持っていたトレーが、
-> 少しだけ揺れた。
+> $chapter8.chapter8_sakura_cafe.t053
+> $chapter8.chapter8_sakura_cafe.t054
 
-> 俺がたまたまそこにいなければ、
-> 見えなかった間だった。
+> $chapter8.chapter8_sakura_cafe.t055
+> $chapter8.chapter8_sakura_cafe.t056
 
 @expr sakura_apron blank
 
-sakura: ……
+sakura: $chapter8.chapter8_sakura_cafe.t057
 
 @wait 500
 
 @expr sakura_apron happy
 
-sakura: ……うん！
-sakura: 楽しいですよ！
+sakura: $chapter8.chapter8_sakura_cafe.t058
+sakura: $chapter8.chapter8_sakura_cafe.t059
 
-> 客「そっかそっか」
+> $chapter8.chapter8_sakura_cafe.t060
 
-> 客は気づかなかったみたいに笑った。
+> $chapter8.chapter8_sakura_cafe.t061
 
-player: ……
+player: $chapter8.chapter8_sakura_cafe.t062
 
-> さっきの間は、
-> 文化祭のざわめきの中でも
-> やけに長く感じた。
+> $chapter8.chapter8_sakura_cafe.t063
+> $chapter8.chapter8_sakura_cafe.t064
+> $chapter8.chapter8_sakura_cafe.t065
 
 @wait 600
 
 @expr sakura_apron excited
 
-sakura: 勇くん！
-sakura: 注文まだー！？
+sakura: $chapter8.chapter8_sakura_cafe.t066
+sakura: $chapter8.chapter8_sakura_cafe.t067
 
-player: 今行く
+player: $chapter8.chapter8_sakura_cafe.t068
 
-> また、
-> いつもの笑顔だった。
+> $chapter8.chapter8_sakura_cafe.t069
+> $chapter8.chapter8_sakura_cafe.t070
 
 @wait 800
 
-> そして少し後。
+> $chapter8.chapter8_sakura_cafe.t071
 
-> 客が引いたテーブルの横で、
-> さくらがほんの数秒だけ
-> 目を閉じていた。
+> $chapter8.chapter8_sakura_cafe.t072
+> $chapter8.chapter8_sakura_cafe.t073
+> $chapter8.chapter8_sakura_cafe.t074
 
-> 呼吸を整えるように。
+> $chapter8.chapter8_sakura_cafe.t075
 
-> 周りの声が全部、遠くなっている感じがした。
-> さくらの周囲だけ、少しだけ空気が薄くなったみたいな数秒。
+> $chapter8.chapter8_sakura_cafe.t076
+> $chapter8.chapter8_sakura_cafe.t077
 
 @wait 600
 
-> 顔の作り方は知っている人間だ。
-> 笑顔の切り替えも速い。
-> でも今は、
-> 切り替える前の一瞬を俺は見てしまっていた。
+> $chapter8.chapter8_sakura_cafe.t078
+> $chapter8.chapter8_sakura_cafe.t079
+> $chapter8.chapter8_sakura_cafe.t080
+> $chapter8.chapter8_sakura_cafe.t081
 
-player: ……
+player: $chapter8.chapter8_sakura_cafe.t082
 
 @expr sakura_apron surprised
 
-sakura: あ、勇くんまだいたの
+sakura: $chapter8.chapter8_sakura_cafe.t083
 
 @expr sakura_apron happy
 
-sakura: どうどう？
-sakura: あたし働き者でしょ！
+sakura: $chapter8.chapter8_sakura_cafe.t084
+sakura: $chapter8.chapter8_sakura_cafe.t085
 
-player: ……まあな
+player: $chapter8.chapter8_sakura_cafe.t086
 
-sakura: でしょ！
+sakura: $chapter8.chapter8_sakura_cafe.t087
 
-sakura: あ、でもちょっと足疲れてきちゃったかも
-sakura: 後でちょっと休憩したい
+sakura: $chapter8.chapter8_sakura_cafe.t088
+sakura: $chapter8.chapter8_sakura_cafe.t089
 
-player: 無理するなよ
+player: $chapter8.chapter8_sakura_cafe.t090
 
 @expr sakura_apron happy
 
-sakura: 無理じゃないよ！
-sakura: これくらい全然！
+sakura: $chapter8.chapter8_sakura_cafe.t091
+sakura: $chapter8.chapter8_sakura_cafe.t092
 
-> 全然平気。
-> いつも一人でやってきた。
-> そういう顔だった。
+> $chapter8.chapter8_sakura_cafe.t093
+> $chapter8.chapter8_sakura_cafe.t094
+> $chapter8.chapter8_sakura_cafe.t095
 
 @hide sakura_apron fade_out
 @wait 500
@@ -460,87 +460,87 @@ sakura: これくらい全然！
 
 @show kotoha center normal fade_in
 
-> 廊下の奥から、
-> ピアノの音が聞こえていた。
+> $chapter8.chapter8_music_room.t001
+> $chapter8.chapter8_music_room.t002
 
-> 上手い。
-> 技巧的なものではなく、
-> 音の一つひとつに迷いがない、という意味で上手い。
+> $chapter8.chapter8_music_room.t003
+> $chapter8.chapter8_music_room.t004
+> $chapter8.chapter8_music_room.t005
 
-player: 入らないのか
+player: $chapter8.chapter8_music_room.t006
 
-kotoha: ……今日は
-kotoha: 人が多いので
+kotoha: $chapter8.chapter8_music_room.t007
+kotoha: $chapter8.chapter8_music_room.t008
 
-player: 文化祭だからな
+player: $chapter8.chapter8_music_room.t009
 
 @wait 600
 
-> ことはは
-> スライドドアの取手に触れる。
+> $chapter8.chapter8_music_room.t010
+> $chapter8.chapter8_music_room.t011
 
-> けれど、
-> 今日もドアは開かない。
+> $chapter8.chapter8_music_room.t012
+> $chapter8.chapter8_music_room.t013
 
-kotoha: ……でも
+kotoha: $chapter8.chapter8_music_room.t014
 
-kotoha: 音は
-kotoha: きれいですね
+kotoha: $chapter8.chapter8_music_room.t015
+kotoha: $chapter8.chapter8_music_room.t016
 
-player: 何がいいんだろうな
+player: $chapter8.chapter8_music_room.t017
 
-kotoha: 音が終わったあとに
-kotoha: 少し静かになるところです
+kotoha: $chapter8.chapter8_music_room.t018
+kotoha: $chapter8.chapter8_music_room.t019
 
-player: 余韻か
+player: $chapter8.chapter8_music_room.t020
 
-kotoha: ……たぶん
-kotoha: あれが音楽です
+kotoha: $chapter8.chapter8_music_room.t021
+kotoha: $chapter8.chapter8_music_room.t022
 
-> 廊下に、
-> ピアノの音だけが流れていた。
+> $chapter8.chapter8_music_room.t023
+> $chapter8.chapter8_music_room.t024
 
 @wait 800
 
-> ことはの指が、取手に触れたまま動かない。
+> $chapter8.chapter8_music_room.t025
 
-> ドアのガラスに映る廊下の光が、
-> 雨の日の薄い灰色をしていた。
+> $chapter8.chapter8_music_room.t026
+> $chapter8.chapter8_music_room.t027
 
 @expr kotoha thinking
 
-kotoha: ……桐島くんは
-kotoha: 音楽、好きですか
+kotoha: $chapter8.chapter8_music_room.t028
+kotoha: $chapter8.chapter8_music_room.t029
 
-player: 特別には。聞けば聞くだけだと思う
+player: $chapter8.chapter8_music_room.t030
 
-kotoha: そうですか
+kotoha: $chapter8.chapter8_music_room.t031
 
 @wait 400
 
-kotoha: 音楽って、演奏しているとき
-kotoha: どこかへ消えられる気がするんです
+kotoha: $chapter8.chapter8_music_room.t032
+kotoha: $chapter8.chapter8_music_room.t033
 
-player: 消える？
+player: $chapter8.chapter8_music_room.t034
 
-kotoha: ……うまく言えないんですが
-kotoha: 音の中に入ると、そこだけが本当で
-kotoha: 外側のことが少し、遠くなる感じ
+kotoha: $chapter8.chapter8_music_room.t035
+kotoha: $chapter8.chapter8_music_room.t036
+kotoha: $chapter8.chapter8_music_room.t037
 
-player: ……それは、良いことか
+player: $chapter8.chapter8_music_room.t038
 
 @expr kotoha normal
 
-kotoha: わかりません
-kotoha: ただ……消えたいわけじゃない、とは思います
+kotoha: $chapter8.chapter8_music_room.t039
+kotoha: $chapter8.chapter8_music_room.t040
 
-> そう言って、ことははまた前を向いた。
-> ドア越しに聞こえるピアノの音を、
-> 耳を傾けるような、そうじゃないような、
-> 微妙な距離で聞いている。
+> $chapter8.chapter8_music_room.t041
+> $chapter8.chapter8_music_room.t042
+> $chapter8.chapter8_music_room.t043
+> $chapter8.chapter8_music_room.t044
 
-> 消えたいわけじゃない。
-> その言葉が、なぜかいちばん引っかかった。
+> $chapter8.chapter8_music_room.t045
+> $chapter8.chapter8_music_room.t046
 
 @hide kotoha fade_out
 @wait 500
@@ -560,112 +560,112 @@ kotoha: ただ……消えたいわけじゃない、とは思います
 
 @show mahiru center happy fade_in
 
-mahiru: 勇くん
+mahiru: $chapter8.chapter8_mahiru_reason.t001
 
-player: 月夜野
+player: $chapter8.chapter8_mahiru_reason.t002
 
-mahiru: 今日の理由
-mahiru: 見つかった？
+mahiru: $chapter8.chapter8_mahiru_reason.t003
+mahiru: $chapter8.chapter8_mahiru_reason.t004
 
-player: ……理由？
+player: $chapter8.chapter8_mahiru_reason.t005
 
-mahiru: うん
-mahiru: 今日、生きててよかった理由
+mahiru: $chapter8.chapter8_mahiru_reason.t006
+mahiru: $chapter8.chapter8_mahiru_reason.t007
 
 @wait 600
 
-player: ……文化祭とか？
+player: $chapter8.chapter8_mahiru_reason.t008
 
 @expr mahiru thinking
 
-mahiru: それ
-mahiru: 本当に思ってる？
+mahiru: $chapter8.chapter8_mahiru_reason.t009
+mahiru: $chapter8.chapter8_mahiru_reason.t010
 
-player: ……
-
-@wait 400
-
-> まひるは答えを待っていた。
-> 急かすわけでも、試すわけでもなく、
-> ただ静かに。
-
-> 俺はしばらく、その問いを持て余した。
-
-player: ……思ってないかもな。正直には
-
-@expr mahiru normal
-
-mahiru: そっか
-
-mahiru: でも、答えてくれてよかった
-
-player: なんでだよ
-
-mahiru: 「楽しいよ」って言う人より
-mahiru: 「わからない」って言える人のほうが
-mahiru: 少し信用できる気がするから
-
-player: 変な信用だな
-
-@expr mahiru happy
-
-mahiru: まあいいや
-
-mahiru: わたしはね
-
-mahiru: 雨の日の文化祭
-mahiru: 初めて見たから
-
-mahiru: それが今日の理由
-
-player: 変わった理由だな
-
-mahiru: そうかな
-
-mahiru: 理由って
-mahiru: 小さいほうが消えにくいんだよ
-
-> そう言って、
-> まひるは少しだけ笑った。
-
-@wait 600
-
-player: お兄さんのこと
-player: 思い出したりするか。こういう日
+player: $chapter8.chapter8_mahiru_reason.t011
 
 @wait 400
 
-> 聞いてから、踏み込みすぎたかもしれないと思った。
-> でも、まひるは特に表情を変えなかった。
+> $chapter8.chapter8_mahiru_reason.t012
+> $chapter8.chapter8_mahiru_reason.t013
+> $chapter8.chapter8_mahiru_reason.t014
+
+> $chapter8.chapter8_mahiru_reason.t015
+
+player: $chapter8.chapter8_mahiru_reason.t016
 
 @expr mahiru normal
 
-mahiru: ……うん
+mahiru: $chapter8.chapter8_mahiru_reason.t017
 
-mahiru: お兄ちゃんね
-mahiru: こういう賑やかな日、わりと好きだったんだよ
+mahiru: $chapter8.chapter8_mahiru_reason.t018
 
-mahiru: 雰囲気に乗っかるの、得意なひとだったから
+player: $chapter8.chapter8_mahiru_reason.t019
 
-player: ……そうか
+mahiru: $chapter8.chapter8_mahiru_reason.t020
+mahiru: $chapter8.chapter8_mahiru_reason.t021
+mahiru: $chapter8.chapter8_mahiru_reason.t022
 
-mahiru: 今日みたいな雨の文化祭も
-mahiru: 絶対に楽しんでたと思う
-
-@wait 600
-
-> まひるは一度、目を窓のほうへやった。
-> 外を見るというより、
-> 何かを確かめるような目つきだった。
-
-mahiru: …今日は
-mahiru: ちゃんと、来られてよかったな
-
-player: ……ああ
+player: $chapter8.chapter8_mahiru_reason.t023
 
 @expr mahiru happy
 
-mahiru: じゃあ、また後でね
+mahiru: $chapter8.chapter8_mahiru_reason.t024
+
+mahiru: $chapter8.chapter8_mahiru_reason.t025
+
+mahiru: $chapter8.chapter8_mahiru_reason.t026
+mahiru: $chapter8.chapter8_mahiru_reason.t027
+
+mahiru: $chapter8.chapter8_mahiru_reason.t028
+
+player: $chapter8.chapter8_mahiru_reason.t029
+
+mahiru: $chapter8.chapter8_mahiru_reason.t030
+
+mahiru: $chapter8.chapter8_mahiru_reason.t031
+mahiru: $chapter8.chapter8_mahiru_reason.t032
+
+> $chapter8.chapter8_mahiru_reason.t033
+> $chapter8.chapter8_mahiru_reason.t034
+
+@wait 600
+
+player: $chapter8.chapter8_mahiru_reason.t035
+player: $chapter8.chapter8_mahiru_reason.t036
+
+@wait 400
+
+> $chapter8.chapter8_mahiru_reason.t037
+> $chapter8.chapter8_mahiru_reason.t038
+
+@expr mahiru normal
+
+mahiru: $chapter8.chapter8_mahiru_reason.t039
+
+mahiru: $chapter8.chapter8_mahiru_reason.t040
+mahiru: $chapter8.chapter8_mahiru_reason.t041
+
+mahiru: $chapter8.chapter8_mahiru_reason.t042
+
+player: $chapter8.chapter8_mahiru_reason.t043
+
+mahiru: $chapter8.chapter8_mahiru_reason.t044
+mahiru: $chapter8.chapter8_mahiru_reason.t045
+
+@wait 600
+
+> $chapter8.chapter8_mahiru_reason.t046
+> $chapter8.chapter8_mahiru_reason.t047
+> $chapter8.chapter8_mahiru_reason.t048
+
+mahiru: $chapter8.chapter8_mahiru_reason.t049
+mahiru: $chapter8.chapter8_mahiru_reason.t050
+
+player: $chapter8.chapter8_mahiru_reason.t051
+
+@expr mahiru happy
+
+mahiru: $chapter8.chapter8_mahiru_reason.t052
 
 @hide mahiru fade_out
 @wait 500
@@ -684,60 +684,60 @@ mahiru: じゃあ、また後でね
 @se rain_window.mp3
 @wait 800
 
-> 午後。
+> $chapter8.chapter8_rain_corridor.t001
 
-> 雨は少しだけ強くなっていた。
+> $chapter8.chapter8_rain_corridor.t002
 
-> 廊下の窓を、
-> 細かい水滴が流れていく。
+> $chapter8.chapter8_rain_corridor.t003
+> $chapter8.chapter8_rain_corridor.t004
 
 @still rain_festival_day
 @wait 1200
 @still_hide
 
-> 楽しいはずの日。
+> $chapter8.chapter8_rain_corridor.t005
 
-> でも。
+> $chapter8.chapter8_rain_corridor.t006
 
-> 「楽しい？」と聞かれて
-> 一瞬だけ言葉が止まる顔を見た。
+> $chapter8.chapter8_rain_corridor.t007
+> $chapter8.chapter8_rain_corridor.t008
 
-> 理由を探して
-> 空を見る人もいる。
+> $chapter8.chapter8_rain_corridor.t009
+> $chapter8.chapter8_rain_corridor.t010
 
-> 雨の音に
-> 会話が吸い込まれる日もある。
+> $chapter8.chapter8_rain_corridor.t011
+> $chapter8.chapter8_rain_corridor.t012
 
-> ……そういえば、まひるをまだ見かけていなかった。
-> また後でね、と言ったきりだった。
+> $chapter8.chapter8_rain_corridor.t013
+> $chapter8.chapter8_rain_corridor.t014
 
-player: ……
+player: $chapter8.chapter8_rain_corridor.t015
 
 @wait 600
 
-> さくらのことを考えた。
-> 動き続けることで何かを押し込めているような、あの走り方。
-> 後輩のフォローをしながら、自分は誰のフォローも受けない。
-> いつも一人でやってきた、という顔。
+> $chapter8.chapter8_rain_corridor.t016
+> $chapter8.chapter8_rain_corridor.t017
+> $chapter8.chapter8_rain_corridor.t018
+> $chapter8.chapter8_rain_corridor.t019
 
-> ことはのことを考えた。
-> ドアに触れて、それでも開けない。
-> 音楽の中に消えたい、でも消えたいわけじゃない、という言い方。
-> 何かと折り合いをつけようとしている場所に、俺が踏み込んでいいのか。
+> $chapter8.chapter8_rain_corridor.t020
+> $chapter8.chapter8_rain_corridor.t021
+> $chapter8.chapter8_rain_corridor.t022
+> $chapter8.chapter8_rain_corridor.t023
 
-> まひるのことを考えた。
-> 今日、来られてよかった。
-> その言葉の重さを、俺はちゃんとわかっているか。
+> $chapter8.chapter8_rain_corridor.t024
+> $chapter8.chapter8_rain_corridor.t025
+> $chapter8.chapter8_rain_corridor.t026
 
 @bgm mystery_shadow.mp3
 @wait 1000
 
-> まだ何も起きていない。
+> $chapter8.chapter8_rain_corridor.t027
 
-> でも――
+> $chapter8.chapter8_rain_corridor.t028
 
-> 何も起きない気が
-> しなかった。
+> $chapter8.chapter8_rain_corridor.t029
+> $chapter8.chapter8_rain_corridor.t030
 
 @wait 800
 
@@ -747,19 +747,19 @@ player: ……
 
 @wait 1000
 
-> 走馬灯というほど大げさではない。
-> ただ、今日この廊下に立っていると、
-> 春からここまでの記憶が、順番を無視して浮かんでくる。
+> $chapter8.chapter8_rain_corridor.t031
+> $chapter8.chapter8_rain_corridor.t032
+> $chapter8.chapter8_rain_corridor.t033
 
 @wait 800
 
 @still sakura_blank_moment
 @wait 1200
 
-> 入学式の翌日。
-> さくらがかばんを握る手を見た。
-> 理由はわからなかった。
-> 笑っていたから、気のせいだと思った。
+> $chapter8.chapter8_rain_corridor.t034
+> $chapter8.chapter8_rain_corridor.t035
+> $chapter8.chapter8_rain_corridor.t036
+> $chapter8.chapter8_rain_corridor.t037
 
 @still_hide
 @wait 400
@@ -767,22 +767,22 @@ player: ……
 @still kotoha_window_ch1
 @wait 1200
 
-> 初めてことはを見た日。
-> 図書室で、五線譜の本の表紙を指でなぞっていた。
-> その指が、途中で止まった。
-> 止まったまま、しばらくそこにいた。
+> $chapter8.chapter8_rain_corridor.t038
+> $chapter8.chapter8_rain_corridor.t039
+> $chapter8.chapter8_rain_corridor.t040
+> $chapter8.chapter8_rain_corridor.t041
 
 @still_hide
 @wait 400
 @still mahiru_notebook_drop
 @wait 1200
 
-> 先月、廊下でまひるがノートを閉じるのを見た。
-> 一行だけだった。
+> $chapter8.chapter8_rain_corridor.t042
+> $chapter8.chapter8_rain_corridor.t043
 
-> 「こういう夕方、お兄ちゃんが好きだったんだ」
+> $chapter8.chapter8_rain_corridor.t044
 
-> ノートを閉じる速さが、自然じゃなかった。
+> $chapter8.chapter8_rain_corridor.t045
 
 @still_hide
 @wait 400
@@ -792,19 +792,19 @@ player: ……
 @se rain_window.mp3
 @wait 800
 
-> 俺はずっと、見ていた。
-> 見ていたつもりで、
-> 意味があるとわかっていて、
-> それでも動けないでいた。
+> $chapter8.chapter8_rain_corridor.t046
+> $chapter8.chapter8_rain_corridor.t047
+> $chapter8.chapter8_rain_corridor.t048
+> $chapter8.chapter8_rain_corridor.t049
 
-> 今日は、どうするんだ。
+> $chapter8.chapter8_rain_corridor.t050
 
-player: ……
+player: $chapter8.chapter8_rain_corridor.t051
 
 @wait 1200
 
-> 雨の音だけが、
-> 校舎に静かに広がっていた。
+> $chapter8.chapter8_rain_corridor.t052
+> $chapter8.chapter8_rain_corridor.t053
 
 @bgm stop
 @wait 500
@@ -823,114 +823,114 @@ player: ……
 @se rain_window.mp3
 @wait 600
 
-> 午前の部が終わった頃だった。
+> $chapter8.chapter8_sakura_crisis.t001
 
 @wait 400
 
-> 廊下の角で、
-> さくらのスマホが鳴った。
+> $chapter8.chapter8_sakura_crisis.t002
+> $chapter8.chapter8_sakura_crisis.t003
 
 @show sakura center normal fade_in
 
-sakura: ん、電話
+sakura: $chapter8.chapter8_sakura_crisis.t004
 
-> 一瞬、さくらの顔から忙しそうな表情が消えた。
-> 画面を見る。
-> 知らない番号、という顔だった。
+> $chapter8.chapter8_sakura_crisis.t005
+> $chapter8.chapter8_sakura_crisis.t006
+> $chapter8.chapter8_sakura_crisis.t007
 
 @wait 400
 
-sakura: ……はい
+sakura: $chapter8.chapter8_sakura_crisis.t008
 
 @wait 500
 
-sakura: え
+sakura: $chapter8.chapter8_sakura_crisis.t009
 
 @wait 300
 
-sakura: え、なんで
+sakura: $chapter8.chapter8_sakura_crisis.t010
 
 @wait 400
 
-sakura: ……わかった。今すぐ行く
+sakura: $chapter8.chapter8_sakura_crisis.t011
 
 @wait 300
 
-> 通話が切れる。
+> $chapter8.chapter8_sakura_crisis.t012
 
 @wait 700
 
 @expr sakura blank
 
-> 笑顔が、なくなった。
+> $chapter8.chapter8_sakura_crisis.t013
 
-> 完全に。
+> $chapter8.chapter8_sakura_crisis.t014
 
-> エプロンの裾を、
-> 無意識に両手で握っている。
-> 力が入っているのが、布の皺でわかった。
+> $chapter8.chapter8_sakura_crisis.t015
+> $chapter8.chapter8_sakura_crisis.t016
+> $chapter8.chapter8_sakura_crisis.t017
 
 @wait 1000
 
-player: ……さくら
+player: $chapter8.chapter8_sakura_crisis.t018
 
 @expr sakura surprised
 
-sakura: あっ、勇くん
+sakura: $chapter8.chapter8_sakura_crisis.t019
 
 @wait 300
 
-> さくらは口を開いた。
+> $chapter8.chapter8_sakura_crisis.t020
 
-> 「大丈夫」という言葉を作ろうとした。
+> $chapter8.chapter8_sakura_crisis.t021
 
-> でも。
+> $chapter8.chapter8_sakura_crisis.t022
 
 @wait 700
 
 @expr sakura sad
 
-sakura: ……お父さんが
+sakura: $chapter8.chapter8_sakura_crisis.t023
 
-sakura: 救急車で運ばれたって
+sakura: $chapter8.chapter8_sakura_crisis.t024
 
-player: ……
+player: $chapter8.chapter8_sakura_crisis.t025
 
-sakura: 家の近くで倒れてたらしくて
-sakura: 隣のおばさんから連絡が来て
+sakura: $chapter8.chapter8_sakura_crisis.t026
+sakura: $chapter8.chapter8_sakura_crisis.t027
 
 @wait 500
 
-> さくらはしばらく、何かを言おうとして、言えなかった。
-> 目が、少しだけ揺れていた。
+> $chapter8.chapter8_sakura_crisis.t028
+> $chapter8.chapter8_sakura_crisis.t029
 
 @wait 600
 
 @expr sakura happy
 
-sakura: 大丈夫、たぶん大丈夫だよ！
-sakura: ちょっと行ってくるだけ！
+sakura: $chapter8.chapter8_sakura_crisis.t030
+sakura: $chapter8.chapter8_sakura_crisis.t031
 
-player: 一人で行けるか
+player: $chapter8.chapter8_sakura_crisis.t032
 
-sakura: 全然平気！
-sakura: いつも一人だし！
+sakura: $chapter8.chapter8_sakura_crisis.t033
+sakura: $chapter8.chapter8_sakura_crisis.t034
 
 @wait 500
 
-> さくらはもう笑っていた。
+> $chapter8.chapter8_sakura_crisis.t035
 
-> でも手が、
-> かばんの持ち手を、
-> 白くなるほど握っていた。
+> $chapter8.chapter8_sakura_crisis.t036
+> $chapter8.chapter8_sakura_crisis.t037
+> $chapter8.chapter8_sakura_crisis.t038
 
 @wait 600
 
-> それだけで、もう十分だった。
-> 「大丈夫」じゃないことくらい、わかる。
-> でもさくらは言わない。
-> 言えない、というより、
-> 言わないことが身についてしまっている。
+> $chapter8.chapter8_sakura_crisis.t039
+> $chapter8.chapter8_sakura_crisis.t040
+> $chapter8.chapter8_sakura_crisis.t041
+> $chapter8.chapter8_sakura_crisis.t042
+> $chapter8.chapter8_sakura_crisis.t043
 
 @hide sakura slide_out_left
 @wait 500
@@ -949,101 +949,101 @@ sakura: いつも一人だし！
 @bgm piano_distant.mp3 noloop
 @wait 700
 
-> 昼過ぎ。
+> $chapter8.chapter8_kotoha_crisis.t001
 
 @wait 400
 
-> 音楽準備室の前を通りかかった。
+> $chapter8.chapter8_kotoha_crisis.t002
 
 @show kotoha center normal fade_in
 
-> 花園ことはが、
-> 扉の前に立っていた。
+> $chapter8.chapter8_kotoha_crisis.t003
+> $chapter8.chapter8_kotoha_crisis.t004
 
-> 動いていない。
+> $chapter8.chapter8_kotoha_crisis.t005
 
 @wait 600
 
-> 遠くから見ていると、
-> 扉に手をかけているのがわかった。
-> 引こうとしているのか、
-> 押さえているのか。
+> $chapter8.chapter8_kotoha_crisis.t006
+> $chapter8.chapter8_kotoha_crisis.t007
+> $chapter8.chapter8_kotoha_crisis.t008
+> $chapter8.chapter8_kotoha_crisis.t009
 
-> 近づいて、担任の声が聞こえた。
+> $chapter8.chapter8_kotoha_crisis.t010
 
 @wait 400
 
-> 担任「花園さん、少しいいですか」
-> 担任「合唱の伴奏を頼んでいた楠さんが体調を崩してしまって」
-> 担任「あなたがピアノを弾けると聞いたんですが、急で申し訳ないんですが……」
+> $chapter8.chapter8_kotoha_crisis.t011
+> $chapter8.chapter8_kotoha_crisis.t012
+> $chapter8.chapter8_kotoha_crisis.t013
 
 @wait 300
 
-> ことはは、答えるまでに間があった。
-> 廊下の人の流れは相変わらず続いていて、
-> その中でここだけが止まっているみたいだった。
+> $chapter8.chapter8_kotoha_crisis.t014
+> $chapter8.chapter8_kotoha_crisis.t015
+> $chapter8.chapter8_kotoha_crisis.t016
 
 @wait 500
 
-kotoha: ……わたしには、できません
+kotoha: $chapter8.chapter8_kotoha_crisis.t017
 
-> 担任「そうですか。……無理にとは言いません。ただ、もしよければ考えてみてもらえるだけでも」
+> $chapter8.chapter8_kotoha_crisis.t018
 
-> 担任が去る。
+> $chapter8.chapter8_kotoha_crisis.t019
 
 @wait 600
 
-> ことはは扉の前に残った。
+> $chapter8.chapter8_kotoha_crisis.t020
 
-> 扉に手がかかっている。
+> $chapter8.chapter8_kotoha_crisis.t021
 
-> 開こうとしているのか、
-> 開かないように押さえているのか、
-> 遠くからではわからなかった。
+> $chapter8.chapter8_kotoha_crisis.t022
+> $chapter8.chapter8_kotoha_crisis.t023
+> $chapter8.chapter8_kotoha_crisis.t024
 
 @expr kotoha thinking
 
 @wait 1000
 
-> ことはは気づいていない。
-> 俺がここにいることに。
+> $chapter8.chapter8_kotoha_crisis.t025
+> $chapter8.chapter8_kotoha_crisis.t026
 
-> 「できません」
-> という言葉は、静かだった。
-> 静かすぎた。
+> $chapter8.chapter8_kotoha_crisis.t027
+> $chapter8.chapter8_kotoha_crisis.t028
+> $chapter8.chapter8_kotoha_crisis.t029
 
 @wait 600
 
-> できない、ではなくて、できません。
-> 丁寧語で、短く、迷いなく。
-> まるでずっと前から決めていた言葉のように聞こえた。
+> $chapter8.chapter8_kotoha_crisis.t030
+> $chapter8.chapter8_kotoha_crisis.t031
+> $chapter8.chapter8_kotoha_crisis.t032
 
 @wait 400
 
-> けれど、
-> 手は扉を離していない。
+> $chapter8.chapter8_kotoha_crisis.t033
+> $chapter8.chapter8_kotoha_crisis.t034
 
-> 廊下の先から合唱の練習の声が聞こえてくる。
-> 伴奏のない、アカペラの歌声。
-> どこか頼りない音が、雨音に混じって流れてくる。
+> $chapter8.chapter8_kotoha_crisis.t035
+> $chapter8.chapter8_kotoha_crisis.t036
+> $chapter8.chapter8_kotoha_crisis.t037
 
 @wait 800
 
 @expr kotoha sad
 
-> ことはは一度、目を伏せた。
+> $chapter8.chapter8_kotoha_crisis.t038
 
-> 指が、ほんの少しだけ動いた。
-> ドアに触れたまま、
-> 引くでも押すでもなく。
+> $chapter8.chapter8_kotoha_crisis.t039
+> $chapter8.chapter8_kotoha_crisis.t040
+> $chapter8.chapter8_kotoha_crisis.t041
 
 @wait 800
 
-> ……わからない。
-> あの場所に入れないのか、
-> 入らないと決めているのか。
+> $chapter8.chapter8_kotoha_crisis.t042
+> $chapter8.chapter8_kotoha_crisis.t043
+> $chapter8.chapter8_kotoha_crisis.t044
 
-> 俺には、見分けがつかなかった。
+> $chapter8.chapter8_kotoha_crisis.t045
 
 @hide kotoha fade_out
 @wait 500
@@ -1061,85 +1061,85 @@ kotoha: ……わたしには、できません
 @bgm tension_rain.mp3
 @wait 700
 
-> 午後が深まる頃になって、
+> $chapter8.chapter8_mahiru_missing.t001
 
 @wait 400
 
-> まひるを探した。
+> $chapter8.chapter8_mahiru_missing.t002
 
-> また後でね、と言って別れてから、
-> ずいぶん時間が経っていた。
-> でも、まひるはまだ現れていなかった。
+> $chapter8.chapter8_mahiru_missing.t003
+> $chapter8.chapter8_mahiru_missing.t004
+> $chapter8.chapter8_mahiru_missing.t005
 
 @wait 400
 
-> クラスの教室。
-> 廊下。
-> 屋上への踊り場。
+> $chapter8.chapter8_mahiru_missing.t006
+> $chapter8.chapter8_mahiru_missing.t007
+> $chapter8.chapter8_mahiru_missing.t008
 
 @wait 600
 
-> 踊り場の窓から屋上を見た。
-> 誰もいなかった。
+> $chapter8.chapter8_mahiru_missing.t009
+> $chapter8.chapter8_mahiru_missing.t010
 
 @wait 400
 
-> 屋上でもない。
+> $chapter8.chapter8_mahiru_missing.t011
 
-> どこにもいない。
+> $chapter8.chapter8_mahiru_missing.t012
 
 @wait 400
 
-> スマホを取り出してみた。
-> 昼に送ったメッセージが、まだ既読になっていない。
+> $chapter8.chapter8_mahiru_missing.t013
+> $chapter8.chapter8_mahiru_missing.t014
 
 @wait 500
 
-> さっきから、見ていない。
-> 既読がつかない。
+> $chapter8.chapter8_mahiru_missing.t015
+> $chapter8.chapter8_mahiru_missing.t016
 
-> その二つだけで、
-> 胸の中が少しだけ重くなった。
+> $chapter8.chapter8_mahiru_missing.t017
+> $chapter8.chapter8_mahiru_missing.t018
 
 @wait 400
 
-> 既読がつかない理由は、いくつかある。
-> スマホが手元にない。
-> 気づかなかった。
-> 見たくなかった。
+> $chapter8.chapter8_mahiru_missing.t019
+> $chapter8.chapter8_mahiru_missing.t020
+> $chapter8.chapter8_mahiru_missing.t021
+> $chapter8.chapter8_mahiru_missing.t022
 
-> どれなのかは、わからない。
-> ただ、今日という日に、既読がつかないことの重さは知っていた。
+> $chapter8.chapter8_mahiru_missing.t023
+> $chapter8.chapter8_mahiru_missing.t024
 
-> 雨が、少し強くなった。
+> $chapter8.chapter8_mahiru_missing.t025
 
 @wait 600
 
-> まひるが、いなくなっていた。
-> 今日。
-> 文化祭の当日に。
+> $chapter8.chapter8_mahiru_missing.t026
+> $chapter8.chapter8_mahiru_missing.t027
+> $chapter8.chapter8_mahiru_missing.t028
 
 @bgm stop
 @wait 400
 
-> 思い当たることが、
-> ひとつだけあった。
+> $chapter8.chapter8_mahiru_missing.t029
+> $chapter8.chapter8_mahiru_missing.t030
 
-> 先月、廊下でまひるがノートを閉じるのを見た。
-> 一行だけだった。
+> $chapter8.chapter8_mahiru_missing.t031
+> $chapter8.chapter8_mahiru_missing.t032
 
-> 「こういう夕方、お兄ちゃんが好きだったんだ」
+> $chapter8.chapter8_mahiru_missing.t033
 
-> 屋上で見ていた空。
-> 少しずつ短くなっていく秋の午後。
-> 十月下旬。
+> $chapter8.chapter8_mahiru_missing.t034
+> $chapter8.chapter8_mahiru_missing.t035
+> $chapter8.chapter8_mahiru_missing.t036
 
-> 今日は何日だ。
-> 意識したら、急に怖くなった。
+> $chapter8.chapter8_mahiru_missing.t037
+> $chapter8.chapter8_mahiru_missing.t038
 
 @wait 1000
 
-> ……間に合うか。
+> $chapter8.chapter8_mahiru_missing.t039
 
 @wait 800
 
@@ -1157,49 +1157,49 @@ kotoha: ……わたしには、できません
 @se rain_window.mp3
 @wait 1000
 
-> さくらは一人で、
-> 雨の中を出ていった。
+> $chapter8.chapter8_branch.t001
+> $chapter8.chapter8_branch.t002
 
-> ことはは音楽準備室の前で、
-> 動けないままでいる。
+> $chapter8.chapter8_branch.t003
+> $chapter8.chapter8_branch.t004
 
-> まひるは、
-> どこにもいない。
+> $chapter8.chapter8_branch.t005
+> $chapter8.chapter8_branch.t006
 
 @wait 600
 
-> 廊下に立ったまま、俺は三つのことを同時に考えていた。
+> $chapter8.chapter8_branch.t007
 
-> さくらは今、病院に向かっている。
-> 一人で。白くなるほどかばんを握りながら。
+> $chapter8.chapter8_branch.t008
+> $chapter8.chapter8_branch.t009
 
-> ことはは扉の前で、
-> 入るでも帰るでもなく、止まっている。
+> $chapter8.chapter8_branch.t010
+> $chapter8.chapter8_branch.t011
 
-> まひるは、いなくなった。
-> 既読がつかない。
-> 十月下旬。
+> $chapter8.chapter8_branch.t012
+> $chapter8.chapter8_branch.t013
+> $chapter8.chapter8_branch.t014
 
 @wait 800
 
-> 俺は一人しかいない。
+> $chapter8.chapter8_branch.t015
 
 @wait 1000
 
-> 選ぶということは、
-> 誰かを選ばないということでもある。
+> $chapter8.chapter8_branch.t016
+> $chapter8.chapter8_branch.t017
 
-> それをわかっていても、
-> 選ばなければならない。
+> $chapter8.chapter8_branch.t018
+> $chapter8.chapter8_branch.t019
 
-> 今、この廊下で。
+> $chapter8.chapter8_branch.t020
 
 @wait 800
 
 @choice
-- "さくらのところへ行く" -> chapter8_to_sakura
-- "ことはのところへ行く" -> chapter8_to_kotoha
-- "まひるを探す"         -> chapter8_to_mahiru
+- $choices.chapter8.go_to_sakura -> chapter8_to_sakura
+- $choices.chapter8.go_to_kotoha -> chapter8_to_kotoha
+- $choices.chapter8.search_mahiru -> chapter8_to_mahiru
 
 
 # chapter8_to_sakura
@@ -1225,17 +1225,17 @@ kotoha: ……わたしには、できません
 @bgm mystery_shadow.mp3
 @wait 1000
 
-> 廊下を歩く。
+> $chapter8.bad_end_common.t001
 
-> でも。
+> $chapter8.bad_end_common.t002
 
-> その場所に、もう誰もいなかった。
+> $chapter8.bad_end_common.t003
 
-> ……間に合わなかった。
+> $chapter8.bad_end_common.t004
 
-> 気づいていたのに。
-> 手を伸ばす前に、
-> 季節が終わっていた。
+> $chapter8.bad_end_common.t005
+> $chapter8.bad_end_common.t006
+> $chapter8.bad_end_common.t007
 
 @bgm stop
 @wait 1000

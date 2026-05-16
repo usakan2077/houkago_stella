@@ -10,103 +10,103 @@
 @se school_bell.mp3
 @wait 1000
 
-> 九月に入っていた。
-> 夏休みが明けて、教室に人が戻ってきた。
+> $chapter7.chapter7_start.t001
+> $chapter7.chapter7_start.t002
 
-> 廊下のあちこちで、文化祭の話が聞こえ始めている。
+> $chapter7.chapter7_start.t003
 
-> 空気が変わる。
-> そういうのが、ちゃんと肌でわかるようになった。
-> 慣れたのか、それとも少し鈍くなっただけなのか、
-> 自分ではよくわからなかった。
+> $chapter7.chapter7_start.t004
+> $chapter7.chapter7_start.t005
+> $chapter7.chapter7_start.t006
+> $chapter7.chapter7_start.t007
 
 @show sakura right happy fade_in
 @show kotoha left normal fade_in
 
-sakura: 勇くんおはよー！
+sakura: $chapter7.chapter7_start.t008
 
-player: ……おはよう
+player: $chapter7.chapter7_start.t009
 
-sakura: 今日も文化祭準備だよ！
+sakura: $chapter7.chapter7_start.t010
 
-player: もうそんな時期か
+player: $chapter7.chapter7_start.t011
 
-kotoha: この学校は
-kotoha: 文化祭が大きいですから
+kotoha: $chapter7.chapter7_start.t012
+kotoha: $chapter7.chapter7_start.t013
 
-sakura: そうそう！
+sakura: $chapter7.chapter7_start.t014
 
-sakura: クラスの出し物、
-sakura: うち喫茶店だから！
+sakura: $chapter7.chapter7_start.t015
+sakura: $chapter7.chapter7_start.t016
 
-player: かなり普通だな
+player: $chapter7.chapter7_start.t017
 
-sakura: 普通が一番！
+sakura: $chapter7.chapter7_start.t018
 
-> さくらは笑った。
+> $chapter7.chapter7_start.t019
 
-> いつも通りの、
-> 明るい笑顔だった。
+> $chapter7.chapter7_start.t020
+> $chapter7.chapter7_start.t021
 
 @wait 400
 
-> ……いつも通り、だった。
+> $chapter7.chapter7_start.t022
 
-> でも今日は、その「いつも通り」が
-> 少しだけ頑張っているように聞こえた。
-> 気のせいかもしれない。
+> $chapter7.chapter7_start.t023
+> $chapter7.chapter7_start.t024
+> $chapter7.chapter7_start.t025
 
 @se classroom_noise.mp3
 @wait 600
 
-> 教室はもうざわついている。
-> 黒板には「文化祭 喫茶実行委員」の名前が書かれていて、
-> 机の上には昨日から引き継がれた作業リストが残っていた。
+> $chapter7.chapter7_start.t026
+> $chapter7.chapter7_start.t027
+> $chapter7.chapter7_start.t028
 
-player: ことはは今日も係か
+player: $chapter7.chapter7_start.t029
 
-kotoha: ……はい
-kotoha: 備品の管理を頼まれています
+kotoha: $chapter7.chapter7_start.t030
+kotoha: $chapter7.chapter7_start.t031
 
-player: 大変だな
+player: $chapter7.chapter7_start.t032
 
-kotoha: そうでもないです
-kotoha: 静かな作業のほうが、向いていますから
+kotoha: $chapter7.chapter7_start.t033
+kotoha: $chapter7.chapter7_start.t034
 
-> ことははそう言って、手元の用紙に視線を落とした。
-> 向いている、という言葉の奥に、
-> もう少し別の何かが含まれている気がした。
-> けれど、触れる場所じゃない。
+> $chapter7.chapter7_start.t035
+> $chapter7.chapter7_start.t036
+> $chapter7.chapter7_start.t037
+> $chapter7.chapter7_start.t038
 
 @expr sakura excited
 
-sakura: じゃあ勇くんは力仕事担当ね！
-sakura: 段ボールとか、机の移動とか！
+sakura: $chapter7.chapter7_start.t039
+sakura: $chapter7.chapter7_start.t040
 
-player: 決まったのか
+player: $chapter7.chapter7_start.t041
 
-sakura: 今決めた！
+sakura: $chapter7.chapter7_start.t042
 
-player: 独裁だな
+player: $chapter7.chapter7_start.t043
 
-sakura: 効率重視ってことで！
+sakura: $chapter7.chapter7_start.t044
 
-> さくらがまた笑う。
-> 早い。
-> ひとつひとつの感情の切り替えが、今日もやたらと早い。
+> $chapter7.chapter7_start.t045
+> $chapter7.chapter7_start.t046
+> $chapter7.chapter7_start.t047
 
 @wait 500
 
-> 窓から見える校庭に、九月の陽光が落ちていた。
-> 夏ほど強くない。
-> でも、まだ刺すような白さがある。
+> $chapter7.chapter7_start.t048
+> $chapter7.chapter7_start.t049
+> $chapter7.chapter7_start.t050
 
 @wait 400
 
-> 教室の中は、ざわめきと笑い声と
-> 誰かの「あっ、それ違う班じゃない？」という声で満ちていた。
-> 普通の朝だった。
-> どこから見ても、普通の九月の朝だった。
+> $chapter7.chapter7_start.t051
+> $chapter7.chapter7_start.t052
+> $chapter7.chapter7_start.t053
+> $chapter7.chapter7_start.t054
 
 @hide_all fade_out
 @wait 500
@@ -125,70 +125,70 @@ sakura: 効率重視ってことで！
 @se classroom_noise.mp3
 @wait 800
 
-> 昼休みに教室の隅を使って、
-> 文化祭委員の打ち合わせが始まった。
-> 机を寄せて、床に大きな紙を広げて、
-> さくらが色鉛筆を五本まとめて握っている。
+> $chapter7.chapter7_festival_lunch.t001
+> $chapter7.chapter7_festival_lunch.t002
+> $chapter7.chapter7_festival_lunch.t003
+> $chapter7.chapter7_festival_lunch.t004
 
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
 
-sakura: 勇くん！　その机もう少し端に寄せて！
+sakura: $chapter7.chapter7_festival_lunch.t005
 
-player: 俺雑用係か
+player: $chapter7.chapter7_festival_lunch.t006
 
-sakura: 頼りになる係！
+sakura: $chapter7.chapter7_festival_lunch.t007
 
-kotoha: 桐島くんは
-kotoha: 便利そうです
+kotoha: $chapter7.chapter7_festival_lunch.t008
+kotoha: $chapter7.chapter7_festival_lunch.t009
 
-player: 援護になってない
+player: $chapter7.chapter7_festival_lunch.t010
 
-sakura: あはは！
+sakura: $chapter7.chapter7_festival_lunch.t011
 
 @wait 400
 
-sakura: えーっと、まず廊下の飾り付け図を書くので
-sakura: 誰か定規持ってる人
+sakura: $chapter7.chapter7_festival_lunch.t012
+sakura: $chapter7.chapter7_festival_lunch.t013
 
-kotoha: ……あります
+kotoha: $chapter7.chapter7_festival_lunch.t014
 
-sakura: さすがことはちゃん
+sakura: $chapter7.chapter7_festival_lunch.t015
 
-kotoha: いつも入れています
-kotoha: 使う場面は滅多にないですが
+kotoha: $chapter7.chapter7_festival_lunch.t016
+kotoha: $chapter7.chapter7_festival_lunch.t017
 
-player: なんで持ち歩いてるんだ
+player: $chapter7.chapter7_festival_lunch.t018
 
-kotoha: ……いざというときに
-kotoha: 困りたくないので
+kotoha: $chapter7.chapter7_festival_lunch.t019
+kotoha: $chapter7.chapter7_festival_lunch.t020
 
-player: いざというとき
+player: $chapter7.chapter7_festival_lunch.t021
 
-kotoha: ……今がそうでした
+kotoha: $chapter7.chapter7_festival_lunch.t022
 
-> なるほど、と思った。
-> 言葉の数が少ないぶん、一つひとつに妙な説得力がある。
+> $chapter7.chapter7_festival_lunch.t023
+> $chapter7.chapter7_festival_lunch.t024
 
-sakura: じゃあ、体育館のステージ前は飾り多めにして
-sakura: 廊下は……えっと
+sakura: $chapter7.chapter7_festival_lunch.t025
+sakura: $chapter7.chapter7_festival_lunch.t026
 
 @expr sakura thinking
 
-sakura: 勇くん、天井に届く？
+sakura: $chapter7.chapter7_festival_lunch.t027
 
-player: 届くかどうかは脚立次第だろ
+player: $chapter7.chapter7_festival_lunch.t028
 
-sakura: 脚立取ってきて！
+sakura: $chapter7.chapter7_festival_lunch.t029
 
-player: それ俺の仕事か
+player: $chapter7.chapter7_festival_lunch.t030
 
-sakura: 頼りになる係の仕事！
+sakura: $chapter7.chapter7_festival_lunch.t031
 
-> 引き受けることにした。
-> さくらの「頼りになる係」という言い方は、
-> 断る余地を上手く消している。
-> 本人がそれに気づいているかどうかは、まだよくわからない。
+> $chapter7.chapter7_festival_lunch.t032
+> $chapter7.chapter7_festival_lunch.t033
+> $chapter7.chapter7_festival_lunch.t034
+> $chapter7.chapter7_festival_lunch.t035
 
 @hide sakura fade_out
 @hide kotoha fade_out
@@ -197,92 +197,92 @@ sakura: 頼りになる係の仕事！
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
 
-> 脚立を取ってくると、さくらはもうホワイトボードの前に立っていた。
-> 手書きの見取り図に、勢いよく矢印が増えている。
+> $chapter7.chapter7_festival_lunch.t036
+> $chapter7.chapter7_festival_lunch.t037
 
-sakura: あ、ありがと！
-sakura: じゃあ上の飾り引っかける部分、届くか確認して
+sakura: $chapter7.chapter7_festival_lunch.t038
+sakura: $chapter7.chapter7_festival_lunch.t039
 
-player: ちょっと待ってろ
+player: $chapter7.chapter7_festival_lunch.t040
 
-> 脚立を開く。
-> さくらが補助に入ろうとしたが、
+> $chapter7.chapter7_festival_lunch.t041
+> $chapter7.chapter7_festival_lunch.t042
 
-kotoha: 桜咲さんは
-kotoha: 持つよりも描く方が向いていると思います
+kotoha: $chapter7.chapter7_festival_lunch.t043
+kotoha: $chapter7.chapter7_festival_lunch.t044
 
-sakura: え、なんで？
+sakura: $chapter7.chapter7_festival_lunch.t045
 
-kotoha: 手が、今も動いているので
+kotoha: $chapter7.chapter7_festival_lunch.t046
 
-> 言われてさくらは自分の手元を見た。
-> 知らないうちに色鉛筆を握り直していた。
+> $chapter7.chapter7_festival_lunch.t047
+> $chapter7.chapter7_festival_lunch.t048
 
-sakura: ……ほんとだ
-sakura: 体が正直すぎる
+sakura: $chapter7.chapter7_festival_lunch.t049
+sakura: $chapter7.chapter7_festival_lunch.t050
 
-kotoha: ……それは良いことだと思います
+kotoha: $chapter7.chapter7_festival_lunch.t051
 
-sakura: ことはちゃんってさ
-sakura: なんでそんなに静かなの？
+sakura: $chapter7.chapter7_festival_lunch.t052
+sakura: $chapter7.chapter7_festival_lunch.t053
 
-kotoha: ……会話を
-kotoha: 音楽に似ていると思っています
+kotoha: $chapter7.chapter7_festival_lunch.t054
+kotoha: $chapter7.chapter7_festival_lunch.t055
 
-sakura: え、どういうこと？
+sakura: $chapter7.chapter7_festival_lunch.t056
 
-kotoha: テンポを守らないと
-kotoha: 崩れるので
+kotoha: $chapter7.chapter7_festival_lunch.t057
+kotoha: $chapter7.chapter7_festival_lunch.t058
 
-sakura: なんか深い！
+sakura: $chapter7.chapter7_festival_lunch.t059
 
-> 上から聞きながら、おかしいと思った。
-> 花園ことはは、話す量は少ない。
-> でも黙っているわけじゃない。
-> ちゃんと、会話の流れを見ている。
+> $chapter7.chapter7_festival_lunch.t060
+> $chapter7.chapter7_festival_lunch.t061
+> $chapter7.chapter7_festival_lunch.t062
+> $chapter7.chapter7_festival_lunch.t063
 
-player: ……落ちそうだから話しかけるな
+player: $chapter7.chapter7_festival_lunch.t064
 
-sakura: えっ
+sakura: $chapter7.chapter7_festival_lunch.t065
 
-player: じゃなくて、補助してくれ
+player: $chapter7.chapter7_festival_lunch.t066
 
-sakura: あ、ごめんごめん！
+sakura: $chapter7.chapter7_festival_lunch.t067
 
-> さくらが慌てて脚立の足を押さえに来る。
-> その拍子に色鉛筆を一本落として、
-> ころころと転がった色鉛筆を、ことはが無言で拾って机の端に置いた。
+> $chapter7.chapter7_festival_lunch.t068
+> $chapter7.chapter7_festival_lunch.t069
+> $chapter7.chapter7_festival_lunch.t070
 
-sakura: ありがとことはちゃん！
+sakura: $chapter7.chapter7_festival_lunch.t071
 
-kotoha: ……どういたしまして
+kotoha: $chapter7.chapter7_festival_lunch.t072
 
-> 三人でやっていると、
-> 思っていたより仕事が進んだ。
-> さくらが仕切る。ことはが確認する。俺が手を動かす。
-> その組み合わせは、特に話し合ったわけでもないのに、
-> なんとなく自然に決まっていった。
+> $chapter7.chapter7_festival_lunch.t073
+> $chapter7.chapter7_festival_lunch.t074
+> $chapter7.chapter7_festival_lunch.t075
+> $chapter7.chapter7_festival_lunch.t076
+> $chapter7.chapter7_festival_lunch.t077
 
-sakura: 勇くん、そっちのテープ取って
+sakura: $chapter7.chapter7_festival_lunch.t078
 
-player: これか
+player: $chapter7.chapter7_festival_lunch.t079
 
-sakura: それじゃなくてもう一個上のやつ
+sakura: $chapter7.chapter7_festival_lunch.t080
 
-player: これか
+player: $chapter7.chapter7_festival_lunch.t081
 
-sakura: 合ってる！
-sakura: なんで最初から取れないの
+sakura: $chapter7.chapter7_festival_lunch.t082
+sakura: $chapter7.chapter7_festival_lunch.t083
 
-player: 種類が多すぎるんだよ
+player: $chapter7.chapter7_festival_lunch.t084
 
-kotoha: ……三種類しかありません
+kotoha: $chapter7.chapter7_festival_lunch.t085
 
-player: …………
+player: $chapter7.chapter7_festival_lunch.t086
 
-sakura: あはは！
+sakura: $chapter7.chapter7_festival_lunch.t087
 
-> それは悪くない時間だった。
+> $chapter7.chapter7_festival_lunch.t088
 
 @hide_all fade_out
 @wait 600
@@ -300,198 +300,198 @@ sakura: あはは！
 @bgm school_festival.mp3
 @wait 800
 
-> 放課後の教室。
-> 文化祭準備で、いつもより騒がしい。
+> $chapter7.chapter7_festival.t001
+> $chapter7.chapter7_festival.t002
 
-> 机が並び替えられて、
-> 段ボールが積まれて、
-> 誰かの持ってきたプリンターが床の上で動いている。
-> こういう喧騒は嫌いじゃない。
-> 何かに動員されている間は、余計なことを考えなくていいから。
+> $chapter7.chapter7_festival.t003
+> $chapter7.chapter7_festival.t004
+> $chapter7.chapter7_festival.t005
+> $chapter7.chapter7_festival.t006
+> $chapter7.chapter7_festival.t007
 
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
 
-sakura: はい男子ー！
-sakura: 段ボールこっちー！
+sakura: $chapter7.chapter7_festival.t008
+sakura: $chapter7.chapter7_festival.t009
 
-> クラスメイト「了解！」
+> $chapter7.chapter7_festival.t010
 
-sakura: ありがとう！
+sakura: $chapter7.chapter7_festival.t011
 
-player: 指揮役だな
+player: $chapter7.chapter7_festival.t012
 
-sakura: クラスの空気づくりは
-sakura: 大事だからね！
+sakura: $chapter7.chapter7_festival.t013
+sakura: $chapter7.chapter7_festival.t014
 
-kotoha: 桜咲さん
+kotoha: $chapter7.chapter7_festival.t015
 
-kotoha: 買い出し班が必要だそうです
+kotoha: $chapter7.chapter7_festival.t016
 
-sakura: ほんと？
+sakura: $chapter7.chapter7_festival.t017
 
-sakura: よし男子三人！
-sakura: コンビニ班お願い！
+sakura: $chapter7.chapter7_festival.t018
+sakura: $chapter7.chapter7_festival.t019
 
-> 数人のクラスメイトが教室を出ていく。
+> $chapter7.chapter7_festival.t020
 
-> 廊下の足音が遠ざかる。
+> $chapter7.chapter7_festival.t021
 
 @wait 600
 
-> さくらの声が飛ぶ。
-> 席の配置。備品の確認。メニュー表の印刷。
-> 全部、一人で把握している。
+> $chapter7.chapter7_festival.t022
+> $chapter7.chapter7_festival.t023
+> $chapter7.chapter7_festival.t024
 
 @expr sakura excited
 
-sakura: ことはちゃん、そっちの在庫数えてくれる？
+sakura: $chapter7.chapter7_festival.t025
 
-kotoha: わかりました
+kotoha: $chapter7.chapter7_festival.t026
 
-sakura: 勇くんは……そっちのテーブルの組み立て！
+sakura: $chapter7.chapter7_festival.t027
 
-player: 了解
+player: $chapter7.chapter7_festival.t028
 
-sakura: よし！
-sakura: じゃあ本番の流れも一回確認しよ、みんな聞いてー！
+sakura: $chapter7.chapter7_festival.t029
+sakura: $chapter7.chapter7_festival.t030
 
-> さくらの声が教室全体に通る。
-> クラスメイトが少しずつ動きを止めて、さくらのほうを向いた。
+> $chapter7.chapter7_festival.t031
+> $chapter7.chapter7_festival.t032
 
-> ……すごいな、とは思う。
-> 正直に言えば、毎回思う。
-> こういうことができる人間は、
-> ちゃんとそれを持って生まれてきた人間だと思っていた。
+> $chapter7.chapter7_festival.t033
+> $chapter7.chapter7_festival.t034
+> $chapter7.chapter7_festival.t035
+> $chapter7.chapter7_festival.t036
 
 @wait 500
 
-sakura: 開店が十時で、午後二時に一回転換ね
-sakura: 衣装は当日の朝に合わせるから、みんな早めに来て！
+sakura: $chapter7.chapter7_festival.t037
+sakura: $chapter7.chapter7_festival.t038
 
-> クラスメイト「えーそんな早い？」
+> $chapter7.chapter7_festival.t039
 
-sakura: 大事なとこだから！
-sakura: ほら、去年の三組、思い出してよ、仕上がりが全然違ったじゃない
+sakura: $chapter7.chapter7_festival.t040
+sakura: $chapter7.chapter7_festival.t041
 
-> クラスメイト「確かに…」
+> $chapter7.chapter7_festival.t042
 
-sakura: でしょ？
-sakura: みんな絶対できるって、あたし信じてるから！
+sakura: $chapter7.chapter7_festival.t043
+sakura: $chapter7.chapter7_festival.t044
 
-> 周りが「おー」と笑う。
-> さくらも笑う。
+> $chapter7.chapter7_festival.t045
+> $chapter7.chapter7_festival.t046
 
 @wait 400
 
-> でも一瞬だけ、
-> その笑顔の端が、
-> ほんの少しだけ遅かった。
+> $chapter7.chapter7_festival.t047
+> $chapter7.chapter7_festival.t048
+> $chapter7.chapter7_festival.t049
 
 @wait 600
 
-> 誰も気づかなかった。
-> 俺も、たぶん気のせいだと思ったはずだ。
-> でも今日は、なぜか脳の端っこに引っかかった。
+> $chapter7.chapter7_festival.t050
+> $chapter7.chapter7_festival.t051
+> $chapter7.chapter7_festival.t052
 
 @expr kotoha normal
 
-kotoha: 桜咲さん
+kotoha: $chapter7.chapter7_festival.t053
 
-kotoha: テーブルクロスの枚数、
-kotoha: 一枚足りません
+kotoha: $chapter7.chapter7_festival.t054
+kotoha: $chapter7.chapter7_festival.t055
 
-sakura: あ、ほんと？
+sakura: $chapter7.chapter7_festival.t056
 
-player: 俺が言ってこようか
+player: $chapter7.chapter7_festival.t057
 
-sakura: ありがとう、でも大丈夫
+sakura: $chapter7.chapter7_festival.t058
 
-> さくらは立ち上がって、教室の奥に向かった。
+> $chapter7.chapter7_festival.t059
 
-sakura: 男子班ー！ テーブルクロス一枚足りなかった！
-sakura: 倉庫の予備、出してきてもらえる？
+sakura: $chapter7.chapter7_festival.t060
+sakura: $chapter7.chapter7_festival.t061
 
-> クラスメイト「りょーかい！」
+> $chapter7.chapter7_festival.t062
 
 @wait 400
 
-> ことはは棚卸しの続きをしている。
-> 鉛筆を動かしながら、ときどき手が止まる。
+> $chapter7.chapter7_festival.t063
+> $chapter7.chapter7_festival.t064
 
-player: ことは
+player: $chapter7.chapter7_festival.t065
 
-kotoha: はい
+kotoha: $chapter7.chapter7_festival.t066
 
-player: 楽しいか、こういうの
+player: $chapter7.chapter7_festival.t067
 
 @expr kotoha thinking
 
-kotoha: ……楽しい、というより
-kotoha: 役に立っている感じがします
+kotoha: $chapter7.chapter7_festival.t068
+kotoha: $chapter7.chapter7_festival.t069
 
-player: それでいいのか
+player: $chapter7.chapter7_festival.t070
 
-kotoha: ……どういう意味ですか
+kotoha: $chapter7.chapter7_festival.t071
 
-player: 別に。何でもない
+player: $chapter7.chapter7_festival.t072
 
 @wait 400
 
-kotoha: ……そうですね
+kotoha: $chapter7.chapter7_festival.t073
 
-kotoha: 楽しいかどうか、
-kotoha: あまり考えていませんでした
+kotoha: $chapter7.chapter7_festival.t074
+kotoha: $chapter7.chapter7_festival.t075
 
-> ことはは視線を用紙に戻した。
-> それ以上は言わなかった。
-> でも、否定もしなかった。
+> $chapter7.chapter7_festival.t076
+> $chapter7.chapter7_festival.t077
+> $chapter7.chapter7_festival.t078
 
 @wait 800
 
-> クラスメイト「テーブルクロス持ってきたー！」
+> $chapter7.chapter7_festival.t079
 
-sakura: ありがとー！
-sakura: じゃあ配置はこっちに合わせてね！
+sakura: $chapter7.chapter7_festival.t080
+sakura: $chapter7.chapter7_festival.t081
 
-> テーブルクロスを受け取って、さくらが席に戻ってきた。
-> いつも通りの声。
-> いつも通りのテンポ。
+> $chapter7.chapter7_festival.t082
+> $chapter7.chapter7_festival.t083
+> $chapter7.chapter7_festival.t084
 
-> でも席に着くとき、
-> 一拍だけ、動きが止まった。
-> 誰も見ていない一瞬だった。
+> $chapter7.chapter7_festival.t085
+> $chapter7.chapter7_festival.t086
+> $chapter7.chapter7_festival.t087
 
 @expr sakura normal
 
-> 俺だけが見ていた。
+> $chapter7.chapter7_festival.t088
 
 @wait 800
 
-> 数人のクラスメイト「さくら、このポップどっち向きでいい？」
+> $chapter7.chapter7_festival.t089
 
-sakura: ああそっちね
-sakura: 入り口側に向けてもらった方がいいかな！
+sakura: $chapter7.chapter7_festival.t090
+sakura: $chapter7.chapter7_festival.t091
 
-> また声が戻る。
-> また笑顔が戻る。
+> $chapter7.chapter7_festival.t092
+> $chapter7.chapter7_festival.t093
 
 @hide_all fade_out
 @wait 800
 
-> 数十分後。
-> 準備の主な部分が片付いた頃。
+> $chapter7.chapter7_festival.t094
+> $chapter7.chapter7_festival.t095
 
 @bgm stop
 @wait 400
 
-> 「今日はここまで！　お疲れ！」
-> さくらの声で解散になった。
-> クラスメイトが一人、二人と出ていく。
-> 話し声が遠ざかって、
+> $chapter7.chapter7_festival.t096
+> $chapter7.chapter7_festival.t097
+> $chapter7.chapter7_festival.t098
+> $chapter7.chapter7_festival.t099
 
-> 教室が、
-> 急に静かになった。
+> $chapter7.chapter7_festival.t100
+> $chapter7.chapter7_festival.t101
 
 @jump chapter7_sakura_break
 
@@ -506,10 +506,10 @@ sakura: 入り口側に向けてもらった方がいいかな！
 @bgm stop
 @wait 600
 
-> 教室の隅。
+> $chapter7.chapter7_sakura_break.t001
 
-> さくらが壁にもたれて
-> 座り込んでいた。
+> $chapter7.chapter7_sakura_break.t002
+> $chapter7.chapter7_sakura_break.t003
 
 @still sakura_corner_resting
 @wait 1500
@@ -518,161 +518,161 @@ sakura: 入り口側に向けてもらった方がいいかな！
 
 @show sakura right normal fade_in
 
-> さっきまでの笑顔はない。
+> $chapter7.chapter7_sakura_break.t004
 
-> ぼんやりと、
-> 天井を見ている。
+> $chapter7.chapter7_sakura_break.t005
+> $chapter7.chapter7_sakura_break.t006
 
 @wait 600
 
-> こういう顔を、今日は何度目に見るだろう。
-> 毎回、一瞬だけ出てきて、
-> 毎回、すぐ消える。
+> $chapter7.chapter7_sakura_break.t007
+> $chapter7.chapter7_sakura_break.t008
+> $chapter7.chapter7_sakura_break.t009
 
-player: ……桜咲
+player: $chapter7.chapter7_sakura_break.t010
 
 @expr sakura surprised
 
-sakura: っ——
+sakura: $chapter7.chapter7_sakura_break.t011
 
 @wait 400
 
 @expr sakura normal
 
-sakura: ……見ないでよ
+sakura: $chapter7.chapter7_sakura_break.t012
 
 @wait 600
 
-> さくらは顔をそらした。
-> 怒鳴ったわけじゃない。
-> ただ、見られたくなかった、という声だった。
+> $chapter7.chapter7_sakura_break.t013
+> $chapter7.chapter7_sakura_break.t014
+> $chapter7.chapter7_sakura_break.t015
 
-player: 休憩か
+player: $chapter7.chapter7_sakura_break.t016
 
-sakura: ……うん
+sakura: $chapter7.chapter7_sakura_break.t017
 
 @wait 800
 
-> それだけだった。
-> いつもなら「充電中！」とか言って笑うのに、
-> 今日は何も足さなかった。
+> $chapter7.chapter7_sakura_break.t018
+> $chapter7.chapter7_sakura_break.t019
+> $chapter7.chapter7_sakura_break.t020
 
 @wait 600
 
-> 床に膝を抱えるようにして、
-> さくらはスマホを見もせずにただ座っていた。
-> こういう姿勢は、疲れ方が普通じゃない人間の座り方だ。
+> $chapter7.chapter7_sakura_break.t021
+> $chapter7.chapter7_sakura_break.t022
+> $chapter7.chapter7_sakura_break.t023
 
 @wait 400
 
-> 文化祭の準備で昼休みが潰れて、
-> 放課後はバドミントン部の練習がある。
-> 今日だけじゃない。ここ何週間も、そういう日が続いている。
+> $chapter7.chapter7_sakura_break.t024
+> $chapter7.chapter7_sakura_break.t025
+> $chapter7.chapter7_sakura_break.t026
 
-> 全部こなしながら、全力で笑っている。
-> その「全力」が何を削っているのか、
-> たぶん本人が一番知らない。
+> $chapter7.chapter7_sakura_break.t027
+> $chapter7.chapter7_sakura_break.t028
+> $chapter7.chapter7_sakura_break.t029
 
 @wait 500
 
-> 何かあったか、と聞こうとして、やめた。
-> まだ、そういう距離じゃないかもしれない。
-> 踏み込みすぎると逃げる。
-> こういうタイプはたいていそうだ。
+> $chapter7.chapter7_sakura_break.t030
+> $chapter7.chapter7_sakura_break.t031
+> $chapter7.chapter7_sakura_break.t032
+> $chapter7.chapter7_sakura_break.t033
 
-player: ……今日、かなり動いてたな
+player: $chapter7.chapter7_sakura_break.t034
 
-sakura: ……そう？
+sakura: $chapter7.chapter7_sakura_break.t035
 
-player: 俺の三倍は動いてた
+player: $chapter7.chapter7_sakura_break.t036
 
-sakura: ……そんなことない
+sakura: $chapter7.chapter7_sakura_break.t037
 
-player: 数えてたわけじゃないけど
+player: $chapter7.chapter7_sakura_break.t038
 
 @wait 400
 
-> さくらは小さく笑った。
-> 乾いた、短い笑い方だった。
+> $chapter7.chapter7_sakura_break.t039
+> $chapter7.chapter7_sakura_break.t040
 
-sakura: ……そういうとこ
-sakura: 正直だよね、勇くんって
+sakura: $chapter7.chapter7_sakura_break.t041
+sakura: $chapter7.chapter7_sakura_break.t042
 
-player: ほめてるのか
+player: $chapter7.chapter7_sakura_break.t043
 
-sakura: ……どっちでもない
+sakura: $chapter7.chapter7_sakura_break.t044
 
 @wait 600
 
-> しばらく何も言わなかった。
+> $chapter7.chapter7_sakura_break.t045
 
-> 廊下から遠くの声が聞こえる。
-> 片付けの声。笑い声。
-> ここだけが、一時停止している。
+> $chapter7.chapter7_sakura_break.t046
+> $chapter7.chapter7_sakura_break.t047
+> $chapter7.chapter7_sakura_break.t048
 
 @wait 500
 
 @expr sakura blank
 
-sakura: ……お母さんから
-sakura: 連絡、来てたんだ
+sakura: $chapter7.chapter7_sakura_break.t049
+sakura: $chapter7.chapter7_sakura_break.t050
 
-player: ……
+player: $chapter7.chapter7_sakura_break.t051
 
-sakura: 別に、大した用事じゃないんだけど
+sakura: $chapter7.chapter7_sakura_break.t052
 
-sakura: なんか
-sakura: いつもより
-sakura: ちょっとだけ、疲れた声してて
+sakura: $chapter7.chapter7_sakura_break.t053
+sakura: $chapter7.chapter7_sakura_break.t054
+sakura: $chapter7.chapter7_sakura_break.t055
 
 @wait 600
 
-> それ以上は言わなかった。
-> 俺も、聞かなかった。
+> $chapter7.chapter7_sakura_break.t056
+> $chapter7.chapter7_sakura_break.t057
 
-> さくらの家のことは、詳しく知らない。
-> 知らないままにしておくのが正解の話が、
-> 世の中にはある。
+> $chapter7.chapter7_sakura_break.t058
+> $chapter7.chapter7_sakura_break.t059
+> $chapter7.chapter7_sakura_break.t060
 
 @wait 400
 
-> ただ、今は。
+> $chapter7.chapter7_sakura_break.t061
 
 @choice
-- "一人でいい？" [sakura_favor+3] -> chapter7_sakura_warm
-- "頑張ってるな" -> chapter7_sakura_resume
+- $choices.chapter7.sakura_alone [sakura_favor+3] -> chapter7_sakura_warm
+- $choices.chapter7.sakura_working_hard -> chapter7_sakura_resume
 
 
 # chapter7_sakura_warm
 
-player: 一人でいい？
+player: $chapter7.chapter7_sakura_warm.t001
 
 @wait 500
 
 @expr sakura sad
 
-sakura: ……うん
+sakura: $chapter7.chapter7_sakura_warm.t002
 
 @wait 400
 
-sakura: ちょっとだけ
+sakura: $chapter7.chapter7_sakura_warm.t003
 
-> さくらは膝を抱えた姿勢のまま、
-> 少し俯いた。
+> $chapter7.chapter7_sakura_warm.t004
+> $chapter7.chapter7_sakura_warm.t005
 
-> ちゃんとそこにいた。
-> 折れたわけじゃない。
-> ただ、少しだけ降ろしていた。
+> $chapter7.chapter7_sakura_warm.t006
+> $chapter7.chapter7_sakura_warm.t007
+> $chapter7.chapter7_sakura_warm.t008
 
-> 俺はそれ以上何も言わずに、
-> 少し離れたところに座った。
-> 同じ方向を向いて、黙っていた。
+> $chapter7.chapter7_sakura_warm.t009
+> $chapter7.chapter7_sakura_warm.t010
+> $chapter7.chapter7_sakura_warm.t011
 
 @wait 800
 
-> さくらが、小さく息をついた。
-> しばらく経ってから、
-> ゆっくり立ち上がった。
+> $chapter7.chapter7_sakura_warm.t012
+> $chapter7.chapter7_sakura_warm.t013
+> $chapter7.chapter7_sakura_warm.t014
 
 @jump chapter7_sakura_resume
 
@@ -681,14 +681,14 @@ sakura: ちょっとだけ
 
 @expr sakura normal
 
-sakura: ……行こっか
+sakura: $chapter7.chapter7_sakura_resume.t001
 
-> いつもの「よーし！」じゃなかった。
-> でも、立てた。
+> $chapter7.chapter7_sakura_resume.t002
+> $chapter7.chapter7_sakura_resume.t003
 
 @wait 400
 
-> 立てることが、今日のさくらにとっては十分だったのかもしれない。
+> $chapter7.chapter7_sakura_resume.t004
 
 @hide sakura fade_out
 @wait 500
@@ -709,205 +709,205 @@ sakura: ……行こっか
 
 @show kotoha center normal fade_in
 
-> 音楽室の前。
-> 花園ことはが立ち止まっていた。
+> $chapter7.chapter7_music_room.t001
+> $chapter7.chapter7_music_room.t002
 
-player: またここか
+player: $chapter7.chapter7_music_room.t003
 
-kotoha: ……はい
+kotoha: $chapter7.chapter7_music_room.t004
 
 @wait 600
 
-> ピアノの音が廊下に流れている。
+> $chapter7.chapter7_music_room.t005
 
 @wait 500
 
-> 今日は、少し近かった。
-> 誰かがちゃんと弾いている。
-> うまいとか下手とか、そういうのじゃない。
-> ただ、ちゃんと弾かれている音だった。
+> $chapter7.chapter7_music_room.t006
+> $chapter7.chapter7_music_room.t007
+> $chapter7.chapter7_music_room.t008
+> $chapter7.chapter7_music_room.t009
 
 @expr kotoha thinking
 
-kotoha: ……ショパンです
+kotoha: $chapter7.chapter7_music_room.t010
 
-player: え
+player: $chapter7.chapter7_music_room.t011
 
-kotoha: 弾いているの、夜想曲の二番
+kotoha: $chapter7.chapter7_music_room.t012
 
-player: わかるのか
+player: $chapter7.chapter7_music_room.t013
 
-kotoha: ……わかります
-kotoha: 昔、よく弾いていたので
+kotoha: $chapter7.chapter7_music_room.t014
+kotoha: $chapter7.chapter7_music_room.t015
 
 @wait 600
 
-> ことははドアの前に立ったまま、
-> 動かなかった。
+> $chapter7.chapter7_music_room.t016
+> $chapter7.chapter7_music_room.t017
 
 @still kotoha_frozen_piano_sound
 @wait 900
 @still_hide
 
-> 花園は
-> スライドドアの取手に指をかけた。
+> $chapter7.chapter7_music_room.t018
+> $chapter7.chapter7_music_room.t019
 
-player: 入るのか
+player: $chapter7.chapter7_music_room.t020
 
 @wait 600
 
-> ……少しだけ引く。
+> $chapter7.chapter7_music_room.t021
 
 @se door_open.mp3
 
-> ドアが数センチ開く。
+> $chapter7.chapter7_music_room.t022
 
-> でも、それ以上は開かない。
+> $chapter7.chapter7_music_room.t023
 
 @wait 400
 
-> ことはの手が、
-> 取手の上で、
-> 小さく震えていた。
+> $chapter7.chapter7_music_room.t024
+> $chapter7.chapter7_music_room.t025
+> $chapter7.chapter7_music_room.t026
 
-> 指先だけ。
-> ほんの少しだけ。
-> でも、確かに震えていた。
+> $chapter7.chapter7_music_room.t027
+> $chapter7.chapter7_music_room.t028
+> $chapter7.chapter7_music_room.t029
 
-player: ……
+player: $chapter7.chapter7_music_room.t030
 
 @wait 500
 
-kotoha: ……まだです
+kotoha: $chapter7.chapter7_music_room.t031
 
-player: そうか
+player: $chapter7.chapter7_music_room.t032
 
 @wait 600
 
-kotoha: でも、前より少しだけ
-kotoha: 怖くないです
+kotoha: $chapter7.chapter7_music_room.t033
+kotoha: $chapter7.chapter7_music_room.t034
 
-player: なんで
+player: $chapter7.chapter7_music_room.t035
 
 @expr kotoha thinking
 
-kotoha: 図書室で、桐島くんが
-kotoha: 手を引かなかったので
+kotoha: $chapter7.chapter7_music_room.t036
+kotoha: $chapter7.chapter7_music_room.t037
 
-kotoha: ……ああいうの、少し安心するんです
+kotoha: $chapter7.chapter7_music_room.t038
 
-> 花園は
-> 開きかけたドアを見つめた。
+> $chapter7.chapter7_music_room.t039
+> $chapter7.chapter7_music_room.t040
 
 @wait 500
 
-> 中からピアノの音が続いている。
-> 夜想曲の二番。
-> ことはが昔よく弾いていたという曲。
+> $chapter7.chapter7_music_room.t041
+> $chapter7.chapter7_music_room.t042
+> $chapter7.chapter7_music_room.t043
 
-> やめた、という事実だけを知っている。
-> なぜやめたのかは、知らない。
-> そして今、その音の前で立ち止まっているこの人が
-> 何を聴いているのかも、わからない。
+> $chapter7.chapter7_music_room.t044
+> $chapter7.chapter7_music_room.t045
+> $chapter7.chapter7_music_room.t046
+> $chapter7.chapter7_music_room.t047
 
 @wait 400
 
-kotoha: 桐島くん
+kotoha: $chapter7.chapter7_music_room.t048
 
-player: ん
+player: $chapter7.chapter7_music_room.t049
 
-kotoha: ……あの
+kotoha: $chapter7.chapter7_music_room.t050
 
-kotoha: 聞いていいですか
+kotoha: $chapter7.chapter7_music_room.t051
 
-player: 何を
+player: $chapter7.chapter7_music_room.t052
 
 @expr kotoha thinking
 
-kotoha: 桐島くんは
-kotoha: 何かをやめたことが、ありますか
+kotoha: $chapter7.chapter7_music_room.t053
+kotoha: $chapter7.chapter7_music_room.t054
 
-player: ……
+player: $chapter7.chapter7_music_room.t055
 
 @wait 600
 
-> ランニングシューズのことが、一瞬浮かんだ。
-> 捨てられないまま、部屋の隅に置いてある靴。
+> $chapter7.chapter7_music_room.t056
+> $chapter7.chapter7_music_room.t057
 
-player: ある
+player: $chapter7.chapter7_music_room.t058
 
-kotoha: それは……
+kotoha: $chapter7.chapter7_music_room.t059
 
-kotoha: 戻りたかったですか
+kotoha: $chapter7.chapter7_music_room.t060
 
 @wait 500
 
-player: ……今もわからない
+player: $chapter7.chapter7_music_room.t061
 
-player: 戻りたいのか、
-player: それとも戻れないことにしておきたいのか
+player: $chapter7.chapter7_music_room.t062
+player: $chapter7.chapter7_music_room.t063
 
 @wait 400
 
-kotoha: ……そうですか
+kotoha: $chapter7.chapter7_music_room.t064
 
 @wait 600
 
-> ことははそれ以上聞かなかった。
-> でも、少しだけ肩の力が抜けたように見えた。
+> $chapter7.chapter7_music_room.t065
+> $chapter7.chapter7_music_room.t066
 
-kotoha: わたしも……わからないんです
+kotoha: $chapter7.chapter7_music_room.t067
 
-kotoha: 戻りたいのか、戻りたくないのか
+kotoha: $chapter7.chapter7_music_room.t068
 
-kotoha: でも、ここに来てしまう
+kotoha: $chapter7.chapter7_music_room.t069
 
 @wait 600
 
-> 中のピアノが、一度だけ止まった。
-> それからまた始まった。
-> 同じ曲の、少し前から。
+> $chapter7.chapter7_music_room.t070
+> $chapter7.chapter7_music_room.t071
+> $chapter7.chapter7_music_room.t072
 
-kotoha: いつか、入れる気がします
+kotoha: $chapter7.chapter7_music_room.t073
 
 @choice
-- "待ってる" [kotoha_favor+3] -> chapter7_kotoha_warm
-- "急がなくていい" -> chapter7_kotoha_resume
+- $choices.chapter7.kotoha_waiting [kotoha_favor+3] -> chapter7_kotoha_warm
+- $choices.chapter7.kotoha_no_rush -> chapter7_kotoha_resume
 
 
 # chapter7_kotoha_warm
 
-player: 待ってる
+player: $chapter7.chapter7_kotoha_warm.t001
 
 @expr kotoha thinking
 @wait 400
 
-kotoha: ……そうですか
+kotoha: $chapter7.chapter7_kotoha_warm.t002
 
 @wait 400
 
-> それ以上は言わなかった。
-> でも、ことはは少しだけ扉を見た。
+> $chapter7.chapter7_kotoha_warm.t003
+> $chapter7.chapter7_kotoha_warm.t004
 
-> 扉の向こうでピアノが鳴っている。
-> ことはの手は、もう震えていなかった。
+> $chapter7.chapter7_kotoha_warm.t005
+> $chapter7.chapter7_kotoha_warm.t006
 
 @jump chapter7_kotoha_resume
 
 
 # chapter7_kotoha_resume
 
-player: 急がなくていい。
+player: $chapter7.chapter7_kotoha_resume.t001
 
 @expr kotoha normal
 @wait 400
 
-kotoha: ……はい。
+kotoha: $chapter7.chapter7_kotoha_resume.t002
 
 @wait 500
 
-> それだけだった。
-> でも、それで十分な気がした。
+> $chapter7.chapter7_kotoha_resume.t003
+> $chapter7.chapter7_kotoha_resume.t004
 
 @wait 600
 
@@ -930,185 +930,185 @@ kotoha: ……はい。
 
 @show mahiru center happy fade_in
 
-mahiru: 勇くん
+mahiru: $chapter7.chapter7_rooftop_move.t001
 
-player: 月夜野
+player: $chapter7.chapter7_rooftop_move.t002
 
-mahiru: 屋上いかない？
+mahiru: $chapter7.chapter7_rooftop_move.t003
 
-player: また空か
+player: $chapter7.chapter7_rooftop_move.t004
 
-mahiru: うん
+mahiru: $chapter7.chapter7_rooftop_move.t005
 
-mahiru: 今日
-mahiru: 流れ星見えるかもしれないんだって
+mahiru: $chapter7.chapter7_rooftop_move.t006
+mahiru: $chapter7.chapter7_rooftop_move.t007
 
-player: ほんとか
+player: $chapter7.chapter7_rooftop_move.t008
 
-mahiru: うん
+mahiru: $chapter7.chapter7_rooftop_move.t009
 
-mahiru: 写真撮ろうかなって
+mahiru: $chapter7.chapter7_rooftop_move.t010
 
-player: 流れ星を？
+player: $chapter7.chapter7_rooftop_move.t011
 
-mahiru: 写らなくてもいいの
+mahiru: $chapter7.chapter7_rooftop_move.t012
 
-player: どういうことだ
+player: $chapter7.chapter7_rooftop_move.t013
 
 @expr mahiru happy
 
-mahiru: 「見た」っていう理由が残るから
+mahiru: $chapter7.chapter7_rooftop_move.t014
 
-mahiru: ノートに書けるでしょ
+mahiru: $chapter7.chapter7_rooftop_move.t015
 
-player: ……理由か
+player: $chapter7.chapter7_rooftop_move.t016
 
-mahiru: そう
+mahiru: $chapter7.chapter7_rooftop_move.t017
 
-mahiru: 今日空を見た理由
+mahiru: $chapter7.chapter7_rooftop_move.t018
 
-mahiru: 一人だと
-mahiru: 理由ってすぐ消えちゃうけど
+mahiru: $chapter7.chapter7_rooftop_move.t019
+mahiru: $chapter7.chapter7_rooftop_move.t020
 
-mahiru: 誰かと一緒なら
-mahiru: ちょっと長く残るから
-
-@wait 400
-
-> まひるの声は、いつも少しだけ遠い場所から届く。
-> ここにいるのに、半分はどこか別の場所にいるみたいな、
-> そういう声の質がある。
+mahiru: $chapter7.chapter7_rooftop_move.t021
+mahiru: $chapter7.chapter7_rooftop_move.t022
 
 @wait 400
 
-> ノート。
-> まひるのノートは、以前ちらっと見かけたとき三行か四行は書いていた。
-> 最近はどうだろう。
-> 確かめていない。
+> $chapter7.chapter7_rooftop_move.t023
+> $chapter7.chapter7_rooftop_move.t024
+> $chapter7.chapter7_rooftop_move.t025
+
+@wait 400
+
+> $chapter7.chapter7_rooftop_move.t026
+> $chapter7.chapter7_rooftop_move.t027
+> $chapter7.chapter7_rooftop_move.t028
+> $chapter7.chapter7_rooftop_move.t029
 
 @expr mahiru normal
 
-mahiru: 勇くん
+mahiru: $chapter7.chapter7_rooftop_move.t030
 
-player: ん
+player: $chapter7.chapter7_rooftop_move.t031
 
-mahiru: 最近、走らないよね
+mahiru: $chapter7.chapter7_rooftop_move.t032
 
-player: ……
+player: $chapter7.chapter7_rooftop_move.t033
 
-mahiru: 前は、朝とか走ってたじゃない
+mahiru: $chapter7.chapter7_rooftop_move.t034
 
-player: よく知ってるな
+player: $chapter7.chapter7_rooftop_move.t035
 
-mahiru: 小学校の頃、よく一緒に走ってたから
+mahiru: $chapter7.chapter7_rooftop_move.t036
 
-player: ……そうだったな
+player: $chapter7.chapter7_rooftop_move.t037
 
-mahiru: 足、もう治ってるんでしょ
+mahiru: $chapter7.chapter7_rooftop_move.t038
 
-player: ……一応は
+player: $chapter7.chapter7_rooftop_move.t039
 
-mahiru: じゃあ、どうして
+mahiru: $chapter7.chapter7_rooftop_move.t040
 
 @wait 600
 
-> どうして、と聞かれると答えられない。
-> 治った、という事実と、
-> また走れる、という感覚は
-> 別のものだからだ。
+> $chapter7.chapter7_rooftop_move.t041
+> $chapter7.chapter7_rooftop_move.t042
+> $chapter7.chapter7_rooftop_move.t043
+> $chapter7.chapter7_rooftop_move.t044
 
-player: 感覚が戻ってない
+player: $chapter7.chapter7_rooftop_move.t045
 
-mahiru: 感覚？
+mahiru: $chapter7.chapter7_rooftop_move.t046
 
-player: 走り出すときの感じ
+player: $chapter7.chapter7_rooftop_move.t047
 
-player: 迷わないで踏み込める感じが
-player: まだ戻ってないだけだ
+player: $chapter7.chapter7_rooftop_move.t048
+player: $chapter7.chapter7_rooftop_move.t049
 
 @wait 400
 
 @expr mahiru thinking
 
-mahiru: ……そっか
+mahiru: $chapter7.chapter7_rooftop_move.t050
 
-mahiru: それって
-mahiru: すごく正直に言ってくれてる気がする
+mahiru: $chapter7.chapter7_rooftop_move.t051
+mahiru: $chapter7.chapter7_rooftop_move.t052
 
-player: 普通のことだろ
+player: $chapter7.chapter7_rooftop_move.t053
 
-mahiru: ううん
-mahiru: 普通は「もう少し」って誤魔化すから
+mahiru: $chapter7.chapter7_rooftop_move.t054
+mahiru: $chapter7.chapter7_rooftop_move.t055
 
 @wait 500
 
-> まひるは踊り場の窓を見た。
-> 夕方の空が、オレンジと群青のあいだにいた。
+> $chapter7.chapter7_rooftop_move.t056
+> $chapter7.chapter7_rooftop_move.t057
 
-mahiru: お兄ちゃんもさ
+mahiru: $chapter7.chapter7_rooftop_move.t058
 
-mahiru: 走るのやめた時期があったんだ
+mahiru: $chapter7.chapter7_rooftop_move.t059
 
-player: ……
+player: $chapter7.chapter7_rooftop_move.t060
 
-mahiru: でも、また走り始めて
-mahiru: あのとき、すごく嬉しかった
+mahiru: $chapter7.chapter7_rooftop_move.t061
+mahiru: $chapter7.chapter7_rooftop_move.t062
 
-mahiru: だから
+mahiru: $chapter7.chapter7_rooftop_move.t063
 
-mahiru: 勇くんもいつか
-mahiru: また走るかもって、思ってる
+mahiru: $chapter7.chapter7_rooftop_move.t064
+mahiru: $chapter7.chapter7_rooftop_move.t065
 
 @wait 600
 
-> まひるは俺のほうを見なかった。
-> 窓の外を見たまま、言った。
-> だから余計に、その言葉が静かに落ちてきた。
+> $chapter7.chapter7_rooftop_move.t066
+> $chapter7.chapter7_rooftop_move.t067
+> $chapter7.chapter7_rooftop_move.t068
 
 @choice
-- "さくらたちにも声をかけてくる" [mahiru_favor+3] -> chapter7_mahiru_warm
-- "わかった" -> chapter7_mahiru_normal
+- $choices.chapter7.mahiru_call_others [mahiru_favor+3] -> chapter7_mahiru_warm
+- $choices.chapter7.mahiru_got_it -> chapter7_mahiru_normal
 
 
 # chapter7_mahiru_warm
 
-player: さくらたちにも声をかけてくる
+player: $chapter7.chapter7_mahiru_warm.t001
 
 @expr mahiru happy
 
-mahiru: ……うん
-mahiru: じゃあ、先に空の様子見てる
+mahiru: $chapter7.chapter7_mahiru_warm.t002
+mahiru: $chapter7.chapter7_mahiru_warm.t003
 
 @jump chapter7_mahiru_resume
 
 
 # chapter7_mahiru_normal
 
-player: わかった
+player: $chapter7.chapter7_mahiru_normal.t001
 
 @jump chapter7_mahiru_resume
 
 
 # chapter7_mahiru_resume
 
-> まひるは小さく頷いて、階段を上がった。
-> 先に空の様子を見に行く、という感じだった。
+> $chapter7.chapter7_mahiru_resume.t001
+> $chapter7.chapter7_mahiru_resume.t002
 
 @hide mahiru fade_out
 @wait 500
 
-> 俺は一度、廊下へ戻った。
-> さくらとことはにも声をかけてから行こうと思った。
+> $chapter7.chapter7_mahiru_resume.t003
+> $chapter7.chapter7_mahiru_resume.t004
 
-> さくらとことはは、ちょうど片付けを終えたところだった。
+> $chapter7.chapter7_mahiru_resume.t005
 
 @show sakura center happy fade_in
 @show kotoha right normal fade_in
 @wait 400
 
-sakura: あ、勇くん！ 屋上行かない？ まひるちゃんもそっち行った？
+sakura: $chapter7.chapter7_mahiru_resume.t006
 
-player: ちょうどその話をしてた
+player: $chapter7.chapter7_mahiru_resume.t007
 
 @hide sakura fade_out
 @hide kotoha fade_out
@@ -1128,126 +1128,126 @@ player: ちょうどその話をしてた
 @se wind_rooftop.mp3
 @wait 1000
 
-> 文化祭の前々日。
-> 準備が一段落したころには、校舎の空気も少し冷えていた。
-> 下ではまだ片付けの声がしている。
-> けれど屋上まで来ると、それも遠い。
+> $chapter7.chapter7_rooftop.t001
+> $chapter7.chapter7_rooftop.t002
+> $chapter7.chapter7_rooftop.t003
+> $chapter7.chapter7_rooftop.t004
 
-> 夕焼けはもうほとんど沈んで、
-> 空は群青と紺のあいだをゆっくり揺れていた。
+> $chapter7.chapter7_rooftop.t005
+> $chapter7.chapter7_rooftop.t006
 
 @show sakura left happy fade_in
 @show kotoha right normal fade_in
 @wait 500
 
-> フェンスのそばに、月夜野まひるがいた。
-> カメラを構えて、空を向いている。
+> $chapter7.chapter7_rooftop.t007
+> $chapter7.chapter7_rooftop.t008
 
 @still mahiru_evening_rooftop
 @show mahiru center normal fade_in
 
-mahiru: あ、さくらちゃんたちも来てくれたんだ
+mahiru: $chapter7.chapter7_rooftop.t009
 
-sakura: まひるちゃん！ 何撮ってるの？
+sakura: $chapter7.chapter7_rooftop.t010
 
-mahiru: 写真部の展示用って言えば怒られないから
+mahiru: $chapter7.chapter7_rooftop.t011
 
-player: 言えば？
+player: $chapter7.chapter7_rooftop.t012
 
-mahiru: ……うん
+mahiru: $chapter7.chapter7_rooftop.t013
 
-> それ以上は聞かなかった。
+> $chapter7.chapter7_rooftop.t014
 
 @wait 600
 
-> さくらが少し間を置いてから、声のトーンを上げた。
+> $chapter7.chapter7_rooftop.t015
 
 @expr sakura happy
 @expr mahiru happy
 @wait 300
-sakura: なんか、今日ちょっとがんばった感ある！
+sakura: $chapter7.chapter7_rooftop.t016
 
-player: ちょっとどころじゃなかっただろ
-player: お前、一人で三人分くらい動いてたぞ
+player: $chapter7.chapter7_rooftop.t017
+player: $chapter7.chapter7_rooftop.t018
 
-sakura: えへへ、でしょ？
-sakura: もっと褒めてもいいんだよ、勇くん
+sakura: $chapter7.chapter7_rooftop.t019
+sakura: $chapter7.chapter7_rooftop.t020
 
-player: 調子に乗るな
+player: $chapter7.chapter7_rooftop.t021
 
 @expr sakura excited
 
-sakura: 乗る乗る。だって今日くらいはいいじゃん！
+sakura: $chapter7.chapter7_rooftop.t022
 
 @expr mahiru normal
 
-mahiru: ふふ
-mahiru: でも、ほんとにがんばってたよ、さくらちゃん
+mahiru: $chapter7.chapter7_rooftop.t023
+mahiru: $chapter7.chapter7_rooftop.t024
 
 @expr sakura happy
 
-sakura: まひるちゃんは優しいなあ……
-sakura: ことはちゃんもそう思うよね？
+sakura: $chapter7.chapter7_rooftop.t025
+sakura: $chapter7.chapter7_rooftop.t026
 
 @expr kotoha thinking
 
-kotoha: ……そうですね
-kotoha: 桜咲さんがいなかったら、もっと遅くなっていたと思います
+kotoha: $chapter7.chapter7_rooftop.t027
+kotoha: $chapter7.chapter7_rooftop.t028
 
-sakura: わっ、ことはちゃんに認められた！
-sakura: 今日ちょっと記念日かも！
+sakura: $chapter7.chapter7_rooftop.t029
+sakura: $chapter7.chapter7_rooftop.t030
 
-kotoha: ……大げさです
+kotoha: $chapter7.chapter7_rooftop.t031
 
-> ことははそう言いながらも、少しだけ口元をゆるめた。
-> たぶん本人は、そのことに気づいていない。
+> $chapter7.chapter7_rooftop.t032
+> $chapter7.chapter7_rooftop.t033
 
-> まひるはフェンスのそばに立って、夜になりかけた空を見ている。
-> 風に髪が揺れても、気にする様子はなかった。
+> $chapter7.chapter7_rooftop.t034
+> $chapter7.chapter7_rooftop.t035
 
-mahiru: もう少ししたら、星が見えるかな
+mahiru: $chapter7.chapter7_rooftop.t036
 
-sakura: え、ほんと？
-sakura: 今日そんなに晴れてたっけ
+sakura: $chapter7.chapter7_rooftop.t037
+sakura: $chapter7.chapter7_rooftop.t038
 
-mahiru: うん
-mahiru: たくさんじゃなくても、ひとつかふたつくらいなら
+mahiru: $chapter7.chapter7_rooftop.t039
+mahiru: $chapter7.chapter7_rooftop.t040
 
-player: 詳しいな
+player: $chapter7.chapter7_rooftop.t041
 
-mahiru: 空、見るの好きだから
+mahiru: $chapter7.chapter7_rooftop.t042
 
-> そう言う声は柔らかい。
-> けれど、ときどきまひるは
-> 空の向こうに知っている誰かでもいるみたいな目をする。
-
-@wait 600
-
-mahiru: こういう夕方
-
-mahiru: お兄ちゃんが好きだったんだ
-
-> それ以上は言わなかった。
-> 勇も、聞かなかった。
+> $chapter7.chapter7_rooftop.t043
+> $chapter7.chapter7_rooftop.t044
+> $chapter7.chapter7_rooftop.t045
 
 @wait 600
 
-> しばらく、四人で黙って空を見ていた。
-> 会話が途切れても気まずくならないのは、たぶん珍しい。
+mahiru: $chapter7.chapter7_rooftop.t046
+
+mahiru: $chapter7.chapter7_rooftop.t047
+
+> $chapter7.chapter7_rooftop.t048
+> $chapter7.chapter7_rooftop.t049
+
+@wait 600
+
+> $chapter7.chapter7_rooftop.t050
+> $chapter7.chapter7_rooftop.t051
 
 @expr kotoha thinking
 
-kotoha: ……星って
+kotoha: $chapter7.chapter7_rooftop.t052
 
-kotoha: 音楽に少し似ています
+kotoha: $chapter7.chapter7_rooftop.t053
 
-player: 音楽？
+player: $chapter7.chapter7_rooftop.t054
 
-kotoha: 見えている時間より
-kotoha: 見えていない時間のほうが長いので
+kotoha: $chapter7.chapter7_rooftop.t055
+kotoha: $chapter7.chapter7_rooftop.t056
 
-> 誰も答えなかった。
-> でも、その言葉はしばらく空に残った。
+> $chapter7.chapter7_rooftop.t057
+> $chapter7.chapter7_rooftop.t058
 
 @bgm stop
 @wait 500
@@ -1255,60 +1255,60 @@ kotoha: 見えていない時間のほうが長いので
 @se chime_soft.mp3
 @wait 400
 
-mahiru: ……あ
+mahiru: $chapter7.chapter7_rooftop.t059
 
-sakura: え？
+sakura: $chapter7.chapter7_rooftop.t060
 
-mahiru: 流れ星
+mahiru: $chapter7.chapter7_rooftop.t061
 
 @wait 700
 
 @still rooftop_shooting_star
-> 一瞬だった。
-> 細い光が、夜のはじまりをかすめて消える。
-> 見間違いかと思うほど、短い。
+> $chapter7.chapter7_rooftop.t062
+> $chapter7.chapter7_rooftop.t063
+> $chapter7.chapter7_rooftop.t064
 
-sakura: うそ！？　どこどこ！？
-sakura: って、もうないし！
+sakura: $chapter7.chapter7_rooftop.t065
+sakura: $chapter7.chapter7_rooftop.t066
 
-mahiru: ふふ
-mahiru: 流れ星って、そういうものだよ
+mahiru: $chapter7.chapter7_rooftop.t067
+mahiru: $chapter7.chapter7_rooftop.t068
 
-kotoha: ……本当に見えたんですか
+kotoha: $chapter7.chapter7_rooftop.t069
 
-mahiru: 見えたよ
-mahiru: ちゃんと、ひとつだけ
+mahiru: $chapter7.chapter7_rooftop.t070
+mahiru: $chapter7.chapter7_rooftop.t071
 
-player: 俺は見えなかった
+player: $chapter7.chapter7_rooftop.t072
 
-sakura: 勇くん、そういうの見逃しそうだもんね
+sakura: $chapter7.chapter7_rooftop.t073
 
-player: どういう意味だ
+player: $chapter7.chapter7_rooftop.t074
 
-sakura: そのまんまの意味ー
+sakura: $chapter7.chapter7_rooftop.t075
 
 @wait 500
 
-mahiru: 願い事、しなきゃ
+mahiru: $chapter7.chapter7_rooftop.t076
 
-sakura: あー、三回言うやつ？
-sakura: 無理じゃない？　一瞬すぎるって！
+sakura: $chapter7.chapter7_rooftop.t077
+sakura: $chapter7.chapter7_rooftop.t078
 
-mahiru: じゃあ、今からでもいいよ
-mahiru: それぞれ、ひとつずつ
+mahiru: $chapter7.chapter7_rooftop.t079
+mahiru: $chapter7.chapter7_rooftop.t080
 
-sakura: えっ、言うの？　口に出す感じ？
+sakura: $chapter7.chapter7_rooftop.t081
 
-mahiru: うん
-mahiru: せっかくだし
+mahiru: $chapter7.chapter7_rooftop.t082
+mahiru: $chapter7.chapter7_rooftop.t083
 
-kotoha: ……
+kotoha: $chapter7.chapter7_rooftop.t084
 
-player: ……
+player: $chapter7.chapter7_rooftop.t085
 
-> 願い事。
-> 子どもの頃なら、もう少し簡単に思いついたかもしれない。
-> 今は、空に預けたいものなんて、うまく言葉にならない。
+> $chapter7.chapter7_rooftop.t086
+> $chapter7.chapter7_rooftop.t087
+> $chapter7.chapter7_rooftop.t088
 
 @expr mahiru happy
 @wait 300
@@ -1316,242 +1316,242 @@ player: ……
 @still rooftop_four_wishes
 @scene rooftop_night instant
 
-sakura: ……すっかり暗くなっちゃったね
+sakura: $chapter7.chapter7_rooftop.t089
 
-mahiru: うん。さっきまで夕焼けだったのに
+mahiru: $chapter7.chapter7_rooftop.t090
 
-player: 気づいたら夜だった
+player: $chapter7.chapter7_rooftop.t091
 
 @wait 500
 
-mahiru: じゃあ、さくらちゃんから
+mahiru: $chapter7.chapter7_rooftop.t092
 
-sakura: なんで！？
+sakura: $chapter7.chapter7_rooftop.t093
 
-mahiru: いちばん言ってくれそうだから
+mahiru: $chapter7.chapter7_rooftop.t094
 
-sakura: う、うーん……
-sakura: じゃあ……
+sakura: $chapter7.chapter7_rooftop.t095
+sakura: $chapter7.chapter7_rooftop.t096
 
 @expr sakura excited
 
-sakura: 部活も文化祭もぜーんぶうまくいきますように！
-sakura: あたし、ぜんぶちゃんとやりたいから！
+sakura: $chapter7.chapter7_rooftop.t097
+sakura: $chapter7.chapter7_rooftop.t098
 
-mahiru: うん。さくらちゃんらしい
+mahiru: $chapter7.chapter7_rooftop.t099
 
-kotoha: ……欲張りですね
+kotoha: $chapter7.chapter7_rooftop.t100
 
-sakura: いいじゃん、願うくらい自由でしょ？
-sakura: それに、あたし平気だし！
-sakura: ちょっと忙しくても、そういうの得意だもん
+sakura: $chapter7.chapter7_rooftop.t101
+sakura: $chapter7.chapter7_rooftop.t102
+sakura: $chapter7.chapter7_rooftop.t103
 
-> 明るい声だった。
-> いつものさくらの声。
-> 誰が聞いても、前向きな願いに聞こえる。
+> $chapter7.chapter7_rooftop.t104
+> $chapter7.chapter7_rooftop.t105
+> $chapter7.chapter7_rooftop.t106
 
-> けれど最後の
-> 「平気だし」
-> だけが、少しだけ軽すぎた気がした。
+> $chapter7.chapter7_rooftop.t107
+> $chapter7.chapter7_rooftop.t108
+> $chapter7.chapter7_rooftop.t109
 
-> 教室の隅で膝を抱えていたさくらを、
-> 俺は今日ちゃんと見た。
+> $chapter7.chapter7_rooftop.t110
+> $chapter7.chapter7_rooftop.t111
 
 @expr sakura happy
 
-mahiru: 次、ことはちゃん
+mahiru: $chapter7.chapter7_rooftop.t112
 
-kotoha: ……わたしですか
+kotoha: $chapter7.chapter7_rooftop.t113
 
-mahiru: うん
+mahiru: $chapter7.chapter7_rooftop.t114
 
 @expr kotoha thinking
 
-kotoha: そうですね……
-kotoha: では……
+kotoha: $chapter7.chapter7_rooftop.t115
+kotoha: $chapter7.chapter7_rooftop.t116
 
 @wait 500
 
-kotoha: 赤点を取りませんように
+kotoha: $chapter7.chapter7_rooftop.t117
 
-sakura: えっ、そこ！？
-sakura: もっとこう、ロマンあるやつにしようよ！
+sakura: $chapter7.chapter7_rooftop.t118
+sakura: $chapter7.chapter7_rooftop.t119
 
-kotoha: 現実的なほうがいいです
+kotoha: $chapter7.chapter7_rooftop.t120
 
-player: まあ、切実ではあるな
+player: $chapter7.chapter7_rooftop.t121
 
-kotoha: ……それに
-kotoha: 手の届かないことを願っても、あまり意味がないので
+kotoha: $chapter7.chapter7_rooftop.t122
+kotoha: $chapter7.chapter7_rooftop.t123
 
-> ことはは空を見上げたまま言う。
-> 声は静かで、冗談にも聞こえるし、本気にも聞こえた。
+> $chapter7.chapter7_rooftop.t124
+> $chapter7.chapter7_rooftop.t125
 
-> けれどその言葉は、
-> 何かひとつだけ、最初から諦めている人間の言い方にも思えた。
+> $chapter7.chapter7_rooftop.t126
+> $chapter7.chapter7_rooftop.t127
 
-> ドアの取手の上で震えていた指のことが、また浮かんだ。
+> $chapter7.chapter7_rooftop.t128
 
-sakura: ことはちゃん、絶対もっと別のこと考えてたでしょー
+sakura: $chapter7.chapter7_rooftop.t129
 
-kotoha: ……どうでしょう
+kotoha: $chapter7.chapter7_rooftop.t130
 
 @expr kotoha normal
 
-mahiru: じゃあ、勇くん
+mahiru: $chapter7.chapter7_rooftop.t131
 
-player: 俺か
+player: $chapter7.chapter7_rooftop.t132
 
-mahiru: うん
+mahiru: $chapter7.chapter7_rooftop.t133
 
-player: ……
+player: $chapter7.chapter7_rooftop.t134
 
-> 願い事なんて、すぐには出てこなかった。
-> 戻らないものを知ってから、
-> 「こうなればいい」と思うこと自体が少し下手になった気がする。
+> $chapter7.chapter7_rooftop.t135
+> $chapter7.chapter7_rooftop.t136
+> $chapter7.chapter7_rooftop.t137
 
-player: 思いつかない
+player: $chapter7.chapter7_rooftop.t138
 
-sakura: えー、夢なさすぎ！
+sakura: $chapter7.chapter7_rooftop.t139
 
-player: うるさい
+player: $chapter7.chapter7_rooftop.t140
 
-mahiru: ほんとに？
-mahiru: ひとつも？
+mahiru: $chapter7.chapter7_rooftop.t141
+mahiru: $chapter7.chapter7_rooftop.t142
 
-player: ……強いて言うなら
-player: 面倒ごとが増えませんように
+player: $chapter7.chapter7_rooftop.t143
+player: $chapter7.chapter7_rooftop.t144
 
-sakura: なにそれ！
-sakura: もっと高校生っぽい願いにしてよ！
+sakura: $chapter7.chapter7_rooftop.t145
+sakura: $chapter7.chapter7_rooftop.t146
 
-kotoha: 桐島くんらしいとは思います
+kotoha: $chapter7.chapter7_rooftop.t147
 
-mahiru: ふふ……
-mahiru: でも、それって案外むずかしい願いかもね
+mahiru: $chapter7.chapter7_rooftop.t148
+mahiru: $chapter7.chapter7_rooftop.t149
 
-> 面倒ごとが増えないように。
-> そんなの、半分は冗談だ。
+> $chapter7.chapter7_rooftop.t150
+> $chapter7.chapter7_rooftop.t151
 
-> 本当は違う。
-> でも、本当のことをこんな場所で口にできるほど、
-> 俺は素直じゃなかった。
+> $chapter7.chapter7_rooftop.t152
+> $chapter7.chapter7_rooftop.t153
+> $chapter7.chapter7_rooftop.t154
 
 @expr mahiru normal
 
-sakura: じゃあ最後、まひるちゃん！
+sakura: $chapter7.chapter7_rooftop.t155
 
-mahiru: うん
+mahiru: $chapter7.chapter7_rooftop.t156
 
 @wait 800
 
-> まひるは少し考えるようにして、
-> それから夜空を見た。
+> $chapter7.chapter7_rooftop.t157
+> $chapter7.chapter7_rooftop.t158
 
-> その横顔は静かで、
-> 願い事を考えているというより、
-> もう答えを知っているようにも見えた。
+> $chapter7.chapter7_rooftop.t159
+> $chapter7.chapter7_rooftop.t160
+> $chapter7.chapter7_rooftop.t161
 
-mahiru: 明日も、空がきれいだといいな
+mahiru: $chapter7.chapter7_rooftop.t162
 
 @wait 700
 
-sakura: まひるちゃんっぽい！
+sakura: $chapter7.chapter7_rooftop.t163
 
-kotoha: ……そうですね
+kotoha: $chapter7.chapter7_rooftop.t164
 
-player: 抽象的だな
+player: $chapter7.chapter7_rooftop.t165
 
-mahiru: そうかな
-mahiru: でも、大事だよ
+mahiru: $chapter7.chapter7_rooftop.t166
+mahiru: $chapter7.chapter7_rooftop.t167
 
 @expr mahiru happy
 
-mahiru: きれいな空の日って、
-mahiru: それだけで、少しだけ平気な気がするから
+mahiru: $chapter7.chapter7_rooftop.t168
+mahiru: $chapter7.chapter7_rooftop.t169
 
-> 平気。
-> 今日、その言葉を何度聞いただろう。
+> $chapter7.chapter7_rooftop.t170
+> $chapter7.chapter7_rooftop.t171
 
-> さくらも、ことはも、まひるも。
-> 言い方は違うのに、
-> 似たようなことを言っている気がした。
+> $chapter7.chapter7_rooftop.t172
+> $chapter7.chapter7_rooftop.t173
+> $chapter7.chapter7_rooftop.t174
 
-> 大丈夫。
-> 平気。
-> なんでもない。
+> $chapter7.chapter7_rooftop.t175
+> $chapter7.chapter7_rooftop.t176
+> $chapter7.chapter7_rooftop.t177
 
-> そういう言葉はいつも、
-> 本当に何もない人間より、
-> 何かを抱えている人間のほうが上手く使う。
+> $chapter7.chapter7_rooftop.t178
+> $chapter7.chapter7_rooftop.t179
+> $chapter7.chapter7_rooftop.t180
 
 @wait 1000
 
-sakura: じゃあさ！
-sakura: 今の願い事、ほんとに叶うかもしれないし
-sakura: 明日もがんばろ！
+sakura: $chapter7.chapter7_rooftop.t181
+sakura: $chapter7.chapter7_rooftop.t182
+sakura: $chapter7.chapter7_rooftop.t183
 
-kotoha: ……急に現実へ戻しますね
+kotoha: $chapter7.chapter7_rooftop.t184
 
-sakura: 生きるってそういうことでしょ！
+sakura: $chapter7.chapter7_rooftop.t185
 
-mahiru: ふふ
-mahiru: うん、そうかも
+mahiru: $chapter7.chapter7_rooftop.t186
+mahiru: $chapter7.chapter7_rooftop.t187
 
-> さくらが笑う。
-> ことはが小さく息をつく。
-> まひるが、夜の空に溶けるみたいに目を細める。
+> $chapter7.chapter7_rooftop.t188
+> $chapter7.chapter7_rooftop.t189
+> $chapter7.chapter7_rooftop.t190
 
-> 三人とも、いつも通りに見えた。
+> $chapter7.chapter7_rooftop.t191
 
-> そう見えるだけかもしれない、と思ってしまう自分がいる。
+> $chapter7.chapter7_rooftop.t192
 
-> けれど、今はまだ、
-> その違和感に名前をつけることができなかった。
+> $chapter7.chapter7_rooftop.t193
+> $chapter7.chapter7_rooftop.t194
 
 @bgm evening_piano.mp3
 @wait 500
 
-sakura: さーて、冷えてきたし下戻ろ！
-sakura: 風邪ひいたら願い事どころじゃないし！
+sakura: $chapter7.chapter7_rooftop.t195
+sakura: $chapter7.chapter7_rooftop.t196
 
-kotoha: 桜咲さんは、たぶん簡単には風邪をひかなそうです
+kotoha: $chapter7.chapter7_rooftop.t197
 
-sakura: なにそれ、褒めてる？
+sakura: $chapter7.chapter7_rooftop.t198
 
-mahiru: たぶん半分くらいは
+mahiru: $chapter7.chapter7_rooftop.t199
 
-player: 半分なのかよ
+player: $chapter7.chapter7_rooftop.t200
 
 @expr sakura excited
 
-sakura: じゃあ残り半分は、勇くんが褒めて！
+sakura: $chapter7.chapter7_rooftop.t201
 
-player: 断る
+player: $chapter7.chapter7_rooftop.t202
 
-sakura: ひどっ！
+sakura: $chapter7.chapter7_rooftop.t203
 
 @wait 500
 
-> みんなが動き出したとき、
-> まひるだけが少しだけ遅かった。
+> $chapter7.chapter7_rooftop.t204
+> $chapter7.chapter7_rooftop.t205
 
-> 最後にもう一度だけ空を見て、
-> それからゆっくりフェンスから離れた。
+> $chapter7.chapter7_rooftop.t206
+> $chapter7.chapter7_rooftop.t207
 
-> 表情は変わらなかった。
-> でも、名残り惜しいとはちょっと違う気がした。
-> もっと、何かを確かめるような——
+> $chapter7.chapter7_rooftop.t208
+> $chapter7.chapter7_rooftop.t209
+> $chapter7.chapter7_rooftop.t210
 
 @still_hide
 @hide_all fade_out
 @wait 800
 
-> 廊下に戻る途中。
+> $chapter7.chapter7_rooftop.t211
 
-> まひるが立ち止まって、ノートを開いた。
-> 何か書いて、すぐ閉じた。
-> 俺に気づかないまま、かばんにしまって歩き出した。
+> $chapter7.chapter7_rooftop.t212
+> $chapter7.chapter7_rooftop.t213
+> $chapter7.chapter7_rooftop.t214
 
 @wait 600
 
@@ -1568,249 +1568,249 @@ sakura: ひどっ！
 @bgm evening_piano.mp3
 @wait 800
 
-> 自然と、教室に戻ってきた。
+> $chapter7.chapter7_evening_classroom.t001
 
-> 三人ともまだ話しながら片付けをしていた。
-> 屋上からそのまま流れてきたような、
-> なんとなくの続きだった。
+> $chapter7.chapter7_evening_classroom.t002
+> $chapter7.chapter7_evening_classroom.t003
+> $chapter7.chapter7_evening_classroom.t004
 
 @show sakura left normal fade_in
 @show kotoha right normal fade_in
 @show mahiru center happy fade_in
 
-> 夜の窓ガラスに、教室の明かりが薄く映っていた。
-> 机の表面に、白い光が静かに落ちている。
-> 文化祭の装飾がまだ途中のまま積まれている。
-> 窓の向こうはもう暗かった。
+> $chapter7.chapter7_evening_classroom.t005
+> $chapter7.chapter7_evening_classroom.t006
+> $chapter7.chapter7_evening_classroom.t007
+> $chapter7.chapter7_evening_classroom.t008
 
-sakura: ……なんか
+sakura: $chapter7.chapter7_evening_classroom.t009
 
-sakura: 今日、長かったな
+sakura: $chapter7.chapter7_evening_classroom.t010
 
-player: そうだな
+player: $chapter7.chapter7_evening_classroom.t011
 
-kotoha: 準備の密度がいつもより高かったので
+kotoha: $chapter7.chapter7_evening_classroom.t012
 
-mahiru: でも、終わった感じがする
+mahiru: $chapter7.chapter7_evening_classroom.t013
 
-sakura: するする！
+sakura: $chapter7.chapter7_evening_classroom.t014
 
-> さくらが少し笑った。
-> さっきより、少しだけ柔らかい笑い方だった。
+> $chapter7.chapter7_evening_classroom.t015
+> $chapter7.chapter7_evening_classroom.t016
 
 @wait 400
 
-sakura: ね、ことはちゃん
-sakura: シフト表、明日の分ちゃんと掲示板に貼った？
+sakura: $chapter7.chapter7_evening_classroom.t017
+sakura: $chapter7.chapter7_evening_classroom.t018
 
-kotoha: 今日の準備のあとに貼ってきました
+kotoha: $chapter7.chapter7_evening_classroom.t019
 
-sakura: じゃあ大丈夫か
-sakura: ……なんかまだ何か忘れてる気がして
+sakura: $chapter7.chapter7_evening_classroom.t020
+sakura: $chapter7.chapter7_evening_classroom.t021
 
-kotoha: チェックリストは全部埋まってます
+kotoha: $chapter7.chapter7_evening_classroom.t022
 
-sakura: ……そっか
+sakura: $chapter7.chapter7_evening_classroom.t023
 
-sakura: じゃあ私が心配性なだけか
+sakura: $chapter7.chapter7_evening_classroom.t024
 
-player: いつもそう言ってるよな
+player: $chapter7.chapter7_evening_classroom.t025
 
 @expr kotoha thinking
 
-kotoha: 桜咲さん
-kotoha: よくそういうこと気にしますね
+kotoha: $chapter7.chapter7_evening_classroom.t026
+kotoha: $chapter7.chapter7_evening_classroom.t027
 
-sakura: 当然じゃない？
+sakura: $chapter7.chapter7_evening_classroom.t028
 
-kotoha: ……そうですね
-kotoha: でも、気にしすぎると疲れます
+kotoha: $chapter7.chapter7_evening_classroom.t029
+kotoha: $chapter7.chapter7_evening_classroom.t030
 
 @wait 400
 
-> その言葉は、さくらに向けて言ったんだろうか。
-> それとも、自分自身に向けて言ったのか。
+> $chapter7.chapter7_evening_classroom.t031
+> $chapter7.chapter7_evening_classroom.t032
 
-> ことははそれ以上続けなかった。
+> $chapter7.chapter7_evening_classroom.t033
 
 @wait 500
 
 @expr mahiru normal
 
-mahiru: ことはちゃんって
-mahiru: 意外とさくらちゃんのこと見てるよね
+mahiru: $chapter7.chapter7_evening_classroom.t034
+mahiru: $chapter7.chapter7_evening_classroom.t035
 
-kotoha: ……そんなことは
+kotoha: $chapter7.chapter7_evening_classroom.t036
 
-kotoha: ただ、桜咲さんが
-kotoha: 見ていてわかりやすいだけです
+kotoha: $chapter7.chapter7_evening_classroom.t037
+kotoha: $chapter7.chapter7_evening_classroom.t038
 
-sakura: え、わたし？
-sakura: どのへんが？
+sakura: $chapter7.chapter7_evening_classroom.t039
+sakura: $chapter7.chapter7_evening_classroom.t040
 
-kotoha: 全部、です
+kotoha: $chapter7.chapter7_evening_classroom.t041
 
-sakura: ……それ褒めてるの？
+sakura: $chapter7.chapter7_evening_classroom.t042
 
-kotoha: さあ、どうでしょう
+kotoha: $chapter7.chapter7_evening_classroom.t043
 
-sakura: こわ！
+sakura: $chapter7.chapter7_evening_classroom.t044
 
 @wait 400
 
-> さくらが笑った。
-> ことはも、今度は少し長く口元をゆるめた。
+> $chapter7.chapter7_evening_classroom.t045
+> $chapter7.chapter7_evening_classroom.t046
 
-> こういうやりとりが、
-> もう当たり前になっている。
-> いつからだったろう。
+> $chapter7.chapter7_evening_classroom.t047
+> $chapter7.chapter7_evening_classroom.t048
+> $chapter7.chapter7_evening_classroom.t049
 
 @wait 500
 
-> まひるは窓の外を見ていた。
-> カメラはまだ首から下げていた。
+> $chapter7.chapter7_evening_classroom.t050
+> $chapter7.chapter7_evening_classroom.t051
 
-player: まひる
+player: $chapter7.chapter7_evening_classroom.t052
 
-mahiru: うん？
+mahiru: $chapter7.chapter7_evening_classroom.t053
 
-player: 今日、何枚撮った
+player: $chapter7.chapter7_evening_classroom.t054
 
-mahiru: ……三枚
+mahiru: $chapter7.chapter7_evening_classroom.t055
 
-player: 少ないな
+player: $chapter7.chapter7_evening_classroom.t056
 
-mahiru: うん
-mahiru: なんか、今日は
-mahiru: うまく切り取れる気がしなくて
-
-@wait 400
-
-> うまく切り取れない。
-> まひるにしては珍しい言葉だった。
-> いつもは「この光が好き」とか「この影が面白い」とか、
-> 何か見つけてくる人間なのに。
-
-player: 切り取れないって、どういうことだ
-
-mahiru: ……うまく言えないけど
-
-mahiru: 見ているものと
-mahiru: 残したいものが
-mahiru: 今日はずれてる感じ
-
-player: ……
+mahiru: $chapter7.chapter7_evening_classroom.t057
+mahiru: $chapter7.chapter7_evening_classroom.t058
+mahiru: $chapter7.chapter7_evening_classroom.t059
 
 @wait 400
 
-> まひるは窓ガラスの向こうを見ている。
-> 空はもうほとんど暗い。
-> 数える前に、空の色が変わってしまう時間帯だ。
+> $chapter7.chapter7_evening_classroom.t060
+> $chapter7.chapter7_evening_classroom.t061
+> $chapter7.chapter7_evening_classroom.t062
+> $chapter7.chapter7_evening_classroom.t063
 
-mahiru: 十月、近いからかな
+player: $chapter7.chapter7_evening_classroom.t064
+
+mahiru: $chapter7.chapter7_evening_classroom.t065
+
+mahiru: $chapter7.chapter7_evening_classroom.t066
+mahiru: $chapter7.chapter7_evening_classroom.t067
+mahiru: $chapter7.chapter7_evening_classroom.t068
+
+player: $chapter7.chapter7_evening_classroom.t069
+
+@wait 400
+
+> $chapter7.chapter7_evening_classroom.t070
+> $chapter7.chapter7_evening_classroom.t071
+> $chapter7.chapter7_evening_classroom.t072
+
+mahiru: $chapter7.chapter7_evening_classroom.t073
 
 @wait 600
 
-> それだけ言った。
+> $chapter7.chapter7_evening_classroom.t074
 
-> 俺は何も聞かなかった。
-> まひるも、続けなかった。
+> $chapter7.chapter7_evening_classroom.t075
+> $chapter7.chapter7_evening_classroom.t076
 
-> 十月。
-> まひるの兄の命日が近い季節。
-> 去年も、この時期になると、まひるの声の質が少し変わった。
-> 今年も、また始まっている。
+> $chapter7.chapter7_evening_classroom.t077
+> $chapter7.chapter7_evening_classroom.t078
+> $chapter7.chapter7_evening_classroom.t079
+> $chapter7.chapter7_evening_classroom.t080
 
 @wait 500
 
-sakura: ……あたしさ
+sakura: $chapter7.chapter7_evening_classroom.t081
 
 @wait 400
 
-> さくらが突然、独り言みたいに言った。
+> $chapter7.chapter7_evening_classroom.t082
 
-sakura: 最近ちょっと
-sakura: 頑張りすぎてるかもって思う瞬間、ある
+sakura: $chapter7.chapter7_evening_classroom.t083
+sakura: $chapter7.chapter7_evening_classroom.t084
 
 @wait 500
 
-> 誰も笑わなかった。
-> 誰も、すぐに答えなかった。
+> $chapter7.chapter7_evening_classroom.t085
+> $chapter7.chapter7_evening_classroom.t086
 
-sakura: でも、止め方がわかんないんだよね
-sakura: 動いてる間のほうが楽だから
+sakura: $chapter7.chapter7_evening_classroom.t087
+sakura: $chapter7.chapter7_evening_classroom.t088
 
-kotoha: ……それは
+kotoha: $chapter7.chapter7_evening_classroom.t089
 
-kotoha: わかります
+kotoha: $chapter7.chapter7_evening_classroom.t090
 
 @wait 400
 
-> ことはの声は静かだった。
-> 共感している、というより、
-> 自分のことを言っている音だった。
+> $chapter7.chapter7_evening_classroom.t091
+> $chapter7.chapter7_evening_classroom.t092
+> $chapter7.chapter7_evening_classroom.t093
 
-mahiru: 止まると
-mahiru: 色々考えちゃうから
+mahiru: $chapter7.chapter7_evening_classroom.t094
+mahiru: $chapter7.chapter7_evening_classroom.t095
 
-sakura: そう
-sakura: そういうこと
+sakura: $chapter7.chapter7_evening_classroom.t096
+sakura: $chapter7.chapter7_evening_classroom.t097
 
 @wait 500
 
-> 三人とも黙った。
-> 俺も黙った。
+> $chapter7.chapter7_evening_classroom.t098
+> $chapter7.chapter7_evening_classroom.t099
 
-> 夜の教室。
-> 片付けかけの文化祭の荷物。
-> 机の上の影。
+> $chapter7.chapter7_evening_classroom.t100
+> $chapter7.chapter7_evening_classroom.t101
+> $chapter7.chapter7_evening_classroom.t102
 
-> それぞれの「止まりたくない理由」が
-> 言葉にならないまま、ここに浮かんでいた。
+> $chapter7.chapter7_evening_classroom.t103
+> $chapter7.chapter7_evening_classroom.t104
 
 @wait 600
 
-player: ……飯、どうする
+player: $chapter7.chapter7_evening_classroom.t105
 
-sakura: え？
+sakura: $chapter7.chapter7_evening_classroom.t106
 
-player: 晩飯。帰って作るのか
+player: $chapter7.chapter7_evening_classroom.t107
 
-sakura: ……あ、うん
-sakura: 今日は作れるかな
+sakura: $chapter7.chapter7_evening_classroom.t108
+sakura: $chapter7.chapter7_evening_classroom.t109
 
-mahiru: コンビニでいいんじゃない
+mahiru: $chapter7.chapter7_evening_classroom.t110
 
-kotoha: わたしも今日は外で食べます
+kotoha: $chapter7.chapter7_evening_classroom.t111
 
-sakura: そっかー
-sakura: じゃあみんなバラバラか
+sakura: $chapter7.chapter7_evening_classroom.t112
+sakura: $chapter7.chapter7_evening_classroom.t113
 
 @wait 300
 
-sakura: でも、なんか今日
-sakura: 一緒にいられてよかった
+sakura: $chapter7.chapter7_evening_classroom.t114
+sakura: $chapter7.chapter7_evening_classroom.t115
 
 @wait 400
 
-> さくらは笑った。
-> 明るすぎない。
-> でも本当の笑顔だった。
+> $chapter7.chapter7_evening_classroom.t116
+> $chapter7.chapter7_evening_classroom.t117
+> $chapter7.chapter7_evening_classroom.t118
 
-kotoha: ……そうですね
+kotoha: $chapter7.chapter7_evening_classroom.t119
 
-mahiru: うん
+mahiru: $chapter7.chapter7_evening_classroom.t120
 
-player: ……そうだな
+player: $chapter7.chapter7_evening_classroom.t121
 
 @wait 600
 
-> 何もない夜だった。
-> 何もなかったけれど、
-> ここにいた。
+> $chapter7.chapter7_evening_classroom.t122
+> $chapter7.chapter7_evening_classroom.t123
+> $chapter7.chapter7_evening_classroom.t124
 
-> それだけのことが、
-> 今日は少しだけ重かった。
+> $chapter7.chapter7_evening_classroom.t125
+> $chapter7.chapter7_evening_classroom.t126
 
 @hide_all fade_out
 @wait 800
@@ -1828,41 +1828,41 @@ player: ……そうだな
 @bgm stop
 @wait 600
 
-> 廊下に出たところで、まひるが立ち止まった。
+> $chapter7.chapter7_mahiru_notebook.t001
 
-> ノートを出す。
-> 一行書いて、閉じた。
+> $chapter7.chapter7_mahiru_notebook.t002
+> $chapter7.chapter7_mahiru_notebook.t003
 
-> いつもより少なかった。
+> $chapter7.chapter7_mahiru_notebook.t004
 
 @wait 400
 
-> まひるは俺に気づかないまま、
-> かばんにしまって歩き出した。
+> $chapter7.chapter7_mahiru_notebook.t005
+> $chapter7.chapter7_mahiru_notebook.t006
 
-> 書かれなかった行のほうが、今日はずっと多かった。
+> $chapter7.chapter7_mahiru_notebook.t007
 
 @wait 500
 
 @scene school_exterior_night fade
 @wait 400
 
-> 四人で、学校をあとにした。
+> $chapter7.chapter7_mahiru_notebook.t008
 
-> 流れ星は、もう見えなかった。
-> たった一瞬だけ現れて、
-> 願いを置いていく暇もないまま消えてしまう。
+> $chapter7.chapter7_mahiru_notebook.t009
+> $chapter7.chapter7_mahiru_notebook.t010
+> $chapter7.chapter7_mahiru_notebook.t011
 
-> だから人は、
-> 消えたあとで願うのかもしれない。
+> $chapter7.chapter7_mahiru_notebook.t012
+> $chapter7.chapter7_mahiru_notebook.t013
 
-> 間に合わなかったものに向かって、
-> それでも何かを託したくて。
+> $chapter7.chapter7_mahiru_notebook.t014
+> $chapter7.chapter7_mahiru_notebook.t015
 
-> 夜空を見上げる。
-> 星は遠い。
-> 届かないからこそ、
-> そこに何かを願ってしまうのかもしれなかった。
+> $chapter7.chapter7_mahiru_notebook.t016
+> $chapter7.chapter7_mahiru_notebook.t017
+> $chapter7.chapter7_mahiru_notebook.t018
+> $chapter7.chapter7_mahiru_notebook.t019
 
 @bgm stop
 
@@ -1879,120 +1879,120 @@ player: ……そうだな
 @bgm night_melody.mp3
 @wait 1000
 
-> 家に帰ると、静かだった。
+> $chapter7.chapter7_monologue.t001
 
-> 靴を脱いで、鞄を置いて、
-> 部屋の電気をつける。
-> 窓のそとに街の光がぼんやりある。
+> $chapter7.chapter7_monologue.t002
+> $chapter7.chapter7_monologue.t003
+> $chapter7.chapter7_monologue.t004
 
-> ランニングシューズが、部屋の隅に置いてある。
-> 今日もそこにある。
-
-@wait 600
-
-> さくらは「平気だし」と言った。
-
-> ことはは音楽室の扉を、数センチだけ開けた。
-
-> まひるはノートに一行だけ書いて閉じた。
+> $chapter7.chapter7_monologue.t005
+> $chapter7.chapter7_monologue.t006
 
 @wait 600
 
-> みんな、何かを抱えている。
+> $chapter7.chapter7_monologue.t007
 
-> そんなことは、わかっていた。
-> ずっと前からわかっていた。
-> わかっていたつもりだった。
+> $chapter7.chapter7_monologue.t008
+
+> $chapter7.chapter7_monologue.t009
+
+@wait 600
+
+> $chapter7.chapter7_monologue.t010
+
+> $chapter7.chapter7_monologue.t011
+> $chapter7.chapter7_monologue.t012
+> $chapter7.chapter7_monologue.t013
 
 @wait 500
 
-> けれど、今日はなぜか、それが普段より重くのしかかってくる。
+> $chapter7.chapter7_monologue.t014
 
-> さくらの、膝を抱えていた姿。
-> ことはの、取手の上で震えていた指先。
-> まひるの、一行しか書かれなかったノート。
+> $chapter7.chapter7_monologue.t015
+> $chapter7.chapter7_monologue.t016
+> $chapter7.chapter7_monologue.t017
 
-> 全部、見た。
-> 見てしまった。
-
-@wait 600
-
-> 慎のことを考えた。
-> いつも通りに見えた、という記憶。
-> 「また明日な」という言葉の記憶。
-
-> あのとき俺は、見ていたつもりだった。
-> でも、何も拾えなかった。
-
-@wait 500
-
-player: ……
-
-> 今度は、違う。
-
-> そう思いたい。
-> 思うだけじゃ足りない、とも知っている。
-
-> 思うことと、できることのあいだには、
-> 思ったより大きな隙間がある。
-
-@wait 500
-
-> でも。
-
-> 今日、さくらが「一人でいい？」に「ちょっとだけ」と答えたとき、
-> 俺は横に座った。
-> 何も言わずに、同じ方向を向いていた。
-
-> それだけのことかもしれない。
-> でも、それだけのことができた。
-
-> ことはに「戻りたいのか、戻れないことにしておきたいのか、わからない」と言えた。
-> まひるに「感覚が戻っていない」と正直に言えた。
-
-> 俺自身のことを、今日は少しだけ人に渡した。
+> $chapter7.chapter7_monologue.t018
+> $chapter7.chapter7_monologue.t019
 
 @wait 600
 
-> 気づいたままにしない。
+> $chapter7.chapter7_monologue.t020
+> $chapter7.chapter7_monologue.t021
+> $chapter7.chapter7_monologue.t022
 
-> それだけでは足りないかもしれない。
-> 的外れかもしれない。
-> 踏み込みすぎることもあるかもしれない。
+> $chapter7.chapter7_monologue.t023
+> $chapter7.chapter7_monologue.t024
 
-> けれど。
+@wait 500
 
-player: ……今度こそ、気づいたままにしないようにしたい
+player: $chapter7.chapter7_monologue.t025
+
+> $chapter7.chapter7_monologue.t026
+
+> $chapter7.chapter7_monologue.t027
+> $chapter7.chapter7_monologue.t028
+
+> $chapter7.chapter7_monologue.t029
+> $chapter7.chapter7_monologue.t030
+
+@wait 500
+
+> $chapter7.chapter7_monologue.t031
+
+> $chapter7.chapter7_monologue.t032
+> $chapter7.chapter7_monologue.t033
+> $chapter7.chapter7_monologue.t034
+
+> $chapter7.chapter7_monologue.t035
+> $chapter7.chapter7_monologue.t036
+
+> $chapter7.chapter7_monologue.t037
+> $chapter7.chapter7_monologue.t038
+
+> $chapter7.chapter7_monologue.t039
+
+@wait 600
+
+> $chapter7.chapter7_monologue.t040
+
+> $chapter7.chapter7_monologue.t041
+> $chapter7.chapter7_monologue.t042
+> $chapter7.chapter7_monologue.t043
+
+> $chapter7.chapter7_monologue.t044
+
+player: $chapter7.chapter7_monologue.t045
 
 @wait 800
 
-> 口に出すと、思ったより軽くなかった。
-> 軽くならないほうが、たぶん本物だ。
+> $chapter7.chapter7_monologue.t046
+> $chapter7.chapter7_monologue.t047
 
 @wait 500
 
-> ランニングシューズを見る。
-> まだそこにある。
-> まだ捨てられない。
+> $chapter7.chapter7_monologue.t048
+> $chapter7.chapter7_monologue.t049
+> $chapter7.chapter7_monologue.t050
 
-> でも今日は、それでいい気がした。
+> $chapter7.chapter7_monologue.t051
 
-> 捨てないでいることも、
-> 何かを持ち続けることの、
-> 一つの形なのかもしれないから。
+> $chapter7.chapter7_monologue.t052
+> $chapter7.chapter7_monologue.t053
+> $chapter7.chapter7_monologue.t054
 
 @wait 600
 
-> みんな、何かを抱えている。
+> $chapter7.chapter7_monologue.t055
 
-> 孤独は、同じ場所にいても完全には交差しない。
+> $chapter7.chapter7_monologue.t056
 
-> でも、少しだけ重なることはある。
+> $chapter7.chapter7_monologue.t057
 
-> 今日、それを見た気がした。
-> 確かに、見た。
+> $chapter7.chapter7_monologue.t058
+> $chapter7.chapter7_monologue.t059
 
 @bgm stop
 @wait 500
 
-@end "第七章「重なる孤独」" -> chapter8_start
+@end "$chapter7.chapter7_monologue.end_title" -> chapter8_start

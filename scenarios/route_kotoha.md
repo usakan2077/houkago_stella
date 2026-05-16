@@ -14,86 +14,86 @@
 @bgm library_quiet.mp3
 @wait 1200
 
-> ——音のない場所でも、音楽は聴こえる。
+> $route_kotoha.kotoha_interlude.t001
 
 @wait 1000
 
-kotoha: 音というのは、不思議なものだと思います。
+kotoha: $route_kotoha.kotoha_interlude.t002
 
 @wait 1000
 
-kotoha: 空気の振動が耳に届いて、それが何かの意味になる。
-kotoha: 人はそれを「音楽」と呼んだり、「言葉」と呼んだり、「雑音」と呼んだりする。
-kotoha: 同じ振動なのに、受け取る側によってぜんぜん違う何かになる。
+kotoha: $route_kotoha.kotoha_interlude.t003
+kotoha: $route_kotoha.kotoha_interlude.t004
+kotoha: $route_kotoha.kotoha_interlude.t005
 
 @wait 1200
 
-kotoha: わたし、今でも音は聴こえます。
-kotoha: 弾かないだけで、音は聴こえる。
+kotoha: $route_kotoha.kotoha_interlude.t006
+kotoha: $route_kotoha.kotoha_interlude.t007
 
 @wait 1000
 
-kotoha: 廊下の足音。誰かが笑う声。風が窓を揺らす音。
-kotoha: ページをめくるときの、紙の音。
+kotoha: $route_kotoha.kotoha_interlude.t008
+kotoha: $route_kotoha.kotoha_interlude.t009
 
 @wait 1200
 
-kotoha: ここにいると、少しだけ静かになれます。
-kotoha: 図書室は、うるさい音があまり来ない場所だから。
+kotoha: $route_kotoha.kotoha_interlude.t010
+kotoha: $route_kotoha.kotoha_interlude.t011
 
 @wait 1000
 
-kotoha: ……でも、静かすぎると、聴こえてくる音があります。
+kotoha: $route_kotoha.kotoha_interlude.t012
 
 @wait 1500
 
-kotoha: あの夜のピアノの音。
-kotoha: 途中で、止まった音。
+kotoha: $route_kotoha.kotoha_interlude.t013
+kotoha: $route_kotoha.kotoha_interlude.t014
 
 @wait 1200
 
-kotoha: 父が倒れた瞬間、会場の空気が変わりました。
-kotoha: わたしの指も、止まった。
+kotoha: $route_kotoha.kotoha_interlude.t015
+kotoha: $route_kotoha.kotoha_interlude.t016
 
 @wait 1000
 
-kotoha: あれは演奏を中断したんじゃなくて、
-kotoha: 音楽というものへの信頼が、あの瞬間に壊れたんだと思います。
+kotoha: $route_kotoha.kotoha_interlude.t017
+kotoha: $route_kotoha.kotoha_interlude.t018
 
 @wait 1200
 
-kotoha: 弾けば、何かが壊れる。
-kotoha: ずっと、そう思ってきました。
+kotoha: $route_kotoha.kotoha_interlude.t019
+kotoha: $route_kotoha.kotoha_interlude.t020
 
 @wait 1500
 
-kotoha: ……桐島くんは、変な人です。
+kotoha: $route_kotoha.kotoha_interlude.t021
 
 @wait 800
 
-kotoha: 変というのは、悪い意味ではなくて。
-kotoha: あの人、わたしに「弾いてみたら」と言わない。
-kotoha: 「好きなんでしょ」と決めつけない。
-kotoha: 「もったいない」とも言わない。
+kotoha: $route_kotoha.kotoha_interlude.t022
+kotoha: $route_kotoha.kotoha_interlude.t023
+kotoha: $route_kotoha.kotoha_interlude.t024
+kotoha: $route_kotoha.kotoha_interlude.t025
 
 @wait 1000
 
-kotoha: ただ、そこにいます。
-kotoha: わたしが本を読んでいても、何も言わない人です。
+kotoha: $route_kotoha.kotoha_interlude.t026
+kotoha: $route_kotoha.kotoha_interlude.t027
 
 @wait 1200
 
-kotoha: そういう人を、わたしは知らなかった。
+kotoha: $route_kotoha.kotoha_interlude.t028
 
 @wait 1000
 
-kotoha: ……少し、怖いです。
-kotoha: 知らないものは、怖い。
+kotoha: $route_kotoha.kotoha_interlude.t029
+kotoha: $route_kotoha.kotoha_interlude.t030
 
 @wait 800
 
-kotoha: でも本を読んでいても、さっきから集中できていません。
-kotoha: それは多分、怖さだけじゃない。
+kotoha: $route_kotoha.kotoha_interlude.t031
+kotoha: $route_kotoha.kotoha_interlude.t032
 
 @wait 1500
 
@@ -116,154 +116,154 @@ kotoha: それは多分、怖さだけじゃない。
 @bgm piano_distant.mp3 noloop
 @wait 800
 
-> 音楽準備室の前に、
-> 戻ってきた。
+> $route_kotoha.kotoha_ch9_start.t001
+> $route_kotoha.kotoha_ch9_start.t002
 
-> さくらは一人で、雨の中を出ていった。
-> 病院の名前も、傘も持たずに。
+> $route_kotoha.kotoha_ch9_start.t003
+> $route_kotoha.kotoha_ch9_start.t004
 
-> まひるは、
-> まだどこにも見つかっていない。
+> $route_kotoha.kotoha_ch9_start.t005
+> $route_kotoha.kotoha_ch9_start.t006
 
-> 俺の足は、ことはの方へ動いていた。
+> $route_kotoha.kotoha_ch9_start.t007
 
 @wait 600
 
-> 自分でも、理由がわからなかった。
-> さくらを追うべきだった。
-> まひるを探すべきだったかもしれない。
+> $route_kotoha.kotoha_ch9_start.t008
+> $route_kotoha.kotoha_ch9_start.t009
+> $route_kotoha.kotoha_ch9_start.t010
 
-> それでも。
+> $route_kotoha.kotoha_ch9_start.t011
 
-> 廊下の突き当たりを向いたとき、
-> もう体は半分そちらへ向いていた。
+> $route_kotoha.kotoha_ch9_start.t012
+> $route_kotoha.kotoha_ch9_start.t013
 
 @wait 800
 
-> 廊下の奥。
-> 夕方の橙が、床に細長く伸びている。
+> $route_kotoha.kotoha_ch9_start.t014
+> $route_kotoha.kotoha_ch9_start.t015
 
-> ことはは、
-> まだそこにいた。
+> $route_kotoha.kotoha_ch9_start.t016
+> $route_kotoha.kotoha_ch9_start.t017
 
 @show kotoha center normal fade_in
 @wait 600
 
-> 動いていない。
-> 担任が去ってから、
-> どれだけの時間が経ったのか。
+> $route_kotoha.kotoha_ch9_start.t018
+> $route_kotoha.kotoha_ch9_start.t019
+> $route_kotoha.kotoha_ch9_start.t020
 
-> 扉の前。
-> ほんの数十センチの距離が、
-> 彼女にとってはそれ以上の何かなのだろう。
+> $route_kotoha.kotoha_ch9_start.t021
+> $route_kotoha.kotoha_ch9_start.t022
+> $route_kotoha.kotoha_ch9_start.t023
 
 @wait 600
 
-> 担任は「合唱の伴奏者が決まらない」と言っていた。
-> ことははその場で断った。
-> 静かに。ほとんど迷わずに、断った。
+> $route_kotoha.kotoha_ch9_start.t024
+> $route_kotoha.kotoha_ch9_start.t025
+> $route_kotoha.kotoha_ch9_start.t026
 
-> けれど担任の言葉の最後が、まだ廊下に残っている気がした。
+> $route_kotoha.kotoha_ch9_start.t027
 
 @wait 800
 
-> 担任の言葉だけが残っている。
->「もし気が変わったら」
+> $route_kotoha.kotoha_ch9_start.t028
+>: $route_kotoha.kotoha_ch9_start.t029
 
-> 気が変わる。
-> そう簡単に言う。
+> $route_kotoha.kotoha_ch9_start.t030
+> $route_kotoha.kotoha_ch9_start.t031
 
 @wait 600
 
-> 気が変わるとはどういうことだろう。
-> 決めた理由がなくなること？
-> それとも、決めた理由よりも重いものが現れること？
+> $route_kotoha.kotoha_ch9_start.t032
+> $route_kotoha.kotoha_ch9_start.t033
+> $route_kotoha.kotoha_ch9_start.t034
 
-> どちらにしても、
-> 担任は軽く言いすぎた。
-> 「もし」のひと言で、何年分かの何かを纏めようとしていた。
+> $route_kotoha.kotoha_ch9_start.t035
+> $route_kotoha.kotoha_ch9_start.t036
+> $route_kotoha.kotoha_ch9_start.t037
 
-player: ……
+player: $route_kotoha.kotoha_ch9_start.t038
 
 @wait 500
 
-> 声をかけようとして、
-> やめた。
+> $route_kotoha.kotoha_ch9_start.t039
+> $route_kotoha.kotoha_ch9_start.t040
 
-> 何を言えばいい。
-> どういう事情があるのかも、
-> まだ何もわからない。
+> $route_kotoha.kotoha_ch9_start.t041
+> $route_kotoha.kotoha_ch9_start.t042
+> $route_kotoha.kotoha_ch9_start.t043
 
-> それでも、
-> 立ち去る気にもなれなかった。
+> $route_kotoha.kotoha_ch9_start.t044
+> $route_kotoha.kotoha_ch9_start.t045
 
 @wait 700
 
-> ことははひと言も出さなかった。
-> 扉を見ている。
-> 見ているというより、
-> 扉のその先にある何かを、透かして見ているみたいだった。
+> $route_kotoha.kotoha_ch9_start.t046
+> $route_kotoha.kotoha_ch9_start.t047
+> $route_kotoha.kotoha_ch9_start.t048
+> $route_kotoha.kotoha_ch9_start.t049
 
-> 鍵は閉まっていない。
-> 開けようとすれば開く扉。
-> でも、彼女の前で、それは単なる扉じゃないのだろう。
+> $route_kotoha.kotoha_ch9_start.t050
+> $route_kotoha.kotoha_ch9_start.t051
+> $route_kotoha.kotoha_ch9_start.t052
 
 @wait 900
 
-> 俺は扉から少し離れた場所まで歩いて、
-> ことはの隣に立った。
+> $route_kotoha.kotoha_ch9_start.t053
+> $route_kotoha.kotoha_ch9_start.t054
 
-> 何も言わずに。
+> $route_kotoha.kotoha_ch9_start.t055
 
 @wait 1000
 
-> ことはは振り向かなかった。
-> 気づいていないわけじゃないだろう。
+> $route_kotoha.kotoha_ch9_start.t056
+> $route_kotoha.kotoha_ch9_start.t057
 
 @wait 600
 
-> 肩が少し、強ばった気がした。
-> けれどことははそのまま、
-> 俺を見ることも、帰るよう言うこともしなかった。
+> $route_kotoha.kotoha_ch9_start.t058
+> $route_kotoha.kotoha_ch9_start.t059
+> $route_kotoha.kotoha_ch9_start.t060
 
-> ただそこにいることを、
-> 許している。
-> そういう沈黙だった。
+> $route_kotoha.kotoha_ch9_start.t061
+> $route_kotoha.kotoha_ch9_start.t062
+> $route_kotoha.kotoha_ch9_start.t063
 
-> 二人で扉を見ている。
+> $route_kotoha.kotoha_ch9_start.t064
 
 @wait 1200
 
-> どちらも、開けない。
+> $route_kotoha.kotoha_ch9_start.t065
 
 @bgm stop
 @wait 1500
 
-> 夕方の校舎は、音が少ない。
-> どこか遠くで誰かが戸を閉める音。
-> 窓の向こうを自転車が通り過ぎる音。
-> それだけが聞こえて、
-> また静かになる。
+> $route_kotoha.kotoha_ch9_start.t066
+> $route_kotoha.kotoha_ch9_start.t067
+> $route_kotoha.kotoha_ch9_start.t068
+> $route_kotoha.kotoha_ch9_start.t069
+> $route_kotoha.kotoha_ch9_start.t070
 
 @wait 1000
 
-> 俺は扉を見ながら、
-> ことはのことを考えた。
+> $route_kotoha.kotoha_ch9_start.t071
+> $route_kotoha.kotoha_ch9_start.t072
 
-> 転入してきた日。
-> 自己紹介の短さ。
-> 図書室で本の背表紙をなぞっていた指。
-> ヘッドホン。音楽プレイヤー。
+> $route_kotoha.kotoha_ch9_start.t073
+> $route_kotoha.kotoha_ch9_start.t074
+> $route_kotoha.kotoha_ch9_start.t075
+> $route_kotoha.kotoha_ch9_start.t076
 
-> 音楽が好きだったのか、
-> それとも、好きだったから余計に近づけないのか。
+> $route_kotoha.kotoha_ch9_start.t077
+> $route_kotoha.kotoha_ch9_start.t078
 
 @wait 800
 
-> ピアノを弾けるはずなのに、弾いていない。
-> 弾けないと言いながら、ここに来てしまう。
+> $route_kotoha.kotoha_ch9_start.t079
+> $route_kotoha.kotoha_ch9_start.t080
 
-> 来てしまう、というのは、どういう感覚なのだろう。
+> $route_kotoha.kotoha_ch9_start.t081
 
 @wait 900
 
@@ -272,23 +272,23 @@ player: ……
 @still kotoha_music_door
 @wait 800
 
-kotoha: ……わたし、ここに来るんです。
+kotoha: $route_kotoha.kotoha_ch9_start.t082
 
 @wait 600
 
-kotoha: 弾けないのに。
+kotoha: $route_kotoha.kotoha_ch9_start.t083
 
 @wait 800
 
-player: なんで
+player: $route_kotoha.kotoha_ch9_start.t084
 
 @wait 600
 
-kotoha: わかりません。
+kotoha: $route_kotoha.kotoha_ch9_start.t085
 
 @wait 400
 
-kotoha: でも来てしまうんです。
+kotoha: $route_kotoha.kotoha_ch9_start.t086
 
 @still_hide
 @wait 600
@@ -296,55 +296,55 @@ kotoha: でも来てしまうんです。
 @show kotoha center normal fade_in
 @wait 400
 
-> *（来てしまう、と言った。来たい、とは言わなかった。でも来ている）*
+> *$route_kotoha.kotoha_ch9_start.t087*
 
 @wait 800
 
-> 来てしまう。
-> 意志でも衝動でもない、
-> どちらとも言い切れない言葉。
+> $route_kotoha.kotoha_ch9_start.t088
+> $route_kotoha.kotoha_ch9_start.t089
+> $route_kotoha.kotoha_ch9_start.t090
 
-> 本人でも理由がわからないまま、
-> 足が向いてしまう場所。
+> $route_kotoha.kotoha_ch9_start.t091
+> $route_kotoha.kotoha_ch9_start.t092
 
-> そういう場所が、人にはある。
-> 合理的に説明できなくても、
-> 体が覚えているから行ってしまう。
+> $route_kotoha.kotoha_ch9_start.t093
+> $route_kotoha.kotoha_ch9_start.t094
+> $route_kotoha.kotoha_ch9_start.t095
 
 @wait 700
 
-> ことははそれを、
-> 不思議がるでも、恥じるでもなく言った。
-> ただ、事実として。
+> $route_kotoha.kotoha_ch9_start.t096
+> $route_kotoha.kotoha_ch9_start.t097
+> $route_kotoha.kotoha_ch9_start.t098
 
 @wait 800
 
-> ことはは「帰ってください」とも言わなかった。
-> 「いてください」とも。
+> $route_kotoha.kotoha_ch9_start.t099
+> $route_kotoha.kotoha_ch9_start.t100
 
-> ただそこにいた。
-> 俺もそこにいた。
+> $route_kotoha.kotoha_ch9_start.t101
+> $route_kotoha.kotoha_ch9_start.t102
 
 @wait 1000
 
-> しばらく、
-> 廊下の静けさだけがあった。
+> $route_kotoha.kotoha_ch9_start.t103
+> $route_kotoha.kotoha_ch9_start.t104
 
 @wait 800
 
-> 担任の言葉が、もう一度よみがえった。
->「もし気が変わったら」
+> $route_kotoha.kotoha_ch9_start.t105
+>: $route_kotoha.kotoha_ch9_start.t106
 
-> 重い言葉だ。
-> 軽く言っていたとしても、
-> その重さを引き受けるのはことはなのだから。
+> $route_kotoha.kotoha_ch9_start.t107
+> $route_kotoha.kotoha_ch9_start.t108
+> $route_kotoha.kotoha_ch9_start.t109
 
-> 気が変わるかどうかも、
-> 扉を開けるかどうかも、
-> それはことは一人が決めることだ。
+> $route_kotoha.kotoha_ch9_start.t110
+> $route_kotoha.kotoha_ch9_start.t111
+> $route_kotoha.kotoha_ch9_start.t112
 
-> 誰にも急かせない。
-> 俺にも。
+> $route_kotoha.kotoha_ch9_start.t113
+> $route_kotoha.kotoha_ch9_start.t114
 
 @bgm evening_piano.mp3
 @wait 1200
@@ -366,73 +366,73 @@ kotoha: でも来てしまうんです。
 @bgm piano_distant.mp3 noloop
 @wait 800
 
-> 文化祭は、そのまま終わった。
-> さくらのこと。まひるのこと。
-> いろいろなことが未解決のまま、学校は次の週に戻った。
+> $route_kotoha.kotoha_ch9_daily1.t001
+> $route_kotoha.kotoha_ch9_daily1.t002
+> $route_kotoha.kotoha_ch9_daily1.t003
 
 @wait 800
 
-> 気づいたら、習慣になっていた。
+> $route_kotoha.kotoha_ch9_daily1.t004
 
-> 放課後、帰り支度をしながら廊下を歩くと、
-> 音楽準備室の前を通っていた。
-> 最初は偶然だった。
-> 次の日も偶然だと思った。
-> 三日目になると、偶然とは言えなかった。
+> $route_kotoha.kotoha_ch9_daily1.t005
+> $route_kotoha.kotoha_ch9_daily1.t006
+> $route_kotoha.kotoha_ch9_daily1.t007
+> $route_kotoha.kotoha_ch9_daily1.t008
+> $route_kotoha.kotoha_ch9_daily1.t009
 
 @wait 800
 
 @show kotoha center normal fade_in
 @wait 600
 
-> ことはは、たいていそこにいた。
-> 扉を見ている。
-> 入らないまま、ただそこにいる。
+> $route_kotoha.kotoha_ch9_daily1.t010
+> $route_kotoha.kotoha_ch9_daily1.t011
+> $route_kotoha.kotoha_ch9_daily1.t012
 
-> 俺もそこに立つ。
-> 何を言うわけでもない。
-> 並んで、扉を見る。
+> $route_kotoha.kotoha_ch9_daily1.t013
+> $route_kotoha.kotoha_ch9_daily1.t014
+> $route_kotoha.kotoha_ch9_daily1.t015
 
 @wait 1000
 
-> おかしな習慣だ。
-> 理由もなく、用事もなく、
-> ただ廊下の突き当たりで二人して扉を見ている。
+> $route_kotoha.kotoha_ch9_daily1.t016
+> $route_kotoha.kotoha_ch9_daily1.t017
+> $route_kotoha.kotoha_ch9_daily1.t018
 
-> それでも、どちらも帰ろうとしなかった。
+> $route_kotoha.kotoha_ch9_daily1.t019
 
 @wait 1200
 
-kotoha: ……毎日、来るんですね
+kotoha: $route_kotoha.kotoha_ch9_daily1.t020
 
 @wait 600
 
-player: 来てしまうんだ
+player: $route_kotoha.kotoha_ch9_daily1.t021
 
 @wait 800
 
-> ことはは少し考えるように黙った。
+> $route_kotoha.kotoha_ch9_daily1.t022
 
 @wait 700
 
-kotoha: ……わかります
+kotoha: $route_kotoha.kotoha_ch9_daily1.t023
 
 @wait 1200
 
-> それだけだった。
-> それだけで、十分だった気がした。
+> $route_kotoha.kotoha_ch9_daily1.t024
+> $route_kotoha.kotoha_ch9_daily1.t025
 
-> 来てしまうんです、とことははあの夜に言っていた。
-> 今俺が同じことを言って、ことはは「わかります」と言った。
+> $route_kotoha.kotoha_ch9_daily1.t026
+> $route_kotoha.kotoha_ch9_daily1.t027
 
-> お互いさま、という言葉は出なかった。
-> でも、そういうことだった。
+> $route_kotoha.kotoha_ch9_daily1.t028
+> $route_kotoha.kotoha_ch9_daily1.t029
 
 @wait 1000
 
-> ことはの肩が、ほんの少しだけゆるんだ気がした。
-> 強ばっていたわけじゃない。
-> ただ、これまでより少しだけ力が抜けた気がした。
+> $route_kotoha.kotoha_ch9_daily1.t030
+> $route_kotoha.kotoha_ch9_daily1.t031
+> $route_kotoha.kotoha_ch9_daily1.t032
 
 @wait 1200
 
@@ -452,105 +452,105 @@ kotoha: ……わかります
 @bgm library_quiet.mp3
 @wait 800
 
-> 数日後。
-> 図書室に用があって入ったとき、
-> ことはの姿が見えた。
+> $route_kotoha.kotoha_ch9_daily2.t001
+> $route_kotoha.kotoha_ch9_daily2.t002
+> $route_kotoha.kotoha_ch9_daily2.t003
 
-> 本棚の前に立っていた。
-> 本を選んでいるのかと思ったが、違った。
-> 背表紙を、一冊一冊、指でなぞっている。
+> $route_kotoha.kotoha_ch9_daily2.t004
+> $route_kotoha.kotoha_ch9_daily2.t005
+> $route_kotoha.kotoha_ch9_daily2.t006
 
-> 選ぶというより、触れている。
-> 背表紙から何かを確かめているみたいな、
-> そういう手の動きだった。
+> $route_kotoha.kotoha_ch9_daily2.t007
+> $route_kotoha.kotoha_ch9_daily2.t008
+> $route_kotoha.kotoha_ch9_daily2.t009
 
 @wait 1000
 
 @show kotoha center normal fade_in
 @wait 600
 
-player: 何を探してるんだ
+player: $route_kotoha.kotoha_ch9_daily2.t010
 
 @wait 400
 
-> ことはが少し顔を上げた。
-> 驚いているというより、意外そうに。
+> $route_kotoha.kotoha_ch9_daily2.t011
+> $route_kotoha.kotoha_ch9_daily2.t012
 
-> ——俺から話しかけてくるのは、珍しかったのかもしれない。
+> $route_kotoha.kotoha_ch9_daily2.t013
 
 @wait 600
 
 @expr kotoha thinking
 
-kotoha: ……音の出てくる本です
+kotoha: $route_kotoha.kotoha_ch9_daily2.t014
 
 @wait 600
 
-player: 音の出てくる本
+player: $route_kotoha.kotoha_ch9_daily2.t015
 
-kotoha: 音楽の本ではなくて
+kotoha: $route_kotoha.kotoha_ch9_daily2.t016
 
 @wait 400
 
-kotoha: ……風の音とか、雨の音とか
-kotoha: そういうものが書いてある小説が、好きなんです
+kotoha: $route_kotoha.kotoha_ch9_daily2.t017
+kotoha: $route_kotoha.kotoha_ch9_daily2.t018
 
 @wait 800
 
-> 音の出てくる小説が好き。
-> 音楽の本は読めないのに、音の気配は探している。
+> $route_kotoha.kotoha_ch9_daily2.t019
+> $route_kotoha.kotoha_ch9_daily2.t020
 
-> 矛盾しているようで、矛盾していない気がした。
-> 音楽を避けているんじゃなくて、
-> ただ、鍵盤に結びついた音から距離を置いているだけだ。
+> $route_kotoha.kotoha_ch9_daily2.t021
+> $route_kotoha.kotoha_ch9_daily2.t022
+> $route_kotoha.kotoha_ch9_daily2.t023
 
 @wait 1000
 
-> 本棚を少し見た。
-> 一冊、手に取る。
+> $route_kotoha.kotoha_ch9_daily2.t024
+> $route_kotoha.kotoha_ch9_daily2.t025
 
-player: これ、雨の話だ
-player: ずっと雨が降ってる
+player: $route_kotoha.kotoha_ch9_daily2.t026
+player: $route_kotoha.kotoha_ch9_daily2.t027
 
 @wait 500
 
-> ことはは表紙を見て、裏表紙を確かめて、
-> また表紙に戻した。
+> $route_kotoha.kotoha_ch9_daily2.t028
+> $route_kotoha.kotoha_ch9_daily2.t029
 
 @expr kotoha normal
 
-kotoha: ……読んだんですか
+kotoha: $route_kotoha.kotoha_ch9_daily2.t030
 
-player: 去年
+player: $route_kotoha.kotoha_ch9_daily2.t031
 
-kotoha: どんな雨でしたか
+kotoha: $route_kotoha.kotoha_ch9_daily2.t032
 
 @wait 600
 
-player: ずっとやむ気配のない雨
+player: $route_kotoha.kotoha_ch9_daily2.t033
 
 @wait 400
 
-> ことはは少しの間、表紙を見ていた。
+> $route_kotoha.kotoha_ch9_daily2.t034
 
 @wait 700
 
-kotoha: ……借りてみます
+kotoha: $route_kotoha.kotoha_ch9_daily2.t035
 
 @wait 800
 
-> 受け取って、背表紙をなぞった。
-> いつもと同じ手の動きで。
+> $route_kotoha.kotoha_ch9_daily2.t036
+> $route_kotoha.kotoha_ch9_daily2.t037
 
 @wait 700
 
-> 図書室の空気は変わらず静かだった。
-> でも、さっきより少しだけ何かが増えた気がした。
+> $route_kotoha.kotoha_ch9_daily2.t038
+> $route_kotoha.kotoha_ch9_daily2.t039
 
 @wait 1000
 
-> *（どんな本を読む人か、でその人のことが少しわかる）*
-> *（ことはが音の出てくる本を読む人だということが、今日わかった）*
+> *$route_kotoha.kotoha_ch9_daily2.t040*
+> *$route_kotoha.kotoha_ch9_daily2.t041*
 
 @wait 800
 
@@ -571,28 +571,28 @@ kotoha: ……借りてみます
 @se wind_leaves.mp3
 @wait 900
 
-> 一週間ほど経った頃。
+> $route_kotoha.kotoha_ch9_daily3.t001
 
-> 帰り支度を済ませて昇降口を出ると、
-> ことはが立っていた。
+> $route_kotoha.kotoha_ch9_daily3.t002
+> $route_kotoha.kotoha_ch9_daily3.t003
 
 @show kotoha center normal fade_in
 @wait 600
 
-> いつもと違うことに、すぐ気づいた。
+> $route_kotoha.kotoha_ch9_daily3.t004
 
-> ヘッドホンをしていない。
+> $route_kotoha.kotoha_ch9_daily3.t005
 
 @wait 700
 
-player: プレイヤーは
+player: $route_kotoha.kotoha_ch9_daily3.t006
 
-kotoha: ……電池が切れました
+kotoha: $route_kotoha.kotoha_ch9_daily3.t007
 
 @wait 500
 
-> それだけ言って、ことはは歩き出した。
-> 同じ方向だった。
+> $route_kotoha.kotoha_ch9_daily3.t008
+> $route_kotoha.kotoha_ch9_daily3.t009
 
 @wait 600
 
@@ -604,88 +604,88 @@ kotoha: ……電池が切れました
 @se wind_leaves.mp3
 @wait 700
 
-> 並んで歩く。
+> $route_kotoha.kotoha_ch9_daily3.t010
 
-> ヘッドホンのないことはは、いつもより少し遅いペースで歩いていた。
+> $route_kotoha.kotoha_ch9_daily3.t011
 
-> 秋の夕方の通学路。
-> 枯れかけた葉が、風に揺れている。
-> 自転車が一台、脇を通り過ぎた。
-> 遠くで誰かが名前を呼ぶ声。
+> $route_kotoha.kotoha_ch9_daily3.t012
+> $route_kotoha.kotoha_ch9_daily3.t013
+> $route_kotoha.kotoha_ch9_daily3.t014
+> $route_kotoha.kotoha_ch9_daily3.t015
 
 @wait 1000
 
 @show kotoha center normal fade_in
 @wait 400
 
-> 何も言わなかった。
-> ことははそれでいいらしく、歩き続けた。
+> $route_kotoha.kotoha_ch9_daily3.t016
+> $route_kotoha.kotoha_ch9_daily3.t017
 
-> 音楽のない帰り道は、
-> 思ったより音が多かった。
+> $route_kotoha.kotoha_ch9_daily3.t018
+> $route_kotoha.kotoha_ch9_daily3.t019
 
 @wait 1000
 
-> ことはが、ふと立ち止まった。
+> $route_kotoha.kotoha_ch9_daily3.t020
 
 @wait 400
 
 @expr kotoha thinking
 
-kotoha: ……今、何の音か、わかりましたか
+kotoha: $route_kotoha.kotoha_ch9_daily3.t021
 
 @wait 600
 
-player: ……風？
+player: $route_kotoha.kotoha_ch9_daily3.t022
 
 @wait 400
 
-kotoha: その前、です
+kotoha: $route_kotoha.kotoha_ch9_daily3.t023
 
 @wait 700
 
-> 聴き直した。
-> わからなかった。
-> 風の音の前に、何かあっただろうか。
+> $route_kotoha.kotoha_ch9_daily3.t024
+> $route_kotoha.kotoha_ch9_daily3.t025
+> $route_kotoha.kotoha_ch9_daily3.t026
 
-player: ……わからない
+player: $route_kotoha.kotoha_ch9_daily3.t027
 
 @wait 600
 
-kotoha: ……銀杏の葉が落ちる音です
+kotoha: $route_kotoha.kotoha_ch9_daily3.t028
 
 @wait 1000
 
-> 銀杏の葉が落ちる音。
+> $route_kotoha.kotoha_ch9_daily3.t029
 
-> 俺には聴こえなかった。
-> 少なくとも、そういう音として聴いていなかった。
+> $route_kotoha.kotoha_ch9_daily3.t030
+> $route_kotoha.kotoha_ch9_daily3.t031
 
-> ことはには聴こえていた。
+> $route_kotoha.kotoha_ch9_daily3.t032
 
 @wait 900
 
-> 音楽プレイヤーで音を遮断している人間が、
-> そのプレイヤーがないだけで、
-> 世界中の音を全部聴いている。
+> $route_kotoha.kotoha_ch9_daily3.t033
+> $route_kotoha.kotoha_ch9_daily3.t034
+> $route_kotoha.kotoha_ch9_daily3.t035
 
-> ——音は、止めていない。
-> ただ、鍵盤に繋がった音だけが止まっている。
+> $route_kotoha.kotoha_ch9_daily3.t036
+> $route_kotoha.kotoha_ch9_daily3.t037
 
 @wait 1200
 
 @expr kotoha normal
 
-> ことははまた歩き出した。
-> 俺も並んで歩く。
+> $route_kotoha.kotoha_ch9_daily3.t038
+> $route_kotoha.kotoha_ch9_daily3.t039
 
 @wait 800
 
-> 「聴こえましたか」とは聞かなかった。
-> ことはも、もう何も言わなかった。
+> $route_kotoha.kotoha_ch9_daily3.t040
+> $route_kotoha.kotoha_ch9_daily3.t041
 
-> 銀杏の葉がまた一枚、落ちた。
-> 今度は少しだけ、聴こえた気がした。
+> $route_kotoha.kotoha_ch9_daily3.t042
+> $route_kotoha.kotoha_ch9_daily3.t043
 
 @wait 1200
 
@@ -705,27 +705,27 @@ kotoha: ……銀杏の葉が落ちる音です
 @bgm daily_life.mp3
 @wait 900
 
-> 翌日。
+> $route_kotoha.kotoha_ch10_start.t001
 
 @wait 600
 
-> ことはのことを、考えていた。
+> $route_kotoha.kotoha_ch10_start.t002
 
 @wait 500
 
-> 来てしまうんです、と言っていた。
-> 弾けないのに。
+> $route_kotoha.kotoha_ch10_start.t003
+> $route_kotoha.kotoha_ch10_start.t004
 
 @wait 700
 
-> あの言葉が、朝からずっと頭に残っていた。
-> どういうことなのかは、うまく言えない。
-> ただ、何かが引っかかっているのだけはわかった。
+> $route_kotoha.kotoha_ch10_start.t005
+> $route_kotoha.kotoha_ch10_start.t006
+> $route_kotoha.kotoha_ch10_start.t007
 
 @wait 800
 
-> 廊下を歩いていたら、
-> 気づいたら図書室の方へ向かっていた。
+> $route_kotoha.kotoha_ch10_start.t008
+> $route_kotoha.kotoha_ch10_start.t009
 
 @wait 800
 
@@ -733,162 +733,162 @@ kotoha: ……銀杏の葉が落ちる音です
 @bgm library_quiet.mp3
 @wait 700
 
-> 放課後の図書室。
+> $route_kotoha.kotoha_ch10_start.t010
 
-> ことははいつもの席にいた。
-> 本が一冊、
-> 机の上に置かれている。
-> 開かれていない。
+> $route_kotoha.kotoha_ch10_start.t011
+> $route_kotoha.kotoha_ch10_start.t012
+> $route_kotoha.kotoha_ch10_start.t013
+> $route_kotoha.kotoha_ch10_start.t014
 
 @show kotoha center normal fade_in
 @wait 500
 
-> 入り口から見えた瞬間、
-> 少し迷った。
+> $route_kotoha.kotoha_ch10_start.t015
+> $route_kotoha.kotoha_ch10_start.t016
 
-> 声をかけるべきか、通り過ぎるべきか。
-> けれど体はもう、向かいの椅子へ向かっていた。
-> 昨日の廊下と同じように。
+> $route_kotoha.kotoha_ch10_start.t017
+> $route_kotoha.kotoha_ch10_start.t018
+> $route_kotoha.kotoha_ch10_start.t019
 
-> 俺が向かいの椅子を引くと、
-> ことはは小さく目を上げた。
+> $route_kotoha.kotoha_ch10_start.t020
+> $route_kotoha.kotoha_ch10_start.t021
 
 @wait 600
 
-> どちらも、先には言わなかった。
-> 昨日の廊下から続いているみたいな静けさがあった。
+> $route_kotoha.kotoha_ch10_start.t022
+> $route_kotoha.kotoha_ch10_start.t023
 
 @wait 700
 
 @expr kotoha thinking
 @wait 400
 
-> ことはの指が、本の背表紙に
-> 人差し指をそっと当てた。
+> $route_kotoha.kotoha_ch10_start.t024
+> $route_kotoha.kotoha_ch10_start.t025
 
-> なぞるように。
-
-@wait 500
-
-kotoha: 昨日は、すみませんでした
-
-player: 何が
-
-kotoha: 扉の前に、ずっと立っていて
-
-player: 俺が勝手にいたんだ
+> $route_kotoha.kotoha_ch10_start.t026
 
 @wait 500
 
-kotoha: ……そうですね
+kotoha: $route_kotoha.kotoha_ch10_start.t027
+
+player: $route_kotoha.kotoha_ch10_start.t028
+
+kotoha: $route_kotoha.kotoha_ch10_start.t029
+
+player: $route_kotoha.kotoha_ch10_start.t030
+
+@wait 500
+
+kotoha: $route_kotoha.kotoha_ch10_start.t031
 
 @wait 700
 
-> 沈黙が落ちた。
-> 本を挟んでいる分、
-> 言葉の距離が少し遠い。
+> $route_kotoha.kotoha_ch10_start.t032
+> $route_kotoha.kotoha_ch10_start.t033
+> $route_kotoha.kotoha_ch10_start.t034
 
-> 本は開かれていない。
-> ことははそれを読もうとしているんじゃなくて、
-> ただそこに置いておきたいのかもしれない。
-> 手と手の間の、緩衝材みたいに。
+> $route_kotoha.kotoha_ch10_start.t035
+> $route_kotoha.kotoha_ch10_start.t036
+> $route_kotoha.kotoha_ch10_start.t037
+> $route_kotoha.kotoha_ch10_start.t038
 
 @wait 800
 
-> 窓の外で、どこかの部活が声を出している。
-> 遠い。
-> この部屋だけが、別の時間の中にある気がした。
+> $route_kotoha.kotoha_ch10_start.t039
+> $route_kotoha.kotoha_ch10_start.t040
+> $route_kotoha.kotoha_ch10_start.t041
 
 @bgm quiet_piano_distant.mp3
 @wait 500
 
-kotoha: ……コンクールの日のことを、
-kotoha: 考えていました
+kotoha: $route_kotoha.kotoha_ch10_start.t042
+kotoha: $route_kotoha.kotoha_ch10_start.t043
 
-player: ……
+player: $route_kotoha.kotoha_ch10_start.t044
 
 @wait 400
 
-> 何も言わなかった。
-> 促さなかった。
-> ただ、聞いていることだけを態度で示した。
+> $route_kotoha.kotoha_ch10_start.t045
+> $route_kotoha.kotoha_ch10_start.t046
+> $route_kotoha.kotoha_ch10_start.t047
 
 @wait 600
 
-kotoha: 全国ジュニアのコンクールで、
-kotoha: 本選を弾いていたとき
+kotoha: $route_kotoha.kotoha_ch10_start.t048
+kotoha: $route_kotoha.kotoha_ch10_start.t049
 
 @wait 300
 
-kotoha: 客席で父が倒れました
+kotoha: $route_kotoha.kotoha_ch10_start.t050
 
 @wait 600
 
-> 静かな声だった。
-> 報告をするような声。
+> $route_kotoha.kotoha_ch10_start.t051
+> $route_kotoha.kotoha_ch10_start.t052
 
-> そう語れるようになったのは、
-> 何度か自分の中で繰り返したからだろう。
-> 声に出すのとは別の回数だけ、
-> 頭の中で言い続けたからだろう。
-
-@wait 400
-
-kotoha: 音って、思い出より先に来るんです
+> $route_kotoha.kotoha_ch10_start.t053
+> $route_kotoha.kotoha_ch10_start.t054
+> $route_kotoha.kotoha_ch10_start.t055
+> $route_kotoha.kotoha_ch10_start.t056
 
 @wait 400
 
-kotoha: あの曲のはじめの和音だけで、
-kotoha: もう体が動いている。
+kotoha: $route_kotoha.kotoha_ch10_start.t057
+
+@wait 400
+
+kotoha: $route_kotoha.kotoha_ch10_start.t058
+kotoha: $route_kotoha.kotoha_ch10_start.t059
 
 @wait 500
 
-kotoha: だから……あの曲が流れるたびに、
-kotoha: まだ走っている気がして
+kotoha: $route_kotoha.kotoha_ch10_start.t060
+kotoha: $route_kotoha.kotoha_ch10_start.t061
 
 @wait 700
 
-> 走っている気がして。
-> コンクールの舞台から、客席へ。
-> 父のもとへ。
+> $route_kotoha.kotoha_ch10_start.t062
+> $route_kotoha.kotoha_ch10_start.t063
+> $route_kotoha.kotoha_ch10_start.t064
 
-> 曲が体に刷り込まれているんじゃなくて、
-> あの日の行動が体に刷り込まれている。
-> だから音が来るたびに、記憶が来る。
+> $route_kotoha.kotoha_ch10_start.t065
+> $route_kotoha.kotoha_ch10_start.t066
+> $route_kotoha.kotoha_ch10_start.t067
 
 @wait 600
 
-kotoha: ピアノを止めて、客席へ走った。
-kotoha: 父は助かりました
+kotoha: $route_kotoha.kotoha_ch10_start.t068
+kotoha: $route_kotoha.kotoha_ch10_start.t069
 
 @wait 500
 
-kotoha: ……それがわたしのせいかどうかは、
-kotoha: もう関係ないんです
+kotoha: $route_kotoha.kotoha_ch10_start.t070
+kotoha: $route_kotoha.kotoha_ch10_start.t071
 
 @wait 600
 
-> *（関係ないと言いながら、関係あることだけを話している）*
+> *$route_kotoha.kotoha_ch10_start.t072*
 
 @wait 800
 
-> 関係ない、と言い切ること。
-> それ自体が、ずっと考え続けた末に辿り着いた場所なのだと思う。
-> 泥を踏んで、何度も沈んで、それでもそこまで来た言葉。
+> $route_kotoha.kotoha_ch10_start.t073
+> $route_kotoha.kotoha_ch10_start.t074
+> $route_kotoha.kotoha_ch10_start.t075
 
 @wait 700
 
-> 俺は何も言えなかった。
-> 「それは違う」とも「そうだよ」とも言える立場じゃない。
+> $route_kotoha.kotoha_ch10_start.t076
+> $route_kotoha.kotoha_ch10_start.t077
 
-> だから、黙っていた。
+> $route_kotoha.kotoha_ch10_start.t078
 
 @wait 1000
 
 @still kotoha_library_headphones
 @wait 700
 
-> ことはの指が、また本の背表紙をなぞる。
+> $route_kotoha.kotoha_ch10_start.t079
 
 @still_hide
 @wait 400
@@ -896,132 +896,132 @@ kotoha: もう関係ないんです
 @show kotoha center thinking fade_in
 @wait 400
 
-> 図書室の外で、誰かが笑う声がした。
-> ドア越しの声は輪郭がなくて、
-> 遠い国の言葉みたいに聞こえる。
+> $route_kotoha.kotoha_ch10_start.t080
+> $route_kotoha.kotoha_ch10_start.t081
+> $route_kotoha.kotoha_ch10_start.t082
 
 @wait 600
 
-> ことはの父。
-> 大学教授で、厳格な人、とどこかで聞いた気がする。
-> 今も互いにピアノの話ができない、という気配が、
-> ことはの言葉の端々にある。
+> $route_kotoha.kotoha_ch10_start.t083
+> $route_kotoha.kotoha_ch10_start.t084
+> $route_kotoha.kotoha_ch10_start.t085
+> $route_kotoha.kotoha_ch10_start.t086
 
-> 助かった父に、何も言えないまま。
-> ピアノを止めたことも、
-> また弾こうとしていることも、
-> たぶん何も話せていない。
+> $route_kotoha.kotoha_ch10_start.t087
+> $route_kotoha.kotoha_ch10_start.t088
+> $route_kotoha.kotoha_ch10_start.t089
+> $route_kotoha.kotoha_ch10_start.t090
 
 @wait 800
 
-> 何か言おうとして、
-> 俺は少し考えた。
+> $route_kotoha.kotoha_ch10_start.t091
+> $route_kotoha.kotoha_ch10_start.t092
 
-player: 俺も、同じことあった
+player: $route_kotoha.kotoha_ch10_start.t093
 
-kotoha: ……
+kotoha: $route_kotoha.kotoha_ch10_start.t094
 
-player: 足首を痛めて、陸上をやめた
-player: 治ったのに、走れないままでいた
+player: $route_kotoha.kotoha_ch10_start.t095
+player: $route_kotoha.kotoha_ch10_start.t096
 
 @wait 500
 
-kotoha: ……
+kotoha: $route_kotoha.kotoha_ch10_start.t097
 
-player: 怖かったんだと思う
-player: また全力で踏み込んで、また何かを失うのが
+player: $route_kotoha.kotoha_ch10_start.t098
+player: $route_kotoha.kotoha_ch10_start.t099
 
 @wait 400
 
-player: だから走らないほうが、
-player: 何も終わらなくて済む気がした
+player: $route_kotoha.kotoha_ch10_start.t100
+player: $route_kotoha.kotoha_ch10_start.t101
 
 @wait 800
 
 @expr kotoha surprised
 @wait 300
 
-> ことはは少し驚いたように見えた。
-> 俺が自分のことを話すと思っていなかったのかもしれない。
+> $route_kotoha.kotoha_ch10_start.t102
+> $route_kotoha.kotoha_ch10_start.t103
 
-> 俺も、話すつもりじゃなかった。
-> けれど、何かが引き出された気がした。
-> ことはの言葉に、俺の中の何かが応えた。
+> $route_kotoha.kotoha_ch10_start.t104
+> $route_kotoha.kotoha_ch10_start.t105
+> $route_kotoha.kotoha_ch10_start.t106
 
 @wait 600
 
-kotoha: ……桐島くんのそれと、
-kotoha: わたしのこととは、違います
+kotoha: $route_kotoha.kotoha_ch10_start.t107
+kotoha: $route_kotoha.kotoha_ch10_start.t108
 
 @wait 400
 
-kotoha: でも
+kotoha: $route_kotoha.kotoha_ch10_start.t109
 
 @wait 700
 
-kotoha: ……でも
+kotoha: $route_kotoha.kotoha_ch10_start.t110
 
 @wait 900
 
-> 言えなかった。
+> $route_kotoha.kotoha_ch10_start.t111
 
-> ことはは口を閉じた。
-> 視線が、テーブルの木目に落ちた。
+> $route_kotoha.kotoha_ch10_start.t112
+> $route_kotoha.kotoha_ch10_start.t113
 
 @expr kotoha normal
 @wait 600
 
-> *（「でも」の先に、何かある。まだ言えないだけで）*
+> *$route_kotoha.kotoha_ch10_start.t114*
 
 @wait 800
 
-> 桐島くんのそれとわたしのこととは、違います。
+> $route_kotoha.kotoha_ch10_start.t115
 
-> そうかもしれない。
-> 足首と、コンクールと、父と、それは確かに違う話だ。
+> $route_kotoha.kotoha_ch10_start.t116
+> $route_kotoha.kotoha_ch10_start.t117
 
-> でも。
+> $route_kotoha.kotoha_ch10_start.t118
 
-> 止まっていること。
-> 怖くて次へ踏み込めないこと。
-> それは違わないかもしれない。
+> $route_kotoha.kotoha_ch10_start.t119
+> $route_kotoha.kotoha_ch10_start.t120
+> $route_kotoha.kotoha_ch10_start.t121
 
-> ことははきっと、
-> 「でも」の先を知っている。
-> 知っているから、言えなかった。
+> $route_kotoha.kotoha_ch10_start.t122
+> $route_kotoha.kotoha_ch10_start.t123
+> $route_kotoha.kotoha_ch10_start.t124
 
 @wait 1000
 
 @bgm library_quiet.mp3
 @wait 500
 
-> 窓の外が少し暗くなっていた。
-> 夕方の終わりが近い。
-> 図書室の電灯だけが、変わらない明るさで二人の間を照らしている。
+> $route_kotoha.kotoha_ch10_start.t125
+> $route_kotoha.kotoha_ch10_start.t126
+> $route_kotoha.kotoha_ch10_start.t127
 
 @wait 600
 
-> ページをめくる音が、遠くで一度だけした。
-> 他に誰かいたことを、そのとき初めて思い出した。
+> $route_kotoha.kotoha_ch10_start.t128
+> $route_kotoha.kotoha_ch10_start.t129
 
 @wait 700
 
-> ことはは本を開かないまま、
-> その表紙をまた、人差し指でなぞった。
+> $route_kotoha.kotoha_ch10_start.t130
+> $route_kotoha.kotoha_ch10_start.t131
 
-> 五線譜が描かれた本だった。
-> 音楽の理論書か、楽曲解説か。
-> 読もうとして、読めなくて、
-> それでも手の届くところに置いておく。
+> $route_kotoha.kotoha_ch10_start.t132
+> $route_kotoha.kotoha_ch10_start.t133
+> $route_kotoha.kotoha_ch10_start.t134
+> $route_kotoha.kotoha_ch10_start.t135
 
-> 来てしまう、と昨日言っていた。
+> $route_kotoha.kotoha_ch10_start.t136
 
-> 本も、
-> 同じなのかもしれない。
+> $route_kotoha.kotoha_ch10_start.t137
+> $route_kotoha.kotoha_ch10_start.t138
 
 @wait 1000
 
-> 図書室の空気がゆっくり戻ってくる。
+> $route_kotoha.kotoha_ch10_start.t139
 
 @hide kotoha fade_out
 @wait 500
@@ -1039,74 +1039,74 @@ kotoha: ……でも
 @bgm library_quiet.mp3
 @wait 800
 
-> 翌日の放課後。
-> また図書室に来ていた。
+> $route_kotoha.kotoha_ch10_book.t001
+> $route_kotoha.kotoha_ch10_book.t002
 
 @wait 500
 
 @show kotoha center normal fade_in
 @wait 600
 
-> ことはがいた。
-> 昨日と同じ席だった。
-> ただ、机の上に音楽の本は置かれていなかった。
+> $route_kotoha.kotoha_ch10_book.t003
+> $route_kotoha.kotoha_ch10_book.t004
+> $route_kotoha.kotoha_ch10_book.t005
 
 @wait 700
 
-> 俺はかばんから一冊取り出した。
-> 昨日から持ち歩いていたもの。
+> $route_kotoha.kotoha_ch10_book.t006
+> $route_kotoha.kotoha_ch10_book.t007
 
-player: よかったら
+player: $route_kotoha.kotoha_ch10_book.t008
 
 @wait 500
 
-> ことはは視線を上げた。
+> $route_kotoha.kotoha_ch10_book.t009
 
 @wait 400
 
-player: 音楽とは関係ない。
-player: ずっと返せないままだったから
+player: $route_kotoha.kotoha_ch10_book.t010
+player: $route_kotoha.kotoha_ch10_book.t011
 
 @wait 600
 
-> 受け取って、表紙を見た。
-> 裏表紙を確かめて、また表紙に戻す。
-> 指が背表紙をなぞった。
+> $route_kotoha.kotoha_ch10_book.t012
+> $route_kotoha.kotoha_ch10_book.t013
+> $route_kotoha.kotoha_ch10_book.t014
 
 @wait 800
 
-kotoha: ……どんな本を読む人か、で
+kotoha: $route_kotoha.kotoha_ch10_book.t015
 
 @wait 400
 
-kotoha: その人のことが、少しわかる気がします
+kotoha: $route_kotoha.kotoha_ch10_book.t016
 
 @wait 600
 
-player: 悪い意味で？
+player: $route_kotoha.kotoha_ch10_book.t017
 
 @wait 300
 
-kotoha: ……いいえ
+kotoha: $route_kotoha.kotoha_ch10_book.t018
 
 @wait 700
 
-> それ以上は言わなかった。
-> ただ、本を手元に引き寄せた。
+> $route_kotoha.kotoha_ch10_book.t019
+> $route_kotoha.kotoha_ch10_book.t020
 
 @wait 600
 
-kotoha: 読んだら、感想を聞かせてください
+kotoha: $route_kotoha.kotoha_ch10_book.t021
 
-player: どんな感想になるかはわからないけど
+player: $route_kotoha.kotoha_ch10_book.t022
 
-kotoha: それでいいです
+kotoha: $route_kotoha.kotoha_ch10_book.t023
 
 @wait 1000
 
-> 窓の外の光が少し傾いていた。
-> ことはは読み始めなかった。
-> ただ、手の届くところに本を置いた。
+> $route_kotoha.kotoha_ch10_book.t024
+> $route_kotoha.kotoha_ch10_book.t025
+> $route_kotoha.kotoha_ch10_book.t026
 
 @wait 700
 
@@ -1126,96 +1126,96 @@ kotoha: それでいいです
 @bgm daily_life.mp3
 @wait 700
 
-> 数日後。
-> 廊下で声をかけられた。
+> $route_kotoha.kotoha_ch10_relay.t001
+> $route_kotoha.kotoha_ch10_relay.t002
 
 @wait 400
 
-クラスメイト: 桐島、体育祭のリレー出てくれないか
-クラスメイト: 部員が足りなくて、外部から人を集めてんだよ
+クラスメイト: $route_kotoha.kotoha_ch10_relay.t003
+クラスメイト: $route_kotoha.kotoha_ch10_relay.t004
 
 @wait 500
 
-> 一年のとき同じクラスだった奴だった。
-> 今も陸上部に残っている数少ない一人だ。
+> $route_kotoha.kotoha_ch10_relay.t005
+> $route_kotoha.kotoha_ch10_relay.t006
 
 @wait 600
 
-player: ……足首が、な
+player: $route_kotoha.kotoha_ch10_relay.t007
 
-クラスメイト: そっか、仕方ないか。悪かった
+クラスメイト: $route_kotoha.kotoha_ch10_relay.t008
 
 @wait 600
 
-> 相手はすぐに引いた。
-> 責める気配もなかった。
+> $route_kotoha.kotoha_ch10_relay.t009
+> $route_kotoha.kotoha_ch10_relay.t010
 
 @bgm quiet_piano_distant.mp3
 @scene commute_road_autumn fade
 @wait 1000
 
-> 帰り道。
+> $route_kotoha.kotoha_ch10_relay.t011
 
 @wait 600
 
-> 足首は今も動く。
-> 走れないわけじゃない。
-> 痛みが出るかもしれない、というだけで、
-> 走れないと確定しているわけじゃない。
+> $route_kotoha.kotoha_ch10_relay.t012
+> $route_kotoha.kotoha_ch10_relay.t013
+> $route_kotoha.kotoha_ch10_relay.t014
+> $route_kotoha.kotoha_ch10_relay.t015
 
 @wait 800
 
-> でも俺は「足首が」と言った。
+> $route_kotoha.kotoha_ch10_relay.t016
 
 @wait 700
 
-> 確かめてすらいない。
-> 痛みが出る前に、止まっていた。
+> $route_kotoha.kotoha_ch10_relay.t017
+> $route_kotoha.kotoha_ch10_relay.t018
 
 @wait 800
 
-> ことはのことを思った。
+> $route_kotoha.kotoha_ch10_relay.t019
 
 @wait 600
 
-> 毎日、扉のそばに来てしまう。
-> 来てしまうのに、入れない。
-> 弾けないから来ないのじゃなくて、
-> 来てしまうのに、止まっていた。
+> $route_kotoha.kotoha_ch10_relay.t020
+> $route_kotoha.kotoha_ch10_relay.t021
+> $route_kotoha.kotoha_ch10_relay.t022
+> $route_kotoha.kotoha_ch10_relay.t023
 
 @wait 800
 
-> 俺は逆だ。
-> でも同じかもしれない。
+> $route_kotoha.kotoha_ch10_relay.t024
+> $route_kotoha.kotoha_ch10_relay.t025
 
 @wait 700
 
-> 怖くて、最初から止まっていた。
-> 確かめることが怖かった。
-> 走れなかったとき、それが事実になるのが怖かった。
+> $route_kotoha.kotoha_ch10_relay.t026
+> $route_kotoha.kotoha_ch10_relay.t027
+> $route_kotoha.kotoha_ch10_relay.t028
 
 @wait 1000
 
-> ことはに聞きたかったことがある。
-> 「でも」の先に何かある、と。
+> $route_kotoha.kotoha_ch10_relay.t029
+> $route_kotoha.kotoha_ch10_relay.t030
 
 @wait 600
 
-> 俺の「でも」の先は何だろう。
+> $route_kotoha.kotoha_ch10_relay.t031
 
 @wait 1000
 
-> ——まだ走りたいか。
+> $route_kotoha.kotoha_ch10_relay.t032
 
 @wait 700
 
-> 自分に、聞いた。
+> $route_kotoha.kotoha_ch10_relay.t033
 
 @wait 800
 
 @choice
-- 走ることにした -> kotoha_ch10_accept
-- 今更走るなんて無理だ -> kotoha_ch10_bad
+- $choices.route_kotoha.run -> kotoha_ch10_accept
+- $choices.route_kotoha.cannot_run -> kotoha_ch10_bad
 
 
 // ===================================================================
@@ -1228,32 +1228,32 @@ player: ……足首が、な
 @bgm daily_life.mp3
 @wait 500
 
-> 翌朝。
-> 廊下であいつを見かけた。
+> $route_kotoha.kotoha_ch10_accept.t001
+> $route_kotoha.kotoha_ch10_accept.t002
 
 @wait 400
 
-player: あのさ、リレーの件
-クラスメイト: ん？
+player: $route_kotoha.kotoha_ch10_accept.t003
+クラスメイト: $route_kotoha.kotoha_ch10_accept.t004
 
 @wait 300
 
-player: やっぱり出る
+player: $route_kotoha.kotoha_ch10_accept.t005
 
 @wait 600
 
-> 少し間があった。
+> $route_kotoha.kotoha_ch10_accept.t006
 
 @wait 400
 
-クラスメイト: ……まじか
-クラスメイト: 助かる。ありがとな
+クラスメイト: $route_kotoha.kotoha_ch10_accept.t007
+クラスメイト: $route_kotoha.kotoha_ch10_accept.t008
 
 @wait 600
 
-> 「足首、大丈夫か」と聞かれると思った。
-> 聞かれなかった。
-> それがちょうどよかった。
+> $route_kotoha.kotoha_ch10_accept.t009
+> $route_kotoha.kotoha_ch10_accept.t010
+> $route_kotoha.kotoha_ch10_accept.t011
 
 @wait 800
 
@@ -1266,15 +1266,15 @@ player: やっぱり出る
 
 # kotoha_ch10_bad
 
-> 断ることにした。
+> $route_kotoha.kotoha_ch10_bad.t001
 
 @wait 600
 
-> 走れなかったとき、その事実が確定する。
-> 俺はその瞬間が怖かった。
-> だから確かめないことにした。
-> 確かめなければ、まだ可能性はある。
-> そういうことにした。
+> $route_kotoha.kotoha_ch10_bad.t002
+> $route_kotoha.kotoha_ch10_bad.t003
+> $route_kotoha.kotoha_ch10_bad.t004
+> $route_kotoha.kotoha_ch10_bad.t005
+> $route_kotoha.kotoha_ch10_bad.t006
 
 @wait 1000
 
@@ -1282,50 +1282,50 @@ player: やっぱり出る
 @bgm library_quiet.mp3
 @wait 800
 
-> 数日後、図書室でことはに会った。
+> $route_kotoha.kotoha_ch10_bad.t007
 
 @show kotoha center normal fade_in
 @wait 600
 
-> 貸した本を、ことはは読み終えていた。
-> 返してくれるとき、少し間があった。
+> $route_kotoha.kotoha_ch10_bad.t008
+> $route_kotoha.kotoha_ch10_bad.t009
 
 @wait 500
 
-kotoha: ……おもしろかったです
+kotoha: $route_kotoha.kotoha_ch10_bad.t010
 
 @wait 400
 
-kotoha: 同じところを、何度も読みました
+kotoha: $route_kotoha.kotoha_ch10_bad.t011
 
 @wait 600
 
-player: そうか
+player: $route_kotoha.kotoha_ch10_bad.t012
 
 @wait 800
 
-> 続きを言いかけた気がした。
-> でもことはは、また本を開いた。
-> 俺も何も言わなかった。
+> $route_kotoha.kotoha_ch10_bad.t013
+> $route_kotoha.kotoha_ch10_bad.t014
+> $route_kotoha.kotoha_ch10_bad.t015
 
 @wait 1000
 
 @hide kotoha fade_out
 @wait 500
 
-> 合唱コンクールの伴奏の話が出たのは、その後しばらくしてからだった。
-> 担任がことはに頼んだと聞いた。
-> ことはは断ったらしい。
+> $route_kotoha.kotoha_ch10_bad.t016
+> $route_kotoha.kotoha_ch10_bad.t017
+> $route_kotoha.kotoha_ch10_bad.t018
 
 @wait 800
 
-> そうか、と思った。
-> 仕方ない、とも思った。
+> $route_kotoha.kotoha_ch10_bad.t019
+> $route_kotoha.kotoha_ch10_bad.t020
 
 @wait 600
 
-> 走ることを確かめなかった俺には、
-> 何も言えなかった。
+> $route_kotoha.kotoha_ch10_bad.t021
+> $route_kotoha.kotoha_ch10_bad.t022
 
 @wait 1000
 
@@ -1345,101 +1345,101 @@ player: そうか
 @show kotoha center normal fade_in
 @wait 600
 
-> 翌日。
-> ことはがまた図書室にいた。
-> 昨日渡した本を、今日は開いていた。
+> $route_kotoha.kotoha_ch10_decide.t001
+> $route_kotoha.kotoha_ch10_decide.t002
+> $route_kotoha.kotoha_ch10_decide.t003
 
 @wait 700
 
-> ページを繰る手が止まる。
-> 俺が来たことに気づいたらしい。
+> $route_kotoha.kotoha_ch10_decide.t004
+> $route_kotoha.kotoha_ch10_decide.t005
 
-kotoha: ……読みました
+kotoha: $route_kotoha.kotoha_ch10_decide.t006
 
 @wait 400
 
-kotoha: 三十ページまで
+kotoha: $route_kotoha.kotoha_ch10_decide.t007
 
 @wait 500
 
-player: 続きは
+player: $route_kotoha.kotoha_ch10_decide.t008
 
-kotoha: 続きはまだです
-kotoha: 同じところを何度も読んでしまって
+kotoha: $route_kotoha.kotoha_ch10_decide.t009
+kotoha: $route_kotoha.kotoha_ch10_decide.t010
 
 @wait 700
 
-> 少しだけ間があった。
+> $route_kotoha.kotoha_ch10_decide.t011
 
 @wait 500
 
-player: リレーに出ることにした
+player: $route_kotoha.kotoha_ch10_decide.t012
 
 @wait 700
 
-> ことはは本から顔を上げなかった。
+> $route_kotoha.kotoha_ch10_decide.t013
 
 @wait 500
 
-player: 足首、確かめてみようと思って
+player: $route_kotoha.kotoha_ch10_decide.t014
 
 @wait 600
 
-> それから、本を閉じた。
-> 指で表紙を押さえたまま、
-> しばらくそこを見ていた。
+> $route_kotoha.kotoha_ch10_decide.t015
+> $route_kotoha.kotoha_ch10_decide.t016
+> $route_kotoha.kotoha_ch10_decide.t017
 
-kotoha: ……走れますか
+kotoha: $route_kotoha.kotoha_ch10_decide.t018
 
 @wait 400
 
-player: わからない。でも、確かめないまま止まるのは違う気がした
+player: $route_kotoha.kotoha_ch10_decide.t019
 
 @wait 800
 
-> ことははしばらく、下を向いていた。
+> $route_kotoha.kotoha_ch10_decide.t020
 
 @wait 600
 
-kotoha: ……わたしも、
+kotoha: $route_kotoha.kotoha_ch10_decide.t021
 
 @wait 700
 
-kotoha: 同じことを考えていました
+kotoha: $route_kotoha.kotoha_ch10_decide.t022
 
 @wait 900
 
-> 何の話かは、聞かなかった。
-> わかったから。
+> $route_kotoha.kotoha_ch10_decide.t023
+> $route_kotoha.kotoha_ch10_decide.t024
 
 @wait 600
 
-> ことははそれ以上続けなかった。
-> 俺も何も聞かなかった。
+> $route_kotoha.kotoha_ch10_decide.t025
+> $route_kotoha.kotoha_ch10_decide.t026
 
 @wait 800
 
 @expr kotoha shy
 @wait 400
 
-kotoha: ……転ばないようにしてください
+kotoha: $route_kotoha.kotoha_ch10_decide.t027
 
 @wait 600
 
-player: 転んでも走り続けるつもりだけど
+player: $route_kotoha.kotoha_ch10_decide.t028
 
 @wait 400
 
-kotoha: ……
+kotoha: $route_kotoha.kotoha_ch10_decide.t029
 
 @wait 500
 
-> 笑ったのか、呆れたのか。
-> ことはは何か言いかけて、やめた。
+> $route_kotoha.kotoha_ch10_decide.t030
+> $route_kotoha.kotoha_ch10_decide.t031
 
 @wait 700
 
-> それで十分だった。
+> $route_kotoha.kotoha_ch10_decide.t032
 
 @wait 600
 
@@ -1459,40 +1459,40 @@ kotoha: ……
 @bgm daily_life.mp3
 @wait 800
 
-> 放課後。
+> $route_kotoha.kotoha_ch11_start.t001
 
-> 廊下を歩いていると、
-> 音楽準備室の方へ向かう背中が見えた。
+> $route_kotoha.kotoha_ch11_start.t002
+> $route_kotoha.kotoha_ch11_start.t003
 
 @show kotoha center normal fade_in
 @wait 400
 
-> ことはだった。
+> $route_kotoha.kotoha_ch11_start.t004
 
-> 走っているわけじゃない。
-> ゆっくり、けれど迷いなく、
-> 扉のほうへ向かっている。
+> $route_kotoha.kotoha_ch11_start.t005
+> $route_kotoha.kotoha_ch11_start.t006
+> $route_kotoha.kotoha_ch11_start.t007
 
 @wait 600
 
-> 昨日と違った。
-> 昨日は扉の前で止まっていた。
-> 今日は、向かっていた。
+> $route_kotoha.kotoha_ch11_start.t008
+> $route_kotoha.kotoha_ch11_start.t009
+> $route_kotoha.kotoha_ch11_start.t010
 
-> 足取りに迷いがない。
-> 止まるかもしれないという気配もない。
+> $route_kotoha.kotoha_ch11_start.t011
+> $route_kotoha.kotoha_ch11_start.t012
 
-> それが、ほんの少し怖かった。
-> 怖いというのも変だ。
-> でも、何か取り返しのつかないことが起きる前みたいな、
-> そういう静けさがことはの背中にあった。
+> $route_kotoha.kotoha_ch11_start.t013
+> $route_kotoha.kotoha_ch11_start.t014
+> $route_kotoha.kotoha_ch11_start.t015
+> $route_kotoha.kotoha_ch11_start.t016
 
 @wait 500
 
-> 俺はついていった。
+> $route_kotoha.kotoha_ch11_start.t017
 
-> 追いかけるでも、引っ張るでもなく。
-> ただ、後ろから。
+> $route_kotoha.kotoha_ch11_start.t018
+> $route_kotoha.kotoha_ch11_start.t019
 
 @hide kotoha slide_out_right
 @wait 500
@@ -1501,67 +1501,67 @@ kotoha: ……
 @bgm stop
 @wait 1000
 
-> 音楽準備室。
+> $route_kotoha.kotoha_ch11_start.t020
 
-> ことはが扉を前に立っていた。
+> $route_kotoha.kotoha_ch11_start.t021
 
 @wait 800
 
-> 今日は違う、と思った。
-> 昨日は扉を見ていた。
-> 今日は、扉に手をかけていた。
+> $route_kotoha.kotoha_ch11_start.t022
+> $route_kotoha.kotoha_ch11_start.t023
+> $route_kotoha.kotoha_ch11_start.t024
 
 @se door_open.mp3
 @wait 600
 
-> ことはが扉を開けた。
+> $route_kotoha.kotoha_ch11_start.t025
 
-> 今日は、ことは自身が開けた。
+> $route_kotoha.kotoha_ch11_start.t026
 
 @show kotoha center normal fade_in
 @wait 700
 
-> 部屋の中は静かだった。
-> 夕暮れの光が、ピアノに斜めに差している。
+> $route_kotoha.kotoha_ch11_start.t027
+> $route_kotoha.kotoha_ch11_start.t028
 
-> アップライトピアノ。
-> 蓋は開いたままだった。
-> 誰かが使ったまま閉めていなかったのか、
-> あるいはずっとそのままだったのか。
+> $route_kotoha.kotoha_ch11_start.t029
+> $route_kotoha.kotoha_ch11_start.t030
+> $route_kotoha.kotoha_ch11_start.t031
+> $route_kotoha.kotoha_ch11_start.t032
 
 @wait 800
 
-> ことははゆっくりと、
-> ピアノの前まで歩いた。
+> $route_kotoha.kotoha_ch11_start.t033
+> $route_kotoha.kotoha_ch11_start.t034
 
-> 止まる。
+> $route_kotoha.kotoha_ch11_start.t035
 
-> 椅子の前に立ったまま、
-> しばらく動かない。
+> $route_kotoha.kotoha_ch11_start.t036
+> $route_kotoha.kotoha_ch11_start.t037
 
 @wait 1200
 
-> 背中を見ていた。
-> 声をかけなかった。
-> 何も言わなかった。
+> $route_kotoha.kotoha_ch11_start.t038
+> $route_kotoha.kotoha_ch11_start.t039
+> $route_kotoha.kotoha_ch11_start.t040
 
-> ことはが自分で決めることだから。
-> 俺が何かを言う場面じゃない。
+> $route_kotoha.kotoha_ch11_start.t041
+> $route_kotoha.kotoha_ch11_start.t042
 
-> ただ、ここにいた。
+> $route_kotoha.kotoha_ch11_start.t043
 
 @wait 800
 
-> 椅子を引く。
+> $route_kotoha.kotoha_ch11_start.t044
 
-> 座るまでに、また時間がかかった。
-> 椅子に腰を下ろして、
-> 鍵盤を見て、
-> 何秒か、ただ見ていた。
+> $route_kotoha.kotoha_ch11_start.t045
+> $route_kotoha.kotoha_ch11_start.t046
+> $route_kotoha.kotoha_ch11_start.t047
+> $route_kotoha.kotoha_ch11_start.t048
 
-> 鍵盤はただの白と黒だ。
-> それ以上でも以下でもない。
-> でも今のことはには、それ以上の何かに見えているはずだ。
+> $route_kotoha.kotoha_ch11_start.t049
+> $route_kotoha.kotoha_ch11_start.t050
+> $route_kotoha.kotoha_ch11_start.t051
 
 @wait 1000
 
@@ -1571,22 +1571,22 @@ kotoha: ……
 @still kotoha_piano_trembling
 @wait 600
 
-> ことはの手が、
-> 鍵盤の上に置かれた。
+> $route_kotoha.kotoha_ch11_start.t052
+> $route_kotoha.kotoha_ch11_start.t053
 
-> 震えていた。
+> $route_kotoha.kotoha_ch11_start.t054
 
-> 置いたまま、
-> 弾かない。
+> $route_kotoha.kotoha_ch11_start.t055
+> $route_kotoha.kotoha_ch11_start.t056
 
 @wait 1500
 
-> 震えている手を、
-> 俺は見ていた。
+> $route_kotoha.kotoha_ch11_start.t057
+> $route_kotoha.kotoha_ch11_start.t058
 
-> 震えているということは、
-> 弾こうとしているということだ。
-> 逃げていたら、あの手はそこにない。
+> $route_kotoha.kotoha_ch11_start.t059
+> $route_kotoha.kotoha_ch11_start.t060
+> $route_kotoha.kotoha_ch11_start.t061
 
 @wait 1000
 
@@ -1598,90 +1598,90 @@ kotoha: ……
 @bgm stop
 @wait 800
 
-> 沈黙。
+> $route_kotoha.kotoha_ch11_start.t062
 
-> 俺は何も言わない。
+> $route_kotoha.kotoha_ch11_start.t063
 
 @wait 1200
 
-kotoha: ……あの曲を弾いていた。
+kotoha: $route_kotoha.kotoha_ch11_start.t064
 
 @wait 400
 
-kotoha: 父が倒れたとき。
+kotoha: $route_kotoha.kotoha_ch11_start.t065
 
 @wait 600
 
-player: うん
+player: $route_kotoha.kotoha_ch11_start.t066
 
 @wait 700
 
-kotoha: だから、弾けないんだと思っていました。
-kotoha: 音が来ると、記憶も来るから。
+kotoha: $route_kotoha.kotoha_ch11_start.t067
+kotoha: $route_kotoha.kotoha_ch11_start.t068
 
 @wait 500
 
-player: でも、来てたな。ここに
+player: $route_kotoha.kotoha_ch11_start.t069
 
 @wait 700
 
 @expr kotoha sad
 @wait 400
 
-kotoha: ……来ていました
+kotoha: $route_kotoha.kotoha_ch11_start.t070
 
 @wait 600
 
-> それはもう、言い訳でも否定でもなかった。
-> ただの確認だった。
-> 自分に言い聞かせるように。
+> $route_kotoha.kotoha_ch11_start.t071
+> $route_kotoha.kotoha_ch11_start.t072
+> $route_kotoha.kotoha_ch11_start.t073
 
-> 来ていた。
-> 扉の前まで。
-> ここまで。
+> $route_kotoha.kotoha_ch11_start.t074
+> $route_kotoha.kotoha_ch11_start.t075
+> $route_kotoha.kotoha_ch11_start.t076
 
-> 弾けないのに、来ていた。
+> $route_kotoha.kotoha_ch11_start.t077
 
 @wait 800
 
-kotoha: 音楽は、止まらなかった。
+kotoha: $route_kotoha.kotoha_ch11_start.t078
 
 @wait 400
 
-kotoha: 止めたのは、わたしでした。
+kotoha: $route_kotoha.kotoha_ch11_start.t079
 
 @bgm stop
 @wait 1500
 
-> 静かな断言だった。
+> $route_kotoha.kotoha_ch11_start.t080
 
-> 音楽のせいじゃない。
-> ピアノのせいじゃない。
-> 父が倒れたせいでもない。
-> 弾けなくなったことに、言い訳はない。
+> $route_kotoha.kotoha_ch11_start.t081
+> $route_kotoha.kotoha_ch11_start.t082
+> $route_kotoha.kotoha_ch11_start.t083
+> $route_kotoha.kotoha_ch11_start.t084
 
-> 止めたのはわたし。
+> $route_kotoha.kotoha_ch11_start.t085
 
-> それを言えるところまで来るのに、
-> どれだけかかったのだろう。
+> $route_kotoha.kotoha_ch11_start.t086
+> $route_kotoha.kotoha_ch11_start.t087
 
 @wait 800
 
-kotoha: ……でも今は──
+kotoha: $route_kotoha.kotoha_ch11_start.t088
 
 @wait 600
 
-kotoha: 止めた理由が、わからなくなっています。
+kotoha: $route_kotoha.kotoha_ch11_start.t089
 
 @wait 1200
 
-> 止めた理由が、わからなくなっている。
+> $route_kotoha.kotoha_ch11_start.t090
 
-> それはきっと、
-> 悪いことじゃない。
+> $route_kotoha.kotoha_ch11_start.t091
+> $route_kotoha.kotoha_ch11_start.t092
 
-> 理由がわからなくなるということは、
-> 理由に縛られなくなってきているということだから。
+> $route_kotoha.kotoha_ch11_start.t093
+> $route_kotoha.kotoha_ch11_start.t094
 
 @wait 800
 
@@ -1691,47 +1691,47 @@ kotoha: 止めた理由が、わからなくなっています。
 @se piano_single_note.mp3
 @wait 2000
 
-> 一音だけ。
+> $route_kotoha.kotoha_ch11_start.t095
 
-> 鍵盤を押した。
+> $route_kotoha.kotoha_ch11_start.t096
 
-> 音が部屋に広がり、
-> 消えた。
+> $route_kotoha.kotoha_ch11_start.t097
+> $route_kotoha.kotoha_ch11_start.t098
 
 @wait 1800
 
-> 涙が出ていた。
+> $route_kotoha.kotoha_ch11_start.t099
 
 @wait 700
 
-> ことはは声を出さなかった。
-> ただ、涙が出ていた。
+> $route_kotoha.kotoha_ch11_start.t100
+> $route_kotoha.kotoha_ch11_start.t101
 
-> ことは自身が、
-> 一番驚いているようだった。
+> $route_kotoha.kotoha_ch11_start.t102
+> $route_kotoha.kotoha_ch11_start.t103
 
-> 泣くことを恥じていない。
-> ただ予期していなかったというように、
-> 涙を拭こうともしない。
+> $route_kotoha.kotoha_ch11_start.t104
+> $route_kotoha.kotoha_ch11_start.t105
+> $route_kotoha.kotoha_ch11_start.t106
 
 @wait 1000
 
-> 一音だけだった。
-> メロディでも和音でもなく、
-> ただ一つの音。
+> $route_kotoha.kotoha_ch11_start.t107
+> $route_kotoha.kotoha_ch11_start.t108
+> $route_kotoha.kotoha_ch11_start.t109
 
-> それだけで、涙が出た。
+> $route_kotoha.kotoha_ch11_start.t110
 
-> 音楽に泣かされたのではなくて、
-> 音を出せた自分に、何かが動いたのだと思う。
+> $route_kotoha.kotoha_ch11_start.t111
+> $route_kotoha.kotoha_ch11_start.t112
 
-> 怖かったのに、出てしまった。
-> 出せてしまった。
-> その事実が、涙になった。
+> $route_kotoha.kotoha_ch11_start.t113
+> $route_kotoha.kotoha_ch11_start.t114
+> $route_kotoha.kotoha_ch11_start.t115
 
 @wait 1500
 
-> 俺は何も言えなかった。
+> $route_kotoha.kotoha_ch11_start.t116
 
 @wait 1000
 
@@ -1740,83 +1740,83 @@ kotoha: 止めた理由が、わからなくなっています。
 @show kotoha center crying fade_in
 @wait 600
 
-kotoha: ……父に、聴かせたかったんだと思います
+kotoha: $route_kotoha.kotoha_ch11_start.t117
 
 @wait 400
 
-kotoha: でも怖くて
+kotoha: $route_kotoha.kotoha_ch11_start.t118
 
 @wait 500
 
-kotoha: また弾いたとき、また何かが起きたら
+kotoha: $route_kotoha.kotoha_ch11_start.t119
 
 @wait 600
 
-kotoha: 今度は、わたし、止められないと思って
+kotoha: $route_kotoha.kotoha_ch11_start.t120
 
 @wait 1000
 
-> 父に聴かせたかった。
-> それが最初にあった。
+> $route_kotoha.kotoha_ch11_start.t121
+> $route_kotoha.kotoha_ch11_start.t122
 
-> コンクールで弾いていたのも、
-> 父に見てほしかったからかもしれない。
-> 父に認めてほしかったからかもしれない。
+> $route_kotoha.kotoha_ch11_start.t123
+> $route_kotoha.kotoha_ch11_start.t124
+> $route_kotoha.kotoha_ch11_start.t125
 
-> 厳格な父に。
-> 元ピアニストの母と結婚した、
-> でも音楽とは別の道を歩んだ父に。
+> $route_kotoha.kotoha_ch11_start.t126
+> $route_kotoha.kotoha_ch11_start.t127
+> $route_kotoha.kotoha_ch11_start.t128
 
-> 父はあの日、倒れた。
-> ことはが弾いている間に、倒れた。
+> $route_kotoha.kotoha_ch11_start.t129
+> $route_kotoha.kotoha_ch11_start.t130
 
-> だから今も、
-> 誰にも言えない。
+> $route_kotoha.kotoha_ch11_start.t131
+> $route_kotoha.kotoha_ch11_start.t132
 
 @wait 800
 
 @bgm stop
 @wait 400
 
-player: 止めなくていい
+player: $route_kotoha.kotoha_ch11_start.t133
 
 @wait 700
 
 @expr kotoha surprised
 
-kotoha: ……え
+kotoha: $route_kotoha.kotoha_ch11_start.t134
 
 @wait 500
 
-player: あのとき走ったのはお前だった
-player: ちゃんと間に合ってた
-player: お前が止めたから
+player: $route_kotoha.kotoha_ch11_start.t135
+player: $route_kotoha.kotoha_ch11_start.t136
+player: $route_kotoha.kotoha_ch11_start.t137
 
 @wait 800
 
-player: 次に何かあっても、また止めればいい
-player: またそこから始めればいい
+player: $route_kotoha.kotoha_ch11_start.t138
+player: $route_kotoha.kotoha_ch11_start.t139
 
 @wait 1200
 
 @expr kotoha sad
-> ことははしばらく俯いていた。
+> $route_kotoha.kotoha_ch11_start.t140
 
 @wait 1000
 
-> 止めなくていい。
+> $route_kotoha.kotoha_ch11_start.t141
 
-> そんな言葉が俺の口から出るとは思っていなかった。
-> 止めた経験のある俺が、
-> 止めなくていいと言っている。
+> $route_kotoha.kotoha_ch11_start.t142
+> $route_kotoha.kotoha_ch11_start.t143
+> $route_kotoha.kotoha_ch11_start.t144
 
-> 矛盾している。
-> でも、嘘でもなかった。
+> $route_kotoha.kotoha_ch11_start.t145
+> $route_kotoha.kotoha_ch11_start.t146
 
-> ことはが走ったことは、正しかった。
-> 音楽より父を選んだことは、正しかった。
-> だから今度はまた、弾くことを選んでいい。
-> そこから何かが起きたら、またそのとき決めればいい。
+> $route_kotoha.kotoha_ch11_start.t147
+> $route_kotoha.kotoha_ch11_start.t148
+> $route_kotoha.kotoha_ch11_start.t149
+> $route_kotoha.kotoha_ch11_start.t150
 
 @wait 1500
 
@@ -1828,120 +1828,120 @@ player: またそこから始めればいい
 @bgm piano_resonance.mp3
 @wait 800
 
-> もう一度、鍵盤に触れる。
+> $route_kotoha.kotoha_ch11_start.t151
 
-> 今度は二音。
-> 止まらずに。
+> $route_kotoha.kotoha_ch11_start.t152
+> $route_kotoha.kotoha_ch11_start.t153
 
 @wait 1000
 
-> 静寂。
+> $route_kotoha.kotoha_ch11_start.t154
 
-> 音が消えた後の静けさは、
-> 音が来る前の静けさとは違う。
-> 何かが通り過ぎた後の、
-> 少しだけ温かい静けさ。
+> $route_kotoha.kotoha_ch11_start.t155
+> $route_kotoha.kotoha_ch11_start.t156
+> $route_kotoha.kotoha_ch11_start.t157
+> $route_kotoha.kotoha_ch11_start.t158
 
 @wait 1200
 
-player: ……俺にも教えてくれないか
+player: $route_kotoha.kotoha_ch11_start.t159
 
 @wait 400
 
 @expr kotoha surprised
 
-kotoha: ……え
+kotoha: $route_kotoha.kotoha_ch11_start.t160
 
 @wait 300
 
-player: ピアノ。弾き方
+player: $route_kotoha.kotoha_ch11_start.t161
 
 @wait 600
 
-kotoha: ……弾けるようになりたいんですか
+kotoha: $route_kotoha.kotoha_ch11_start.t162
 
 @wait 400
 
-player: なりたいかどうかはわからない
+player: $route_kotoha.kotoha_ch11_start.t163
 
 @wait 300
 
-player: でも、お前が弾くものを、隣で聞きたい
+player: $route_kotoha.kotoha_ch11_start.t164
 
 @wait 1200
 
-> ことははしばらく黙っていた。
+> $route_kotoha.kotoha_ch11_start.t165
 
 @wait 700
 
-> 「なんで」とは聞かなかった。
-> それが助かった。
+> $route_kotoha.kotoha_ch11_start.t166
+> $route_kotoha.kotoha_ch11_start.t167
 
-> なんでなのかは、自分でもうまく言えない。
-> ただ、そうしたかった。
+> $route_kotoha.kotoha_ch11_start.t168
+> $route_kotoha.kotoha_ch11_start.t169
 
-> ことはが音を出せた瞬間に、
-> 俺も隣にいたかった。
-> それだけだ。
-
-@wait 800
-
-> ことははしばらく黙っていた。
-> 鍵盤を見ていた。
-
-> それから、
-> 椅子を横にずれた。
-
-> 「どうぞ」とは言わなかった。
-> ただ、空間を作った。
+> $route_kotoha.kotoha_ch11_start.t170
+> $route_kotoha.kotoha_ch11_start.t171
+> $route_kotoha.kotoha_ch11_start.t172
 
 @wait 800
 
-> 俺は隣に座った。
-> 肩が触れる距離だった。
+> $route_kotoha.kotoha_ch11_start.t173
+> $route_kotoha.kotoha_ch11_start.t174
+
+> $route_kotoha.kotoha_ch11_start.t175
+> $route_kotoha.kotoha_ch11_start.t176
+
+> $route_kotoha.kotoha_ch11_start.t177
+> $route_kotoha.kotoha_ch11_start.t178
+
+@wait 800
+
+> $route_kotoha.kotoha_ch11_start.t179
+> $route_kotoha.kotoha_ch11_start.t180
 
 @wait 600
 
-> ことはの手が、
-> 俺の手に触れる。
+> $route_kotoha.kotoha_ch11_start.t181
+> $route_kotoha.kotoha_ch11_start.t182
 
-> 鍵盤の上へ、導くように。
+> $route_kotoha.kotoha_ch11_start.t183
 
-> 指の形を、静かに直す。
+> $route_kotoha.kotoha_ch11_start.t184
 
 @wait 500
 
-kotoha: ……こう、です
+kotoha: $route_kotoha.kotoha_ch11_start.t185
 
 @wait 800
 
 @se piano_single_note.mp3
 @wait 800
 
-> ことはが俺の指で、
-> 一音だけ押した。
+> $route_kotoha.kotoha_ch11_start.t186
+> $route_kotoha.kotoha_ch11_start.t187
 
-> 音が鳴る。
+> $route_kotoha.kotoha_ch11_start.t188
 
 @wait 700
 
 @expr kotoha normal
 
-kotoha: ……下手ですね
+kotoha: $route_kotoha.kotoha_ch11_start.t189
 
 @wait 400
 
-player: 今日始めたんだから当然だろ
+player: $route_kotoha.kotoha_ch11_start.t190
 
 @wait 800
 
-> ことははそれ以上、
-> 何も言わなかった。
+> $route_kotoha.kotoha_ch11_start.t191
+> $route_kotoha.kotoha_ch11_start.t192
 
 @wait 1000
 
-> でも、手はまだ、
-> 俺の手の上にあった。
+> $route_kotoha.kotoha_ch11_start.t193
+> $route_kotoha.kotoha_ch11_start.t194
 
 @bgm piano_resonance.mp3
 @wait 2000
@@ -1962,18 +1962,18 @@ player: 今日始めたんだから当然だろ
 @bgm kotoha_theme.mp3
 @wait 1000
 
-> 文化祭から、ひと月が経った。
+> $route_kotoha.kotoha_ch12_branch.t001
 
-> ことはとの時間は続いていた。
-> 毎日というわけじゃない。
-> でも、音楽準備室の扉は、もう一人では開けられなかった。
+> $route_kotoha.kotoha_ch12_branch.t002
+> $route_kotoha.kotoha_ch12_branch.t003
+> $route_kotoha.kotoha_ch12_branch.t004
 
 @wait 800
 
-> 来週に合唱コンクールがある。
-> 担任がことはに伴奏を頼んだのは、文化祭前のことだった。
+> $route_kotoha.kotoha_ch12_branch.t005
+> $route_kotoha.kotoha_ch12_branch.t006
 
-> ことはは断った。
+> $route_kotoha.kotoha_ch12_branch.t007
 
 @wait 700
 
@@ -1981,17 +1981,17 @@ player: 今日始めたんだから当然だろ
 
 @wait 500
 
-> でも今も、ことははここに来ている。
-> ピアノの前に座って、
-> 鍵盤を見ている。
+> $route_kotoha.kotoha_ch12_branch.t008
+> $route_kotoha.kotoha_ch12_branch.t009
+> $route_kotoha.kotoha_ch12_branch.t010
 
 @wait 700
 
 @bgm stop
 @wait 400
 
-> 何も言わなかった。
-> ことはが自分で決めることだから。
+> $route_kotoha.kotoha_ch12_branch.t011
+> $route_kotoha.kotoha_ch12_branch.t012
 
 @wait 600
 
@@ -2012,16 +2012,16 @@ player: 今日始めたんだから当然だろ
 @bgm kotoha_theme.mp3
 @wait 800
 
-> 翌日の放課後。
+> $route_kotoha.kotoha_ch12_running.t001
 
 @wait 500
 
-> 体育祭のリレーに向けて、
-> 感覚を取り戻すつもりで、走っていた。
-> 放課後、校庭を短い距離だけ走る。
-> 速くなくていい。
-> 痛みが出たら止まる。
-> それだけを決めて、走る。
+> $route_kotoha.kotoha_ch12_running.t002
+> $route_kotoha.kotoha_ch12_running.t003
+> $route_kotoha.kotoha_ch12_running.t004
+> $route_kotoha.kotoha_ch12_running.t005
+> $route_kotoha.kotoha_ch12_running.t006
+> $route_kotoha.kotoha_ch12_running.t007
 
 @wait 1200
 
@@ -2029,58 +2029,58 @@ player: 今日始めたんだから当然だろ
 @scene music_room_evening instant
 @wait 700
 
-> ——窓の外に、誰かがいる。
+> $route_kotoha.kotoha_ch12_running.t008
 
 @wait 500
 
-> ゆっくり走っている。
-> 競っているわけじゃない。
-> ただ、走っている。
+> $route_kotoha.kotoha_ch12_running.t009
+> $route_kotoha.kotoha_ch12_running.t010
+> $route_kotoha.kotoha_ch12_running.t011
 
 @wait 600
 
-> 桐島くんだった。
+> $route_kotoha.kotoha_ch12_running.t012
 
 @wait 700
 
-> 足首が、と言っていた。
-> 陸上をやめた、と言っていた。
-> でも今、走っている。
+> $route_kotoha.kotoha_ch12_running.t013
+> $route_kotoha.kotoha_ch12_running.t014
+> $route_kotoha.kotoha_ch12_running.t015
 
 @wait 800
 
-> きれいだと思った。
+> $route_kotoha.kotoha_ch12_running.t016
 
 @wait 600
 
-> 速さじゃない。
-> 何かを取り戻している。
-> そういう走り方だった。
+> $route_kotoha.kotoha_ch12_running.t017
+> $route_kotoha.kotoha_ch12_running.t018
+> $route_kotoha.kotoha_ch12_running.t019
 
 @wait 900
 
-> ——わたしは、まだここに立っている。
+> $route_kotoha.kotoha_ch12_running.t020
 
 @wait 600
 
-> でも。
+> $route_kotoha.kotoha_ch12_running.t021
 
 @wait 500
 
-> きれいだと思えた。
-> 走り方を、きれいだと思えた。
+> $route_kotoha.kotoha_ch12_running.t022
+> $route_kotoha.kotoha_ch12_running.t023
 
 @wait 700
 
-> ということは。
+> $route_kotoha.kotoha_ch12_running.t024
 
 @wait 500
 
-> まだ何かを、きれいと思える。
+> $route_kotoha.kotoha_ch12_running.t025
 
 @wait 700
 
-> 音を、きれいと思える。
+> $route_kotoha.kotoha_ch12_running.t026
 
 @wait 1000
 
@@ -2088,13 +2088,13 @@ player: 今日始めたんだから当然だろ
 @scene school_grounds_evening instant
 @wait 700
 
-> 走り終えて、空を見上げた。
-> 橙色が西の端に残っていた。
+> $route_kotoha.kotoha_ch12_running.t027
+> $route_kotoha.kotoha_ch12_running.t028
 
 @wait 600
 
-> 校舎の窓に、誰かの影が見えた気がした。
-> 確かめる前に、空が暗くなっていた。
+> $route_kotoha.kotoha_ch12_running.t029
+> $route_kotoha.kotoha_ch12_running.t030
 
 @wait 1000
 
@@ -2102,60 +2102,60 @@ player: 今日始めたんだから当然だろ
 @bgm daily_life.mp3
 @wait 800
 
-> 翌日。
+> $route_kotoha.kotoha_ch12_running.t031
 
 @show kotoha center normal fade_in
 @wait 600
 
-> ことはが廊下で俺を呼び止めた。
+> $route_kotoha.kotoha_ch12_running.t032
 
 @wait 500
 
-kotoha: ……担任の先生に、言いました
+kotoha: $route_kotoha.kotoha_ch12_running.t033
 
 @wait 400
 
-player: 何を
+player: $route_kotoha.kotoha_ch12_running.t034
 
 @wait 300
 
-kotoha: やっぱりやらせてください、と
+kotoha: $route_kotoha.kotoha_ch12_running.t035
 
 @wait 900
 
-> 静かな声だった。
-> 迷いは残っているかもしれない。
-> でも、決めた声だった。
+> $route_kotoha.kotoha_ch12_running.t036
+> $route_kotoha.kotoha_ch12_running.t037
+> $route_kotoha.kotoha_ch12_running.t038
 
 @wait 600
 
-player: そうか
+player: $route_kotoha.kotoha_ch12_running.t039
 
 @wait 400
 
-kotoha: ……完璧に弾けるかどうかは、
-kotoha: まだわかりません
+kotoha: $route_kotoha.kotoha_ch12_running.t040
+kotoha: $route_kotoha.kotoha_ch12_running.t041
 
 @wait 500
 
-player: それでいいだろ
+player: $route_kotoha.kotoha_ch12_running.t042
 
 @wait 300
 
-kotoha: ……そうですね
+kotoha: $route_kotoha.kotoha_ch12_running.t043
 
 @wait 800
 
 @expr kotoha shy
 @wait 400
 
-kotoha: 見ていてください
+kotoha: $route_kotoha.kotoha_ch12_running.t044
 
 @wait 1000
 
-> 見ていてください。
-> 頼みとも、お願いとも違う。
-> ただ、そうしてほしいという声だった。
+> $route_kotoha.kotoha_ch12_running.t045
+> $route_kotoha.kotoha_ch12_running.t046
+> $route_kotoha.kotoha_ch12_running.t047
 
 @wait 800
 
@@ -2175,34 +2175,34 @@ kotoha: 見ていてください
 @bgm daily_life.mp3
 @wait 800
 
-> それからは、毎日だった。
+> $route_kotoha.kotoha_ch12_practice.t001
 
 @wait 600
 
-> 放課後になると、音楽準備室から音が聴こえた。
-> 同じフレーズが、何度も繰り返された。
-> 止まって、また始まる。
-> 止まって、また始まる。
+> $route_kotoha.kotoha_ch12_practice.t002
+> $route_kotoha.kotoha_ch12_practice.t003
+> $route_kotoha.kotoha_ch12_practice.t004
+> $route_kotoha.kotoha_ch12_practice.t005
 
 @wait 900
 
 @show kotoha center normal fade_in
 @wait 600
 
-kotoha: ……ここ、まだ左手が遅れます
+kotoha: $route_kotoha.kotoha_ch12_practice.t006
 
 @wait 400
 
-player: 気づいてたのか
+player: $route_kotoha.kotoha_ch12_practice.t007
 
 @wait 300
 
-kotoha: 毎回、同じところで
+kotoha: $route_kotoha.kotoha_ch12_practice.t008
 
 @wait 600
 
-> ことはは鍵盤に視線を戻した。
-> もう一度、弾きはじめる。
+> $route_kotoha.kotoha_ch12_practice.t009
+> $route_kotoha.kotoha_ch12_practice.t010
 
 @wait 800
 
@@ -2212,39 +2212,39 @@ kotoha: 毎回、同じところで
 @bgm evening_piano.mp3
 @wait 1400
 
-> 完璧じゃなかった。
-> でも、止まらなかった。
-> それだけが、少しずつ積み上がっていった。
+> $route_kotoha.kotoha_ch12_practice.t011
+> $route_kotoha.kotoha_ch12_practice.t012
+> $route_kotoha.kotoha_ch12_practice.t013
 
 @wait 1200
 
 @bgm quiet_piano_distant.mp3
 @wait 800
 
-> 本番前日。
+> $route_kotoha.kotoha_ch12_practice.t014
 
 @wait 600
 
 @show kotoha center thinking fade_in
 @wait 600
 
-kotoha: ……弾けるかどうか、
-kotoha: まだわかりません
+kotoha: $route_kotoha.kotoha_ch12_practice.t015
+kotoha: $route_kotoha.kotoha_ch12_practice.t016
 
 @wait 500
 
-player: そうだな
+player: $route_kotoha.kotoha_ch12_practice.t017
 
 @wait 400
 
-kotoha: ……それでも、
-kotoha: やめようとは思わなかった
+kotoha: $route_kotoha.kotoha_ch12_practice.t018
+kotoha: $route_kotoha.kotoha_ch12_practice.t019
 
 @wait 900
 
-> 静かだった。
-> 自分に言い聞かせているわけじゃない。
-> ただ、確かめているような声だった。
+> $route_kotoha.kotoha_ch12_practice.t020
+> $route_kotoha.kotoha_ch12_practice.t021
+> $route_kotoha.kotoha_ch12_practice.t022
 
 @wait 800
 
@@ -2264,39 +2264,39 @@ kotoha: やめようとは思わなかった
 @bgm kotoha_theme.mp3
 @wait 800
 
-> 合唱コンクール当日。
+> $route_kotoha.kotoha_ch12_good_end.t001
 
-> 体育館の舞台の袖で、
-> ことはは目を閉じていた。
+> $route_kotoha.kotoha_ch12_good_end.t002
+> $route_kotoha.kotoha_ch12_good_end.t003
 
-> 深呼吸をするでもなく、
-> 緊張しているようでもなく、
-> ただ静かに、目を閉じていた。
+> $route_kotoha.kotoha_ch12_good_end.t004
+> $route_kotoha.kotoha_ch12_good_end.t005
+> $route_kotoha.kotoha_ch12_good_end.t006
 
 @wait 600
 
-> 本番前の緊張は、人によって出方が違う。
-> 動き回る人間もいれば、一点を見つめる人間もいる。
-> ことはは目を閉じる人間だった。
+> $route_kotoha.kotoha_ch12_good_end.t007
+> $route_kotoha.kotoha_ch12_good_end.t008
+> $route_kotoha.kotoha_ch12_good_end.t009
 
-> 何を見ているのかはわからない。
-> あの日のことか、
-> 父のことか、
-> それとも今から弾く曲のことか。
+> $route_kotoha.kotoha_ch12_good_end.t010
+> $route_kotoha.kotoha_ch12_good_end.t011
+> $route_kotoha.kotoha_ch12_good_end.t012
+> $route_kotoha.kotoha_ch12_good_end.t013
 
-> 一度断って、もう一度引き受けた。
-> それだけのことが、
-> どれだけのことだったかは、
-> ことはにしかわからない。
+> $route_kotoha.kotoha_ch12_good_end.t014
+> $route_kotoha.kotoha_ch12_good_end.t015
+> $route_kotoha.kotoha_ch12_good_end.t016
+> $route_kotoha.kotoha_ch12_good_end.t017
 
 @wait 800
 
-> 俺は少し離れたところから見ていた。
-> 声をかけなかった。
-> かける必要がないと思ったから。
+> $route_kotoha.kotoha_ch12_good_end.t018
+> $route_kotoha.kotoha_ch12_good_end.t019
+> $route_kotoha.kotoha_ch12_good_end.t020
 
-> ことはは準備できている。
-> それだけわかれば十分だ。
+> $route_kotoha.kotoha_ch12_good_end.t021
+> $route_kotoha.kotoha_ch12_good_end.t022
 
 @wait 1000
 
@@ -2307,70 +2307,70 @@ kotoha: やめようとは思わなかった
 @still kotoha_performance1
 @wait 600
 
-> 演奏が始まった。
+> $route_kotoha.kotoha_ch12_good_end.t023
 
 @bgm kotoha_piano_stage.mp3
 @wait 1500
 
-> ことはの表情は、今まで見たことのない種類のものだった。
-> 舞台慣れした余裕でも、強張りでもない。
-> ただ、真剣だった。
-> 何かと向き合っているような顔で、指が鍵盤を走る。
+> $route_kotoha.kotoha_ch12_good_end.t024
+> $route_kotoha.kotoha_ch12_good_end.t025
+> $route_kotoha.kotoha_ch12_good_end.t026
+> $route_kotoha.kotoha_ch12_good_end.t027
 
 @wait 1000
 
-> 合唱の声が、それに乗っていく。
-> 最初の数小節を聴いて、
-> 体育館の空気が変わった気がした。
+> $route_kotoha.kotoha_ch12_good_end.t028
+> $route_kotoha.kotoha_ch12_good_end.t029
+> $route_kotoha.kotoha_ch12_good_end.t030
 
 @wait 1200
 
-> うまい下手の話ではない。
-> 緊張しているのはわかる。
-> それでも音は止まらない。
-> 指の端まで、意志が通っていた。
+> $route_kotoha.kotoha_ch12_good_end.t031
+> $route_kotoha.kotoha_ch12_good_end.t032
+> $route_kotoha.kotoha_ch12_good_end.t033
+> $route_kotoha.kotoha_ch12_good_end.t034
 
 @wait 1000
 
-> 途中、一瞬だけ手が止まった。
+> $route_kotoha.kotoha_ch12_good_end.t035
 
 @se piano_single_note.mp3
 @wait 400
 
-> ほんの一拍。
+> $route_kotoha.kotoha_ch12_good_end.t036
 
-> 止まらなかった。
+> $route_kotoha.kotoha_ch12_good_end.t037
 
 @wait 800
 
-> あそこで何が起きたのか、ことはにしかわからない。
-> 記憶が来たのか、父の顔が浮かんだのか、
-> それとも全然別の何かか。
+> $route_kotoha.kotoha_ch12_good_end.t038
+> $route_kotoha.kotoha_ch12_good_end.t039
+> $route_kotoha.kotoha_ch12_good_end.t040
 
-> でも、指が動き続けた。
+> $route_kotoha.kotoha_ch12_good_end.t041
 
 @still_hide
 @still kotoha_performance2
 @wait 600
 
-> そのとき、見えた。
+> $route_kotoha.kotoha_ch12_good_end.t042
 
-> ほんの少しだけ、ことはの口元がゆるんでいた。
-> 演奏しながら笑っている。
-> そんな顔を、俺は一度も見たことがなかった。
-
-@wait 1000
-
-> 音が変わった気がした。
-> 技術は同じはずなのに、聴こえ方が違った。
-
-> 好きで、弾いている。
-> それが、音に出ていた。
+> $route_kotoha.kotoha_ch12_good_end.t043
+> $route_kotoha.kotoha_ch12_good_end.t044
+> $route_kotoha.kotoha_ch12_good_end.t045
 
 @wait 1000
 
-> 指が動いた。
-> 最後まで。
+> $route_kotoha.kotoha_ch12_good_end.t046
+> $route_kotoha.kotoha_ch12_good_end.t047
+
+> $route_kotoha.kotoha_ch12_good_end.t048
+> $route_kotoha.kotoha_ch12_good_end.t049
+
+@wait 1000
+
+> $route_kotoha.kotoha_ch12_good_end.t050
+> $route_kotoha.kotoha_ch12_good_end.t051
 
 @wait 1500
 
@@ -2378,9 +2378,9 @@ kotoha: やめようとは思わなかった
 @se applause.mp3
 @wait 1200
 
-> 拍手が起きた。
-> ことはは深くお辞儀をした。
-> 顔は見えなかった。
+> $route_kotoha.kotoha_ch12_good_end.t052
+> $route_kotoha.kotoha_ch12_good_end.t053
+> $route_kotoha.kotoha_ch12_good_end.t054
 
 @still_hide
 @wait 500
@@ -2392,117 +2392,117 @@ kotoha: やめようとは思わなかった
 @show kotoha center normal fade_in
 @wait 600
 
-> 演奏会の後、
-> ことはは音楽準備室に戻った。
+> $route_kotoha.kotoha_ch12_good_end.t055
+> $route_kotoha.kotoha_ch12_good_end.t056
 
-> ひとりで、
-> 静かに座っている。
+> $route_kotoha.kotoha_ch12_good_end.t057
+> $route_kotoha.kotoha_ch12_good_end.t058
 
-> 誰かに話しかけたい雰囲気でも、
-> 一人になりたい雰囲気でもなく、
-> ただそこに落ち着いていた。
+> $route_kotoha.kotoha_ch12_good_end.t059
+> $route_kotoha.kotoha_ch12_good_end.t060
+> $route_kotoha.kotoha_ch12_good_end.t061
 
 @wait 700
 
-> スマホを取り出す。
+> $route_kotoha.kotoha_ch12_good_end.t062
 
-> 少しの間、
-> 画面を見ていた。
+> $route_kotoha.kotoha_ch12_good_end.t063
+> $route_kotoha.kotoha_ch12_good_end.t064
 
 @wait 800
 
-> 誰かに連絡しようとして、
-> 打ちかけて、
-> また止まる。
+> $route_kotoha.kotoha_ch12_good_end.t065
+> $route_kotoha.kotoha_ch12_good_end.t066
+> $route_kotoha.kotoha_ch12_good_end.t067
 
-> それを二度繰り返した。
-
-@wait 600
-
-> それから、文字を打った。
-
-kotoha: ……「また弾きました」
+> $route_kotoha.kotoha_ch12_good_end.t068
 
 @wait 600
 
-> 送信した。
+> $route_kotoha.kotoha_ch12_good_end.t069
+
+kotoha: $route_kotoha.kotoha_ch12_good_end.t070
+
+@wait 600
+
+> $route_kotoha.kotoha_ch12_good_end.t071
 
 @wait 900
 
-> 父へ。
+> $route_kotoha.kotoha_ch12_good_end.t072
 
-> 返信が来るかどうかは、
-> わからない。
+> $route_kotoha.kotoha_ch12_good_end.t073
+> $route_kotoha.kotoha_ch12_good_end.t074
 
-> 父は今も、あの日のことを引きずっているかもしれない。
-> 自分のせいでことはがピアノをやめたと思っているかもしれない。
-> 音楽の話を切り出せないまま、何年も経ったかもしれない。
+> $route_kotoha.kotoha_ch12_good_end.t075
+> $route_kotoha.kotoha_ch12_good_end.t076
+> $route_kotoha.kotoha_ch12_good_end.t077
 
-> でも、送った。
+> $route_kotoha.kotoha_ch12_good_end.t078
 
-> ことはが送った。
-> それが今日の始まりだ。
+> $route_kotoha.kotoha_ch12_good_end.t079
+> $route_kotoha.kotoha_ch12_good_end.t080
 
 @wait 1200
 
 @se door_open.mp3
 @wait 400
 
-> 扉が開く。
+> $route_kotoha.kotoha_ch12_good_end.t081
 
-player: お疲れさん
+player: $route_kotoha.kotoha_ch12_good_end.t082
 
-kotoha: ……来てたんですか
+kotoha: $route_kotoha.kotoha_ch12_good_end.t083
 
-player: 聞こえてた
+player: $route_kotoha.kotoha_ch12_good_end.t084
 
 @wait 400
 
-kotoha: ……手が止まりました
+kotoha: $route_kotoha.kotoha_ch12_good_end.t085
 
-player: 知ってる
+player: $route_kotoha.kotoha_ch12_good_end.t086
 
-kotoha: 気づいてたんですか
+kotoha: $route_kotoha.kotoha_ch12_good_end.t087
 
-player: 気づいてた
+player: $route_kotoha.kotoha_ch12_good_end.t088
 
 @wait 600
 
 @expr kotoha shy
 @wait 400
 
-kotoha: ……では、なぜ何も言わなかったんですか
+kotoha: $route_kotoha.kotoha_ch12_good_end.t089
 
-player: 止めなかったから
+player: $route_kotoha.kotoha_ch12_good_end.t090
 
 @wait 700
 
-> ことははしばらく黙っていた。
+> $route_kotoha.kotoha_ch12_good_end.t091
 
 @wait 800
 
-> 止めなかったから。
-> その言葉を、どう受け取ったのか。
+> $route_kotoha.kotoha_ch12_good_end.t092
+> $route_kotoha.kotoha_ch12_good_end.t093
 
-> ことはの表情は読めなかった。
-> でも、責めていない顔だとはわかった。
+> $route_kotoha.kotoha_ch12_good_end.t094
+> $route_kotoha.kotoha_ch12_good_end.t095
 
 @expr kotoha normal
 
-kotoha: ……少し、弾きます
+kotoha: $route_kotoha.kotoha_ch12_good_end.t096
 
-player: ああ
+player: $route_kotoha.kotoha_ch12_good_end.t097
 
-kotoha: 聴きますか
+kotoha: $route_kotoha.kotoha_ch12_good_end.t098
 
-player: 聴く
+player: $route_kotoha.kotoha_ch12_good_end.t099
 
 @wait 600
 
 @still kotoha_one_note
 @wait 1000
 
-kotoha: では、隣へどうぞ
+kotoha: $route_kotoha.kotoha_ch12_good_end.t100
 
 @wait 1000
 
@@ -2512,33 +2512,33 @@ kotoha: では、隣へどうぞ
 @show kotoha center normal fade_in
 @wait 400
 
-> 音が、部屋に広がっていく。
+> $route_kotoha.kotoha_ch12_good_end.t101
 
-> 消えない。
+> $route_kotoha.kotoha_ch12_good_end.t102
 
-> 消える前に、
-> 次の音が来るから。
+> $route_kotoha.kotoha_ch12_good_end.t103
+> $route_kotoha.kotoha_ch12_good_end.t104
 
 @wait 1500
 
-> 指先は、ずっと音を覚えていた。
+> $route_kotoha.kotoha_ch12_good_end.t105
 
-> 止まっていた間も、
-> 走っていた日も、
-> ここに来てしまっていた夕方も。
+> $route_kotoha.kotoha_ch12_good_end.t106
+> $route_kotoha.kotoha_ch12_good_end.t107
+> $route_kotoha.kotoha_ch12_good_end.t108
 
-> ぜんぶ、覚えていた。
+> $route_kotoha.kotoha_ch12_good_end.t109
 
 @wait 1000
 
-> 父から返信が来るかどうかは、まだわからない。
-> ことはとの距離が縮まったかどうかも、たぶん俺にはわからない。
+> $route_kotoha.kotoha_ch12_good_end.t110
+> $route_kotoha.kotoha_ch12_good_end.t111
 
-> ただ、今ここで音が鳴っている。
-> ことはが弾いている。
-> 俺が隣で聞いている。
+> $route_kotoha.kotoha_ch12_good_end.t112
+> $route_kotoha.kotoha_ch12_good_end.t113
+> $route_kotoha.kotoha_ch12_good_end.t114
 
-> それだけが、今日の事実だ。
+> $route_kotoha.kotoha_ch12_good_end.t115
 
 @wait 2500
 
@@ -2551,102 +2551,102 @@ kotoha: では、隣へどうぞ
 @scene street_plaza_summer fade
 @bgm epilogue_sunset_for_each.mp3
 
-> 夕方の商店街。
-> シャッターの半分降りた店、ゆるい人通り。
+> $route_kotoha.kotoha_ch12_good_end.t116
+> $route_kotoha.kotoha_ch12_good_end.t117
 
 @wait 1000
 
-> 広場の端に、ストリートピアノ。
-> 誰も弾いていない。
+> $route_kotoha.kotoha_ch12_good_end.t118
+> $route_kotoha.kotoha_ch12_good_end.t119
 
 @show kotoha center normal fade_in
 
-> ことはが立ち止まる。
-> 以前と同じ距離。
+> $route_kotoha.kotoha_ch12_good_end.t120
+> $route_kotoha.kotoha_ch12_good_end.t121
 
 @wait 800
 
-> 少しだけ、近づく。
+> $route_kotoha.kotoha_ch12_good_end.t122
 
 @wait 800
 
-> 指が鍵盤の上で止まる。
+> $route_kotoha.kotoha_ch12_good_end.t123
 
 @wait 1000
 
-> ほんの一音。
-> 短く、乾いた音。
-> 止まる。
+> $route_kotoha.kotoha_ch12_good_end.t124
+> $route_kotoha.kotoha_ch12_good_end.t125
+> $route_kotoha.kotoha_ch12_good_end.t126
 
 @wait 1000
 
-> 周囲の誰かが一瞬だけ視線を向ける。
-> すぐにそれぞれの方向へ戻る。
+> $route_kotoha.kotoha_ch12_good_end.t127
+> $route_kotoha.kotoha_ch12_good_end.t128
 
 @wait 1000
 
-> 音は、残らない。
-> 流れていく。
+> $route_kotoha.kotoha_ch12_good_end.t129
+> $route_kotoha.kotoha_ch12_good_end.t130
 
 @wait 600
 
-> ことは、もう一度だけ弾く。
-> 今度は、短いフレーズ。
-> 途中で止める。
+> $route_kotoha.kotoha_ch12_good_end.t131
+> $route_kotoha.kotoha_ch12_good_end.t132
+> $route_kotoha.kotoha_ch12_good_end.t133
 
 @wait 800
 
-kotoha: ……こういう場所だと
+kotoha: $route_kotoha.kotoha_ch12_good_end.t134
 
 @wait 800
 
-kotoha: 音が、誰のものでもなくなる気がします
+kotoha: $route_kotoha.kotoha_ch12_good_end.t135
 
 @wait 1000
 
-> 視線は鍵盤のまま。
+> $route_kotoha.kotoha_ch12_good_end.t136
 
-kotoha: だから……少しだけ、平気です
+kotoha: $route_kotoha.kotoha_ch12_good_end.t137
 
 @wait 800
 
 @expr kotoha shy
 
-> 主人公を見る。
+> $route_kotoha.kotoha_ch12_good_end.t138
 
-kotoha: ……一人じゃないから、かもしれません
+kotoha: $route_kotoha.kotoha_ch12_good_end.t139
 
 @wait 800
 
 @expr kotoha normal
 
-> すぐに目を逸らす。
+> $route_kotoha.kotoha_ch12_good_end.t140
 
 @wait 800
 
-> もう一度、鍵盤に触れる。
-> 今度は弾かない。
-> 手を離す。
+> $route_kotoha.kotoha_ch12_good_end.t141
+> $route_kotoha.kotoha_ch12_good_end.t142
+> $route_kotoha.kotoha_ch12_good_end.t143
 
-kotoha: ……続きは、また今度にします
+kotoha: $route_kotoha.kotoha_ch12_good_end.t144
 
 @wait 1500
 
 @hide kotoha fade_out
 @wait 400
 
-> 夕焼けが鍵盤に反射する。
+> $route_kotoha.kotoha_ch12_good_end.t145
 
 @wait 1200
 
-> 音は鳴らない。
-> でも、そこに残っている。
+> $route_kotoha.kotoha_ch12_good_end.t146
+> $route_kotoha.kotoha_ch12_good_end.t147
 
 @wait 2500
 
 @still kotoha_epilogue fade_in
 @click_wait
-@end "第十二章「指先は、ずっと音を覚えていた」— ことはルート Good End"
+@end "$route_kotoha.kotoha_ch12_good_end.end_title"
 
 
 // ===================================================================
@@ -2659,35 +2659,35 @@ kotoha: ……続きは、また今度にします
 @bgm bad_end_loop.mp3
 @wait 1000
 
-> ことはは伴奏を断った。
+> $route_kotoha.kotoha_ch12_bad_end.t001
 
-> その後から、
-> 学校で見かけることが減った。
+> $route_kotoha.kotoha_ch12_bad_end.t002
+> $route_kotoha.kotoha_ch12_bad_end.t003
 
-> 図書室にも来なくなった。
-> 廊下の突き当たりを歩く背中も、
-> もう見えなかった。
+> $route_kotoha.kotoha_ch12_bad_end.t004
+> $route_kotoha.kotoha_ch12_bad_end.t005
+> $route_kotoha.kotoha_ch12_bad_end.t006
 
 @wait 800
 
-> 音楽準備室の前を通ることもあった。
-> 扉は閉まっていた。
-> 当たり前だ。
-> ことはが来なくなったのだから。
+> $route_kotoha.kotoha_ch12_bad_end.t007
+> $route_kotoha.kotoha_ch12_bad_end.t008
+> $route_kotoha.kotoha_ch12_bad_end.t009
+> $route_kotoha.kotoha_ch12_bad_end.t010
 
 @wait 700
 
-> あの日の沈黙が、もう一度よみがえる。
-> 来てしまうんです、とことはは言っていた。
-> でも来なくなった。
+> $route_kotoha.kotoha_ch12_bad_end.t011
+> $route_kotoha.kotoha_ch12_bad_end.t012
+> $route_kotoha.kotoha_ch12_bad_end.t013
 
-> 来られなくなったのか、
-> 来ないと決めたのか。
+> $route_kotoha.kotoha_ch12_bad_end.t014
+> $route_kotoha.kotoha_ch12_bad_end.t015
 
 @wait 1000
 
-> 転校の話が出ている、
-> とさくらが教えてくれた。
+> $route_kotoha.kotoha_ch12_bad_end.t016
+> $route_kotoha.kotoha_ch12_bad_end.t017
 
 @wait 800
 
@@ -2695,58 +2695,58 @@ kotoha: ……続きは、また今度にします
 
 @wait 500
 
-> 廊下で、ことはと鉢合わせた。
+> $route_kotoha.kotoha_ch12_bad_end.t018
 
-> 最後の日。
-
-@wait 600
-
-> 制服は同じだ。
-> 持っている鞄も同じだ。
-> でも、何かが決定的に変わっていた。
-
-> ことはの目が、
-> 俺を見ているようで、
-> 少し遠いところを見ていた。
+> $route_kotoha.kotoha_ch12_bad_end.t019
 
 @wait 600
 
-kotoha: ……ありがとうございました
+> $route_kotoha.kotoha_ch12_bad_end.t020
+> $route_kotoha.kotoha_ch12_bad_end.t021
+> $route_kotoha.kotoha_ch12_bad_end.t022
+
+> $route_kotoha.kotoha_ch12_bad_end.t023
+> $route_kotoha.kotoha_ch12_bad_end.t024
+> $route_kotoha.kotoha_ch12_bad_end.t025
+
+@wait 600
+
+kotoha: $route_kotoha.kotoha_ch12_bad_end.t026
 
 @wait 500
 
-kotoha: 短い間でしたが
+kotoha: $route_kotoha.kotoha_ch12_bad_end.t027
 
 @wait 600
 
-player: ……
+player: $route_kotoha.kotoha_ch12_bad_end.t028
 
 @wait 400
 
-kotoha: 桐島くんと話せて、よかったと思っています
+kotoha: $route_kotoha.kotoha_ch12_bad_end.t029
 
 @wait 700
 
-> よかった。
-> 過去形。
+> $route_kotoha.kotoha_ch12_bad_end.t030
+> $route_kotoha.kotoha_ch12_bad_end.t031
 
-> もう、話さないということだ。
-
-@wait 600
-
-> 何か言おうとした。
-> 転校しなくてもいい、とか。
-> また扉の前に立ってほしい、とか。
-
-> でも、出なかった。
-
-> ことはの言葉はもう終わっていた。
-> あとは別れだけが残っている。
+> $route_kotoha.kotoha_ch12_bad_end.t032
 
 @wait 600
 
-> それだけ言って、
-> ことははまた前を向いた。
+> $route_kotoha.kotoha_ch12_bad_end.t033
+> $route_kotoha.kotoha_ch12_bad_end.t034
+> $route_kotoha.kotoha_ch12_bad_end.t035
+
+> $route_kotoha.kotoha_ch12_bad_end.t036
+
+> $route_kotoha.kotoha_ch12_bad_end.t037
+> $route_kotoha.kotoha_ch12_bad_end.t038
+
+@wait 600
+
+> $route_kotoha.kotoha_ch12_bad_end.t039
+> $route_kotoha.kotoha_ch12_bad_end.t040
 
 @wait 600
 
@@ -2760,20 +2760,20 @@ kotoha: 桐島くんと話せて、よかったと思っています
 @bgm stop
 @wait 1200
 
-> 音楽準備室の扉は、
-> ずっと閉じたままだった。
+> $route_kotoha.kotoha_ch12_bad_end.t041
+> $route_kotoha.kotoha_ch12_bad_end.t042
 
 @wait 800
 
-> ピアノの蓋も、
-> 誰が開けるわけでもなく、
-> 閉じたままだった。
+> $route_kotoha.kotoha_ch12_bad_end.t043
+> $route_kotoha.kotoha_ch12_bad_end.t044
+> $route_kotoha.kotoha_ch12_bad_end.t045
 
 @wait 1000
 
-> 鍵盤には埃が積もっていくだろう。
-> ゆっくりと、静かに。
-> 白い鍵も黒い鍵も、同じように。
+> $route_kotoha.kotoha_ch12_bad_end.t046
+> $route_kotoha.kotoha_ch12_bad_end.t047
+> $route_kotoha.kotoha_ch12_bad_end.t048
 
 @still_hide
 @wait 400
@@ -2782,53 +2782,53 @@ kotoha: 桐島くんと話せて、よかったと思っています
 @bgm bad_end_loop.mp3
 @wait 1200
 
-> 何かが終わったわけじゃない。
+> $route_kotoha.kotoha_ch12_bad_end.t049
 
-> 始まらないまま、
-> 季節が変わっていくだけだ。
-
-@wait 800
-
-> 来てしまう、と言っていた。
-
-> 来たい、とは言わなかった。
-
-> ただ来てしまう、と。
+> $route_kotoha.kotoha_ch12_bad_end.t050
+> $route_kotoha.kotoha_ch12_bad_end.t051
 
 @wait 800
 
-> あの言葉の意味を、
-> 俺は今になってもう少し理解している気がした。
+> $route_kotoha.kotoha_ch12_bad_end.t052
 
-> 来てしまうことは、止められない。
-> でも来られなくなることは、
-> 止めることができる。
+> $route_kotoha.kotoha_ch12_bad_end.t053
 
-> ことはは来られなくなった。
-> 俺が止まったから、扉も閉まった。
+> $route_kotoha.kotoha_ch12_bad_end.t054
+
+@wait 800
+
+> $route_kotoha.kotoha_ch12_bad_end.t055
+> $route_kotoha.kotoha_ch12_bad_end.t056
+
+> $route_kotoha.kotoha_ch12_bad_end.t057
+> $route_kotoha.kotoha_ch12_bad_end.t058
+> $route_kotoha.kotoha_ch12_bad_end.t059
+
+> $route_kotoha.kotoha_ch12_bad_end.t060
+> $route_kotoha.kotoha_ch12_bad_end.t061
 
 @wait 1000
 
-> その扉が、
-> もう二度と開かないとしたら。
+> $route_kotoha.kotoha_ch12_bad_end.t062
+> $route_kotoha.kotoha_ch12_bad_end.t063
 
 @bgm stop
 @wait 800
 
-> それはきっと、
-> 「できません」より静かな答えだった。
+> $route_kotoha.kotoha_ch12_bad_end.t064
+> $route_kotoha.kotoha_ch12_bad_end.t065
 
 @wait 1000
 
-> 弾かれなかった音は、
-> どこへ消えるのだろう。
+> $route_kotoha.kotoha_ch12_bad_end.t066
+> $route_kotoha.kotoha_ch12_bad_end.t067
 
-> 誰の耳にも届かずに。
-> 誰の記憶にも刻まれずに。
+> $route_kotoha.kotoha_ch12_bad_end.t068
+> $route_kotoha.kotoha_ch12_bad_end.t069
 
-> ただ、消えていくのだろうか。
+> $route_kotoha.kotoha_ch12_bad_end.t070
 
 @wait 1200
 
 @credits bad_end_loop.mp3
-@end "第十二章「弾かれなかった音は、どこへ消えるのだろう」— ことはルート Bad End"
+@end "$route_kotoha.kotoha_ch12_bad_end.end_title"

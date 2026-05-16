@@ -9,57 +9,57 @@
 @se semi.mp3
 @wait 800
 
-> 八月。夏休みの中頃だった。
+> $chapter6.chapter6_start.t001
 
-> 終業式が終わり、七月が八月になった。
-> あのプールの日から、もう二週間近く経つ。
+> $chapter6.chapter6_start.t002
+> $chapter6.chapter6_start.t003
 
-> 梅雨が終わってから、世界の温度が別物になった気がする。
-> アスファルトが光を蓄えて、足元から熱を返してくる。
-> 蝉の声が途切れない。それだけが、時間が進んでいるしるしみたいだった。
-
-@wait 600
-
-> 部屋にいると、止まっているような感覚がある。
-> 七月が八月になって、でも俺の中では何かが宙吊りのまま、動いていない。
-
-> カーテンを閉めていれば、外の明るさもある程度は遮断できる。
-> 音だけは遮断できない。
-> 蝉の声が、どんなに厚いカーテンを通しても、夏だと教えてくる。
+> $chapter6.chapter6_start.t004
+> $chapter6.chapter6_start.t005
+> $chapter6.chapter6_start.t006
 
 @wait 600
 
-> 二学期になれば文化祭の準備が始まる。
-> そういう話が、遠くから近づいてきている気配はある。
-> 学校のホームページには、もう「文化祭特集号」の告知が出ていた。
-> 見るつもりもなかったのに、偶然目に入った。
+> $chapter6.chapter6_start.t007
+> $chapter6.chapter6_start.t008
 
-> でも今日は、まだそういう話じゃない気がした。
+> $chapter6.chapter6_start.t009
+> $chapter6.chapter6_start.t010
+> $chapter6.chapter6_start.t011
+
+@wait 600
+
+> $chapter6.chapter6_start.t012
+> $chapter6.chapter6_start.t013
+> $chapter6.chapter6_start.t014
+> $chapter6.chapter6_start.t015
+
+> $chapter6.chapter6_start.t016
 
 @wait 700
 
-> 外に出るだけで体力が削られる感じがした。
-> それでも、部屋にいるよりはましだと思って、外へ出た。
+> $chapter6.chapter6_start.t017
+> $chapter6.chapter6_start.t018
 
 @wait 500
 
-player: （今日はどこへ行こうか……）
+player: $chapter6.chapter6_start.t019
 
-> 目的がない外出というのは、案外難しい。
-> 行き先を決めないと、足がいちばん慣れた道を選ぶ。
-> 慣れた道は、慣れた景色しか見せてくれない。
+> $chapter6.chapter6_start.t020
+> $chapter6.chapter6_start.t021
+> $chapter6.chapter6_start.t022
 
-> それでも、今日は慣れた道に疲れていた。
-> 少しだけ遠いところまで行ってみようと思った。
-> 理由はない。ただ、何かが少しだけ変わるかもしれない、という気がした。
+> $chapter6.chapter6_start.t023
+> $chapter6.chapter6_start.t024
+> $chapter6.chapter6_start.t025
 
 @wait 500
 
-> 自転車を引き出して、鍵を外す。
-> サドルが日差しで熱くなっていた。
-> 短パンに染みた熱が、夏を実感させてくれる。
+> $chapter6.chapter6_start.t026
+> $chapter6.chapter6_start.t027
+> $chapter6.chapter6_start.t028
 
-> どこへ行くでもなく、ペダルを踏み始めた。
+> $chapter6.chapter6_start.t029
 
 @wait 800
 
@@ -73,156 +73,156 @@ player: （今日はどこへ行こうか……）
 @se badminton_match.mp3
 @wait 500
 
-> 市民体育館。
-> バドミントン部の練習試合、と掲示板で見た気がした。
+> $chapter6.chapter6_sakura_gym.t001
+> $chapter6.chapter6_sakura_gym.t002
 
-> 別に用事があったわけじゃない。
-> 足が、そっちへ向いていた。
+> $chapter6.chapter6_sakura_gym.t003
+> $chapter6.chapter6_sakura_gym.t004
 
 @wait 600
 
-> 自転車を止めて、玄関を入る。
-> 冷えた空気が、肌に一度だけ刺さった。
-> 夏の外から入ると、体育館の中はいつも別の時間が流れているみたいに感じる。
-> 外の熱とは無縁の、密閉された空間。
+> $chapter6.chapter6_sakura_gym.t005
+> $chapter6.chapter6_sakura_gym.t006
+> $chapter6.chapter6_sakura_gym.t007
+> $chapter6.chapter6_sakura_gym.t008
 
 @wait 500
 
-> 観覧席に人はほとんどいない。
-> 部員の保護者が三、四人、折りたたみ椅子に座っていた。
-> うちわを持っている人。スマホを向けている人。
-> 俺は端の壁に寄りかかって、コートを見渡した。
+> $chapter6.chapter6_sakura_gym.t009
+> $chapter6.chapter6_sakura_gym.t010
+> $chapter6.chapter6_sakura_gym.t011
+> $chapter6.chapter6_sakura_gym.t012
 
 @wait 600
 
 @show sakura_sports center serious fade_in
 @wait 400
 
-> コートの中、さくらが動いている。
+> $chapter6.chapter6_sakura_gym.t013
 
-> 速い。
-> 迷いがない。
+> $chapter6.chapter6_sakura_gym.t014
+> $chapter6.chapter6_sakura_gym.t015
 
-> 学校で見るさくらとは、どこかが違った。
-> 教室では、いつも周りの空気を読みながら動いている。
-> 誰かが笑えば笑って、誰かが困れば先に動いて、常に場全体を見ているような動き方をする。
-> ここではただ、コートの中だけを見ていた。
+> $chapter6.chapter6_sakura_gym.t016
+> $chapter6.chapter6_sakura_gym.t017
+> $chapter6.chapter6_sakura_gym.t018
+> $chapter6.chapter6_sakura_gym.t019
 
 @wait 500
 
-> コートの外側にいる保護者も、他の部員も、俺もいない。
-> ネットと、シャトルと、相手だけがある。
+> $chapter6.chapter6_sakura_gym.t020
+> $chapter6.chapter6_sakura_gym.t021
 
-sakura_sports: ッ——！
+sakura_sports: $chapter6.chapter6_sakura_gym.t022
 
 @se shuttle_hit.mp3
 @wait 300
 
 @expr sakura_sports excited
-sakura_sports: もらった！
+sakura_sports: $chapter6.chapter6_sakura_gym.t023
 
 @se point_whistle.mp3
 @wait 400
 
-> 周りの部員が声を上げる。
-> さくらはただ、次のポジションへ戻る。
-> ガッツポーズもしない。派手に喜ばない。
-> 切り替えが、静かなほど速かった。
+> $chapter6.chapter6_sakura_gym.t024
+> $chapter6.chapter6_sakura_gym.t025
+> $chapter6.chapter6_sakura_gym.t026
+> $chapter6.chapter6_sakura_gym.t027
 
 @wait 700
 
-player: （……知らなかった、こういう顔。）
+player: $chapter6.chapter6_sakura_gym.t028
 
 @wait 600
 
-> 試合の流れは読めないけれど、
-> さくらが動くたびに、コートの空気が引っ張られるのはわかった。
-> こいつは、こういう場所に来ると本当に変わる。
+> $chapter6.chapter6_sakura_gym.t029
+> $chapter6.chapter6_sakura_gym.t030
+> $chapter6.chapter6_sakura_gym.t031
 
-> いや、変わるというより——
-> こっちが、本当の速度なのかもしれない。
+> $chapter6.chapter6_sakura_gym.t032
+> $chapter6.chapter6_sakura_gym.t033
 
-> 教室でのさくらが「普通の速度に合わせたさくら」だとしたら、
-> コートの中のこの動き方が、調整を外したときの素の速さなんだろう。
+> $chapter6.chapter6_sakura_gym.t034
+> $chapter6.chapter6_sakura_gym.t035
 
 @wait 800
 
 @se point_whistle.mp3
 @wait 300
 
-> 長いラリーが終わった。
-> さくらがシャトルを拾う。
-> ほんの一瞬、コートの端で首に下げていたタオルを引き上げて、顔を拭いた。
-> その動作に、誰かに見せる要素がひとかけらもなかった。
+> $chapter6.chapter6_sakura_gym.t036
+> $chapter6.chapter6_sakura_gym.t037
+> $chapter6.chapter6_sakura_gym.t038
+> $chapter6.chapter6_sakura_gym.t039
 
 @wait 700
 
 @bgm stop
 @wait 1000
 
-> 試合が終わった。
+> $chapter6.chapter6_sakura_gym.t040
 
-> 選手たちがコートを出る。
-> 体育館の外側に、保護者が迎えに来ていた。
+> $chapter6.chapter6_sakura_gym.t041
+> $chapter6.chapter6_sakura_gym.t042
 
 @se crowd_distant.mp3
 @wait 500
 
-> 部員たちが、笑いながら駐車場へ消えていく。
-> 「お疲れ様でした」「今日よかったよ」「帰りごはんどこにする？」
-> 声と声が重なって、ロビーが少しだけ明るくなる。
+> $chapter6.chapter6_sakura_gym.t043
+> $chapter6.chapter6_sakura_gym.t044
+> $chapter6.chapter6_sakura_gym.t045
 
-> さくらは、監督に何か声をかけられて頷いていた。
-> その横顔は穏やかで、いつも通りの顔に見えた。
-> 笑顔で返事をして、また頷いて、それから監督が離れていった。
-
-@wait 400
-
-橋本: 桜咲。
-
-> ロビーの方から声がした。
-> 三年の橋本先輩——バドミントン部の部長だ。
+> $chapter6.chapter6_sakura_gym.t046
+> $chapter6.chapter6_sakura_gym.t047
+> $chapter6.chapter6_sakura_gym.t048
 
 @wait 400
 
-橋本: 今日の一年の子たち、動き上がってたね。
-橋本: ちゃんと見てくれてるんだなって、思った。
+橋本: $chapter6.chapter6_sakura_gym.t049
 
-sakura_sports: ありがとうございます。
-sakura_sports: まだ課題は多いですけど。
-
-橋本: いや、ほんとに助かってる。
-橋本: あたし試合のこと考えるのに精いっぱいで、後輩の細かいとこまで手が回らないから。
+> $chapter6.chapter6_sakura_gym.t050
+> $chapter6.chapter6_sakura_gym.t051
 
 @wait 400
 
-橋本: あと二ヶ月で引退だし、そのあとのことも含めてよろしく頼んでいい？
+橋本: $chapter6.chapter6_sakura_gym.t052
+橋本: $chapter6.chapter6_sakura_gym.t053
 
-sakura_sports: ……はい。任せてください。
+sakura_sports: $chapter6.chapter6_sakura_gym.t054
+sakura_sports: $chapter6.chapter6_sakura_gym.t055
+
+橋本: $chapter6.chapter6_sakura_gym.t056
+橋本: $chapter6.chapter6_sakura_gym.t057
+
+@wait 400
+
+橋本: $chapter6.chapter6_sakura_gym.t058
+
+sakura_sports: $chapter6.chapter6_sakura_gym.t059
 
 @wait 300
 
-> ほんの一瞬、さくらは目を細めた。
-> それだけだった。
+> $chapter6.chapter6_sakura_gym.t060
+> $chapter6.chapter6_sakura_gym.t061
 
-> 橋本先輩が「あたしにはできないことをやってくれている」と言っているのは伝わった。
-> それが感謝なのか、委任なのか、当然の期待なのか——
-> さくらには、問い返す気がたぶん最初からなかった。
+> $chapter6.chapter6_sakura_gym.t062
+> $chapter6.chapter6_sakura_gym.t063
+> $chapter6.chapter6_sakura_gym.t064
 
 @wait 500
 
-> 橋本先輩のお母さんが、出口の方から手を振った。
+> $chapter6.chapter6_sakura_gym.t065
 
-橋本: あ、迎えに来た。じゃあ先ね。
-橋本: 今日お疲れ。また月曜日。
+橋本: $chapter6.chapter6_sakura_gym.t066
+橋本: $chapter6.chapter6_sakura_gym.t067
 
-sakura_sports: お疲れさまでした。
+sakura_sports: $chapter6.chapter6_sakura_gym.t068
 
-> 先輩は駆けていった。
-> さくらは、その背中に向かって静かに頭を下げた。
+> $chapter6.chapter6_sakura_gym.t069
+> $chapter6.chapter6_sakura_gym.t070
 
-> 誰かに見せているわけじゃなかった。
-> ただそうするのが当たり前だから、そうしていた。
+> $chapter6.chapter6_sakura_gym.t071
+> $chapter6.chapter6_sakura_gym.t072
 
 @wait 700
 
@@ -233,60 +233,60 @@ sakura_sports: お疲れさまでした。
 @bgm quiet_piano_distant.mp3
 @wait 600
 
-> 体育館の裏手。
-> 日陰になった壁に、さくらが一人でいた。
+> $chapter6.chapter6_sakura_gym.t073
+> $chapter6.chapter6_sakura_gym.t074
 
 @show sakura_sports center normal fade_in
 @wait 500
 
-> 壁に背中を預けて、座り込んでいた。
-> 誰かを待っている顔じゃない。
+> $chapter6.chapter6_sakura_gym.t075
+> $chapter6.chapter6_sakura_gym.t076
 
-> ——待っていない、という顔をしていた。
+> $chapter6.chapter6_sakura_gym.t077
 
 @wait 700
 
-> 足元に、スポーツバッグ。
-> 駐車場から笑い声が流れてきても、
-> さくらはそっちを見なかった。
+> $chapter6.chapter6_sakura_gym.t078
+> $chapter6.chapter6_sakura_gym.t079
+> $chapter6.chapter6_sakura_gym.t080
 
-> 聞こえていないわけじゃない。
-> 聞こえている。全部聞こえていて、そのうえで、向かないでいる。
+> $chapter6.chapter6_sakura_gym.t081
+> $chapter6.chapter6_sakura_gym.t082
 
-> 俺だったら、たぶん聞こえないふりをする。
-> さくらは最初から、聞こえていないのかもしれない。
-> ——いや、違う。
-> 聞こえていて、最初から、そういうものとして扱っている。
+> $chapter6.chapter6_sakura_gym.t083
+> $chapter6.chapter6_sakura_gym.t084
+> $chapter6.chapter6_sakura_gym.t085
+> $chapter6.chapter6_sakura_gym.t086
 
 @wait 600
 
-> 「迎えに来ない」ということへの怒りも悲しみも、たぶん、もうない。
-> あるとしたら、それは感情じゃなくて、ただの事実として体に馴染んでいる。
-> そういう感じの、座り方だった。
+> $chapter6.chapter6_sakura_gym.t087
+> $chapter6.chapter6_sakura_gym.t088
+> $chapter6.chapter6_sakura_gym.t089
 
 @wait 800
 
 @still sakura_after_match
 @wait 1000
 
-player: （声をかけるべきか……）
+player: $chapter6.chapter6_sakura_gym.t090
 
 @wait 600
 
-> 声をかけたら、さくらはいつものように笑うだろう。
-> 笑って、「桐島くん来てたの？」と言って、
-> 何でもなかったみたいにする。
+> $chapter6.chapter6_sakura_gym.t091
+> $chapter6.chapter6_sakura_gym.t092
+> $chapter6.chapter6_sakura_gym.t093
 
-> それがさくらだ。
-> わかっていても——
+> $chapter6.chapter6_sakura_gym.t094
+> $chapter6.chapter6_sakura_gym.t095
 
-> わかっていても、声をかけることに、今日は意味がある気がした。
+> $chapter6.chapter6_sakura_gym.t096
 
 @wait 500
 
 @choice
-- "声をかける" [sakura_favor+5] -> chapter6_sakura_talk
-- "そのまま見送る" -> chapter6_sakura_skip
+- $choices.chapter6.sakura_call_out [sakura_favor+5] -> chapter6_sakura_talk
+- $choices.chapter6.sakura_let_go -> chapter6_sakura_skip
 
 
 # chapter6_sakura_talk
@@ -294,206 +294,206 @@ player: （声をかけるべきか……）
 @still_hide
 @wait 400
 
-player: さくら。
+player: $chapter6.chapter6_sakura_talk.t001
 
 @wait 300
 
 @expr sakura_sports normal
 @wait 500
 
-> 一拍、間があった。
+> $chapter6.chapter6_sakura_talk.t002
 
 @wait 600
 
 @expr sakura_sports happy
-sakura_sports: あ——桐島くん。
+sakura_sports: $chapter6.chapter6_sakura_talk.t003
 
-> 笑った。
-> でも笑うのが、少しだけ遅かった。
-
-@wait 500
-
-> さっきの「待っていない顔」を、
-> 笑顔で上書きするのに、少しだけ時間がかかった。
-> たぶん本人は、気づいていない。
+> $chapter6.chapter6_sakura_talk.t004
+> $chapter6.chapter6_sakura_talk.t005
 
 @wait 500
 
-player: 試合、観てた。すごかった。
+> $chapter6.chapter6_sakura_talk.t006
+> $chapter6.chapter6_sakura_talk.t007
+> $chapter6.chapter6_sakura_talk.t008
 
-sakura_sports: えっ、見てたの？　恥ずかしいなあ。
+@wait 500
+
+player: $chapter6.chapter6_sakura_talk.t009
+
+sakura_sports: $chapter6.chapter6_sakura_talk.t010
 
 @expr sakura_sports shy
 @wait 400
 
-sakura_sports: 動きとか変だったかな。最後のラリー、ちょっと崩れた気がしてたんだよね。
+sakura_sports: $chapter6.chapter6_sakura_talk.t011
 
-player: そうは見えなかったけど。
+player: $chapter6.chapter6_sakura_talk.t012
 
 @expr sakura_sports thinking
-sakura_sports: そっか……それはよかった。
+sakura_sports: $chapter6.chapter6_sakura_talk.t013
 
 @wait 500
 
-> 少し、表情が真剣になった。
-> いつものさくらが「笑いながら話す」だとしたら、今のは「話しながら笑っていない」。
-> その差が、小さいようで大きい。
+> $chapter6.chapter6_sakura_talk.t014
+> $chapter6.chapter6_sakura_talk.t015
+> $chapter6.chapter6_sakura_talk.t016
 
 @wait 500
 
-> さくらは壁から背を離して、立ち上がる。
-> スポーツバッグのストラップを、両手でつかんだ。
+> $chapter6.chapter6_sakura_talk.t017
+> $chapter6.chapter6_sakura_talk.t018
 
 @wait 400
 
-> 立ち上がってから気づく。
-> さくらの目が、一瞬だけ駐車場のほうを向いた。
-> そしてすぐ、俺のほうを向いた。
+> $chapter6.chapter6_sakura_talk.t019
+> $chapter6.chapter6_sakura_talk.t020
+> $chapter6.chapter6_sakura_talk.t021
 
 @wait 600
 
-player: 一人で帰るの？
+player: $chapter6.chapter6_sakura_talk.t022
 
 @wait 400
 
 @expr sakura_sports normal
-sakura_sports: うん。いつも一人だよ。
+sakura_sports: $chapter6.chapter6_sakura_talk.t023
 
 @wait 400
 
-> それだけ言って、さくらはまた笑う。
-> 今度は、ちゃんと早かった。
+> $chapter6.chapter6_sakura_talk.t024
+> $chapter6.chapter6_sakura_talk.t025
 
 @wait 500
 
-player: …………
+player: $chapter6.chapter6_sakura_talk.t026
 
-sakura_sports: 何？
+sakura_sports: $chapter6.chapter6_sakura_talk.t027
 
-player: いや。別に。
+player: $chapter6.chapter6_sakura_talk.t028
 
 @expr sakura_sports normal
-sakura_sports: ……なんか、変な間。
+sakura_sports: $chapter6.chapter6_sakura_talk.t029
 
 @wait 400
 
-> さくらは首を傾けた。
-> 怪訝そうにじゃなく、ただ——少し不思議そうに。
+> $chapter6.chapter6_sakura_talk.t030
+> $chapter6.chapter6_sakura_talk.t031
 
 @wait 600
 
-sakura_sports: 桐島くんっていつも見てるよね。
+sakura_sports: $chapter6.chapter6_sakura_talk.t032
 
-player: 何を。
+player: $chapter6.chapter6_sakura_talk.t033
 
-sakura_sports: 人を。
+sakura_sports: $chapter6.chapter6_sakura_talk.t034
 
 @wait 700
 
-> 言い方がおかしかった。
-> 責めているわけじゃない。
-> でも、指摘されたことで何かが少しだけ動いた感じがした。
+> $chapter6.chapter6_sakura_talk.t035
+> $chapter6.chapter6_sakura_talk.t036
+> $chapter6.chapter6_sakura_talk.t037
 
-player: ……そんなに目立ってたか。
+player: $chapter6.chapter6_sakura_talk.t038
 
 @expr sakura_sports shy
-sakura_sports: ちょっとだけ。気になるっていうか。
-sakura_sports: 観察してる感じがする、ときどき。
+sakura_sports: $chapter6.chapter6_sakura_talk.t039
+sakura_sports: $chapter6.chapter6_sakura_talk.t040
 
 @wait 400
 
-player: 悪かったな。
+player: $chapter6.chapter6_sakura_talk.t041
 
 @expr sakura_sports happy
-sakura_sports: 悪くはないけどね。
+sakura_sports: $chapter6.chapter6_sakura_talk.t042
 
 @wait 500
 
-> さくらはそう言って、少し笑った。
-> 今度の笑いには、遅れがなかった。
-> 少しだけ、本物に近い気がした。
+> $chapter6.chapter6_sakura_talk.t043
+> $chapter6.chapter6_sakura_talk.t044
+> $chapter6.chapter6_sakura_talk.t045
 
 @wait 600
 
-sakura_sports: ……でも、見られてると、ちょっとだけ緊張するよ。
+sakura_sports: $chapter6.chapter6_sakura_talk.t046
 
-player: 試合中は？
+player: $chapter6.chapter6_sakura_talk.t047
 
 @expr sakura_sports thinking
-sakura_sports: 試合中は、気づかなかった。
+sakura_sports: $chapter6.chapter6_sakura_talk.t048
 
 @wait 400
 
-> そう言ってから、さくらは少しだけ首を傾けた。
+> $chapter6.chapter6_sakura_talk.t049
 
-sakura_sports: ……あ、そうか。だから気づかなかったのか。
+sakura_sports: $chapter6.chapter6_sakura_talk.t050
 
-player: コートの中だと、俺みたいな端の壁はないか。
+player: $chapter6.chapter6_sakura_talk.t051
 
-sakura_sports: うん。なんにも、ない。
+sakura_sports: $chapter6.chapter6_sakura_talk.t052
 
 @wait 500
 
-> 「なんにも、ない」。
-> その言葉が、どういう意味か、さくらは全部わかって言っているのか。
-> わかって言っているのか、無意識に口から出たのか。
+> $chapter6.chapter6_sakura_talk.t053
+> $chapter6.chapter6_sakura_talk.t054
+> $chapter6.chapter6_sakura_talk.t055
 
-> どちらにしても——その言葉は、少しだけ違う重さを持っていた。
+> $chapter6.chapter6_sakura_talk.t056
 
 @wait 600
 
-sakura_sports: 桐島くんも帰り？　途中まで一緒でもいいけど。
+sakura_sports: $chapter6.chapter6_sakura_talk.t057
 
-player: ……ちょっと寄り道してから。
+player: $chapter6.chapter6_sakura_talk.t058
 
-sakura_sports: そっか。
+sakura_sports: $chapter6.chapter6_sakura_talk.t059
 
 @wait 500
 
-player: ……「桐島くん」なんだな、今日。
+player: $chapter6.chapter6_sakura_talk.t060
 
 @wait 300
 
 @expr sakura_sports thinking
-sakura_sports: ……あ。
+sakura_sports: $chapter6.chapter6_sakura_talk.t061
 
 @wait 500
 
 @expr sakura_sports shy
-sakura_sports: ずっと言ってた。気づかなかった。
+sakura_sports: $chapter6.chapter6_sakura_talk.t062
 
 @wait 400
 
-sakura_sports: ……試合のあとって、なんかこうなるかも。
-sakura_sports: 気持ちの切り替えが間に合ってない。
+sakura_sports: $chapter6.chapter6_sakura_talk.t063
+sakura_sports: $chapter6.chapter6_sakura_talk.t064
 
 @wait 400
 
-player: …………
+player: $chapter6.chapter6_sakura_talk.t065
 
 @wait 300
 
-sakura_sports: ……勇くん。
+sakura_sports: $chapter6.chapter6_sakura_talk.t066
 
 @wait 400
 
-> 今度は、ちゃんと「勇くん」だった。
+> $chapter6.chapter6_sakura_talk.t067
 
 @wait 400
 
-sakura_sports: ……あたしも、ちょっと病院寄ってくし。
+sakura_sports: $chapter6.chapter6_sakura_talk.t068
 
-player: 病院？
+player: $chapter6.chapter6_sakura_talk.t069
 
-sakura_sports: 父親がね、検査続きで。
-sakura_sports: 大したことないと思うんだけど、顔だけ見て帰ろうかなって。
+sakura_sports: $chapter6.chapter6_sakura_talk.t070
+sakura_sports: $chapter6.chapter6_sakura_talk.t071
 
-player: ……そうか
+player: $chapter6.chapter6_sakura_talk.t072
 
 @wait 400
 
 @expr sakura_sports happy
-sakura_sports: じゃあね、勇くん。また月曜日。
+sakura_sports: $chapter6.chapter6_sakura_talk.t073
 
 @se footsteps_leave.mp3
 @wait 500
@@ -501,33 +501,33 @@ sakura_sports: じゃあね、勇くん。また月曜日。
 @hide sakura_sports fade_out
 @wait 600
 
-> さくらの後ろ姿が、曲がり角に消えた。
+> $chapter6.chapter6_sakura_talk.t074
 
-> 誰も、迎えに来なかった。
-> でも彼女は、もうそれを当然みたいな顔で歩いていく。
+> $chapter6.chapter6_sakura_talk.t075
+> $chapter6.chapter6_sakura_talk.t076
 
 @wait 700
 
-> 一人で帰ることに慣れている人間の歩き方、というものがある。
-> まっすぐで、でも少しだけ力を抜いた、あの感じ。
-> さくらの背中は、そういう歩き方をしていた。
+> $chapter6.chapter6_sakura_talk.t077
+> $chapter6.chapter6_sakura_talk.t078
+> $chapter6.chapter6_sakura_talk.t079
 
 @wait 500
 
-> 慣れることと、傷つかないこととは、たぶん違う。
-> そのことを、さくらは知っているんだろうか。
+> $chapter6.chapter6_sakura_talk.t080
+> $chapter6.chapter6_sakura_talk.t081
 
-> ——知っていて、知らないふりをしているんだろうか。
+> $chapter6.chapter6_sakura_talk.t082
 
 @wait 600
 
-> コートの中では「なんにも、ない」と言っていた。
-> 裏手では一人でいた。
-> でも笑い方は変わらなかった。
+> $chapter6.chapter6_sakura_talk.t083
+> $chapter6.chapter6_sakura_talk.t084
+> $chapter6.chapter6_sakura_talk.t085
 
-> どこまでが「本当のさくら」で、どこからが「さくらのふり」なのか。
-> ——それを問うこと自体、たぶん失礼なんだろう。
-> どちらも本当のさくらだ。ただ、見る角度が違うだけで。
+> $chapter6.chapter6_sakura_talk.t086
+> $chapter6.chapter6_sakura_talk.t087
+> $chapter6.chapter6_sakura_talk.t088
 
 @wait 800
 
@@ -539,21 +539,21 @@ sakura_sports: じゃあね、勇くん。また月曜日。
 @still_hide
 @wait 400
 
-> 声をかけようとして、やめた。
+> $chapter6.chapter6_sakura_skip.t001
 
-> あの顔は——
-> 一人でいる、と決めたときの顔だ。
-> 邪魔していい場所じゃない、と感じた。
+> $chapter6.chapter6_sakura_skip.t002
+> $chapter6.chapter6_sakura_skip.t003
+> $chapter6.chapter6_sakura_skip.t004
 
 @wait 600
 
-> さくらはやがて、一人でバッグを肩にかけて歩き始めた。
-> 誰も呼ばなかった。誰も来なかった。
-> それでも歩き方は、乱れていなかった。
+> $chapter6.chapter6_sakura_skip.t005
+> $chapter6.chapter6_sakura_skip.t006
+> $chapter6.chapter6_sakura_skip.t007
 
 @wait 500
 
-> ……乱れていないことが、かえって心に引っかかった。
+> $chapter6.chapter6_sakura_skip.t008
 
 @hide sakura_sports fade_out
 @wait 600
@@ -568,103 +568,103 @@ sakura_sports: じゃあね、勇くん。また月曜日。
 @se shopping_street_ambient.mp3
 @wait 600
 
-> 体育館からの帰り道。
-> 商店街に入ると、夏の熱が少しだけ変わる。
-> アーケードの屋根が日差しを遮って、代わりにいろんな声と匂いが溜まっている。
+> $chapter6.chapter6_kotoha_piano.t001
+> $chapter6.chapter6_kotoha_piano.t002
+> $chapter6.chapter6_kotoha_piano.t003
 
-> 八月の昼間、大人たちは早足で歩いている。
-> セールの看板。かき氷の旗。金魚すくいが終わったあとみたいな水の匂い。
-> 夏休みだからといって、大人の世界は休みじゃない。
-> それでも、商店街の空気だけは、どこか少し緩んでいた。
+> $chapter6.chapter6_kotoha_piano.t004
+> $chapter6.chapter6_kotoha_piano.t005
+> $chapter6.chapter6_kotoha_piano.t006
+> $chapter6.chapter6_kotoha_piano.t007
 
 @wait 600
 
-> 試合を最後まで観ていたのは、なんとなくそこにいたからだ、と最初は思っていた。
-> でも気づいたら、終わりまで目で追っていた。
-> 涼しいとか暑いとか、そういう話じゃなかった。
-> ただ、誰かが全力で動くのを見ていると、時間の流れが違う速度になる。
-> 夏休みの宙吊り感から、少しだけ逃げられる。
+> $chapter6.chapter6_kotoha_piano.t008
+> $chapter6.chapter6_kotoha_piano.t009
+> $chapter6.chapter6_kotoha_piano.t010
+> $chapter6.chapter6_kotoha_piano.t011
+> $chapter6.chapter6_kotoha_piano.t012
 
 @wait 500
 
-> 商店街を抜けようとして、足が止まった。
+> $chapter6.chapter6_kotoha_piano.t013
 
 @scene street_plaza_summer fade
 @wait 500
 
-> 広場の真ん中に、小さなステージが組まれていた。
-> 木製のプラットフォームの上に、アップライトピアノが一台。
-> 「どなたでもどうぞ」と書いた立て看板。
-> 夏の間だけ設置される、ストリートピアノの特設ステージらしかった。
+> $chapter6.chapter6_kotoha_piano.t014
+> $chapter6.chapter6_kotoha_piano.t015
+> $chapter6.chapter6_kotoha_piano.t016
+> $chapter6.chapter6_kotoha_piano.t017
 
-> 先週、誰かが弾いているのを通りがかりに聞いた。
-> 上手い、とか下手とか、そういうことじゃなかった。
-> 音が空気に混じって、商店街の喧騒の上を漂っていた。
+> $chapter6.chapter6_kotoha_piano.t018
+> $chapter6.chapter6_kotoha_piano.t019
+> $chapter6.chapter6_kotoha_piano.t020
 
 @wait 500
 
-> 誰かが弾き終わったばかりだった。
-> 鍵盤の上に、まだ音の気配が漂っていた。
-> ——音じゃない。音が消えたあとの、残滓みたいなもの。
-> 空気の中に、形だけが残っている。
+> $chapter6.chapter6_kotoha_piano.t021
+> $chapter6.chapter6_kotoha_piano.t022
+> $chapter6.chapter6_kotoha_piano.t023
+> $chapter6.chapter6_kotoha_piano.t024
 
 @wait 600
 
 @show kotoha center normal fade_in
 @wait 400
 
-> ことは、が——
-> そのピアノの前で、立ち止まっていた。
+> $chapter6.chapter6_kotoha_piano.t025
+> $chapter6.chapter6_kotoha_piano.t026
 
-> 動けない、という感じだった。
+> $chapter6.chapter6_kotoha_piano.t027
 
 @wait 500
 
-> 制服だった。
-> 夏休みの、真昼の商店街に、制服で立っていた。
+> $chapter6.chapter6_kotoha_piano.t028
+> $chapter6.chapter6_kotoha_piano.t029
 
 @wait 400
 
-> まわりの人間は、だいたい通り過ぎていく。
-> ピアノに視線を投げる人もいる。でも立ち止まる人はほとんどいない。
-> ことはだけが、そこから動かなかった。
+> $chapter6.chapter6_kotoha_piano.t030
+> $chapter6.chapter6_kotoha_piano.t031
+> $chapter6.chapter6_kotoha_piano.t032
 
 @wait 600
 
-> 手が、半分、鍵盤の形に曲がっていた。
+> $chapter6.chapter6_kotoha_piano.t033
 
-> 弾こうとしているわけじゃない。
-> 弾けないでいる、というのとも違う。
-> ただ、その形のまま——止まっていた。
+> $chapter6.chapter6_kotoha_piano.t034
+> $chapter6.chapter6_kotoha_piano.t035
+> $chapter6.chapter6_kotoha_piano.t036
 
-> 筋肉の記憶、というのがある。
-> 体が覚えている動き。意識しなくてもなぞってしまう形。
-> ことはの手は、そういう形をしていた。
+> $chapter6.chapter6_kotoha_piano.t037
+> $chapter6.chapter6_kotoha_piano.t038
+> $chapter6.chapter6_kotoha_piano.t039
 
 @wait 700
 
 @still kotoha_street_piano
 @wait 1000
 
-player: （……ことは？）
+player: $chapter6.chapter6_kotoha_piano.t040
 
 @wait 600
 
-> ことはは、自分がどこにいるかを忘れたみたいな顔をしていた。
-> 商店街の喧騒の中に、透明な壁を一枚作って、
-> その内側でだけ、別の時間にいた。
+> $chapter6.chapter6_kotoha_piano.t041
+> $chapter6.chapter6_kotoha_piano.t042
+> $chapter6.chapter6_kotoha_piano.t043
 
-> あの表情を、なんと呼べばいいのかわからない。
-> 懐かしい、ではない。
-> 悲しい、でも少し違う。
-> ただ——引き寄せられている、という感じ。
-> 磁力に逆らえないのに、踏み込めない。
+> $chapter6.chapter6_kotoha_piano.t044
+> $chapter6.chapter6_kotoha_piano.t045
+> $chapter6.chapter6_kotoha_piano.t046
+> $chapter6.chapter6_kotoha_piano.t047
+> $chapter6.chapter6_kotoha_piano.t048
 
 @wait 500
 
 @choice
-- "声をかける" [kotoha_favor+5] -> chapter6_kotoha_talk
-- "そのまま通り過ぎる" -> chapter6_kotoha_skip
+- $choices.chapter6.kotoha_call_out [kotoha_favor+5] -> chapter6_kotoha_talk
+- $choices.chapter6.kotoha_walk_past -> chapter6_kotoha_skip
 
 
 # chapter6_kotoha_talk
@@ -672,209 +672,209 @@ player: （……ことは？）
 @still_hide
 @wait 400
 
-player: ことは。
+player: $chapter6.chapter6_kotoha_talk.t001
 
 @wait 400
 
 @expr kotoha thinking
 @wait 300
 
-> ことははゆっくりと、手を閉じた。
-> 拳ではなく——そっと、指をたたむように。
+> $chapter6.chapter6_kotoha_talk.t002
+> $chapter6.chapter6_kotoha_talk.t003
 
 @wait 600
 
-> ああ、と思った。
-> 今、あの手は何かから離れた。
+> $chapter6.chapter6_kotoha_talk.t004
+> $chapter6.chapter6_kotoha_talk.t005
 
 @wait 500
 
 @expr kotoha normal
-kotoha: ……桐島くん。
+kotoha: $chapter6.chapter6_kotoha_talk.t006
 
 @wait 400
 
-> 声に驚きはなかった。
-> 驚く前に、もう少し別のものが通り過ぎた、という感じ。
+> $chapter6.chapter6_kotoha_talk.t007
+> $chapter6.chapter6_kotoha_talk.t008
 
 @wait 500
 
-kotoha: ……こんなところで。
+kotoha: $chapter6.chapter6_kotoha_talk.t009
 
-player: 帰り道にたまたま。
+player: $chapter6.chapter6_kotoha_talk.t010
 
-kotoha: そうですか。
+kotoha: $chapter6.chapter6_kotoha_talk.t011
 
 @wait 400
 
-player: ……制服なんだな。
+player: $chapter6.chapter6_kotoha_talk.t012
 
 @wait 300
 
 @expr kotoha thinking
-kotoha: ……午前中、学校に寄ったので。
-kotoha: 図書室を使うのに学生証が必要で。
+kotoha: $chapter6.chapter6_kotoha_talk.t013
+kotoha: $chapter6.chapter6_kotoha_talk.t014
 
 @wait 400
 
-player: そのまま来たのか。
+player: $chapter6.chapter6_kotoha_talk.t015
 
 @expr kotoha normal
-kotoha: はい。着替えに戻るのも面倒だったので。
+kotoha: $chapter6.chapter6_kotoha_talk.t016
 
 @wait 500
 
-> ことはは視線をピアノから外そうとして、少しだけ時間がかかった。
-> 磁石みたいに、引っ張られていた。
+> $chapter6.chapter6_kotoha_talk.t017
+> $chapter6.chapter6_kotoha_talk.t018
 
 @wait 600
 
-player: ここで何してたの？
+player: $chapter6.chapter6_kotoha_talk.t019
 
 @wait 500
 
 @expr kotoha thinking
-kotoha: ……なんでもないです。
+kotoha: $chapter6.chapter6_kotoha_talk.t020
 
 @wait 400
 
-kotoha: 帰ります。
+kotoha: $chapter6.chapter6_kotoha_talk.t021
 
-> そう言ったが、すぐには動かなかった。
+> $chapter6.chapter6_kotoha_talk.t022
 
 @wait 800
 
-> ことははもう一度だけ、ピアノを見た。
-> それから、視線を外した。
+> $chapter6.chapter6_kotoha_talk.t023
+> $chapter6.chapter6_kotoha_talk.t024
 
 @wait 600
 
-player: ……弾けないのか？
+player: $chapter6.chapter6_kotoha_talk.t025
 
 @wait 500
 
 @expr kotoha shy
-kotoha: ……弾けないんじゃなくて。
+kotoha: $chapter6.chapter6_kotoha_talk.t026
 
 @wait 600
 
-> そこで止まった。
-> 言いかけた言葉が、途中で糸を切られたみたいに。
+> $chapter6.chapter6_kotoha_talk.t027
+> $chapter6.chapter6_kotoha_talk.t028
 
 @wait 700
 
-player: ……続き、言いたくなければいい。
+player: $chapter6.chapter6_kotoha_talk.t029
 
 @wait 400
 
 @expr kotoha thinking
-kotoha: ……え。
+kotoha: $chapter6.chapter6_kotoha_talk.t030
 
-player: 言いかけて止まるときは、だいたい続きがある。でも言いたくないときもある。
+player: $chapter6.chapter6_kotoha_talk.t031
 
 @wait 500
 
-kotoha: ……そうですね。
+kotoha: $chapter6.chapter6_kotoha_talk.t032
 
 @wait 600
 
-> ことはは少しだけ、表情を緩めた。
-> 笑った、とは言えない。でも何かが、ほんのわずかだけ和らいだ。
+> $chapter6.chapter6_kotoha_talk.t033
+> $chapter6.chapter6_kotoha_talk.t034
 
 @wait 500
 
-player: 聴くのは好きか。
+player: $chapter6.chapter6_kotoha_talk.t035
 
 @wait 400
 
 @expr kotoha thinking
-kotoha: ……聴くのは。
+kotoha: $chapter6.chapter6_kotoha_talk.t036
 
 @wait 500
 
-> そこで止まった。また止まった。
-> でも今度は、「言いたくない」じゃなくて——
-> 「言葉が足りない」という止まり方に見えた。
+> $chapter6.chapter6_kotoha_talk.t037
+> $chapter6.chapter6_kotoha_talk.t038
+> $chapter6.chapter6_kotoha_talk.t039
 
 @wait 600
 
-kotoha: ……聴くのは、好きです。たぶん。
+kotoha: $chapter6.chapter6_kotoha_talk.t040
 
 @wait 500
 
-player: ……そうか。
+player: $chapter6.chapter6_kotoha_talk.t041
 
 @wait 400
 
-> それだけ言って、俺も黙った。
-> 変に補おうとしないほうがいい、という感じがした。
+> $chapter6.chapter6_kotoha_talk.t042
+> $chapter6.chapter6_kotoha_talk.t043
 
 @wait 500
 
-> 「たぶん」という言葉が少し引っかかった。
-> 好きなのに確信が持てない、ということがある。
-> 好きだったものを、今も好きでいていいのか、迷っているのかもしれない。
+> $chapter6.chapter6_kotoha_talk.t044
+> $chapter6.chapter6_kotoha_talk.t045
+> $chapter6.chapter6_kotoha_talk.t046
 
 @wait 600
 
-kotoha: ……最近も、ここで、誰かが弾いていて。
+kotoha: $chapter6.chapter6_kotoha_talk.t047
 
-player: 聴いたか。
+player: $chapter6.chapter6_kotoha_talk.t048
 
 @wait 400
 
-kotoha: ……少しだけ。
+kotoha: $chapter6.chapter6_kotoha_talk.t049
 
 @wait 500
 
-> ことははそれ以上言わなかった。
-> 「少しだけ聴いた」の続きが、どこかにあるのはわかった。
-> でも続きには、今は触れないほうがいい気がした。
+> $chapter6.chapter6_kotoha_talk.t050
+> $chapter6.chapter6_kotoha_talk.t051
+> $chapter6.chapter6_kotoha_talk.t052
 
 @wait 600
 
 @expr kotoha normal
-> ことはは、ピアノに背を向けた。
-> 一歩、また一歩と、広場を離れていく。
+> $chapter6.chapter6_kotoha_talk.t053
+> $chapter6.chapter6_kotoha_talk.t054
 
 @wait 400
 
-kotoha: ……同じ方向、ですか。
+kotoha: $chapter6.chapter6_kotoha_talk.t055
 
-player: たぶん。
+player: $chapter6.chapter6_kotoha_talk.t056
 
-kotoha: では。
+kotoha: $chapter6.chapter6_kotoha_talk.t057
 
 @wait 300
 
-> 並んで歩き始めた。
-> 会話はなかった。
-> でも沈黙が重くないのは、ことはが最初からそういう距離感の人間だからだ。
+> $chapter6.chapter6_kotoha_talk.t058
+> $chapter6.chapter6_kotoha_talk.t059
+> $chapter6.chapter6_kotoha_talk.t060
 
 @wait 600
 
-> 少しだけ遅れて気づいた。
-> ことはの歩くペースが、来たときより少し速い。
-> ピアノから離れようとしている。
-> ——それでも、完全には振り切れていない。
+> $chapter6.chapter6_kotoha_talk.t061
+> $chapter6.chapter6_kotoha_talk.t062
+> $chapter6.chapter6_kotoha_talk.t063
+> $chapter6.chapter6_kotoha_talk.t064
 
 @wait 500
 
-> 角を曲がる直前、ことはがほんの少し振り返った。
-> 一秒もなかった。
-> それだけで、また前を向いた。
+> $chapter6.chapter6_kotoha_talk.t065
+> $chapter6.chapter6_kotoha_talk.t066
+> $chapter6.chapter6_kotoha_talk.t067
 
 @hide kotoha fade_out
 @wait 600
 
-> ふと振り返ると——
-> ピアノは、さっきのまま静かにそこにあった。
+> $chapter6.chapter6_kotoha_talk.t068
+> $chapter6.chapter6_kotoha_talk.t069
 
 @wait 500
 
-> 誰も弾いていない。
-> それでも、なんとなく音がする気がした。
-> 俺の錯覚か、それともことはが残してきた何かなのか。
+> $chapter6.chapter6_kotoha_talk.t070
+> $chapter6.chapter6_kotoha_talk.t071
+> $chapter6.chapter6_kotoha_talk.t072
 
 @wait 700
 
@@ -886,17 +886,17 @@ kotoha: では。
 @still_hide
 @wait 400
 
-> 声をかけなかった。
-> あの場所に踏み込む言葉が、見つからなかった。
+> $chapter6.chapter6_kotoha_skip.t001
+> $chapter6.chapter6_kotoha_skip.t002
 
 @wait 500
 
-> 足を止めないまま、広場を横切った。
-> ことははこちらに気づいていないか、気づかないふりをしていた。
+> $chapter6.chapter6_kotoha_skip.t003
+> $chapter6.chapter6_kotoha_skip.t004
 
 @wait 700
 
-> ピアノの音は、聞こえなかった。
+> $chapter6.chapter6_kotoha_skip.t005
 
 @wait 500
 
@@ -913,76 +913,76 @@ kotoha: では。
 @se river_flow.mp3
 @wait 800
 
-> 河川敷。
-> 夕暮れが川面に溶けていた。
+> $chapter6.chapter6_mahiru_river.t001
+> $chapter6.chapter6_mahiru_river.t002
 
-> 橋の下から堤防に上がると、視界が急に広がる。
-> 川の向こうに低い山が見えて、空がずいぶん大きく感じる。
-> 夏の夕方、ここだけ気温がわずかに低かった。
-> 風が川から吹いてくる。一歩踏み込むごとに、体が少し軽くなる気がした。
+> $chapter6.chapter6_mahiru_river.t003
+> $chapter6.chapter6_mahiru_river.t004
+> $chapter6.chapter6_mahiru_river.t005
+> $chapter6.chapter6_mahiru_river.t006
 
 @wait 600
 
-> 休日の午後、こんな場所に来たのは初めてだった。
+> $chapter6.chapter6_mahiru_river.t007
 
-> 目的があったわけじゃない。
-> さくらを見た。ことはを見た。
-> 次はどこへ行こうかと思いながら、ただ自転車を走らせていたら、ここに出た。
+> $chapter6.chapter6_mahiru_river.t008
+> $chapter6.chapter6_mahiru_river.t009
+> $chapter6.chapter6_mahiru_river.t010
 
-> 町のすぐそばに、こんな場所があることを知らなかった。
-> いや、知っていたかもしれない。でも来たことがなかった。
+> $chapter6.chapter6_mahiru_river.t011
+> $chapter6.chapter6_mahiru_river.t012
 
 @wait 500
 
 @show mahiru_private center normal fade_in
 @wait 500
 
-> まひるが、カメラを向けていた。
-> 川じゃなく、対岸の木々に向けていた。
+> $chapter6.chapter6_mahiru_river.t013
+> $chapter6.chapter6_mahiru_river.t014
 
 @wait 500
 
-> 一人だった。
-> でも、一人きりとは違う——そんな空気が漂っていた。
+> $chapter6.chapter6_mahiru_river.t015
+> $chapter6.chapter6_mahiru_river.t016
 
-> 何かを待っている一人ではなく、
-> 何かと一緒にいる一人、という感じ。
-
-@wait 600
-
-> 午後の光が斜めに差して、川面が橙色に揺れている。
-> まひるのシルエットが、その橙の中に溶けそうで溶けない。
+> $chapter6.chapter6_mahiru_river.t017
+> $chapter6.chapter6_mahiru_river.t018
 
 @wait 600
 
-> まひるが静止した。
-> シャッターを切ろうとして、少しだけ躊躇した。
-> そして、切らなかった。
+> $chapter6.chapter6_mahiru_river.t019
+> $chapter6.chapter6_mahiru_river.t020
 
-> カメラをゆっくり下ろして、ただ対岸を見た。
+@wait 600
+
+> $chapter6.chapter6_mahiru_river.t021
+> $chapter6.chapter6_mahiru_river.t022
+> $chapter6.chapter6_mahiru_river.t023
+
+> $chapter6.chapter6_mahiru_river.t024
 
 @wait 600
 
 @still mahiru_riverbank
 @wait 1000
 
-player: （何を撮っているんだろう……）
+player: $chapter6.chapter6_mahiru_river.t025
 
 @wait 500
 
-> 写真を撮りたい瞬間というのがある、とまひるが昔言っていた気がする。
-> 記録じゃなくて、とどめたい、という感じ。
-> 残したいものが、ここにある。
+> $chapter6.chapter6_mahiru_river.t026
+> $chapter6.chapter6_mahiru_river.t027
+> $chapter6.chapter6_mahiru_river.t028
 
-> でも今、まひるはシャッターを切らなかった。
-> とどめようとしなかった。
-> ただ、いた。その場所に、存在していた。
+> $chapter6.chapter6_mahiru_river.t029
+> $chapter6.chapter6_mahiru_river.t030
+> $chapter6.chapter6_mahiru_river.t031
 
 @wait 600
 
 @choice
-- "隣に座る" [mahiru_favor+5] -> chapter6_mahiru_talk
-- "そのまま立っている" -> chapter6_mahiru_skip
+- $choices.chapter6.mahiru_sit_beside [mahiru_favor+5] -> chapter6_mahiru_talk
+- $choices.chapter6.mahiru_stay_standing -> chapter6_mahiru_skip
 
 
 # chapter6_mahiru_talk
@@ -990,192 +990,192 @@ player: （何を撮っているんだろう……）
 @still_hide
 @wait 400
 
-> 無言でまひるの隣に座った。
-> まひるは驚かなかった。
+> $chapter6.chapter6_mahiru_talk.t001
+> $chapter6.chapter6_mahiru_talk.t002
 
 @wait 500
 
 @expr mahiru_private normal
-mahiru: ……勇くん。
+mahiru: $chapter6.chapter6_mahiru_talk.t003
 
-player: 邪魔した？
+player: $chapter6.chapter6_mahiru_talk.t004
 
-mahiru: ううん。
+mahiru: $chapter6.chapter6_mahiru_talk.t005
 
 @wait 600
 
-> しばらく、二人で川を見ていた。
+> $chapter6.chapter6_mahiru_talk.t006
 
 @wait 800
 
-> 川の流れは緩やかだった。
-> 風が吹くと、水面が光の鱗みたいになる。
-> 蝉の声がどこかで鳴いていて、でも川の音のほうが少しだけ大きかった。
-> 自転車で走ってきた道の熱が、体からゆっくり抜けていく。
+> $chapter6.chapter6_mahiru_talk.t007
+> $chapter6.chapter6_mahiru_talk.t008
+> $chapter6.chapter6_mahiru_talk.t009
+> $chapter6.chapter6_mahiru_talk.t010
 
 @wait 700
 
 @expr mahiru_private thinking
-mahiru: ここ、昔よく来てたんだ。
+mahiru: $chapter6.chapter6_mahiru_talk.t011
 
 @wait 500
 
-player: 一人で？
+player: $chapter6.chapter6_mahiru_talk.t012
 
 @wait 600
 
 @expr mahiru_private sad
-mahiru: ……ひとりじゃなかった。
+mahiru: $chapter6.chapter6_mahiru_talk.t013
 
 @wait 700
 
-> それ以上は言わなかった。
-> 聞かなかった。
+> $chapter6.chapter6_mahiru_talk.t014
+> $chapter6.chapter6_mahiru_talk.t015
 
-> 川の音だけが、続いていた。
+> $chapter6.chapter6_mahiru_talk.t016
 
 @wait 900
 
-> まひるは草の上に両手をついて、少しだけ体を前に傾けた。
-> 川を見ているのか、川の向こうを見ているのか、わからなかった。
+> $chapter6.chapter6_mahiru_talk.t017
+> $chapter6.chapter6_mahiru_talk.t018
 
 @wait 600
 
-player: 写真、撮らないの？
+player: $chapter6.chapter6_mahiru_talk.t019
 
 @wait 400
 
 @expr mahiru_private normal
-mahiru: さっき、撮ろうとして——やめた。
+mahiru: $chapter6.chapter6_mahiru_talk.t020
 
-player: なんで。
+player: $chapter6.chapter6_mahiru_talk.t021
 
 @wait 500
 
-mahiru: ……撮ると、終わる感じがして。
+mahiru: $chapter6.chapter6_mahiru_talk.t022
 
 @wait 600
 
-> 撮ると、終わる。
-> その言葉の意味が、少しわかった気がした。
-> とどめようとした瞬間に、もうその瞬間は変わってしまう。
-> だから撮らないほうが、長くいられる。
+> $chapter6.chapter6_mahiru_talk.t023
+> $chapter6.chapter6_mahiru_talk.t024
+> $chapter6.chapter6_mahiru_talk.t025
+> $chapter6.chapter6_mahiru_talk.t026
 
 @wait 600
 
-player: じゃあ、撮らないほうがいいじゃないか。
+player: $chapter6.chapter6_mahiru_talk.t027
 
 @wait 400
 
 @expr mahiru_private thinking
-mahiru: ……でも、撮らないと消えるから。
+mahiru: $chapter6.chapter6_mahiru_talk.t028
 
 @wait 500
 
-> 矛盾している。
-> でも、その矛盾ごと、ここに来るんだろう。
+> $chapter6.chapter6_mahiru_talk.t029
+> $chapter6.chapter6_mahiru_talk.t030
 
 @wait 700
 
-mahiru: ……写真、見る？
+mahiru: $chapter6.chapter6_mahiru_talk.t031
 
-player: 見ていいなら。
+player: $chapter6.chapter6_mahiru_talk.t032
 
 @wait 400
 
-> まひるはカメラのディスプレイを、こちらに少し傾けた。
-> 川の写真が何枚か。空の写真。木の写真。
-> どれも、ちょうどいい明るさで、何でもないようで、でも妙に心が引き止められた。
+> $chapter6.chapter6_mahiru_talk.t033
+> $chapter6.chapter6_mahiru_talk.t034
+> $chapter6.chapter6_mahiru_talk.t035
 
 @wait 500
 
 @expr mahiru_private happy
-mahiru: ここで撮ったやつだよ。この場所、好きなんだ。
+mahiru: $chapter6.chapter6_mahiru_talk.t036
 
-player: なんで。
+player: $chapter6.chapter6_mahiru_talk.t037
 
 @wait 600
 
 @expr mahiru_private thinking
-mahiru: ……理由は、あるんだけど。
+mahiru: $chapter6.chapter6_mahiru_talk.t038
 
 @wait 700
 
-> そこで止まった。
-> 「ひとりじゃなかった」と言ったときと、同じ止まり方。
+> $chapter6.chapter6_mahiru_talk.t039
+> $chapter6.chapter6_mahiru_talk.t040
 
-> 理由は、ある。
-> でも今は、言わない。
-> ——言えない、じゃなく、言わない、という感じ。
+> $chapter6.chapter6_mahiru_talk.t041
+> $chapter6.chapter6_mahiru_talk.t042
+> $chapter6.chapter6_mahiru_talk.t043
 
 @wait 600
 
-> まひるはカメラをゆっくり持ち直した。
-> 今度は、シャッターを切った。
+> $chapter6.chapter6_mahiru_talk.t044
+> $chapter6.chapter6_mahiru_talk.t045
 
 @wait 400
 
 @wait 500
 
-player: 何を撮ったの。
+player: $chapter6.chapter6_mahiru_talk.t046
 
 @expr mahiru_private happy
-mahiru: 川。
-mahiru: あと、空と、風。
+mahiru: $chapter6.chapter6_mahiru_talk.t047
+mahiru: $chapter6.chapter6_mahiru_talk.t048
 
-player: 風は撮れないだろ。
+player: $chapter6.chapter6_mahiru_talk.t049
 
-mahiru: 撮れるよ。
-mahiru: 草が揺れてるとこに、風が写る。
+mahiru: $chapter6.chapter6_mahiru_talk.t050
+mahiru: $chapter6.chapter6_mahiru_talk.t051
 
 @wait 500
 
-> それはそうかもしれない、と思った。
+> $chapter6.chapter6_mahiru_talk.t052
 
 @wait 600
 
 @expr mahiru_private normal
-mahiru: ……勇くんも、撮っていい？
+mahiru: $chapter6.chapter6_mahiru_talk.t053
 
-player: 俺？
+player: $chapter6.chapter6_mahiru_talk.t054
 
-mahiru: うん。嫌なら断っていい。
+mahiru: $chapter6.chapter6_mahiru_talk.t055
 
 @wait 500
 
-player: ……好きにしていいけど。
+player: $chapter6.chapter6_mahiru_talk.t056
 
 @wait 400
 
 @wait 500
 
 @expr mahiru_private thinking
-mahiru: ありがとう。
+mahiru: $chapter6.chapter6_mahiru_talk.t057
 
 @wait 500
 
-player: 何の写真になったんだ、それ。
+player: $chapter6.chapter6_mahiru_talk.t058
 
-mahiru: 川の隣に座ってる人の写真。
+mahiru: $chapter6.chapter6_mahiru_talk.t059
 
-player: そのまんまじゃないか。
+player: $chapter6.chapter6_mahiru_talk.t060
 
 @expr mahiru_private happy
-mahiru: そのまんまのほうが、いいの。
+mahiru: $chapter6.chapter6_mahiru_talk.t061
 
 @wait 600
 
-player: （ここに、誰かいたんだ——）
+player: $chapter6.chapter6_mahiru_talk.t062
 
 @wait 500
 
-> 気配、だけがある。
-> 形はない。声もない。
-> でも、まひるがここへ来る理由の中心に、誰かがいる。
+> $chapter6.chapter6_mahiru_talk.t063
+> $chapter6.chapter6_mahiru_talk.t064
+> $chapter6.chapter6_mahiru_talk.t065
 
-> その「誰か」のことは、今は聞かなかった。
-> ここで聞く言葉じゃない。
-> そういう判断が、自然にできた。
+> $chapter6.chapter6_mahiru_talk.t066
+> $chapter6.chapter6_mahiru_talk.t067
+> $chapter6.chapter6_mahiru_talk.t068
 
 @wait 600
 
@@ -1190,27 +1190,27 @@ player: （ここに、誰かいたんだ——）
 @still_hide
 @wait 400
 
-> 隣に座らなかった。
+> $chapter6.chapter6_mahiru_skip.t001
 
-> まひるの邪魔をする気になれなかった。
-> あの静けさは——壊せないものだった。
+> $chapter6.chapter6_mahiru_skip.t002
+> $chapter6.chapter6_mahiru_skip.t003
 
 @wait 700
 
-> しばらく遠くから見ていて、
-> まひるがカメラをケースにしまい始めるのを確認してから、声をかけた。
+> $chapter6.chapter6_mahiru_skip.t004
+> $chapter6.chapter6_mahiru_skip.t005
 
 @wait 500
 
 @expr mahiru_private surprised
 
-player: まひる。
+player: $chapter6.chapter6_mahiru_skip.t006
 
-mahiru: ……あ。勇くん。
+mahiru: $chapter6.chapter6_mahiru_skip.t007
 
 @wait 400
 
-> まひるは小さく笑った。
+> $chapter6.chapter6_mahiru_skip.t008
 
 @wait 400
 
@@ -1226,170 +1226,170 @@ mahiru: ……あ。勇くん。
 @se evening_wind.mp3
 @wait 600
 
-> 日が傾いていた。
-> 橙色が、道の先まで伸びている。
+> $chapter6.chapter6_evening_walk.t001
+> $chapter6.chapter6_evening_walk.t002
 
 @show mahiru_private right normal fade_in
 @wait 400
 
-> 帰り道、まひると並んで歩いていた。
+> $chapter6.chapter6_evening_walk.t003
 
-mahiru: 今日は同じ方向だね。
+mahiru: $chapter6.chapter6_evening_walk.t004
 
-player: そうみたい。
+player: $chapter6.chapter6_evening_walk.t005
 
 @wait 500
 
 @still evening_walk_private
 @wait 800
 
-> しばらく、言葉はなかった。
-> でも沈黙は、重くなかった。
+> $chapter6.chapter6_evening_walk.t006
+> $chapter6.chapter6_evening_walk.t007
 
 @wait 1000
 
 @still_hide
 @wait 300
 
-> 夕暮れの空が、橙から赤に変わっていく。
-> 電線に鳥が三羽、並んで止まっていた。
-> どこかで子どもの声がして、また消えた。
+> $chapter6.chapter6_evening_walk.t008
+> $chapter6.chapter6_evening_walk.t009
+> $chapter6.chapter6_evening_walk.t010
 
 @wait 600
 
 @expr mahiru_private thinking
-mahiru: 勇くんって。
+mahiru: $chapter6.chapter6_evening_walk.t011
 
 @wait 400
 
-mahiru: 以前より、人の話を聞く顔になった気がする。
+mahiru: $chapter6.chapter6_evening_walk.t012
 
 @wait 500
 
-player: ……そうか？
+player: $chapter6.chapter6_evening_walk.t013
 
 @expr mahiru_private normal
-mahiru: うん。なんか、ちゃんと聴いてる感じがする。
+mahiru: $chapter6.chapter6_evening_walk.t014
 
 @wait 600
 
-> 悪い意味じゃなさそうだった。
-> でも、そういうことを口にする人間は、
-> たいてい自分も誰かに聴いてほしいことがある。
+> $chapter6.chapter6_evening_walk.t015
+> $chapter6.chapter6_evening_walk.t016
+> $chapter6.chapter6_evening_walk.t017
 
 @wait 500
 
-player: まひるは？
+player: $chapter6.chapter6_evening_walk.t018
 
 @wait 400
 
 @expr mahiru_private thinking
-mahiru: ……まひるも、最近ちょっと。
+mahiru: $chapter6.chapter6_evening_walk.t019
 
 @wait 600
 
-mahiru: 誰かに話を聞いてもらえると、楽になるってわかってきた。
+mahiru: $chapter6.chapter6_evening_walk.t020
 
 @wait 500
 
-player: 心配してくれてるのか。
+player: $chapter6.chapter6_evening_walk.t021
 
 @expr mahiru_private happy
-mahiru: うーん。心配、というか。
+mahiru: $chapter6.chapter6_evening_walk.t022
 
 @wait 400
 
-mahiru: 勇くん、なんか背負いすぎるとこあるから。
+mahiru: $chapter6.chapter6_evening_walk.t023
 
-player: …………
+player: $chapter6.chapter6_evening_walk.t024
 
-mahiru: 違う？
+mahiru: $chapter6.chapter6_evening_walk.t025
 
 @wait 500
 
-> 違うとは言えなかった。
-> 違うと思いたい、というのとも少し違う。
-> ただ、まひるにそう見えているなら、たぶんそうなんだろうと思った。
+> $chapter6.chapter6_evening_walk.t026
+> $chapter6.chapter6_evening_walk.t027
+> $chapter6.chapter6_evening_walk.t028
 
-player: ……否定できない。
+player: $chapter6.chapter6_evening_walk.t029
 
 @expr mahiru_private happy
-mahiru: ふふ。正直。
+mahiru: $chapter6.chapter6_evening_walk.t030
 
 @wait 600
 
-> 夕暮れの道を、二人で歩いた。
-> どこにも急いでいなかった。
+> $chapter6.chapter6_evening_walk.t031
+> $chapter6.chapter6_evening_walk.t032
 
 @wait 700
 
-mahiru: ……そうだ、ひとつだけ聞いていい？
+mahiru: $chapter6.chapter6_evening_walk.t033
 
-player: なに。
+player: $chapter6.chapter6_evening_walk.t034
 
-mahiru: 今日、どこ行ってたの？
+mahiru: $chapter6.chapter6_evening_walk.t035
 
-player: 体育館。それから商店街。それから河川敷。
+player: $chapter6.chapter6_evening_walk.t036
 
 @wait 400
 
 @expr mahiru_private thinking
-mahiru: ……どれも、ひとりで？
+mahiru: $chapter6.chapter6_evening_walk.t037
 
-player: さくらとことはには会った。
+player: $chapter6.chapter6_evening_walk.t038
 
 @wait 500
 
 @expr mahiru_private normal
-mahiru: そっか。
+mahiru: $chapter6.chapter6_evening_walk.t039
 
 @wait 500
 
-> まひるはそれ以上聞かなかった。
-> でも「そっか」という言葉の後に、少しだけ何かが揺れた気がした。
-> 何かを確かめたような、あるいは安心したような。
+> $chapter6.chapter6_evening_walk.t040
+> $chapter6.chapter6_evening_walk.t041
+> $chapter6.chapter6_evening_walk.t042
 
 @wait 600
 
-mahiru: 三人に会ったんだ。
+mahiru: $chapter6.chapter6_evening_walk.t043
 
-player: たまたまだけど。
+player: $chapter6.chapter6_evening_walk.t044
 
 @expr mahiru_private happy
-mahiru: たまたまって、おもしろいよね。
-mahiru: 会おうとして会うのと、たまたま会うのは、同じ「会う」なのに、違う感じがする。
+mahiru: $chapter6.chapter6_evening_walk.t045
+mahiru: $chapter6.chapter6_evening_walk.t046
 
-player: どう違うんだ。
+player: $chapter6.chapter6_evening_walk.t047
 
 @wait 400
 
 @expr mahiru_private thinking
-mahiru: ……たまたまのほうが、素の顔を見られる気がする。
+mahiru: $chapter6.chapter6_evening_walk.t048
 
 @wait 600
 
-> その言葉が、ちょうどよかった。
-> 今日感じていたことを、まひるはさらりと言葉にしてしまった。
+> $chapter6.chapter6_evening_walk.t049
+> $chapter6.chapter6_evening_walk.t050
 
 @wait 500
 
-player: そうかもしれない。
+player: $chapter6.chapter6_evening_walk.t051
 
-mahiru: 見られたほうも、かな。
+mahiru: $chapter6.chapter6_evening_walk.t052
 
-player: …………
+player: $chapter6.chapter6_evening_walk.t053
 
-mahiru: ふふ。勇くんも、今日、少し素の顔してた。
+mahiru: $chapter6.chapter6_evening_walk.t054
 
-player: どんな顔。
+player: $chapter6.chapter6_evening_walk.t055
 
 @expr mahiru_private happy
-mahiru: 疲れてないときの顔。
+mahiru: $chapter6.chapter6_evening_walk.t056
 
 @wait 500
 
-> 疲れていないとき、か。
-> 言われるまで、今日がそういう日だとは気づいていなかった。
+> $chapter6.chapter6_evening_walk.t057
+> $chapter6.chapter6_evening_walk.t058
 
 @wait 600
 
@@ -1408,107 +1408,107 @@ mahiru: 疲れてないときの顔。
 @bgm mystery_shadow.mp3
 @wait 800
 
-> 今日、三人に会った。
+> $chapter6.chapter6_end.t001
 
-> 学校の外で会うと——
-> 少しだけ、違う顔をしている。
+> $chapter6.chapter6_end.t002
+> $chapter6.chapter6_end.t003
 
 @wait 700
 
-> さくらの、笑うのが遅かった一瞬。
-> ことはの、ピアノの前で閉じた手。
-> まひるの、「ひとりじゃなかった」という言葉。
+> $chapter6.chapter6_end.t004
+> $chapter6.chapter6_end.t005
+> $chapter6.chapter6_end.t006
 
 @wait 800
 
-> どれも、学校の中では見たことがなかった。
-> いや、見たことがなかったんじゃなくて——
-> 俺が、気づいていなかっただけかもしれない。
+> $chapter6.chapter6_end.t007
+> $chapter6.chapter6_end.t008
+> $chapter6.chapter6_end.t009
 
 @wait 700
 
-> 学校、というのは、変な場所だと思う。
-> みんなが同じ時間割で動いて、同じ教室に集まって、
-> 笑ったり、しゃべったり、疲れたりする。
-> そのぶん、ひとりひとりが「どこにいるか」がぼやける。
-> 学校という枠の中では、誰もがその枠に合わせた顔をしている。
+> $chapter6.chapter6_end.t010
+> $chapter6.chapter6_end.t011
+> $chapter6.chapter6_end.t012
+> $chapter6.chapter6_end.t013
+> $chapter6.chapter6_end.t014
 
 @wait 600
 
-> 外に出ると、その外枠が消える。
-> さくらは体育館の裏手にいた。
-> ことはは商店街のピアノの前にいた。
-> まひるは河川敷にいた。
+> $chapter6.chapter6_end.t015
+> $chapter6.chapter6_end.t016
+> $chapter6.chapter6_end.t017
+> $chapter6.chapter6_end.t018
 
-> そこに自分で来ていた。
-> 誰かに連れていかれたわけじゃなく。
+> $chapter6.chapter6_end.t019
+> $chapter6.chapter6_end.t020
 
 @wait 800
 
-> それが、本当の場所、というのかもしれない。
-> 自分の意志で選んで、誰にも見せなくていい場所。
+> $chapter6.chapter6_end.t021
+> $chapter6.chapter6_end.t022
 
 @wait 700
 
-> 知らなかった。
-> ——いや、見ていなかっただけかもしれない。
+> $chapter6.chapter6_end.t023
+> $chapter6.chapter6_end.t024
 
 @wait 700
 
-> 人の話を聞く顔になった、とまひるは言った。
+> $chapter6.chapter6_end.t025
 
-> 今日一日で、確かに何かが変わった気がする。
-> 何が変わったのかを言葉にするのは難しい。
-> ただ、今日の前と後では、少し違うように思う。
-
-@wait 700
-
-> まだ、ぜんぶは見えていない。
-> でも今日、少しだけ——見えた気がした。
+> $chapter6.chapter6_end.t026
+> $chapter6.chapter6_end.t027
+> $chapter6.chapter6_end.t028
 
 @wait 700
 
-> 夏休みはまだ続く。
-> 二学期になれば文化祭が始まる。
-> 何かが変わる予感だけが、夕暮れの空気に混じっていた。
+> $chapter6.chapter6_end.t029
+> $chapter6.chapter6_end.t030
+
+@wait 700
+
+> $chapter6.chapter6_end.t031
+> $chapter6.chapter6_end.t032
+> $chapter6.chapter6_end.t033
 
 @wait 600
 
-> 予感というのは、ほとんどの場合、正しい。
-> 問題は、どう変わるかを、予感は教えてくれないことだ。
+> $chapter6.chapter6_end.t034
+> $chapter6.chapter6_end.t035
 
-> 良い方向かもしれない。
-> 良くない方向かもしれない。
-> どちらにしても——それを、今日よりは少しだけ上手く受け取れる気がした。
+> $chapter6.chapter6_end.t036
+> $chapter6.chapter6_end.t037
+> $chapter6.chapter6_end.t038
 
 @wait 800
 
-player: （今日のことは——）
+player: $chapter6.chapter6_end.t039
 
 @wait 500
 
-player: （しばらく、引っかかりそうだな。）
+player: $chapter6.chapter6_end.t040
 
 @wait 700
 
 @scene protagonist_room_night fade
 @wait 500
 
-> 夕暮れが完全に暮れた頃、家に帰り着いた。
-> 玄関の電気をつけて、靴を脱ぐ。
-> 蝉の声がまだ遠くで鳴いていた。
+> $chapter6.chapter6_end.t041
+> $chapter6.chapter6_end.t042
+> $chapter6.chapter6_end.t043
 
 @wait 500
 
-> 鍵を閉めて、荷物を置く。
-> 部屋の空気は少しだけ籠もっていた。
-> 窓を開ける。夜の風が入ってくる。
+> $chapter6.chapter6_end.t044
+> $chapter6.chapter6_end.t045
+> $chapter6.chapter6_end.t046
 
-> 夏の夜は、昼の熱をそのまま引きずっている。
-> でも、今日の外の空気は、昨日よりほんの少しだけ違う温度に感じた。
-> 気のせいかもしれない。
-> それでも——気のせいじゃない、という気がした。
+> $chapter6.chapter6_end.t047
+> $chapter6.chapter6_end.t048
+> $chapter6.chapter6_end.t049
+> $chapter6.chapter6_end.t050
 
 @wait 600
 
-@end "第六章「それぞれの放課後」" -> chapter7_start
+@end "$chapter6.chapter6_end.end_title" -> chapter7_start

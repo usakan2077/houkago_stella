@@ -161,6 +161,7 @@ body {
   width: 90%;
   filter: drop-shadow(0 0 10px rgba(255,130,195,.35)) drop-shadow(0 0 25px rgba(220,60,175,.2));
   animation: titleGlow 3.5s ease-in-out infinite alternate;
+  transition: opacity 320ms ease;
 }
 
 #title-main {
@@ -281,6 +282,33 @@ body {
     0 12px 36px rgba(54, 42, 84, 0.28);
 }
 .title-btn:hover::after { transform: translateX(100%); }
+
+.language-switch {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.language-btn {
+  min-width: 110px;
+  padding: 8px 14px;
+  border: 1px solid rgba(245,180,215,.42);
+  color: rgba(255,228,242,.82);
+  background: rgba(255,255,255,.035);
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: .08em;
+  transition: all .2s ease;
+}
+
+.language-btn:hover,
+.language-btn.active {
+  color: #fff;
+  border-color: rgba(255,210,236,.86);
+  background: rgba(236,110,178,.28);
+  box-shadow: 0 0 14px rgba(236,110,178,.2);
+}
 
 /* ---- 流れ星 ---- */
 #shooting-stars {
@@ -1406,10 +1434,10 @@ body {
 #credits-lyrics {
   right: 38px;
   bottom: 76px;
-  width: min(340px, 28vw);
+  width: min(420px, 32vw);
   padding: 12px 14px;
-  font-size: 12px;
-  line-height: 1.75;
+  font-size: 11px;
+  line-height: 1.52;
   letter-spacing: 0.08em;
   opacity: 0;
   transition: opacity 0.7s ease;
@@ -2098,10 +2126,10 @@ body {
   #credits-lyrics {
     right: 16px;
     bottom: 84px;
-    width: min(230px, calc(100% - 32px));
+    width: min(280px, calc(100% - 32px));
     padding: 10px 12px;
-    font-size: 10px;
-    line-height: 1.65;
+    font-size: 9px;
+    line-height: 1.42;
     letter-spacing: 0.06em;
   }
 }

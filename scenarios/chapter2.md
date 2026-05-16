@@ -10,131 +10,131 @@
 @se school_bell.mp3
 @wait 1000
 
-> 四月も半ばを過ぎた頃。
-> 桜は少しずつ散りはじめていて、木々にも淡い緑が混じり始めていた。
+> $chapter2.chapter2_start.t001
+> $chapter2.chapter2_start.t002
 
-> 薄桃色だった校庭の輪郭が、日ごとに夏の色に近づいていく。
-> そういう変化は、気づかないうちに進んでいることが多い。
-> たぶん人間関係も、同じようなものだ。
+> $chapter2.chapter2_start.t003
+> $chapter2.chapter2_start.t004
+> $chapter2.chapter2_start.t005
 
-> クラスの空気は、四月の頭よりずっと落ち着いていた。
-> まだ完全には固まっていないけれど、
-> なんとなく「いつもの席」と「いつもの顔」ができ始めていた。
+> $chapter2.chapter2_start.t006
+> $chapter2.chapter2_start.t007
+> $chapter2.chapter2_start.t008
 
-> 名前を呼び捨てにするグループ、
-> 毎朝同じ話題で笑い合う女子、
-> 朝からイヤホンを耳に突っ込んで黙っている男子。
-> そういう「もう決まった配置」が、ゆっくりと教室に根を張り始めていた。
+> $chapter2.chapter2_start.t009
+> $chapter2.chapter2_start.t010
+> $chapter2.chapter2_start.t011
+> $chapter2.chapter2_start.t012
 
-> 俺の配置は……まだよくわからなかった。
+> $chapter2.chapter2_start.t013
 
 @show sakura right happy fade_in
 
-sakura: 勇くん、おはよー！
+sakura: $chapter2.chapter2_start.t014
 
-player: ……おはよう
+player: $chapter2.chapter2_start.t015
 
-sakura: テンション低っ！
+sakura: $chapter2.chapter2_start.t016
 
-player: 朝だからな
+player: $chapter2.chapter2_start.t017
 
-sakura: だからこそでしょ！
-sakura: 「朝が来た！やったー！」って感じでいこうよ！
+sakura: $chapter2.chapter2_start.t018
+sakura: $chapter2.chapter2_start.t019
 
-player: それは俺には無理だ
+player: $chapter2.chapter2_start.t020
 
 @expr sakura excited
 
-sakura: え〜！楽しいじゃん！
+sakura: $chapter2.chapter2_start.t021
 
 @show kotoha left normal fade_in
 
-kotoha: ……桜咲さんは、毎朝そうなんですか
+kotoha: $chapter2.chapter2_start.t022
 
-sakura: うん！
+sakura: $chapter2.chapter2_start.t023
 
-kotoha: それは少し大変そうですね
+kotoha: $chapter2.chapter2_start.t024
 
-sakura: えっ！？
+sakura: $chapter2.chapter2_start.t025
 
-player: たぶん真顔で言ってるぞ
+player: $chapter2.chapter2_start.t026
 
 @expr kotoha thinking
 
-kotoha: ……褒めたつもりだったんですが
+kotoha: $chapter2.chapter2_start.t027
 
-player: どこがだ
+player: $chapter2.chapter2_start.t028
 
-kotoha: エネルギーがある、ということで
+kotoha: $chapter2.chapter2_start.t029
 
-sakura: ことはちゃんたまに天然だよね！？
+sakura: $chapter2.chapter2_start.t030
 
-> 花園は少しだけ首をかしげる。
+> $chapter2.chapter2_start.t031
 
-> 自覚はなさそうだった。
-> ……いや、むしろこれは計算なのかもしれないと思って、
-> 俺はすぐにその考えを打ち消した。
-> たぶんただの正直さだ。
+> $chapter2.chapter2_start.t032
+> $chapter2.chapter2_start.t033
+> $chapter2.chapter2_start.t034
+> $chapter2.chapter2_start.t035
 
 @wait 500
 
-> さくらが笑う。
+> $chapter2.chapter2_start.t036
 
-> 明るくて、教室によく似合う笑顔。
-> 春の日差しが窓から差し込んで、その表情をちょうど照らしていた。
+> $chapter2.chapter2_start.t037
+> $chapter2.chapter2_start.t038
 
 @wait 200
 
-sakura: ことはちゃんって、笑うともっとかわいいんだけどなー
+sakura: $chapter2.chapter2_start.t039
 
-kotoha: ……そうですか
+kotoha: $chapter2.chapter2_start.t040
 
-sakura: うん！笑って笑って！
+sakura: $chapter2.chapter2_start.t041
 
-kotoha: ……
+kotoha: $chapter2.chapter2_start.t042
 
 @expr kotoha shy
 
-> ことはは少しだけ眉を動かした。
-> 笑顔というより、困ったような表情だったけれど、
-> それはそれで悪くなかった。
+> $chapter2.chapter2_start.t043
+> $chapter2.chapter2_start.t044
+> $chapter2.chapter2_start.t045
 
-player: 追い詰めるな
+player: $chapter2.chapter2_start.t046
 
-sakura: えっ違うよ！褒めてるの！
+sakura: $chapter2.chapter2_start.t047
 
-player: そう聞こえてないぞ
+player: $chapter2.chapter2_start.t048
 
-sakura: 勇くんは黙ってて！
+sakura: $chapter2.chapter2_start.t049
 
-player: 俺が何かしたのか
+player: $chapter2.chapter2_start.t050
 
-> さくらがむくれる。
-> ことはがほんのわずかに口角を上げる。
-> ……これはたぶん、笑ったと言っていいはずだった。
+> $chapter2.chapter2_start.t051
+> $chapter2.chapter2_start.t052
+> $chapter2.chapter2_start.t053
 
 @wait 400
 
-> そういうやりとりが、今ではもう自然になっていた。
+> $chapter2.chapter2_start.t054
 
-> 四月の最初の週、俺にとってこのクラスは
-> 顔も名前も覚えきれていない他人の集まりだったはずだ。
-> それが気づけば、こんなふうに朝のくだらない話で笑えるようになっていた。
+> $chapter2.chapter2_start.t055
+> $chapter2.chapter2_start.t056
+> $chapter2.chapter2_start.t057
 
-> 人間というのは不思議なもので、
-> 毎日同じ空間にいるだけで、なんとなく場所ができていく。
+> $chapter2.chapter2_start.t058
+> $chapter2.chapter2_start.t059
 
 @wait 600
 
-> ……その笑顔が、一瞬だけ止まった。
+> $chapter2.chapter2_start.t060
 
-> さくらが笑いながら視線を窓の外へ逃がしたとき、
-> ほんの一刹那、表情が消えた。
+> $chapter2.chapter2_start.t061
+> $chapter2.chapter2_start.t062
 
-> 怒っているわけでも、落ち込んでいるわけでもない。
-> ただ、本当に何も乗っていない顔。
-> 誰も気づいていない。
-> 俺以外は。
+> $chapter2.chapter2_start.t063
+> $chapter2.chapter2_start.t064
+> $chapter2.chapter2_start.t065
+> $chapter2.chapter2_start.t066
 
 @expr sakura blank
 
@@ -144,62 +144,62 @@ player: 俺が何かしたのか
 
 @expr sakura surprised
 
-sakura: ん？どうしたの勇くん
+sakura: $chapter2.chapter2_start.t067
 
-player: ……いや
+player: $chapter2.chapter2_start.t068
 
 @expr sakura happy
 
-sakura: あ、寝不足？
+sakura: $chapter2.chapter2_start.t069
 
-player: 違う
+player: $chapter2.chapter2_start.t070
 
-sakura: クマちょっと出てるよ？
+sakura: $chapter2.chapter2_start.t071
 
-player: 余計なお世話だ
+player: $chapter2.chapter2_start.t072
 
-sakura: あはは！
+sakura: $chapter2.chapter2_start.t073
 
-kotoha: ……目の下のことですか
+kotoha: $chapter2.chapter2_start.t074
 
-player: そうだな
+player: $chapter2.chapter2_start.t075
 
-kotoha: 睡眠は大事ですよ
+kotoha: $chapter2.chapter2_start.t076
 
-player: 知ってる
+player: $chapter2.chapter2_start.t077
 
-> また笑う。
+> $chapter2.chapter2_start.t078
 
-> 今度は、さっきまでと同じ笑顔だった。
+> $chapter2.chapter2_start.t079
 
-> ……見間違いかもしれない。
-> 一秒もないくらいの出来事だったから、
-> 俺の気のせいという可能性のほうが高い。
+> $chapter2.chapter2_start.t080
+> $chapter2.chapter2_start.t081
+> $chapter2.chapter2_start.t082
 
-> でも。
+> $chapter2.chapter2_start.t083
 
-> 「気のせい」という言葉に、俺は甘えたくなかった。
+> $chapter2.chapter2_start.t084
 
 @wait 500
 
-sakura: あ、そうだ！今日の昼、屋上どうかな！
-sakura: まひるちゃんも誘って四人でさ！
+sakura: $chapter2.chapter2_start.t085
+sakura: $chapter2.chapter2_start.t086
 
-kotoha: ……屋上、開いてるんですか
+kotoha: $chapter2.chapter2_start.t087
 
-sakura: 去年から開放されてるんだって！
-sakura: 日直の子に聞いた！
+sakura: $chapter2.chapter2_start.t088
+sakura: $chapter2.chapter2_start.t089
 
-player: 知らなかったな
+player: $chapter2.chapter2_start.t090
 
-sakura: でしょ！行こう行こう！
+sakura: $chapter2.chapter2_start.t091
 
-> 問い返す間もなく、さくらは前の席の子に話しかけに行ってしまった。
+> $chapter2.chapter2_start.t092
 
-> ことはは本を開いた。
-> 俺は窓の外を見た。
+> $chapter2.chapter2_start.t093
+> $chapter2.chapter2_start.t094
 
-> 朝の校舎には、今日も普通の時間が流れていた。
+> $chapter2.chapter2_start.t095
 
 @hide sakura fade_out
 @hide kotoha fade_out
@@ -217,83 +217,83 @@ sakura: でしょ！行こう行こう！
 @bgm daily_life.mp3
 @wait 800
 
-> 一時間目が始まった。
-> 国語。
-> 教科書のページをめくる音と、先生の声が重なる。
+> $chapter2.chapter2_class.t001
+> $chapter2.chapter2_class.t002
+> $chapter2.chapter2_class.t003
 
-> 窓から見える校庭では、体育の授業が始まっていた。
-> 別のクラスが、なんとなくぼんやりと動いている。
+> $chapter2.chapter2_class.t004
+> $chapter2.chapter2_class.t005
 
-> 教室の中は、今日もいつも通りだった。
+> $chapter2.chapter2_class.t006
 
 @show sakura right happy fade_in
 
-> さくらは前の席にいる。
-> 先生の話に反応して、よく声を上げていた。
-> 笑い声も大きい。
-> クラスの中でいちばん、場の空気を動かせる人間だった。
+> $chapter2.chapter2_class.t007
+> $chapter2.chapter2_class.t008
+> $chapter2.chapter2_class.t009
+> $chapter2.chapter2_class.t010
 
-> そういう人間がいると、クラスはうまく回る。
-> 誰もが少しだけ発言しやすくなる。
-> 笑うタイミングがわかるようになる。
+> $chapter2.chapter2_class.t011
+> $chapter2.chapter2_class.t012
+> $chapter2.chapter2_class.t013
 
-> だから、クラスの中でのさくらの位置はもう決まっていた。
-> 「明るい子」「話しかけやすい子」
-> そういうラベルを、みんなが自然に貼り付けている。
+> $chapter2.chapter2_class.t014
+> $chapter2.chapter2_class.t015
+> $chapter2.chapter2_class.t016
 
 @wait 600
 
-> 先生が少し笑えるボケをした。
-> ドッと笑いが起きる。
+> $chapter2.chapter2_class.t017
+> $chapter2.chapter2_class.t018
 
-> そのとき、さくらは誰よりも声を上げて笑っていた。
-> 教室中に聞こえるくらい。
+> $chapter2.chapter2_class.t019
+> $chapter2.chapter2_class.t020
 
-> 先生も嬉しそうだった。
-> みんなも楽しそうだった。
+> $chapter2.chapter2_class.t021
+> $chapter2.chapter2_class.t022
 
-> ……ただ。
+> $chapter2.chapter2_class.t023
 
-> その笑い声が少しだけ長く続いて、笑いが引いていくタイミングより一拍遅れて、
-> さくらの声が止まった瞬間。
+> $chapter2.chapter2_class.t024
+> $chapter2.chapter2_class.t025
 
 @wait 300
 
 @expr sakura no_light_eyes
 
-> また、あの顔が来た。
+> $chapter2.chapter2_class.t026
 
-> 一秒もない。
-> 本当に、まばたき一回ぶんの時間。
+> $chapter2.chapter2_class.t027
+> $chapter2.chapter2_class.t028
 
-> 誰も気づいていない。
-> 隣の子も、前の子も、先生も。
+> $chapter2.chapter2_class.t029
+> $chapter2.chapter2_class.t030
 
-> 笑い声が消えた後に残った、
-> 空っぽの顔。
+> $chapter2.chapter2_class.t031
+> $chapter2.chapter2_class.t032
 
-> 光だけが先に消えたみたいな、
-> 何も乗っていない顔。
+> $chapter2.chapter2_class.t033
+> $chapter2.chapter2_class.t034
 
 @wait 800
 
 @expr sakura happy
 
-> 次の瞬間には、さくらはもうノートを取り始めていた。
-> 何事もなかったみたいに。
-> 誰も気づかないように。
+> $chapter2.chapter2_class.t035
+> $chapter2.chapter2_class.t036
+> $chapter2.chapter2_class.t037
 
 @wait 500
 
-> （見間違い、じゃない）
+> $chapter2.chapter2_class.t038
 
-> （俺は今日、二回同じものを見た）
+> $chapter2.chapter2_class.t039
 
-> （一回なら気のせいにできる。でも二回は違う）
+> $chapter2.chapter2_class.t040
 
-> 授業は続く。
-> 黒板に文字が増えていく。
-> 俺のノートには、さっきから何も書かれていなかった。
+> $chapter2.chapter2_class.t041
+> $chapter2.chapter2_class.t042
+> $chapter2.chapter2_class.t043
 
 @hide sakura fade_out
 
@@ -311,201 +311,201 @@ sakura: でしょ！行こう行こう！
 @se wind_rooftop.mp3
 @wait 1000
 
-> 昼休み。
-> 屋上は、思ったより広かった。
-> 給水塔の陰で風が柄の曲がり方を変えていて、
-> 遠くには緑が濃くなりかけの山が見えた。
+> $chapter2.chapter2_lunch.t001
+> $chapter2.chapter2_lunch.t002
+> $chapter2.chapter2_lunch.t003
+> $chapter2.chapter2_lunch.t004
 
-> さくらの言っていた通り、開放されていた屋上には
-> いくつかのベンチと、フェンス越しに町を見下ろせるスペースがあった。
+> $chapter2.chapter2_lunch.t005
+> $chapter2.chapter2_lunch.t006
 
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
 @show mahiru center happy fade_in
 
-sakura: ほらほら、気持ちいいでしょ！
+sakura: $chapter2.chapter2_lunch.t007
 
-player: ……まあ
+player: $chapter2.chapter2_lunch.t008
 
-sakura: 「まあ」って言うけど絶対気持ちいいと思ってる！
+sakura: $chapter2.chapter2_lunch.t009
 
-player: 否定はしてない
+player: $chapter2.chapter2_lunch.t010
 
-mahiru: 風の音、今日は丸い
+mahiru: $chapter2.chapter2_lunch.t011
 
-player: 丸い？
+player: $chapter2.chapter2_lunch.t012
 
-mahiru: ほら、聴いてると角がない感じしない？
+mahiru: $chapter2.chapter2_lunch.t013
 
-> まひるは目を細めて空を見上げる。
-> カメラを首にぶら下げたまま、春の雲を追っていた。
+> $chapter2.chapter2_lunch.t014
+> $chapter2.chapter2_lunch.t015
 
-sakura: わかる気がする！
+sakura: $chapter2.chapter2_lunch.t016
 
-kotoha: ……角のない音、ですか
+kotoha: $chapter2.chapter2_lunch.t017
 
-mahiru: うん。春の真ん中の風って、そういう音がする
+mahiru: $chapter2.chapter2_lunch.t018
 
-player: お前たちの語彙はよくわからんな
+player: $chapter2.chapter2_lunch.t019
 
-sakura: 勇くんは感覚派じゃないから！
+sakura: $chapter2.chapter2_lunch.t020
 
-player: そうかもな
+player: $chapter2.chapter2_lunch.t021
 
-kotoha: ……桐島くんは、どんな風なら好きですか
+kotoha: $chapter2.chapter2_lunch.t022
 
-player: どんな風？
+player: $chapter2.chapter2_lunch.t023
 
-kotoha: はい
+kotoha: $chapter2.chapter2_lunch.t024
 
-player: ……夜風。涼しいやつ
+player: $chapter2.chapter2_lunch.t025
 
-kotoha: ……夜の風は、音が変わりますね
+kotoha: $chapter2.chapter2_lunch.t026
 
-player: そうか？
+player: $chapter2.chapter2_lunch.t027
 
-kotoha: 昼よりも、静かに動いてる感じがします
+kotoha: $chapter2.chapter2_lunch.t028
 
 @wait 400
 
-mahiru: それ、写真に撮れたらいいのにな
+mahiru: $chapter2.chapter2_lunch.t029
 
-sakura: 夜風を？
+sakura: $chapter2.chapter2_lunch.t030
 
-mahiru: うん。音とか、空気感とか
+mahiru: $chapter2.chapter2_lunch.t031
 
-sakura: ……まひるちゃんって、詩人だよね
+sakura: $chapter2.chapter2_lunch.t032
 
-mahiru: ちがうよ
+mahiru: $chapter2.chapter2_lunch.t033
 
-mahiru: ただ、覚えていたいだけ
+mahiru: $chapter2.chapter2_lunch.t034
 
-> まひるは少しだけ笑った。
-> どこか遠くを見る目だった。
+> $chapter2.chapter2_lunch.t035
+> $chapter2.chapter2_lunch.t036
 
 @wait 500
 
-sakura: ことはちゃん、なに食べてるの？
+sakura: $chapter2.chapter2_lunch.t037
 
-kotoha: ……サンドイッチです
+kotoha: $chapter2.chapter2_lunch.t038
 
-sakura: 手作り？
+sakura: $chapter2.chapter2_lunch.t039
 
-kotoha: ……はい
+kotoha: $chapter2.chapter2_lunch.t040
 
-sakura: すごい！えらい！あたし絶対毎日コンビニだもん！
+sakura: $chapter2.chapter2_lunch.t041
 
-player: 俺も購買だな
+player: $chapter2.chapter2_lunch.t042
 
-kotoha: ……作るのは、そんなに手間じゃないです
+kotoha: $chapter2.chapter2_lunch.t043
 
-sakura: でも朝起きてすぐ作るんでしょ？
-sakura: あたし朝は脳みそ動かないから無理だ！
+sakura: $chapter2.chapter2_lunch.t044
+sakura: $chapter2.chapter2_lunch.t045
 
-kotoha: ……前の夜に少し準備しておくと、そうでもないです
+kotoha: $chapter2.chapter2_lunch.t046
 
-sakura: えっ、それ教えて！いつかやってみたい！
+sakura: $chapter2.chapter2_lunch.t047
 
-kotoha: ……いつでも
+kotoha: $chapter2.chapter2_lunch.t048
 
-sakura: やった！ことはちゃん親切！
+sakura: $chapter2.chapter2_lunch.t049
 
 @expr kotoha shy
 
-> ことはは少し視線をずらした。
-> 照れているのか、ただ困っているのか。
-> たぶん、その両方だと思う。
+> $chapter2.chapter2_lunch.t050
+> $chapter2.chapter2_lunch.t051
+> $chapter2.chapter2_lunch.t052
 
 @wait 600
 
-mahiru: あ、いいな
+mahiru: $chapter2.chapter2_lunch.t053
 
-> まひるがカメラを構えた。
+> $chapter2.chapter2_lunch.t054
 
-mahiru: みんなのお昼、写真撮ってもいい？
+mahiru: $chapter2.chapter2_lunch.t055
 
-sakura: えっ撮って撮って！
+sakura: $chapter2.chapter2_lunch.t056
 
-player: 俺は別に……
+player: $chapter2.chapter2_lunch.t057
 
-mahiru: 勇くんも
+mahiru: $chapter2.chapter2_lunch.t058
 
-player: 好きにしろ
+player: $chapter2.chapter2_lunch.t059
 
 @wait 600
 
 @se camera_film_shutter.mp3
-mahiru: ……うん、いい
+mahiru: $chapter2.chapter2_lunch.t060
 
-sakura: 見せて見せて！
+sakura: $chapter2.chapter2_lunch.t061
 
-> まひるが画面を傾けると、
-> 屋上の青空を背景に、三人が映っていた。
+> $chapter2.chapter2_lunch.t062
+> $chapter2.chapter2_lunch.t063
 
-> さくらが笑っている。
-> ことはがどこか居心地悪そうにしている。
-> そして……俺は少しだけ、口の端が上がっていた。
+> $chapter2.chapter2_lunch.t064
+> $chapter2.chapter2_lunch.t065
+> $chapter2.chapter2_lunch.t066
 
-sakura: あたし、すっごくいい顔してる！
-sakura: まひるちゃん写真うまい！
+sakura: $chapter2.chapter2_lunch.t067
+sakura: $chapter2.chapter2_lunch.t068
 
-mahiru: 風がよかっただけ
+mahiru: $chapter2.chapter2_lunch.t069
 
-player: ……俺は？
+player: $chapter2.chapter2_lunch.t070
 
-sakura: 勇くんも！珍しく笑ってるじゃん！
+sakura: $chapter2.chapter2_lunch.t071
 
-player: そうか
+player: $chapter2.chapter2_lunch.t072
 
-kotoha: ……悪くない写真ですね
+kotoha: $chapter2.chapter2_lunch.t073
 
-mahiru: うん
-mahiru: 覚えていられる気がする、この感じ
+mahiru: $chapter2.chapter2_lunch.t074
+mahiru: $chapter2.chapter2_lunch.t075
 
-> 小さな声でそう言って、まひるはカメラを下ろした。
+> $chapter2.chapter2_lunch.t076
 
 @expr kotoha normal
 
 @wait 800
 
-> 屋上に風が吹く。
-> 誰かのお弁当の袋が音を立てた。
+> $chapter2.chapter2_lunch.t077
+> $chapter2.chapter2_lunch.t078
 
-> こういう昼休みは、嫌いじゃなかった。
-> くだらない話と、くだらない笑いと、少しだけ詩的な言葉と。
-> それだけで、なんとなく一日が悪くない気分になる。
+> $chapter2.chapter2_lunch.t079
+> $chapter2.chapter2_lunch.t080
+> $chapter2.chapter2_lunch.t081
 
-> ……四月の初めには、こんな時間が来るとは思っていなかった。
+> $chapter2.chapter2_lunch.t082
 
 @wait 500
 
-sakura: あ、あと十分しかない！
-sakura: 下りるよ下りるよ！
+sakura: $chapter2.chapter2_lunch.t083
+sakura: $chapter2.chapter2_lunch.t084
 
-player: 騒がしいな
+player: $chapter2.chapter2_lunch.t085
 
-sakura: 遅刻したくないもん！
+sakura: $chapter2.chapter2_lunch.t086
 
-kotoha: ……少し急ぎましょうか
+kotoha: $chapter2.chapter2_lunch.t087
 
-mahiru: 走ったら危ないよ
+mahiru: $chapter2.chapter2_lunch.t088
 
-sakura: わかってるって！歩き急ぎで！
+sakura: $chapter2.chapter2_lunch.t089
 
-player: それは走ってるのと変わらないだろ
+player: $chapter2.chapter2_lunch.t090
 
-sakura: うるさーい！
+sakura: $chapter2.chapter2_lunch.t091
 
-> さくらが先に扉へ向かう。
-> ことははお弁当の蓋を閉めながらゆっくり立ち上がった。
-> まひるは最後にもう一度だけ空を見上げて、カメラを胸にしまった。
+> $chapter2.chapter2_lunch.t092
+> $chapter2.chapter2_lunch.t093
+> $chapter2.chapter2_lunch.t094
 
-> 俺は三人の後ろを歩きながら、
-> さっきの写真のことを少しだけ考えていた。
+> $chapter2.chapter2_lunch.t095
+> $chapter2.chapter2_lunch.t096
 
-> 覚えていられる気がする、この感じ。
+> $chapter2.chapter2_lunch.t097
 
-> まひるは、何かを失うことを知っている人間の目をしていた。
+> $chapter2.chapter2_lunch.t098
 
 @hide_all fade_out
 @wait 500
@@ -524,72 +524,72 @@ sakura: うるさーい！
 @se gym_whistle.mp3
 @wait 800
 
-> 五時間目は体育だった。
-> 今日は隣の三組と合同授業で、体育館には二クラス分のシューズの音と笛の音が反響する。
+> $chapter2.chapter2_pe.t001
+> $chapter2.chapter2_pe.t002
 
-> 今日のメニューはバレーボール。
-> さほど好きじゃないが、別に嫌でもない。
-> 適当に動いていれば何とかなる種目だ。
+> $chapter2.chapter2_pe.t003
+> $chapter2.chapter2_pe.t004
+> $chapter2.chapter2_pe.t005
 
 @show sakura_sports right happy fade_in
 @show mahiru_sports center normal fade_in
 
-sakura: 勇くん、バレーできる？
+sakura: $chapter2.chapter2_pe.t006
 
-player: まあな
+player: $chapter2.chapter2_pe.t007
 
-sakura: じゃあスパイク打って！
+sakura: $chapter2.chapter2_pe.t008
 
-player: 体育の授業でそれはやりすぎだろ
+player: $chapter2.chapter2_pe.t009
 
-sakura: えー！いいじゃん！見たい！
+sakura: $chapter2.chapter2_pe.t010
 
-mahiru: 勇くんってさ
+mahiru: $chapter2.chapter2_pe.t011
 
-mahiru: 運動は何でもそつなくやるよね
+mahiru: $chapter2.chapter2_pe.t012
 
-player: 昔は陸上やってたから
+player: $chapter2.chapter2_pe.t013
 
-mahiru: そっか。今はやってないの？
+mahiru: $chapter2.chapter2_pe.t014
 
-player: ……ああ
+player: $chapter2.chapter2_pe.t015
 
-mahiru: 勇くんって
-mahiru: 昔はもっと前に行く人だった気がする
+mahiru: $chapter2.chapter2_pe.t016
+mahiru: $chapter2.chapter2_pe.t017
 
-player: ……覚えてるのか
+player: $chapter2.chapter2_pe.t018
 
-mahiru: うん
+mahiru: $chapter2.chapter2_pe.t019
 
-> まひるは遠い目をしていた。
+> $chapter2.chapter2_pe.t020
 
-> 小学校のグラウンドで、俺が全力で走っていたのを。
-> あの頃はまだ何も考えていなかった。
-> ただ速く走ることだけが、世界のすべてみたいだった。
+> $chapter2.chapter2_pe.t021
+> $chapter2.chapter2_pe.t022
+> $chapter2.chapter2_pe.t023
 
 @wait 500
 
-> 点滅した信号みたいに、体が一瞬だけ動きそうになる。
+> $chapter2.chapter2_pe.t024
 
-> でも、足は前に出なかった。
+> $chapter2.chapter2_pe.t025
 
-> （走れないわけじゃない）
-> （足首も、もうとっくに治っている）
-> （ただ、全力で踏み込む感覚を、もう思い出したくなかった）
+> $chapter2.chapter2_pe.t026
+> $chapter2.chapter2_pe.t027
+> $chapter2.chapter2_pe.t028
 
-> 全力で走った先で、間に合わなかった記憶がある。
-> 関係ないとわかっていても、
-> 踏み込むたびにそれが蘇る気がして、
-> だから今は、流せる速度でしか走れなかった。
+> $chapter2.chapter2_pe.t029
+> $chapter2.chapter2_pe.t030
+> $chapter2.chapter2_pe.t031
+> $chapter2.chapter2_pe.t032
 
-sakura: 勇くん、チーム分けするよ！
+sakura: $chapter2.chapter2_pe.t033
 
-player: ……ああ
+player: $chapter2.chapter2_pe.t034
 
-> 返事だけして、コートへ向かう。
+> $chapter2.chapter2_pe.t035
 
-> 背中越しにまひるの視線を感じた気がしたけれど、
-> 振り返るほどのことでもなかった。
+> $chapter2.chapter2_pe.t036
+> $chapter2.chapter2_pe.t037
 
 @hide_all fade_out
 @wait 500
@@ -608,38 +608,38 @@ player: ……ああ
 @se school_bell.mp3
 @wait 1200
 
-> 放課後のチャイムが鳴る。
+> $chapter2.chapter2_after_school.t001
 
-> 教室の空気がほどけるように、
-> みんなが立ち上がる音、鞄を引っ張る音、友達を呼ぶ声が重なった。
+> $chapter2.chapter2_after_school.t002
+> $chapter2.chapter2_after_school.t003
 
-> 俺は特に急ぐ理由もなくて、
-> 教科書をゆっくりしまいながら周りが薄くなるのを待っていた。
+> $chapter2.chapter2_after_school.t004
+> $chapter2.chapter2_after_school.t005
 
-> 人が多い廊下は、なんとなく息が詰まる。
-> ひとしきり流れが落ち着いてから出れば、それでいい。
+> $chapter2.chapter2_after_school.t006
+> $chapter2.chapter2_after_school.t007
 
 @show sakura center normal fade_in
 
-> 気づくと、教室にはほとんど人がいなくなっていた。
+> $chapter2.chapter2_after_school.t008
 
-> さくらだけが、机に頬杖をついて窓を見ていた。
+> $chapter2.chapter2_after_school.t009
 
-> バドミントン部の副部長のはずなのに、
-> 練習には向かっていない。
-> 誰かを待っているわけでもなさそうだった。
+> $chapter2.chapter2_after_school.t010
+> $chapter2.chapter2_after_school.t011
+> $chapter2.chapter2_after_school.t012
 
-> ただ、窓の外を見ていた。
+> $chapter2.chapter2_after_school.t013
 
-> 夕方の斜光が、窓枠の形に切り取られて床に落ちている。
-> さくらの横顔に、その光の端がかかっていた。
+> $chapter2.chapter2_after_school.t014
+> $chapter2.chapter2_after_school.t015
 
-> 声をかけるほどのことじゃない、かもしれない。
-> ただ——
+> $chapter2.chapter2_after_school.t016
+> $chapter2.chapter2_after_school.t017
 
 @choice
-- "声をかける" [sakura_favor+5] -> chapter2_sakura_event
-- "そのまま帰る" -> chapter2_leave
+- $choices.chapter2.call_out [sakura_favor+5] -> chapter2_sakura_event
+- $choices.chapter2.go_home -> chapter2_leave
 
 
 // ===================================================================
@@ -648,64 +648,64 @@ player: ……ああ
 
 # chapter2_sakura_event
 
-player: 帰らないのか
+player: $chapter2.chapter2_sakura_event.t001
 
 @expr sakura surprised
 
-sakura: うわっ勇くん！？
+sakura: $chapter2.chapter2_sakura_event.t002
 
 @expr sakura happy
 
-sakura: びっくりしたー！
-sakura: まだいたの？
+sakura: $chapter2.chapter2_sakura_event.t003
+sakura: $chapter2.chapter2_sakura_event.t004
 
-player: こっちの台詞だ
+player: $chapter2.chapter2_sakura_event.t005
 
-sakura: あたしはちょっとぼーっとしてた！
+sakura: $chapter2.chapter2_sakura_event.t006
 
-player: 見てたぞ、しばらく
+player: $chapter2.chapter2_sakura_event.t007
 
 @expr sakura thinking
 
-sakura: ……え、全部見てた？
+sakura: $chapter2.chapter2_sakura_event.t008
 
-player: どれくらいから？
+player: $chapter2.chapter2_sakura_event.t009
 
-sakura: あー……うん、ちょっと待って
+sakura: $chapter2.chapter2_sakura_event.t010
 
-> さくらは頬に手を当てた。
-> 照れているのか、少し困っているのか。
+> $chapter2.chapter2_sakura_event.t011
+> $chapter2.chapter2_sakura_event.t012
 
-sakura: ……あたし、たまにね
-sakura: ちょっとだけ、ぼーっとしたくなる時があって
+sakura: $chapter2.chapter2_sakura_event.t013
+sakura: $chapter2.chapter2_sakura_event.t014
 
-player: ふうん
+player: $chapter2.chapter2_sakura_event.t015
 
-sakura: バドミントンの練習、今日は遅れてもいいかなって思って
-sakura: なんとなく
+sakura: $chapter2.chapter2_sakura_event.t016
+sakura: $chapter2.chapter2_sakura_event.t017
 
-player: そういうことあるのか
+player: $chapter2.chapter2_sakura_event.t018
 
-sakura: あるよ！
-sakura: 勇くんはないの？
+sakura: $chapter2.chapter2_sakura_event.t019
+sakura: $chapter2.chapter2_sakura_event.t020
 
-player: たまにはな
+player: $chapter2.chapter2_sakura_event.t021
 
 @wait 400
 
-sakura: ……ね、一緒に来る？
-sakura: 体育館、見学でも別にいいと思うし
+sakura: $chapter2.chapter2_sakura_event.t022
+sakura: $chapter2.chapter2_sakura_event.t023
 
-player: 練習か
+player: $chapter2.chapter2_sakura_event.t024
 
-sakura: 強制じゃないよ？
-sakura: 暇なら、くらいで
+sakura: $chapter2.chapter2_sakura_event.t025
+sakura: $chapter2.chapter2_sakura_event.t026
 
-player: ……まあ、急いでもないな
+player: $chapter2.chapter2_sakura_event.t027
 
 @expr sakura excited
 
-sakura: やった！じゃあ行こ！
+sakura: $chapter2.chapter2_sakura_event.t028
 
 @hide sakura fade_out
 @wait 500
@@ -718,157 +718,157 @@ sakura: やった！じゃあ行こ！
 @se crowd_distant.mp3
 @wait 1000
 
-> 放課後の体育館は、昼よりもずっと音が通った。
-> シャトルが弦を切る音。
-> スニーカーが床を鳴らす音。
-> 部員の声が反響して、広い空間に満ちている。
+> $chapter2.chapter2_sakura_event.t029
+> $chapter2.chapter2_sakura_event.t030
+> $chapter2.chapter2_sakura_event.t031
+> $chapter2.chapter2_sakura_event.t032
 
 @show sakura_sports right normal fade_in
 
-> さくらはすぐに着替えを済ませて、コートに入った。
+> $chapter2.chapter2_sakura_event.t033
 
-> 練習が始まると、さくらは別人みたいだった。
-> 笑顔はまだあるけれど、動きに無駄がなくなる。
-> 目が鋭くなる。
-> 副部長という立場が、見え方に出ている。
+> $chapter2.chapter2_sakura_event.t034
+> $chapter2.chapter2_sakura_event.t035
+> $chapter2.chapter2_sakura_event.t036
+> $chapter2.chapter2_sakura_event.t037
 
-> 声の出し方も、普段とは違う。
-> 指示を出すときの声は、しっかりと部員全員に届く大きさだった。
+> $chapter2.chapter2_sakura_event.t038
+> $chapter2.chapter2_sakura_event.t039
 
 @wait 800
 
-> シャトルの軌道を目で追いながら、俺はベンチで観ていた。
+> $chapter2.chapter2_sakura_event.t040
 
-> こういうさくらは、初めて見た。
-> 明るいやつだとは思っていたけれど、
-> 実力を持って場を引っ張れる人間だとは、あまり考えていなかった。
+> $chapter2.chapter2_sakura_event.t041
+> $chapter2.chapter2_sakura_event.t042
+> $chapter2.chapter2_sakura_event.t043
 
-> ……決め付けていたのかもしれない。
-> 「元気な子」「賑やかな子」というラベルだけで。
+> $chapter2.chapter2_sakura_event.t044
+> $chapter2.chapter2_sakura_event.t045
 
 @se shuttle_hit.mp3
 @wait 600
 
-> 一時間ほど経って、練習が一段落した。
+> $chapter2.chapter2_sakura_event.t046
 
 @expr sakura_sports normal
 
-sakura: お疲れ！
+sakura: $chapter2.chapter2_sakura_event.t047
 
-> さくらが水筒を持ってベンチに来る。
-> タオルで首を拭きながら、俺の隣に腰を下ろした。
+> $chapter2.chapter2_sakura_event.t048
+> $chapter2.chapter2_sakura_event.t049
 
-player: 上手いな
+player: $chapter2.chapter2_sakura_event.t050
 
 @expr sakura_sports happy
 
-sakura: そう？
+sakura: $chapter2.chapter2_sakura_event.t051
 
-player: さっきのスマッシュ
+player: $chapter2.chapter2_sakura_event.t052
 
-sakura: あー、あれは基本の打ち方なんだけどね
-sakura: 続けてると形になってくるんだよ
+sakura: $chapter2.chapter2_sakura_event.t053
+sakura: $chapter2.chapter2_sakura_event.t054
 
-player: 中学からか？
+player: $chapter2.chapter2_sakura_event.t055
 
-sakura: うん。最初は全然だったけど
-sakura: 続けてたら好きになってた、みたいな感じ
+sakura: $chapter2.chapter2_sakura_event.t056
+sakura: $chapter2.chapter2_sakura_event.t057
 
-player: 最初から好きじゃなかったのか
+player: $chapter2.chapter2_sakura_event.t058
 
-sakura: うん。たまにそういうことあるじゃん
-sakura: やってみたらはまったっていう
+sakura: $chapter2.chapter2_sakura_event.t059
+sakura: $chapter2.chapter2_sakura_event.t060
 
-player: そうかもな
+player: $chapter2.chapter2_sakura_event.t061
 
 @wait 600
 
 @expr sakura_sports normal
 
-sakura: ……ねえ、勇くん
+sakura: $chapter2.chapter2_sakura_event.t062
 
-player: なんだ
+player: $chapter2.chapter2_sakura_event.t063
 
-sakura: たまに、何も考えたくなることない？
+sakura: $chapter2.chapter2_sakura_event.t064
 
-player: ……どういうことだ
+player: $chapter2.chapter2_sakura_event.t065
 
-sakura: なんか、ぜんぶ止まってほしい、みたいな感じ
-sakura: 音も、動きも、ぜんぶ
+sakura: $chapter2.chapter2_sakura_event.t066
+sakura: $chapter2.chapter2_sakura_event.t067
 
-player: ……あるかもな
+player: $chapter2.chapter2_sakura_event.t068
 
 @expr sakura_sports normal
 
-sakura: ……よかった
+sakura: $chapter2.chapter2_sakura_event.t069
 
 @wait 400
 
-> さくらは少しだけ笑った。
-> けれどその笑顔は、いつものものとは違った。
-> 軽くない。
-> どこかに引っかかっているみたいな、笑い方だった。
+> $chapter2.chapter2_sakura_event.t070
+> $chapter2.chapter2_sakura_event.t071
+> $chapter2.chapter2_sakura_event.t072
+> $chapter2.chapter2_sakura_event.t073
 
-sakura: あたしってさ、元気キャラじゃん
+sakura: $chapter2.chapter2_sakura_event.t074
 
-player: まあ
+player: $chapter2.chapter2_sakura_event.t075
 
-sakura: それが嫌とかじゃないんだけど
-sakura: たまにちょっと、疲れる
+sakura: $chapter2.chapter2_sakura_event.t076
+sakura: $chapter2.chapter2_sakura_event.t077
 
-player: 誰でもそうだろ
+player: $chapter2.chapter2_sakura_event.t078
 
-sakura: そうかな
+sakura: $chapter2.chapter2_sakura_event.t079
 
-player: 毎日全力で笑える人間なんていない
+player: $chapter2.chapter2_sakura_event.t080
 
 @wait 300
 
 @expr sakura_sports excited
 
-sakura: ……勇くんってさ、そういうこと言うんだね
+sakura: $chapter2.chapter2_sakura_event.t081
 
-player: 普通のことだろ
+player: $chapter2.chapter2_sakura_event.t082
 
-sakura: 普通かな
+sakura: $chapter2.chapter2_sakura_event.t083
 
-sakura: あたし、あんまりそういう話、誰かにしたことなかったかも
+sakura: $chapter2.chapter2_sakura_event.t084
 
-> さくらは水筒のキャップを締めた。
-> 少しの間、体育館の床を見ていた。
+> $chapter2.chapter2_sakura_event.t085
+> $chapter2.chapter2_sakura_event.t086
 
 @wait 600
 
 @expr sakura_sports happy
 
-sakura: よし！
-sakura: 言ったらちょっとすっきりした！
+sakura: $chapter2.chapter2_sakura_event.t087
+sakura: $chapter2.chapter2_sakura_event.t088
 
-player: 早いな
+player: $chapter2.chapter2_sakura_event.t089
 
-sakura: あたし回復力高いから！
+sakura: $chapter2.chapter2_sakura_event.t090
 
-player: そうか
+player: $chapter2.chapter2_sakura_event.t091
 
-sakura: でも……ありがと、聴いてくれて
+sakura: $chapter2.chapter2_sakura_event.t092
 
-player: 別に何もしてないけどな
+player: $chapter2.chapter2_sakura_event.t093
 
-sakura: してるよ
+sakura: $chapter2.chapter2_sakura_event.t094
 
-> さくらはそれだけ言って、立ち上がった。
-> 練習の後半に向けて、コートに戻っていく。
+> $chapter2.chapter2_sakura_event.t095
+> $chapter2.chapter2_sakura_event.t096
 
-> 笑顔は、さっきまでと同じに見えた。
-> でも——
-> たぶん少しだけ違う。
+> $chapter2.chapter2_sakura_event.t097
+> $chapter2.chapter2_sakura_event.t098
+> $chapter2.chapter2_sakura_event.t099
 
-> 人の笑顔というのは、
-> 外から見ると全部同じに見えることがある。
-> でも同じ笑顔でも、
-> 重さはそれぞれ違う。
+> $chapter2.chapter2_sakura_event.t100
+> $chapter2.chapter2_sakura_event.t101
+> $chapter2.chapter2_sakura_event.t102
+> $chapter2.chapter2_sakura_event.t103
 
-> そのことを、たぶん俺は知っていた。
+> $chapter2.chapter2_sakura_event.t104
 
 @hide sakura_sports fade_out
 @wait 500
@@ -882,35 +882,35 @@ sakura: してるよ
 
 # chapter2_leave
 
-> ……声をかけるほどでもない。
+> $chapter2.chapter2_leave.t001
 
-> そう思って、教科書を鞄に入れた。
+> $chapter2.chapter2_leave.t002
 
-> でも立ち上がりかけたとき、
-> なんとなく足が止まった。
+> $chapter2.chapter2_leave.t003
+> $chapter2.chapter2_leave.t004
 
-> さくらの横顔が、視界の端にあった。
+> $chapter2.chapter2_leave.t005
 
-> 窓の外を見るその顔は、
-> 普段のどの表情とも違っていた。
+> $chapter2.chapter2_leave.t006
+> $chapter2.chapter2_leave.t007
 
 @scene corridor_evening fade
 
-> ……声をかけなかった。
-> 理由は特にない。
-> ただ、その空気を壊す気になれなかった。
+> $chapter2.chapter2_leave.t008
+> $chapter2.chapter2_leave.t009
+> $chapter2.chapter2_leave.t010
 
-> 教室を出る。
-> ドアが閉まる直前に、振り返った。
+> $chapter2.chapter2_leave.t011
+> $chapter2.chapter2_leave.t012
 
 @wait 500
 
-> さくらはまだ
-> 同じ姿勢で窓を見ていた。
+> $chapter2.chapter2_leave.t013
+> $chapter2.chapter2_leave.t014
 
-> ……たぶん
-> 気づいていない。
-> 俺がそこにいたことも。
+> $chapter2.chapter2_leave.t015
+> $chapter2.chapter2_leave.t016
+> $chapter2.chapter2_leave.t017
 
 @hide sakura fade_out
 @wait 500
@@ -929,184 +929,184 @@ sakura: してるよ
 @se footsteps.mp3
 @wait 800
 
-> 校舎の廊下を歩く。
-> 夕方の光が窓から斜めに差し込んで、
-> 床の色が昼間とは別物みたいに変わっていた。
+> $chapter2.chapter2_library.t001
+> $chapter2.chapter2_library.t002
+> $chapter2.chapter2_library.t003
 
-> 放課後の校舎には、独特の静けさがある。
-> 誰かの声が、壁の向こうからかろうじて聞こえるくらい。
-> 遠くて、近くはない距離。
+> $chapter2.chapter2_library.t004
+> $chapter2.chapter2_library.t005
+> $chapter2.chapter2_library.t006
 
 @wait 600
 
-> 図書室の前を通ると、
-> まだ灯りがついていた。
+> $chapter2.chapter2_library.t007
+> $chapter2.chapter2_library.t008
 
-> 扉がわずかに開いている。
+> $chapter2.chapter2_library.t009
 
 @scene library_evening fade
 @show kotoha center normal fade_in
 
-> 花園ことはが、
-> ヘッドホンを外して本棚の前に立っていた。
+> $chapter2.chapter2_library.t010
+> $chapter2.chapter2_library.t011
 
-> ヘッドホンは手に持ったまま。
-> 胸の前で抱えるように、大事そうに。
+> $chapter2.chapter2_library.t012
+> $chapter2.chapter2_library.t013
 
 @still kotoha_library_headphones
 @wait 800
 @still_hide
 
-> 本の背表紙を指先でなぞっている。
-> 一冊ずつ、確かめるみたいに。
+> $chapter2.chapter2_library.t014
+> $chapter2.chapter2_library.t015
 
-> 特定の本を探しているわけでもなさそうだった。
-> ただ、そこに並んでいるものを確かめていた。
+> $chapter2.chapter2_library.t016
+> $chapter2.chapter2_library.t017
 
 @wait 500
 
-> 一冊の本の前で、手が止まった。
+> $chapter2.chapter2_library.t018
 
-> 表紙に何かが描いてある。
-> 五線譜か、鍵盤か、そういう模様だと思った。
+> $chapter2.chapter2_library.t019
+> $chapter2.chapter2_library.t020
 
-> ことはの指が、その表紙を静かになぞる。
+> $chapter2.chapter2_library.t021
 
 @se piano_single_note.mp3
 @wait 600
 
-> どこか遠くで、ピアノの音が一つ鳴った気がした。
-> 実際には鳴っていないはずだ。
-> でも、そう聞こえた。
+> $chapter2.chapter2_library.t022
+> $chapter2.chapter2_library.t023
+> $chapter2.chapter2_library.t024
 
-player: 面白いのか
+player: $chapter2.chapter2_library.t025
 
 @expr kotoha surprised
 
-kotoha: ……っ
+kotoha: $chapter2.chapter2_library.t026
 
-> ことはが顔を上げた。
-> 驚いたような目で、こちらを見る。
+> $chapter2.chapter2_library.t027
+> $chapter2.chapter2_library.t028
 
-kotoha: ……桐島くん
+kotoha: $chapter2.chapter2_library.t029
 
-player: 邪魔したか
+player: $chapter2.chapter2_library.t030
 
-kotoha: いえ
-kotoha: ……気づかなかっただけです
+kotoha: $chapter2.chapter2_library.t031
+kotoha: $chapter2.chapter2_library.t032
 
-player: 熱中してたな
+player: $chapter2.chapter2_library.t033
 
-kotoha: ……少し
+kotoha: $chapter2.chapter2_library.t034
 
-> 少しの間があった。
-> ことははヘッドホンを机の上に置いた。
+> $chapter2.chapter2_library.t035
+> $chapter2.chapter2_library.t036
 
-player: それ、ピアノの本か
+player: $chapter2.chapter2_library.t037
 
 @expr kotoha thinking
 
-kotoha: ……ピアノの、歴史の本です
+kotoha: $chapter2.chapter2_library.t038
 
-player: ピアノやってたのか
+player: $chapter2.chapter2_library.t039
 
-> ことははすぐには答えなかった。
+> $chapter2.chapter2_library.t040
 
 @wait 600
 
-kotoha: ……やっていました
+kotoha: $chapter2.chapter2_library.t041
 
-player: 今は？
+player: $chapter2.chapter2_library.t042
 
-kotoha: ……今は、聴くだけです
+kotoha: $chapter2.chapter2_library.t043
 
-> その答え方が、何かを閉じているみたいに聞こえた。
+> $chapter2.chapter2_library.t044
 
-> 聴くだけです、と言ったとき、
-> ことはの目は本の表紙のあたりに落ちていた。
+> $chapter2.chapter2_library.t045
+> $chapter2.chapter2_library.t046
 
-player: なんでやめたんだ
+player: $chapter2.chapter2_library.t047
 
-kotoha: ……
+kotoha: $chapter2.chapter2_library.t048
 
-> また間が来た。
+> $chapter2.chapter2_library.t049
 
-kotoha: うまく言えないんですが
-kotoha: 弾けなくなったというより
+kotoha: $chapter2.chapter2_library.t050
+kotoha: $chapter2.chapter2_library.t051
 
 @wait 500
 
-kotoha: ……弾いていいのか、わからなくなって
+kotoha: $chapter2.chapter2_library.t052
 
-player: わからなくなる？
+player: $chapter2.chapter2_library.t053
 
-kotoha: 音を出すことが……急に、怖くなった時期があって
+kotoha: $chapter2.chapter2_library.t054
 
-> 続きを探しているようだった。
-> でも、言葉はそこで止まった。
+> $chapter2.chapter2_library.t055
+> $chapter2.chapter2_library.t056
 
-kotoha: ……すみません、うまく説明できなくて
+kotoha: $chapter2.chapter2_library.t057
 
-player: いや
+player: $chapter2.chapter2_library.t058
 
-player: 無理に言わなくていい
+player: $chapter2.chapter2_library.t059
 
 @expr kotoha normal
 
-kotoha: ……ありがとうございます
+kotoha: $chapter2.chapter2_library.t060
 
 @wait 400
 
-player: 長いのか
+player: $chapter2.chapter2_library.t061
 
-kotoha: え？
+kotoha: $chapter2.chapter2_library.t062
 
-player: その本
+player: $chapter2.chapter2_library.t063
 
-kotoha: ……ああ、いえ
-kotoha: これはまだ借りていなくて
+kotoha: $chapter2.chapter2_library.t064
+kotoha: $chapter2.chapter2_library.t065
 
-player: 借りるのか
+player: $chapter2.chapter2_library.t066
 
-kotoha: ……どうしようか迷っています
+kotoha: $chapter2.chapter2_library.t067
 
-player: なんで迷うんだ
+player: $chapter2.chapter2_library.t068
 
-kotoha: ……読んでしまうと
-kotoha: また弾きたくなりそうで
+kotoha: $chapter2.chapter2_library.t069
+kotoha: $chapter2.chapter2_library.t070
 
-> そう言ってから、ことはは小さく笑った。
-> 自分でも可笑しいと思っているような、そういう笑い方だった。
+> $chapter2.chapter2_library.t071
+> $chapter2.chapter2_library.t072
 
 @expr kotoha shy
 
-kotoha: ……おかしいですね
+kotoha: $chapter2.chapter2_library.t073
 
-player: いや
+player: $chapter2.chapter2_library.t074
 
-player: ちゃんと向き合おうとしてるんだろ
+player: $chapter2.chapter2_library.t075
 
 @expr kotoha surprised
 
-kotoha: ……桐島くん
+kotoha: $chapter2.chapter2_library.t076
 
-player: 借りてみればいいんじゃないか
-player: 読んでみて、それから考えれば
+player: $chapter2.chapter2_library.t077
+player: $chapter2.chapter2_library.t078
 
 @wait 300
 
-kotoha: ……そうですね
+kotoha: $chapter2.chapter2_library.t079
 
-> ことはは本を手に取った。
-> さっきより少しだけ迷いが薄い手つきで。
+> $chapter2.chapter2_library.t080
+> $chapter2.chapter2_library.t081
 
-kotoha: ……借りてみます
+kotoha: $chapter2.chapter2_library.t082
 
 @expr kotoha happy
 
-> 花園が少しだけ嬉しそうに見えた。
+> $chapter2.chapter2_library.t083
 
-> ……気のせいじゃない気がした。
+> $chapter2.chapter2_library.t084
 
 @hide kotoha fade_out
 @wait 500
@@ -1125,117 +1125,117 @@ kotoha: ……借りてみます
 @se footsteps.mp3
 @wait 600
 
-> 図書室を離れて、下駄箱へ向かう。
+> $chapter2.chapter2_mahiru_corridor.t001
 
-> 夕方の廊下には人が少なかった。
-> 部活をしている声が遠くから聞こえる。
-> 窓の向こうには、もう茜色になりかけた空があった。
+> $chapter2.chapter2_mahiru_corridor.t002
+> $chapter2.chapter2_mahiru_corridor.t003
+> $chapter2.chapter2_mahiru_corridor.t004
 
 @show mahiru center normal fade_in
 
-mahiru: あ、勇くん
+mahiru: $chapter2.chapter2_mahiru_corridor.t005
 
-player: 月夜野
+player: $chapter2.chapter2_mahiru_corridor.t006
 
-mahiru: 帰り？
+mahiru: $chapter2.chapter2_mahiru_corridor.t007
 
-player: 今から
+player: $chapter2.chapter2_mahiru_corridor.t008
 
-mahiru: そっか
+mahiru: $chapter2.chapter2_mahiru_corridor.t009
 
-> まひるは廊下の窓を見ていた。
-> カメラを首にかけたまま、外を眺めている。
+> $chapter2.chapter2_mahiru_corridor.t010
+> $chapter2.chapter2_mahiru_corridor.t011
 
-mahiru: 今日の空
+mahiru: $chapter2.chapter2_mahiru_corridor.t012
 
-player: ん？
+player: $chapter2.chapter2_mahiru_corridor.t013
 
-mahiru: 夕方になるの、少し急いでる感じがする
+mahiru: $chapter2.chapter2_mahiru_corridor.t014
 
-player: そういうものか
+player: $chapter2.chapter2_mahiru_corridor.t015
 
-mahiru: 日が長くなってるんだけど
-mahiru: 夕暮れの色になるのは早い気がして
+mahiru: $chapter2.chapter2_mahiru_corridor.t016
+mahiru: $chapter2.chapter2_mahiru_corridor.t017
 
-> まひるは窓の外を指さした。
+> $chapter2.chapter2_mahiru_corridor.t018
 
-mahiru: 見て、あそこの雲
+mahiru: $chapter2.chapter2_mahiru_corridor.t019
 
-> 言われた方向を見ると、
-> 薄く伸びた雲が一本、橙の空に浮かんでいた。
+> $chapter2.chapter2_mahiru_corridor.t020
+> $chapter2.chapter2_mahiru_corridor.t021
 
-player: ……なんかあるのか、あれ
+player: $chapter2.chapter2_mahiru_corridor.t022
 
-mahiru: ただきれいだなって
+mahiru: $chapter2.chapter2_mahiru_corridor.t023
 
 @expr mahiru happy
 
-mahiru: 勇くん、今日もちゃんと生きてた？
+mahiru: $chapter2.chapter2_mahiru_corridor.t024
 
-player: ……変な聞き方するな
+player: $chapter2.chapter2_mahiru_corridor.t025
 
-mahiru: そうかな
+mahiru: $chapter2.chapter2_mahiru_corridor.t026
 
-mahiru: あたし、毎日それを確かめたくなるんだよね
+mahiru: $chapter2.chapter2_mahiru_corridor.t027
 
-player: 自分がか
+player: $chapter2.chapter2_mahiru_corridor.t028
 
-mahiru: 自分も
-mahiru: 周りの人も
+mahiru: $chapter2.chapter2_mahiru_corridor.t029
+mahiru: $chapter2.chapter2_mahiru_corridor.t030
 
 @wait 400
 
-player: ……お前のノート、今日は何を書いた
+player: $chapter2.chapter2_mahiru_corridor.t031
 
-mahiru: まだ書いてない
-mahiru: 今日分は、帰り道に決めることにしてる
+mahiru: $chapter2.chapter2_mahiru_corridor.t032
+mahiru: $chapter2.chapter2_mahiru_corridor.t033
 
-player: なんでだ
+player: $chapter2.chapter2_mahiru_corridor.t034
 
-mahiru: 一日の最後まで見てから決めるほうが
-mahiru: ちゃんと選べる気がするから
+mahiru: $chapter2.chapter2_mahiru_corridor.t035
+mahiru: $chapter2.chapter2_mahiru_corridor.t036
 
-player: 今日は何が候補だ
+player: $chapter2.chapter2_mahiru_corridor.t037
 
 @expr mahiru thinking
 
-mahiru: ……さっきの屋上の風と
+mahiru: $chapter2.chapter2_mahiru_corridor.t038
 
-mahiru: 勇くんと話せたこと
+mahiru: $chapter2.chapter2_mahiru_corridor.t039
 
-player: 俺か
+player: $chapter2.chapter2_mahiru_corridor.t040
 
-mahiru: だめ？
+mahiru: $chapter2.chapter2_mahiru_corridor.t041
 
-player: 別に
+player: $chapter2.chapter2_mahiru_corridor.t042
 
 @expr mahiru happy
 
-mahiru: よかった
+mahiru: $chapter2.chapter2_mahiru_corridor.t043
 
-> まひるは少しだけ笑った。
+> $chapter2.chapter2_mahiru_corridor.t044
 
-mahiru: じゃあね、勇くん
-mahiru: 気をつけて帰って
+mahiru: $chapter2.chapter2_mahiru_corridor.t045
+mahiru: $chapter2.chapter2_mahiru_corridor.t046
 
-player: ……ああ
+player: $chapter2.chapter2_mahiru_corridor.t047
 
 @hide mahiru fade_out
 @wait 600
 
-> 廊下に残ったのは、足音の余韻だけだった。
+> $chapter2.chapter2_mahiru_corridor.t048
 
-> 毎日「生きてよかった理由」を書き続けるまひるが、
-> 何かを失ったことを知っている目をしていることを、
-> 俺はもう知っていた。
+> $chapter2.chapter2_mahiru_corridor.t049
+> $chapter2.chapter2_mahiru_corridor.t050
+> $chapter2.chapter2_mahiru_corridor.t051
 
-> 兄を亡くしたと聞いたのは、いつだっただろう。
-> 小学生の頃だったような気がする。
-> 当時の俺には、その重さが何もわからなかった。
+> $chapter2.chapter2_mahiru_corridor.t052
+> $chapter2.chapter2_mahiru_corridor.t053
+> $chapter2.chapter2_mahiru_corridor.t054
 
-> 今も、わかるとは言えない。
-> でも、まひるが毎日「理由」を探しているのが、
-> 単なる趣味じゃないことくらいは、今なら想像できた。
+> $chapter2.chapter2_mahiru_corridor.t055
+> $chapter2.chapter2_mahiru_corridor.t056
+> $chapter2.chapter2_mahiru_corridor.t057
 
 @jump chapter2_end
 
@@ -1259,146 +1259,146 @@ player: ……ああ
 @bgm mystery_shadow.mp3
 @wait 1000
 
-> 学校を出る。
+> $chapter2.chapter2_end.t001
 
-> 夕方の住宅街は、朝とは別の顔をしていた。
-> 帰宅する人の影が増えて、どこかの家から夕食の匂いが漂ってくる。
-> 自転車が横を通り過ぎる。
-> 遠くで子どもが走っている。
+> $chapter2.chapter2_end.t002
+> $chapter2.chapter2_end.t003
+> $chapter2.chapter2_end.t004
+> $chapter2.chapter2_end.t005
 
-> 普通の夕方。
-> 当たり前の日常。
+> $chapter2.chapter2_end.t006
+> $chapter2.chapter2_end.t007
 
-> でも今日は、その普通の中に
-> いくつかの小さな「普通じゃないもの」を見た。
-
-@wait 600
-
-> さくらの、一瞬消える顔。
-
-> 今日だけで二回、同じものを見た。
-> 授業中と、放課後。
-> 笑い声の直後に、光がすっと消えるように。
-
-> それは作った笑顔が剥がれた顔、というより——
-> もともとそこに何も置かれていなかった場所みたいだった。
-
-> さくらは「たまに何も考えたくなる」と言った。
-> 「毎日全力で笑える人間なんていない」と俺が言ったら、
-> 「そういうこと言うんだね」と驚いていた。
-
-> ……誰にも言ったことがなかったのかもしれない。
-
-@wait 500
-
-> ことはの、ヘッドホンを胸に抱えて立つ姿。
-
-> ピアノをやめた理由を話したとき、
-> 「弾いていいのかわからなくなった」と言った。
-> その言葉の重さが、まだ少し残っている。
-
-> 音を恐れている人間が、
-> 音楽の本の前で足を止めている。
-
-> 借りてみます、と言って本を手に取ったときの顔が、
-> なぜか印象に残った。
-
-@wait 500
-
-> まひるの、理由を集めるノート。
-
-> あいつは毎日「今日生きてよかった理由」を書いている。
-> 小さなことでも、なんでもいい、と言っていた。
-
-> それがどういうことか、俺にはまだよく分からない。
-> 理由が必要だということは、
-> 理由がなければ、どうなるんだろう、という問いでもある。
-
-> そこまで考えて、俺は意識的に考えるのをやめた。
+> $chapter2.chapter2_end.t008
+> $chapter2.chapter2_end.t009
 
 @wait 600
 
-> ……考えすぎかもしれない。
+> $chapter2.chapter2_end.t010
 
-> 初日にさくらの顔を見て、気になった。
-> あれから何度も、また同じことを考えた。
-> 今日もそれが続いている。
+> $chapter2.chapter2_end.t011
+> $chapter2.chapter2_end.t012
+> $chapter2.chapter2_end.t013
 
-> でも——
+> $chapter2.chapter2_end.t014
+> $chapter2.chapter2_end.t015
 
-> 気になることは、止めようとしても止まらなかった。
-> それが俺の性分らしかった。
+> $chapter2.chapter2_end.t016
+> $chapter2.chapter2_end.t017
+> $chapter2.chapter2_end.t018
 
-> 気づかなかったせいで手遅れになった記憶が、
-> こいつの中にどこかで生きているから。
+> $chapter2.chapter2_end.t019
+
+@wait 500
+
+> $chapter2.chapter2_end.t020
+
+> $chapter2.chapter2_end.t021
+> $chapter2.chapter2_end.t022
+> $chapter2.chapter2_end.t023
+
+> $chapter2.chapter2_end.t024
+> $chapter2.chapter2_end.t025
+
+> $chapter2.chapter2_end.t026
+> $chapter2.chapter2_end.t027
+
+@wait 500
+
+> $chapter2.chapter2_end.t028
+
+> $chapter2.chapter2_end.t029
+> $chapter2.chapter2_end.t030
+
+> $chapter2.chapter2_end.t031
+> $chapter2.chapter2_end.t032
+> $chapter2.chapter2_end.t033
+
+> $chapter2.chapter2_end.t034
+
+@wait 600
+
+> $chapter2.chapter2_end.t035
+
+> $chapter2.chapter2_end.t036
+> $chapter2.chapter2_end.t037
+> $chapter2.chapter2_end.t038
+
+> $chapter2.chapter2_end.t039
+
+> $chapter2.chapter2_end.t040
+> $chapter2.chapter2_end.t041
+
+> $chapter2.chapter2_end.t042
+> $chapter2.chapter2_end.t043
 
 @wait 800
 
-> 今日だけで、
-> 三つの小さな違和感を見た。
+> $chapter2.chapter2_end.t044
+> $chapter2.chapter2_end.t045
 
-> 笑顔の裏にある空白。
+> $chapter2.chapter2_end.t046
 
-> 音に向けられた怖れ。
+> $chapter2.chapter2_end.t047
 
-> そして、
-> 理由を作り続けるノート。
+> $chapter2.chapter2_end.t048
+> $chapter2.chapter2_end.t049
 
-> どれもまだ、
-> 問題と呼ぶほどじゃない。
+> $chapter2.chapter2_end.t050
+> $chapter2.chapter2_end.t051
 
-> でも。
+> $chapter2.chapter2_end.t052
 
-> 見なかったことにするには、
-> 少しだけ気になりすぎた。
+> $chapter2.chapter2_end.t053
+> $chapter2.chapter2_end.t054
 
-> ……たぶん。
+> $chapter2.chapter2_end.t055
 
-> 気づき始めている。
+> $chapter2.chapter2_end.t056
 
-> このクラスには、
-> 「大丈夫と言うのが上手い人」が
-> 多すぎることに。
+> $chapter2.chapter2_end.t057
+> $chapter2.chapter2_end.t058
+> $chapter2.chapter2_end.t059
 
 @wait 600
 
-> ——いや。
-> 違う。
+> $chapter2.chapter2_end.t060
+> $chapter2.chapter2_end.t061
 
-> 「大丈夫と言うのが上手い人」じゃなくて、
+> $chapter2.chapter2_end.t062
 
-> 大丈夫じゃないかもしれない、と知りながら
-> 誰にも言えない人たちが、いる。
+> $chapter2.chapter2_end.t063
+> $chapter2.chapter2_end.t064
 
-> そういうことじゃないかと思う。
+> $chapter2.chapter2_end.t065
 
 @wait 500
 
-> 俺は別に、誰かを助けようとしているわけじゃない。
-> そんな立場でもないし、
-> そんな力もあると思っていない。
+> $chapter2.chapter2_end.t066
+> $chapter2.chapter2_end.t067
+> $chapter2.chapter2_end.t068
 
-> ただ。
+> $chapter2.chapter2_end.t069
 
-> 見ていたいと思う。
+> $chapter2.chapter2_end.t070
 
-> さっき撮った写真の中に、三人が映っていた。
-> さくらが笑って、ことはが少し居心地悪そうで、
-> 俺が口の端だけ上げていた。
+> $chapter2.chapter2_end.t071
+> $chapter2.chapter2_end.t072
+> $chapter2.chapter2_end.t073
 
-> あの時間は、悪くなかった。
+> $chapter2.chapter2_end.t074
 
-> だから、もう少しだけ。
-> 見ていたい、と思う。
+> $chapter2.chapter2_end.t075
+> $chapter2.chapter2_end.t076
 
 @bgm stop
 @wait 400
 
-> ……たぶん。
+> $chapter2.chapter2_end.t077
 
-> それが今の俺の、
-> 唯一まともな感情だった。
+> $chapter2.chapter2_end.t078
+> $chapter2.chapter2_end.t079
 
 @bgm stop
 
-@end "第二章「笑顔の境界線」" -> chapter3_start
+@end "$chapter2.chapter2_end.end_title" -> chapter3_start

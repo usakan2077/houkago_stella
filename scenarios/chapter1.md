@@ -15,34 +15,34 @@
 @se chime_soft.mp3
 @wait 1000
 
-> 夜の校舎は、昼よりもずっと広く感じる。
-> 廊下の先は暗くて、足音だけがやけに響いた。
-> 誰もいないはずなのに、誰かを探している気がした。
+> $chapter1.start.t001
+> $chapter1.start.t002
+> $chapter1.start.t003
 
 @se footsteps.mp3
 @wait 1200
 
-> 名前を呼ぼうとして、喉が動かなかった。
-> 呼んだところで、もう遅いと知っていたからだ。
+> $chapter1.start.t004
+> $chapter1.start.t005
 
-player: ……慎
+player: $chapter1.start.t006
 
 @se heartbeat.mp3
 @wait 800
 
-> 返事はない。
-> その代わり、どこか遠くで窓ガラスが鳴った気がした。
-> 風かもしれない。気のせいかもしれない。
-> でも、あの日もきっと、そんなふうに何かが鳴っていた。
+> $chapter1.start.t007
+> $chapter1.start.t008
+> $chapter1.start.t009
+> $chapter1.start.t010
 
-> 俺は見ていた。
-> 見ていたはずだった。
+> $chapter1.start.t011
+> $chapter1.start.t012
 
-> 笑っている顔も、
-> いつも通りの声も、
-> 「大丈夫」という、聞き飽きた言葉も。
+> $chapter1.start.t013
+> $chapter1.start.t014
+> $chapter1.start.t015
 
-> それなのに、何もわからなかった。
+> $chapter1.start.t016
 
 @bgm stop
 @wait 400
@@ -51,44 +51,44 @@ player: ……慎
 @se night_insect.mp3
 @wait 1000
 
-> 目が覚める。
-> 暗い部屋。天井。浅い息。
-> カーテンの隙間から入る街灯の色だけが、夜がまだ終わっていないことを教えていた。
+> $chapter1.start.t017
+> $chapter1.start.t018
+> $chapter1.start.t019
 
-player: ……またか
+player: $chapter1.start.t020
 
-> 夢の内容なんて、起きた瞬間から曖昧になる。
-> けれど、胸の奥に残る感覚だけは、毎回ほとんど同じだった。
-> 遅れた、という感覚。
-> もう間に合わない、という感覚。
+> $chapter1.start.t021
+> $chapter1.start.t022
+> $chapter1.start.t023
+> $chapter1.start.t024
 
-> スマホの画面を見る。
-> 5時12分。
-> 中途半端な時間だ。
+> $chapter1.start.t025
+> $chapter1.start.t026
+> $chapter1.start.t027
 
-> 二度寝するには、頭が冴えすぎていた。
+> $chapter1.start.t028
 
-> ベッドの脇に置いたままのランニングシューズが目に入る。
-> もう履かなくなって、ずいぶん経つ。
-> それでも捨てられないのは、未練というより罰に近い。
+> $chapter1.start.t029
+> $chapter1.start.t030
+> $chapter1.start.t031
 
-> 走るのは好きだった。
-> 何も考えなくて済むからじゃない。
-> 走っている間だけは、自分が遅れていないと思えたからだ。
+> $chapter1.start.t032
+> $chapter1.start.t033
+> $chapter1.start.t034
 
-> けれど、足首を痛めて、それも終わった。
-> 一度崩れた感覚は、案外あっさり戻らない。
+> $chapter1.start.t035
+> $chapter1.start.t036
 
-> 父が倒れたときも、そうだった。
-> 仕事が忙しいだけだと、みんな思っていた。
-> 本人も、周りも、たぶん俺も。
+> $chapter1.start.t037
+> $chapter1.start.t038
+> $chapter1.start.t039
 
-> 「大丈夫」
+> $chapter1.start.t040
 
-> その一言で片づけられたものは、
-> 結局ひとつも大丈夫じゃなかった。
+> $chapter1.start.t041
+> $chapter1.start.t042
 
-player: ……最悪な朝だな
+player: $chapter1.start.t043
 
 @bgm stop
 @wait 500
@@ -98,36 +98,36 @@ player: ……最悪な朝だな
 @se city_morning.mp3
 @wait 1000
 
-> 新学期初日の通学路。
-> 住宅街はまだ眠そうな空気をしていた。
-> 自転車のチェーンの音。どこかの家から流れてくる朝の番組。
-> 遠くを走る車の音だけが、今日も世界が動いていることを教えてくれる。
+> $chapter1.start.t044
+> $chapter1.start.t045
+> $chapter1.start.t046
+> $chapter1.start.t047
 
-> 道を変えなかったのは、面倒だったからだ。
-> 新しいクラス、新しい席。
-> 変えることが多すぎる日に、道まで変える気にはなれなかった。
+> $chapter1.start.t048
+> $chapter1.start.t049
+> $chapter1.start.t050
 
 @se car_passing.mp3
 @wait 600
 
-> 交差点の手前で、信号が黄色に変わった。
+> $chapter1.start.t051
 
-> 走れば間に合う。
-> ロータリーを越えれば一分とかからない。
-> 体はそれを知っている。
+> $chapter1.start.t052
+> $chapter1.start.t053
+> $chapter1.start.t054
 
 @wait 800
 
-> でも、足が出なかった。
+> $chapter1.start.t055
 
-> 踏み込む感覚が、思い出せなかった。
-> あの感覚。全力で地面を蹴るときの、迷いのなさ。
-> 足首が治った今も、それだけはまだ戻ってきていない。
+> $chapter1.start.t056
+> $chapter1.start.t057
+> $chapter1.start.t058
 
-> 信号が赤になる。
-> 立ったまま待つ。
-> 別に急いでいたわけじゃない。
-> そう自分に言い聞かせながら、また一歩。
+> $chapter1.start.t059
+> $chapter1.start.t060
+> $chapter1.start.t061
+> $chapter1.start.t062
 
 @se city_morning.mp3
 @wait 500
@@ -146,86 +146,86 @@ player: ……最悪な朝だな
 @se school_bell.mp3
 @wait 1000
 
-> 四月。
-> 新学期の空気は、まだ少しだけ嘘っぽい。
-> 新しいクラス、新しい席、新しい人間関係。
-> そのどれもが、最初だけは綺麗に見える。
+> $chapter1.chapter1_morning_gate.t001
+> $chapter1.chapter1_morning_gate.t002
+> $chapter1.chapter1_morning_gate.t003
+> $chapter1.chapter1_morning_gate.t004
 
-> たぶん、綺麗に見せようとしているだけなんだろう。
+> $chapter1.chapter1_morning_gate.t005
 
 @scene classroom fade
 @se classroom_noise.mp3
 @wait 900
 
-> 教室には朝のざわめきが満ちていた。
-> 笑い声。椅子を引く音。誰かの名前を呼ぶ声。
-> そういう音の中にいると、自分だけ輪郭が薄くなったみたいな気がする。
+> $chapter1.chapter1_morning_gate.t006
+> $chapter1.chapter1_morning_gate.t007
+> $chapter1.chapter1_morning_gate.t008
 
-> 新しい席に鞄を置く。
-> 窓際ではない。けれど黒板からも遠くない。
-> 良くも悪くも、目立たない場所だ。
+> $chapter1.chapter1_morning_gate.t009
+> $chapter1.chapter1_morning_gate.t010
+> $chapter1.chapter1_morning_gate.t011
 
 @show sakura right happy pop_in
 
-sakura: あ、おはよっ！　隣、桐島くんだよね？
+sakura: $chapter1.chapter1_morning_gate.t012
 
-player: ……ああ
+player: $chapter1.chapter1_morning_gate.t013
 
-sakura: よかったー、無口そうな人だったらどうしようって思ってたんだよね
-sakura: いや、今も無口そうだけど！
+sakura: $chapter1.chapter1_morning_gate.t014
+sakura: $chapter1.chapter1_morning_gate.t015
 
-player: 初対面に言うことか、それ
+player: $chapter1.chapter1_morning_gate.t016
 
-sakura: 言う言う。だってほんとだし
-sakura: あたし、桜咲さくら。よろしくね、桐島くん
+sakura: $chapter1.chapter1_morning_gate.t017
+sakura: $chapter1.chapter1_morning_gate.t018
 
-player: 桐島勇。よろしく
+player: $chapter1.chapter1_morning_gate.t019
 
 @expr sakura excited
 
-sakura: 勇くん、ね。うん、呼びやすい！
-sakura: じゃあ今日から勇くんで！
+sakura: $chapter1.chapter1_morning_gate.t020
+sakura: $chapter1.chapter1_morning_gate.t021
 
-player: 勝手だな
+player: $chapter1.chapter1_morning_gate.t022
 
-sakura: いいじゃん、減るもんじゃないし！
+sakura: $chapter1.chapter1_morning_gate.t023
 
-> 朝から全力。
-> こういうやつは、たいてい周りの空気を自分の速さに巻き込む。
-> 苦手、というほどじゃない。
-> ただ、少し眩しい。
+> $chapter1.chapter1_morning_gate.t024
+> $chapter1.chapter1_morning_gate.t025
+> $chapter1.chapter1_morning_gate.t026
+> $chapter1.chapter1_morning_gate.t027
 
-sakura: あ、見て見て、クラス表もう写真に撮った？
-sakura: 担任さ、めっちゃ厳しいって噂あるらしいよ
-sakura: でもでも、そのぶん文化祭とか気合い入るタイプかも！
+sakura: $chapter1.chapter1_morning_gate.t028
+sakura: $chapter1.chapter1_morning_gate.t029
+sakura: $chapter1.chapter1_morning_gate.t030
 
-player: まだ始業前だぞ
+player: $chapter1.chapter1_morning_gate.t031
 
-sakura: だからこそテンション上げてくの！
-sakura: 新学期って、一回しかないんだからさ
+sakura: $chapter1.chapter1_morning_gate.t032
+sakura: $chapter1.chapter1_morning_gate.t033
 
-> そう言って笑う。
-> 何の疑いもなく、まっすぐに。
-> その笑顔は、教室の明るさにちょうどよく似合っていた。
+> $chapter1.chapter1_morning_gate.t034
+> $chapter1.chapter1_morning_gate.t035
+> $chapter1.chapter1_morning_gate.t036
 
 @flag has_met_sakura true
 
 @se school_bell.mp3
 @wait 1000
 
-> 始業ベル。
-> ざわめきが少しずつ静まっていく。
+> $chapter1.chapter1_morning_gate.t037
+> $chapter1.chapter1_morning_gate.t038
 
-sakura: うわ、始まる始まる。じゃ、あとでまた話そ！
+sakura: $chapter1.chapter1_morning_gate.t039
 
 @expr sakura happy
 
-> さくらは前を向く。
-> 切り替えまで早い。
-> こういう人間は、だいたい集団の中でうまくやる。
+> $chapter1.chapter1_morning_gate.t040
+> $chapter1.chapter1_morning_gate.t041
+> $chapter1.chapter1_morning_gate.t042
 
-> うまくやれる人間が、傷つかないとは限らない。
-> ……そんなことを考えるのは、たぶん性格が悪い。
+> $chapter1.chapter1_morning_gate.t043
+> $chapter1.chapter1_morning_gate.t044
 
 @jump chapter1_homeroom
 
@@ -236,84 +236,84 @@ sakura: うわ、始まる始まる。じゃ、あとでまた話そ！
 
 # chapter1_homeroom
 
-> 担任の自己紹介と、教科書の確認と、どうでもいい連絡事項。
-> 新学期初日のホームルームなんて、だいたいそんなものだ。
+> $chapter1.chapter1_homeroom.t001
+> $chapter1.chapter1_homeroom.t002
 
-> けれど、その「だいたい」の中に、ひとつだけ小さな乱れがあった。
+> $chapter1.chapter1_homeroom.t003
 
 @se door_open.mp3
 @wait 500
 
-> 教室のドアが開く。
+> $chapter1.chapter1_homeroom.t004
 
-> 担任「えー、みんな静かに」
-> 担任「今日からこのクラスに転入生が入る。仲良くするように」
+> $chapter1.chapter1_homeroom.t005
+> $chapter1.chapter1_homeroom.t006
 
-> 一瞬で、空気の向きが変わる。
-> 人は「新しいもの」が好きだ。
-> 目立つものには、理由がなくても視線が集まる。
+> $chapter1.chapter1_homeroom.t007
+> $chapter1.chapter1_homeroom.t008
+> $chapter1.chapter1_homeroom.t009
 
 @show kotoha center normal fade_in
 @move sakura left
 
-> 担任「花園さん、自己紹介を」
+> $chapter1.chapter1_homeroom.t010
 
-kotoha: ……花園ことはです
-kotoha: よろしくお願いします
+kotoha: $chapter1.chapter1_homeroom.t011
+kotoha: $chapter1.chapter1_homeroom.t012
 
-> それだけだった。
-> 声は小さくない。けれど必要以上に広がらない声だった。
+> $chapter1.chapter1_homeroom.t013
+> $chapter1.chapter1_homeroom.t014
 
-> 担任「以上か？　趣味とか、好きなものとかは」
+> $chapter1.chapter1_homeroom.t015
 
-kotoha: ……読書です
+kotoha: $chapter1.chapter1_homeroom.t016
 
-> 担任「そうか。じゃあ席は窓際の後ろな」
+> $chapter1.chapter1_homeroom.t017
 
 @hide kotoha fade_out
 @move sakura right
 
-> 花園ことは。
-> その名前だけが、妙に耳に残った。
+> $chapter1.chapter1_homeroom.t018
+> $chapter1.chapter1_homeroom.t019
 
 @still kotoha_window_ch1
 @wait 600
 
-> 彼女は自分の席に座ったまま、窓の外を見ていた。
-> 見た、というより、確かめたように見えた。
+> $chapter1.chapter1_homeroom.t020
+> $chapter1.chapter1_homeroom.t021
 
-> 何を見たのかはわからない。
-> 空か、校庭か、それとももっと別の何かか。
+> $chapter1.chapter1_homeroom.t022
+> $chapter1.chapter1_homeroom.t023
 
 @still_hide
 @wait 400
 
-> 席に着いてからも、教室のざわめきは完全には戻らなかった。
-> みんな興味はあるが、どう話しかけるかを測っている。
-> そういう距離の取り方はよく知っている。
-> 俺もたぶん、同じ側だ。
+> $chapter1.chapter1_homeroom.t024
+> $chapter1.chapter1_homeroom.t025
+> $chapter1.chapter1_homeroom.t026
+> $chapter1.chapter1_homeroom.t027
 
-sakura: ねえねえ、すごい美人じゃなかった？
-sakura: でもちょっと近寄りがたい感じあるかも
+sakura: $chapter1.chapter1_homeroom.t028
+sakura: $chapter1.chapter1_homeroom.t029
 
-player: そうかもな
+player: $chapter1.chapter1_homeroom.t030
 
-sakura: 勇くん、ああいうタイプ苦手そう
+sakura: $chapter1.chapter1_homeroom.t031
 
-player: なんでだよ
+player: $chapter1.chapter1_homeroom.t032
 
-sakura: なんとなく？
-sakura: 逆に、向こうも勇くんのこと「近寄りがたい」って思ってるかもね
+sakura: $chapter1.chapter1_homeroom.t033
+sakura: $chapter1.chapter1_homeroom.t034
 
-player: それは否定できない
+player: $chapter1.chapter1_homeroom.t035
 
-sakura: でしょー？
+sakura: $chapter1.chapter1_homeroom.t036
 
-> さくらはまた笑う。
-> ひとつひとつの反応が軽い。
-> だから、見ている側も軽く返せてしまう。
-> そういう人間は、便利だ。
-> たぶん周りにとっても、本人にとっても。
+> $chapter1.chapter1_homeroom.t037
+> $chapter1.chapter1_homeroom.t038
+> $chapter1.chapter1_homeroom.t039
+> $chapter1.chapter1_homeroom.t040
+> $chapter1.chapter1_homeroom.t041
 
 @hide sakura fade_out
 
@@ -331,84 +331,84 @@ sakura: でしょー？
 @se footsteps.mp3
 @wait 700
 
-> 一時間目と二時間目の間の短い休み時間。
-> 教室の空気が少しだけ薄くなる。
-> こういう隙間の時間は嫌いじゃない。
-> 誰も深く何かを話していないから、余計な言葉を聞かなくて済む。
+> $chapter1.chapter1_breaktime.t001
+> $chapter1.chapter1_breaktime.t002
+> $chapter1.chapter1_breaktime.t003
+> $chapter1.chapter1_breaktime.t004
 
-> 飲み物を買いに行こうとして、廊下へ出る。
-> 角を曲がったところで、小さな声が聞こえた。
+> $chapter1.chapter1_breaktime.t005
+> $chapter1.chapter1_breaktime.t006
 
-> ……あ、勇くんだ
+> $chapter1.chapter1_breaktime.t007
 
-> 反射的に足を止める。
+> $chapter1.chapter1_breaktime.t008
 
 @show mahiru center happy fade_in
 
-> 廊下の向こうにいたのは、見覚えのある顔だった。
-> 見覚えがある、というより、忘れようがない顔。
+> $chapter1.chapter1_breaktime.t009
+> $chapter1.chapter1_breaktime.t010
 
-mahiru: ひさしぶり
+mahiru: $chapter1.chapter1_breaktime.t011
 
-player: ……月夜野
+player: $chapter1.chapter1_breaktime.t012
 
-mahiru: うん。月夜野まひる
-mahiru: でも、その呼び方だとちょっと他人行儀かも
+mahiru: $chapter1.chapter1_breaktime.t013
+mahiru: $chapter1.chapter1_breaktime.t014
 
-player: 小学校以来だろ
-player: 他人行儀にもなる
+player: $chapter1.chapter1_breaktime.t015
+player: $chapter1.chapter1_breaktime.t016
 
 @expr mahiru normal
 
-mahiru: そっか。そうだよね
-mahiru: でも、勇くんはあんまり変わってない
+mahiru: $chapter1.chapter1_breaktime.t017
+mahiru: $chapter1.chapter1_breaktime.t018
 
-player: そうか？
+player: $chapter1.chapter1_breaktime.t019
 
-mahiru: うん
-mahiru: ちゃんと、勇くんの顔してる
+mahiru: $chapter1.chapter1_breaktime.t020
+mahiru: $chapter1.chapter1_breaktime.t021
 
-> ちゃんと、ここにいる。
-> そう続けかけたように見えて、まひるは少しだけ言葉を飲み込んだ。
+> $chapter1.chapter1_breaktime.t022
+> $chapter1.chapter1_breaktime.t023
 
-player: お前こそ……その、急にいたから驚いた
+player: $chapter1.chapter1_breaktime.t024
 
-mahiru: あはは。転校とかじゃないよ
-mahiru: ちょっと前から戻ってきてたの
-mahiru: ただ、勇くんに会うタイミングがなかっただけ
+mahiru: $chapter1.chapter1_breaktime.t025
+mahiru: $chapter1.chapter1_breaktime.t026
+mahiru: $chapter1.chapter1_breaktime.t027
 
-> まひるは昔から、柔らかく笑うやつだった。
-> その笑い方は今も変わっていない。
-> けれど、変わっていないことが、逆に少しだけ不自然に見えた。
+> $chapter1.chapter1_breaktime.t028
+> $chapter1.chapter1_breaktime.t029
+> $chapter1.chapter1_breaktime.t030
 
-mahiru: またね
-mahiru: 今度は、もう少しちゃんと話したいな
+mahiru: $chapter1.chapter1_breaktime.t031
+mahiru: $chapter1.chapter1_breaktime.t032
 
-player: ……ああ
+player: $chapter1.chapter1_breaktime.t033
 
 @expr mahiru happy
 
-mahiru: ふふ。よかった
+mahiru: $chapter1.chapter1_breaktime.t034
 
 @flag has_met_mahiru true
 
 @hide mahiru slide_out_right
 @wait 600
 
-> それだけ言って、まひるは先に行ってしまう。
-> 廊下に残ったのは、足音の余韻だけだった。
+> $chapter1.chapter1_breaktime.t035
+> $chapter1.chapter1_breaktime.t036
 
-> 幼なじみ。
-> そう呼ぶには、空白が長すぎる。
-> それでも、完全に昔の人間にもなりきれない。
-> そういう距離がいちばん困る。
+> $chapter1.chapter1_breaktime.t037
+> $chapter1.chapter1_breaktime.t038
+> $chapter1.chapter1_breaktime.t039
+> $chapter1.chapter1_breaktime.t040
 
-> ちゃんとここにいる。
-> そんなふうに言われた気がした。
-> いや、言われてはいない。
-> ただ、そう聞こえただけだ。
+> $chapter1.chapter1_breaktime.t041
+> $chapter1.chapter1_breaktime.t042
+> $chapter1.chapter1_breaktime.t043
+> $chapter1.chapter1_breaktime.t044
 
-> 俺のほうが、変なんだろう。
+> $chapter1.chapter1_breaktime.t045
 
 @jump chapter1_lunch
 
@@ -424,60 +424,60 @@ mahiru: ふふ。よかった
 @se classroom_noise.mp3
 @wait 800
 
-> 昼休み。
-> 教室の熱は朝よりも少しだけ上がっていた。
-> もう何人かはグループを作っていて、もう何人かはその外側にいる。
-> 人間関係の輪郭ができ始める速度は、毎回思ったより早い。
+> $chapter1.chapter1_lunch.t001
+> $chapter1.chapter1_lunch.t002
+> $chapter1.chapter1_lunch.t003
+> $chapter1.chapter1_lunch.t004
 
 @show sakura right happy fade_in
 
-sakura: 勇くーん、お昼どうする？
-sakura: 一人なら一緒に食べよ！
+sakura: $chapter1.chapter1_lunch.t005
+sakura: $chapter1.chapter1_lunch.t006
 
-player: 断る理由もないけど
+player: $chapter1.chapter1_lunch.t007
 
-sakura: じゃ決まり！
-sakura: あ、でも購買行くなら先に言ってね。あたし焼きそばパン戦争には参加しない派だから
+sakura: $chapter1.chapter1_lunch.t008
+sakura: $chapter1.chapter1_lunch.t009
 
-player: 派閥みたいに言うなよ
+player: $chapter1.chapter1_lunch.t010
 
-sakura: あるんだって、あれはもう戦場だから！
+sakura: $chapter1.chapter1_lunch.t011
 
-> さくらが喋ると、会話の主導権はだいたい相手に回ってこない。
-> けれど不快じゃないのは、たぶんこいつがちゃんと相手の反応を見ているからだ。
+> $chapter1.chapter1_lunch.t012
+> $chapter1.chapter1_lunch.t013
 
-sakura: 勇くんってさ、前からこの学校だっけ？
-sakura: なんか見たことある気もするし、ない気もする
+sakura: $chapter1.chapter1_lunch.t014
+sakura: $chapter1.chapter1_lunch.t015
 
-player: 中学からいる
+player: $chapter1.chapter1_lunch.t016
 
-sakura: じゃあ、あたしが覚えてないだけかー
-sakura: ごめんごめん
+sakura: $chapter1.chapter1_lunch.t017
+sakura: $chapter1.chapter1_lunch.t018
 
-player: 別に謝ることじゃないだろ
+player: $chapter1.chapter1_lunch.t019
 
 @expr sakura thinking
 
-sakura: そーかな
-sakura: あたし、結構そういうの気にしちゃうんだよね
-sakura: 覚えてないとか、気づかなかったとか
+sakura: $chapter1.chapter1_lunch.t020
+sakura: $chapter1.chapter1_lunch.t021
+sakura: $chapter1.chapter1_lunch.t022
 
-> その言葉だけ、妙に引っかかった。
-> けれど次の瞬間には、
+> $chapter1.chapter1_lunch.t023
+> $chapter1.chapter1_lunch.t024
 
 @expr sakura happy
 
-sakura: ま、今覚えたから問題なし！
+sakura: $chapter1.chapter1_lunch.t025
 
-> いつもの調子で笑ってみせる。
+> $chapter1.chapter1_lunch.t026
 
-player: 便利な結論だな
+player: $chapter1.chapter1_lunch.t027
 
-sakura: 生きやすさ重視ってことで！
+sakura: $chapter1.chapter1_lunch.t028
 
-> 生きやすさ。
-> そんなふうに言える人間は、たぶん強い。
-> あるいは、強く見せるのが上手い。
+> $chapter1.chapter1_lunch.t029
+> $chapter1.chapter1_lunch.t030
+> $chapter1.chapter1_lunch.t031
 
 @hide sakura fade_out
 
@@ -495,89 +495,89 @@ sakura: 生きやすさ重視ってことで！
 @se school_bell.mp3
 @wait 1200
 
-> 放課後。
-> 教室から人が減ると、昼間は気づかなかった広さが浮かび上がる。
-> 机と椅子の並びまで、少しだけよそよそしく見えた。
+> $chapter1.chapter1_after_school_intro.t001
+> $chapter1.chapter1_after_school_intro.t002
+> $chapter1.chapter1_after_school_intro.t003
 
-> 今日は特に予定もない。
-> 部活も、委員会も、呼び出しもない。
-> 真っ直ぐ帰ればいいだけだ。
+> $chapter1.chapter1_after_school_intro.t004
+> $chapter1.chapter1_after_school_intro.t005
+> $chapter1.chapter1_after_school_intro.t006
 
-> なのに、すぐ立ち上がる気になれなかった。
+> $chapter1.chapter1_after_school_intro.t007
 
 @show sakura left happy fade_in
 
-sakura: あれ、勇くんまだいたんだ
+sakura: $chapter1.chapter1_after_school_intro.t008
 
-player: お前もな
+player: $chapter1.chapter1_after_school_intro.t009
 
-sakura: あたしは日直の残り仕事
-sakura: プリントまとめるやつ。地味だけど大事なやつ
+sakura: $chapter1.chapter1_after_school_intro.t010
+sakura: $chapter1.chapter1_after_school_intro.t011
 
-player: ふーん
+player: $chapter1.chapter1_after_school_intro.t012
 
-sakura: その反応ぜったい興味ないでしょ
+sakura: $chapter1.chapter1_after_school_intro.t013
 
-player: まあな
+player: $chapter1.chapter1_after_school_intro.t014
 
-sakura: 正直でよろしい！
+sakura: $chapter1.chapter1_after_school_intro.t015
 
-> さくらはそう言って笑い、配布物を揃え始める。
-> 動きに無駄がない。
-> 誰かに頼まれたことを、ちゃんとこなすのが当たり前になっている手つきだった。
+> $chapter1.chapter1_after_school_intro.t016
+> $chapter1.chapter1_after_school_intro.t017
+> $chapter1.chapter1_after_school_intro.t018
 
 @expr sakura no_light_eyes
 
-sakura: ……あ
+sakura: $chapter1.chapter1_after_school_intro.t019
 
-> ほんの一瞬。
-> たぶん、一秒もなかった。
+> $chapter1.chapter1_after_school_intro.t020
+> $chapter1.chapter1_after_school_intro.t021
 
-> 手を止めたさくらの顔から、表情が消えた。
+> $chapter1.chapter1_after_school_intro.t022
 
-> 怒っているわけでもない。
-> 落ち込んでいるわけでもない。
-> ただ、本当に何も乗っていない顔。
+> $chapter1.chapter1_after_school_intro.t023
+> $chapter1.chapter1_after_school_intro.t024
+> $chapter1.chapter1_after_school_intro.t025
 
-> 光だけが先に消えたみたいな、
-> 空っぽの顔だった。
+> $chapter1.chapter1_after_school_intro.t026
+> $chapter1.chapter1_after_school_intro.t027
 
-player: ……
+player: $chapter1.chapter1_after_school_intro.t028
 
 @expr sakura surprised
 
-sakura: え、なに？
-sakura: あたしの顔になんかついてる？
+sakura: $chapter1.chapter1_after_school_intro.t029
+sakura: $chapter1.chapter1_after_school_intro.t030
 
-player: いや。別に
+player: $chapter1.chapter1_after_school_intro.t031
 
 @expr sakura happy
 
-sakura: ならよかった！
-sakura: いやー、今日ちょっと眠いんだよね。新学期って地味に疲れない？
+sakura: $chapter1.chapter1_after_school_intro.t032
+sakura: $chapter1.chapter1_after_school_intro.t033
 
-player: そうかもな
+player: $chapter1.chapter1_after_school_intro.t034
 
-sakura: でしょ？
-sakura: じゃ、あたしもう行くね。また明日！
+sakura: $chapter1.chapter1_after_school_intro.t035
+sakura: $chapter1.chapter1_after_school_intro.t036
 
-player: ああ
+player: $chapter1.chapter1_after_school_intro.t037
 
 @hide sakura slide_out_left
 @wait 800
 
-> また笑った。
-> さっき見たものが嘘みたいに、いつも通りに。
+> $chapter1.chapter1_after_school_intro.t038
+> $chapter1.chapter1_after_school_intro.t039
 
-> 気のせい、かもしれない。
-> 疲れているだけ、かもしれない。
-> たった一瞬の表情に意味を探すほうが、おかしいのかもしれない。
+> $chapter1.chapter1_after_school_intro.t040
+> $chapter1.chapter1_after_school_intro.t041
+> $chapter1.chapter1_after_school_intro.t042
 
-> でも――
+> $chapter1.chapter1_after_school_intro.t043
 
-> あの顔は、
-> 作った笑顔が剥がれた顔というより、
-> 最初から何も置かれていなかった場所みたいだった。
+> $chapter1.chapter1_after_school_intro.t044
+> $chapter1.chapter1_after_school_intro.t045
+> $chapter1.chapter1_after_school_intro.t046
 
 @jump chapter1_library_pass
 
@@ -593,69 +593,69 @@ player: ああ
 @se footsteps.mp3
 @wait 800
 
-> 帰ろうとして廊下に出る。
-> 夕方の校舎は、昼とは違う音の薄さがある。
-> 誰かの話し声も、部活の掛け声も、壁を一枚挟んだみたいに遠い。
+> $chapter1.chapter1_library_pass.t001
+> $chapter1.chapter1_library_pass.t002
+> $chapter1.chapter1_library_pass.t003
 
 @se door_open.mp3
 @wait 400
 
-> 図書室の前を通りかかったとき、開きかけたドアの向こうに人影が見えた。
+> $chapter1.chapter1_library_pass.t004
 
 @scene library_evening fade
 @show kotoha center normal fade_in
 @wait 500
 
-> 花園ことはだった。
-> もう制服の襟元まで夕方の色を吸っていて、昼間よりさらに静かに見える。
+> $chapter1.chapter1_library_pass.t005
+> $chapter1.chapter1_library_pass.t006
 
-> 彼女は棚の前に立ち、一冊の本を手に取っていた。
-> 本の表紙を、指先でなぞる。
-> それだけの仕草なのに、なぜか妙に印象に残った。
+> $chapter1.chapter1_library_pass.t007
+> $chapter1.chapter1_library_pass.t008
+> $chapter1.chapter1_library_pass.t009
 
-> 机の上には、小さな音楽プレイヤーとヘッドホン。
-> さっきまで何か聴いていたのかもしれない。
+> $chapter1.chapter1_library_pass.t010
+> $chapter1.chapter1_library_pass.t011
 
-> そのとき、ことはの手が止まった。
+> $chapter1.chapter1_library_pass.t012
 
-> 本の表紙に描かれた五線譜を見ている。
-> ……ように見えた。
+> $chapter1.chapter1_library_pass.t013
+> $chapter1.chapter1_library_pass.t014
 
 @se piano_single_note.mp3
 @wait 600
 
-> どこか遠くで、ピアノの単音が鳴った気がした。
-> 実際に聞こえたのか、そう思っただけなのかはわからない。
+> $chapter1.chapter1_library_pass.t015
+> $chapter1.chapter1_library_pass.t016
 
 @expr kotoha surprised
 
-> ことはは小さく顔を上げる。
-> 視線がこちらに触れた。
-> ほんの一瞬、驚いたような顔。
+> $chapter1.chapter1_library_pass.t017
+> $chapter1.chapter1_library_pass.t018
+> $chapter1.chapter1_library_pass.t019
 
-kotoha: ……
+kotoha: $chapter1.chapter1_library_pass.t020
 
-player: ……
+player: $chapter1.chapter1_library_pass.t021
 
 @expr kotoha normal
 
-kotoha: 失礼します
+kotoha: $chapter1.chapter1_library_pass.t022
 
 @hide kotoha fade_out
 @scene corridor_evening fade
 @wait 600
 
-> それだけ言って、彼女はヘッドホンを静かに持ち上げ、図書室の奥へ消えた。
+> $chapter1.chapter1_library_pass.t023
 
-> たぶん今のは、声をかけるような場面じゃなかった。
-> そう思う一方で、
-> 声をかけていたら何か変わったのかもしれない、とも思う。
+> $chapter1.chapter1_library_pass.t024
+> $chapter1.chapter1_library_pass.t025
+> $chapter1.chapter1_library_pass.t026
 
-> 五線譜の表紙。
-> ことははあの本を、どんな気持ちで手に取るのだろう。
+> $chapter1.chapter1_library_pass.t027
+> $chapter1.chapter1_library_pass.t028
 
-> ……いや。
-> 初日からそんなことを考えるのは、さすがに思い上がりだ。
+> $chapter1.chapter1_library_pass.t029
+> $chapter1.chapter1_library_pass.t030
 
 @flag has_met_kotoha true
 
@@ -673,69 +673,69 @@ kotoha: 失礼します
 @se footsteps.mp3
 @wait 700
 
-> 下駄箱へ向かう途中、階段の踊り場の窓から空が見えた。
-> 夕焼けの残りが少しずつ薄くなっていく。
-> 一日の終わりは、いつも思ったより早い。
+> $chapter1.chapter1_twilight_stairs.t001
+> $chapter1.chapter1_twilight_stairs.t002
+> $chapter1.chapter1_twilight_stairs.t003
 
-> その窓辺に、一瞬だけ人影が映った気がした。
+> $chapter1.chapter1_twilight_stairs.t004
 
 @show mahiru center normal fade_in
 
-mahiru: あ、また会ったね
+mahiru: $chapter1.chapter1_twilight_stairs.t005
 
-player: ……月夜野
+player: $chapter1.chapter1_twilight_stairs.t006
 
-mahiru: ふふ
-mahiru: 一日に二回会うと、ちょっと運命っぽくない？
+mahiru: $chapter1.chapter1_twilight_stairs.t007
+mahiru: $chapter1.chapter1_twilight_stairs.t008
 
-player: 大げさだな
+player: $chapter1.chapter1_twilight_stairs.t009
 
-mahiru: そうかな
-mahiru: 学校って広いのに
+mahiru: $chapter1.chapter1_twilight_stairs.t010
+mahiru: $chapter1.chapter1_twilight_stairs.t011
 
-> まひるは窓の外を見る。
-> つられて視線を向けると、空の端に細い雲が流れていた。
+> $chapter1.chapter1_twilight_stairs.t012
+> $chapter1.chapter1_twilight_stairs.t013
 
-mahiru: 今日の空、少しだけさみしい色してる
+mahiru: $chapter1.chapter1_twilight_stairs.t014
 
-player: 色でそこまでわかるもんか
+player: $chapter1.chapter1_twilight_stairs.t015
 
-mahiru: わかるよ
-mahiru: さみしい色の空の日って、黙ってる人が多いから
+mahiru: $chapter1.chapter1_twilight_stairs.t016
+mahiru: $chapter1.chapter1_twilight_stairs.t017
 
-player: なんだそれ
+player: $chapter1.chapter1_twilight_stairs.t018
 
-mahiru: 観察
+mahiru: $chapter1.chapter1_twilight_stairs.t019
 
-> そう言って笑う。
-> けれど、目だけは少しだけ遠かった。
+> $chapter1.chapter1_twilight_stairs.t020
+> $chapter1.chapter1_twilight_stairs.t021
 
-player: お前、昔からそういうこと言ってたか？
+player: $chapter1.chapter1_twilight_stairs.t022
 
-mahiru: ううん。たぶん今のほうが言う
-mahiru: そのほうが、見失わないで済むから
+mahiru: $chapter1.chapter1_twilight_stairs.t023
+mahiru: $chapter1.chapter1_twilight_stairs.t024
 
-player: 何を
+player: $chapter1.chapter1_twilight_stairs.t025
 
 @expr mahiru happy
 
-mahiru: ひみつ
+mahiru: $chapter1.chapter1_twilight_stairs.t026
 
-> その答え方が、なぜか少しだけ怖かった。
+> $chapter1.chapter1_twilight_stairs.t027
 
-mahiru: じゃあね、勇くん
-mahiru: 気をつけて帰って
+mahiru: $chapter1.chapter1_twilight_stairs.t028
+mahiru: $chapter1.chapter1_twilight_stairs.t029
 
-player: ああ
+player: $chapter1.chapter1_twilight_stairs.t030
 
 @hide mahiru slide_out_right
 @wait 700
 
-> 見失わないで済むから。
-> 今日、二度目に引っかかった言葉だった。
+> $chapter1.chapter1_twilight_stairs.t031
+> $chapter1.chapter1_twilight_stairs.t032
 
-> 初日から、何かが少しずつ噛み合っていない。
-> そういう感じだけが、うまく言葉にならずに残っていく。
+> $chapter1.chapter1_twilight_stairs.t033
+> $chapter1.chapter1_twilight_stairs.t034
 
 @jump chapter1_last_classroom
 
@@ -750,108 +750,108 @@ player: ああ
 @bgm night_melody.mp3
 @wait 1000
 
-> 結局、忘れ物に気づいて教室へ戻った頃には、校舎はほとんど夜になっていた。
+> $chapter1.chapter1_last_classroom.t001
 
-> 誰もいない教室。
-> 開けっぱなしのカーテン。
-> 窓の外には、街の光だけがぼんやり滲んでいる。
+> $chapter1.chapter1_last_classroom.t002
+> $chapter1.chapter1_last_classroom.t003
+> $chapter1.chapter1_last_classroom.t004
 
-> 朝はあれほど人の声で満ちていた場所が、
-> 夜になると別の建物みたいに見える。
+> $chapter1.chapter1_last_classroom.t005
+> $chapter1.chapter1_last_classroom.t006
 
-> 自分の席に置きっぱなしだったノートを取る。
-> たったそれだけのことなのに、
-> なぜかすぐ帰る気になれなかった。
+> $chapter1.chapter1_last_classroom.t007
+> $chapter1.chapter1_last_classroom.t008
+> $chapter1.chapter1_last_classroom.t009
 
-> さくらの、一瞬だけ消えた顔。
-> ことはの、止まった指先。
-> まひるの、見失わないためという言葉。
+> $chapter1.chapter1_last_classroom.t010
+> $chapter1.chapter1_last_classroom.t011
+> $chapter1.chapter1_last_classroom.t012
 
-> どれも、はっきりした意味はない。
-> 初日の印象にしては、考えすぎだ。
-> そう自分に言い聞かせる。
+> $chapter1.chapter1_last_classroom.t013
+> $chapter1.chapter1_last_classroom.t014
+> $chapter1.chapter1_last_classroom.t015
 
-> けれど、考えすぎて外したことより、
-> 気づかなかったせいで手遅れになった記憶のほうが、
-> 俺の中ではずっと重かった。
+> $chapter1.chapter1_last_classroom.t016
+> $chapter1.chapter1_last_classroom.t017
+> $chapter1.chapter1_last_classroom.t018
 
-player: ……
+player: $chapter1.chapter1_last_classroom.t019
 
-> 窓際まで歩いて、夜空を見上げる。
+> $chapter1.chapter1_last_classroom.t020
 
 @scene overcast_sky fade
 @bgm mystery_shadow.mp3
 @wait 1000
 
-> 雲がかかっていた。
-> 星は見えない。
+> $chapter1.chapter1_last_classroom.t021
+> $chapter1.chapter1_last_classroom.t022
 
-> こんな夜だった気がする。
-> あの日も。
+> $chapter1.chapter1_last_classroom.t023
+> $chapter1.chapter1_last_classroom.t024
 
-> 慎は、いつも通りだった。
-> 少なくとも、俺にはそう見えた。
-> くだらない話をして、笑って、
-> 別れ際にも「また明日な」って言っていた。
+> $chapter1.chapter1_last_classroom.t025
+> $chapter1.chapter1_last_classroom.t026
+> $chapter1.chapter1_last_classroom.t027
+> $chapter1.chapter1_last_classroom.t028
 
-> また明日なんて、来なかった。
+> $chapter1.chapter1_last_classroom.t029
 
-> 何かおかしかったのかもしれない。
-> 助けを求める声は、もっと前から出ていたのかもしれない。
-> でも俺は、何も拾えなかった。
+> $chapter1.chapter1_last_classroom.t030
+> $chapter1.chapter1_last_classroom.t031
+> $chapter1.chapter1_last_classroom.t032
 
-> 父のときもそうだ。
-> 慎のときもそうだ。
-> 俺はいつも、
-> 見ていたつもりで、
-> いちばん大事なところを見落とす。
+> $chapter1.chapter1_last_classroom.t033
+> $chapter1.chapter1_last_classroom.t034
+> $chapter1.chapter1_last_classroom.t035
+> $chapter1.chapter1_last_classroom.t036
+> $chapter1.chapter1_last_classroom.t037
 
-player: ……大丈夫、か
+player: $chapter1.chapter1_last_classroom.t038
 
-> 口に出してから、その言葉が嫌になった。
+> $chapter1.chapter1_last_classroom.t039
 
-> 大丈夫。
-> 便利で、軽くて、何も救わない言葉。
+> $chapter1.chapter1_last_classroom.t040
+> $chapter1.chapter1_last_classroom.t041
 
-> 言った側だけが安心して、
-> 言われた側だけが黙る。
-> そんな場面を、何度も見てきた。
+> $chapter1.chapter1_last_classroom.t042
+> $chapter1.chapter1_last_classroom.t043
+> $chapter1.chapter1_last_classroom.t044
 
-> だから俺は、あの言葉が嫌いだ。
+> $chapter1.chapter1_last_classroom.t045
 
-> それでも人は、簡単に使う。
-> 朝の教室でも、
-> 放課後でも、
-> たぶんこれから何度でも。
+> $chapter1.chapter1_last_classroom.t046
+> $chapter1.chapter1_last_classroom.t047
+> $chapter1.chapter1_last_classroom.t048
+> $chapter1.chapter1_last_classroom.t049
 
-> そしてたぶん、
-> そのたびに俺は引っかかる。
+> $chapter1.chapter1_last_classroom.t050
+> $chapter1.chapter1_last_classroom.t051
 
 @bgm stop
 @wait 300
 @bgm opening_piano.mp3
 @wait 500
 
-> 星の見えない夜空を見上げながら、思う。
+> $chapter1.chapter1_last_classroom.t052
 
-> もし今度また、
-> 誰かが「大丈夫」と言ったとして。
+> $chapter1.chapter1_last_classroom.t053
+> $chapter1.chapter1_last_classroom.t054
 
-> その声の奥にあるものへ、
-> 今度こそ、ちゃんと手を伸ばせるだろうか。
+> $chapter1.chapter1_last_classroom.t055
+> $chapter1.chapter1_last_classroom.t056
 
-> いや。
-> まだ、そんなふうには言えない。
+> $chapter1.chapter1_last_classroom.t057
+> $chapter1.chapter1_last_classroom.t058
 
-> 俺はたぶん、
-> 気づくのが遅い。
+> $chapter1.chapter1_last_classroom.t059
+> $chapter1.chapter1_last_classroom.t060
 
-> 遅いままで、
-> それでも目を逸らさないことだけが、
-> 今の俺にできることだった。
+> $chapter1.chapter1_last_classroom.t061
+> $chapter1.chapter1_last_classroom.t062
+> $chapter1.chapter1_last_classroom.t063
 
 @flag chapter1_complete true
 
 @bgm stop
 
-@end "第一章「星の見えない夜空」" -> chapter2_start
+@end "$chapter1.chapter1_last_classroom.end_title" -> chapter2_start

@@ -9,29 +9,29 @@
 @se evening_wind.mp3
 @wait 800
 
-> 七月後半。
-> 梅雨が明けて、空が一気に高くなった。
-> 日差しが真上から来る季節になっていた。
+> $chapter5.chapter5_start.t001
+> $chapter5.chapter5_start.t002
+> $chapter5.chapter5_start.t003
 
 @wait 500
 
-> 朝から気温が高い。
-> 教室の窓を開けていても、風は熱いまま入ってくる。
-> 黒板の上の温度計は、午前中からすでに三十度を超えていた。
+> $chapter5.chapter5_start.t004
+> $chapter5.chapter5_start.t005
+> $chapter5.chapter5_start.t006
 
 @wait 600
 
-> 扇風機が首を振るたびに、誰かのプリントが舞い上がる。
-> それを押さえる手。笑い声。椅子を引く音。
-> 七月の教室は、そういう音で満ちていた。
+> $chapter5.chapter5_start.t007
+> $chapter5.chapter5_start.t008
+> $chapter5.chapter5_start.t009
 
 @wait 700
 
-> 夏という季節が、人間を少しだけ雑にする。
+> $chapter5.chapter5_start.t010
 
 @wait 400
 
-> ……別に、嫌いじゃない。
+> $chapter5.chapter5_start.t011
 
 @wait 800
 
@@ -48,80 +48,80 @@
 @show sakura right excited fade_in
 @wait 300
 
-sakura: 聞いた？　今日プールじゃん！
+sakura: $chapter5.chapter5_morning_class.t001
 
-player: 時間割に書いてある
+player: $chapter5.chapter5_morning_class.t002
 
-sakura: そういう話じゃなくて！
-sakura: テンションの問題！　気分の問題！
+sakura: $chapter5.chapter5_morning_class.t003
+sakura: $chapter5.chapter5_morning_class.t004
 
 @expr sakura happy
 @wait 300
 
-sakura: あたし、プールの授業だと思うと朝から体が軽いんだよね
-sakura: バドじゃ水泳と違う筋肉使うから、いい気分転換になるし
+sakura: $chapter5.chapter5_morning_class.t005
+sakura: $chapter5.chapter5_morning_class.t006
 
-player: バドミントン部の練習量からしたら、プールなんて余裕だろ
+player: $chapter5.chapter5_morning_class.t007
 
-sakura: でもさ、水の感触って別物じゃん！
-sakura: 浮いてる感じ、抵抗感、全部違う！
+sakura: $chapter5.chapter5_morning_class.t008
+sakura: $chapter5.chapter5_morning_class.t009
 
 @wait 400
 
-> さくらが話すと、周りの空気が少し変わる。
-> 温度が上がる、というより、輪郭がはっきりする感じ。
-> こいつのいる場所は、いつも少しだけ鮮明だ。
+> $chapter5.chapter5_morning_class.t010
+> $chapter5.chapter5_morning_class.t011
+> $chapter5.chapter5_morning_class.t012
 
 @wait 500
 
 @show kotoha left normal fade_in
 @wait 300
 
-> ことはは窓際の席で、静かに教科書を読んでいた。
-> プールの話が聞こえているのかいないのか、視線は本の上で動かない。
+> $chapter5.chapter5_morning_class.t013
+> $chapter5.chapter5_morning_class.t014
 
-sakura: ことはちゃんはどう？　プール得意？
+sakura: $chapter5.chapter5_morning_class.t015
 
-kotoha: ……
+kotoha: $chapter5.chapter5_morning_class.t016
 
 @expr kotoha thinking
 @wait 500
 
-kotoha: 得意、とは少し違います
-kotoha: でも、嫌いでもないです
+kotoha: $chapter5.chapter5_morning_class.t017
+kotoha: $chapter5.chapter5_morning_class.t018
 
-sakura: どっちだよ！
+sakura: $chapter5.chapter5_morning_class.t019
 
-kotoha: どちらでもない、ということです
-kotoha: 水の中は、静かなので
+kotoha: $chapter5.chapter5_morning_class.t020
+kotoha: $chapter5.chapter5_morning_class.t021
 
 @expr sakura surprised
 @wait 300
 
-sakura: え、プールで静かとか感じたことないかも。あたし全力で泳ぐから
+sakura: $chapter5.chapter5_morning_class.t022
 
-player: お前はだいたい何でも全力だからな
+player: $chapter5.chapter5_morning_class.t023
 
-sakura: 褒めてる？
+sakura: $chapter5.chapter5_morning_class.t024
 
-player: 事実を言ってる
+player: $chapter5.chapter5_morning_class.t025
 
 @expr sakura happy
 @wait 300
 
-sakura: 同じじゃん！
+sakura: $chapter5.chapter5_morning_class.t026
 
 @wait 500
 
-> ことははその会話を聞いて、少しだけ表情を動かした。
-> 笑う、というほどではない。
-> ただ、目の端が柔らかくなった。
+> $chapter5.chapter5_morning_class.t027
+> $chapter5.chapter5_morning_class.t028
+> $chapter5.chapter5_morning_class.t029
 
 @wait 600
 
-> まひるとは別クラスだから、今朝は会っていない。
-> 朝の廊下で見かけることもある。
-> でも今日はまだ、その顔を見ていない。
+> $chapter5.chapter5_morning_class.t030
+> $chapter5.chapter5_morning_class.t031
+> $chapter5.chapter5_morning_class.t032
 
 @wait 400
 
@@ -132,8 +132,8 @@ sakura: 同じじゃん！
 @se school_bell.mp3
 @wait 600
 
-> 授業の始まりを告げるチャイムが鳴った。
-> 七月後半の朝が、また一時間進んでいく。
+> $chapter5.chapter5_morning_class.t033
+> $chapter5.chapter5_morning_class.t034
 
 @wait 800
 
@@ -147,18 +147,18 @@ sakura: 同じじゃん！
 @se footsteps.mp3
 @wait 600
 
-> 三時間目。体育の時間になった。
-> 廊下を移動していると、プールの塩素の匂いが風に乗ってくる。
-> 夏のプールの匂いというのは、記憶を引っ張ってくる力がある。
-> 小学校の授業、帰り道の疲れ、あの頃の日差しの角度まで。
+> $chapter5.chapter5_prep.t001
+> $chapter5.chapter5_prep.t002
+> $chapter5.chapter5_prep.t003
+> $chapter5.chapter5_prep.t004
 
 @wait 700
 
-> 更衣室で着替えながら、周りの声がざわついていた。
-> 「どのコースになるかな」
-> 「速泳ぎが得意なやつ、結局いつも同じメンバーだよな」
-> 「日焼けやだー」
-> そういう声が壁を抜けてくる。
+> $chapter5.chapter5_prep.t005
+> $chapter5.chapter5_prep.t006
+> $chapter5.chapter5_prep.t007
+> $chapter5.chapter5_prep.t008
+> $chapter5.chapter5_prep.t009
 
 @wait 600
 
@@ -167,69 +167,69 @@ sakura: 同じじゃん！
 @se river_flow.mp3
 @wait 800
 
-> 更衣室の扉を開けると、光がまず来た。
-> 七月の太陽が水面を白く砕いている。
-> 目を細めながら外に出ると、空の青さが思ったより濃かった。
+> $chapter5.chapter5_prep.t010
+> $chapter5.chapter5_prep.t011
+> $chapter5.chapter5_prep.t012
 
 @wait 500
 
-> プールサイドのコンクリートはすでに熱を持っていて、
-> 足の裏から夏が伝わってくる。
-> 水しぶきが飛んでくる場所だけ、少しだけ温度が違う。
+> $chapter5.chapter5_prep.t013
+> $chapter5.chapter5_prep.t014
+> $chapter5.chapter5_prep.t015
 
 @wait 600
 
 @show sakura_swimsuit left excited fade_in
 @wait 300
 
-sakura: やばい、水めっちゃきれい！
+sakura: $chapter5.chapter5_prep.t016
 
-> さくらがプールサイドに出てきた瞬間、声が一回り大きくなった。
-> 目が輝いている。本当に輝いている。
-> 夏という季節が、こいつのためにあるみたいな顔をしていた。
+> $chapter5.chapter5_prep.t017
+> $chapter5.chapter5_prep.t018
+> $chapter5.chapter5_prep.t019
 
 @wait 400
 
-sakura: 勇くん、見て見て！　光の反射がすごくない？
-sakura: なんかキラキラしてて、目が痛いくらい！
+sakura: $chapter5.chapter5_prep.t020
+sakura: $chapter5.chapter5_prep.t021
 
-player: それ、単純に眩しいだけだろ
+player: $chapter5.chapter5_prep.t022
 
-sakura: でもいい眩しさじゃん！
+sakura: $chapter5.chapter5_prep.t023
 
 @expr sakura_swimsuit happy
 @wait 300
 
-> 確かに、今日の水面はよく光っていた。
-> 梅雨明けの空は何も遮るものがなく、
-> 光が水面に当たるたびに砕けて飛び散る。
-> それは確かに、眩しかった。
+> $chapter5.chapter5_prep.t024
+> $chapter5.chapter5_prep.t025
+> $chapter5.chapter5_prep.t026
+> $chapter5.chapter5_prep.t027
 
 @wait 500
 
 @show kotoha_swimsuit right normal fade_in
 @wait 300
 
-> ことははプールサイドの端の方に立っていた。
-> さくらとは少し距離を置いた場所。
-> でも、遠ざかっているというより、ただそこが居場所なだけの立ち方だった。
+> $chapter5.chapter5_prep.t028
+> $chapter5.chapter5_prep.t029
+> $chapter5.chapter5_prep.t030
 
 @wait 400
 
-kotoha: ……空が高くなりましたね
+kotoha: $chapter5.chapter5_prep.t031
 
-> 独り言なのか、声をかけているのかわからないくらいの音量だった。
-> でも、こちらに向けた言葉だということは伝わった。
+> $chapter5.chapter5_prep.t032
+> $chapter5.chapter5_prep.t033
 
-player: 七月後半になるとそうなるな
+player: $chapter5.chapter5_prep.t034
 
-kotoha: 梅雨の間は、空に蓋がある感じがして
-kotoha: それが取れると、こんなに遠かったんだと、毎年驚きます
+kotoha: $chapter5.chapter5_prep.t035
+kotoha: $chapter5.chapter5_prep.t036
 
 @wait 400
 
-> ことはは水面を見ていた。
-> 反射する光の中に、何かを探すような目。
+> $chapter5.chapter5_prep.t037
+> $chapter5.chapter5_prep.t038
 
 @wait 500
 
@@ -237,15 +237,15 @@ kotoha: それが取れると、こんなに遠かったんだと、毎年驚き
 @hide sakura_swimsuit fade_out
 @wait 300
 
-> 先生の笛が鳴る前の短い時間、
-> プールサイドはがやがやとした声で満ちていた。
-> さくらは早速誰かと話していて、ことははまた少し離れたところにいて、
-> 俺はその中間くらいに立っていた。
+> $chapter5.chapter5_prep.t039
+> $chapter5.chapter5_prep.t040
+> $chapter5.chapter5_prep.t041
+> $chapter5.chapter5_prep.t042
 
 @wait 600
 
-> 準備体操の号令がかかった。
-> 夏の授業が、始まる。
+> $chapter5.chapter5_prep.t043
+> $chapter5.chapter5_prep.t044
 
 @wait 500
 
@@ -259,34 +259,34 @@ kotoha: それが取れると、こんなに遠かったんだと、毎年驚き
 @se gym_whistle.mp3
 @wait 500
 
-> 先生の笛が鳴った。
+> $chapter5.chapter5_lesson.t001
 
 @show sakura_swimsuit center excited fade_in
 @wait 300
 
-sakura: よし、行きますか！
+sakura: $chapter5.chapter5_lesson.t002
 
-> さくらが最初に飛び込んだ。
+> $chapter5.chapter5_lesson.t003
 
 @expr sakura_swimsuit happy
 @wait 400
 
-> 全力だった。
-> いつでも、どこでも、全力だ。
+> $chapter5.chapter5_lesson.t004
+> $chapter5.chapter5_lesson.t005
 
 @wait 300
 
-> 水面を割った瞬間、白いしぶきが上がった。
-> さくらの泳ぎは迷いがない。
-> バドミントンで鍛えた体は水の中でも筋道があって、
-> 無駄な動きがほとんどなかった。
+> $chapter5.chapter5_lesson.t006
+> $chapter5.chapter5_lesson.t007
+> $chapter5.chapter5_lesson.t008
+> $chapter5.chapter5_lesson.t009
 
 @wait 500
 
-> かと思えば、折り返しのタッチがものすごく速い。
-> 壁に触れた瞬間、水が跳ね上がる。
-> また折り返して、また跳ね上がる。
-> その繰り返しが、リズムみたいに見えた。
+> $chapter5.chapter5_lesson.t010
+> $chapter5.chapter5_lesson.t011
+> $chapter5.chapter5_lesson.t012
+> $chapter5.chapter5_lesson.t013
 
 @hide sakura_swimsuit fade_out
 @wait 400
@@ -294,25 +294,25 @@ sakura: よし、行きますか！
 @show kotoha_swimsuit right normal fade_in
 @wait 300
 
-> ことははコースの端にいた。
+> $chapter5.chapter5_lesson.t014
 
-> 水面を、ただ見ていた。
+> $chapter5.chapter5_lesson.t015
 
 @wait 500
 
-> 泳ぐ気配がなかった。
-> 泳げないわけじゃないと思う。
-> ただ、今は泳ぐことに興味がないように見えた。
+> $chapter5.chapter5_lesson.t016
+> $chapter5.chapter5_lesson.t017
+> $chapter5.chapter5_lesson.t018
 
 @wait 400
 
-> 水面に映る空。
-> 逆さまになった雲の形。
-> ことははそれを、静かに観察していた。
+> $chapter5.chapter5_lesson.t019
+> $chapter5.chapter5_lesson.t020
+> $chapter5.chapter5_lesson.t021
 
 @wait 600
 
-> 同じプールの中で、二人はまるで別の場所にいるみたいだった。
+> $chapter5.chapter5_lesson.t022
 
 @hide kotoha_swimsuit fade_out
 @wait 300
@@ -328,27 +328,27 @@ sakura: よし、行きますか！
 @still pool_sakura_kotoha
 @wait 800
 
-> 授業の半ばになって、さくらが全速力で泳いでいる横で、
-> ことはがコースの端に立って水面を眺めている、
-> そういう場面が続いていた。
+> $chapter5.chapter5_sakura_kotoha.t001
+> $chapter5.chapter5_sakura_kotoha.t002
+> $chapter5.chapter5_sakura_kotoha.t003
 
 @wait 600
 
-> スタート台の端から見ると、その対比がはっきりわかる。
-> 水を切り裂いて進んでいく者と、
-> 水面の模様を読んでいる者。
+> $chapter5.chapter5_sakura_kotoha.t004
+> $chapter5.chapter5_sakura_kotoha.t005
+> $chapter5.chapter5_sakura_kotoha.t006
 
 @wait 700
 
-> どちらが正しいとか、どちらが正しくないとか、
-> そういう話ではない。
-> ただ、二人は同じ場所で、まったく違うものを見ていた。
+> $chapter5.chapter5_sakura_kotoha.t007
+> $chapter5.chapter5_sakura_kotoha.t008
+> $chapter5.chapter5_sakura_kotoha.t009
 
 @wait 800
 
-> プールという場所が、
-> こんなにも違う何かになれるのだと、
-> その時間だけ考えていた。
+> $chapter5.chapter5_sakura_kotoha.t010
+> $chapter5.chapter5_sakura_kotoha.t011
+> $chapter5.chapter5_sakura_kotoha.t012
 
 @wait 600
 
@@ -368,109 +368,109 @@ sakura: よし、行きますか！
 @show kotoha_swimsuit right normal fade_in
 @wait 400
 
-> 俺の番が終わって、端の方で水気を拭いていると、
-> ことはがすぐ隣にいるのに気づいた。
+> $chapter5.chapter5_kotoha_water.t001
+> $chapter5.chapter5_kotoha_water.t002
 
 @wait 400
 
-> 相変わらず、水面を見ていた。
+> $chapter5.chapter5_kotoha_water.t003
 
-player: ……泳がないのか
+player: $chapter5.chapter5_kotoha_water.t004
 
-kotoha: 少し前に泳ぎました
+kotoha: $chapter5.chapter5_kotoha_water.t005
 
 @wait 300
 
-kotoha: 今は、見ているほうが好きなので
+kotoha: $chapter5.chapter5_kotoha_water.t006
 
-player: 何を見てる
+player: $chapter5.chapter5_kotoha_water.t007
 
 @expr kotoha_swimsuit thinking
 @wait 500
 
-kotoha: 水面の動き方、です
+kotoha: $chapter5.chapter5_kotoha_water.t008
 
-kotoha: 誰かが泳ぐたびに、波が広がって
-kotoha: 端まで届いて、跳ね返って、また戻ってきます
+kotoha: $chapter5.chapter5_kotoha_water.t009
+kotoha: $chapter5.chapter5_kotoha_water.t010
 
 @wait 400
 
-player: そうだな
+player: $chapter5.chapter5_kotoha_water.t011
 
-kotoha: 声に似ていると思って
+kotoha: $chapter5.chapter5_kotoha_water.t012
 
-player: 声？
+player: $chapter5.chapter5_kotoha_water.t013
 
 @expr kotoha_swimsuit normal
 @wait 500
 
-kotoha: 音、というか……
-kotoha: 音楽かもしれません
+kotoha: $chapter5.chapter5_kotoha_water.t014
+kotoha: $chapter5.chapter5_kotoha_water.t015
 
 @wait 300
 
-kotoha: 水面って少し、音楽に似てるんです
+kotoha: $chapter5.chapter5_kotoha_water.t016
 
-player: ……どういう意味だ
+player: $chapter5.chapter5_kotoha_water.t017
 
 @expr kotoha_swimsuit thinking
 @wait 600
 
-kotoha: 波は、鍵盤と似ていると思います
-kotoha: 誰かがどこかを押すと、全体に響いて、広がって、消えていく
-kotoha: 同じ鍵盤を押しても、強さが違えば全然違う音になる
+kotoha: $chapter5.chapter5_kotoha_water.t018
+kotoha: $chapter5.chapter5_kotoha_water.t019
+kotoha: $chapter5.chapter5_kotoha_water.t020
 
 @wait 400
 
-kotoha: 水面もそれに近い気がして
-kotoha: さくらさんが泳ぐと、波の形が全然違うんです
-kotoha: ……さっきまで見ていたので
+kotoha: $chapter5.chapter5_kotoha_water.t021
+kotoha: $chapter5.chapter5_kotoha_water.t022
+kotoha: $chapter5.chapter5_kotoha_water.t023
 
 @wait 600
 
-> 今のことはの声には、音楽の話をするとき特有の、
-> 微妙な間合いがあった。
-> やめても、見え方は変わらないんだ、と思った。
+> $chapter5.chapter5_kotoha_water.t024
+> $chapter5.chapter5_kotoha_water.t025
+> $chapter5.chapter5_kotoha_water.t026
 
 @wait 500
 
-player: ……音楽をやめても、まだそういう目で見るんだな
+player: $chapter5.chapter5_kotoha_water.t027
 
 @expr kotoha_swimsuit surprised
 @wait 400
 
-kotoha: ……
+kotoha: $chapter5.chapter5_kotoha_water.t028
 
 @expr kotoha_swimsuit normal
 @wait 500
 
-kotoha: やめても、耳は変わらないので
-kotoha: 見えるものも、変わらないのかもしれません
+kotoha: $chapter5.chapter5_kotoha_water.t029
+kotoha: $chapter5.chapter5_kotoha_water.t030
 
 @wait 600
 
-> その言葉が、何か大きなものを小さく言い換えているように聞こえた。
-> 踏み込む場面じゃない、とは思う。
-> それでも、簡単に流せなかった。
+> $chapter5.chapter5_kotoha_water.t031
+> $chapter5.chapter5_kotoha_water.t032
+> $chapter5.chapter5_kotoha_water.t033
 
 @wait 400
 
-player: 水面が音楽に見えるのは、お前がそういう耳を持ってるからじゃないか
+player: $chapter5.chapter5_kotoha_water.t034
 
 @expr kotoha_swimsuit surprised
 @wait 400
 
-kotoha: ……
+kotoha: $chapter5.chapter5_kotoha_water.t035
 
 @wait 500
 
-kotoha: そう言ってもらえると
-kotoha: 少し、楽になります
+kotoha: $chapter5.chapter5_kotoha_water.t036
+kotoha: $chapter5.chapter5_kotoha_water.t037
 
 @wait 600
 
-> 小さな声だった。
-> でも、確かな重さがあった。
+> $chapter5.chapter5_kotoha_water.t038
+> $chapter5.chapter5_kotoha_water.t039
 
 @wait 500
 
@@ -480,8 +480,8 @@ kotoha: 少し、楽になります
 @se gym_whistle.mp3
 @wait 400
 
-> 先生の笛が鳴った。
-> 授業の後半が始まる。
+> $chapter5.chapter5_kotoha_water.t040
+> $chapter5.chapter5_kotoha_water.t041
 
 @wait 500
 
@@ -498,53 +498,53 @@ kotoha: 少し、楽になります
 @show sakura_swimsuit left excited fade_in
 @wait 300
 
-> さくらは授業の最後まで、ほとんど全力で泳いでいた。
-> 折り返しのたびに勢いが落ちない。
-> こいつの体力はどこに入っているんだろう、と少し本気で思った。
+> $chapter5.chapter5_sakura_scene.t001
+> $chapter5.chapter5_sakura_scene.t002
+> $chapter5.chapter5_sakura_scene.t003
 
 @wait 600
 
 @expr sakura_swimsuit happy
 
-sakura: やばい、今日めっちゃ気持ちよかった！
-sakura: タイムも自己ベストに近かったかも！
+sakura: $chapter5.chapter5_sakura_scene.t004
+sakura: $chapter5.chapter5_sakura_scene.t005
 
-> 水から上がったばかりのさくらは、息が少し上がっていた。
-> でも顔は晴れやかだった。
-> 全力を出しきった顔というのは、こういう顔をする。
+> $chapter5.chapter5_sakura_scene.t006
+> $chapter5.chapter5_sakura_scene.t007
+> $chapter5.chapter5_sakura_scene.t008
 
 @wait 400
 
-player: 最後まで全力だったな
+player: $chapter5.chapter5_sakura_scene.t009
 
-sakura: そりゃそうでしょ！
-sakura: プールの授業って年に何回もないんだから、もったいなくない？
+sakura: $chapter5.chapter5_sakura_scene.t010
+sakura: $chapter5.chapter5_sakura_scene.t011
 
-player: 発想が部活人間だ
+player: $chapter5.chapter5_sakura_scene.t012
 
-sakura: 褒めてる？
+sakura: $chapter5.chapter5_sakura_scene.t013
 
-player: そのまま受け取っとけ
+player: $chapter5.chapter5_sakura_scene.t014
 
 @expr sakura_swimsuit excited
 @wait 400
 
-sakura: じゃあ受け取ります！　ありがとう！
+sakura: $chapter5.chapter5_sakura_scene.t015
 
 @wait 500
 
-> さくらは笑って、タオルで顔を拭いた。
-> 水滴がタイルに落ちる。
-> 夏の光の中で、その水滴が一瞬だけきらきらした。
+> $chapter5.chapter5_sakura_scene.t016
+> $chapter5.chapter5_sakura_scene.t017
+> $chapter5.chapter5_sakura_scene.t018
 
 @wait 600
 
 @hide sakura_swimsuit fade_out
 @wait 300
 
-> 授業終了の笛。
-> みんなが上がり始める。
-> プールサイドに声が戻ってきた。
+> $chapter5.chapter5_sakura_scene.t019
+> $chapter5.chapter5_sakura_scene.t020
+> $chapter5.chapter5_sakura_scene.t021
 
 @wait 600
 
@@ -558,28 +558,28 @@ sakura: じゃあ受け取ります！　ありがとう！
 @se river_flow.mp3
 @wait 500
 
-> 着替えに向かおうとして、一度振り返った。
+> $chapter5.chapter5_sakura_kotoha_end.t001
 
 @wait 300
 
-> さくらが壁際でしゃがんでいるのに気づいた。
+> $chapter5.chapter5_sakura_kotoha_end.t002
 
 @wait 500
 
-> ほとんどの人間はもう移動していた。
-> プールサイドの端。
-> コンクリートの壁に背中を預けて、膝を抱えている。
+> $chapter5.chapter5_sakura_kotoha_end.t003
+> $chapter5.chapter5_sakura_kotoha_end.t004
+> $chapter5.chapter5_sakura_kotoha_end.t005
 
 @wait 600
 
-> 疲れた、というより、出しきった後の静けさに見えた。
-> さくらがこういう座り方をするのを、初めて見た。
+> $chapter5.chapter5_sakura_kotoha_end.t006
+> $chapter5.chapter5_sakura_kotoha_end.t007
 
 @wait 800
 
 @choice
-- "大丈夫か" [sakura_favor+3] -> chapter5_sakura_talk
-- "……" -> chapter5_sakura_skip
+- $choices.chapter5.are_you_okay [sakura_favor+3] -> chapter5_sakura_talk
+- $choices.chapter5.silence -> chapter5_sakura_skip
 
 
 # chapter5_sakura_talk
@@ -587,156 +587,156 @@ sakura: じゃあ受け取ります！　ありがとう！
 @show sakura_swimsuit left normal fade_in
 @wait 300
 
-player: 大丈夫か。
+player: $chapter5.chapter5_sakura_talk.t001
 
 @wait 300
 
-> さくらは答えなかった。
+> $chapter5.chapter5_sakura_talk.t002
 
 @wait 1200
 
-> 顔を上げない。
-> 膝を抱えたまま、壁を見ている。
+> $chapter5.chapter5_sakura_talk.t003
+> $chapter5.chapter5_sakura_talk.t004
 
 @wait 800
 
-> それだけの時間が、やけに長かった。
+> $chapter5.chapter5_sakura_talk.t005
 
 @wait 600
 
-sakura: ……うん
+sakura: $chapter5.chapter5_sakura_talk.t006
 
-> 立ち上がろうとして、一度止まった。
-> もう一度、ゆっくり立つ。
+> $chapter5.chapter5_sakura_talk.t007
+> $chapter5.chapter5_sakura_talk.t008
 
 @wait 800
 
-> いつもなら、そこに「あはは」が来る。
-> でも来なかった。
+> $chapter5.chapter5_sakura_talk.t009
+> $chapter5.chapter5_sakura_talk.t010
 
 @wait 500
 
-sakura: ……なんで、そういうこと聞くの。
+sakura: $chapter5.chapter5_sakura_talk.t011
 
 @wait 400
 
-player: 顔色。
+player: $chapter5.chapter5_sakura_talk.t012
 
 @wait 300
 
-> さくらが俺を見た。
-> 少し、驚いているような顔。
+> $chapter5.chapter5_sakura_talk.t013
+> $chapter5.chapter5_sakura_talk.t014
 
 @wait 500
 
-sakura: そっか。
+sakura: $chapter5.chapter5_sakura_talk.t015
 
 @wait 800
 
-> 笑わなかった。
-> 「あはは」が出てこなかった。
-> そのことに、さくら自身が少し驚いているように見えた。
+> $chapter5.chapter5_sakura_talk.t016
+> $chapter5.chapter5_sakura_talk.t017
+> $chapter5.chapter5_sakura_talk.t018
 
 @wait 600
 
 @expr sakura_swimsuit blank
 
-> ほんの一瞬だった。
-> さくらの顔から、何かが消えた。
-> 笑顔でも、驚いた顔でもない。
-> あの放課後に見たのと同じ、光の消えた顔。
+> $chapter5.chapter5_sakura_talk.t019
+> $chapter5.chapter5_sakura_talk.t020
+> $chapter5.chapter5_sakura_talk.t021
+> $chapter5.chapter5_sakura_talk.t022
 
 @wait 800
 
-> 空っぽの顔。
-> 何も置かれていない場所みたいな顔。
+> $chapter5.chapter5_sakura_talk.t023
+> $chapter5.chapter5_sakura_talk.t024
 
 @wait 600
 
 @expr sakura_swimsuit surprised
 
-sakura: あ、
+sakura: $chapter5.chapter5_sakura_talk.t025
 
-> 気づかれた、と思ったのかもしれない。
-> さくらは一瞬だけ目を瞬かせた。
+> $chapter5.chapter5_sakura_talk.t026
+> $chapter5.chapter5_sakura_talk.t027
 
 @wait 500
 
 @expr sakura_swimsuit happy
 
-sakura: ……ごめんごめん、ちょっとぼーっとしてた！
-sakura: 全力で泳いだから、頭空っぽになっちゃってさ
+sakura: $chapter5.chapter5_sakura_talk.t028
+sakura: $chapter5.chapter5_sakura_talk.t029
 
-player: ……
+player: $chapter5.chapter5_sakura_talk.t030
 
 @wait 500
 
-> 笑っている。
-> いつもと同じ笑い方で、同じ声で。
-> でも、その笑顔の手前に何かがある。
-> そういう気がして、俺は何も言えなかった。
+> $chapter5.chapter5_sakura_talk.t031
+> $chapter5.chapter5_sakura_talk.t032
+> $chapter5.chapter5_sakura_talk.t033
+> $chapter5.chapter5_sakura_talk.t034
 
 @wait 600
 
-sakura: ……ねえ、勇くん
+sakura: $chapter5.chapter5_sakura_talk.t035
 
-player: 何だ
+player: $chapter5.chapter5_sakura_talk.t036
 
-sakura: 勇くんってさ
+sakura: $chapter5.chapter5_sakura_talk.t037
 
 @expr sakura_swimsuit thinking
 @wait 500
 
-sakura: ちゃんと休んでる？
+sakura: $chapter5.chapter5_sakura_talk.t038
 
-player: ……俺の話か
+player: $chapter5.chapter5_sakura_talk.t039
 
-sakura: うん。
-sakura: なんか、最近ちゃんと眠れてなさそうな顔してること、たまにあるから
+sakura: $chapter5.chapter5_sakura_talk.t040
+sakura: $chapter5.chapter5_sakura_talk.t041
 
 @wait 500
 
-> 逆に心配された。
-> さくらから、こういう言葉が来るとは思っていなかった。
+> $chapter5.chapter5_sakura_talk.t042
+> $chapter5.chapter5_sakura_talk.t043
 
 @wait 400
 
-player: お前に言われるとは思わなかった
+player: $chapter5.chapter5_sakura_talk.t044
 
-sakura: なんで？
+sakura: $chapter5.chapter5_sakura_talk.t045
 
-player: お前が全力でいつも元気そうだから
+player: $chapter5.chapter5_sakura_talk.t046
 
 @expr sakura_swimsuit normal
 @wait 600
 
-sakura: 全力で元気に見えるやつが、人のこと気にしないとは限らないよ
+sakura: $chapter5.chapter5_sakura_talk.t047
 
 @wait 500
 
-> その言葉は、思ったより真っ直ぐだった。
-> 笑いでごまかさなかった。
+> $chapter5.chapter5_sakura_talk.t048
+> $chapter5.chapter5_sakura_talk.t049
 
 @wait 600
 
-player: ……ちゃんと寝てる
+player: $chapter5.chapter5_sakura_talk.t050
 
-sakura: ほんと？
+sakura: $chapter5.chapter5_sakura_talk.t051
 
-player: 大体は
+player: $chapter5.chapter5_sakura_talk.t052
 
 @expr sakura_swimsuit happy
 @wait 400
 
-sakura: 「大体は」ってとこが気になるけど
-sakura: まあ、信じとく！
+sakura: $chapter5.chapter5_sakura_talk.t053
+sakura: $chapter5.chapter5_sakura_talk.t054
 
 @wait 500
 
-sakura: ……ありがとね。声かけてくれて。
+sakura: $chapter5.chapter5_sakura_talk.t055
 
-> 小さかった。
-> でもいつもより、ずっと本物に聞こえた。
+> $chapter5.chapter5_sakura_talk.t056
+> $chapter5.chapter5_sakura_talk.t057
 
 @wait 600
 
@@ -748,16 +748,16 @@ sakura: ……ありがとね。声かけてくれて。
 
 # chapter5_sakura_skip
 
-> さくらは俺に気づかないまま立ち上がった。
+> $chapter5.chapter5_sakura_skip.t001
 
 @wait 300
 
-> そのまま、行ってしまった。
+> $chapter5.chapter5_sakura_skip.t002
 
 @wait 500
 
-> 壁のそこだけ、ほんの少し空気が重かった。
-> でも、もう誰もいない。
+> $chapter5.chapter5_sakura_skip.t003
+> $chapter5.chapter5_sakura_skip.t004
 
 @wait 400
 
@@ -774,71 +774,71 @@ sakura: ……ありがとね。声かけてくれて。
 @show kotoha_swimsuit right normal fade_in
 @wait 400
 
-> ことははまだそこにいた。
+> $chapter5.chapter5_kotoha_scene.t001
 
-> 水面を見ていた。
+> $chapter5.chapter5_kotoha_scene.t002
 
 @wait 500
 
-player: ……。
+player: $chapter5.chapter5_kotoha_scene.t003
 
 @wait 300
 
-kotoha: 水は、静かですね。
+kotoha: $chapter5.chapter5_kotoha_scene.t004
 
 @wait 400
 
-player: プールだからな。
+player: $chapter5.chapter5_kotoha_scene.t005
 
 @wait 300
 
-kotoha: ……音を吸い込むんです。
+kotoha: $chapter5.chapter5_kotoha_scene.t006
 
 @wait 300
 
-kotoha: 水は。
+kotoha: $chapter5.chapter5_kotoha_scene.t007
 
 @wait 500
 
-> 返す言葉が、なかった。
+> $chapter5.chapter5_kotoha_scene.t008
 
 @wait 400
 
-kotoha: みんなが上がると、波が少しずつ小さくなっていって
-kotoha: 最後は、水面が鏡みたいになります
+kotoha: $chapter5.chapter5_kotoha_scene.t009
+kotoha: $chapter5.chapter5_kotoha_scene.t010
 
 @wait 500
 
-kotoha: ……空が映るんです
-kotoha: 梅雨が明けた後の空は、ここで見るのが好きです
+kotoha: $chapter5.chapter5_kotoha_scene.t011
+kotoha: $chapter5.chapter5_kotoha_scene.t012
 
-player: 逆さまの空か
+player: $chapter5.chapter5_kotoha_scene.t013
 
-kotoha: 逆さまのほうが、少し遠く見えます
-kotoha: 本物の空より
+kotoha: $chapter5.chapter5_kotoha_scene.t014
+kotoha: $chapter5.chapter5_kotoha_scene.t015
 
 @wait 600
 
-> ことはは泳がなかった。
-> でも、プールにいることには意味があった。
-> こいつにとって、水面はそういう場所なのかもしれない。
+> $chapter5.chapter5_kotoha_scene.t016
+> $chapter5.chapter5_kotoha_scene.t017
+> $chapter5.chapter5_kotoha_scene.t018
 
 @wait 500
 
-player: ……さくらとは、正反対だな
+player: $chapter5.chapter5_kotoha_scene.t019
 
-kotoha: そうかもしれません
-kotoha: でも、さくらさんの泳ぎ方が、波を作るから
+kotoha: $chapter5.chapter5_kotoha_scene.t020
+kotoha: $chapter5.chapter5_kotoha_scene.t021
 
 @expr kotoha_swimsuit normal
 @wait 400
 
-kotoha: あの波が、ここまで来るのを待っていたりします
+kotoha: $chapter5.chapter5_kotoha_scene.t022
 
 @wait 600
 
-> さくらの全力が、ことはの水面に届いている。
-> そういう話だった。
+> $chapter5.chapter5_kotoha_scene.t023
+> $chapter5.chapter5_kotoha_scene.t024
 
 @wait 500
 
@@ -857,77 +857,77 @@ kotoha: あの波が、ここまで来るのを待っていたりします
 @bgm daily_life.mp3
 @wait 500
 
-> 次の授業へ移動する廊下。
-> プール棟に沿った通路を歩いていると、窓の外が開けた。
+> $chapter5.chapter5_mahiru_window.t001
+> $chapter5.chapter5_mahiru_window.t002
 
 @wait 500
 
 @still pool_mahiru_window
 @wait 600
 
-> 三組が、水泳の授業をしていた。
+> $chapter5.chapter5_mahiru_window.t003
 
 @wait 400
 
-> プールの中には人の波。
-> 先生の笛の音が、ガラス越しに微かに届く。
-> 生徒たちはひとかたまりになって、端から端へと泳いでいた。
+> $chapter5.chapter5_mahiru_window.t004
+> $chapter5.chapter5_mahiru_window.t005
+> $chapter5.chapter5_mahiru_window.t006
 
 @wait 700
 
-> ——ひとりだけ、泳いでいない生徒がいた。
+> $chapter5.chapter5_mahiru_window.t007
 
 @wait 500
 
-> プールサイドの端。
-> 水着のまま、一人で立っている。
+> $chapter5.chapter5_mahiru_window.t008
+> $chapter5.chapter5_mahiru_window.t009
 
 @wait 400
 
-> まひるだった。
+> $chapter5.chapter5_mahiru_window.t010
 
 @wait 600
 
-> 見ていると、クラスメイトたちが折り返してくる。
-> 水しぶきが上がって、笑い声が弾ける。
-> まひるのそばを通って、また向こうへ行く。
+> $chapter5.chapter5_mahiru_window.t011
+> $chapter5.chapter5_mahiru_window.t012
+> $chapter5.chapter5_mahiru_window.t013
 
 @wait 500
 
-> まひるは動かなかった。
-> 水面だけを、ずっと見ていた。
+> $chapter5.chapter5_mahiru_window.t014
+> $chapter5.chapter5_mahiru_window.t015
 
 @wait 700
 
-> クラスの中にいるのに、
-> どこか別のところにいるような立ち方だった。
+> $chapter5.chapter5_mahiru_window.t016
+> $chapter5.chapter5_mahiru_window.t017
 
 @wait 600
 
-> 理由を考えようとして、止まった。
-> 窓越しのまひるの横顔は、
-> こちらには気づいていない。
+> $chapter5.chapter5_mahiru_window.t018
+> $chapter5.chapter5_mahiru_window.t019
+> $chapter5.chapter5_mahiru_window.t020
 
 @wait 600
 
-> 踊り場で会ったときのまひるの目を思い出す。
-> 「さみしい色の空の日って、黙ってる人が多いから」
+> $chapter5.chapter5_mahiru_window.t021
+> $chapter5.chapter5_mahiru_window.t022
 
 @wait 500
 
-> あのときの目が、少しだけ遠かった。
-> 今のまひるも、同じ目をしていた。
+> $chapter5.chapter5_mahiru_window.t023
+> $chapter5.chapter5_mahiru_window.t024
 
 @wait 600
 
-> まひるの視線が動いた。
-> 水面から、空へ。
-> 空から、また水面へ。
+> $chapter5.chapter5_mahiru_window.t025
+> $chapter5.chapter5_mahiru_window.t026
+> $chapter5.chapter5_mahiru_window.t027
 
 @wait 500
 
-> 廊下の人の流れに押されて、俺は歩き出した。
-> 窓の外のまひるは、最後まで振り返らなかった。
+> $chapter5.chapter5_mahiru_window.t028
+> $chapter5.chapter5_mahiru_window.t029
 
 @wait 800
 
@@ -944,155 +944,155 @@ kotoha: あの波が、ここまで来るのを待っていたりします
 @se evening_wind.mp3
 @wait 600
 
-> 午後の授業が終わった。
-> 日差しは傾いてきたが、まだ熱い。
-> 七月の放課後は、時間の進みが遅い。
+> $chapter5.chapter5_after_school.t001
+> $chapter5.chapter5_after_school.t002
+> $chapter5.chapter5_after_school.t003
 
 @wait 500
 
 @show sakura right happy fade_in
 @wait 300
 
-> さくらが鞄を肩にかけながら、こちらに向かってきた。
-> 午前中のプールで全力を出した後とは思えない元気さだった。
+> $chapter5.chapter5_after_school.t004
+> $chapter5.chapter5_after_school.t005
 
-sakura: 勇くん、帰り一緒に行かない？
+sakura: $chapter5.chapter5_after_school.t006
 
-player: ことははどうした
+player: $chapter5.chapter5_after_school.t007
 
-sakura: ことはちゃんも誘ってるよ！　今来るって
+sakura: $chapter5.chapter5_after_school.t008
 
 @wait 300
 
 @show kotoha left normal fade_in
 @wait 300
 
-> ことははゆっくりと鞄を持ち直して、歩いてきた。
+> $chapter5.chapter5_after_school.t009
 
-kotoha: ……お待たせしました
+kotoha: $chapter5.chapter5_after_school.t010
 
-sakura: 待ってないよ！　ちょうどよかった！
+sakura: $chapter5.chapter5_after_school.t011
 
 @expr kotoha normal
 @wait 300
 
-> 三人で廊下に出た。
-> 夕方の校舎は、昼間より音が少ない。
-> 部活の声だけが、遠くから聞こえていた。
+> $chapter5.chapter5_after_school.t012
+> $chapter5.chapter5_after_school.t013
+> $chapter5.chapter5_after_school.t014
 
 @wait 500
 
-sakura: あーでもプールって後から疲れくるんだよね
-sakura: 明日の朝、絶対筋肉痛かも
+sakura: $chapter5.chapter5_after_school.t015
+sakura: $chapter5.chapter5_after_school.t016
 
-player: 自業自得だろ
+player: $chapter5.chapter5_after_school.t017
 
-sakura: そうなんだけど！　でも後悔はしてない！
+sakura: $chapter5.chapter5_after_school.t018
 
 @expr sakura excited
 @wait 300
 
-kotoha: ……全力で泳いでいましたね
+kotoha: $chapter5.chapter5_after_school.t019
 
-sakura:見てた？
+sakura: $chapter5.chapter5_after_school.t020
 
-kotoha: 水面から見ていました
+kotoha: $chapter5.chapter5_after_school.t021
 
-sakura: え、どっから
+sakura: $chapter5.chapter5_after_school.t022
 
-kotoha: コースの端から
+kotoha: $chapter5.chapter5_after_school.t023
 
 @expr sakura surprised
 @wait 400
 
-sakura: そっか、ことはちゃんって泳ぐより見てるタイプなんだね
+sakura: $chapter5.chapter5_after_school.t024
 
-kotoha: そうかもしれません
+kotoha: $chapter5.chapter5_after_school.t025
 
-sakura: なんか……それってかっこいい気がする
+sakura: $chapter5.chapter5_after_school.t026
 
-kotoha: ……そうですか？
+kotoha: $chapter5.chapter5_after_school.t027
 
-sakura: なんか、「私は観察する側です」みたいな。哲学者みたいな
+sakura: $chapter5.chapter5_after_school.t028
 
 @expr kotoha surprised
 @wait 400
 
-kotoha: ……哲学者と水泳の観戦は、あまり重なりません
+kotoha: $chapter5.chapter5_after_school.t029
 
-sakura: 細かい！
+sakura: $chapter5.chapter5_after_school.t030
 
-player: お前が適当すぎるんだよ
+player: $chapter5.chapter5_after_school.t031
 
-sakura: 二対一？！
+sakura: $chapter5.chapter5_after_school.t032
 
-player: そういうわけじゃないが
+player: $chapter5.chapter5_after_school.t033
 
 @wait 400
 
-> さくらが笑った。
-> ことはも、今日一番くらいに表情が柔らかかった。
-> そういう笑い方をすると、ことはは年齢より少し若く見える。
+> $chapter5.chapter5_after_school.t034
+> $chapter5.chapter5_after_school.t035
+> $chapter5.chapter5_after_school.t036
 
 @wait 500
 
-sakura: ことはちゃんって笑うと可愛いよね
+sakura: $chapter5.chapter5_after_school.t037
 
 @expr kotoha shy
 @wait 300
 
-kotoha: ……そういうことを、突然言わないでください
+kotoha: $chapter5.chapter5_after_school.t038
 
-sakura: なんで？　本当のことだよ
+sakura: $chapter5.chapter5_after_school.t039
 
-player: お前は人の警戒を解くのが上手いな
+player: $chapter5.chapter5_after_school.t040
 
-sakura: そう？
-sakura: ただ思ったことを言ってるだけなんだけど
+sakura: $chapter5.chapter5_after_school.t041
+sakura: $chapter5.chapter5_after_school.t042
 
 @wait 500
 
-> 思ったことを言える人間は、羨ましい。
-> それが全部かどうかは別として。
+> $chapter5.chapter5_after_school.t043
+> $chapter5.chapter5_after_school.t044
 
 @wait 400
 
-kotoha: ……さくらさんは、いつもそうやって人を驚かせますね
+kotoha: $chapter5.chapter5_after_school.t045
 
-sakura: いい意味で？
+sakura: $chapter5.chapter5_after_school.t046
 
-kotoha: ……いい意味で、だと思います
+kotoha: $chapter5.chapter5_after_school.t047
 
 @expr sakura happy
 @wait 400
 
-sakura: ならよかった！
+sakura: $chapter5.chapter5_after_school.t048
 
 @wait 600
 
-> 下駄箱に着いた。
-> 靴を履き替えながら、どうでもない話を続ける。
-> 明日の時間割のこと、購買のパンのこと、来週のテストのこと。
-> 別に深い意味のない会話。
+> $chapter5.chapter5_after_school.t049
+> $chapter5.chapter5_after_school.t050
+> $chapter5.chapter5_after_school.t051
+> $chapter5.chapter5_after_school.t052
 
 @wait 500
 
-> でも、そういう会話のほうが、案外長く続く。
+> $chapter5.chapter5_after_school.t053
 
 @wait 600
 
-sakura: じゃ、また明日！
+sakura: $chapter5.chapter5_after_school.t054
 
-kotoha: また明日
+kotoha: $chapter5.chapter5_after_school.t055
 
-player: ああ
+player: $chapter5.chapter5_after_school.t056
 
 @hide sakura fade_out
 @hide kotoha fade_out
 @wait 500
 
-> 二人の背中が別の方向へ消えていった。
-> 夕方の校門の外は、まだ明るかった。
+> $chapter5.chapter5_after_school.t057
+> $chapter5.chapter5_after_school.t058
 
 @wait 600
 
@@ -1105,51 +1105,51 @@ player: ああ
 @bgm evening_piano.mp3
 @wait 600
 
-> 帰り道は、一人だった。
-> 校門から出て、住宅街へ向かう道。
-> 夕方の光が斜めに差して、影が長くなっていた。
+> $chapter5.chapter5_end.t001
+> $chapter5.chapter5_end.t002
+> $chapter5.chapter5_end.t003
 
 @wait 600
 
-> 今日のことを、頭の中で並べ直した。
+> $chapter5.chapter5_end.t004
 
 @wait 400
 
-> さくら。
-> 全力で水を切って、全力で笑って、
-> でもあの一瞬だけ、笑いが消えた。
-> 何も置かれていない、あの顔。
+> $chapter5.chapter5_end.t005
+> $chapter5.chapter5_end.t006
+> $chapter5.chapter5_end.t007
+> $chapter5.chapter5_end.t008
 
 @wait 400
 
-> ことは。
-> 泳がずに水面を見ていた。
-> 波を見て、音楽を思った。
-> やめたピアノのことを、小さな声で話した。
+> $chapter5.chapter5_end.t009
+> $chapter5.chapter5_end.t010
+> $chapter5.chapter5_end.t011
+> $chapter5.chapter5_end.t012
 
 @wait 400
 
-> まひる。
-> プールサイドに一人でいた。
-> カメラはなかった。
-> 水面を見ていた。
-> 何を見ていたかは、わからなかった。
+> $chapter5.chapter5_end.t013
+> $chapter5.chapter5_end.t014
+> $chapter5.chapter5_end.t015
+> $chapter5.chapter5_end.t016
+> $chapter5.chapter5_end.t017
 
 @wait 600
 
-> 同じプールにいたのに、三人それぞれが別の場所にいた。
-> そういう気がした。
+> $chapter5.chapter5_end.t018
+> $chapter5.chapter5_end.t019
 
 @wait 500
 
-> さくらは水の中に全力で入っていって、
-> ことはは水面から世界を読んでいて、
-> まひるは水面の向こうにある何かを、まだ俺には見えないものを見ていた。
+> $chapter5.chapter5_end.t020
+> $chapter5.chapter5_end.t021
+> $chapter5.chapter5_end.t022
 
 @wait 600
 
-> 同じ場所にいても、見ているものは違う。
-> その違いに気づけるかどうかが、距離を決める。
+> $chapter5.chapter5_end.t023
+> $chapter5.chapter5_end.t024
 
 @wait 500
 
@@ -1159,48 +1159,48 @@ player: ああ
 @bgm mystery_shadow.mp3
 @wait 600
 
-> まひるがあの場所にいた理由が、まだわからない。
-> カメラを持たずに、一人で水面を見ていた理由が。
+> $chapter5.chapter5_end.t025
+> $chapter5.chapter5_end.t026
 
 @wait 500
 
-> 新学期が始まってすぐの、踊り場でのことを思い出す。
-> 「見失わないで済むから」
-> そう言って笑った顔。
-> でも目だけが、少しだけ遠かった。
+> $chapter5.chapter5_end.t027
+> $chapter5.chapter5_end.t028
+> $chapter5.chapter5_end.t029
+> $chapter5.chapter5_end.t030
 
 @wait 600
 
-> 俺は今日もまた、窓越しに見ていただけだった。
-> 声をかけることも、近づくことも、できなかった。
+> $chapter5.chapter5_end.t031
+> $chapter5.chapter5_end.t032
 
 @wait 500
 
-> まひるが水面に何を見ていたのか、まだわからない。
-> わからないまま、今日が終わっていく。
+> $chapter5.chapter5_end.t033
+> $chapter5.chapter5_end.t034
 
-> そういえば、屋上で撮った写真。
-> プリントしてみんなに渡すって、あのとき言っていた。
-> 何ヶ月も経つのに、まだ受け取っていない。
-> ……まひるの中で、あの日はどこに置かれているんだろう。
+> $chapter5.chapter5_end.t035
+> $chapter5.chapter5_end.t036
+> $chapter5.chapter5_end.t037
+> $chapter5.chapter5_end.t038
 
 @wait 700
 
-> ……水は、今日も何かを映していた。
+> $chapter5.chapter5_end.t039
 
 @wait 400
 
-> 逆さまのまま。
+> $chapter5.chapter5_end.t040
 
 @wait 800
 
-> 空も、雲も、こちら側にいる人間の顔も。
+> $chapter5.chapter5_end.t041
 
 @wait 600
 
-> でも映っているのは、いつも逆さまの世界だ。
-> そこに何が映っているのか、見ている人間にしかわからない。
+> $chapter5.chapter5_end.t042
+> $chapter5.chapter5_end.t043
 
 @wait 1000
 
-@end "第五章「水面の午後」" -> chapter6_start
+@end "$chapter5.chapter5_end.end_title" -> chapter6_start

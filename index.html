@@ -234,16 +234,32 @@
   <!-- ======= ローディング画面 ======= -->
   <div id="loading-screen">
     <div id="loading-content">
-      <div id="loading-game-title">放課後のステラ</div>
+      <div id="loading-game-title" data-i18n="loadingGameTitle">放課後のステラ</div>
       <div id="loading-bar"><div id="loading-bar-fill"></div></div>
       <div id="loading-percent">0%</div>
-      <div id="loading-notice">
+      <div id="loading-notice" data-i18n-html="loadingNotice">
         このゲームは音楽・効果音が流れます。<br>
         あらかじめ音量をご確認ください。
       </div>
-      <button id="btn-loading-ok" style="visibility:hidden">OK</button>
+      <button id="btn-loading-ok" data-i18n="loadingOk" style="visibility:hidden">OK</button>
     </div>
   </div>
+
+  <script>
+    // ロード画面の早期翻訳: localStorage に保存された言語を読み、ja以外なら即座に書き換える
+    // （メインスクリプト読込前に走らせることでチラつきを防ぐ）
+    (function () {
+      try {
+        var lang = localStorage.getItem('vn_language');
+        if (lang !== 'en') return;
+        var title = document.getElementById('loading-game-title');
+        var notice = document.getElementById('loading-notice');
+        if (title) title.textContent = 'After School Stella';
+        if (notice) notice.innerHTML = 'This game plays music and sound effects.<br>Please check your volume before starting.';
+        document.documentElement.lang = 'en';
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- ======= オープニングモノローグ ======= -->
   <div id="opening-screen" class="hidden">
@@ -279,6 +295,10 @@
         <button class="title-btn" id="btn-newgame">NEW  GAME</button>
         <button class="title-btn" id="btn-continue">CONTINUE</button>
         <button class="title-btn" id="btn-gallery">CG GALLERY</button>
+        <div id="title-language-switch" class="language-switch" aria-label="Language">
+          <button class="language-btn" type="button" data-language="ja">日本語</button>
+          <button class="language-btn" type="button" data-language="en">English</button>
+        </div>
         <!-- DEBUG: 後で削除 -->
         <button class="title-btn" id="btn-debug" style="margin-top:1.2em;opacity:.55;font-size:.78em;letter-spacing:.15em;display:none;">⚙ DEBUG JUMP</button>
       </nav>
@@ -433,55 +453,62 @@
       <h2>SETTINGS</h2>
       <div class="settings-list">
         <div class="settings-row">
-          <span class="settings-label">オート速度</span>
+          <span class="settings-label" data-i18n="settings.language">言語</span>
+          <div class="settings-options" id="language-options">
+            <button class="settings-opt" data-language="ja">日本語</button>
+            <button class="settings-opt" data-language="en">English</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label" data-i18n="settings.autoSpeed">オート速度</span>
           <div class="settings-options" id="auto-speed-options">
-            <button class="settings-opt" data-delay="3500">遅め</button>
-            <button class="settings-opt" data-delay="2000">普通</button>
-            <button class="settings-opt" data-delay="1000">速め</button>
-            <button class="settings-opt" data-delay="500">爆速</button>
+            <button class="settings-opt" data-delay="3500" data-i18n="settings.slow">遅め</button>
+            <button class="settings-opt" data-delay="2000" data-i18n="settings.normal">普通</button>
+            <button class="settings-opt" data-delay="1000" data-i18n="settings.fast">速め</button>
+            <button class="settings-opt" data-delay="500" data-i18n="settings.instantFast">爆速</button>
           </div>
         </div>
         <div class="settings-row">
-          <span class="settings-label">文字速度</span>
+          <span class="settings-label" data-i18n="settings.typeSpeed">文字速度</span>
           <div class="settings-options" id="type-speed-options">
-            <button class="settings-opt" data-speed="60">遅め</button>
-            <button class="settings-opt" data-speed="30">普通</button>
-            <button class="settings-opt" data-speed="15">速め</button>
-            <button class="settings-opt" data-speed="0">瞬間</button>
+            <button class="settings-opt" data-speed="60" data-i18n="settings.slow">遅め</button>
+            <button class="settings-opt" data-speed="30" data-i18n="settings.normal">普通</button>
+            <button class="settings-opt" data-speed="15" data-i18n="settings.fast">速め</button>
+            <button class="settings-opt" data-speed="0" data-i18n="settings.instant">瞬間</button>
           </div>
         </div>
         <div class="settings-row">
-          <span class="settings-label">BGM音量</span>
+          <span class="settings-label" data-i18n="settings.bgmVolume">BGM音量</span>
           <div class="settings-options">
             <input type="range" id="bgm-volume-slider" min="0" max="100" step="5" class="settings-slider">
             <span id="bgm-volume-value" class="settings-slider-value">65</span>
           </div>
         </div>
         <div class="settings-row">
-          <span class="settings-label">SE音量</span>
+          <span class="settings-label" data-i18n="settings.seVolume">SE音量</span>
           <div class="settings-options">
             <input type="range" id="se-volume-slider" min="0" max="100" step="5" class="settings-slider">
             <span id="se-volume-value" class="settings-slider-value">85</span>
           </div>
         </div>
         <div class="settings-row">
-          <span class="settings-label">文字サイズ</span>
+          <span class="settings-label" data-i18n="settings.fontSize">文字サイズ</span>
           <div class="settings-options" id="font-size-options">
-            <button class="settings-opt" data-size="22">小</button>
-            <button class="settings-opt" data-size="26">普通</button>
-            <button class="settings-opt" data-size="30">大</button>
+            <button class="settings-opt" data-size="22" data-i18n="settings.small">小</button>
+            <button class="settings-opt" data-size="26" data-i18n="settings.normal">普通</button>
+            <button class="settings-opt" data-size="30" data-i18n="settings.large">大</button>
           </div>
         </div>
         <div class="settings-row">
-          <span class="settings-label">２行表示</span>
+          <span class="settings-label" data-i18n="settings.chainMode">２行表示</span>
           <div class="settings-options" id="chain-mode-options">
-            <button class="settings-opt" data-chain="none">しない</button>
-            <button class="settings-opt" data-chain="dialogue">セリフのみ</button>
-            <button class="settings-opt" data-chain="all">すべて</button>
+            <button class="settings-opt" data-chain="none" data-i18n="settings.chainNone">しない</button>
+            <button class="settings-opt" data-chain="dialogue" data-i18n="settings.chainDialogue">セリフのみ</button>
+            <button class="settings-opt" data-chain="all" data-i18n="settings.chainAll">すべて</button>
           </div>
         </div>
         <div class="settings-row">
-          <span class="settings-label">ウィンドウ色</span>
+          <span class="settings-label" data-i18n="settings.windowColor">ウィンドウ色</span>
           <div class="settings-palette" id="palette-options">
             <button class="palette-swatch" data-palette="default" title="深夜"  style="background:rgba(8,3,20,.9)"></button>
             <button class="palette-swatch" data-palette="navy"    title="群青"  style="background:rgba(3,8,40,.9)"></button>

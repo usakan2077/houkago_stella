@@ -205,10 +205,16 @@ function applyLanguage(language) {
   if (languageCurrent) {
     languageCurrent.textContent = locale.current;
   }
-  localStorage.setItem("houkagoStellaLanguage", language);
+  // ゲーム本編と同じキー (vn_language) に保存して言語設定を共有
+  localStorage.setItem("vn_language", language);
 }
 
-const savedLanguage = localStorage.getItem("houkagoStellaLanguage") === "en" ? "en" : "ja";
+// 既存ユーザー向け: 旧キー (houkagoStellaLanguage) が残っていれば一度だけ移行
+const savedLanguage =
+  (localStorage.getItem("vn_language") || localStorage.getItem("houkagoStellaLanguage")) === "en"
+    ? "en"
+    : "ja";
+try { localStorage.removeItem("houkagoStellaLanguage"); } catch (e) {}
 applyLanguage(savedLanguage);
 
 languageToggle?.addEventListener("click", () => {

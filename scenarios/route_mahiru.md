@@ -15,84 +15,84 @@
 @bgm rooftop_wind.mp3
 @wait 1200
 
-> ——理由を、今日も一つ集めた。
+> $route_mahiru.mahiru_interlude.t001
 
 @wait 1000
 
-mahiru: 今日の良かったこと、三つ書いた。
+mahiru: $route_mahiru.mahiru_interlude.t002
 
 @wait 1000
 
-mahiru: 一つ目は、給食のデザートがプリンだったこと。
-mahiru: 二つ目は、帰り道に猫を見たこと。白くて、耳だけ灰色の猫。
-mahiru: 三つ目は……
+mahiru: $route_mahiru.mahiru_interlude.t003
+mahiru: $route_mahiru.mahiru_interlude.t004
+mahiru: $route_mahiru.mahiru_interlude.t005
 
 @wait 1200
 
-mahiru: 空が、きれいだったこと。
+mahiru: $route_mahiru.mahiru_interlude.t006
 
 @wait 1000
 
-mahiru: お兄ちゃんが死んでから、まひるはずっとこれをやってる。
-mahiru: 毎日、何か一つでも良かったことを見つける。
-mahiru: 一つもない日は、「今日も生きてた」って書く。
+mahiru: $route_mahiru.mahiru_interlude.t007
+mahiru: $route_mahiru.mahiru_interlude.t008
+mahiru: $route_mahiru.mahiru_interlude.t009
 
 @wait 1200
 
-mahiru: お兄ちゃんはね、理由が足りなくなったんだと思う。
-mahiru: 消えていい理由は、いつでも作れる。
-mahiru: でも残る理由は、誰かが「これがある」って決めないといけない。
+mahiru: $route_mahiru.mahiru_interlude.t010
+mahiru: $route_mahiru.mahiru_interlude.t011
+mahiru: $route_mahiru.mahiru_interlude.t012
 
 @wait 1500
 
-mahiru: まひるはそれを、毎日集めてる。
-mahiru: 少しずつ、ためてる。
+mahiru: $route_mahiru.mahiru_interlude.t013
+mahiru: $route_mahiru.mahiru_interlude.t014
 
 @wait 1200
 
-mahiru: ……十月が、近い。
+mahiru: $route_mahiru.mahiru_interlude.t015
 
 @wait 1000
 
-mahiru: 毎年、この時期になると空が変わる気がする。
-mahiru: 気がするだけで、空はたぶん何も変わってないんだけど。
+mahiru: $route_mahiru.mahiru_interlude.t016
+mahiru: $route_mahiru.mahiru_interlude.t017
 
 @wait 1000
 
-mahiru: 勇くんと、また話すようになった。
-mahiru: 昔と同じで、昔と全然違う。
+mahiru: $route_mahiru.mahiru_interlude.t018
+mahiru: $route_mahiru.mahiru_interlude.t019
 
 @wait 1200
 
-mahiru: 昔の勇くんは、もっと遠くにいた。
-mahiru: 先に走って行く人だった。
-mahiru: まひるが立ち止まっても、振り返らずに行ける人だと思ってた。
+mahiru: $route_mahiru.mahiru_interlude.t020
+mahiru: $route_mahiru.mahiru_interlude.t021
+mahiru: $route_mahiru.mahiru_interlude.t022
 
 @wait 1000
 
-mahiru: でも今は、なんか。
-mahiru: 一緒に歩いてる感じがする。
+mahiru: $route_mahiru.mahiru_interlude.t023
+mahiru: $route_mahiru.mahiru_interlude.t024
 
 @wait 1200
 
-mahiru: ……それが、怖いんだよね。
+mahiru: $route_mahiru.mahiru_interlude.t025
 
 @wait 800
 
-mahiru: 大事な人がいると、失うのが怖くなる。
-mahiru: だから最初から、あんまり大事にしないようにしてた。
+mahiru: $route_mahiru.mahiru_interlude.t026
+mahiru: $route_mahiru.mahiru_interlude.t027
 
 @wait 1000
 
-mahiru: でも、もう少し遅かったかもしれない。
+mahiru: $route_mahiru.mahiru_interlude.t028
 
 @wait 1500
 
-mahiru: 今日の良かったこと、四つ目。
+mahiru: $route_mahiru.mahiru_interlude.t029
 
 @wait 800
 
-mahiru: 勇くんと、話した。
+mahiru: $route_mahiru.mahiru_interlude.t030
 
 @wait 2000
 
@@ -115,28 +115,28 @@ mahiru: 勇くんと、話した。
 @se footsteps.mp3
 @wait 800
 
-> まひるを探して、俺は走った。
+> $route_mahiru.mahiru_ch9_start.t001
 
-> 音楽準備室の前で、ことははまだ扉に手をかけたままでいるはずだった。
-> さくらは、一人で病院へ向かっていった。
+> $route_mahiru.mahiru_ch9_start.t002
+> $route_mahiru.mahiru_ch9_start.t003
 
-> 俺の足は、まひるの方へ動いていた。
+> $route_mahiru.mahiru_ch9_start.t004
 
-> 走った、というより。
-> 走れたことが、少し意外だった。
+> $route_mahiru.mahiru_ch9_start.t005
+> $route_mahiru.mahiru_ch9_start.t006
 
-> 足首がまだ少し重い気がした。
-> でも、動いた。
+> $route_mahiru.mahiru_ch9_start.t007
+> $route_mahiru.mahiru_ch9_start.t008
 
 @wait 700
 
-> まひるは家にいた。
-> 何日か休んでから、また登校してきた。
-> 何も言わなかった。俺も聞かなかった。
+> $route_mahiru.mahiru_ch9_start.t009
+> $route_mahiru.mahiru_ch9_start.t010
+> $route_mahiru.mahiru_ch9_start.t011
 
 @wait 600
 
-> ただ、いつもと少しだけ違っていた。
+> $route_mahiru.mahiru_ch9_start.t012
 
 @jump mahiru_ch9_return
 
@@ -148,83 +148,83 @@ mahiru: 勇くんと、話した。
 @se footsteps.mp3
 @wait 1000
 
-> まひるが登校してきた日のことを、よく覚えている。
+> $route_mahiru.mahiru_ch9_return.t001
 
-> 十月の初め。
-> 文化祭が終わって、学校は妙に静かになっていた。
-> 非日常の空気が抜けると、残るのは普段より少しだけ間の抜けた日常だ。
+> $route_mahiru.mahiru_ch9_return.t002
+> $route_mahiru.mahiru_ch9_return.t003
+> $route_mahiru.mahiru_ch9_return.t004
 
 @wait 700
 
-> 朝、靴箱で見かけた。
-> まひるは上履きを片手に持ったまま、廊下の先を見ていた。
-> 何かを確かめているみたいな目だった。
+> $route_mahiru.mahiru_ch9_return.t005
+> $route_mahiru.mahiru_ch9_return.t006
+> $route_mahiru.mahiru_ch9_return.t007
 
 @show mahiru center normal fade_in
 
 @wait 800
 
-> 俺が近づくと、まひるは気づいた。
+> $route_mahiru.mahiru_ch9_return.t008
 
 @expr mahiru happy
 
-mahiru: あ、おはよう
+mahiru: $route_mahiru.mahiru_ch9_return.t009
 
-player: ……おはよう
+player: $route_mahiru.mahiru_ch9_return.t010
 
 @wait 600
 
-> いつもと同じ声だった。
-> いつもと同じ笑顔だった。
+> $route_mahiru.mahiru_ch9_return.t011
+> $route_mahiru.mahiru_ch9_return.t012
 
-> でも。
+> $route_mahiru.mahiru_ch9_return.t013
 
 @wait 500
 
-> 俺は何かが引っかかった。
-> うまく言葉にならない、小さな違和感。
+> $route_mahiru.mahiru_ch9_return.t014
+> $route_mahiru.mahiru_ch9_return.t015
 
-> 笑顔は本物だと思う。
-> 演じているわけじゃない。
+> $route_mahiru.mahiru_ch9_return.t016
+> $route_mahiru.mahiru_ch9_return.t017
 
-> ただ、
-> その笑顔が、まひるの全部を埋めていなかった。
-> 余白があった。
-> 笑っていない部分が、確かにあった。
+> $route_mahiru.mahiru_ch9_return.t018
+> $route_mahiru.mahiru_ch9_return.t019
+> $route_mahiru.mahiru_ch9_return.t020
+> $route_mahiru.mahiru_ch9_return.t021
 
 @wait 800
 
-mahiru: 休んでごめんね
+mahiru: $route_mahiru.mahiru_ch9_return.t022
 
-player: ……別に
+player: $route_mahiru.mahiru_ch9_return.t023
 
-mahiru: ちょっとしんどかったんだけど
-mahiru: もう大丈夫だから
+mahiru: $route_mahiru.mahiru_ch9_return.t024
+mahiru: $route_mahiru.mahiru_ch9_return.t025
 
 @wait 1000
 
-> 大丈夫。
-> その一言を、俺はじっと見ていた。
+> $route_mahiru.mahiru_ch9_return.t026
+> $route_mahiru.mahiru_ch9_return.t027
 
-> 信じないわけじゃない。
-> ただ、その言葉はいつだって、
-> 言った側が一番信じていない。
+> $route_mahiru.mahiru_ch9_return.t028
+> $route_mahiru.mahiru_ch9_return.t029
+> $route_mahiru.mahiru_ch9_return.t030
 
 @wait 700
 
-player: 無理しなくていいぞ
+player: $route_mahiru.mahiru_ch9_return.t031
 
 @expr mahiru normal
 
-mahiru: ……うん
+mahiru: $route_mahiru.mahiru_ch9_return.t032
 
 @wait 600
 
-> それだけだった。
-> ありがとう、でも大丈夫、でもなく。
-> ただ、うん、と言った。
+> $route_mahiru.mahiru_ch9_return.t033
+> $route_mahiru.mahiru_ch9_return.t034
+> $route_mahiru.mahiru_ch9_return.t035
 
-> その「うん」が少し重かった。
+> $route_mahiru.mahiru_ch9_return.t036
 
 @wait 800
 
@@ -240,24 +240,24 @@ mahiru: ……うん
 @bgm mahiru_theme.mp3
 @wait 800
 
-> 毎朝、まひるはノートを開く。
+> $route_mahiru.mahiru_ch9_notebook.t001
 
-> 「今日、生きていて良かったこと」を書くノートだと、
-> 前に教えてくれた。
+> $route_mahiru.mahiru_ch9_notebook.t002
+> $route_mahiru.mahiru_ch9_notebook.t003
 
-> ふだんは三行か四行か、
-> 短いけれど几帳面な字で埋まっていた。
+> $route_mahiru.mahiru_ch9_notebook.t004
+> $route_mahiru.mahiru_ch9_notebook.t005
 
 @wait 700
 
-> 昨日は「桜の木の根元に落ち葉が積もってた」
-> 「さくらちゃんが消しゴムをくれた」「窓から鳥が三羽見えた」
-> そう書いてあるのを、偶然目にしたことがあった。
+> $route_mahiru.mahiru_ch9_notebook.t006
+> $route_mahiru.mahiru_ch9_notebook.t007
+> $route_mahiru.mahiru_ch9_notebook.t008
 
-> 細かい。
-> どれも、見落とそうと思えば簡単に見落とせるものだ。
-> でも、まひるは拾っていた。
-> 一行一行、丁寧に。
+> $route_mahiru.mahiru_ch9_notebook.t009
+> $route_mahiru.mahiru_ch9_notebook.t010
+> $route_mahiru.mahiru_ch9_notebook.t011
+> $route_mahiru.mahiru_ch9_notebook.t012
 
 @wait 900
 
@@ -265,59 +265,59 @@ mahiru: ……うん
 @wait 1500
 @still_hide
 
-> 今日の朝、チラリと見えたページには
-> 一行しかなかった。
+> $route_mahiru.mahiru_ch9_notebook.t013
+> $route_mahiru.mahiru_ch9_notebook.t014
 
-> 「今日も空が青かった」
+> $route_mahiru.mahiru_ch9_notebook.t015
 
 @wait 800
 
-> それだけだった。
+> $route_mahiru.mahiru_ch9_notebook.t016
 
 @wait 700
 
-> 読んでしまった、と後悔した。
-> 読んでしまったことを、まひるに知られたくなかった。
+> $route_mahiru.mahiru_ch9_notebook.t017
+> $route_mahiru.mahiru_ch9_notebook.t018
 
-> でも頭から離れなかった。
+> $route_mahiru.mahiru_ch9_notebook.t019
 
-> 「今日も空が青かった」
+> $route_mahiru.mahiru_ch9_notebook.t020
 
-> 空が青かったことだけが、今日の良かったことだった。
-> それとも、空が青かったことしか見えなかった。
+> $route_mahiru.mahiru_ch9_notebook.t021
+> $route_mahiru.mahiru_ch9_notebook.t022
 
-> どちらの意味なのか。
-> どちらでもないのかもしれない。
-> ただ、理由が減っていた。
+> $route_mahiru.mahiru_ch9_notebook.t023
+> $route_mahiru.mahiru_ch9_notebook.t024
+> $route_mahiru.mahiru_ch9_notebook.t025
 
 @wait 1000
 
 @show mahiru_no_camera center happy fade_in
 
-mahiru: 勇くん、おはよ
+mahiru: $route_mahiru.mahiru_ch9_notebook.t026
 
-player: おはよう
+player: $route_mahiru.mahiru_ch9_notebook.t027
 
-mahiru: 今日、いい天気だね
+mahiru: $route_mahiru.mahiru_ch9_notebook.t028
 
 @wait 400
 
 @expr mahiru_no_camera normal
 
-> まひるは笑っていた。
-> いつもみたいに、ゆっくりと。
+> $route_mahiru.mahiru_ch9_notebook.t029
+> $route_mahiru.mahiru_ch9_notebook.t030
 
-> でも、カメラのシャッターを切る回数が
-> 先週より少なかった。
+> $route_mahiru.mahiru_ch9_notebook.t031
+> $route_mahiru.mahiru_ch9_notebook.t032
 
-> 屋上に行くたびに空を撮っていたのが、
-> 最近はただ眺めているだけになっていた。
+> $route_mahiru.mahiru_ch9_notebook.t033
+> $route_mahiru.mahiru_ch9_notebook.t034
 
 @wait 600
 
-> カメラを持ってくる日も、減った。
-> ストラップだけが鞄に残っていた。
-> 引っかかって邪魔そうなのに、外そうともしていなかった。
+> $route_mahiru.mahiru_ch9_notebook.t035
+> $route_mahiru.mahiru_ch9_notebook.t036
+> $route_mahiru.mahiru_ch9_notebook.t037
 
 @wait 700
 
@@ -334,74 +334,74 @@ mahiru: 今日、いい天気だね
 @se footsteps.mp3
 @wait 900
 
-> 昼休み、廊下でまひるとすれ違った。
-> 一人だった。
-> いつもはさくらか誰かと一緒なのに。
+> $route_mahiru.mahiru_ch9_corridor.t001
+> $route_mahiru.mahiru_ch9_corridor.t002
+> $route_mahiru.mahiru_ch9_corridor.t003
 
 @show mahiru_no_camera center normal fade_in
 
 @wait 600
 
-mahiru: あ、勇くん
+mahiru: $route_mahiru.mahiru_ch9_corridor.t004
 
-player: 一人か
+player: $route_mahiru.mahiru_ch9_corridor.t005
 
-mahiru: ん、ちょっとひとりがよかったの
+mahiru: $route_mahiru.mahiru_ch9_corridor.t006
 
 @wait 700
 
-> 否定でも肯定でもなく、ただそう言った。
-> 怒っているわけじゃない。
-> 静かにそうしたかった、というだけだ。
+> $route_mahiru.mahiru_ch9_corridor.t007
+> $route_mahiru.mahiru_ch9_corridor.t008
+> $route_mahiru.mahiru_ch9_corridor.t009
 
 @wait 600
 
-> カメラがなかった。
-> 手ぶらで廊下を歩いていた。
+> $route_mahiru.mahiru_ch9_corridor.t010
+> $route_mahiru.mahiru_ch9_corridor.t011
 
 @expr mahiru_no_camera thinking
 
-player: ……カメラは
+player: $route_mahiru.mahiru_ch9_corridor.t012
 
-mahiru: 今日は持ってこなかった
+mahiru: $route_mahiru.mahiru_ch9_corridor.t013
 
-player: なんで
+player: $route_mahiru.mahiru_ch9_corridor.t014
 
 @wait 800
 
-mahiru: ……
-mahiru: なんか、撮るものが見つからなくて
+mahiru: $route_mahiru.mahiru_ch9_corridor.t015
+mahiru: $route_mahiru.mahiru_ch9_corridor.t016
 
 @wait 1000
 
-> 撮るものが見つからない。
+> $route_mahiru.mahiru_ch9_corridor.t017
 
-> まひるがそういうことを言うのを、初めて聞いた。
-> あいつは昔から、どこにでも撮るものを見つける人間だと思っていた。
-> 窓ガラスの水滴。
-> 教科書の端についた鉛筆の汚れ。
-> 夕方の校舎に落ちる長い影。
+> $route_mahiru.mahiru_ch9_corridor.t018
+> $route_mahiru.mahiru_ch9_corridor.t019
+> $route_mahiru.mahiru_ch9_corridor.t020
+> $route_mahiru.mahiru_ch9_corridor.t021
+> $route_mahiru.mahiru_ch9_corridor.t022
 
-> 見つけられないのなら、
-> それは目の問題じゃなくて、
-> 探す気力の問題だ。
+> $route_mahiru.mahiru_ch9_corridor.t023
+> $route_mahiru.mahiru_ch9_corridor.t024
+> $route_mahiru.mahiru_ch9_corridor.t025
 
 @wait 900
 
-player: そうか
+player: $route_mahiru.mahiru_ch9_corridor.t026
 
 @expr mahiru_no_camera normal
 
-mahiru: うん
-mahiru: そのうち見つかると思うけど
+mahiru: $route_mahiru.mahiru_ch9_corridor.t027
+mahiru: $route_mahiru.mahiru_ch9_corridor.t028
 
 @wait 700
 
-> 笑った。
-> やはりいつもと同じ笑い方だった。
+> $route_mahiru.mahiru_ch9_corridor.t029
+> $route_mahiru.mahiru_ch9_corridor.t030
 
-> でも俺は、
-> そのうち、という言葉の重さを量っていた。
+> $route_mahiru.mahiru_ch9_corridor.t031
+> $route_mahiru.mahiru_ch9_corridor.t032
 
 @wait 600
 
@@ -417,153 +417,153 @@ mahiru: そのうち見つかると思うけど
 @bgm evening_piano.mp3
 @wait 800
 
-> 放課後。
+> $route_mahiru.mahiru_ch9_reason.t001
 
-> まひるが「一緒に帰ろ」と言ってきた。
-> 珍しかった。
+> $route_mahiru.mahiru_ch9_reason.t002
+> $route_mahiru.mahiru_ch9_reason.t003
 >向こうから言ってくるのは、いつも元気なときだった。
 
 @show mahiru_no_camera center normal fade_in
 
-> 校門を出て、しばらく黙って歩いた。
-> まひるは少し俯き加減で、空を見上げるいつもの癖がなかった。
+> $route_mahiru.mahiru_ch9_reason.t004
+> $route_mahiru.mahiru_ch9_reason.t005
 
 @wait 1000
 
 @expr mahiru_no_camera thinking
 
-mahiru: ねえ、勇くん
+mahiru: $route_mahiru.mahiru_ch9_reason.t006
 
-player: なんだ
+player: $route_mahiru.mahiru_ch9_reason.t007
 
 @wait 600
 
-mahiru: 理由って
-mahiru: 減るよね
+mahiru: $route_mahiru.mahiru_ch9_reason.t008
+mahiru: $route_mahiru.mahiru_ch9_reason.t009
 
 @wait 1200
 
-> さらっと言った。
-> いつもの会話の続きみたいに、軽い声で。
+> $route_mahiru.mahiru_ch9_reason.t010
+> $route_mahiru.mahiru_ch9_reason.t011
 
-> でも俺の足が、一瞬だけ止まりかけた。
-
-@wait 800
-
-player: ……理由って
-
-mahiru: 生きてよかった理由
+> $route_mahiru.mahiru_ch9_reason.t012
 
 @wait 800
 
-mahiru: 最初はいっぱいあったのに
-mahiru: 数えようとすると、あんまりなくて
+player: $route_mahiru.mahiru_ch9_reason.t013
+
+mahiru: $route_mahiru.mahiru_ch9_reason.t014
+
+@wait 800
+
+mahiru: $route_mahiru.mahiru_ch9_reason.t015
+mahiru: $route_mahiru.mahiru_ch9_reason.t016
 
 @wait 1000
 
 @expr mahiru_no_camera normal
 
-mahiru: おかしいかな
+mahiru: $route_mahiru.mahiru_ch9_reason.t017
 
 @wait 800
 
-> おかしくない、と言えなかった。
-> 大丈夫だよ、とも言えなかった。
+> $route_mahiru.mahiru_ch9_reason.t018
+> $route_mahiru.mahiru_ch9_reason.t019
 
-> 何も言えないまま、俺はただまひるの横を歩いた。
+> $route_mahiru.mahiru_ch9_reason.t020
 
 @wait 700
 
-player: ……減ったら
+player: $route_mahiru.mahiru_ch9_reason.t021
 
-mahiru: うん
+mahiru: $route_mahiru.mahiru_ch9_reason.t022
 
-player: また増やせばいいだけだろ
+player: $route_mahiru.mahiru_ch9_reason.t023
 
 @wait 1000
 
-> 言ってから、薄い言葉だと気づいた。
-> でもまひるは少しだけ息をついた。
+> $route_mahiru.mahiru_ch9_reason.t024
+> $route_mahiru.mahiru_ch9_reason.t025
 
 @expr mahiru_no_camera thinking
 
-mahiru: そうだよね
-mahiru: そうなんだけど
+mahiru: $route_mahiru.mahiru_ch9_reason.t026
+mahiru: $route_mahiru.mahiru_ch9_reason.t027
 
 @wait 800
 
-mahiru: 増やす気力も、一緒に減るんだよね
+mahiru: $route_mahiru.mahiru_ch9_reason.t028
 
 @wait 1500
 
-> 俺は何も返せなかった。
+> $route_mahiru.mahiru_ch9_reason.t029
 
-> 歩きながら、ただ隣にいた。
+> $route_mahiru.mahiru_ch9_reason.t030
 
-> それが正しかったのかもしれないし、
-> 全然足りなかったのかもしれない。
+> $route_mahiru.mahiru_ch9_reason.t031
+> $route_mahiru.mahiru_ch9_reason.t032
 
 @wait 900
 
 @expr mahiru_no_camera happy
 
-mahiru: ごめん、なんか暗いこと言った
+mahiru: $route_mahiru.mahiru_ch9_reason.t033
 
-player: ……別に
+player: $route_mahiru.mahiru_ch9_reason.t034
 
-mahiru: 勇くんって、全然走らないよね
-
-@wait 800
-
-> 唐突に話が変わった。
-> いや、変えたんだろう。
-
-player: ……なんで急に
-
-mahiru: なんとなく
-mahiru: 昔、足速かったじゃない
-mahiru: 今はなんか、ゆっくり歩くから
+mahiru: $route_mahiru.mahiru_ch9_reason.t035
 
 @wait 800
 
-player: 足首、やったから
+> $route_mahiru.mahiru_ch9_reason.t036
+> $route_mahiru.mahiru_ch9_reason.t037
 
-mahiru: 治ったんじゃないの
+player: $route_mahiru.mahiru_ch9_reason.t038
 
-player: ……治った
+mahiru: $route_mahiru.mahiru_ch9_reason.t039
+mahiru: $route_mahiru.mahiru_ch9_reason.t040
+mahiru: $route_mahiru.mahiru_ch9_reason.t041
+
+@wait 800
+
+player: $route_mahiru.mahiru_ch9_reason.t042
+
+mahiru: $route_mahiru.mahiru_ch9_reason.t043
+
+player: $route_mahiru.mahiru_ch9_reason.t044
 
 @wait 700
 
-mahiru: でも走らないんだ
+mahiru: $route_mahiru.mahiru_ch9_reason.t045
 
-player: ……
+player: $route_mahiru.mahiru_ch9_reason.t046
 
 @wait 600
 
-> 答えられなかった。
+> $route_mahiru.mahiru_ch9_reason.t047
 
-> 足首は治っている。
-> 走ろうと思えば走れる。
-> でも走っていない。
+> $route_mahiru.mahiru_ch9_reason.t048
+> $route_mahiru.mahiru_ch9_reason.t049
+> $route_mahiru.mahiru_ch9_reason.t050
 
-> その理由を、俺はまひるに説明できる言葉を持っていなかった。
-> 自分でもうまく整理できていなかった。
+> $route_mahiru.mahiru_ch9_reason.t051
+> $route_mahiru.mahiru_ch9_reason.t052
 
 @wait 800
 
 @expr mahiru_no_camera normal
 
-mahiru: まあ、いっか
-mahiru: また走りたくなったら走ればいいし
+mahiru: $route_mahiru.mahiru_ch9_reason.t053
+mahiru: $route_mahiru.mahiru_ch9_reason.t054
 
 @wait 700
 
-> まひるはそう言って、また歩き始めた。
-> その横顔は、どこか遠かった。
+> $route_mahiru.mahiru_ch9_reason.t055
+> $route_mahiru.mahiru_ch9_reason.t056
 
-> ねえ、勇くん。理由って減るよね。
+> $route_mahiru.mahiru_ch9_reason.t057
 
-> その一言が、夕方の空気の中にまだ漂っていた。
+> $route_mahiru.mahiru_ch9_reason.t058
 
 @wait 1000
 
@@ -583,61 +583,61 @@ mahiru: また走りたくなったら走ればいいし
 @se footsteps.mp3
 @wait 800
 
-> 下校。
+> $route_mahiru.mahiru_ch9_walk.t001
 
-> まひると並んで歩いていると、
-> 自然と歩幅が落ちていた。
+> $route_mahiru.mahiru_ch9_walk.t002
+> $route_mahiru.mahiru_ch9_walk.t003
 
 @show mahiru_no_camera center normal fade_in
 
-> まひるに合わせているつもりだった。
+> $route_mahiru.mahiru_ch9_walk.t004
 
-> けれど。
+> $route_mahiru.mahiru_ch9_walk.t005
 
 @wait 600
 
-> ふと気づいた。
+> $route_mahiru.mahiru_ch9_walk.t006
 
-> *（俺、走るのを避けている）*
+> *$route_mahiru.mahiru_ch9_walk.t007*
 
-> 廊下を歩くとき。
-> 階段を降りるとき。
-> 急いでいるはずなのに、走らずに済む道を選んでいた。
+> $route_mahiru.mahiru_ch9_walk.t008
+> $route_mahiru.mahiru_ch9_walk.t009
+> $route_mahiru.mahiru_ch9_walk.t010
 
-> いつからだろう。
-> 気づかないうちにそうなっていた。
+> $route_mahiru.mahiru_ch9_walk.t011
+> $route_mahiru.mahiru_ch9_walk.t012
 
 @wait 700
 
 @expr mahiru_no_camera thinking
 
-mahiru: 勇くんって
+mahiru: $route_mahiru.mahiru_ch9_walk.t013
 
-mahiru: 昔はもっと先に行く人だった気がする
+mahiru: $route_mahiru.mahiru_ch9_walk.t014
 
 @wait 800
 
-player: ……そうか？
+player: $route_mahiru.mahiru_ch9_walk.t015
 
 @expr mahiru_no_camera happy
 
-mahiru: うん
-mahiru: あっという間に遠くなる人
+mahiru: $route_mahiru.mahiru_ch9_walk.t016
+mahiru: $route_mahiru.mahiru_ch9_walk.t017
 
-mahiru: 今は、なんか
-mahiru: 一緒に歩いてる感じ
+mahiru: $route_mahiru.mahiru_ch9_walk.t018
+mahiru: $route_mahiru.mahiru_ch9_walk.t019
 
-player: ……
+player: $route_mahiru.mahiru_ch9_walk.t020
 
 @wait 700
 
-> 軽く笑って流した。
+> $route_mahiru.mahiru_ch9_walk.t021
 
-> でも、
-> その言葉が頭に残り続けた。
+> $route_mahiru.mahiru_ch9_walk.t022
+> $route_mahiru.mahiru_ch9_walk.t023
 
-> *（先に行く人）*
-> *（俺は、いつ止まったんだろう）*
+> *$route_mahiru.mahiru_ch9_walk.t024*
+> *$route_mahiru.mahiru_ch9_walk.t025*
 
 @wait 600
 
@@ -656,38 +656,38 @@ player: ……
 @bgm evening_piano.mp3
 @wait 800
 
-> 交差点で別れた。
+> $route_mahiru.mahiru_ch9_end.t001
 
-> まひるは少しだけ振り返って、
-> 「また明日ね」と言った。
+> $route_mahiru.mahiru_ch9_end.t002
+> $route_mahiru.mahiru_ch9_end.t003
 
-> いつもの声だった。
+> $route_mahiru.mahiru_ch9_end.t004
 
-> でも十月の空は、
-> 今日も少しだけ低くなっていた。
+> $route_mahiru.mahiru_ch9_end.t005
+> $route_mahiru.mahiru_ch9_end.t006
 
 @wait 1000
 
-> *（十月下旬）*
-> *（まひるのノートの一行が、頭を離れない）*
+> *$route_mahiru.mahiru_ch9_end.t007*
+> *$route_mahiru.mahiru_ch9_end.t008*
 
 @wait 800
 
-> 今日の空が青かったこと。
-> それだけが、今日の良かったこと。
+> $route_mahiru.mahiru_ch9_end.t009
+> $route_mahiru.mahiru_ch9_end.t010
 
-> まひるはそのノートを、
-> これからも毎日開くのだろうか。
+> $route_mahiru.mahiru_ch9_end.t011
+> $route_mahiru.mahiru_ch9_end.t012
 
-> 明日も。
-> 明後日も。
-> 命日の前日も。
+> $route_mahiru.mahiru_ch9_end.t013
+> $route_mahiru.mahiru_ch9_end.t014
+> $route_mahiru.mahiru_ch9_end.t015
 
 @wait 1000
 
-> 俺は空を見上げた。
-> 星はまだ出ていなかった。
-> 夕焼けの名残が、西の端を赤く染めていた。
+> $route_mahiru.mahiru_ch9_end.t016
+> $route_mahiru.mahiru_ch9_end.t017
+> $route_mahiru.mahiru_ch9_end.t018
 
 @wait 1000
 
@@ -707,52 +707,52 @@ player: ……
 @bgm piano_resonance.mp3
 @wait 1000
 
-> 命日の前夜。
+> $route_mahiru.mahiru_ch10_start.t001
 
-> 委員会の後、俺は一人で校舎を出ようとしていた。
+> $route_mahiru.mahiru_ch10_start.t002
 
 @wait 600
 
-> 空気が冷たかった。
-> 十月の夜のにおいがした。
+> $route_mahiru.mahiru_ch10_start.t003
+> $route_mahiru.mahiru_ch10_start.t004
 
-> 焚き火でも、落ち葉でも、
-> 正確には何のにおいとも言えない。
-> ただ確かに「十月の夜」のにおいだった。
+> $route_mahiru.mahiru_ch10_start.t005
+> $route_mahiru.mahiru_ch10_start.t006
+> $route_mahiru.mahiru_ch10_start.t007
 
 @wait 700
 
-> みんな帰った後の校舎は静かだ。
-> 昼間の熱が抜けると、石の冷たさだけが残る。
-> 足音だけが、廊下を行ったり来たりしていた。
+> $route_mahiru.mahiru_ch10_start.t008
+> $route_mahiru.mahiru_ch10_start.t009
+> $route_mahiru.mahiru_ch10_start.t010
 
 @wait 800
 
-> まひるのことを、思い出していた。
-> 数日前から、ずっとどこかで気にしていた。
+> $route_mahiru.mahiru_ch10_start.t011
+> $route_mahiru.mahiru_ch10_start.t012
 
-> 文化祭の日のまひるは、
-> どこか輪の外にいるような気がした。
-> 笑っていた。でも少し遠かった。
+> $route_mahiru.mahiru_ch10_start.t013
+> $route_mahiru.mahiru_ch10_start.t014
+> $route_mahiru.mahiru_ch10_start.t015
 
-> ノートのことを思い出した。
-> 「今日も空が青かった」
+> $route_mahiru.mahiru_ch10_start.t016
+> $route_mahiru.mahiru_ch10_start.t017
 
-> あれから何日経つ。
-> 今日のページには、何行あるだろう。
+> $route_mahiru.mahiru_ch10_start.t018
+> $route_mahiru.mahiru_ch10_start.t019
 
 @wait 900
 
 @se wind_rooftop.mp3
 @wait 800
 
-> 外に出た瞬間、冷たい風が頬を打った。
+> $route_mahiru.mahiru_ch10_start.t020
 
-> 反射的に上を見た。
+> $route_mahiru.mahiru_ch10_start.t021
 
-> 校舎の屋上。
+> $route_mahiru.mahiru_ch10_start.t022
 
-> 人影があった。
+> $route_mahiru.mahiru_ch10_start.t023
 
 @wait 700
 
@@ -762,32 +762,32 @@ player: ……
 
 @wait 600
 
-> 遠くて、はっきりわからない。
+> $route_mahiru.mahiru_ch10_start.t024
 
-> 柵に寄りかかっているのか。
-> ただそこに立っているだけなのか。
+> $route_mahiru.mahiru_ch10_start.t025
+> $route_mahiru.mahiru_ch10_start.t026
 
-> どちらかわからない。
-> でも。
-
-@wait 800
-
-> 十月の下旬。
-> 明日は、まひるの兄の命日だ。
-
-> 俺は何日か前に、それを知った。
-> 直接聞いたわけじゃない。
-> ただ、ノートのことや、まひるの様子を見ていて、
-> いつかのまひるの言葉から、そうだと気づいた。
+> $route_mahiru.mahiru_ch10_start.t027
+> $route_mahiru.mahiru_ch10_start.t028
 
 @wait 800
 
-> 命日前夜。
-> まひるが一人で屋上にいる。
+> $route_mahiru.mahiru_ch10_start.t029
+> $route_mahiru.mahiru_ch10_start.t030
+
+> $route_mahiru.mahiru_ch10_start.t031
+> $route_mahiru.mahiru_ch10_start.t032
+> $route_mahiru.mahiru_ch10_start.t033
+> $route_mahiru.mahiru_ch10_start.t034
+
+@wait 800
+
+> $route_mahiru.mahiru_ch10_start.t035
+> $route_mahiru.mahiru_ch10_start.t036
 
 @wait 600
 
-> *（足が、動いた）*
+> *$route_mahiru.mahiru_ch10_start.t037*
 
 @jump mahiru_ch10_monologue
 
@@ -798,44 +798,44 @@ player: ……
 @bgm stop
 @wait 600
 
-> 動こうとした瞬間、一秒だけ止まった。
+> $route_mahiru.mahiru_ch10_monologue.t001
 
-> 屋上への道を、頭の中で確認した。
-> 玄関から廊下へ。廊下の端から非常階段か、
-> 中央の階段から屋上へ続く扉へ。
+> $route_mahiru.mahiru_ch10_monologue.t002
+> $route_mahiru.mahiru_ch10_monologue.t003
+> $route_mahiru.mahiru_ch10_monologue.t004
 
-> 中央の階段の方が早い。
+> $route_mahiru.mahiru_ch10_monologue.t005
 
-> わかっていた。
-> わかっていたが、足がまだ重かった。
+> $route_mahiru.mahiru_ch10_monologue.t006
+> $route_mahiru.mahiru_ch10_monologue.t007
 
 @wait 700
 
-> *（走れるか）*
+> *$route_mahiru.mahiru_ch10_monologue.t008*
 
-> 走れないままで、三年いた。
-> 足首は治っている。
-> でも走っていない。
-> それが習慣になっていた。
-> 恐怖というより、習慣。
+> $route_mahiru.mahiru_ch10_monologue.t009
+> $route_mahiru.mahiru_ch10_monologue.t010
+> $route_mahiru.mahiru_ch10_monologue.t011
+> $route_mahiru.mahiru_ch10_monologue.t012
+> $route_mahiru.mahiru_ch10_monologue.t013
 
-> *（走れなかったとしても、歩けば届く）*
-> *（でも、今夜に限って、それが怖かった）*
+> *$route_mahiru.mahiru_ch10_monologue.t014*
+> *$route_mahiru.mahiru_ch10_monologue.t015*
 
 @wait 900
 
-> まひるが消える前に。
-> 俺が辿り着く前に。
+> $route_mahiru.mahiru_ch10_monologue.t016
+> $route_mahiru.mahiru_ch10_monologue.t017
 
-> そんな可能性を、打ち消そうとしても打ち消せなかった。
+> $route_mahiru.mahiru_ch10_monologue.t018
 
 @wait 800
 
-> *（動け）*
+> *$route_mahiru.mahiru_ch10_monologue.t019*
 
 @choice
-- "（がむしゃらに、走り出した）" -> mahiru_ch10_run
-- "（ここからじゃ、間に合わない）" -> mahiru_bad_end
+- $choices.route_mahiru.run -> mahiru_ch10_run
+- $choices.route_mahiru.too_late -> mahiru_bad_end
 
 
 # mahiru_ch10_run
@@ -847,109 +847,109 @@ player: ……
 @scene staircase_night cut
 @wait 200
 
-> 走っていた。
+> $route_mahiru.mahiru_ch10_run.t001
 
-> 走れていた、という驚きより先に、
-> 体が動いていた。
+> $route_mahiru.mahiru_ch10_run.t002
+> $route_mahiru.mahiru_ch10_run.t003
 
 @wait 500
 
-> 廊下が後ろへ流れた。
-> 夜の校舎に、俺の足音だけが響いた。
+> $route_mahiru.mahiru_ch10_run.t004
+> $route_mahiru.mahiru_ch10_run.t005
 
-> 息を吸う。
-> 空気が冷たい。
-> 胸に刺さるみたいな冷たさ。
-> でも動き続けた。
+> $route_mahiru.mahiru_ch10_run.t006
+> $route_mahiru.mahiru_ch10_run.t007
+> $route_mahiru.mahiru_ch10_run.t008
+> $route_mahiru.mahiru_ch10_run.t009
 
 @scene staircase_night cut
 @wait 300
 
-> 走りながら、いろんなものが頭の中に戻ってきた。
-> 走っているときに限って、そういう記憶が出てくる。
+> $route_mahiru.mahiru_ch10_run.t010
+> $route_mahiru.mahiru_ch10_run.t011
 
 @wait 500
 
-> 父のことを思い出した。
+> $route_mahiru.mahiru_ch10_run.t012
 
-> 病院から電話が来た夜。
-> 「お父さんが倒れた、すぐ来てくれ」
-> 俺は走った。
-> 病院まで走った。
-> でも父は既にICUだった。
+> $route_mahiru.mahiru_ch10_run.t013
+> $route_mahiru.mahiru_ch10_run.t014
+> $route_mahiru.mahiru_ch10_run.t015
+> $route_mahiru.mahiru_ch10_run.t016
+> $route_mahiru.mahiru_ch10_run.t017
 
-> 走る意味がなかった。
-> でも走らずにはいられなかった。
-> そして走った俺に父は何も言わなかった。
-> 目を覚ました父の最初の一言は「大丈夫だ」だった。
+> $route_mahiru.mahiru_ch10_run.t018
+> $route_mahiru.mahiru_ch10_run.t019
+> $route_mahiru.mahiru_ch10_run.t020
+> $route_mahiru.mahiru_ch10_run.t021
 
-> 「大丈夫」
-> 全然大丈夫じゃなかった。
+> $route_mahiru.mahiru_ch10_run.t022
+> $route_mahiru.mahiru_ch10_run.t023
 
 @wait 700
 
-> *（走れなくなったのはあの夜から）*
+> *$route_mahiru.mahiru_ch10_run.t024*
 
 @wait 400
 
-> 慎のことを思い出した。
-> 翌朝、誰もいない机。
-> 担任が「本日は欠席です」と言っただけだった。
+> $route_mahiru.mahiru_ch10_run.t025
+> $route_mahiru.mahiru_ch10_run.t026
+> $route_mahiru.mahiru_ch10_run.t027
 
-> あの日、何か気づいていれば。
-> 前の日に少しだけ変だと思ったのに、
-> 聞けなかった。
-> 怖かった。
-> 本当のことを聞いたら、
-> どうしたらいいかわからなくなると思って。
+> $route_mahiru.mahiru_ch10_run.t028
+> $route_mahiru.mahiru_ch10_run.t029
+> $route_mahiru.mahiru_ch10_run.t030
+> $route_mahiru.mahiru_ch10_run.t031
+> $route_mahiru.mahiru_ch10_run.t032
+> $route_mahiru.mahiru_ch10_run.t033
 
-> 聞かないまま、翌朝来たら机が空だった。
+> $route_mahiru.mahiru_ch10_run.t034
 
 @wait 600
 
-> 一日、遅れた。
+> $route_mahiru.mahiru_ch10_run.t035
 
 @scene staircase_night cut
 @wait 200
 
-> *（また、間に合わないのか）*
+> *$route_mahiru.mahiru_ch10_run.t036*
 
 @wait 300
 
-> 階段を駆け上がる。
-> 足首が鈍く痛んだ。
-> 無視した。
+> $route_mahiru.mahiru_ch10_run.t037
+> $route_mahiru.mahiru_ch10_run.t038
+> $route_mahiru.mahiru_ch10_run.t039
 
-> 足首なんか、今はどうでもよかった。
+> $route_mahiru.mahiru_ch10_run.t040
 
-> 大事なのは今夜だ。
-> 今夜この瞬間だ。
+> $route_mahiru.mahiru_ch10_run.t041
+> $route_mahiru.mahiru_ch10_run.t042
 
 @wait 500
 
-> *（嫌だ）*
+> *$route_mahiru.mahiru_ch10_run.t043*
 
-> また間に合わないのは、嫌だ。
-> また「もう少し早ければ」と思うのは、嫌だ。
-> あの感覚を、もう一度味わうのは。
+> $route_mahiru.mahiru_ch10_run.t044
+> $route_mahiru.mahiru_ch10_run.t045
+> $route_mahiru.mahiru_ch10_run.t046
 
 @wait 500
 
 @se heartbeat.mp3
 @wait 300
 
-> 踊り場を抜けた。
-> また一段、また一段。
-> 足音が暗い階段に吸い込まれていった。
+> $route_mahiru.mahiru_ch10_run.t047
+> $route_mahiru.mahiru_ch10_run.t048
+> $route_mahiru.mahiru_ch10_run.t049
 
-> 息が切れた。
-> でも止まらなかった。
+> $route_mahiru.mahiru_ch10_run.t050
+> $route_mahiru.mahiru_ch10_run.t051
 
-> 俺の足は覚えていた。
-> 走ることを、体は覚えていた。
+> $route_mahiru.mahiru_ch10_run.t052
+> $route_mahiru.mahiru_ch10_run.t053
 
-> 三年止まっていたのに、
-> 体は忘れていなかった。
+> $route_mahiru.mahiru_ch10_run.t054
+> $route_mahiru.mahiru_ch10_run.t055
 
 @wait 700
 
@@ -962,13 +962,13 @@ player: ……
 @bgm predawn_tension.mp3
 @wait 600
 
-> 扉を開いた。
+> $route_mahiru.mahiru_ch10_rooftop.t001
 
-> 夜の屋上。
+> $route_mahiru.mahiru_ch10_rooftop.t002
 
-> 冷たい空気が顔を打った。
+> $route_mahiru.mahiru_ch10_rooftop.t003
 
-> 十月の夜風が、汗ばんだ首筋に刺さった。
+> $route_mahiru.mahiru_ch10_rooftop.t004
 
 @wait 500
 
@@ -978,185 +978,185 @@ player: ……
 
 @wait 400
 
-> まひるがいた。
+> $route_mahiru.mahiru_ch10_rooftop.t005
 
-> 柵の手前に立っていた。
-> 柵の外ではなかった。
+> $route_mahiru.mahiru_ch10_rooftop.t006
+> $route_mahiru.mahiru_ch10_rooftop.t007
 
-> 空を見ていた。
+> $route_mahiru.mahiru_ch10_rooftop.t008
 
-> ただ、空を。
+> $route_mahiru.mahiru_ch10_rooftop.t009
 
-> 星もない、暗い秋の夜空を。
+> $route_mahiru.mahiru_ch10_rooftop.t010
 
 @wait 800
 
-> 俺は、その場に倒れ込むように座り込んだ。
+> $route_mahiru.mahiru_ch10_rooftop.t011
 
-> 息が切れていた。
-> 膝が震えていた。
-> 足首が熱を持っていた。
+> $route_mahiru.mahiru_ch10_rooftop.t012
+> $route_mahiru.mahiru_ch10_rooftop.t013
+> $route_mahiru.mahiru_ch10_rooftop.t014
 
-> でもそれより先に、
-> まひるがいた、という事実だけが、
-> 体の力を全部抜いた。
+> $route_mahiru.mahiru_ch10_rooftop.t015
+> $route_mahiru.mahiru_ch10_rooftop.t016
+> $route_mahiru.mahiru_ch10_rooftop.t017
 
 @show mahiru_no_camera center normal fade_in
 
-> まひるが振り返った。
+> $route_mahiru.mahiru_ch10_rooftop.t018
 
 @expr mahiru_no_camera surprised
 
-mahiru: ……なんで来たの
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t019
 
 @wait 1000
 
-> 息が、整わない。
+> $route_mahiru.mahiru_ch10_rooftop.t020
 
-> *（なんで来たのか）*
-> *（なんで来たんだろう）*
+> *$route_mahiru.mahiru_ch10_rooftop.t021*
+> *$route_mahiru.mahiru_ch10_rooftop.t022*
 
 @wait 800
 
-> 聞かれて初めて、答えを探した。
-> 理由は何か。
-> でも言葉にできるものは、
-> ひとつだけだった。
+> $route_mahiru.mahiru_ch10_rooftop.t023
+> $route_mahiru.mahiru_ch10_rooftop.t024
+> $route_mahiru.mahiru_ch10_rooftop.t025
+> $route_mahiru.mahiru_ch10_rooftop.t026
 
-player: ……嫌だ
+player: $route_mahiru.mahiru_ch10_rooftop.t027
 
 @wait 600
 
 @expr mahiru_no_camera thinking
 
-mahiru: 嫌？
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t028
 
 @wait 700
 
-> まだ息が切れたまま。
+> $route_mahiru.mahiru_ch10_rooftop.t029
 
-player: 間に合わないのが、嫌だった
+player: $route_mahiru.mahiru_ch10_rooftop.t030
 
 @wait 1200
 
-> まひるは何も言わなかった。
+> $route_mahiru.mahiru_ch10_rooftop.t031
 
 @wait 800
 
 @bgm stop
 @wait 600
 
-> 沈黙があった。
+> $route_mahiru.mahiru_ch10_rooftop.t032
 
-> 夜の屋上に、
-> 俺の呼吸だけが聞こえていた。
+> $route_mahiru.mahiru_ch10_rooftop.t033
+> $route_mahiru.mahiru_ch10_rooftop.t034
 
 @wait 1000
 
 @se wind_rooftop.mp3
 @wait 800
 
-> まひるの肩が、
-> 少し揺れた。
+> $route_mahiru.mahiru_ch10_rooftop.t035
+> $route_mahiru.mahiru_ch10_rooftop.t036
 
 @wait 600
 
 @expr mahiru_no_camera crying
 
-> 声が、出た。
+> $route_mahiru.mahiru_ch10_rooftop.t037
 
-> 小さく、子どもみたいな声だった。
+> $route_mahiru.mahiru_ch10_rooftop.t038
 
-> 泣いていた。
+> $route_mahiru.mahiru_ch10_rooftop.t039
 
 @wait 800
 
-> 何年ぶりかの、泣き声だった。
+> $route_mahiru.mahiru_ch10_rooftop.t040
 
-> 子どもみたいに、と言ったのは、
-> そういう泣き方だったからだ。
-> 声を殺さない泣き方。
-> 抑えようとしていないわけじゃない。
-> でも、もう抑えきれなくなっていた。
-> そういう泣き方だった。
+> $route_mahiru.mahiru_ch10_rooftop.t041
+> $route_mahiru.mahiru_ch10_rooftop.t042
+> $route_mahiru.mahiru_ch10_rooftop.t043
+> $route_mahiru.mahiru_ch10_rooftop.t044
+> $route_mahiru.mahiru_ch10_rooftop.t045
+> $route_mahiru.mahiru_ch10_rooftop.t046
 
 @wait 1200
 
 @bgm night_melody.mp3
 @wait 500
 
-mahiru: ……来てくれると思ってなかった
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t047
 
 @wait 1500
 
-mahiru: 誰も来ないと思ってた
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t048
 
 @wait 1200
 
-mahiru: ……来てほしかったのに
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t049
 
 @wait 600
 
-mahiru: 来ないって、決めてた
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t050
 
 @wait 1500
 
-> *（来てほしかったのに、来ないって決めてた）*
+> *$route_mahiru.mahiru_ch10_rooftop.t051*
 
 @wait 1000
 
-> その言葉の重さが、ゆっくりと沁みてきた。
+> $route_mahiru.mahiru_ch10_rooftop.t052
 
-> 来てほしかった。
-> そう思いながら。
-> でも来ないって、決めていた。
+> $route_mahiru.mahiru_ch10_rooftop.t053
+> $route_mahiru.mahiru_ch10_rooftop.t054
+> $route_mahiru.mahiru_ch10_rooftop.t055
 
-> 来てもらえるはずがない、と思っていたのか。
-> 来てもらう資格がない、と思っていたのか。
-> それとも、来てほしいと思う自分を、諦めていたのか。
+> $route_mahiru.mahiru_ch10_rooftop.t056
+> $route_mahiru.mahiru_ch10_rooftop.t057
+> $route_mahiru.mahiru_ch10_rooftop.t058
 
 @wait 900
 
-> 途切れ途切れに、
-> 順番なく、言葉が出てきた。
+> $route_mahiru.mahiru_ch10_rooftop.t059
+> $route_mahiru.mahiru_ch10_rooftop.t060
 
 @wait 600
 
-mahiru: お兄ちゃんのときも
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t061
 
-mahiru: 誰かが来てくれたら
-mahiru: 違ったのかなって
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t062
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t063
 
 @wait 1200
 
-mahiru: ……でもそれって
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t064
 
-mahiru: まひるが気づいてあげればよかった
-mahiru: ってことで
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t065
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t066
 
 @wait 1000
 
-mahiru: だからまひるには
-mahiru: 誰かに来てもらう資格がないって
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t067
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t068
 
 @wait 1200
 
 @expr mahiru_no_camera sad
 
-mahiru: ずっとそう思ってた
+mahiru: $route_mahiru.mahiru_ch10_rooftop.t069
 
 @wait 1500
 
-> 俺は何も言えなかった。
+> $route_mahiru.mahiru_ch10_rooftop.t070
 
-> 言葉は何も持っていなかった。
+> $route_mahiru.mahiru_ch10_rooftop.t071
 
-> でも。
+> $route_mahiru.mahiru_ch10_rooftop.t072
 
 @wait 600
 
-> まひるの手を、
-> 離さなかった。
+> $route_mahiru.mahiru_ch10_rooftop.t073
+> $route_mahiru.mahiru_ch10_rooftop.t074
 
 @wait 1500
 
@@ -1172,16 +1172,16 @@ mahiru: ずっとそう思ってた
 
 @wait 800
 
-> まひるは泣き続けた。
+> $route_mahiru.mahiru_ch10_rooftop.t075
 
-> 声を、殺さなかった。
+> $route_mahiru.mahiru_ch10_rooftop.t076
 
-> 風が吹くたびに、俺は少しだけ強くまひるの手を握った。
-> 何も言わなかった。
-> 言わなくていいと思った。
+> $route_mahiru.mahiru_ch10_rooftop.t077
+> $route_mahiru.mahiru_ch10_rooftop.t078
+> $route_mahiru.mahiru_ch10_rooftop.t079
 
-> 今夜は、ただここにいることだけが、
-> 俺にできることだった。
+> $route_mahiru.mahiru_ch10_rooftop.t080
+> $route_mahiru.mahiru_ch10_rooftop.t081
 
 @wait 1500
 
@@ -1202,206 +1202,206 @@ mahiru: ずっとそう思ってた
 @se night_insect.mp3
 @wait 1200
 
-> 泣き止んでから、
-> 俺たちは屋上の床に座ったままでいた。
+> $route_mahiru.mahiru_ch11_start.t001
+> $route_mahiru.mahiru_ch11_start.t002
 
-> 立つ気力が、お互いになかった。
+> $route_mahiru.mahiru_ch11_start.t003
 
 @wait 800
 
 @show mahiru_no_camera center normal fade_in
 
-> 夜の虫の声が聞こえていた。
+> $route_mahiru.mahiru_ch11_start.t004
 
-> まひるの呼吸が、少しずつ落ち着いていった。
+> $route_mahiru.mahiru_ch11_start.t005
 
 @wait 1000
 
-> *（小さい）*
-> *（こんなに小さかったか）*
+> *$route_mahiru.mahiru_ch11_start.t006*
+> *$route_mahiru.mahiru_ch11_start.t007*
 
-> *（幼なじみの、もう知らないと思っていた体温）*
+> *$route_mahiru.mahiru_ch11_start.t008*
 
 @wait 800
 
-> まひるは膝を抱えていた。
-> 俺はその隣に、少しだけ距離を残して座っていた。
+> $route_mahiru.mahiru_ch11_start.t009
+> $route_mahiru.mahiru_ch11_start.t010
 
-> 距離を残していたのは、
-> 近づきすぎることへの遠慮だったかもしれない。
-> それとも、まだ整理できていない気持ちの置き場がなかったからかもしれない。
+> $route_mahiru.mahiru_ch11_start.t011
+> $route_mahiru.mahiru_ch11_start.t012
+> $route_mahiru.mahiru_ch11_start.t013
 
 @wait 900
 
-> しばらくは何も言わなかった。
-> ただ、夜の虫の声と、遠くの街の音だけがあった。
+> $route_mahiru.mahiru_ch11_start.t014
+> $route_mahiru.mahiru_ch11_start.t015
 
-> それで充分だった。
-> 充分、という言葉が合ってるかどうかはわからないが、
-> 沈黙が重くなかった。
+> $route_mahiru.mahiru_ch11_start.t016
+> $route_mahiru.mahiru_ch11_start.t017
+> $route_mahiru.mahiru_ch11_start.t018
 
 @wait 1000
 
 @expr mahiru_no_camera thinking
 
-mahiru: ……お兄ちゃんの部屋に行ったら
+mahiru: $route_mahiru.mahiru_ch11_start.t019
 
-mahiru: 机の上に手紙があって
+mahiru: $route_mahiru.mahiru_ch11_start.t020
 
 @wait 900
 
-mahiru: 「まひるへ。お前が一番好きだった。ごめんな」
+mahiru: $route_mahiru.mahiru_ch11_start.t021
 
 @wait 1200
 
-mahiru: ……それだけ書いてあった
+mahiru: $route_mahiru.mahiru_ch11_start.t022
 
 @wait 1000
 
-> まひるは空を見ていた。
-> 星のない夜空だった。
+> $route_mahiru.mahiru_ch11_start.t023
+> $route_mahiru.mahiru_ch11_start.t024
 
 @show mahiru_no_camera center thinking fade_in
 
-> 星が出ていないのに、
-> まひるはずっと空を見ていた。
-> 何かを探しているんじゃなくて、
-> ただ見ていられる場所として、空があった。
+> $route_mahiru.mahiru_ch11_start.t025
+> $route_mahiru.mahiru_ch11_start.t026
+> $route_mahiru.mahiru_ch11_start.t027
+> $route_mahiru.mahiru_ch11_start.t028
 
 @wait 800
 
-mahiru: まひる、救急車を呼んだんだ
+mahiru: $route_mahiru.mahiru_ch11_start.t029
 
 @wait 800
 
-mahiru: 間に合わなかった
+mahiru: $route_mahiru.mahiru_ch11_start.t030
 
 @wait 1200
 
-> 間に合わなかった。
+> $route_mahiru.mahiru_ch11_start.t031
 
-> 四年前の十月、まひるは発見して、救急車を呼んで、
-> それでも間に合わなかった。
+> $route_mahiru.mahiru_ch11_start.t032
+> $route_mahiru.mahiru_ch11_start.t033
 
-> まひるが手を尽くして、
-> それでも届かなかった。
+> $route_mahiru.mahiru_ch11_start.t034
+> $route_mahiru.mahiru_ch11_start.t035
 
-> 誰かに話したのかもしれない。
-> でもきっと、誰にも本当のことは話せなかった。
-> 話せる言葉を持っていなかったから。
+> $route_mahiru.mahiru_ch11_start.t036
+> $route_mahiru.mahiru_ch11_start.t037
+> $route_mahiru.mahiru_ch11_start.t038
 
 @wait 900
 
-mahiru: ……手紙、誰にも見せてないんだ
+mahiru: $route_mahiru.mahiru_ch11_start.t039
 
-mahiru: 見せたら
+mahiru: $route_mahiru.mahiru_ch11_start.t040
 
-mahiru: 気づいてあげられなかったことが
-mahiru: 本当になるから
+mahiru: $route_mahiru.mahiru_ch11_start.t041
+mahiru: $route_mahiru.mahiru_ch11_start.t042
 
 @wait 1500
 
-> 気づいてあげられなかったことが、本当になる。
+> $route_mahiru.mahiru_ch11_start.t043
 
-> 手紙は、まひるに届いた。
-> でもまひるは、その手紙を受け取れなかった。
-> 間に合わなかったから。
-> だから手紙は、まひるの中でずっと宙ぶらりんのままだった。
+> $route_mahiru.mahiru_ch11_start.t044
+> $route_mahiru.mahiru_ch11_start.t045
+> $route_mahiru.mahiru_ch11_start.t046
+> $route_mahiru.mahiru_ch11_start.t047
 
-> 誰かに見せたら、それが確定する。
-> 気づいてあげられなかった自分が、確定する。
+> $route_mahiru.mahiru_ch11_start.t048
+> $route_mahiru.mahiru_ch11_start.t049
 
-> だから見せられなかった。
-> 四年間、一人で持っていた。
-
-@wait 1000
-
-player: ……
-
-@wait 600
-
-> 俺も、気づいていた。
-
-> 慎のこと。
-> 元気がなかったこと。
-> 昼飯を食べなくなっていたこと。
-
-> 笑い方が、少しだけ雑になっていたこと。
-
-@wait 600
-
-player: 俺も、気づいてた
-
-player: 慎のこと
-
-player: でも聞けなかった
+> $route_mahiru.mahiru_ch11_start.t050
+> $route_mahiru.mahiru_ch11_start.t051
 
 @wait 1000
 
-player: 怖かった
+player: $route_mahiru.mahiru_ch11_start.t052
+
+@wait 600
+
+> $route_mahiru.mahiru_ch11_start.t053
+
+> $route_mahiru.mahiru_ch11_start.t054
+> $route_mahiru.mahiru_ch11_start.t055
+> $route_mahiru.mahiru_ch11_start.t056
+
+> $route_mahiru.mahiru_ch11_start.t057
+
+@wait 600
+
+player: $route_mahiru.mahiru_ch11_start.t058
+
+player: $route_mahiru.mahiru_ch11_start.t059
+
+player: $route_mahiru.mahiru_ch11_start.t060
+
+@wait 1000
+
+player: $route_mahiru.mahiru_ch11_start.t061
 
 @wait 1000
 
 @expr mahiru_no_camera surprised
 
-mahiru: ……勇くんも怖いんだ
+mahiru: $route_mahiru.mahiru_ch11_start.t062
 
 @wait 600
 
-player: 怖いよ
+player: $route_mahiru.mahiru_ch11_start.t063
 
 @wait 800
 
-> 怖かった。
-> 聞いたら、本当のことがわかる気がして。
-> 本当のことを知ったら、
-> 俺は何をすればいいかわからなくなると思って。
+> $route_mahiru.mahiru_ch11_start.t064
+> $route_mahiru.mahiru_ch11_start.t065
+> $route_mahiru.mahiru_ch11_start.t066
+> $route_mahiru.mahiru_ch11_start.t067
 
-> だから聞かなかった。
-> 聞けなかった、というより、聞かなかった。
-> 逃げていた。
+> $route_mahiru.mahiru_ch11_start.t068
+> $route_mahiru.mahiru_ch11_start.t069
+> $route_mahiru.mahiru_ch11_start.t070
 
 @wait 700
 
-player: 聞いたら、本当のことがわかる気がして
-player: 怖かった
+player: $route_mahiru.mahiru_ch11_start.t071
+player: $route_mahiru.mahiru_ch11_start.t072
 
 @wait 1000
 
 @expr mahiru_no_camera thinking
 
-mahiru: 強いと思ってた
+mahiru: $route_mahiru.mahiru_ch11_start.t073
 
 @wait 600
 
-player: 走れないまま三年いたやつが強いわけない
+player: $route_mahiru.mahiru_ch11_start.t074
 
 @wait 1000
 
 @expr mahiru_no_camera normal
 
-> まひるは少しだけ、俺を見た。
+> $route_mahiru.mahiru_ch11_start.t075
 
-mahiru: ……でも今日
+mahiru: $route_mahiru.mahiru_ch11_start.t076
 
-mahiru: 走ってたじゃん
+mahiru: $route_mahiru.mahiru_ch11_start.t077
 
 @wait 1200
 
-> 俺は答えを探した。
+> $route_mahiru.mahiru_ch11_start.t078
 
-> 「走れた」と言うのは正確じゃない気がした。
-> 走ろうと思って走ったわけじゃないから。
-> 体が動いていた。
-> 頭より先に、足が動いていた。
+> $route_mahiru.mahiru_ch11_start.t079
+> $route_mahiru.mahiru_ch11_start.t080
+> $route_mahiru.mahiru_ch11_start.t081
+> $route_mahiru.mahiru_ch11_start.t082
 
-> それは怖くなかったのか、と聞かれれば、
-> 怖かった。
-> でも別の怖さの方が、ずっと大きかっただけだ。
+> $route_mahiru.mahiru_ch11_start.t083
+> $route_mahiru.mahiru_ch11_start.t084
+> $route_mahiru.mahiru_ch11_start.t085
 
 @wait 600
 
-player: お前が消えるほうが、ずっと怖かった
+player: $route_mahiru.mahiru_ch11_start.t086
 
 @wait 1500
 
@@ -1410,158 +1410,158 @@ player: お前が消えるほうが、ずっと怖かった
 
 @expr mahiru_no_camera sad
 
-mahiru: ……ごめん
+mahiru: $route_mahiru.mahiru_ch11_start.t087
 
 @wait 800
 
-player: 謝らなくていい
+player: $route_mahiru.mahiru_ch11_start.t088
 
-player: 俺が走りたかっただけだから
+player: $route_mahiru.mahiru_ch11_start.t089
 
 @wait 1500
 
-> まひるは何も言わなかった。
+> $route_mahiru.mahiru_ch11_start.t090
 
-> 俺はまひるを引き寄せた。
+> $route_mahiru.mahiru_ch11_start.t091
 
-> 乱暴でも優しすぎでもなく、
-> ただ、離さないように。
+> $route_mahiru.mahiru_ch11_start.t092
+> $route_mahiru.mahiru_ch11_start.t093
 
 @wait 800
 
-> *（小さい。こんなに小さかったか）*
-> *（幼なじみの、もう知らないと思っていた体温）*
+> *$route_mahiru.mahiru_ch11_start.t094*
+> *$route_mahiru.mahiru_ch11_start.t095*
 
-> まひるはしばらく、俺の肩に頭を預けていた。
-> 何も言わなかった。
-> 俺も何も言わなかった。
+> $route_mahiru.mahiru_ch11_start.t096
+> $route_mahiru.mahiru_ch11_start.t097
+> $route_mahiru.mahiru_ch11_start.t098
 
-> 夜の虫の声が続いていた。
-> 遠くで電車が通る音がした。
-> 世界は普通に動いていた。
-> 命日の前夜の、普通の夜として。
+> $route_mahiru.mahiru_ch11_start.t099
+> $route_mahiru.mahiru_ch11_start.t100
+> $route_mahiru.mahiru_ch11_start.t101
+> $route_mahiru.mahiru_ch11_start.t102
 
 @wait 1200
 
 @se wind_rooftop.mp3
 @wait 600
 
-mahiru: ……まひるのこと
+mahiru: $route_mahiru.mahiru_ch11_start.t103
 
-mahiru: 消えそうだって気づいてた？
+mahiru: $route_mahiru.mahiru_ch11_start.t104
 
 @wait 1000
 
-player: ……気づいてた
+player: $route_mahiru.mahiru_ch11_start.t105
 
 @wait 800
 
-player: 屋上で空の写真を撮ってたとき
+player: $route_mahiru.mahiru_ch11_start.t106
 
 @wait 1000
 
-> それは本当だった。
-> 写真を撮っているまひるを見ながら、
-> あいつは今日の空に何を見ているのだろうと思っていた。
-> 綺麗だと思って撮っているのか。
-> 残しておきたくて撮っているのか。
+> $route_mahiru.mahiru_ch11_start.t107
+> $route_mahiru.mahiru_ch11_start.t108
+> $route_mahiru.mahiru_ch11_start.t109
+> $route_mahiru.mahiru_ch11_start.t110
+> $route_mahiru.mahiru_ch11_start.t111
 
-> どちらかわからなくて、
-> 聞けなかった。
+> $route_mahiru.mahiru_ch11_start.t112
+> $route_mahiru.mahiru_ch11_start.t113
 
-> でも、どちらにしても、
-> 俺の前ではまだカメラを持っていた。
-> まだ、今日の良かったことを探していた。
+> $route_mahiru.mahiru_ch11_start.t114
+> $route_mahiru.mahiru_ch11_start.t115
+> $route_mahiru.mahiru_ch11_start.t116
 
-> それが、少しずつ減っていくのを見ていた。
+> $route_mahiru.mahiru_ch11_start.t117
 
 @wait 1000
 
 @expr mahiru_no_camera normal
 
-> まひるは少し黙った。
+> $route_mahiru.mahiru_ch11_start.t118
 
-> それから、泣き笑いみたいな顔をした。
+> $route_mahiru.mahiru_ch11_start.t119
 
-mahiru: ……早かったんだね
+mahiru: $route_mahiru.mahiru_ch11_start.t120
 
 @wait 1200
 
-> 責めていなかった。
+> $route_mahiru.mahiru_ch11_start.t121
 
-> 安堵、だった。
+> $route_mahiru.mahiru_ch11_start.t122
 
-> 気づいてもらっていた、ということへの安堵。
-> 気づいてもらえる自分だったことへの安堵。
+> $route_mahiru.mahiru_ch11_start.t123
+> $route_mahiru.mahiru_ch11_start.t124
 
-> まひるは四年間、
-> 誰にも気づいてもらえなかったと思っていたかもしれない。
-> お兄さんのことも、
-> まひる自身のことも。
+> $route_mahiru.mahiru_ch11_start.t125
+> $route_mahiru.mahiru_ch11_start.t126
+> $route_mahiru.mahiru_ch11_start.t127
+> $route_mahiru.mahiru_ch11_start.t128
 
-> 早かったんだね。
-> その一言は、
-> そういう重さを持っていた。
+> $route_mahiru.mahiru_ch11_start.t129
+> $route_mahiru.mahiru_ch11_start.t130
+> $route_mahiru.mahiru_ch11_start.t131
 
 @wait 1500
 
-> *（今度は、間に合った）*
+> *$route_mahiru.mahiru_ch11_start.t132*
 
 @wait 1000
 
-> 風が吹いた。
-> 屋上の柵がわずかに鳴った。
-> まひるは目を細めて、また夜空を見た。
+> $route_mahiru.mahiru_ch11_start.t133
+> $route_mahiru.mahiru_ch11_start.t134
+> $route_mahiru.mahiru_ch11_start.t135
 
-> 星は出ていなかった。
-> でも、空はそこにあった。
+> $route_mahiru.mahiru_ch11_start.t136
+> $route_mahiru.mahiru_ch11_start.t137
 
 @wait 1200
 
-mahiru: ……勇くん
+mahiru: $route_mahiru.mahiru_ch11_start.t138
 
-player: なんだ
+player: $route_mahiru.mahiru_ch11_start.t139
 
-mahiru: ありがとう
+mahiru: $route_mahiru.mahiru_ch11_start.t140
 
 @wait 1000
 
-> 言葉は短かった。
-> でも俺には、そのたった五文字が、
-> まひるの何年分かを含んでいる気がした。
+> $route_mahiru.mahiru_ch11_start.t141
+> $route_mahiru.mahiru_ch11_start.t142
+> $route_mahiru.mahiru_ch11_start.t143
 
 @wait 800
 
-player: ……俺こそ
+player: $route_mahiru.mahiru_ch11_start.t144
 
 @wait 700
 
-mahiru: え？
+mahiru: $route_mahiru.mahiru_ch11_start.t145
 
-player: 走れた
+player: $route_mahiru.mahiru_ch11_start.t146
 
-player: 三年ぶりに、ちゃんと走れた
+player: $route_mahiru.mahiru_ch11_start.t147
 
 @wait 1000
 
 @expr mahiru_no_camera normal
 
-> まひるは俺を見た。
-> それからゆっくり、小さく笑った。
+> $route_mahiru.mahiru_ch11_start.t148
+> $route_mahiru.mahiru_ch11_start.t149
 
-mahiru: よかったじゃん
+mahiru: $route_mahiru.mahiru_ch11_start.t150
 
 @wait 800
 
-> よかったじゃん、と言いながら、
-> まひるの目が少し潤んでいた。
+> $route_mahiru.mahiru_ch11_start.t151
+> $route_mahiru.mahiru_ch11_start.t152
 
-> 俺のために泣いていた。
+> $route_mahiru.mahiru_ch11_start.t153
 
-> そのことが不思議だった。
-> いや、不思議じゃないか。
-> まひるはそういうやつだ。
-> 他人の痛みを、自分のことみたいに感じるやつだ。
+> $route_mahiru.mahiru_ch11_start.t154
+> $route_mahiru.mahiru_ch11_start.t155
+> $route_mahiru.mahiru_ch11_start.t156
+> $route_mahiru.mahiru_ch11_start.t157
 
 @wait 1200
 
@@ -1585,9 +1585,9 @@ mahiru: よかったじゃん
 @se night_insect.mp3
 @wait 800
 
-> 星が出ていなかった。
-> 雲がほとんどを覆っていた。
-> 黒というより、深い灰色の夜空だった。
+> $route_mahiru.mahiru_ch11_stars.t001
+> $route_mahiru.mahiru_ch11_stars.t002
+> $route_mahiru.mahiru_ch11_stars.t003
 
 @show mahiru_no_camera center normal fade_in
 
@@ -1595,146 +1595,146 @@ mahiru: よかったじゃん
 
 @expr mahiru_no_camera thinking
 
-mahiru: ……お兄ちゃん
+mahiru: $route_mahiru.mahiru_ch11_stars.t004
 
-mahiru: 星が好きだったんだ
+mahiru: $route_mahiru.mahiru_ch11_stars.t005
 
 @wait 1000
 
-> まひるはそれだけ言った。
-> 星のない夜空を見上げながら。
+> $route_mahiru.mahiru_ch11_stars.t006
+> $route_mahiru.mahiru_ch11_stars.t007
 
 @wait 700
 
-player: ……知ってる
+player: $route_mahiru.mahiru_ch11_stars.t008
 
 @wait 600
 
 @expr mahiru_no_camera normal
 
-mahiru: 覚えてるの？
+mahiru: $route_mahiru.mahiru_ch11_stars.t009
 
 @wait 600
 
-> 覚えていた。
-> 幼なじみとして、自然に覚えていた。
+> $route_mahiru.mahiru_ch11_stars.t010
+> $route_mahiru.mahiru_ch11_stars.t011
 
-> まひるの家に遊びに行っていた頃、
-> 兄がいた。
-> 夜になるとたまに庭か屋上で空を見ていた。
+> $route_mahiru.mahiru_ch11_stars.t012
+> $route_mahiru.mahiru_ch11_stars.t013
+> $route_mahiru.mahiru_ch11_stars.t014
 
-> 一度だけ、俺とまひるも一緒に見た。
-> 「あれがオリオン座だ」と兄が言った。
-> 「あっちがカシオペアだ」とも言った。
+> $route_mahiru.mahiru_ch11_stars.t015
+> $route_mahiru.mahiru_ch11_stars.t016
+> $route_mahiru.mahiru_ch11_stars.t017
 
 @wait 700
 
-player: 星座を教えてもらったことがあったから
+player: $route_mahiru.mahiru_ch11_stars.t018
 
-mahiru: そっか、そんなこともあったっけ
+mahiru: $route_mahiru.mahiru_ch11_stars.t019
 
 @wait 600
 
 @expr mahiru_no_camera thinking
 
-mahiru: 後で本で調べたら
-mahiru: カシオペア座、全然違う形だったんだよね
+mahiru: $route_mahiru.mahiru_ch11_stars.t020
+mahiru: $route_mahiru.mahiru_ch11_stars.t021
 
 @wait 500
 
-> まひるが小さく笑った。
+> $route_mahiru.mahiru_ch11_stars.t022
 
 @wait 400
 
-player: 知らなかった
+player: $route_mahiru.mahiru_ch11_stars.t023
 
-mahiru: 「お兄ちゃん、これカシオペアじゃないよ」って言ったら
-mahiru: 「……これからそういうことにしよう」って
+mahiru: $route_mahiru.mahiru_ch11_stars.t024
+mahiru: $route_mahiru.mahiru_ch11_stars.t025
 
 @wait 700
 
-> 声の調子が変わっていた。
-> 兄のことを思い出しているときの、やわらかい声だった。
+> $route_mahiru.mahiru_ch11_stars.t026
+> $route_mahiru.mahiru_ch11_stars.t027
 
 @wait 600
 
-player: 自慢したかったんだろ
+player: $route_mahiru.mahiru_ch11_stars.t028
 
 @expr mahiru_no_camera normal
 
-mahiru: たぶんね
-mahiru: 嘘は困るけど
+mahiru: $route_mahiru.mahiru_ch11_stars.t029
+mahiru: $route_mahiru.mahiru_ch11_stars.t030
 
 @wait 500
 
 @expr mahiru_no_camera thinking
 
-mahiru: ……でも
-mahiru: あのとき三人で空見てたこと
+mahiru: $route_mahiru.mahiru_ch11_stars.t031
+mahiru: $route_mahiru.mahiru_ch11_stars.t032
 
-mahiru: まひるが覚えてるんだから
-mahiru: お兄ちゃんも覚えてたと思う
+mahiru: $route_mahiru.mahiru_ch11_stars.t033
+mahiru: $route_mahiru.mahiru_ch11_stars.t034
 
 @wait 1200
 
-> 俺はその横顔を見た。
+> $route_mahiru.mahiru_ch11_stars.t035
 
-> まひるの目が少し光っていた。
-> 泣いているんじゃなかった。
-> ただ、潤んでいた。
+> $route_mahiru.mahiru_ch11_stars.t036
+> $route_mahiru.mahiru_ch11_stars.t037
+> $route_mahiru.mahiru_ch11_stars.t038
 
-> 嫌いじゃない記憶を、思い出している顔だった。
+> $route_mahiru.mahiru_ch11_stars.t039
 
 @wait 1000
 
 @se wind_rooftop.mp3
 @wait 600
 
-mahiru: 今夜、星出てないね
+mahiru: $route_mahiru.mahiru_ch11_stars.t040
 
-player: 雲が多いんだろ
+player: $route_mahiru.mahiru_ch11_stars.t041
 
-mahiru: お兄ちゃんがいたら
-mahiru: なんか理由つけて説明しそう
+mahiru: $route_mahiru.mahiru_ch11_stars.t042
+mahiru: $route_mahiru.mahiru_ch11_stars.t043
 
 @wait 700
 
-> まひるはもう一度、小さく笑った。
+> $route_mahiru.mahiru_ch11_stars.t044
 
 @wait 800
 
-> 俺は何も言わなかった。
-> 言わなくていいと思った。
+> $route_mahiru.mahiru_ch11_stars.t045
+> $route_mahiru.mahiru_ch11_stars.t046
 
-> まひるが笑っているなら、
-> それでよかった。
-
-@wait 1000
-
-mahiru: ……ねえ
-
-player: なんだ
-
-mahiru: 夜明けまで、ここにいていい？
+> $route_mahiru.mahiru_ch11_stars.t047
+> $route_mahiru.mahiru_ch11_stars.t048
 
 @wait 1000
 
-> まひるは俺を見た。
-> 頼むような目だった。
-> でも、遠慮もあった。
+mahiru: $route_mahiru.mahiru_ch11_stars.t049
 
-> 迷惑をかけることへの遠慮。
-> それでも、ここにいたいという気持ち。
+player: $route_mahiru.mahiru_ch11_stars.t050
+
+mahiru: $route_mahiru.mahiru_ch11_stars.t051
+
+@wait 1000
+
+> $route_mahiru.mahiru_ch11_stars.t052
+> $route_mahiru.mahiru_ch11_stars.t053
+> $route_mahiru.mahiru_ch11_stars.t054
+
+> $route_mahiru.mahiru_ch11_stars.t055
+> $route_mahiru.mahiru_ch11_stars.t056
 
 @wait 700
 
-player: ああ
+player: $route_mahiru.mahiru_ch11_stars.t057
 
 @wait 600
 
 @expr mahiru_no_camera happy
 
-mahiru: ……ありがとう
+mahiru: $route_mahiru.mahiru_ch11_stars.t058
 
 @wait 1200
 
@@ -1755,40 +1755,40 @@ mahiru: ……ありがとう
 @se night_insect.mp3
 @wait 1000
 
-> 夜が、深くなっていた。
+> $route_mahiru.mahiru_ch12_branch.t001
 
-> 俺たちはまだ屋上にいた。
+> $route_mahiru.mahiru_ch12_branch.t002
 
-> まひるが、空を見ていた。
-> 星は出ていなかった。
-> それでもまひるは、空を見ていた。
+> $route_mahiru.mahiru_ch12_branch.t003
+> $route_mahiru.mahiru_ch12_branch.t004
+> $route_mahiru.mahiru_ch12_branch.t005
 
 @show mahiru_no_camera center normal fade_in
 
 @wait 800
 
-mahiru: ……勇くん
+mahiru: $route_mahiru.mahiru_ch12_branch.t006
 
-player: なんだ
+player: $route_mahiru.mahiru_ch12_branch.t007
 
-mahiru: 空
+mahiru: $route_mahiru.mahiru_ch12_branch.t008
 
-mahiru: 明日の朝になったら
-mahiru: どんな色になるんだろう
+mahiru: $route_mahiru.mahiru_ch12_branch.t009
+mahiru: $route_mahiru.mahiru_ch12_branch.t010
 
 @wait 1000
 
-> *（夜明けまで、ここにいるつもりか）*
+> *$route_mahiru.mahiru_ch12_branch.t011*
 
 @wait 600
 
-> まひるは答えを求めていなかった。
-> ただ、誰かに聞いてほしかった声だった。
+> $route_mahiru.mahiru_ch12_branch.t012
+> $route_mahiru.mahiru_ch12_branch.t013
 
-> 明日は命日だ。
-> まひるにとって、毎年一番長い一日が始まる。
+> $route_mahiru.mahiru_ch12_branch.t014
+> $route_mahiru.mahiru_ch12_branch.t015
 
-> 一人で朝を迎えさせたくなかった。
+> $route_mahiru.mahiru_ch12_branch.t016
 
 @wait 800
 
@@ -1806,146 +1806,146 @@ mahiru: どんな色になるんだろう
 @se night_insect.mp3
 @wait 600
 
-player: 朝日まで、一緒にいる
+player: $route_mahiru.mahiru_good_end.t001
 
 @wait 1200
 
 @expr mahiru_no_camera thinking
 
-mahiru: ……
+mahiru: $route_mahiru.mahiru_good_end.t002
 
 @wait 800
 
 @expr mahiru_no_camera normal
 
-mahiru: ……うん
+mahiru: $route_mahiru.mahiru_good_end.t003
 
 @wait 600
 
-> それだけだった。
+> $route_mahiru.mahiru_good_end.t004
 
-> 余計な言葉は何もなかった。
-> ただ、うん、と言った。
+> $route_mahiru.mahiru_good_end.t005
+> $route_mahiru.mahiru_good_end.t006
 
 @wait 1000
 
 @bgm night_melody.mp3
 @wait 600
 
-> 夜を、二人で過ごした。
+> $route_mahiru.mahiru_good_end.t007
 
-> たくさん話したわけじゃない。
-> ほとんど黙っていた。
+> $route_mahiru.mahiru_good_end.t008
+> $route_mahiru.mahiru_good_end.t009
 
-> でも、沈黙が重くなかった。
+> $route_mahiru.mahiru_good_end.t010
 
 @wait 1500
 
-> まひるはときどき
-> 小さいことをつぶやいた。
+> $route_mahiru.mahiru_good_end.t011
+> $route_mahiru.mahiru_good_end.t012
 
-mahiru: ……虫の声、秋だな
+mahiru: $route_mahiru.mahiru_good_end.t013
 
 @wait 600
 
-player: そうだな
+player: $route_mahiru.mahiru_good_end.t014
 
 @wait 500
 
-mahiru: こういう夜って
-mahiru: お兄ちゃんも好きだった
+mahiru: $route_mahiru.mahiru_good_end.t015
+mahiru: $route_mahiru.mahiru_good_end.t016
 
 @wait 1000
 
-mahiru: 「夜って静かだから思考が整理されるんだよ」
-mahiru: って言ってた
+mahiru: $route_mahiru.mahiru_good_end.t017
+mahiru: $route_mahiru.mahiru_good_end.t018
 
 @wait 800
 
-player: 整理されたか
+player: $route_mahiru.mahiru_good_end.t019
 
 @wait 600
 
 @expr mahiru_no_camera thinking
 
-mahiru: ……少し
+mahiru: $route_mahiru.mahiru_good_end.t020
 
 @wait 800
 
 @expr mahiru_no_camera normal
 
-mahiru: まだ全部じゃないけど
+mahiru: $route_mahiru.mahiru_good_end.t021
 
 @wait 600
 
-mahiru: 今夜は
+mahiru: $route_mahiru.mahiru_good_end.t022
 
-mahiru: ここにいていい気がした
+mahiru: $route_mahiru.mahiru_good_end.t023
 
 @wait 1500
 
-> *（俺も、そう思っていた）*
+> *$route_mahiru.mahiru_good_end.t024*
 
 @wait 1000
 
-> 「ここにいていい」と思える場所は、
-> たぶん多くない。
-> 今夜のこの屋上が、そうだとしたら。
-> 俺はそれに、少し貢献できたのかもしれない。
+> $route_mahiru.mahiru_good_end.t025
+> $route_mahiru.mahiru_good_end.t026
+> $route_mahiru.mahiru_good_end.t027
+> $route_mahiru.mahiru_good_end.t028
 
 @wait 800
 
-mahiru: ……ねえ
+mahiru: $route_mahiru.mahiru_good_end.t029
 
-player: なんだ
+player: $route_mahiru.mahiru_good_end.t030
 
-mahiru: お兄ちゃんの手紙
+mahiru: $route_mahiru.mahiru_good_end.t031
 
-mahiru: まひるへって書いてあったけど
+mahiru: $route_mahiru.mahiru_good_end.t032
 
 @wait 1000
 
-mahiru: もしかしたら
-mahiru: 気づいてほしかったのかな
+mahiru: $route_mahiru.mahiru_good_end.t033
+mahiru: $route_mahiru.mahiru_good_end.t034
 
 @wait 1200
 
-> まひるは独り言みたいに言った。
-> 答えを求めているのかもしれないし、
-> ただ声に出してみたかっただけかもしれない。
+> $route_mahiru.mahiru_good_end.t035
+> $route_mahiru.mahiru_good_end.t036
+> $route_mahiru.mahiru_good_end.t037
 
 @wait 700
 
-player: ……たぶん
+player: $route_mahiru.mahiru_good_end.t038
 
-player: 気づいてほしかったのと
-player: 気づかれたくなかったのと、
-player: 両方あったんじゃないか
+player: $route_mahiru.mahiru_good_end.t039
+player: $route_mahiru.mahiru_good_end.t040
+player: $route_mahiru.mahiru_good_end.t041
 
 @wait 1000
 
-mahiru: ……そうかな
+mahiru: $route_mahiru.mahiru_good_end.t042
 
-player: そうじゃないかな
+player: $route_mahiru.mahiru_good_end.t043
 
 @wait 800
 
 @expr mahiru_no_camera thinking
 
-mahiru: 二つ、両方
+mahiru: $route_mahiru.mahiru_good_end.t044
 
 @wait 600
 
-mahiru: なんか
-mahiru: それなら少しだけ楽
+mahiru: $route_mahiru.mahiru_good_end.t045
+mahiru: $route_mahiru.mahiru_good_end.t046
 
 @wait 1000
 
-> 楽、という言葉が出た。
-> 俺は黙っていた。
+> $route_mahiru.mahiru_good_end.t047
+> $route_mahiru.mahiru_good_end.t048
 
-> まひるが楽だと感じることなら、
-> それが正しいかどうかよりも大事だと思った。
+> $route_mahiru.mahiru_good_end.t049
+> $route_mahiru.mahiru_good_end.t050
 
 @wait 1200
 
@@ -1962,58 +1962,58 @@ mahiru: それなら少しだけ楽
 @se wind_rooftop.mp3
 @wait 1200
 
-> 夜明け前。
+> $route_mahiru.mahiru_good_end_dawn.t001
 
-> 空の端が、ほんのわずかに明るくなり始めた。
+> $route_mahiru.mahiru_good_end_dawn.t002
 
-> 深い紺から、
-> 少しだけ青みがかった紺に。
+> $route_mahiru.mahiru_good_end_dawn.t003
+> $route_mahiru.mahiru_good_end_dawn.t004
 
 @wait 1000
 
 @show mahiru_no_camera center normal fade_in
 
-> まひるは立ち上がっていた。
-> 柵に手をかけて、遠くを見ていた。
+> $route_mahiru.mahiru_good_end_dawn.t005
+> $route_mahiru.mahiru_good_end_dawn.t006
 
-> 怖くなかった。
-> 柵に手をかけていても、
-> 今のまひるは、空に向かって立っている。
-> 落ちようとしているんじゃない。
-> 夜明けを見ようとしている。
+> $route_mahiru.mahiru_good_end_dawn.t007
+> $route_mahiru.mahiru_good_end_dawn.t008
+> $route_mahiru.mahiru_good_end_dawn.t009
+> $route_mahiru.mahiru_good_end_dawn.t010
+> $route_mahiru.mahiru_good_end_dawn.t011
 
-> その違いが、俺にはわかった。
+> $route_mahiru.mahiru_good_end_dawn.t012
 
 @wait 1000
 
 @se chime_soft.mp3
 @wait 500
 
-mahiru: ……始まった
+mahiru: $route_mahiru.mahiru_good_end_dawn.t013
 
 @wait 600
 
-player: そうだな
+player: $route_mahiru.mahiru_good_end_dawn.t014
 
-mahiru: じわじわくるね
+mahiru: $route_mahiru.mahiru_good_end_dawn.t015
 
 @wait 800
 
-> まひるはノートを取り出した。
+> $route_mahiru.mahiru_good_end_dawn.t016
 
-> この夜、ずっとポケットに入れていたノートだった。
+> $route_mahiru.mahiru_good_end_dawn.t017
 
 @wait 600
 
 @expr mahiru_no_camera happy
 
-mahiru: 書いていい？
+mahiru: $route_mahiru.mahiru_good_end_dawn.t018
 
-player: 書けよ
+player: $route_mahiru.mahiru_good_end_dawn.t019
 
 @wait 700
 
-> まひるは書いた。
+> $route_mahiru.mahiru_good_end_dawn.t020
 
 @hide mahiru_no_camera fade_out
 @wait 400
@@ -2028,283 +2028,283 @@ player: 書けよ
 
 @show mahiru_no_camera center happy fade_in
 
-> 空が、開いた。
+> $route_mahiru.mahiru_good_end_dawn.t021
 
-> 橙と紫と、その間の色が
-> 地平線から滲んで広がっていた。
+> $route_mahiru.mahiru_good_end_dawn.t022
+> $route_mahiru.mahiru_good_end_dawn.t023
 
-> 雲が染まっていた。
-> 細い雲が、朝焼けの色を受けて赤くなっていた。
+> $route_mahiru.mahiru_good_end_dawn.t024
+> $route_mahiru.mahiru_good_end_dawn.t025
 
-> 綺麗、という言葉では足りなかった。
-> でも他に言葉がなかった。
+> $route_mahiru.mahiru_good_end_dawn.t026
+> $route_mahiru.mahiru_good_end_dawn.t027
 
 @wait 1000
 
-mahiru: 勇くん
+mahiru: $route_mahiru.mahiru_good_end_dawn.t028
 
-player: なんだ
+player: $route_mahiru.mahiru_good_end_dawn.t029
 
-mahiru: 見て
+mahiru: $route_mahiru.mahiru_good_end_dawn.t030
 
 @wait 600
 
-> まひるはノートを開いて見せた。
+> $route_mahiru.mahiru_good_end_dawn.t031
 
-> 「今日の良かったこと：勇くんが、まひるの隣にいてくれた」
+> $route_mahiru.mahiru_good_end_dawn.t032
 
 @wait 1500
 
-player: ……
+player: $route_mahiru.mahiru_good_end_dawn.t033
 
-mahiru: 多い日は五行書けるんだけど
+mahiru: $route_mahiru.mahiru_good_end_dawn.t034
 
-mahiru: 今日は
+mahiru: $route_mahiru.mahiru_good_end_dawn.t035
 
-mahiru: これだけで、全部入ってる気がする
+mahiru: $route_mahiru.mahiru_good_end_dawn.t036
 
 @wait 1200
 
-> まひるは空を見た。
+> $route_mahiru.mahiru_good_end_dawn.t037
 
-> 朝日が、ゆっくり上がっていた。
+> $route_mahiru.mahiru_good_end_dawn.t038
 
 @wait 800
 
 @expr mahiru_no_camera normal
 
-mahiru: お兄ちゃん
+mahiru: $route_mahiru.mahiru_good_end_dawn.t039
 
 @wait 600
 
-mahiru: まひるね
+mahiru: $route_mahiru.mahiru_good_end_dawn.t040
 
-mahiru: また理由が増えた
+mahiru: $route_mahiru.mahiru_good_end_dawn.t041
 
 @wait 1500
 
-> 声が、穏やかだった。
+> $route_mahiru.mahiru_good_end_dawn.t042
 
-> 悲しくなかった。
-> でも悲しみが消えたわけでもなかった。
+> $route_mahiru.mahiru_good_end_dawn.t043
+> $route_mahiru.mahiru_good_end_dawn.t044
 
-> ただ、今朝は。
-> 悲しみに押しつぶされていなかった。
+> $route_mahiru.mahiru_good_end_dawn.t045
+> $route_mahiru.mahiru_good_end_dawn.t046
 
 @wait 1200
 
-> 命日の朝だった。
-> 四年経っても、命日は命日だ。
-> 今年の十月下旬も、来年も、
-> まひるはきっとこの日を重く感じる。
+> $route_mahiru.mahiru_good_end_dawn.t047
+> $route_mahiru.mahiru_good_end_dawn.t048
+> $route_mahiru.mahiru_good_end_dawn.t049
+> $route_mahiru.mahiru_good_end_dawn.t050
 
-> でも今年は、隣に俺がいた。
+> $route_mahiru.mahiru_good_end_dawn.t051
 
 @wait 900
 
 @se chime_soft.mp3
 @wait 800
 
-> 俺は朝日の中で足元を見た。
+> $route_mahiru.mahiru_good_end_dawn.t052
 
-> 昨夜、走ってきた足。
-> 痛みはまだ少し残っていた。
-> でも、それだけだった。
+> $route_mahiru.mahiru_good_end_dawn.t053
+> $route_mahiru.mahiru_good_end_dawn.t054
+> $route_mahiru.mahiru_good_end_dawn.t055
 
-> *（もうそこには「走れない自分」の感覚はない）*
+> *$route_mahiru.mahiru_good_end_dawn.t056*
 
-> 確認するまでもなかった。
-> 体がわかっていた。
-> 昨夜、全力で走れた体が、覚えていた。
+> $route_mahiru.mahiru_good_end_dawn.t057
+> $route_mahiru.mahiru_good_end_dawn.t058
+> $route_mahiru.mahiru_good_end_dawn.t059
 
 @wait 800
 
-> *（父のことも、慎のことも、消えはしない）*
+> *$route_mahiru.mahiru_good_end_dawn.t060*
 
-> それは本当だ。
-> 消えない。
-> 消えてほしいとも思っていない。
+> $route_mahiru.mahiru_good_end_dawn.t061
+> $route_mahiru.mahiru_good_end_dawn.t062
+> $route_mahiru.mahiru_good_end_dawn.t063
 
-> 俺が見落としたこと。
-> 間に合わなかったこと。
-> あの日々の重さは、ずっとあり続ける。
+> $route_mahiru.mahiru_good_end_dawn.t064
+> $route_mahiru.mahiru_good_end_dawn.t065
+> $route_mahiru.mahiru_good_end_dawn.t066
 
-> でも。
+> $route_mahiru.mahiru_good_end_dawn.t067
 
 @wait 700
 
-> *（でも俺は、もう立ち止まったままじゃない）*
+> *$route_mahiru.mahiru_good_end_dawn.t068*
 
-> 三年、止まっていた。
-> 足首が治っても走らなかった。
-> 走れないのではなく、走らないことを選んでいた。
-> 止まり続けることが、自分への罰だと思っていたのかもしれない。
+> $route_mahiru.mahiru_good_end_dawn.t069
+> $route_mahiru.mahiru_good_end_dawn.t070
+> $route_mahiru.mahiru_good_end_dawn.t071
+> $route_mahiru.mahiru_good_end_dawn.t072
 
-> でも昨夜、走れた。
-> まひるのために走った。
-> それは罰でも贖罪でもなくて、
-> ただ行きたかったから走った。
+> $route_mahiru.mahiru_good_end_dawn.t073
+> $route_mahiru.mahiru_good_end_dawn.t074
+> $route_mahiru.mahiru_good_end_dawn.t075
+> $route_mahiru.mahiru_good_end_dawn.t076
 
-> それで、いい。
+> $route_mahiru.mahiru_good_end_dawn.t077
 
 @wait 900
 
-> *（今度は、誰かのところへ行ける）*
+> *$route_mahiru.mahiru_good_end_dawn.t078*
 
 @wait 1500
 
 @expr mahiru_no_camera happy
 
-mahiru: 勇くん
+mahiru: $route_mahiru.mahiru_good_end_dawn.t079
 
-player: なんだ
+player: $route_mahiru.mahiru_good_end_dawn.t080
 
-mahiru: 今日、学校どうする
+mahiru: $route_mahiru.mahiru_good_end_dawn.t081
 
 @wait 800
 
-> 命日に学校。
-> 普通じゃない問いかけだったが、
-> まひるはあっさりと聞いた。
+> $route_mahiru.mahiru_good_end_dawn.t082
+> $route_mahiru.mahiru_good_end_dawn.t083
+> $route_mahiru.mahiru_good_end_dawn.t084
 
-player: ……どうしたい
+player: $route_mahiru.mahiru_good_end_dawn.t085
 
-mahiru: 行こうかな
+mahiru: $route_mahiru.mahiru_good_end_dawn.t086
 
 @wait 700
 
-player: そうか
+player: $route_mahiru.mahiru_good_end_dawn.t087
 
-mahiru: ……うん
-mahiru: お兄ちゃんのこと、ずっと隠してたら
-mahiru: 自分が消えそうになるって、わかったから
+mahiru: $route_mahiru.mahiru_good_end_dawn.t088
+mahiru: $route_mahiru.mahiru_good_end_dawn.t089
+mahiru: $route_mahiru.mahiru_good_end_dawn.t090
 
 @wait 1000
 
-mahiru: 少しずつ、話せるようになりたい
+mahiru: $route_mahiru.mahiru_good_end_dawn.t091
 
 @wait 800
 
 @expr mahiru_no_camera normal
 
-mahiru: まず、勇くんに話せた
-mahiru: それで充分かな、今日は
+mahiru: $route_mahiru.mahiru_good_end_dawn.t092
+mahiru: $route_mahiru.mahiru_good_end_dawn.t093
 
 @wait 1000
 
-> まひるはそう言って、
-> また空を見た。
+> $route_mahiru.mahiru_good_end_dawn.t094
+> $route_mahiru.mahiru_good_end_dawn.t095
 
-> カメラを取り出した。
+> $route_mahiru.mahiru_good_end_dawn.t096
 
-> 朝焼けに染まる空を、
-> 一枚、撮った。
+> $route_mahiru.mahiru_good_end_dawn.t097
+> $route_mahiru.mahiru_good_end_dawn.t098
 
 @wait 800
 
 @wait 600
 
-mahiru: ……きれい
+mahiru: $route_mahiru.mahiru_good_end_dawn.t099
 
-player: そうだな
+player: $route_mahiru.mahiru_good_end_dawn.t100
 
-mahiru: 撮れた
-
-@wait 800
-
-> まひるは写真を確認して、
-> 小さく笑った。
+mahiru: $route_mahiru.mahiru_good_end_dawn.t101
 
 @wait 800
 
-> それから、カバンの中を少し探して、
-> 封筒を取り出した。
+> $route_mahiru.mahiru_good_end_dawn.t102
+> $route_mahiru.mahiru_good_end_dawn.t103
+
+@wait 800
+
+> $route_mahiru.mahiru_good_end_dawn.t104
+> $route_mahiru.mahiru_good_end_dawn.t105
 
 @wait 600
 
-mahiru: ……ねえ、これ
+mahiru: $route_mahiru.mahiru_good_end_dawn.t106
 
-player: なんだ
+player: $route_mahiru.mahiru_good_end_dawn.t107
 
-mahiru: ずっと渡せなかったんだけど
-
-@wait 600
-
-> 封筒の中に、写真が一枚入っていた。
-> 屋上で、まひるが撮ったあの日の写真。
-
-> さくらが笑っていた。
-> ことはが少しだけ目を逸らしていた。
-> 俺が、そこにいた。
-
-@wait 800
-
-mahiru: プリントはしてたんだ
-mahiru: でも渡すタイミングが、なかなか
+mahiru: $route_mahiru.mahiru_good_end_dawn.t108
 
 @wait 600
 
-player: ……何ヶ月持ってたんだ
+> $route_mahiru.mahiru_good_end_dawn.t109
+> $route_mahiru.mahiru_good_end_dawn.t110
 
-mahiru: ……七月から
+> $route_mahiru.mahiru_good_end_dawn.t111
+> $route_mahiru.mahiru_good_end_dawn.t112
+> $route_mahiru.mahiru_good_end_dawn.t113
 
 @wait 800
 
-> まひるは少し恥ずかしそうに視線を外した。
+mahiru: $route_mahiru.mahiru_good_end_dawn.t114
+mahiru: $route_mahiru.mahiru_good_end_dawn.t115
+
+@wait 600
+
+player: $route_mahiru.mahiru_good_end_dawn.t116
+
+mahiru: $route_mahiru.mahiru_good_end_dawn.t117
+
+@wait 800
+
+> $route_mahiru.mahiru_good_end_dawn.t118
 
 @wait 500
 
-mahiru: さくらちゃんとことはちゃんのぶんも、ある
-mahiru: 今日、学校行ったら渡す
+mahiru: $route_mahiru.mahiru_good_end_dawn.t119
+mahiru: $route_mahiru.mahiru_good_end_dawn.t120
 
 @wait 700
 
-> それだけのことが、
-> まひるには時間がかかった。
+> $route_mahiru.mahiru_good_end_dawn.t121
+> $route_mahiru.mahiru_good_end_dawn.t122
 
-> 渡すって決めることが、
-> 誰かに近づくことと、同じだから。
-
-@wait 1000
-
-> その笑顔に、余白はなかった。
-> 全部が埋まっていた。
-
-@wait 1200
-
-> 写真の中で、俺たちは笑っていた。
-> まひるが、撮った。
+> $route_mahiru.mahiru_good_end_dawn.t123
+> $route_mahiru.mahiru_good_end_dawn.t124
 
 @wait 1000
 
-> 七月から、ずっと持っていた。
+> $route_mahiru.mahiru_good_end_dawn.t125
+> $route_mahiru.mahiru_good_end_dawn.t126
 
 @wait 1200
 
-> 渡せなかった時間の分だけ、
-> この一枚は重かった。
-> そしてその重さが、今の軽さになっていた。
+> $route_mahiru.mahiru_good_end_dawn.t127
+> $route_mahiru.mahiru_good_end_dawn.t128
+
+@wait 1000
+
+> $route_mahiru.mahiru_good_end_dawn.t129
+
+@wait 1200
+
+> $route_mahiru.mahiru_good_end_dawn.t130
+> $route_mahiru.mahiru_good_end_dawn.t131
+> $route_mahiru.mahiru_good_end_dawn.t132
 
 @wait 1500
 
 @expr mahiru_no_camera happy
 
-mahiru: ……行こっか
+mahiru: $route_mahiru.mahiru_good_end_dawn.t133
 
-player: ああ
-
-@wait 1200
-
-> 屋上の扉を開けると、
-> 朝の空気が中に流れ込んできた。
-
-> まひるが先に歩き出した。
-> 俺は後ろから、その背中を見ていた。
+player: $route_mahiru.mahiru_good_end_dawn.t134
 
 @wait 1200
 
-> 今日は命日だ。
-> でも今年は、まひるは一人じゃなかった。
+> $route_mahiru.mahiru_good_end_dawn.t135
+> $route_mahiru.mahiru_good_end_dawn.t136
+
+> $route_mahiru.mahiru_good_end_dawn.t137
+> $route_mahiru.mahiru_good_end_dawn.t138
+
+@wait 1200
+
+> $route_mahiru.mahiru_good_end_dawn.t139
+> $route_mahiru.mahiru_good_end_dawn.t140
 
 @wait 1500
 
@@ -2327,14 +2327,14 @@ player: ああ
 @bgm daily_life.mp3
 @wait 1200
 
-> 命日の朝。
+> $route_mahiru.mahiru_good_end_school.t001
 
-> まひるは学校に来た。
+> $route_mahiru.mahiru_good_end_school.t002
 
 @wait 800
 
-> 普通に来た。
-> それだけのことが、今年は少し違う意味を持っていた。
+> $route_mahiru.mahiru_good_end_school.t003
+> $route_mahiru.mahiru_good_end_school.t004
 
 @wait 1000
 
@@ -2343,128 +2343,128 @@ player: ああ
 
 @wait 600
 
-sakura: まひるちゃん、おはよー
+sakura: $route_mahiru.mahiru_good_end_school.t005
 
-mahiru: おはよ
+mahiru: $route_mahiru.mahiru_good_end_school.t006
 
 @wait 600
 
-> さくらは何も聞かなかった。
-> ただ、いつも通りに笑った。
+> $route_mahiru.mahiru_good_end_school.t007
+> $route_mahiru.mahiru_good_end_school.t008
 
-sakura: 昨日LINEしたのに
-sakura: どこにいたの
+sakura: $route_mahiru.mahiru_good_end_school.t009
+sakura: $route_mahiru.mahiru_good_end_school.t010
 
-mahiru: ……屋上
+mahiru: $route_mahiru.mahiru_good_end_school.t011
 
-sakura: 屋上！？　一人で？
+sakura: $route_mahiru.mahiru_good_end_school.t012
 
-mahiru: 途中から、勇くんも来た
+mahiru: $route_mahiru.mahiru_good_end_school.t013
 
 @wait 600
 
 @expr sakura surprised
 
-sakura: 勇くんが？
+sakura: $route_mahiru.mahiru_good_end_school.t014
 
-mahiru: うん
+mahiru: $route_mahiru.mahiru_good_end_school.t015
 
 @wait 700
 
-> さくらはチラリと俺を見た。
-> 何かを察した顔だった。
+> $route_mahiru.mahiru_good_end_school.t016
+> $route_mahiru.mahiru_good_end_school.t017
 
 @expr sakura happy
 
-sakura: ……そっか
-sakura: よかった
+sakura: $route_mahiru.mahiru_good_end_school.t018
+sakura: $route_mahiru.mahiru_good_end_school.t019
 
 @wait 800
 
-> 詳しくは聞かなかった。
-> さくらはそういうやつだ。
+> $route_mahiru.mahiru_good_end_school.t020
+> $route_mahiru.mahiru_good_end_school.t021
 
 @wait 800
 
 @expr mahiru normal
 
-mahiru: ……ねえ、さくらちゃん
+mahiru: $route_mahiru.mahiru_good_end_school.t022
 
-sakura: うん？
+sakura: $route_mahiru.mahiru_good_end_school.t023
 
 @wait 500
 
-> まひるはカバンから封筒を取り出した。
+> $route_mahiru.mahiru_good_end_school.t024
 
-mahiru: ずっと渡せなかったんだけど
-mahiru: これ、写真
+mahiru: $route_mahiru.mahiru_good_end_school.t025
+mahiru: $route_mahiru.mahiru_good_end_school.t026
 
 @wait 700
 
 @expr sakura surprised
 
-sakura: え、写真？
+sakura: $route_mahiru.mahiru_good_end_school.t027
 
 @wait 600
 
-> さくらは封筒を受け取った。
-> 中身を確認して、少しの間黙った。
+> $route_mahiru.mahiru_good_end_school.t028
+> $route_mahiru.mahiru_good_end_school.t029
 
 @wait 700
 
 @expr sakura happy
 
-sakura: ……まひるちゃん
-sakura: 七月のじゃん
+sakura: $route_mahiru.mahiru_good_end_school.t030
+sakura: $route_mahiru.mahiru_good_end_school.t031
 
-mahiru: ずっと持ってたんだ
-mahiru: 渡すタイミングが、なくて
+mahiru: $route_mahiru.mahiru_good_end_school.t032
+mahiru: $route_mahiru.mahiru_good_end_school.t033
 
-sakura: そんなに！
+sakura: $route_mahiru.mahiru_good_end_school.t034
 
 @wait 600
 
-> さくらは笑いながら、写真を大事そうに封筒に戻した。
+> $route_mahiru.mahiru_good_end_school.t035
 
-sakura: ありがとう
-sakura: すごく嬉しい
+sakura: $route_mahiru.mahiru_good_end_school.t036
+sakura: $route_mahiru.mahiru_good_end_school.t037
 
 @wait 800
 
-> まひるも笑っていた。
-> 全部が埋まっている笑顔だった。
+> $route_mahiru.mahiru_good_end_school.t038
+> $route_mahiru.mahiru_good_end_school.t039
 
 @wait 800
 
 @hide sakura fade_out
 @wait 500
 
-> 昼休みに、ことはにも渡した。
-> ことははいつものように静かに受け取って、
-> しばらく写真を見ていた。
+> $route_mahiru.mahiru_good_end_school.t040
+> $route_mahiru.mahiru_good_end_school.t041
+> $route_mahiru.mahiru_good_end_school.t042
 
 @show kotoha left normal fade_in
 @wait 600
 
-> ことははやがて顔を上げた。
-> まひるを、見た。
+> $route_mahiru.mahiru_good_end_school.t043
+> $route_mahiru.mahiru_good_end_school.t044
 
-kotoha: ……まひるさんが
+kotoha: $route_mahiru.mahiru_good_end_school.t045
 
-kotoha: 笑っています
+kotoha: $route_mahiru.mahiru_good_end_school.t046
 
 @wait 1000
 
-mahiru: 笑ってるよ
+mahiru: $route_mahiru.mahiru_good_end_school.t047
 
 @wait 500
 
 @expr kotoha normal
 
-> ことははもう一度写真を見た。
-> それから、小さく頷いた。
+> $route_mahiru.mahiru_good_end_school.t048
+> $route_mahiru.mahiru_good_end_school.t049
 
-kotoha: ……よかったです
+kotoha: $route_mahiru.mahiru_good_end_school.t050
 
 @wait 800
 
@@ -2476,65 +2476,65 @@ kotoha: ……よかったです
 @bgm mahiru_theme.mp3
 @wait 1000
 
-> 放課後。
+> $route_mahiru.mahiru_good_end_school.t051
 
 @show mahiru center normal fade_in
 
 @wait 600
 
-mahiru: ……今日、来れた
+mahiru: $route_mahiru.mahiru_good_end_school.t052
 
 @wait 600
 
-player: 来れたな
+player: $route_mahiru.mahiru_good_end_school.t053
 
 @wait 500
 
-mahiru: 去年は休んでたから
+mahiru: $route_mahiru.mahiru_good_end_school.t054
 
 @wait 1000
 
-> 昨年の命日は一人だった。
-> その前も、一人だった。
-> 四年間、まひるはこの日を一人で越えてきた。
+> $route_mahiru.mahiru_good_end_school.t055
+> $route_mahiru.mahiru_good_end_school.t056
+> $route_mahiru.mahiru_good_end_school.t057
 
 @wait 700
 
-player: 来年も来いよ
+player: $route_mahiru.mahiru_good_end_school.t058
 
 @wait 600
 
 @expr mahiru normal
 
-mahiru: ……うん
-mahiru: たぶんね
+mahiru: $route_mahiru.mahiru_good_end_school.t059
+mahiru: $route_mahiru.mahiru_good_end_school.t060
 
 @wait 1000
 
-> まひるはカバンからノートを取り出した。
-> 歩きながら、ゆっくりページを開いた。
+> $route_mahiru.mahiru_good_end_school.t061
+> $route_mahiru.mahiru_good_end_school.t062
 
 @wait 600
 
 @expr mahiru happy
 
-mahiru: 今日の良かったこと
-mahiru: 多すぎて書ききれない
+mahiru: $route_mahiru.mahiru_good_end_school.t063
+mahiru: $route_mahiru.mahiru_good_end_school.t064
 
 @wait 1200
 
-> まひるは笑った。
-> 声に出して笑った。
+> $route_mahiru.mahiru_good_end_school.t065
+> $route_mahiru.mahiru_good_end_school.t066
 
 @wait 800
 
-> 悲しみは消えていない。
-> 今日は命日だった。
-> 来年もこの日は来る。
-> そのたびに重くなる。
+> $route_mahiru.mahiru_good_end_school.t067
+> $route_mahiru.mahiru_good_end_school.t068
+> $route_mahiru.mahiru_good_end_school.t069
+> $route_mahiru.mahiru_good_end_school.t070
 
-> でも今日のまひるは、
-> 書ききれないくらい、今日を生きていた。
+> $route_mahiru.mahiru_good_end_school.t071
+> $route_mahiru.mahiru_good_end_school.t072
 
 @wait 1200
 
@@ -2547,97 +2547,97 @@ mahiru: 多すぎて書ききれない
 @scene commute_road_autumn_evening fade
 @bgm epilogue_sunset_for_each.mp3
 
-> 夕方の帰り道。
-> 風が少しだけ冷たい。
+> $route_mahiru.mahiru_good_end_school.t073
+> $route_mahiru.mahiru_good_end_school.t074
 
 @show mahiru_no_camera center normal fade_in
 
-> 並んで歩く。
-> 歩幅は自然に揃っている。
+> $route_mahiru.mahiru_good_end_school.t075
+> $route_mahiru.mahiru_good_end_school.t076
 
 @wait 1000
 
-player: ……今日は書かないのか
+player: $route_mahiru.mahiru_good_end_school.t077
 
-mahiru: ん？
+mahiru: $route_mahiru.mahiru_good_end_school.t078
 
-player: ノート
+player: $route_mahiru.mahiru_good_end_school.t079
 
 @wait 800
 
 @expr mahiru_no_camera thinking
 
-> まひるは目を伏せて、指先でノートの角をなぞった。
+> $route_mahiru.mahiru_good_end_school.t080
 
 @wait 800
 
-mahiru: ……うん
+mahiru: $route_mahiru.mahiru_good_end_school.t081
 
 @wait 600
 
-mahiru: 今日は、いいかなって
+mahiru: $route_mahiru.mahiru_good_end_school.t082
 
 @wait 800
 
-mahiru: 書かなくても、忘れなさそうだから
+mahiru: $route_mahiru.mahiru_good_end_school.t083
 
-player: そうか
+player: $route_mahiru.mahiru_good_end_school.t084
 
 @wait 600
 
 @expr mahiru_no_camera happy
 
-> まひる、小さく笑う。
+> $route_mahiru.mahiru_good_end_school.t085
 
-mahiru: でも、また書くかもしれないよ
+mahiru: $route_mahiru.mahiru_good_end_school.t086
 
-mahiru: そういう日もあるし
+mahiru: $route_mahiru.mahiru_good_end_school.t087
 
 @wait 800
 
-> 風が吹く。
+> $route_mahiru.mahiru_good_end_school.t088
 
 @wait 600
 
-mahiru: 今日のいいこと、もう決まってるし
+mahiru: $route_mahiru.mahiru_good_end_school.t089
 
-player: 何だ
+player: $route_mahiru.mahiru_good_end_school.t090
 
 @wait 800
 
-mahiru: ……内緒
+mahiru: $route_mahiru.mahiru_good_end_school.t091
 
 @wait 1000
 
 @expr mahiru_no_camera thinking
 
-> 歩きながら、まひるが手を出す。
-> 主人公が取る。
+> $route_mahiru.mahiru_good_end_school.t092
+> $route_mahiru.mahiru_good_end_school.t093
 
 @wait 800
 
-mahiru: ……こういうの、前は書いてたんだよ
+mahiru: $route_mahiru.mahiru_good_end_school.t094
 
-player: ……そうか
+player: $route_mahiru.mahiru_good_end_school.t095
 
 @wait 1000
 
-> まひるは空を見る。
-> 夕焼けが少し薄れている。
+> $route_mahiru.mahiru_good_end_school.t096
+> $route_mahiru.mahiru_good_end_school.t097
 
 @expr mahiru_no_camera normal
 
 @wait 800
 
-mahiru: 明日は、書くかも
+mahiru: $route_mahiru.mahiru_good_end_school.t098
 
 @wait 400
 
-mahiru: 書かないかも
+mahiru: $route_mahiru.mahiru_good_end_school.t099
 
 @wait 400
 
-mahiru: どっちでもいい日が、増えるといいね
+mahiru: $route_mahiru.mahiru_good_end_school.t100
 
 @wait 2500
 
@@ -2646,7 +2646,7 @@ mahiru: どっちでもいい日が、増えるといいね
 
 @still mahiru_epilogue fade_in
 @click_wait
-@end "第十二章「夜明けは、一人では見つけられなかった」— まひるルート Good End"
+@end "$route_mahiru.mahiru_good_end_school.end_title"
 
 
 // ===================================================================
@@ -2659,80 +2659,80 @@ mahiru: どっちでもいい日が、増えるといいね
 @bgm bad_end_loop.mp3
 @wait 1000
 
-> 俺は走り出そうとした。
+> $route_mahiru.mahiru_bad_end.t001
 
-> まひるのところへ行こうとした。
-
-@wait 800
-
-> でも。
-
-@wait 600
-
-> 足が、動かなかった。
+> $route_mahiru.mahiru_bad_end.t002
 
 @wait 800
 
-> *（また、怖い）*
+> $route_mahiru.mahiru_bad_end.t003
 
 @wait 600
 
-> 足首の感触がよみがえった。
-> 折れた音。
-> 走れなくなった夜。
-
-> あの痛みが、体の記憶から蘇ってきた。
-> 忘れていたわけじゃない。
-> ただ、今夜この瞬間に限って、
-> その記憶が体を縛った。
+> $route_mahiru.mahiru_bad_end.t004
 
 @wait 800
 
-> 父の顔が浮かんだ。
-> 失望した顔。
-> 「なんで走れなかった」と言わなかった父の顔。
-> 言わなかった分だけ、重かった顔。
+> *$route_mahiru.mahiru_bad_end.t005*
 
 @wait 600
 
-> 慎の空席が浮かんだ。
-> あの日もう少し早く動いていれば、
-> という後悔が、また体を重くした。
+> $route_mahiru.mahiru_bad_end.t006
+> $route_mahiru.mahiru_bad_end.t007
+> $route_mahiru.mahiru_bad_end.t008
 
-> 間に合わなかった。
-> また間に合わない。
-> そのループから抜け出せなかった。
+> $route_mahiru.mahiru_bad_end.t009
+> $route_mahiru.mahiru_bad_end.t010
+> $route_mahiru.mahiru_bad_end.t011
+> $route_mahiru.mahiru_bad_end.t012
+
+@wait 800
+
+> $route_mahiru.mahiru_bad_end.t013
+> $route_mahiru.mahiru_bad_end.t014
+> $route_mahiru.mahiru_bad_end.t015
+> $route_mahiru.mahiru_bad_end.t016
+
+@wait 600
+
+> $route_mahiru.mahiru_bad_end.t017
+> $route_mahiru.mahiru_bad_end.t018
+> $route_mahiru.mahiru_bad_end.t019
+
+> $route_mahiru.mahiru_bad_end.t020
+> $route_mahiru.mahiru_bad_end.t021
+> $route_mahiru.mahiru_bad_end.t022
 
 @wait 1000
 
-> *（また、俺は止まるのか）*
+> *$route_mahiru.mahiru_bad_end.t023*
 
 @wait 600
 
-> 一歩、踏み出そうとした。
+> $route_mahiru.mahiru_bad_end.t024
 
-> 踏み出せなかった。
+> $route_mahiru.mahiru_bad_end.t025
 
-> 足の裏が地面を離れなかった。
-> 離すことが、怖かった。
+> $route_mahiru.mahiru_bad_end.t026
+> $route_mahiru.mahiru_bad_end.t027
 
 @wait 1500
 
-> *（ここからじゃ、間に合わない）*
+> *$route_mahiru.mahiru_bad_end.t028*
 
 @wait 1200
 
-> 校舎を見上げた。
-> 屋上の人影は、まだそこにあった。
+> $route_mahiru.mahiru_bad_end.t029
+> $route_mahiru.mahiru_bad_end.t030
 
-> どのくらいそうしていたのかわからない。
-> 時間だけが、冷たく過ぎていった。
+> $route_mahiru.mahiru_bad_end.t031
+> $route_mahiru.mahiru_bad_end.t032
 
 @wait 1200
 
-> やがて。
+> $route_mahiru.mahiru_bad_end.t033
 
-> 玄関の扉が開く音がした。
+> $route_mahiru.mahiru_bad_end.t034
 
 @show mahiru_no_camera center normal fade_in
 
@@ -2740,69 +2740,69 @@ mahiru: どっちでもいい日が、増えるといいね
 
 @expr mahiru_no_camera surprised
 
-mahiru: ……
+mahiru: $route_mahiru.mahiru_bad_end.t035
 
 @wait 800
 
-> まひるは俺に気づいた。
+> $route_mahiru.mahiru_bad_end.t036
 
-> 驚いていた。
-> でも、それだけだった。
+> $route_mahiru.mahiru_bad_end.t037
+> $route_mahiru.mahiru_bad_end.t038
 
 @wait 700
 
-mahiru: こなくていいのに
+mahiru: $route_mahiru.mahiru_bad_end.t039
 
 @wait 1200
 
-> 責めていなかった。
+> $route_mahiru.mahiru_bad_end.t040
 
-> ただ、静かに言った。
+> $route_mahiru.mahiru_bad_end.t041
 
-> 「こなくていいのに」
+> $route_mahiru.mahiru_bad_end.t042
 
-> その静けさが、刺さった。
-> 怒鳴られる方が楽だったかもしれない。
+> $route_mahiru.mahiru_bad_end.t043
+> $route_mahiru.mahiru_bad_end.t044
 
 @wait 1000
 
-> *（来てほしかったのに、来ないって決めてた）*
+> *$route_mahiru.mahiru_bad_end.t045*
 
-> きっとそうだったのだと思った。
-> 来てほしかった。
-> でも来ないって決めてた。
+> $route_mahiru.mahiru_bad_end.t046
+> $route_mahiru.mahiru_bad_end.t047
+> $route_mahiru.mahiru_bad_end.t048
 
-> 俺はその決意を、崩しきれなかった。
-> 来た。
-> でも遅かった。
-> まひるが「やっぱり誰も来ない」という結論に辿り着いた後で、来た。
+> $route_mahiru.mahiru_bad_end.t049
+> $route_mahiru.mahiru_bad_end.t050
+> $route_mahiru.mahiru_bad_end.t051
+> $route_mahiru.mahiru_bad_end.t052
 
-> *（俺は、その決意を崩しきれなかった）*
+> *$route_mahiru.mahiru_bad_end.t053*
 
 @wait 1500
 
 @expr mahiru_no_camera normal
 
-mahiru: ……
+mahiru: $route_mahiru.mahiru_bad_end.t054
 
 @wait 800
 
-mahiru: 帰るね
+mahiru: $route_mahiru.mahiru_bad_end.t055
 
-player: ……まひる
+player: $route_mahiru.mahiru_bad_end.t056
 
-mahiru: 大丈夫だよ
+mahiru: $route_mahiru.mahiru_bad_end.t057
 
 @wait 1000
 
-> 大丈夫だよ、と言った。
+> $route_mahiru.mahiru_bad_end.t058
 
-> 全然大丈夫じゃない顔で。
-> それでも笑っていた。
-> まひるはまた笑っていた。
+> $route_mahiru.mahiru_bad_end.t059
+> $route_mahiru.mahiru_bad_end.t060
+> $route_mahiru.mahiru_bad_end.t061
 
-> 俺がここにいるから、笑わなければならなくなった。
-> そういう顔だった。
+> $route_mahiru.mahiru_bad_end.t062
+> $route_mahiru.mahiru_bad_end.t063
 
 @wait 800
 
@@ -2815,63 +2815,63 @@ mahiru: 大丈夫だよ
 
 @wait 800
 
-> 夜が、深かった。
+> $route_mahiru.mahiru_bad_end.t064
 
 @wait 1000
 
-> *（まひるは今頃、一人で下りていく）*
-> *（今夜も、一人で）*
+> *$route_mahiru.mahiru_bad_end.t065*
+> *$route_mahiru.mahiru_bad_end.t066*
 
 @wait 800
 
-> *（俺は間に合わなかった）*
-> *（いや、間に合った。でも踏み出せなかった）*
+> *$route_mahiru.mahiru_bad_end.t067*
+> *$route_mahiru.mahiru_bad_end.t068*
 
-> *（それが今夜の、俺の限界だった）*
+> *$route_mahiru.mahiru_bad_end.t069*
 
 @wait 1200
 
-> 自分を責めても仕方がない、と思おうとした。
-> でも責めずにはいられなかった。
+> $route_mahiru.mahiru_bad_end.t070
+> $route_mahiru.mahiru_bad_end.t071
 
-> 三年前もそうだった。
-> 俺はいつも、惜しいところまで行って、
-> 最後の一歩を踏み出せない。
+> $route_mahiru.mahiru_bad_end.t072
+> $route_mahiru.mahiru_bad_end.t073
+> $route_mahiru.mahiru_bad_end.t074
 
-> 届きそうな距離で、
-> 届かない。
+> $route_mahiru.mahiru_bad_end.t075
+> $route_mahiru.mahiru_bad_end.t076
 
-> それが今夜もそうだった。
+> $route_mahiru.mahiru_bad_end.t077
 
 @wait 1000
 
-> 空に星は出ていなかった。
+> $route_mahiru.mahiru_bad_end.t078
 
-> でも。
+> $route_mahiru.mahiru_bad_end.t079
 
-> 落ちてもいなかった。
+> $route_mahiru.mahiru_bad_end.t080
 
-> まだ、空にあった。
+> $route_mahiru.mahiru_bad_end.t081
 
 @wait 800
 
-> まひるはまだ生きている。
-> 今夜は帰っていく。
+> $route_mahiru.mahiru_bad_end.t082
+> $route_mahiru.mahiru_bad_end.t083
 
-> だから次がある。
-> 次があるということは、
-> まだ間に合える可能性がある。
+> $route_mahiru.mahiru_bad_end.t084
+> $route_mahiru.mahiru_bad_end.t085
+> $route_mahiru.mahiru_bad_end.t086
 
-> 今夜は踏み出せなかった。
-> でも、まひるはまだ空にある。
+> $route_mahiru.mahiru_bad_end.t087
+> $route_mahiru.mahiru_bad_end.t088
 
 @wait 1200
 
-> *（次こそ、走れるか）*
+> *$route_mahiru.mahiru_bad_end.t089*
 
 @wait 1000
 
-> 俺には答えがなかった。
+> $route_mahiru.mahiru_bad_end.t090
 
 @wait 800
 
@@ -2879,4 +2879,4 @@ mahiru: 大丈夫だよ
 @wait 300
 
 @credits bad_end_loop.mp3
-@end "第十二章「星は落ちていない。まだ、空にある」— まひるルート Bad End"
+@end "$route_mahiru.mahiru_bad_end.end_title"
