@@ -717,6 +717,9 @@ class VNEngine {
         return;
       }
 
+      // プロローグやタイトルなど本編外では、本編用ショートカットを動かさない。
+      if (!this._gameActive) return;
+
       // F5/F7はモーダルが出ていなければ選択肢中・エンディング中でも有効
       if (['F5', 'F6', 'F7', 'F8'].includes(e.code)) {
         if (hasModal) return;
