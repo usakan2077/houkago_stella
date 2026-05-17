@@ -5,12 +5,43 @@
 
 /* ---- Fonts ---- */
 :root {
-  --vn-serif-font: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho',
-                   'Hiragino Mincho ProN', serif;
+  --vn-serif-font-ja: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', 'YuMincho',
+                      'Hiragino Mincho ProN', serif;
+  --vn-serif-font-en: 'Cormorant Garamond', 'Times New Roman', 'Georgia', serif;
+  --vn-serif-font: var(--vn-serif-font-ja);
+  --vn-dialog-font-size: var(--vn-font-size, 26px);
+  --vn-dialog-line-height: 1.85;
+  --vn-dialog-min-lines-factor: 3.7;
+  --vn-dialog-letter-spacing: .06em;
 }
 
 html.is-firefox {
-  --vn-serif-font: 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', 'Noto Serif JP', serif;
+  --vn-serif-font-ja: 'Yu Mincho', 'YuMincho', 'Hiragino Mincho ProN', 'Noto Serif JP', serif;
+}
+
+html[lang="en"] {
+  --vn-serif-font: var(--vn-serif-font-en);
+  --vn-dialog-font-size: clamp(22px, calc(var(--vn-font-size, 26px) * 1), 30px);
+  --vn-dialog-line-height: 1.42;
+  --vn-dialog-min-lines-factor: 4.26;
+  --vn-dialog-letter-spacing: 0;
+}
+
+html[lang="en"].vn-chain-none {
+  --vn-dialog-min-lines-factor: 2.84;
+}
+
+html[lang="en"] #text-box {
+  background: rgba(8, 3, 20, .68);
+}
+
+html[lang="en"] #char-name-box {
+  background: rgba(12, 4, 24, .68);
+}
+
+html[lang="en"] #text-box {
+  padding-top: 14px;
+  padding-bottom: 22px;
 }
 
 /* ---- リセット ---- */
@@ -1095,8 +1126,8 @@ body {
   border: none;
   border-radius: 0 18px 18px 18px;
   padding: 18px 26px 28px;
-  /* フォントサイズに連動：2行分(×1.85 line-height)＋上下パディング32px */
-  min-height: calc(var(--vn-font-size, 26px) * 3.7 + 32px);
+  /* 日本語は2行分、英語は4行分を固定確保して高さのガタつきを防ぐ */
+  min-height: calc(var(--vn-dialog-font-size, var(--vn-font-size, 26px)) * var(--vn-dialog-min-lines-factor, 3.7) + 32px);
   position: relative;
   backdrop-filter: blur(8px);
   transition: background 0.7s ease, box-shadow 0.7s ease;
@@ -1119,13 +1150,23 @@ body {
 
 #dialog-text {
   font-family: var(--vn-serif-font);
-  font-size: var(--vn-font-size, 26px);
-  line-height: 1.85;
+  font-size: var(--vn-dialog-font-size, var(--vn-font-size, 26px));
+  line-height: var(--vn-dialog-line-height, 1.85);
   color: #f5eaf0;
-  letter-spacing: .06em;
-  /* 常に2行分の高さを確保してレイアウトシフトを防ぐ */
-  min-height: calc(var(--vn-font-size, 26px) * 3.7);
+  letter-spacing: var(--vn-dialog-letter-spacing, .06em);
+  /* 常に必要行数分の高さを確保してレイアウトシフトを防ぐ */
+  min-height: calc(var(--vn-dialog-font-size, var(--vn-font-size, 26px)) * var(--vn-dialog-min-lines-factor, 3.7));
   white-space: pre-line;
+}
+
+html[lang="en"] #dialog-text {
+  font-weight: 500;
+  text-rendering: geometricPrecision;
+}
+
+html[lang="en"] #char-name {
+  font-size: 20px;
+  letter-spacing: .04em;
 }
 
 /* 内心ナレーション（*text*） */
@@ -1140,7 +1181,7 @@ body {
 /* 締めナレーション（**text**） */
 #dialog-text.narrate-climax {
   text-align: center;
-  font-size: calc(var(--vn-font-size, 26px) + 6px);
+  font-size: calc(var(--vn-dialog-font-size, var(--vn-font-size, 26px)) + 6px);
   color: #ffffff;
   letter-spacing: .18em;
   text-shadow: 0 0 18px rgba(255, 200, 240, 0.5);

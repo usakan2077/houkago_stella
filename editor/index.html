@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>放課後のステラ — シナリオエディタ</title>
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+<div id="editor-root">
+
+  <!-- ヘッダ -->
+  <header id="editor-header">
+    <div class="header-title">放課後のステラ <span class="header-sub">Scenario Editor</span></div>
+    <div class="header-status">
+      <span id="status-text">読込中...</span>
+      <button id="btn-save" class="primary" disabled>保存</button>
+    </div>
+  </header>
+
+  <!-- メイン3ペイン -->
+  <main id="editor-main">
+
+    <!-- 左ペイン: ファイル/ラベルツリー -->
+    <aside id="pane-tree">
+      <div class="pane-header">シナリオ</div>
+      <div id="tree-container">読込中...</div>
+    </aside>
+
+    <!-- 中央ペイン: 行エディタ -->
+    <section id="pane-editor">
+      <div class="pane-header">
+        <span id="editor-breadcrumb">— ラベル未選択 —</span>
+      </div>
+      <div id="editor-container">
+        <div class="placeholder">左のサイドバーからラベルを選択してください。</div>
+      </div>
+    </section>
+
+    <!-- 右ペイン: プレビュー -->
+    <aside id="pane-preview">
+      <div class="pane-header">
+        プレビュー
+        <span class="preview-lang-toggle">
+          <button class="lang-btn active" data-preview-lang="ja">JA</button>
+          <button class="lang-btn" data-preview-lang="en">EN</button>
+        </span>
+      </div>
+      <div id="preview-container"></div>
+    </aside>
+
+  </main>
+
+  <!-- 通知トースト -->
+  <div id="toast" class="hidden"></div>
+
+</div>
+
+<!-- ゲーム本体の config.js を読み取り専用で読み込み (VN_CONFIG.backgrounds をプレビューで使用) -->
+<script src="../config.js"></script>
+
+<!-- エディタモジュール -->
+<script src="js/api.js"></script>
+<script src="js/scenario-io.js"></script>
+<script src="js/tree.js"></script>
+<script src="js/command-editor.js"></script>
+<script src="js/line-editor.js"></script>
+<script src="js/preview.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

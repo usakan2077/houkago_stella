@@ -230,6 +230,7 @@ class VNEngine {
     });
 
     this._applyTitleLogo();
+    this._applyTextLayoutMode();
   }
 
   _getTitleLogoConfig() {
@@ -288,6 +289,10 @@ class VNEngine {
     if (!item) return '';
     if (this.currentLanguage === 'en' && item[`${key}En`]) return item[`${key}En`];
     return item[key] || '';
+  }
+
+  _applyTextLayoutMode() {
+    document.documentElement.classList.toggle('vn-chain-none', this._chainMode === 'none');
   }
 
   async _setLanguage(language, options = {}) {
@@ -404,9 +409,12 @@ class VNEngine {
       tasks.push(tryStill(cg.key));
     }
 
-    // 進捗トラッキング: FirefoxではGoogle Fontsを読まず、他ブラウザではShipporiの準備も待つ。
+    // 進捗トラッキング: Webフォントが詰まっても開始不能にしない。
     if (document.fonts) {
-      tasks.push(document.fonts.ready);
+      tasks.push(Promise.race([
+        document.fonts.ready.catch(() => {}),
+        new Promise(resolve => setTimeout(resolve, 2500)),
+      ]));
     }
 
     const total = tasks.length;
@@ -3045,6 +3053,7 @@ class VNEngine {
         this._dialogRow     = 1;
         this._line1Text     = '';
         this._line1Emphasis = null;
+        this._applyTextLayoutMode();
         document.querySelectorAll('#chain-mode-options .settings-opt')
           .forEach(b => b.classList.toggle('active', b.dataset.chain === this._chainMode));
       };
