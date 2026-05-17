@@ -11,7 +11,8 @@
   --vn-serif-font: var(--vn-serif-font-ja);
   --vn-dialog-font-size: var(--vn-font-size, 26px);
   --vn-dialog-line-height: 1.85;
-  --vn-dialog-min-lines-factor: 3.7;
+  --vn-dialog-visible-lines: 2;
+  --vn-dialog-box-padding-y: 46px;
   --vn-dialog-letter-spacing: .06em;
 }
 
@@ -21,14 +22,10 @@ html.is-firefox {
 
 html[lang="en"] {
   --vn-serif-font: var(--vn-serif-font-en);
-  --vn-dialog-font-size: clamp(22px, calc(var(--vn-font-size, 26px) * 1), 30px);
-  --vn-dialog-line-height: 1.42;
-  --vn-dialog-min-lines-factor: 4.26;
+  --vn-dialog-font-size: clamp(24px, calc(var(--vn-font-size, 26px) * 1.08), 33px);
+  --vn-dialog-line-height: 1.5;
+  --vn-dialog-box-padding-y: 46px;
   --vn-dialog-letter-spacing: 0;
-}
-
-html[lang="en"].vn-chain-none {
-  --vn-dialog-min-lines-factor: 2.84;
 }
 
 html[lang="en"] #text-box {
@@ -37,11 +34,6 @@ html[lang="en"] #text-box {
 
 html[lang="en"] #char-name-box {
   background: rgba(12, 4, 24, .68);
-}
-
-html[lang="en"] #text-box {
-  padding-top: 14px;
-  padding-bottom: 22px;
 }
 
 /* ---- リセット ---- */
@@ -1126,8 +1118,7 @@ body {
   border: none;
   border-radius: 0 18px 18px 18px;
   padding: 18px 26px 28px;
-  /* 日本語は2行分、英語は4行分を固定確保して高さのガタつきを防ぐ */
-  min-height: calc(var(--vn-dialog-font-size, var(--vn-font-size, 26px)) * var(--vn-dialog-min-lines-factor, 3.7) + 32px);
+  height: calc(var(--vn-dialog-font-size, var(--vn-font-size, 26px)) * var(--vn-dialog-line-height, 1.85) * var(--vn-dialog-visible-lines, 2) + var(--vn-dialog-box-padding-y, 46px));
   position: relative;
   backdrop-filter: blur(8px);
   transition: background 0.7s ease, box-shadow 0.7s ease;
@@ -1154,8 +1145,8 @@ body {
   line-height: var(--vn-dialog-line-height, 1.85);
   color: #f5eaf0;
   letter-spacing: var(--vn-dialog-letter-spacing, .06em);
-  /* 常に必要行数分の高さを確保してレイアウトシフトを防ぐ */
-  min-height: calc(var(--vn-dialog-font-size, var(--vn-font-size, 26px)) * var(--vn-dialog-min-lines-factor, 3.7));
+  height: calc(var(--vn-dialog-font-size, var(--vn-font-size, 26px)) * var(--vn-dialog-line-height, 1.85) * var(--vn-dialog-visible-lines, 2));
+  overflow: hidden;
   white-space: pre-line;
 }
 

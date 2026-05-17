@@ -421,7 +421,7 @@ mahiru: $route_mahiru.mahiru_ch9_corridor.t028
 
 > $route_mahiru.mahiru_ch9_reason.t002
 > $route_mahiru.mahiru_ch9_reason.t003
->向こうから言ってくるのは、いつも元気なときだった。
+> $route_mahiru.mahiru_ch9_reason.t003a
 
 @show mahiru_no_camera center normal fade_in
 

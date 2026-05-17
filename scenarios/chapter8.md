@@ -265,7 +265,7 @@ mahiru: $chapter8.chapter8_festival_open.t045
 > $chapter8.chapter8_sakura_cafe.t008
 > $chapter8.chapter8_sakura_cafe.t009
 
->誰かが、きちんと準備したのがわかる空間だった。
+> $chapter8.chapter8_sakura_cafe.t009a
 
 @show sakura_apron center excited fade_in
 

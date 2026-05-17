@@ -141,8 +141,8 @@ class ScriptParser {
       }
 
       // ---- ナレーション (> テキスト) ----
-      if (line.startsWith('> ')) {
-        const raw = line.slice(2).trim();
+      if (line.startsWith('>')) {
+        const raw = line.slice(1).trim();
         const climaxM = raw.match(/^\*\*(.+)\*\*$/);
         if (climaxM) {
           currentCmds.push({ cmd: 'narrate', text: climaxM[1], emphasis: 'climax' });

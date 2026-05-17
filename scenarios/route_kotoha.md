@@ -168,7 +168,7 @@ kotoha: $route_kotoha.kotoha_interlude.t032
 @wait 800
 
 > $route_kotoha.kotoha_ch9_start.t028
->: $route_kotoha.kotoha_ch9_start.t029
+> $route_kotoha.kotoha_ch9_start.t029
 
 > $route_kotoha.kotoha_ch9_start.t030
 > $route_kotoha.kotoha_ch9_start.t031
@@ -333,7 +333,7 @@ kotoha: $route_kotoha.kotoha_ch9_start.t086
 @wait 800
 
 > $route_kotoha.kotoha_ch9_start.t105
->: $route_kotoha.kotoha_ch9_start.t106
+> $route_kotoha.kotoha_ch9_start.t106
 
 > $route_kotoha.kotoha_ch9_start.t107
 > $route_kotoha.kotoha_ch9_start.t108

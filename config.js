@@ -187,6 +187,17 @@ const VN_CONFIG = {
     },
   },
 
+  speakerNames: {
+    '橋本': {
+      ja: '橋本',
+      en: 'Hashimoto-senpai',
+    },
+    'クラスメイト': {
+      ja: 'クラスメイト',
+      en: 'Classmate',
+    },
+  },
+
   // ===========================================================
   // 背景設定
   // 画像パス: assets/images/bg/{key}.webp / .png / .jpg

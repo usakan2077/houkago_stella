@@ -193,10 +193,25 @@ class VNEngine {
   }
 
   _getCharacterDisplayName(charKey) {
-    const cfg = charKey ? VN_CONFIG.characters[charKey] : null;
-    if (!cfg) return '';
+    if (!charKey) return '';
+    const cfg = VN_CONFIG.characters[charKey];
+    if (!cfg) {
+      const speaker = VN_CONFIG.speakerNames?.[charKey];
+      if (speaker) return speaker[this.currentLanguage] || speaker.ja || charKey;
+      return '';
+    }
     if (this.currentLanguage === 'en' && cfg.nameEn) return cfg.nameEn;
     return cfg.name || '';
+  }
+
+  _scrollDialogTextToBottom(targetEl = null) {
+    const textEl = targetEl?.id === 'dialog-text'
+      ? targetEl
+      : targetEl?.closest?.('#dialog-text') || document.getElementById('dialog-text');
+    if (!textEl) return;
+    requestAnimationFrame(() => {
+      textEl.scrollTop = textEl.scrollHeight;
+    });
   }
 
   _applyStaticI18n() {
@@ -1721,14 +1736,16 @@ class VNEngine {
     textEl.classList.remove('narrate-inner', 'narrate-climax');
 
     const cfg = charKey ? VN_CONFIG.characters[charKey] : null;
+    const speakerName = this._getCharacterDisplayName(charKey);
 
-    if (cfg && cfg.name) {
-      nameEl.textContent  = this._getCharacterDisplayName(charKey);
-      nameEl.style.color  = cfg.nameColor || '#ff99bb';
-      nameBox.style.setProperty('--accent-color', cfg.nameColor || '#ff99bb');
+    if (speakerName) {
+      nameEl.textContent  = speakerName;
+      nameEl.style.color  = cfg?.nameColor || '#ff99bb';
+      nameBox.style.setProperty('--accent-color', cfg?.nameColor || '#ff99bb');
       nameBox.classList.remove('no-speaker');
       nameBox.style.display = '';
-      this._highlightChar(charKey);
+      if (cfg) this._highlightChar(charKey);
+      else this._clearCharHighlights();
     } else {
       nameEl.textContent    = '';
       nameBox.style.setProperty('--accent-color', '#ff99bb');
@@ -1738,7 +1755,7 @@ class VNEngine {
     }
 
     // ログに追加
-    this.textLog.push({ name: cfg ? this._getCharacterDisplayName(charKey) : '', nameColor: cfg?.nameColor || '', text });
+    this.textLog.push({ name: speakerName, nameColor: cfg?.nameColor || '', text });
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
 
@@ -1779,6 +1796,7 @@ class VNEngine {
       } else {
         textEl.textContent = prefix + text;
       }
+      this._scrollDialogTextToBottom(textEl);
       this.waitingForInput = true;
       arrow.style.display = 'block';
       this.skipTimer = setTimeout(() => {
@@ -1811,10 +1829,12 @@ class VNEngine {
       // 締め：即表示＋CSSフェードイン
       textEl.classList.add('narrate-climax');
       textEl.textContent = prefix + text;
+      this._scrollDialogTextToBottom(textEl);
       onDone();
     } else {
       // 2行目の場合は行1テキスト+改行をプレフィックスとしてセットしてからタイプライター開始
       textEl.textContent = prefix;
+      this._scrollDialogTextToBottom(textEl);
       this._startTypewriter(textEl, text, onDone);
     }
   }
@@ -1823,6 +1843,7 @@ class VNEngine {
     const speed = VN_CONFIG.settings.typeSpeed;
     if (speed === 0) {
       el.textContent += text;
+      this._scrollDialogTextToBottom(el);
       onDone();
       return;
     }
@@ -1830,6 +1851,7 @@ class VNEngine {
     this.typewriterTimer = setInterval(() => {
       if (i < text.length) {
         el.textContent += text[i++];
+        this._scrollDialogTextToBottom(el);
       } else {
         clearInterval(this.typewriterTimer);
         this.typewriterTimer = null;
@@ -1889,6 +1911,7 @@ class VNEngine {
       } else {
         textEl.textContent = prefix + this.currentText;
       }
+      this._scrollDialogTextToBottom(textEl);
       this.waitingForInput = true;
       document.getElementById('next-arrow').style.display = 'block';
       if (this.autoMode) {

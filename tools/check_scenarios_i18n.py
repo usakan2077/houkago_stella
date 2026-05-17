@@ -37,10 +37,13 @@ def display_items(path: Path):
             continue
         if not line or line.startswith("//") or line == "---" or line.startswith("@") or line.startswith("# "):
             continue
-        if line.startswith("> "):
-            text = line[2:].strip()
+        if line.startswith(">"):
+            has_narration_space = line.startswith("> ")
+            text = line[1:].strip()
             text = re.sub(r"^\*\*(.+)\*\*$", r"\1", text)
             text = re.sub(r"^\*(.+)\*$", r"\1", text)
+            if not has_narration_space:
+                text = re.sub(r"^「((?:(?!」).)*)」$", r"\1", text)
             items.append(("narrate", "", text, no))
             continue
         colon_idx = line.find(":")
