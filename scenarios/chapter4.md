@@ -1064,89 +1064,133 @@ player: $chapter4.chapter4_walk.t083
 > $chapter4.chapter4_end.t011
 > $chapter4.chapter4_end.t012
 
+@wait 400
+
+@still shin_flashback flashback_pan
+@wait 900
+
 > $chapter4.chapter4_end.t013
 > $chapter4.chapter4_end.t014
 
-@wait 600
+shin_child: $chapter4.chapter4_end.t015
 
-> $chapter4.chapter4_end.t015
-> $chapter4.chapter4_end.t016
+player: $chapter4.chapter4_end.t016
 
-> $chapter4.chapter4_end.t017
-> $chapter4.chapter4_end.t018
+shin_child: $chapter4.chapter4_end.t017
+
+player: $chapter4.chapter4_end.t018
 
 > $chapter4.chapter4_end.t019
-
 > $chapter4.chapter4_end.t020
 > $chapter4.chapter4_end.t021
 
-> $chapter4.chapter4_end.t022
+player: $chapter4.chapter4_end.t022
+
+shin_child: $chapter4.chapter4_end.t023
+
+player: $chapter4.chapter4_end.t024
 
 @wait 500
-
-> $chapter4.chapter4_end.t023
-> $chapter4.chapter4_end.t024
 
 > $chapter4.chapter4_end.t025
 > $chapter4.chapter4_end.t026
 
-> $chapter4.chapter4_end.t027
-> $chapter4.chapter4_end.t028
-
-@wait 700
+shin_child: $chapter4.chapter4_end.t027
+shin_child: $chapter4.chapter4_end.t028
 
 > $chapter4.chapter4_end.t029
 > $chapter4.chapter4_end.t030
-
 > $chapter4.chapter4_end.t031
+
+@still_hide
+@wait 500
+
+@scene commute_road_june_evening fade
+@wait 500
+
 > $chapter4.chapter4_end.t032
 > $chapter4.chapter4_end.t033
 
-> $chapter4.chapter4_end.t034
-> $chapter4.chapter4_end.t035
-> $chapter4.chapter4_end.t036
-
 @wait 600
 
+> $chapter4.chapter4_end.t034
+> $chapter4.chapter4_end.t035
+
+> $chapter4.chapter4_end.t036
 > $chapter4.chapter4_end.t037
 
 > $chapter4.chapter4_end.t038
+
 > $chapter4.chapter4_end.t039
-
-@wait 600
-
 > $chapter4.chapter4_end.t040
-> $chapter4.chapter4_end.t041
-> $chapter4.chapter4_end.t042
 
+> $chapter4.chapter4_end.t041
+
+@wait 500
+
+> $chapter4.chapter4_end.t042
 > $chapter4.chapter4_end.t043
+
 > $chapter4.chapter4_end.t044
 > $chapter4.chapter4_end.t045
 
-@wait 500
-
 > $chapter4.chapter4_end.t046
-
-@wait 600
-
 > $chapter4.chapter4_end.t047
-> $chapter4.chapter4_end.t048
-
-> $chapter4.chapter4_end.t049
-> $chapter4.chapter4_end.t050
-> $chapter4.chapter4_end.t051
 
 @wait 700
 
-> $chapter4.chapter4_end.t052
-> $chapter4.chapter4_end.t053
+> $chapter4.chapter4_end.t048
+> $chapter4.chapter4_end.t049
 
+> $chapter4.chapter4_end.t050
+> $chapter4.chapter4_end.t051
+> $chapter4.chapter4_end.t052
+
+> $chapter4.chapter4_end.t053
 > $chapter4.chapter4_end.t054
+> $chapter4.chapter4_end.t055
+
+@wait 600
+
+> $chapter4.chapter4_end.t056
+
+> $chapter4.chapter4_end.t057
+> $chapter4.chapter4_end.t058
+
+@wait 600
+
+> $chapter4.chapter4_end.t059
+> $chapter4.chapter4_end.t060
+> $chapter4.chapter4_end.t061
+
+> $chapter4.chapter4_end.t062
+> $chapter4.chapter4_end.t063
+> $chapter4.chapter4_end.t064
 
 @wait 500
 
-> $chapter4.chapter4_end.t055
-> $chapter4.chapter4_end.t056
+> $chapter4.chapter4_end.t065
+
+@wait 600
+
+> $chapter4.chapter4_end.t066
+> $chapter4.chapter4_end.t067
+
+> $chapter4.chapter4_end.t068
+> $chapter4.chapter4_end.t069
+> $chapter4.chapter4_end.t070
+
+@wait 700
+
+> $chapter4.chapter4_end.t071
+> $chapter4.chapter4_end.t072
+
+> $chapter4.chapter4_end.t073
+
+@wait 500
+
+> $chapter4.chapter4_end.t074
+> $chapter4.chapter4_end.t075
 
 @bgm stop
 

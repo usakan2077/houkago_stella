@@ -309,7 +309,19 @@ sakura: $chapter7.chapter7_festival_lunch.t087
 > $chapter7.chapter7_festival.t006
 > $chapter7.chapter7_festival.t007
 
-@show sakura right excited fade_in
+@show teacher_male center serious fade_in
+@wait 400
+
+teacher_male: $chapter7.chapter7_festival.t007a
+teacher_male: $chapter7.chapter7_festival.t007b
+
+@show sakura right normal fade_in
+sakura: $chapter7.chapter7_festival.t007c
+
+@hide teacher_male fade_out
+@wait 300
+
+@expr sakura excited
 @show kotoha left normal fade_in
 
 sakura: $chapter7.chapter7_festival.t008
@@ -333,165 +345,218 @@ sakura: $chapter7.chapter7_festival.t017
 sakura: $chapter7.chapter7_festival.t018
 sakura: $chapter7.chapter7_festival.t019
 
-> $chapter7.chapter7_festival.t020
+@show nobuhara center panic fade_in
+@wait 300
 
-> $chapter7.chapter7_festival.t021
+nobuhara: $chapter7.chapter7_festival.t020
+nobuhara: $chapter7.chapter7_festival.t021
 
-@wait 600
+player: $chapter7.chapter7_festival.t022
 
-> $chapter7.chapter7_festival.t022
-> $chapter7.chapter7_festival.t023
-> $chapter7.chapter7_festival.t024
+kotoha: $chapter7.chapter7_festival.t023
 
-@expr sakura excited
+@expr nobuhara relieved
+
+nobuhara: $chapter7.chapter7_festival.t024
 
 sakura: $chapter7.chapter7_festival.t025
 
-kotoha: $chapter7.chapter7_festival.t026
+@expr nobuhara panic
 
-sakura: $chapter7.chapter7_festival.t027
+nobuhara: $chapter7.chapter7_festival.t026
 
-player: $chapter7.chapter7_festival.t028
+player: $chapter7.chapter7_festival.t027
 
-sakura: $chapter7.chapter7_festival.t029
-sakura: $chapter7.chapter7_festival.t030
+@hide nobuhara fade_out
+@wait 300
 
+> $chapter7.chapter7_festival.t028
+
+> $chapter7.chapter7_festival.t029
+
+@wait 600
+
+> $chapter7.chapter7_festival.t030
 > $chapter7.chapter7_festival.t031
 > $chapter7.chapter7_festival.t032
 
-> $chapter7.chapter7_festival.t033
-> $chapter7.chapter7_festival.t034
-> $chapter7.chapter7_festival.t035
-> $chapter7.chapter7_festival.t036
+@expr sakura excited
 
-@wait 500
+sakura: $chapter7.chapter7_festival.t033
+
+kotoha: $chapter7.chapter7_festival.t034
+
+sakura: $chapter7.chapter7_festival.t035
+
+player: $chapter7.chapter7_festival.t036
 
 sakura: $chapter7.chapter7_festival.t037
 sakura: $chapter7.chapter7_festival.t038
 
 > $chapter7.chapter7_festival.t039
+> $chapter7.chapter7_festival.t040
 
-sakura: $chapter7.chapter7_festival.t040
-sakura: $chapter7.chapter7_festival.t041
-
+> $chapter7.chapter7_festival.t041
 > $chapter7.chapter7_festival.t042
+> $chapter7.chapter7_festival.t043
+> $chapter7.chapter7_festival.t044
 
-sakura: $chapter7.chapter7_festival.t043
-sakura: $chapter7.chapter7_festival.t044
+@wait 500
 
-> $chapter7.chapter7_festival.t045
-> $chapter7.chapter7_festival.t046
+sakura: $chapter7.chapter7_festival.t045
+sakura: $chapter7.chapter7_festival.t046
+
+> $chapter7.chapter7_festival.t047
+
+sakura: $chapter7.chapter7_festival.t048
+sakura: $chapter7.chapter7_festival.t049
+
+> $chapter7.chapter7_festival.t050
+
+sakura: $chapter7.chapter7_festival.t051
+sakura: $chapter7.chapter7_festival.t052
+
+> $chapter7.chapter7_festival.t053
+> $chapter7.chapter7_festival.t054
 
 @wait 400
 
-> $chapter7.chapter7_festival.t047
-> $chapter7.chapter7_festival.t048
-> $chapter7.chapter7_festival.t049
+> $chapter7.chapter7_festival.t055
+> $chapter7.chapter7_festival.t056
+> $chapter7.chapter7_festival.t057
 
 @wait 600
 
-> $chapter7.chapter7_festival.t050
-> $chapter7.chapter7_festival.t051
-> $chapter7.chapter7_festival.t052
+> $chapter7.chapter7_festival.t058
+> $chapter7.chapter7_festival.t059
+> $chapter7.chapter7_festival.t060
 
 @expr kotoha normal
 
-kotoha: $chapter7.chapter7_festival.t053
+kotoha: $chapter7.chapter7_festival.t061
 
-kotoha: $chapter7.chapter7_festival.t054
-kotoha: $chapter7.chapter7_festival.t055
+kotoha: $chapter7.chapter7_festival.t062
+kotoha: $chapter7.chapter7_festival.t063
 
-sakura: $chapter7.chapter7_festival.t056
-
-player: $chapter7.chapter7_festival.t057
-
-sakura: $chapter7.chapter7_festival.t058
-
-> $chapter7.chapter7_festival.t059
-
-sakura: $chapter7.chapter7_festival.t060
-sakura: $chapter7.chapter7_festival.t061
-
-> $chapter7.chapter7_festival.t062
-
-@wait 400
-
-> $chapter7.chapter7_festival.t063
-> $chapter7.chapter7_festival.t064
+sakura: $chapter7.chapter7_festival.t064
 
 player: $chapter7.chapter7_festival.t065
 
-kotoha: $chapter7.chapter7_festival.t066
+sakura: $chapter7.chapter7_festival.t066
 
-player: $chapter7.chapter7_festival.t067
+> $chapter7.chapter7_festival.t067
 
-@expr kotoha thinking
+sakura: $chapter7.chapter7_festival.t068
+sakura: $chapter7.chapter7_festival.t069
 
-kotoha: $chapter7.chapter7_festival.t068
-kotoha: $chapter7.chapter7_festival.t069
-
-player: $chapter7.chapter7_festival.t070
-
-kotoha: $chapter7.chapter7_festival.t071
-
-player: $chapter7.chapter7_festival.t072
+> $chapter7.chapter7_festival.t070
 
 @wait 400
 
-kotoha: $chapter7.chapter7_festival.t073
+> $chapter7.chapter7_festival.t071
+> $chapter7.chapter7_festival.t072
+
+player: $chapter7.chapter7_festival.t073
 
 kotoha: $chapter7.chapter7_festival.t074
-kotoha: $chapter7.chapter7_festival.t075
 
-> $chapter7.chapter7_festival.t076
-> $chapter7.chapter7_festival.t077
-> $chapter7.chapter7_festival.t078
+player: $chapter7.chapter7_festival.t075
+
+@expr kotoha thinking
+
+kotoha: $chapter7.chapter7_festival.t076
+kotoha: $chapter7.chapter7_festival.t077
+
+player: $chapter7.chapter7_festival.t078
+
+kotoha: $chapter7.chapter7_festival.t079
+
+player: $chapter7.chapter7_festival.t080
+
+@wait 400
+
+kotoha: $chapter7.chapter7_festival.t081
+
+kotoha: $chapter7.chapter7_festival.t082
+kotoha: $chapter7.chapter7_festival.t083
+
+> $chapter7.chapter7_festival.t084
+> $chapter7.chapter7_festival.t085
+> $chapter7.chapter7_festival.t086
 
 @wait 800
 
-> $chapter7.chapter7_festival.t079
+@show classmate_male_a center work pop_in
+classmate_male_a: $chapter7.chapter7_festival.t087
+@hide classmate_male_a fade_out
 
-sakura: $chapter7.chapter7_festival.t080
-sakura: $chapter7.chapter7_festival.t081
+sakura: $chapter7.chapter7_festival.t088
+sakura: $chapter7.chapter7_festival.t089
 
-> $chapter7.chapter7_festival.t082
-> $chapter7.chapter7_festival.t083
-> $chapter7.chapter7_festival.t084
+> $chapter7.chapter7_festival.t090
+> $chapter7.chapter7_festival.t091
+> $chapter7.chapter7_festival.t092
 
-> $chapter7.chapter7_festival.t085
-> $chapter7.chapter7_festival.t086
-> $chapter7.chapter7_festival.t087
+> $chapter7.chapter7_festival.t093
+> $chapter7.chapter7_festival.t094
+> $chapter7.chapter7_festival.t095
 
 @expr sakura normal
 
-> $chapter7.chapter7_festival.t088
+> $chapter7.chapter7_festival.t096
 
 @wait 800
 
-> $chapter7.chapter7_festival.t089
+> $chapter7.chapter7_festival.t097
 
-sakura: $chapter7.chapter7_festival.t090
-sakura: $chapter7.chapter7_festival.t091
+sakura: $chapter7.chapter7_festival.t098
+sakura: $chapter7.chapter7_festival.t099
 
-> $chapter7.chapter7_festival.t092
-> $chapter7.chapter7_festival.t093
+> $chapter7.chapter7_festival.t100
+> $chapter7.chapter7_festival.t101
+
+@show nobuhara center tired fade_in
+@wait 300
+
+nobuhara: $chapter7.chapter7_festival.t102
+nobuhara: $chapter7.chapter7_festival.t103
+
+@expr sakura surprised
+
+sakura: $chapter7.chapter7_festival.t104
+
+@expr nobuhara happy
+
+nobuhara: $chapter7.chapter7_festival.t105
+nobuhara: $chapter7.chapter7_festival.t106
+
+player: $chapter7.chapter7_festival.t107
+
+nobuhara: $chapter7.chapter7_festival.t108
+
+@expr sakura happy
+
+sakura: $chapter7.chapter7_festival.t109
+
+@hide nobuhara fade_out
+@wait 400
 
 @hide_all fade_out
 @wait 800
 
-> $chapter7.chapter7_festival.t094
-> $chapter7.chapter7_festival.t095
+> $chapter7.chapter7_festival.t110
+> $chapter7.chapter7_festival.t111
 
 @bgm stop
 @wait 400
 
-> $chapter7.chapter7_festival.t096
-> $chapter7.chapter7_festival.t097
-> $chapter7.chapter7_festival.t098
-> $chapter7.chapter7_festival.t099
+> $chapter7.chapter7_festival.t112
+> $chapter7.chapter7_festival.t113
+> $chapter7.chapter7_festival.t114
+> $chapter7.chapter7_festival.t115
 
-> $chapter7.chapter7_festival.t100
-> $chapter7.chapter7_festival.t101
+> $chapter7.chapter7_festival.t116
+> $chapter7.chapter7_festival.t117
 
 @jump chapter7_sakura_break
 

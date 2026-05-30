@@ -415,6 +415,32 @@ body {
   background-size: cover;
   background-position: center;
 }
+#background.flashback-bg {
+  filter: sepia(.42) saturate(.72) contrast(1.08) brightness(.86);
+}
+#background.flashback-bg::before,
+#background.flashback-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+#background.flashback-bg::before {
+  background:
+    radial-gradient(circle at center, rgba(255, 222, 170, .08), rgba(24, 12, 6, .28) 72%),
+    linear-gradient(180deg, rgba(255, 226, 175, .12), rgba(18, 10, 8, .26));
+  mix-blend-mode: soft-light;
+}
+#background.flashback-bg::after {
+  inset: -4%;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, .34) 0 1px, transparent 1.2px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .05) 0 1px, transparent 1px 4px);
+  background-size: 3px 3px, 100% 4px;
+  mix-blend-mode: overlay;
+  opacity: .16;
+  animation: flashbackNoise .42s steps(2, end) infinite;
+}
 
 /* ---- シーン切り替えワイプ ---- */
 #scene-wipe {
@@ -449,6 +475,9 @@ body {
   inset: 0;  /* 画面全体。テキストボックスの下にもキャラを配置 */
   pointer-events: none;
   z-index: 3;
+}
+#game-screen.flashback-scene #characters {
+  filter: sepia(.38) saturate(.72) contrast(1.06) brightness(.88);
 }
 
 /* 推奨画像サイズ: 512×900px 以上の透過PNG (アスペクト比 ~0.57:1)
@@ -556,12 +585,76 @@ body {
 }
 #still-layer.effect-fade-in         { animation: animFadeIn .6s ease forwards; }
 #still-layer.effect-slide-in-bottom { animation: animStillSlideUp .5s ease forwards; }
+#still-layer.flashback-still {
+  filter: sepia(.46) saturate(.7) contrast(1.08) brightness(.86);
+}
+#still-layer.flashback-still::before,
+#still-layer.flashback-still::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+#still-layer.flashback-still::before {
+  background:
+    radial-gradient(circle at center, rgba(255, 230, 185, .1), rgba(4, 2, 1, .42) 76%),
+    linear-gradient(180deg, rgba(255, 235, 190, .14), rgba(22, 10, 6, .3));
+  mix-blend-mode: soft-light;
+}
+#still-layer.flashback-still::after {
+  inset: -4%;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, .36) 0 1px, transparent 1.2px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .055) 0 1px, transparent 1px 4px);
+  background-size: 3px 3px, 100% 4px;
+  mix-blend-mode: overlay;
+  opacity: .18;
+  animation: flashbackNoise .38s steps(2, end) infinite;
+}
+#still-layer.effect-flashback       { animation: animFlashbackStill .85s ease forwards; }
+#still-layer.effect-flashback_pan   { animation: animShinFlashbackPan 5.2s cubic-bezier(.2, .02, .12, 1) forwards; }
 #still-layer.ending-return-still {
   pointer-events: none;
   z-index: 29;
   animation: endingStillReturnFade 2.8s cubic-bezier(.24, .02, .16, 1) forwards !important;
 }
 @keyframes animStillSlideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@keyframes flashbackNoise {
+  from { transform: translate3d(-1%, -1%, 0); }
+  to { transform: translate3d(1%, 1%, 0); }
+}
+@keyframes animFlashbackStill {
+  from {
+    opacity: 0;
+    filter: sepia(.56) saturate(.62) contrast(1.14) brightness(.78) blur(1.2px);
+  }
+  to {
+    opacity: 1;
+    filter: sepia(.46) saturate(.7) contrast(1.08) brightness(.86) blur(0);
+  }
+}
+@keyframes animShinFlashbackPan {
+  0% {
+    opacity: 0;
+    background-size: 185% auto;
+    background-position: 65% 46%;
+    filter: sepia(.58) saturate(.62) contrast(1.14) brightness(.76) blur(1.4px);
+  }
+  18% {
+    opacity: 1;
+  }
+  52% {
+    background-size: 155% auto;
+    background-position: 62% 48%;
+  }
+  100% {
+    opacity: 1;
+    background-size: 118% auto;
+    background-position: 56% 50%;
+    filter: sepia(.42) saturate(.72) contrast(1.08) brightness(.88) blur(0);
+  }
+}
 @keyframes endingStillReturnFade {
   0% {
     opacity: 1;

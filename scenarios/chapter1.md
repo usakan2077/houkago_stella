@@ -165,67 +165,96 @@ player: $chapter1.start.t043
 > $chapter1.chapter1_morning_gate.t010
 > $chapter1.chapter1_morning_gate.t011
 
+@show nobuhara center panic fade_in
+@wait 300
+
+nobuhara: $chapter1.chapter1_morning_gate.t012
+nobuhara: $chapter1.chapter1_morning_gate.t013
+
+player: $chapter1.chapter1_morning_gate.t014
+
+nobuhara: $chapter1.chapter1_morning_gate.t015
+nobuhara: $chapter1.chapter1_morning_gate.t016
+
+player: $chapter1.chapter1_morning_gate.t017
+
+@expr nobuhara happy
+
+nobuhara: $chapter1.chapter1_morning_gate.t018
+
+> $chapter1.chapter1_morning_gate.t019
+> $chapter1.chapter1_morning_gate.t020
+
+player: $chapter1.chapter1_morning_gate.t021
+
+nobuhara: $chapter1.chapter1_morning_gate.t022
+
+player: $chapter1.chapter1_morning_gate.t023
+
+@hide nobuhara fade_out
+@wait 300
+
 @show sakura right happy pop_in
 
-sakura: $chapter1.chapter1_morning_gate.t012
+sakura: $chapter1.chapter1_morning_gate.t024
 
-player: $chapter1.chapter1_morning_gate.t013
+player: $chapter1.chapter1_morning_gate.t025
 
-sakura: $chapter1.chapter1_morning_gate.t014
-sakura: $chapter1.chapter1_morning_gate.t015
+sakura: $chapter1.chapter1_morning_gate.t026
+sakura: $chapter1.chapter1_morning_gate.t027
 
-player: $chapter1.chapter1_morning_gate.t016
+player: $chapter1.chapter1_morning_gate.t028
 
-sakura: $chapter1.chapter1_morning_gate.t017
-sakura: $chapter1.chapter1_morning_gate.t018
-
-player: $chapter1.chapter1_morning_gate.t019
-
-@expr sakura excited
-
-sakura: $chapter1.chapter1_morning_gate.t020
-sakura: $chapter1.chapter1_morning_gate.t021
-
-player: $chapter1.chapter1_morning_gate.t022
-
-sakura: $chapter1.chapter1_morning_gate.t023
-
-> $chapter1.chapter1_morning_gate.t024
-> $chapter1.chapter1_morning_gate.t025
-> $chapter1.chapter1_morning_gate.t026
-> $chapter1.chapter1_morning_gate.t027
-
-sakura: $chapter1.chapter1_morning_gate.t028
 sakura: $chapter1.chapter1_morning_gate.t029
 sakura: $chapter1.chapter1_morning_gate.t030
 
 player: $chapter1.chapter1_morning_gate.t031
 
+@expr sakura excited
+
 sakura: $chapter1.chapter1_morning_gate.t032
 sakura: $chapter1.chapter1_morning_gate.t033
 
-> $chapter1.chapter1_morning_gate.t034
-> $chapter1.chapter1_morning_gate.t035
+player: $chapter1.chapter1_morning_gate.t034
+
+sakura: $chapter1.chapter1_morning_gate.t035
+
 > $chapter1.chapter1_morning_gate.t036
+> $chapter1.chapter1_morning_gate.t037
+> $chapter1.chapter1_morning_gate.t038
+> $chapter1.chapter1_morning_gate.t039
+
+sakura: $chapter1.chapter1_morning_gate.t040
+sakura: $chapter1.chapter1_morning_gate.t041
+sakura: $chapter1.chapter1_morning_gate.t042
+
+player: $chapter1.chapter1_morning_gate.t043
+
+sakura: $chapter1.chapter1_morning_gate.t044
+sakura: $chapter1.chapter1_morning_gate.t045
+
+> $chapter1.chapter1_morning_gate.t046
+> $chapter1.chapter1_morning_gate.t047
+> $chapter1.chapter1_morning_gate.t048
 
 @flag has_met_sakura true
 
 @se school_bell.mp3
 @wait 1000
 
-> $chapter1.chapter1_morning_gate.t037
-> $chapter1.chapter1_morning_gate.t038
+> $chapter1.chapter1_morning_gate.t049
+> $chapter1.chapter1_morning_gate.t050
 
-sakura: $chapter1.chapter1_morning_gate.t039
+sakura: $chapter1.chapter1_morning_gate.t051
 
 @expr sakura happy
 
-> $chapter1.chapter1_morning_gate.t040
-> $chapter1.chapter1_morning_gate.t041
-> $chapter1.chapter1_morning_gate.t042
+> $chapter1.chapter1_morning_gate.t052
+> $chapter1.chapter1_morning_gate.t053
+> $chapter1.chapter1_morning_gate.t054
 
-> $chapter1.chapter1_morning_gate.t043
-> $chapter1.chapter1_morning_gate.t044
+> $chapter1.chapter1_morning_gate.t055
+> $chapter1.chapter1_morning_gate.t056
 
 @jump chapter1_homeroom
 
@@ -246,17 +275,23 @@ sakura: $chapter1.chapter1_morning_gate.t039
 
 > $chapter1.chapter1_homeroom.t004
 
-> $chapter1.chapter1_homeroom.t005
-> $chapter1.chapter1_homeroom.t006
+@show teacher_male center normal fade_in
+@wait 300
+
+teacher_male: $chapter1.chapter1_homeroom.t005
+
+@expr teacher_male serious
+teacher_male: $chapter1.chapter1_homeroom.t006
 
 > $chapter1.chapter1_homeroom.t007
 > $chapter1.chapter1_homeroom.t008
 > $chapter1.chapter1_homeroom.t009
 
+@hide teacher_male fade_out
 @show kotoha center normal fade_in
 @move sakura left
 
-> $chapter1.chapter1_homeroom.t010
+teacher_male: $chapter1.chapter1_homeroom.t010
 
 kotoha: $chapter1.chapter1_homeroom.t011
 kotoha: $chapter1.chapter1_homeroom.t012
@@ -264,11 +299,11 @@ kotoha: $chapter1.chapter1_homeroom.t012
 > $chapter1.chapter1_homeroom.t013
 > $chapter1.chapter1_homeroom.t014
 
-> $chapter1.chapter1_homeroom.t015
+teacher_male: $chapter1.chapter1_homeroom.t015
 
 kotoha: $chapter1.chapter1_homeroom.t016
 
-> $chapter1.chapter1_homeroom.t017
+teacher_male: $chapter1.chapter1_homeroom.t017
 
 @hide kotoha fade_out
 @move sakura right
@@ -789,66 +824,88 @@ player: $chapter1.chapter1_last_classroom.t019
 > $chapter1.chapter1_last_classroom.t023
 > $chapter1.chapter1_last_classroom.t024
 
+@scene elementary_classroom_evening fade
+@wait 700
+
+@show shin_child center back fade_in
+@wait 500
+
 > $chapter1.chapter1_last_classroom.t025
 > $chapter1.chapter1_last_classroom.t026
 > $chapter1.chapter1_last_classroom.t027
-> $chapter1.chapter1_last_classroom.t028
 
-> $chapter1.chapter1_last_classroom.t029
+shin_child: $chapter1.chapter1_last_classroom.t028
+shin_child: $chapter1.chapter1_last_classroom.t029
 
 > $chapter1.chapter1_last_classroom.t030
 > $chapter1.chapter1_last_classroom.t031
-> $chapter1.chapter1_last_classroom.t032
 
+@hide shin_child fade_out
+@wait 500
+
+@scene overcast_sky fade
+@wait 600
+
+> $chapter1.chapter1_last_classroom.t032
 > $chapter1.chapter1_last_classroom.t033
 > $chapter1.chapter1_last_classroom.t034
 > $chapter1.chapter1_last_classroom.t035
+
 > $chapter1.chapter1_last_classroom.t036
+
 > $chapter1.chapter1_last_classroom.t037
-
-player: $chapter1.chapter1_last_classroom.t038
-
+> $chapter1.chapter1_last_classroom.t038
 > $chapter1.chapter1_last_classroom.t039
 
 > $chapter1.chapter1_last_classroom.t040
 > $chapter1.chapter1_last_classroom.t041
-
 > $chapter1.chapter1_last_classroom.t042
 > $chapter1.chapter1_last_classroom.t043
 > $chapter1.chapter1_last_classroom.t044
 
-> $chapter1.chapter1_last_classroom.t045
+player: $chapter1.chapter1_last_classroom.t045
 
 > $chapter1.chapter1_last_classroom.t046
+
 > $chapter1.chapter1_last_classroom.t047
 > $chapter1.chapter1_last_classroom.t048
-> $chapter1.chapter1_last_classroom.t049
 
+> $chapter1.chapter1_last_classroom.t049
 > $chapter1.chapter1_last_classroom.t050
 > $chapter1.chapter1_last_classroom.t051
-
-@bgm stop
-@wait 300
-@bgm opening_piano.mp3
-@wait 500
 
 > $chapter1.chapter1_last_classroom.t052
 
 > $chapter1.chapter1_last_classroom.t053
 > $chapter1.chapter1_last_classroom.t054
-
 > $chapter1.chapter1_last_classroom.t055
 > $chapter1.chapter1_last_classroom.t056
 
 > $chapter1.chapter1_last_classroom.t057
 > $chapter1.chapter1_last_classroom.t058
 
-> $chapter1.chapter1_last_classroom.t059
-> $chapter1.chapter1_last_classroom.t060
+@bgm stop
+@wait 300
+@bgm opening_piano.mp3
+@wait 500
 
+> $chapter1.chapter1_last_classroom.t059
+
+> $chapter1.chapter1_last_classroom.t060
 > $chapter1.chapter1_last_classroom.t061
+
 > $chapter1.chapter1_last_classroom.t062
 > $chapter1.chapter1_last_classroom.t063
+
+> $chapter1.chapter1_last_classroom.t064
+> $chapter1.chapter1_last_classroom.t065
+
+> $chapter1.chapter1_last_classroom.t066
+> $chapter1.chapter1_last_classroom.t067
+
+> $chapter1.chapter1_last_classroom.t068
+> $chapter1.chapter1_last_classroom.t069
+> $chapter1.chapter1_last_classroom.t070
 
 @flag chapter1_complete true
 

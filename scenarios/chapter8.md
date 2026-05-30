@@ -112,21 +112,45 @@ sakura: $chapter8.chapter8_start.t048
 
 > $chapter8.chapter8_start.t052
 
-sakura: $chapter8.chapter8_start.t053
+@show nobuhara center panic fade_in
+@wait 300
+
+nobuhara: $chapter8.chapter8_start.t053
 
 player: $chapter8.chapter8_start.t054
 
-sakura: $chapter8.chapter8_start.t055
+nobuhara: $chapter8.chapter8_start.t055
+nobuhara: $chapter8.chapter8_start.t056
 
-> $chapter8.chapter8_start.t056
-> $chapter8.chapter8_start.t057
-> $chapter8.chapter8_start.t058
+@expr nobuhara relieved
 
-> $chapter8.chapter8_start.t059
-> $chapter8.chapter8_start.t060
-> $chapter8.chapter8_start.t061
+nobuhara: $chapter8.chapter8_start.t057
+nobuhara: $chapter8.chapter8_start.t058
 
-> $chapter8.chapter8_start.t062
+player: $chapter8.chapter8_start.t059
+
+@expr nobuhara happy
+
+nobuhara: $chapter8.chapter8_start.t060
+
+@hide nobuhara fade_out
+@wait 300
+
+sakura: $chapter8.chapter8_start.t061
+
+player: $chapter8.chapter8_start.t062
+
+sakura: $chapter8.chapter8_start.t063
+
+> $chapter8.chapter8_start.t064
+> $chapter8.chapter8_start.t065
+> $chapter8.chapter8_start.t066
+
+> $chapter8.chapter8_start.t067
+> $chapter8.chapter8_start.t068
+> $chapter8.chapter8_start.t069
+
+> $chapter8.chapter8_start.t070
 
 @hide_all fade_out
 @wait 500
@@ -163,6 +187,14 @@ sakura: $chapter8.chapter8_start.t055
 
 > $chapter8.chapter8_festival_open.t012
 > $chapter8.chapter8_festival_open.t013
+
+@show teacher_male center serious fade_in
+@wait 300
+
+teacher_male: $chapter8.chapter8_festival_open.t013a
+
+@hide teacher_male fade_out
+@wait 400
 
 @show mahiru center happy fade_in
 
@@ -265,181 +297,204 @@ mahiru: $chapter8.chapter8_festival_open.t045
 > $chapter8.chapter8_sakura_cafe.t008
 > $chapter8.chapter8_sakura_cafe.t009
 
-> $chapter8.chapter8_sakura_cafe.t009a
+> $chapter8.chapter8_sakura_cafe.t010
 
 @show sakura_apron center excited fade_in
 
-sakura: $chapter8.chapter8_sakura_cafe.t010
-
-> $chapter8.chapter8_sakura_cafe.t011
+sakura: $chapter8.chapter8_sakura_cafe.t011
 
 > $chapter8.chapter8_sakura_cafe.t012
+
 > $chapter8.chapter8_sakura_cafe.t013
 > $chapter8.chapter8_sakura_cafe.t014
-
 > $chapter8.chapter8_sakura_cafe.t015
+
 > $chapter8.chapter8_sakura_cafe.t016
 > $chapter8.chapter8_sakura_cafe.t017
 > $chapter8.chapter8_sakura_cafe.t018
-
 > $chapter8.chapter8_sakura_cafe.t019
+
 > $chapter8.chapter8_sakura_cafe.t020
+> $chapter8.chapter8_sakura_cafe.t021
 
-sakura: $chapter8.chapter8_sakura_cafe.t021
+sakura: $chapter8.chapter8_sakura_cafe.t022
 
-player: $chapter8.chapter8_sakura_cafe.t022
+player: $chapter8.chapter8_sakura_cafe.t023
 
-sakura: $chapter8.chapter8_sakura_cafe.t023
+sakura: $chapter8.chapter8_sakura_cafe.t024
 
-player: $chapter8.chapter8_sakura_cafe.t024
+player: $chapter8.chapter8_sakura_cafe.t025
 
-sakura: $chapter8.chapter8_sakura_cafe.t025
+sakura: $chapter8.chapter8_sakura_cafe.t026
 
-player: $chapter8.chapter8_sakura_cafe.t026
+player: $chapter8.chapter8_sakura_cafe.t027
 
 @wait 400
 
-> $chapter8.chapter8_sakura_cafe.t027
-
 > $chapter8.chapter8_sakura_cafe.t028
-> $chapter8.chapter8_sakura_cafe.t029
 
+> $chapter8.chapter8_sakura_cafe.t029
 > $chapter8.chapter8_sakura_cafe.t030
+
 > $chapter8.chapter8_sakura_cafe.t031
 > $chapter8.chapter8_sakura_cafe.t032
+> $chapter8.chapter8_sakura_cafe.t033
 
 @wait 600
 
-> $chapter8.chapter8_sakura_cafe.t033
 > $chapter8.chapter8_sakura_cafe.t034
+> $chapter8.chapter8_sakura_cafe.t035
+
+@show classmate_female_a left work fade_in
+classmate_female_a: $chapter8.chapter8_sakura_cafe.t035a
 
 @expr sakura_apron normal
 
-> $chapter8.chapter8_sakura_cafe.t035
 > $chapter8.chapter8_sakura_cafe.t036
-
 > $chapter8.chapter8_sakura_cafe.t037
+
+@expr sakura_apron happy
+sakura: $chapter8.chapter8_sakura_cafe.t037a
+
 > $chapter8.chapter8_sakura_cafe.t038
 
+@expr classmate_female_a surprised
+classmate_female_a: $chapter8.chapter8_sakura_cafe.t038a
+
+@hide classmate_female_a fade_out
+
 > $chapter8.chapter8_sakura_cafe.t039
+
 > $chapter8.chapter8_sakura_cafe.t040
+> $chapter8.chapter8_sakura_cafe.t041
 
 @wait 500
 
-> $chapter8.chapter8_sakura_cafe.t041
 > $chapter8.chapter8_sakura_cafe.t042
 > $chapter8.chapter8_sakura_cafe.t043
-
 > $chapter8.chapter8_sakura_cafe.t044
+
 > $chapter8.chapter8_sakura_cafe.t045
+> $chapter8.chapter8_sakura_cafe.t046
 
 @wait 800
 
-> $chapter8.chapter8_sakura_cafe.t046
 > $chapter8.chapter8_sakura_cafe.t047
+> $chapter8.chapter8_sakura_cafe.t048
 
 @bgm stop
 @wait 300
 
-> $chapter8.chapter8_sakura_cafe.t048
+> $chapter8.chapter8_sakura_cafe.t049
 
-sakura: $chapter8.chapter8_sakura_cafe.t049
-
-> $chapter8.chapter8_sakura_cafe.t050
-
-@wait 400
+sakura: $chapter8.chapter8_sakura_cafe.t050
 
 > $chapter8.chapter8_sakura_cafe.t051
+
+@wait 400
 
 > $chapter8.chapter8_sakura_cafe.t052
 
 > $chapter8.chapter8_sakura_cafe.t053
-> $chapter8.chapter8_sakura_cafe.t054
 
+> $chapter8.chapter8_sakura_cafe.t054
 > $chapter8.chapter8_sakura_cafe.t055
+
 > $chapter8.chapter8_sakura_cafe.t056
+> $chapter8.chapter8_sakura_cafe.t057
 
 @expr sakura_apron blank
 
-sakura: $chapter8.chapter8_sakura_cafe.t057
+sakura: $chapter8.chapter8_sakura_cafe.t058
 
 @wait 500
 
 @expr sakura_apron happy
 
-sakura: $chapter8.chapter8_sakura_cafe.t058
 sakura: $chapter8.chapter8_sakura_cafe.t059
-
-> $chapter8.chapter8_sakura_cafe.t060
+sakura: $chapter8.chapter8_sakura_cafe.t060
 
 > $chapter8.chapter8_sakura_cafe.t061
 
-player: $chapter8.chapter8_sakura_cafe.t062
+> $chapter8.chapter8_sakura_cafe.t062
 
-> $chapter8.chapter8_sakura_cafe.t063
+player: $chapter8.chapter8_sakura_cafe.t063
+
 > $chapter8.chapter8_sakura_cafe.t064
 > $chapter8.chapter8_sakura_cafe.t065
+> $chapter8.chapter8_sakura_cafe.t066
 
 @wait 600
 
 @expr sakura_apron excited
 
-sakura: $chapter8.chapter8_sakura_cafe.t066
 sakura: $chapter8.chapter8_sakura_cafe.t067
+sakura: $chapter8.chapter8_sakura_cafe.t068
 
-player: $chapter8.chapter8_sakura_cafe.t068
+player: $chapter8.chapter8_sakura_cafe.t069
 
-> $chapter8.chapter8_sakura_cafe.t069
 > $chapter8.chapter8_sakura_cafe.t070
+> $chapter8.chapter8_sakura_cafe.t071
 
 @wait 800
 
-> $chapter8.chapter8_sakura_cafe.t071
-
 > $chapter8.chapter8_sakura_cafe.t072
+
 > $chapter8.chapter8_sakura_cafe.t073
 > $chapter8.chapter8_sakura_cafe.t074
-
 > $chapter8.chapter8_sakura_cafe.t075
 
 > $chapter8.chapter8_sakura_cafe.t076
+
 > $chapter8.chapter8_sakura_cafe.t077
+> $chapter8.chapter8_sakura_cafe.t078
 
 @wait 600
 
-> $chapter8.chapter8_sakura_cafe.t078
 > $chapter8.chapter8_sakura_cafe.t079
 > $chapter8.chapter8_sakura_cafe.t080
 > $chapter8.chapter8_sakura_cafe.t081
+> $chapter8.chapter8_sakura_cafe.t082
 
-player: $chapter8.chapter8_sakura_cafe.t082
+player: $chapter8.chapter8_sakura_cafe.t083
 
-@expr sakura_apron surprised
-
-sakura: $chapter8.chapter8_sakura_cafe.t083
-
-@expr sakura_apron happy
+@expr sakura_apron normal
 
 sakura: $chapter8.chapter8_sakura_cafe.t084
-sakura: $chapter8.chapter8_sakura_cafe.t085
-
-player: $chapter8.chapter8_sakura_cafe.t086
-
-sakura: $chapter8.chapter8_sakura_cafe.t087
-
-sakura: $chapter8.chapter8_sakura_cafe.t088
-sakura: $chapter8.chapter8_sakura_cafe.t089
-
-player: $chapter8.chapter8_sakura_cafe.t090
 
 @expr sakura_apron happy
 
-sakura: $chapter8.chapter8_sakura_cafe.t091
-sakura: $chapter8.chapter8_sakura_cafe.t092
+sakura: $chapter8.chapter8_sakura_cafe.t085
+sakura: $chapter8.chapter8_sakura_cafe.t086
 
-> $chapter8.chapter8_sakura_cafe.t093
+player: $chapter8.chapter8_sakura_cafe.t087
+
+sakura: $chapter8.chapter8_sakura_cafe.t088
+
+sakura: $chapter8.chapter8_sakura_cafe.t089
+sakura: $chapter8.chapter8_sakura_cafe.t090
+
+player: $chapter8.chapter8_sakura_cafe.t091
+
+@expr sakura_apron happy
+
+sakura: $chapter8.chapter8_sakura_cafe.t092
+sakura: $chapter8.chapter8_sakura_cafe.t093
+
 > $chapter8.chapter8_sakura_cafe.t094
 > $chapter8.chapter8_sakura_cafe.t095
+> $chapter8.chapter8_sakura_cafe.t096
+
+@show classmate_female_a left smile fade_in
+classmate_female_a: $chapter8.chapter8_sakura_cafe.t096a
+
+@expr sakura_apron normal
+sakura: $chapter8.chapter8_sakura_cafe.t096b
+
+classmate_female_a: $chapter8.chapter8_sakura_cafe.t096c
+
+@hide classmate_female_a fade_out
+@wait 400
 
 @hide sakura_apron fade_out
 @wait 500
@@ -1186,13 +1241,54 @@ kotoha: $chapter8.chapter8_kotoha_crisis.t017
 
 @wait 1000
 
-> $chapter8.chapter8_branch.t016
-> $chapter8.chapter8_branch.t017
+@show festival_committee center panic fade_in
+festival_committee: $chapter8.chapter8_branch.t015a
+@hide festival_committee fade_out
+@wait 400
 
-> $chapter8.chapter8_branch.t018
-> $chapter8.chapter8_branch.t019
+@show nobuhara right serious fade_in
+@wait 400
 
-> $chapter8.chapter8_branch.t020
+nobuhara: $chapter8.chapter8_branch.t016
+
+player: $chapter8.chapter8_branch.t017
+
+nobuhara: $chapter8.chapter8_branch.t018
+
+player: $chapter8.chapter8_branch.t019
+
+nobuhara: $chapter8.chapter8_branch.t020
+nobuhara: $chapter8.chapter8_branch.t021
+
+@wait 400
+
+nobuhara: $chapter8.chapter8_branch.t022
+
+> $chapter8.chapter8_branch.t023
+> $chapter8.chapter8_branch.t024
+
+> $chapter8.chapter8_branch.t025
+> $chapter8.chapter8_branch.t026
+> $chapter8.chapter8_branch.t027
+
+@wait 500
+
+player: $chapter8.chapter8_branch.t028
+
+@expr nobuhara relieved
+
+nobuhara: $chapter8.chapter8_branch.t029
+
+@hide nobuhara fade_out
+@wait 500
+
+> $chapter8.chapter8_branch.t030
+> $chapter8.chapter8_branch.t031
+
+> $chapter8.chapter8_branch.t032
+> $chapter8.chapter8_branch.t033
+
+> $chapter8.chapter8_branch.t034
 
 @wait 800
 

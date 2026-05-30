@@ -1360,6 +1360,9 @@ class VNEngine {
     this._stopAllSE();
     this.currentBG = bgKey;
     const el = document.getElementById('background');
+    const isFlashbackBG = /^elementary_/.test(bgKey);
+    el.classList.toggle('flashback-bg', isFlashbackBG);
+    document.getElementById('game-screen')?.classList.toggle('flashback-scene', isFlashbackBG);
 
     // 背景を適用してコールバックを呼ぶ
     const applyBG = (onReady) => {
@@ -1596,6 +1599,8 @@ class VNEngine {
     // instant（ロード復元時など）はロック不要、それ以外は連打でスチルが即流れないよう最低表示時間を設ける
     this._stillLockUntil = effect === 'instant' ? 0 : Date.now() + 2200;
     const el = document.getElementById('still-layer');
+    const isFlashbackStill = effect === 'flashback' || effect === 'flashback_pan';
+    const isFlashbackPan = effect === 'flashback_pan';
     el.className  = '';
     el.innerHTML  = '';
     el.style.backgroundImage = '';
@@ -1605,8 +1610,8 @@ class VNEngine {
     const applyStill = (src) => {
       el.style.background         = '';
       el.style.backgroundImage    = `url(${src})`;
-      el.style.backgroundSize     = 'contain';
-      el.style.backgroundPosition = 'center';
+      el.style.backgroundSize     = isFlashbackPan ? '185% auto' : 'contain';
+      el.style.backgroundPosition = isFlashbackPan ? '65% 46%' : 'center';
       el.style.backgroundRepeat   = 'no-repeat';
       el.style.backgroundColor    = 'rgba(0,0,0,.85)';
       if (!this.seenStills.has(imageName)) {
@@ -1639,6 +1644,7 @@ class VNEngine {
     }
 
     el.classList.remove('hidden');
+    if (isFlashbackStill) el.classList.add('flashback-still');
     if (effect !== 'instant') el.classList.add(`effect-${effect}`);
     this.currentStill = imageName;
   }
@@ -1648,6 +1654,9 @@ class VNEngine {
     el.classList.remove(
       'effect-fade-in',
       'effect-slide-in-bottom',
+      'effect-flashback',
+      'effect-flashback_pan',
+      'flashback-still',
       'ending-intro-still',
       'ending-intro-kotoha',
       'ending-intro-sakura',
@@ -1658,6 +1667,8 @@ class VNEngine {
     el.style.transition = '';
     el.style.transform = '';
     el.style.filter = '';
+    el.style.backgroundSize = '';
+    el.style.backgroundPosition = '';
   }
 
   _hideStill(effect = 'fade_out') {

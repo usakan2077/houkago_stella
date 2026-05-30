@@ -1106,50 +1106,110 @@ player: $chapter5.chapter5_after_school.t056
 @wait 600
 
 > $chapter5.chapter5_end.t001
-> $chapter5.chapter5_end.t002
-> $chapter5.chapter5_end.t003
 
-@wait 600
+@show nobuhara right tired fade_in
+@wait 300
 
-> $chapter5.chapter5_end.t004
+nobuhara: $chapter5.chapter5_end.t002
+nobuhara: $chapter5.chapter5_end.t003
 
-@wait 400
+player: $chapter5.chapter5_end.t004
 
-> $chapter5.chapter5_end.t005
-> $chapter5.chapter5_end.t006
-> $chapter5.chapter5_end.t007
-> $chapter5.chapter5_end.t008
+nobuhara: $chapter5.chapter5_end.t005
+nobuhara: $chapter5.chapter5_end.t006
 
-@wait 400
+player: $chapter5.chapter5_end.t007
 
-> $chapter5.chapter5_end.t009
-> $chapter5.chapter5_end.t010
-> $chapter5.chapter5_end.t011
+nobuhara: $chapter5.chapter5_end.t008
+
+player: $chapter5.chapter5_end.t009
+
+@expr nobuhara relieved
+
+nobuhara: $chapter5.chapter5_end.t010
+nobuhara: $chapter5.chapter5_end.t011
+
 > $chapter5.chapter5_end.t012
-
-@wait 400
-
 > $chapter5.chapter5_end.t013
-> $chapter5.chapter5_end.t014
-> $chapter5.chapter5_end.t015
-> $chapter5.chapter5_end.t016
+
+player: $chapter5.chapter5_end.t014
+
+nobuhara: $chapter5.chapter5_end.t015
+
+player: $chapter5.chapter5_end.t016
+
+@hide nobuhara fade_out
+@wait 500
+
 > $chapter5.chapter5_end.t017
-
-@wait 600
-
 > $chapter5.chapter5_end.t018
 > $chapter5.chapter5_end.t019
+> $chapter5.chapter5_end.t020
+
+@wait 600
+
+> $chapter5.chapter5_end.t021
+
+@wait 400
+
+> $chapter5.chapter5_end.t022
+> $chapter5.chapter5_end.t023
+> $chapter5.chapter5_end.t024
+> $chapter5.chapter5_end.t025
+
+@wait 400
+
+> $chapter5.chapter5_end.t026
+> $chapter5.chapter5_end.t027
+> $chapter5.chapter5_end.t028
+> $chapter5.chapter5_end.t029
+
+@wait 400
+
+> $chapter5.chapter5_end.t030
+> $chapter5.chapter5_end.t031
+> $chapter5.chapter5_end.t032
+> $chapter5.chapter5_end.t033
+> $chapter5.chapter5_end.t034
+
+@wait 600
+
+> $chapter5.chapter5_end.t035
+> $chapter5.chapter5_end.t036
 
 @wait 500
 
-> $chapter5.chapter5_end.t020
-> $chapter5.chapter5_end.t021
-> $chapter5.chapter5_end.t022
+> $chapter5.chapter5_end.t037
+> $chapter5.chapter5_end.t038
+> $chapter5.chapter5_end.t039
 
 @wait 600
 
-> $chapter5.chapter5_end.t023
-> $chapter5.chapter5_end.t024
+> $chapter5.chapter5_end.t040
+> $chapter5.chapter5_end.t041
+
+@wait 500
+
+> $chapter5.chapter5_end.t042
+> $chapter5.chapter5_end.t043
+
+> $chapter5.chapter5_end.t044
+> $chapter5.chapter5_end.t045
+> $chapter5.chapter5_end.t046
+
+> $chapter5.chapter5_end.t047
+> $chapter5.chapter5_end.t048
+> $chapter5.chapter5_end.t049
+
+> $chapter5.chapter5_end.t050
+> $chapter5.chapter5_end.t051
+
+> $chapter5.chapter5_end.t052
+> $chapter5.chapter5_end.t053
+> $chapter5.chapter5_end.t054
+> $chapter5.chapter5_end.t055
+
+> $chapter5.chapter5_end.t056
 
 @wait 500
 
@@ -1159,47 +1219,68 @@ player: $chapter5.chapter5_after_school.t056
 @bgm mystery_shadow.mp3
 @wait 600
 
-> $chapter5.chapter5_end.t025
-> $chapter5.chapter5_end.t026
+> $chapter5.chapter5_end.t057
+> $chapter5.chapter5_end.t058
 
 @wait 500
 
-> $chapter5.chapter5_end.t027
-> $chapter5.chapter5_end.t028
-> $chapter5.chapter5_end.t029
-> $chapter5.chapter5_end.t030
+> $chapter5.chapter5_end.t059
+> $chapter5.chapter5_end.t060
+> $chapter5.chapter5_end.t061
+> $chapter5.chapter5_end.t062
 
 @wait 600
 
-> $chapter5.chapter5_end.t031
-> $chapter5.chapter5_end.t032
+> $chapter5.chapter5_end.t063
+> $chapter5.chapter5_end.t064
 
 @wait 500
 
-> $chapter5.chapter5_end.t033
-> $chapter5.chapter5_end.t034
+> $chapter5.chapter5_end.t065
+> $chapter5.chapter5_end.t066
 
-> $chapter5.chapter5_end.t035
-> $chapter5.chapter5_end.t036
-> $chapter5.chapter5_end.t037
-> $chapter5.chapter5_end.t038
+> $chapter5.chapter5_end.t067
+> $chapter5.chapter5_end.t068
+> $chapter5.chapter5_end.t069
+> $chapter5.chapter5_end.t070
 
 @wait 700
 
-> $chapter5.chapter5_end.t039
+> $chapter5.chapter5_end.t071
 
 @wait 400
 
-> $chapter5.chapter5_end.t040
+> $chapter5.chapter5_end.t072
 
 @wait 800
 
-> $chapter5.chapter5_end.t041
+> $chapter5.chapter5_end.t073
 
 @wait 600
 
-> $chapter5.chapter5_end.t042
-> $chapter5.chapter5_end.t043
+> $chapter5.chapter5_end.t074
+> $chapter5.chapter5_end.t075
+
+@wait 800
+
+@scene protagonist_room_night fade
+@bgm night_melody.mp3
+@wait 700
+
+> $chapter5.chapter5_end.t076
+> $chapter5.chapter5_end.t077
+
+> $chapter5.chapter5_end.t078
+> $chapter5.chapter5_end.t079
+
+> $chapter5.chapter5_end.t080
+
+> $chapter5.chapter5_end.t081
+> $chapter5.chapter5_end.t082
+
+player: $chapter5.chapter5_end.t083
+
+> $chapter5.chapter5_end.t084
 
 @wait 1000
 

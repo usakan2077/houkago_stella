@@ -185,6 +185,69 @@ const VN_CONFIG = {
       // カフェエプロン衣装。画像パス: assets/images/chars/sakura_apron/{expr}.png
       expressions: ['normal', 'happy', 'excited', 'blank'],
     },
+    nobuhara: {
+      name: '延原晴人',
+      nameEn: 'Hareto Nobuhara',
+      nameColor: '#e8c478',
+      charColor: 'rgba(232, 196, 120, 0.72)',
+      expressions: ['normal', 'happy', 'panic', 'tired', 'relieved', 'serious'],
+    },
+    shin_child: {
+      name: '慎',
+      nameEn: 'Shin',
+      nameColor: '#d8b070',
+      charColor: 'rgba(210, 160, 90, 0.7)',
+      expressions: ['normal', 'smile', 'forced_smile', 'tired', 'back'],
+    },
+    teacher_male: {
+      name: '担任',
+      nameEn: 'Homeroom Teacher',
+      nameColor: '#b8c0cc',
+      charColor: 'rgba(150, 160, 175, 0.7)',
+      expressions: ['normal', 'stern', 'smile', 'serious'],
+    },
+    hashimoto: {
+      name: '橋本先輩',
+      nameEn: 'Hashimoto-senpai',
+      nameColor: '#f0b070',
+      charColor: 'rgba(220, 150, 90, 0.72)',
+      expressions: ['normal', 'smile', 'serious', 'relieved'],
+    },
+    badminton_member_a: {
+      name: 'バドミントン部員',
+      nameEn: 'Badminton Club Member',
+      nameColor: '#ffb4c8',
+      charColor: 'rgba(230, 150, 170, 0.65)',
+      expressions: ['normal', 'cheer', 'surprised', 'serious'],
+    },
+    badminton_member_b: {
+      name: 'バドミントン部員',
+      nameEn: 'Badminton Club Member',
+      nameColor: '#ffc0d0',
+      charColor: 'rgba(210, 150, 170, 0.65)',
+      expressions: ['normal', 'laugh', 'serious'],
+    },
+    classmate_male_a: {
+      name: 'クラスメイト',
+      nameEn: 'Classmate',
+      nameColor: '#c8d0e8',
+      charColor: 'rgba(160, 170, 200, 0.65)',
+      expressions: ['normal', 'laugh', 'work'],
+    },
+    classmate_female_a: {
+      name: 'クラスメイト',
+      nameEn: 'Classmate',
+      nameColor: '#e8c8d8',
+      charColor: 'rgba(210, 170, 190, 0.65)',
+      expressions: ['normal', 'smile', 'surprised', 'work'],
+    },
+    festival_committee: {
+      name: '文化祭実行委員',
+      nameEn: 'Festival Committee Member',
+      nameColor: '#d8c890',
+      charColor: 'rgba(205, 185, 120, 0.68)',
+      expressions: ['normal', 'serious', 'panic'],
+    },
   },
 
   speakerNames: {
@@ -215,10 +278,14 @@ const VN_CONFIG = {
   // 一部の差し替え素材は、WebP変換前のPNGを優先して使う
   backgroundExtOverrides: {
     staircase_rainy: '.png',
+    elementary_classroom_evening: '.png',
+    elementary_schoolyard_evening: '.png',
+    elementary_school_gate_cloudy: '.png',
   },
 
   stillExtOverrides: {
     evening_walk_private: '.png',
+    shin_flashback: '.png',
   },
 
   backgrounds: {
@@ -235,6 +302,7 @@ const VN_CONFIG = {
     school_gate_autumn_rainy:    'linear-gradient(180deg, #404850 0%, #506070 30%, #607080 60%, #506070 100%)',
     school_gate_rainy:           'linear-gradient(180deg, #506070 0%, #708090 30%, #90a0a8 60%, #a0b0a0 100%)',
     school_gate_june_rainy:      'linear-gradient(180deg, #485860 0%, #607080 30%, #809090 60%, #708090 100%)',
+    elementary_school_gate_cloudy:'linear-gradient(180deg, #303840 0%, #48525a 35%, #687078 70%, #505858 100%)',
 
     // ── 教室 ──────────────────────────────────────────────
     classroom:             'linear-gradient(180deg, #87CEEB 0%, #e8dcc0 50%, #d0c090 100%)',
@@ -244,6 +312,7 @@ const VN_CONFIG = {
     classroom_festival_prep: 'linear-gradient(180deg, #87CEEB 0%, #d0c890 40%, #c8c080 70%, #b8b070 100%)',
     classroom_cafe:          'linear-gradient(180deg, #87CEEB 0%, #f0e0a0 40%, #ffe0b0 70%, #f0d090 100%)',
     classroom_cafe_rainy:    'linear-gradient(180deg, #6080a0 0%, #8090b0 40%, #d0c0a0 70%, #c0b090 100%)',
+    elementary_classroom_evening: 'linear-gradient(180deg, #704020 0%, #b06030 36%, #e09048 70%, #402820 100%)',
 
     // ── 通学路 ────────────────────────────────────────────
     commute_road_spring_morning: 'linear-gradient(180deg, #a8c8e0 0%, #c0d4e0 20%, #d0ccc0 45%, #b8b4a8 65%, #888078 85%, #706860 100%)',
@@ -306,6 +375,7 @@ const VN_CONFIG = {
     // ── 空・屋外 ──────────────────────────────────────────
     overcast_sky:          'linear-gradient(180deg, #8090a0 0%, #a0b0c0 30%, #b8c4cc 60%, #c8d0d8 100%)',
     overcast_night:        'linear-gradient(180deg, #2a3040 0%, #363d50 20%, #404855 45%, #353c4a 70%, #282e3a 100%)',
+    elementary_schoolyard_evening: 'linear-gradient(180deg, #ff8040 0%, #e09060 36%, #b89070 72%, #705838 100%)',
 
     // ── 屋外・市街 ────────────────────────────────────────
     gymnasium_back:         'linear-gradient(180deg, #909090 0%, #a0a0a0 30%, #c0c0b8 60%, #a8a89a 100%)',
@@ -347,6 +417,7 @@ const VN_CONFIG = {
   // label: ギャラリー上の表示名 (未閲覧時は「？？？」)
   // ===========================================================
   cgList: [
+    { key: 'shin_flashback',            label: '慎・夕方の教室',                 labelEn: 'Shin: The Evening Classroom' },
     { key: 'kotoha_window_ch1',         label: 'ことは・窓際の午後',             labelEn: 'Kotoha: Afternoon by the Window' },
     { key: 'sakura_blank_moment',       label: 'さくら・笑顔の裂け目',           labelEn: 'Sakura: A Crack in Her Smile' },
     { key: 'mahiru_notebook_drop',      label: 'まひる・ノートを落とす',         labelEn: 'Mahiru: The Dropped Notebook' },

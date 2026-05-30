@@ -125,6 +125,14 @@ sakura_sports: $chapter6.chapter6_sakura_gym.t023
 @wait 400
 
 > $chapter6.chapter6_sakura_gym.t024
+
+@show badminton_member_a left cheer pop_in
+badminton_member_a: $chapter6.chapter6_sakura_gym.t024a
+@show badminton_member_b right laugh pop_in
+badminton_member_b: $chapter6.chapter6_sakura_gym.t024b
+@hide badminton_member_a fade_out
+@hide badminton_member_b fade_out
+
 > $chapter6.chapter6_sakura_gym.t025
 > $chapter6.chapter6_sakura_gym.t026
 > $chapter6.chapter6_sakura_gym.t027
@@ -178,25 +186,43 @@ player: $chapter6.chapter6_sakura_gym.t028
 
 @wait 400
 
-橋本: $chapter6.chapter6_sakura_gym.t049
+@show badminton_member_a left normal fade_in
+badminton_member_a: $chapter6.chapter6_sakura_gym.t048a
+@show badminton_member_b right serious fade_in
+badminton_member_b: $chapter6.chapter6_sakura_gym.t048b
+
+@expr sakura_sports normal
+sakura_sports: $chapter6.chapter6_sakura_gym.t048c
+
+@hide badminton_member_a fade_out
+@hide badminton_member_b fade_out
+@wait 300
+
+@move sakura_sports left
+@show hashimoto right normal fade_in
+@wait 300
+
+hashimoto: $chapter6.chapter6_sakura_gym.t049
 
 > $chapter6.chapter6_sakura_gym.t050
 > $chapter6.chapter6_sakura_gym.t051
 
 @wait 400
 
-橋本: $chapter6.chapter6_sakura_gym.t052
-橋本: $chapter6.chapter6_sakura_gym.t053
+@expr hashimoto smile
+hashimoto: $chapter6.chapter6_sakura_gym.t052
+hashimoto: $chapter6.chapter6_sakura_gym.t053
 
 sakura_sports: $chapter6.chapter6_sakura_gym.t054
 sakura_sports: $chapter6.chapter6_sakura_gym.t055
 
-橋本: $chapter6.chapter6_sakura_gym.t056
-橋本: $chapter6.chapter6_sakura_gym.t057
+@expr hashimoto serious
+hashimoto: $chapter6.chapter6_sakura_gym.t056
+hashimoto: $chapter6.chapter6_sakura_gym.t057
 
 @wait 400
 
-橋本: $chapter6.chapter6_sakura_gym.t058
+hashimoto: $chapter6.chapter6_sakura_gym.t058
 
 sakura_sports: $chapter6.chapter6_sakura_gym.t059
 
@@ -213,10 +239,14 @@ sakura_sports: $chapter6.chapter6_sakura_gym.t059
 
 > $chapter6.chapter6_sakura_gym.t065
 
-橋本: $chapter6.chapter6_sakura_gym.t066
-橋本: $chapter6.chapter6_sakura_gym.t067
+@expr hashimoto relieved
+hashimoto: $chapter6.chapter6_sakura_gym.t066
+hashimoto: $chapter6.chapter6_sakura_gym.t067
 
 sakura_sports: $chapter6.chapter6_sakura_gym.t068
+
+@hide hashimoto fade_out
+@wait 300
 
 > $chapter6.chapter6_sakura_gym.t069
 > $chapter6.chapter6_sakura_gym.t070

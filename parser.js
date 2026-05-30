@@ -27,7 +27,7 @@
  * @move char_id new_pos [effect] ← キャラ移動
  *
  * @still image_name [effect]   ← スチル(イベントCG)表示
- *   effect: fade_in / slide_in_bottom
+ *   effect: fade_in / slide_in_bottom / flashback / flashback_pan
  *   画像パス: assets/images/stills/{image_name}.jpg
  * @still_hide [effect]          ← スチル非表示
  *
