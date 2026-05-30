@@ -857,6 +857,14 @@ kotoha: $chapter5.chapter5_kotoha_scene.t022
 @bgm daily_life.mp3
 @wait 500
 
+@still vending_corner_evening fade_in
+@wait 500
+> $chapter5.chapter5_mahiru_window.t000a
+> $chapter5.chapter5_mahiru_window.t000b
+player: $chapter5.chapter5_mahiru_window.t000c
+@still_hide fade_out
+@wait 400
+
 > $chapter5.chapter5_mahiru_window.t001
 > $chapter5.chapter5_mahiru_window.t002
 

@@ -188,6 +188,15 @@ sakura: $chapter8.chapter8_start.t063
 > $chapter8.chapter8_festival_open.t012
 > $chapter8.chapter8_festival_open.t013
 
+@show badminton_member_a center normal pop_in
+badminton_member_a: $chapter8.chapter8_festival_open.t013b
+player: $chapter8.chapter8_festival_open.t013c
+@expr badminton_member_a cheer
+badminton_member_a: $chapter8.chapter8_festival_open.t013d
+player: $chapter8.chapter8_festival_open.t013e
+@hide badminton_member_a fade_out
+@wait 400
+
 @show teacher_male center serious fade_in
 @wait 300
 

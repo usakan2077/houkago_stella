@@ -20,6 +20,14 @@
 > $chapter7.chapter7_start.t006
 > $chapter7.chapter7_start.t007
 
+@still vending_soldout fade_in
+@wait 500
+> $chapter7.chapter7_start.t007a
+> $chapter7.chapter7_start.t007b
+player: $chapter7.chapter7_start.t007c
+@still_hide fade_out
+@wait 400
+
 @show sakura right happy fade_in
 @show kotoha left normal fade_in
 
@@ -129,6 +137,14 @@ sakura: $chapter7.chapter7_start.t044
 > $chapter7.chapter7_festival_lunch.t002
 > $chapter7.chapter7_festival_lunch.t003
 > $chapter7.chapter7_festival_lunch.t004
+
+@show teacher_male center normal fade_in
+teacher_male: $chapter7.chapter7_festival_lunch.t004a
+> $chapter7.chapter7_festival_lunch.t004b
+@expr teacher_male smile
+teacher_male: $chapter7.chapter7_festival_lunch.t004c
+@hide teacher_male fade_out
+@wait 400
 
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
@@ -400,6 +416,16 @@ sakura: $chapter7.chapter7_festival.t038
 > $chapter7.chapter7_festival.t042
 > $chapter7.chapter7_festival.t043
 > $chapter7.chapter7_festival.t044
+
+@show festival_committee center panic pop_in
+festival_committee: $chapter7.chapter7_festival.t044a
+player: $chapter7.chapter7_festival.t044b
+@expr festival_committee serious
+festival_committee: $chapter7.chapter7_festival.t044c
+player: $chapter7.chapter7_festival.t044d
+festival_committee: $chapter7.chapter7_festival.t044e
+@hide festival_committee fade_out
+@wait 300
 
 @wait 500
 

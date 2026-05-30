@@ -86,7 +86,17 @@ player: $chapter6.chapter6_start.t019
 > $chapter6.chapter6_sakura_gym.t007
 > $chapter6.chapter6_sakura_gym.t008
 
-@wait 500
+@show badminton_member_a left normal pop_in
+badminton_member_a: $chapter6.chapter6_sakura_gym.t008a
+player: $chapter6.chapter6_sakura_gym.t008b
+@show badminton_member_b right normal pop_in
+badminton_member_b: $chapter6.chapter6_sakura_gym.t008c
+player: $chapter6.chapter6_sakura_gym.t008d
+@expr badminton_member_a cheer
+badminton_member_a: $chapter6.chapter6_sakura_gym.t008e
+@hide badminton_member_a fade_out
+@hide badminton_member_b fade_out
+@wait 400
 
 > $chapter6.chapter6_sakura_gym.t009
 > $chapter6.chapter6_sakura_gym.t010
@@ -969,6 +979,10 @@ kotoha: $chapter6.chapter6_kotoha_talk.t057
 
 > $chapter6.chapter6_mahiru_river.t013
 > $chapter6.chapter6_mahiru_river.t014
+
+mahiru: $chapter6.chapter6_mahiru_river.t014a
+player: $chapter6.chapter6_mahiru_river.t014b
+mahiru: $chapter6.chapter6_mahiru_river.t014c
 
 @wait 500
 

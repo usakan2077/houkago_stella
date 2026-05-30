@@ -217,6 +217,14 @@ sakura: $chapter3.chapter3_start.t095
 @hide_all fade_out
 @wait 500
 
+@still vending_corner fade_in
+@wait 500
+> $chapter3.chapter3_start.t095a
+player: $chapter3.chapter3_start.t095b
+> $chapter3.chapter3_start.t095c
+@still_hide fade_out
+@wait 400
+
 @jump chapter3_lunch
 
 
@@ -560,6 +568,15 @@ player: $chapter3.chapter3_lunch.t131
 
 > $chapter3.chapter3_library.t006
 > $chapter3.chapter3_library.t007
+
+@show classmate_female_a left normal pop_in
+classmate_female_a: $chapter3.chapter3_library.t007a
+player: $chapter3.chapter3_library.t007b
+@expr classmate_female_a surprised
+classmate_female_a: $chapter3.chapter3_library.t007c
+player: $chapter3.chapter3_library.t007d
+@hide classmate_female_a fade_out
+@wait 300
 
 @show kotoha center normal fade_in
 
