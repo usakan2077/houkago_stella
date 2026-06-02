@@ -72,6 +72,11 @@ body {
   box-shadow: 0 0 80px rgba(200, 100, 180, 0.25),
               0 0 160px rgba(100, 80, 200, 0.12);
   transform-origin: center center;
+  /* ゲーム全体でドラッグによる文字選択を無効化（VN用途のため） */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 /* ============================================================
