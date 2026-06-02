@@ -531,11 +531,13 @@ sakura: $chapter2.chapter2_lunch.t091
 > $chapter2.chapter2_pe.t004
 > $chapter2.chapter2_pe.t005
 
-@show nobuhara left panic pop_in
-nobuhara: $chapter2.chapter2_pe.t005a
+@show nobuhara_sports left panic pop_in
+nobuhara_sports: $chapter2.chapter2_pe.t005a
 player: $chapter2.chapter2_pe.t005b
-nobuhara: $chapter2.chapter2_pe.t005c
-@hide nobuhara fade_out
+@expr nobuhara_sports happy
+nobuhara_sports: $chapter2.chapter2_pe.t005c
+> $chapter2.chapter2_pe.t005d
+@hide nobuhara_sports fade_out
 @wait 300
 
 @show sakura_sports right happy fade_in

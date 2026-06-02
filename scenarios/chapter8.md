@@ -112,28 +112,28 @@ sakura: $chapter8.chapter8_start.t048
 
 > $chapter8.chapter8_start.t052
 
-@show nobuhara center panic fade_in
+@show nobuhara_nobag center panic fade_in
 @wait 300
 
-nobuhara: $chapter8.chapter8_start.t053
+nobuhara_nobag: $chapter8.chapter8_start.t053
 
 player: $chapter8.chapter8_start.t054
 
-nobuhara: $chapter8.chapter8_start.t055
-nobuhara: $chapter8.chapter8_start.t056
+nobuhara_nobag: $chapter8.chapter8_start.t055
+nobuhara_nobag: $chapter8.chapter8_start.t056
 
-@expr nobuhara relieved
+@expr nobuhara_nobag relieved
 
-nobuhara: $chapter8.chapter8_start.t057
-nobuhara: $chapter8.chapter8_start.t058
+nobuhara_nobag: $chapter8.chapter8_start.t057
+nobuhara_nobag: $chapter8.chapter8_start.t058
 
 player: $chapter8.chapter8_start.t059
 
-@expr nobuhara happy
+@expr nobuhara_nobag happy
 
-nobuhara: $chapter8.chapter8_start.t060
+nobuhara_nobag: $chapter8.chapter8_start.t060
 
-@hide nobuhara fade_out
+@hide nobuhara_nobag fade_out
 @wait 300
 
 sakura: $chapter8.chapter8_start.t061
@@ -188,19 +188,26 @@ sakura: $chapter8.chapter8_start.t063
 > $chapter8.chapter8_festival_open.t012
 > $chapter8.chapter8_festival_open.t013
 
+> $chapter8.chapter8_festival_open.t013f
+
 @show badminton_member_a center normal pop_in
 badminton_member_a: $chapter8.chapter8_festival_open.t013b
 player: $chapter8.chapter8_festival_open.t013c
-@expr badminton_member_a cheer
+@expr badminton_member_a surprised
 badminton_member_a: $chapter8.chapter8_festival_open.t013d
 player: $chapter8.chapter8_festival_open.t013e
 @hide badminton_member_a fade_out
+
+> $chapter8.chapter8_festival_open.t013g
+
 @wait 400
 
 @show teacher_male center serious fade_in
 @wait 300
 
 teacher_male: $chapter8.chapter8_festival_open.t013a
+
+> $chapter8.chapter8_festival_open.t013h
 
 @hide teacher_male fade_out
 @wait 400
@@ -501,6 +508,9 @@ classmate_female_a: $chapter8.chapter8_sakura_cafe.t096a
 sakura: $chapter8.chapter8_sakura_cafe.t096b
 
 classmate_female_a: $chapter8.chapter8_sakura_cafe.t096c
+
+@expr sakura_apron happy
+sakura: $chapter8.chapter8_sakura_cafe.t096d
 
 @hide classmate_female_a fade_out
 @wait 400
@@ -1255,23 +1265,23 @@ festival_committee: $chapter8.chapter8_branch.t015a
 @hide festival_committee fade_out
 @wait 400
 
-@show nobuhara right serious fade_in
+@show nobuhara_nobag right serious fade_in
 @wait 400
 
-nobuhara: $chapter8.chapter8_branch.t016
+nobuhara_nobag: $chapter8.chapter8_branch.t016
 
 player: $chapter8.chapter8_branch.t017
 
-nobuhara: $chapter8.chapter8_branch.t018
+nobuhara_nobag: $chapter8.chapter8_branch.t018
 
 player: $chapter8.chapter8_branch.t019
 
-nobuhara: $chapter8.chapter8_branch.t020
-nobuhara: $chapter8.chapter8_branch.t021
+nobuhara_nobag: $chapter8.chapter8_branch.t020
+nobuhara_nobag: $chapter8.chapter8_branch.t021
 
 @wait 400
 
-nobuhara: $chapter8.chapter8_branch.t022
+nobuhara_nobag: $chapter8.chapter8_branch.t022
 
 > $chapter8.chapter8_branch.t023
 > $chapter8.chapter8_branch.t024
@@ -1284,11 +1294,11 @@ nobuhara: $chapter8.chapter8_branch.t022
 
 player: $chapter8.chapter8_branch.t028
 
-@expr nobuhara relieved
+@expr nobuhara_nobag relieved
 
-nobuhara: $chapter8.chapter8_branch.t029
+nobuhara_nobag: $chapter8.chapter8_branch.t029
 
-@hide nobuhara fade_out
+@hide nobuhara_nobag fade_out
 @wait 500
 
 > $chapter8.chapter8_branch.t030

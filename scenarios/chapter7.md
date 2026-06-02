@@ -361,29 +361,29 @@ sakura: $chapter7.chapter7_festival.t017
 sakura: $chapter7.chapter7_festival.t018
 sakura: $chapter7.chapter7_festival.t019
 
-@show nobuhara center panic fade_in
+@show nobuhara_nobag center panic fade_in
 @wait 300
 
-nobuhara: $chapter7.chapter7_festival.t020
-nobuhara: $chapter7.chapter7_festival.t021
+nobuhara_nobag: $chapter7.chapter7_festival.t020
+nobuhara_nobag: $chapter7.chapter7_festival.t021
 
 player: $chapter7.chapter7_festival.t022
 
 kotoha: $chapter7.chapter7_festival.t023
 
-@expr nobuhara relieved
+@expr nobuhara_nobag relieved
 
-nobuhara: $chapter7.chapter7_festival.t024
+nobuhara_nobag: $chapter7.chapter7_festival.t024
 
 sakura: $chapter7.chapter7_festival.t025
 
-@expr nobuhara panic
+@expr nobuhara_nobag panic
 
-nobuhara: $chapter7.chapter7_festival.t026
+nobuhara_nobag: $chapter7.chapter7_festival.t026
 
 player: $chapter7.chapter7_festival.t027
 
-@hide nobuhara fade_out
+@hide nobuhara_nobag fade_out
 @wait 300
 
 > $chapter7.chapter7_festival.t028
@@ -424,8 +424,11 @@ player: $chapter7.chapter7_festival.t044b
 festival_committee: $chapter7.chapter7_festival.t044c
 player: $chapter7.chapter7_festival.t044d
 festival_committee: $chapter7.chapter7_festival.t044e
+festival_committee: $chapter7.chapter7_festival.t044f
 @hide festival_committee fade_out
 @wait 300
+
+> $chapter7.chapter7_festival.t044g
 
 @wait 500
 
@@ -541,30 +544,30 @@ sakura: $chapter7.chapter7_festival.t099
 > $chapter7.chapter7_festival.t100
 > $chapter7.chapter7_festival.t101
 
-@show nobuhara center tired fade_in
+@show nobuhara_nobag center tired fade_in
 @wait 300
 
-nobuhara: $chapter7.chapter7_festival.t102
-nobuhara: $chapter7.chapter7_festival.t103
+nobuhara_nobag: $chapter7.chapter7_festival.t102
+nobuhara_nobag: $chapter7.chapter7_festival.t103
 
 @expr sakura surprised
 
 sakura: $chapter7.chapter7_festival.t104
 
-@expr nobuhara happy
+@expr nobuhara_nobag happy
 
-nobuhara: $chapter7.chapter7_festival.t105
-nobuhara: $chapter7.chapter7_festival.t106
+nobuhara_nobag: $chapter7.chapter7_festival.t105
+nobuhara_nobag: $chapter7.chapter7_festival.t106
 
 player: $chapter7.chapter7_festival.t107
 
-nobuhara: $chapter7.chapter7_festival.t108
+nobuhara_nobag: $chapter7.chapter7_festival.t108
 
 @expr sakura happy
 
 sakura: $chapter7.chapter7_festival.t109
 
-@hide nobuhara fade_out
+@hide nobuhara_nobag fade_out
 @wait 400
 
 @hide_all fade_out

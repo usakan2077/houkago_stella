@@ -192,6 +192,22 @@ const VN_CONFIG = {
       charColor: 'rgba(232, 196, 120, 0.72)',
       expressions: ['normal', 'happy', 'panic', 'tired', 'relieved', 'serious'],
     },
+    nobuhara_sports: {
+      name: '延原晴人',
+      nameEn: 'Hareto Nobuhara',
+      nameColor: '#e8c478',
+      charColor: 'rgba(232, 196, 120, 0.72)',
+      // 体操服衣装。画像パス: assets/images/chars/nobuhara_sports/{expr}.png
+      expressions: ['normal', 'happy', 'panic', 'tired'],
+    },
+    nobuhara_nobag: {
+      name: '延原晴人',
+      nameEn: 'Hareto Nobuhara',
+      nameColor: '#e8c478',
+      charColor: 'rgba(232, 196, 120, 0.72)',
+      // 制服・かばん無し衣装（校内シーン用）。画像パス: assets/images/chars/nobuhara_nobag/{expr}.png
+      expressions: ['normal', 'happy', 'panic', 'tired', 'relieved', 'serious'],
+    },
     shin_child: {
       name: '慎',
       nameEn: 'Shin',

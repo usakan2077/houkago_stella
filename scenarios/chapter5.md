@@ -857,7 +857,7 @@ kotoha: $chapter5.chapter5_kotoha_scene.t022
 @bgm daily_life.mp3
 @wait 500
 
-@still vending_corner_evening fade_in
+@still vending_corner fade_in
 @wait 500
 > $chapter5.chapter5_mahiru_window.t000a
 > $chapter5.chapter5_mahiru_window.t000b
@@ -1109,7 +1109,7 @@ player: $chapter5.chapter5_after_school.t056
 
 # chapter5_end
 
-@scene commute_road_summer_evening fade
+@scene school_gate_summer_evening fade
 @bgm evening_piano.mp3
 @wait 600
 
@@ -1146,8 +1146,13 @@ nobuhara: $chapter5.chapter5_end.t015
 
 player: $chapter5.chapter5_end.t016
 
+> $chapter5.chapter5_end.t016a
+
 @hide nobuhara fade_out
 @wait 500
+
+@scene commute_road_summer_evening fade
+@wait 400
 
 > $chapter5.chapter5_end.t017
 > $chapter5.chapter5_end.t018

@@ -217,14 +217,6 @@ sakura: $chapter3.chapter3_start.t095
 @hide_all fade_out
 @wait 500
 
-@still vending_corner fade_in
-@wait 500
-> $chapter3.chapter3_start.t095a
-player: $chapter3.chapter3_start.t095b
-> $chapter3.chapter3_start.t095c
-@still_hide fade_out
-@wait 400
-
 @jump chapter3_lunch
 
 
@@ -234,8 +226,15 @@ player: $chapter3.chapter3_start.t095b
 
 # chapter3_lunch
 
+@still vending_corner fade_in
+@wait 500
+> $chapter3.chapter3_start.t095a
+player: $chapter3.chapter3_start.t095b
+> $chapter3.chapter3_start.t095c
+
 @scene rooftop fade
 @bgm rooftop_wind.mp3
+@still_hide fade_out
 @wait 800
 
 > $chapter3.chapter3_lunch.t001
