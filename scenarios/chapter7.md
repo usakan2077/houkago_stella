@@ -5,23 +5,12 @@
 
 # chapter7_start
 
-@scene classroom fade
+@scene corridor fade
 @bgm spring_breeze.mp3
-@se school_bell.mp3
 @wait 1000
 
-> $chapter7.chapter7_start.t001
-> $chapter7.chapter7_start.t002
-
-> $chapter7.chapter7_start.t003
-
-> $chapter7.chapter7_start.t004
-> $chapter7.chapter7_start.t005
-> $chapter7.chapter7_start.t006
-> $chapter7.chapter7_start.t007
-
-@scene corridor fade
-@wait 500
+> $chapter7.chapter7_start.t000a
+> $chapter7.chapter7_start.t000b
 
 @still vending_corner fade_in
 @wait 900
@@ -34,7 +23,18 @@ player: $chapter7.chapter7_start.t007c
 @wait 300
 
 @scene classroom fade
+@se school_bell.mp3
 @wait 700
+
+> $chapter7.chapter7_start.t001
+> $chapter7.chapter7_start.t002
+
+> $chapter7.chapter7_start.t003
+
+> $chapter7.chapter7_start.t004
+> $chapter7.chapter7_start.t005
+> $chapter7.chapter7_start.t006
+> $chapter7.chapter7_start.t007
 
 @show sakura right happy fade_in
 @show kotoha left normal fade_in
@@ -148,6 +148,10 @@ sakura: $chapter7.chapter7_start.t044
 
 @show teacher_male center normal fade_in
 teacher_male: $chapter7.chapter7_festival_lunch.t004a
+nobuhara: $chapter7.chapter7_festival_lunch.t004a1
+teacher_male: $chapter7.chapter7_festival_lunch.t004a2
+nobuhara: $chapter7.chapter7_festival_lunch.t004a3
+teacher_male: $chapter7.chapter7_festival_lunch.t004a4
 > $chapter7.chapter7_festival_lunch.t004b
 @expr teacher_male smile
 teacher_male: $chapter7.chapter7_festival_lunch.t004c
