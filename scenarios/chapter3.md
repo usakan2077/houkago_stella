@@ -226,6 +226,9 @@ sakura: $chapter3.chapter3_start.t095
 
 # chapter3_lunch
 
+@scene corridor fade
+@wait 400
+
 @still vending_corner fade_in
 @wait 500
 > $chapter3.chapter3_start.t095a

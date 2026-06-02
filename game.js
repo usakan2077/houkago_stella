@@ -3393,12 +3393,34 @@ class VNEngine {
       { label: '── バッドエンド',                 key: 'bad_end_common' },
     ];
 
+    // サブキャラが登場するシーン（デバッグ確認用）。ラベル先頭にジャンプ。
+    const subcharScenes = [
+      { label: 'Ch1 朝の校門',       who: '延原（初登場・プリント）',          key: 'chapter1_morning_gate' },
+      { label: 'Ch1 ホームルーム',   who: '担任・延原（連絡＋傘ネタ）・転入生', key: 'chapter1_homeroom' },
+      { label: 'Ch1 最後の教室',     who: '慎（回想・夕方の教室）',            key: 'chapter1_last_classroom' },
+      { label: 'Ch2 体育',           who: '延原（体操服・PE）',                key: 'chapter2_pe' },
+      { label: 'Ch3 昼休み（屋上前）', who: '自販機天丼①（売切）',             key: 'chapter3_lunch' },
+      { label: 'Ch3 図書室',         who: 'クラスメイト女（誤読）',            key: 'chapter3_library' },
+      { label: 'Ch4 帰り道（章末）', who: '慎（回想・スチル）',                key: 'chapter4_end' },
+      { label: 'Ch5 まひる窓辺',     who: '自販機天丼②（最後の一本）',        key: 'chapter5_mahiru_window' },
+      { label: 'Ch5 帰り道（章末）', who: '延原（荷物・倒れてから〜）',        key: 'chapter5_end' },
+      { label: 'Ch6 さくら体育館',   who: 'バド部員A/B・橋本先輩',             key: 'chapter6_sakura_gym' },
+      { label: 'Ch7 朝',             who: '自販機天丼③（達観オチ）',          key: 'chapter7_start' },
+      { label: 'Ch7 文化祭前日昼',   who: '担任（傘14本・着地）',              key: 'chapter7_festival_lunch' },
+      { label: 'Ch7 文化祭準備',     who: '延原×2・実行委員・クラス男',        key: 'chapter7_festival' },
+      { label: 'Ch8 当日朝',         who: '延原（会計係）',                    key: 'chapter8_start' },
+      { label: 'Ch8 開場',           who: '担任（雨天連絡）・バド部員（反転）', key: 'chapter8_festival_open' },
+      { label: 'Ch8 さくらカフェ',   who: 'クラスメイト女（助けて→助け返す）', key: 'chapter8_sakura_cafe' },
+      { label: 'Ch8 分岐前',         who: '実行委員・延原（こっちは俺がやる）', key: 'chapter8_branch' },
+    ];
+
     const overlay = document.createElement('div');
     overlay.id = 'debug-jump-overlay';
     overlay.style.cssText = [
       'position:fixed;inset:0;z-index:1000000;',
       'background:rgba(0,0,0,.78);',
-      'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;',
+      'display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;',
+      'overflow-y:auto;padding:24px 12px;',
     ].join('');
 
     const title = document.createElement('div');
@@ -3420,6 +3442,30 @@ class VNEngine {
       btn.addEventListener('click', () => {
         overlay.remove();
         this._startFromLabel(ch.key);
+      });
+      overlay.appendChild(btn);
+    }
+
+    // ── サブキャラ登場シーン ──
+    const subTitle = document.createElement('div');
+    subTitle.textContent = '── サブキャラ登場シーン ──';
+    subTitle.style.cssText = 'color:#9fe;font-size:.95em;font-family:monospace;margin:14px 0 4px;';
+    overlay.appendChild(subTitle);
+
+    for (const sc of subcharScenes) {
+      const btn = document.createElement('button');
+      btn.innerHTML = `${sc.label}<span style="opacity:.55;font-size:.78em;margin-left:8px;">${sc.who}</span>`;
+      btn.style.cssText = [
+        'width:420px;padding:8px 16px;text-align:left;',
+        'background:rgba(120,220,200,.06);border:1px solid rgba(150,230,210,.25);',
+        'color:#dfe;font-size:.9em;font-family:monospace;cursor:pointer;',
+        'transition:background .15s;',
+      ].join('');
+      btn.onmouseenter = () => { btn.style.background = 'rgba(150,230,210,.18)'; };
+      btn.onmouseleave = () => { btn.style.background = 'rgba(120,220,200,.06)'; };
+      btn.addEventListener('click', () => {
+        overlay.remove();
+        this._startFromLabel(sc.key);
       });
       overlay.appendChild(btn);
     }
@@ -3453,6 +3499,7 @@ class VNEngine {
       kotoha_interlude:  { kotoha_favor: 12 },
       mahiru_interlude:  { mahiru_favor: 12 },
       chapter8_start:    { sakura_favor: 10, kotoha_favor: 10, mahiru_favor: 10 },
+      chapter8_branch:   { sakura_favor: 10, kotoha_favor: 10, mahiru_favor: 10 },
     };
     if (favorPresets[label]) Object.assign(this.flags, favorPresets[label]);
     this._gotoLabel(label);

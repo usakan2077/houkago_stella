@@ -169,6 +169,10 @@ player: $chapter1.start.t043
 @wait 300
 
 nobuhara: $chapter1.chapter1_morning_gate.t012
+
+> $chapter1.chapter1_morning_gate.t012a
+> $chapter1.chapter1_morning_gate.t012b
+
 nobuhara: $chapter1.chapter1_morning_gate.t013
 
 player: $chapter1.chapter1_morning_gate.t014
@@ -279,6 +283,11 @@ sakura: $chapter1.chapter1_morning_gate.t051
 @wait 300
 
 teacher_male: $chapter1.chapter1_homeroom.t005
+
+nobuhara: $chapter1.chapter1_homeroom.t005a
+teacher_male: $chapter1.chapter1_homeroom.t005b
+nobuhara: $chapter1.chapter1_homeroom.t005c
+> $chapter1.chapter1_homeroom.t005d
 
 @expr teacher_male serious
 teacher_male: $chapter1.chapter1_homeroom.t006

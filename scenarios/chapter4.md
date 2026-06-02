@@ -307,16 +307,6 @@ mahiru: $chapter4.chapter4_mahiru_corridor.t071
 > $chapter4.chapter4_mahiru_corridor.t078
 > $chapter4.chapter4_mahiru_corridor.t079
 
-@hide_all fade_out
-@wait 400
-
-@show teacher_male center normal fade_in
-teacher_male: $chapter4.chapter4_mahiru_corridor.t079a
-@expr teacher_male serious
-teacher_male: $chapter4.chapter4_mahiru_corridor.t079b
-@hide teacher_male fade_out
-@wait 300
-
 @jump chapter4_music_room
 
 

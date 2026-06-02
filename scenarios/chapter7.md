@@ -20,13 +20,21 @@
 > $chapter7.chapter7_start.t006
 > $chapter7.chapter7_start.t007
 
+@scene corridor fade
+@wait 500
+
+@still vending_corner fade_in
+@wait 900
 @still vending_soldout fade_in
 @wait 500
 > $chapter7.chapter7_start.t007a
 > $chapter7.chapter7_start.t007b
 player: $chapter7.chapter7_start.t007c
 @still_hide fade_out
-@wait 400
+@wait 300
+
+@scene classroom fade
+@wait 700
 
 @show sakura right happy fade_in
 @show kotoha left normal fade_in
