@@ -274,7 +274,7 @@ const VN_CONFIG = {
       expressions: ['normal', 'laugh', 'serious'],
     },
     classmate_male_a: {
-      scale: 1.25,
+      scale: 1.66,
       offsetY: 63,
       name: 'クラスメイト',
       nameEn: 'Classmate',

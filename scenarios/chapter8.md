@@ -361,7 +361,7 @@ player: $chapter8.chapter8_sakura_cafe.t027
 > $chapter8.chapter8_sakura_cafe.t034
 > $chapter8.chapter8_sakura_cafe.t035
 
-@show classmate_female_a left work fade_in
+@show classmate_female_a left normal fade_in
 classmate_female_a: $chapter8.chapter8_sakura_cafe.t035a
 
 @expr sakura_apron normal
