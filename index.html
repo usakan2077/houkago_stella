@@ -295,13 +295,15 @@
         <button class="title-btn" id="btn-newgame">NEW  GAME</button>
         <button class="title-btn" id="btn-continue">CONTINUE</button>
         <button class="title-btn" id="btn-gallery">CG GALLERY</button>
-        <div id="title-language-switch" class="language-switch" aria-label="Language">
-          <button class="language-btn" type="button" data-language="ja">日本語</button>
-          <button class="language-btn" type="button" data-language="en">English</button>
-        </div>
+        <button class="title-btn" id="btn-title-settings">CONFIG</button>
         <!-- DEBUG: 後で削除 -->
         <button class="title-btn" id="btn-debug" style="margin-top:1.2em;opacity:.55;font-size:.78em;letter-spacing:.15em;display:none;">⚙ DEBUG JUMP</button>
       </nav>
+    </div>
+    <!-- 言語切り替え: 右下隅のコンパクトトグル -->
+    <div id="title-language-switch" class="language-switch" aria-label="Language">
+      <button class="language-btn" type="button" data-language="ja">日本語</button>
+      <button class="language-btn" type="button" data-language="en">EN</button>
     </div>
   </div>
 
@@ -518,6 +520,7 @@
           </div>
         </div>
       </div>
+      <button class="danger-btn" id="btn-reset-progress" data-i18n="settings.resetProgress">進行状況を初期化</button>
       <button class="modal-close-btn" id="btn-settings-close">閉じる</button>
     </div>
   </div>

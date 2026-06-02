@@ -602,6 +602,7 @@ class VNEngine {
     on('btn-newgame',  'click', () => this._startNewGame());
     on('btn-continue', 'click', () => this._openSaveLoad('load'));
     on('btn-gallery',  'click', () => this._openGallery());
+    on('btn-title-settings', 'click', () => this._openSettings());
     document.querySelectorAll('#title-language-switch [data-language]').forEach(btn => {
       btn.addEventListener('click', () => this._setLanguage(btn.dataset.language));
     });
@@ -778,6 +779,7 @@ class VNEngine {
     on('btn-log-close',      'click', () => document.getElementById('log-modal').classList.add('hidden'));
     on('btn-gallery-close',  'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
     on('btn-settings-close', 'click', () => document.getElementById('settings-modal').classList.add('hidden'));
+    on('btn-reset-progress', 'click', () => this._showConfirm(this._t('settings.resetConfirm'), () => this._resetProgress()));
     on('btn-ending-title',  'click', () => this._returnFromEndingToTitle());
     on('btn-next-chapter',  'click', () => this._continueToNextChapter());
     on('btn-credits-skip',  'click', () => this._skipCredits());
@@ -2244,6 +2246,23 @@ class VNEngine {
     document.getElementById('btn-confirm-no').addEventListener('click', () => {
       cleanup(); if (onCancel) onCancel();
     }, { once: true });
+  }
+
+  /**
+   * 進行状況の初期化：セーブスロット（クイック＋1〜10）とギャラリー解放状況を削除。
+   * 設定（音量・速度・言語・ウィンドウ色など vn_ 系の設定キー）は残す。
+   * 取り消し不可のため、必ず _showConfirm を通して呼ぶこと。
+   */
+  _resetProgress() {
+    const keys = ['vn_save_quick', 'vn_seen_stills', 'vn_seen_good_ends'];
+    for (let i = 1; i <= 10; i++) keys.push(`vn_save_${i}`);
+    keys.forEach(k => localStorage.removeItem(k));
+    // メモリ上の解放状況もクリア
+    this.seenStills    = new Set();
+    this.seenGoodEnds  = new Set();
+    this._showToast(this._t('settings.resetDone'));
+    // タイトルのCONTINUE可否・ギャラリーロック等を確実に反映するためリロード
+    setTimeout(() => location.reload(), 900);
   }
 
   _showToast(msg) {
