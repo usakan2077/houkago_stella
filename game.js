@@ -1433,6 +1433,9 @@ class VNEngine {
     // キャラ画像はすべて PNG
     const imgEl = new Image();
     imgEl.alt = cfg.name;
+    // 立ち絵の表示倍率・接地オフセット（キャラ間のサイズ差を吸収）
+    imgEl.style.transformOrigin = '50% 100%';
+    imgEl.style.transform = `translateY(${cfg.offsetY || 0}px) scale(${cfg.scale || 1})`;
     imgEl.onerror = () => {
       // PNG が見つからない場合のみプレースホルダー
       const ph = document.createElement('div');
@@ -1536,8 +1539,11 @@ class VNEngine {
         const sprite = slot?.querySelector('.char-sprite');
         if (!sprite) return;
 
+        const cfg = VN_CONFIG.characters[charKey] || {};
         const imgEl = new Image();
         imgEl.alt = charKey;
+        imgEl.style.transformOrigin = '50% 100%';
+        imgEl.style.transform = `translateY(${cfg.offsetY || 0}px) scale(${cfg.scale || 1})`;
         imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
         // 新画像を先に追加してから旧画像を削除（空白フレームを防ぐ）
         const swap = () => {

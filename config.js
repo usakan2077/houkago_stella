@@ -147,6 +147,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'surprised', 'thinking'],
     },
     mahiru: {
+      scale: 1.15,
+      offsetY: 114,
       name: '月夜野まひる',
       nameEn: 'Mahiru Tsukiyono',
       nameColor: '#88ddaa',
@@ -154,6 +156,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'happy', 'sad', 'crying', 'surprised', 'thinking', 'shy'],
     },
     mahiru_sports: {
+      scale: 1.15,
+      offsetY: 114,
       name: '月夜野まひる',
       nameEn: 'Mahiru Tsukiyono',
       nameColor: '#88ddaa',
@@ -162,6 +166,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'happy'],
     },
     mahiru_private: {
+      scale: 1.15,
+      offsetY: 114,
       name: '月夜野まひる',
       nameEn: 'Mahiru Tsukiyono',
       nameColor: '#88ddaa',
@@ -170,6 +176,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'happy', 'sad', 'surprised', 'thinking'],
     },
     mahiru_no_camera: {
+      scale: 1.15,
+      offsetY: 114,
       name: '月夜野まひる',
       nameEn: 'Mahiru Tsukiyono',
       nameColor: '#88ddaa',
@@ -186,6 +194,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'happy', 'excited', 'blank'],
     },
     nobuhara: {
+      scale: 1.21,
+      offsetY: 114,
       name: '延原晴人',
       nameEn: 'Hareto Nobuhara',
       nameColor: '#e8c478',
@@ -193,6 +203,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'happy', 'panic', 'tired', 'relieved', 'serious'],
     },
     nobuhara_sports: {
+      scale: 1.21,
+      offsetY: 114,
       name: '延原晴人',
       nameEn: 'Hareto Nobuhara',
       nameColor: '#e8c478',
@@ -201,6 +213,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'happy', 'panic', 'tired'],
     },
     nobuhara_nobag: {
+      scale: 1.21,
+      offsetY: 114,
       name: '延原晴人',
       nameEn: 'Hareto Nobuhara',
       nameColor: '#e8c478',
@@ -209,6 +223,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'happy', 'panic', 'tired', 'relieved', 'serious'],
     },
     shin_child: {
+      scale: 1.3,
+      offsetY: 150,
       name: '慎',
       nameEn: 'Shin',
       nameColor: '#d8b070',
@@ -216,6 +232,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'smile', 'forced_smile', 'tired', 'back'],
     },
     teacher_male: {
+      scale: 1.12,
+      offsetY: 0,
       name: '担任',
       nameEn: 'Homeroom Teacher',
       nameColor: '#b8c0cc',
@@ -223,6 +241,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'stern', 'smile', 'serious'],
     },
     hashimoto: {
+      scale: 1.3,
+      offsetY: 112,
       name: '橋本先輩',
       nameEn: 'Hashimoto-senpai',
       nameColor: '#f0b070',
@@ -230,6 +250,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'smile', 'serious', 'relieved'],
     },
     badminton_member_a: {
+      scale: 1.24,
+      offsetY: 122,
       name: 'バドミントン部員',
       nameEn: 'Badminton Club Member',
       nameColor: '#ffb4c8',
@@ -237,6 +259,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'cheer', 'surprised', 'serious'],
     },
     badminton_member_b: {
+      scale: 1.22,
+      offsetY: 112,
       name: 'バドミントン部員',
       nameEn: 'Badminton Club Member',
       nameColor: '#ffc0d0',
@@ -244,6 +268,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'laugh', 'serious'],
     },
     classmate_male_a: {
+      scale: 1.27,
+      offsetY: 91,
       name: 'クラスメイト',
       nameEn: 'Classmate',
       nameColor: '#c8d0e8',
@@ -251,6 +277,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'laugh', 'work'],
     },
     classmate_female_a: {
+      scale: 1.26,
+      offsetY: 101,
       name: 'クラスメイト',
       nameEn: 'Classmate',
       nameColor: '#e8c8d8',
@@ -258,6 +286,8 @@ const VN_CONFIG = {
       expressions: ['normal', 'smile', 'surprised', 'work'],
     },
     festival_committee: {
+      scale: 1.13,
+      offsetY: 55,
       name: '文化祭実行委員',
       nameEn: 'Festival Committee Member',
       nameColor: '#d8c890',

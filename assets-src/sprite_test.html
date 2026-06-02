@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立ち絵サイズ比較テスト — 放課後のステラ</title>
+<!-- ゲーム設定を流用してキャラ/背景を自動列挙 -->
+<script src="../config.js"></script>
+<style>
+  :root { --bg:#1a1d24; --panel:#242833; --line:#3a4150; --accent:#ff88aa; --text:#e8e8ec; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family: system-ui, "Segoe UI", "Yu Gothic UI", sans-serif; font-size:13px; }
+  h1 { font-size:16px; margin:0; padding:10px 14px; background:#11131a; border-bottom:1px solid var(--line); }
+  .wrap { display:flex; gap:14px; padding:14px; align-items:flex-start; flex-wrap:wrap; }
+  .col { display:flex; flex-direction:column; gap:12px; }
+
+  /* ===== ステージ（ゲーム実寸 1280x720 を再現） ===== */
+  #stageScaler { background:#000; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  #stage {
+    position:relative; width:1280px; height:720px;
+    transform-origin: top left;
+    background:#2b3a4a; overflow:hidden;
+  }
+  #stage .bg { position:absolute; inset:0; background-size:cover; background-position:center; }
+  /* ゲームの .character-slot を忠実再現 */
+  .character-slot { position:absolute; bottom:0; width:420px; height:720px; }
+  #slot-left   { left:60px; }
+  #slot-center { left:50%; transform:translateX(-50%); }
+  #slot-right  { right:60px; }
+  .char-sprite { width:100%; height:100%; display:flex; align-items:flex-end; justify-content:center; }
+  .char-sprite img {
+    max-width:100%; max-height:100%; object-fit:contain; object-position:bottom; display:block;
+    transform-origin: 50% 100%;   /* 下端中央を軸に拡縮（接地維持） */
+  }
+  /* ガイド線 */
+  .guides { position:absolute; inset:0; pointer-events:none; }
+  .guides .gline { position:absolute; left:0; right:0; height:0; border-top:1px dashed rgba(255,255,255,.35); }
+  .guides .gline span { position:absolute; left:6px; top:-16px; font-size:11px; color:rgba(255,255,255,.6); background:rgba(0,0,0,.4); padding:0 4px; }
+  .guides .vline { position:absolute; top:0; bottom:0; width:0; border-left:1px dashed rgba(255,255,255,.25); left:50%; }
+  .guides .head { border-top-color:rgba(255,136,170,.8); }
+  .guides .head span { color:#ffaecb; }
+
+  /* ===== コントロール ===== */
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:12px; width:340px; }
+  .panel h2 { font-size:13px; margin:0 0 8px; color:var(--accent); }
+  .slotctl { border:1px solid var(--line); border-radius:5px; padding:8px; margin-bottom:8px; }
+  .slotctl .row { display:flex; align-items:center; gap:6px; margin:4px 0; }
+  .slotctl label { width:54px; color:#aab; flex:none; }
+  select, input[type=range] { background:#1b1e26; color:var(--text); border:1px solid var(--line); border-radius:4px; }
+  select { padding:3px; flex:1; }
+  input[type=range] { flex:1; }
+  .val { width:52px; text-align:right; font-variant-numeric:tabular-nums; color:#ffd; }
+  .toolbar { display:flex; gap:14px; align-items:center; flex-wrap:wrap; padding:8px 14px; background:#11131a; border-bottom:1px solid var(--line); }
+  .toolbar label { color:#aab; }
+  button { background:#30364a; color:var(--text); border:1px solid var(--line); border-radius:4px; padding:5px 10px; cursor:pointer; }
+  button:hover { background:#3c455e; }
+  textarea { width:100%; height:160px; background:#11131a; color:#cfe; border:1px solid var(--line); border-radius:4px; font-family:ui-monospace,Consolas,monospace; font-size:12px; padding:8px; }
+
+  /* ===== 全キャラ並べ比較 ===== */
+  #compare { display:none; }
+  #compare.on { display:block; }
+  #strip { display:flex; gap:2px; overflow-x:auto; background:#0d0f15; border:1px solid var(--line); border-radius:6px; padding:0; position:relative; }
+  .cell { position:relative; flex:none; width:150px; height:430px; display:flex; align-items:flex-end; justify-content:center; border-right:1px solid #181b22; cursor:pointer; }
+  .cell img { max-width:100%; max-height:100%; object-fit:contain; object-position:bottom; transform-origin:50% 100%; }
+  .cell .nm { position:absolute; bottom:2px; left:0; right:0; text-align:center; font-size:10px; color:#9af; background:rgba(0,0,0,.55); padding:1px 0; }
+  .cell .sc { position:absolute; top:2px; left:0; right:0; text-align:center; font-size:10px; color:#ffd; }
+  .cell.main { outline:2px solid var(--accent); outline-offset:-2px; }
+  #stripGuides { position:absolute; inset:0; pointer-events:none; }
+  #stripGuides .g { position:absolute; left:0; right:0; border-top:1px dashed rgba(255,136,170,.6); }
+  .hint { color:#889; font-size:12px; line-height:1.6; }
+  code { background:#11131a; padding:1px 4px; border-radius:3px; color:#cfe; }
+</style>
+</head>
+<body>
+<h1>立ち絵サイズ比較テスト　<span style="color:#889;font-weight:normal;font-size:12px;">— サブキャラとヒロインの大きさバランス調整用</span></h1>
+
+<div class="toolbar">
+  <span><label>背景</label> <select id="bgSel"></select></span>
+  <span><label>ステージ表示</label> <select id="zoomSel">
+    <option value="fit">自動フィット</option><option value="1">100%</option>
+    <option value="0.8">80%</option><option value="0.6">60%</option><option value="0.5">50%</option>
+  </select></span>
+  <span><label><input type="checkbox" id="guideChk" checked> ガイド線</label></span>
+  <span>頭ライン <input type="range" id="headLine" min="0" max="100" value="14" style="width:120px;vertical-align:middle"> <span id="headLineV" class="val">14%</span></span>
+  <span><label><input type="checkbox" id="cmpChk"> 全キャラ並べて比較</label></span>
+  <button id="resetAll">全リセット</button>
+</div>
+
+<div class="wrap">
+  <div class="col">
+    <div id="stageScaler"><div id="stage">
+      <div class="bg" id="bgLayer"></div>
+      <div class="character-slot" id="slot-left"><div class="char-sprite"><img id="img-left"></div></div>
+      <div class="character-slot" id="slot-center"><div class="char-sprite"><img id="img-center"></div></div>
+      <div class="character-slot" id="slot-right"><div class="char-sprite"><img id="img-right"></div></div>
+      <div class="guides" id="guides">
+        <div class="vline"></div>
+        <div class="gline head" id="gHead" style="top:14%"><span>頭ライン（基準）</span></div>
+        <div class="gline" style="bottom:0"><span>接地（床）</span></div>
+      </div>
+    </div></div>
+
+    <div id="compare">
+      <div class="hint">全キャラを下端そろえで一覧。ピンクの線＝頭の高さ基準。線からはみ出す／届かないキャラが「浮いている」＝倍率調整候補。クリックで中央スロットに読込。</div>
+      <div id="strip"><div id="stripGuides"></div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>スロット別 調整</h2>
+    <div id="slotControls"></div>
+
+    <h2 style="margin-top:14px;">調整値の出力（config用）</h2>
+    <div class="hint" style="margin-bottom:6px;">既定（倍率1.00 / オフセット0）から変えたキャラだけ出力されます。</div>
+    <textarea id="out" readonly></textarea>
+    <div style="margin-top:6px; display:flex; gap:8px;">
+      <button id="copyBtn">コピー</button>
+      <button id="dumpAll">全キャラ書き出し</button>
+    </div>
+
+    <details style="margin-top:12px;">
+      <summary style="cursor:pointer;color:#9af;">ゲームへの反映方法（奥行き＝倍率）</summary>
+      <div class="hint" style="margin-top:8px;">
+        各キャラに表示倍率 <code>scale</code> と接地オフセット <code>offsetY</code> を持たせ、<br>
+        <code>game.js</code> の <code>_showChar</code> でスプライト img に<br>
+        <code>transform: translateY(offsetY) scale(scale)</code>（origin 下端中央）を適用すれば、<br>
+        このページの見た目がそのままゲームに乗ります。<br>
+        ※ヒロインを 1.00 基準にして、サブキャラを 0.8〜0.95 程度へ落とすのが定石。
+      </div>
+    </details>
+  </div>
+</div>
+
+<script>
+const ROOT  = (typeof VN_CONFIG !== 'undefined') ? VN_CONFIG : {};
+const CHARS = ROOT.characters || {};
+const BGS   = ROOT.backgrounds || {};
+const BGEXT = ROOT.backgroundExtOverrides || {};
+const charKeys = Object.keys(CHARS);
+if (!charKeys.length) {
+  document.body.insertAdjacentHTML('afterbegin',
+    '<div style="background:#a33;color:#fff;padding:10px;font-size:14px">config.js を読み込めませんでした。'
+    + 'プロジェクト直下でサーバーを起動し <code>http://localhost:8080/assets-src/sprite_test.html</code> の形で開いてください'
+    + '（file:// で直接開くと config.js のパスが解決できません）。</div>');
+}
+
+// 調整状態 key -> {scale, offsetY}
+const adj = {};
+const getAdj = k => (adj[k] ||= { scale:1, offsetY:0 });
+
+const charImg = (k, expr) => `../assets/images/chars/${k}/${expr||(CHARS[k].expressions?.[0]||'normal')}.png`;
+
+// ---- 背景 ----
+const bgSel = document.getElementById('bgSel');
+bgSel.innerHTML = `<option value="">（背景なし・グレー）</option>` +
+  Object.keys(BGS).map(k=>`<option value="${k}">${k}</option>`).join('');
+// よく使う教室をデフォルトに
+['classroom','classroom_festival_prep','gymnasium','corridor'].forEach(d=>{ if(BGS[d]) bgSel.value=d; });
+function applyBg(){
+  const k = bgSel.value, el = document.getElementById('bgLayer');
+  if(!k){ el.style.backgroundImage=''; el.style.background='#2b3a4a'; return; }
+  const ext = BGEXT[k] || '.webp';
+  // webp(or override)→png→jpg→gradientフォールバック
+  const tryList = [ext, '.webp', '.png', '.jpg'].filter((v,i,a)=>a.indexOf(v)===i);
+  let i=0;
+  const test = () => {
+    if(i>=tryList.length){ el.style.backgroundImage=''; el.style.background = BGS[k]; return; }
+    const src = `../assets/images/bg/${k}${tryList[i]}`;
+    const im = new Image();
+    im.onload = ()=>{ el.style.backgroundImage=`url(${src})`; el.style.background=`url(${src}) center/cover`; };
+    im.onerror = ()=>{ i++; test(); };
+    im.src = src;
+  };
+  test();
+}
+bgSel.onchange = applyBg;
+
+// ---- ステージズーム ----
+const scaler = document.getElementById('stageScaler');
+const stage = document.getElementById('stage');
+function applyZoom(){
+  let z = document.getElementById('zoomSel').value;
+  if(z==='fit'){
+    const avail = Math.min(window.innerWidth - 400, 1280);
+    z = Math.max(0.4, Math.min(1, avail/1280));
+  } else z = parseFloat(z);
+  stage.style.transform = `scale(${z})`;
+  scaler.style.width = (1280*z)+'px';
+  scaler.style.height = (720*z)+'px';
+}
+document.getElementById('zoomSel').onchange = applyZoom;
+window.onresize = ()=>{ if(document.getElementById('zoomSel').value==='fit') applyZoom(); };
+
+// ---- ガイド ----
+const guideChk = document.getElementById('guideChk');
+guideChk.onchange = ()=> document.getElementById('guides').style.display = guideChk.checked?'block':'none';
+const headLine = document.getElementById('headLine');
+headLine.oninput = ()=>{
+  document.getElementById('headLineV').textContent = headLine.value+'%';
+  document.getElementById('gHead').style.top = headLine.value+'%';
+  document.querySelectorAll('#stripGuides .g').forEach(g=> g.style.top = headLine.value+'%');
+};
+
+// ---- スロット ----
+const SLOTS = ['left','center','right'];
+const slotState = { left:null, center:'sakura', right:null };
+function charOptions(sel){
+  return `<option value="">（なし）</option>` + charKeys.map(k=>`<option value="${k}" ${k===sel?'selected':''}>${k}　[${CHARS[k].name||''}]</option>`).join('');
+}
+function exprOptions(k, sel){
+  const ex = (CHARS[k]&&CHARS[k].expressions)||['normal'];
+  return ex.map(e=>`<option value="${e}" ${e===sel?'selected':''}>${e}</option>`).join('');
+}
+const slotExpr = { left:null, center:null, right:null };
+function buildSlotControls(){
+  const wrap = document.getElementById('slotControls');
+  wrap.innerHTML = SLOTS.map(s=>{
+    const k = slotState[s];
+    const a = k?getAdj(k):{scale:1,offsetY:0};
+    return `<div class="slotctl" data-slot="${s}">
+      <div class="row"><label>${s}</label><select class="cSel">${charOptions(k)}</select></div>
+      <div class="row"><label>表情</label><select class="eSel" ${k?'':'disabled'}>${k?exprOptions(k,slotExpr[s]):''}</select></div>
+      <div class="row"><label>倍率</label><input type="range" class="sSl" min="0.4" max="1.6" step="0.01" value="${a.scale}" ${k?'':'disabled'}><span class="val sV">${a.scale.toFixed(2)}</span></div>
+      <div class="row"><label>接地Y</label><input type="range" class="oSl" min="-250" max="150" step="1" value="${a.offsetY}" ${k?'':'disabled'}><span class="val oV">${a.offsetY}</span></div>
+    </div>`;
+  }).join('');
+  wrap.querySelectorAll('.slotctl').forEach(div=>{
+    const s = div.dataset.slot;
+    div.querySelector('.cSel').onchange = e=>{ slotState[s]=e.target.value||null; slotExpr[s]=null; buildSlotControls(); renderStage(); };
+    const eSel=div.querySelector('.eSel'); if(eSel) eSel.onchange = e=>{ slotExpr[s]=e.target.value; renderStage(); };
+    const k = slotState[s];
+    div.querySelector('.sSl').oninput = e=>{ if(!k)return; getAdj(k).scale=parseFloat(e.target.value); div.querySelector('.sV').textContent=parseFloat(e.target.value).toFixed(2); renderStage(); renderStrip(); writeOut(); };
+    div.querySelector('.oSl').oninput = e=>{ if(!k)return; getAdj(k).offsetY=parseInt(e.target.value); div.querySelector('.oV').textContent=e.target.value; renderStage(); renderStrip(); writeOut(); };
+  });
+}
+function renderStage(){
+  SLOTS.forEach(s=>{
+    const img = document.getElementById('img-'+s);
+    const k = slotState[s];
+    if(!k){ img.style.display='none'; img.src=''; return; }
+    img.style.display='block';
+    img.src = charImg(k, slotExpr[s]);
+    const a = getAdj(k);
+    img.style.transform = `translateY(${a.offsetY}px) scale(${a.scale})`;
+  });
+}
+
+// ---- 全キャラ比較ストリップ ----
+const cmpChk = document.getElementById('cmpChk');
+cmpChk.onchange = ()=>{ document.getElementById('compare').classList.toggle('on', cmpChk.checked); if(cmpChk.checked) renderStrip(); };
+function renderStrip(){
+  const strip = document.getElementById('strip');
+  // 既存セル削除（ガイドは残す）
+  strip.querySelectorAll('.cell').forEach(c=>c.remove());
+  charKeys.forEach(k=>{
+    const a = getAdj(k);
+    const cell = document.createElement('div');
+    cell.className = 'cell' + (k===slotState.center?' main':'');
+    cell.innerHTML = `<div class="sc">×${a.scale.toFixed(2)}</div><img src="${charImg(k)}"><div class="nm">${k}</div>`;
+    cell.querySelector('img').style.transform = `scale(${a.scale})`;
+    cell.onclick = ()=>{ slotState.center=k; slotExpr.center=null; buildSlotControls(); renderStage(); renderStrip(); };
+    strip.appendChild(cell);
+  });
+  // 頭ガイド
+  let g = document.querySelector('#stripGuides .g');
+  if(!g){ g=document.createElement('div'); g.className='g'; document.getElementById('stripGuides').appendChild(g); }
+  g.style.top = headLine.value+'%';
+}
+
+// ---- 出力 ----
+function writeOut(){
+  const o = {};
+  charKeys.forEach(k=>{ const a=adj[k]; if(a && (a.scale!==1 || a.offsetY!==0)) o[k]={scale:+a.scale.toFixed(3), offsetY:a.offsetY}; });
+  document.getElementById('out').value = JSON.stringify(o, null, 2);
+}
+document.getElementById('copyBtn').onclick = ()=>{ navigator.clipboard.writeText(document.getElementById('out').value); };
+document.getElementById('dumpAll').onclick = ()=>{
+  const o={}; charKeys.forEach(k=>{ const a=getAdj(k); o[k]={scale:+a.scale.toFixed(3), offsetY:a.offsetY}; });
+  document.getElementById('out').value = JSON.stringify(o,null,2);
+};
+document.getElementById('resetAll').onclick = ()=>{ charKeys.forEach(k=>{ adj[k]={scale:1,offsetY:0}; }); buildSlotControls(); renderStage(); renderStrip(); writeOut(); };
+
+// init
+applyBg(); applyZoom(); buildSlotControls(); renderStage(); writeOut();
+</script>
+</body>
+</html>
