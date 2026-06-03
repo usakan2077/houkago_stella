@@ -2260,9 +2260,11 @@ class VNEngine {
     // メモリ上の解放状況もクリア
     this.seenStills    = new Set();
     this.seenGoodEnds  = new Set();
+    // タイトル背景（全ルート制覇後の変化）を即座に元へ戻す。
+    // CONTINUEは空スロット表示、ギャラリーは開く度に再構築されるためリロード不要。
+    const titleScreen = document.getElementById('title-screen');
+    if (titleScreen) titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
     this._showToast(this._t('settings.resetDone'));
-    // タイトルのCONTINUE可否・ギャラリーロック等を確実に反映するためリロード
-    setTimeout(() => location.reload(), 900);
   }
 
   _showToast(msg) {
