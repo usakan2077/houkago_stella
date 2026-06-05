@@ -1666,6 +1666,7 @@ class VNEngine {
       'effect-slide-in-bottom',
       'effect-flashback',
       'effect-flashback_pan',
+      'effect-pan_out',
       'flashback-still',
       'ending-intro-still',
       'ending-intro-kotoha',

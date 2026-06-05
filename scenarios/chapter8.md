@@ -1263,14 +1263,14 @@ kotoha: $chapter8.chapter8_kotoha_crisis.t017
 @show festival_committee center panic fade_in
 festival_committee: $chapter8.chapter8_branch.t015a
 @hide festival_committee fade_out
-@wait 400
-
-@show nobuhara_nobag right serious fade_in
-@wait 400
+@wait 600
 
 nobuhara_nobag: $chapter8.chapter8_branch.t016
 
 player: $chapter8.chapter8_branch.t017
+
+@still nobuhara_takes_charge pan_out
+@wait 800
 
 nobuhara_nobag: $chapter8.chapter8_branch.t018
 
@@ -1281,9 +1281,6 @@ nobuhara_nobag: $chapter8.chapter8_branch.t021
 nobuhara_nobag: $chapter8.chapter8_branch.t021a
 
 @wait 400
-
-@still nobuhara_takes_charge fade_in
-@wait 500
 
 nobuhara_nobag: $chapter8.chapter8_branch.t022
 
@@ -1296,12 +1293,11 @@ nobuhara_nobag: $chapter8.chapter8_branch.t022
 
 @wait 500
 
+@show nobuhara_nobag center serious fade_in
 @still_hide fade_out
-@wait 300
+@wait 600
 
 player: $chapter8.chapter8_branch.t028
-
-@expr nobuhara_nobag relieved
 
 nobuhara_nobag: $chapter8.chapter8_branch.t029
 

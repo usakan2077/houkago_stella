@@ -647,6 +647,15 @@ body {
 }
 #still-layer.effect-flashback       { animation: animFlashbackStill .85s ease forwards; }
 #still-layer.effect-flashback_pan   { animation: animShinFlashbackPan 5.2s cubic-bezier(.2, .02, .12, 1) forwards; }
+#still-layer.effect-pan_out {
+  transform-origin: 50% 42%;
+  animation: animStillPanOut 2.8s cubic-bezier(.2, .02, .12, 1) forwards;
+}
+@keyframes animStillPanOut {
+  0%   { opacity: 0; transform: scale(1.42); }
+  20%  { opacity: 1; }
+  100% { opacity: 1; transform: scale(1); }
+}
 #still-layer.ending-return-still {
   pointer-events: none;
   z-index: 29;
