@@ -4,6 +4,8 @@
  */
 const VN_CONFIG = {
 
+  version: '1.1',
+
   analytics: {
     enabled: true,
     measurementId: 'G-FFXERBV0T5',

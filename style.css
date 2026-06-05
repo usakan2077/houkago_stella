@@ -332,6 +332,18 @@ body {
   backdrop-filter: blur(2px);
 }
 
+#title-version {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  z-index: 6;
+  color: rgba(255,228,242,.45);
+  font-size: 11px;
+  letter-spacing: .08em;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
 .language-btn {
   min-width: 0;
   padding: 5px 12px;

@@ -810,6 +810,8 @@ class VNEngine {
     this._gameActive = false;
     this._applyStaticI18n();
     const titleScreen = document.getElementById('title-screen');
+    const verEl = document.getElementById('title-version');
+    if (verEl && VN_CONFIG.version) verEl.textContent = 'ver ' + VN_CONFIG.version;
     titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
     titleScreen.classList.remove('hidden');
     document.getElementById('game-screen').classList.add('hidden');
