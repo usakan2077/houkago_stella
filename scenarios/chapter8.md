@@ -1278,8 +1278,12 @@ player: $chapter8.chapter8_branch.t019
 
 nobuhara_nobag: $chapter8.chapter8_branch.t020
 nobuhara_nobag: $chapter8.chapter8_branch.t021
+nobuhara_nobag: $chapter8.chapter8_branch.t021a
 
 @wait 400
+
+@still nobuhara_takes_charge fade_in
+@wait 500
 
 nobuhara_nobag: $chapter8.chapter8_branch.t022
 
@@ -1292,6 +1296,9 @@ nobuhara_nobag: $chapter8.chapter8_branch.t022
 
 @wait 500
 
+@still_hide fade_out
+@wait 300
+
 player: $chapter8.chapter8_branch.t028
 
 @expr nobuhara_nobag relieved
@@ -1300,6 +1307,9 @@ nobuhara_nobag: $chapter8.chapter8_branch.t029
 
 @hide nobuhara_nobag fade_out
 @wait 500
+
+> $chapter8.chapter8_branch.t029a
+> $chapter8.chapter8_branch.t029b
 
 > $chapter8.chapter8_branch.t030
 > $chapter8.chapter8_branch.t031

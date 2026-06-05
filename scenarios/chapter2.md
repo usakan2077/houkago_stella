@@ -477,6 +477,24 @@ mahiru: $chapter2.chapter2_lunch.t075
 
 > $chapter2.chapter2_lunch.t082
 
+@wait 400
+
+@expr sakura happy
+sakura: $chapter2.chapter2_lunch.t082a
+sakura: $chapter2.chapter2_lunch.t082b
+
+kotoha: $chapter2.chapter2_lunch.t082c
+
+sakura: $chapter2.chapter2_lunch.t082d
+
+@expr kotoha shy
+kotoha: $chapter2.chapter2_lunch.t082e
+
+@expr sakura excited
+sakura: $chapter2.chapter2_lunch.t082f
+
+> $chapter2.chapter2_lunch.t082g
+
 @wait 500
 
 sakura: $chapter2.chapter2_lunch.t083

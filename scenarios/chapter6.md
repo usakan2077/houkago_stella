@@ -617,6 +617,36 @@ sakura_sports: $chapter6.chapter6_sakura_talk.t073
 > $chapter6.chapter6_kotoha_piano.t006
 > $chapter6.chapter6_kotoha_piano.t007
 
+@wait 400
+
+@show nobuhara_nobag right normal pop_in
+@wait 300
+
+nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007a
+
+player: $chapter6.chapter6_kotoha_piano.t007b
+
+nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007c
+
+player: $chapter6.chapter6_kotoha_piano.t007d
+
+@expr nobuhara_nobag relieved
+nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007e
+
+@expr nobuhara_nobag happy
+nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007f
+
+player: $chapter6.chapter6_kotoha_piano.t007g
+
+@expr nobuhara_nobag normal
+nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007h
+
+@hide nobuhara_nobag fade_out
+@wait 400
+
+> $chapter6.chapter6_kotoha_piano.t007i
+> $chapter6.chapter6_kotoha_piano.t007j
+
 @wait 600
 
 > $chapter6.chapter6_kotoha_piano.t008

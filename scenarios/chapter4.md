@@ -93,6 +93,21 @@ kotoha: $chapter4.chapter4_start.t042
 
 > $chapter4.chapter4_start.t047
 
+@wait 300
+
+player: $chapter4.chapter4_start.t047a
+
+@expr sakura surprised
+sakura: $chapter4.chapter4_start.t047b
+
+player: $chapter4.chapter4_start.t047c
+
+sakura: $chapter4.chapter4_start.t047d
+
+player: $chapter4.chapter4_start.t047e
+
+> $chapter4.chapter4_start.t047f
+
 @expr sakura happy
 
 sakura: $chapter4.chapter4_start.t048

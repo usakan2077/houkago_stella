@@ -30,6 +30,51 @@
 
 > $chapter3.chapter3_start.t012
 
+@wait 300
+
+@show nobuhara left normal pop_in
+@show classmate_male_a right laugh pop_in
+@wait 300
+
+nobuhara: $chapter3.chapter3_start.t012a
+classmate_male_a: $chapter3.chapter3_start.t012b
+
+@expr nobuhara happy
+nobuhara: $chapter3.chapter3_start.t012c
+
+player: $chapter3.chapter3_start.t012d
+
+@expr classmate_male_a normal
+classmate_male_a: $chapter3.chapter3_start.t012e
+
+player: $chapter3.chapter3_start.t012f
+
+@show teacher_male center stern fade_in
+@wait 300
+teacher_male: $chapter3.chapter3_start.t012g
+
+@expr nobuhara panic
+nobuhara: $chapter3.chapter3_start.t012h
+
+@hide teacher_male fade_out
+@wait 300
+
+> $chapter3.chapter3_start.t012i
+
+@expr nobuhara relieved
+nobuhara: $chapter3.chapter3_start.t012j
+
+@expr nobuhara happy
+nobuhara: $chapter3.chapter3_start.t012k
+
+player: $chapter3.chapter3_start.t012l
+
+nobuhara: $chapter3.chapter3_start.t012m
+
+@hide nobuhara fade_out
+@hide classmate_male_a fade_out
+@wait 400
+
 @show sakura right happy fade_in
 @show kotoha left normal fade_in
 

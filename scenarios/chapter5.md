@@ -1135,13 +1135,18 @@ player: $chapter5.chapter5_end.t009
 @expr nobuhara relieved
 
 nobuhara: $chapter5.chapter5_end.t010
+
+@expr nobuhara serious
 nobuhara: $chapter5.chapter5_end.t011
+@expr nobuhara relieved
 
 > $chapter5.chapter5_end.t012
 > $chapter5.chapter5_end.t013
+> $chapter5.chapter5_end.t013a
 
 player: $chapter5.chapter5_end.t014
 
+@expr nobuhara happy
 nobuhara: $chapter5.chapter5_end.t015
 
 player: $chapter5.chapter5_end.t016

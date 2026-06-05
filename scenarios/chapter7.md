@@ -575,6 +575,11 @@ player: $chapter7.chapter7_festival.t107
 
 nobuhara_nobag: $chapter7.chapter7_festival.t108
 
+player: $chapter7.chapter7_festival.t108a
+
+@expr nobuhara_nobag relieved
+nobuhara_nobag: $chapter7.chapter7_festival.t108b
+
 @expr sakura happy
 
 sakura: $chapter7.chapter7_festival.t109
