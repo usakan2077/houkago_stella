@@ -230,6 +230,16 @@ const VN_CONFIG = {
       // 制服・かばん無し衣装（校内シーン用）。画像パス: assets/images/chars/nobuhara_nobag/{expr}.png
       expressions: ['normal', 'happy', 'panic', 'tired', 'relieved', 'serious'],
     },
+    nobuhara_private: {
+      scale: 1.18,
+      offsetY: 91,
+      name: '延原晴人',
+      nameEn: 'Hareto Nobuhara',
+      nameColor: '#e8c478',
+      charColor: 'rgba(232, 196, 120, 0.72)',
+      // 私服衣装（夏休み・実家手伝い等）。画像パス: assets/images/chars/nobuhara_private/{expr}.png
+      expressions: ['normal', 'happy', 'relieved'],
+    },
     shin_child: {
       scale: 1.3,
       offsetY: 150,

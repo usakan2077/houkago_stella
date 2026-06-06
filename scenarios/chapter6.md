@@ -619,29 +619,29 @@ sakura_sports: $chapter6.chapter6_sakura_talk.t073
 
 @wait 400
 
-@show nobuhara_nobag right normal pop_in
+@show nobuhara_private right normal pop_in
 @wait 300
 
-nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007a
+nobuhara_private: $chapter6.chapter6_kotoha_piano.t007a
 
 player: $chapter6.chapter6_kotoha_piano.t007b
 
-nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007c
+nobuhara_private: $chapter6.chapter6_kotoha_piano.t007c
 
 player: $chapter6.chapter6_kotoha_piano.t007d
 
-@expr nobuhara_nobag relieved
-nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007e
+@expr nobuhara_private relieved
+nobuhara_private: $chapter6.chapter6_kotoha_piano.t007e
 
-@expr nobuhara_nobag happy
-nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007f
+@expr nobuhara_private happy
+nobuhara_private: $chapter6.chapter6_kotoha_piano.t007f
 
 player: $chapter6.chapter6_kotoha_piano.t007g
 
-@expr nobuhara_nobag normal
-nobuhara_nobag: $chapter6.chapter6_kotoha_piano.t007h
+@expr nobuhara_private normal
+nobuhara_private: $chapter6.chapter6_kotoha_piano.t007h
 
-@hide nobuhara_nobag fade_out
+@hide nobuhara_private fade_out
 @wait 400
 
 > $chapter6.chapter6_kotoha_piano.t007i
