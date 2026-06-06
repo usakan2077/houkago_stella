@@ -42,6 +42,9 @@ const VN_CONFIG = {
           seVolume: 'SE音量',
           fontSize: '文字サイズ',
           chainMode: '２行表示',
+          skipMode: 'スキップ',
+          skipAll: 'すべて',
+          skipRead: '既読のみ',
           windowColor: 'ウィンドウ色',
           slow: '遅め',
           normal: '普通',
@@ -84,6 +87,9 @@ const VN_CONFIG = {
           seVolume: 'SE Volume',
           fontSize: 'Text Size',
           chainMode: 'Two-line Text',
+          skipMode: 'Skip',
+          skipAll: 'All',
+          skipRead: 'Read only',
           windowColor: 'Window Color',
           slow: 'Slow',
           normal: 'Normal',
@@ -464,6 +470,7 @@ const VN_CONFIG = {
     bgmVolume:   0.65,    // BGM音量 (0.0 〜 1.0)
     seVolume:    0.85,    // SE音量  (0.0 〜 1.0)
     chainMode:   'dialogue', // 連続2行表示: 'none' | 'dialogue' | 'all'
+    skipReadOnly: false,  // スキップ対象: false=すべて / true=既読のみ
     fadeTime:    400,     // 背景フェード時間 (ms)
     charFadeTime:500,     // キャラクターフェード時間 (ms)
 

@@ -96,6 +96,14 @@ class VNEngine {
       JSON.parse(localStorage.getItem('vn_seen_good_ends') || '[]')
     );
 
+    // 既読行（既読スキップ用）。キー＝シナリオ行の生テキスト（$key 等）
+    this.readLines = new Set(
+      JSON.parse(localStorage.getItem('vn_read_lines') || '[]')
+    );
+    this._skipReadOnly = localStorage.getItem('vn_skip_read_only') === 'true';
+    this._curLineKey = null;
+    this._readPersistTimer = null;
+
     // オート速度設定の復元
     const savedDelay = localStorage.getItem('vn_auto_delay');
     if (savedDelay) VN_CONFIG.settings.autoDelay = parseInt(savedDelay, 10);
@@ -827,6 +835,17 @@ class VNEngine {
     );
   }
 
+  _markLineRead(key) {
+    if (!key || this.readLines.has(key)) return;
+    this.readLines.add(key);
+    // 連打/スキップ中の頻繁な書き込みを避けるためデバウンス保存
+    if (this._readPersistTimer) clearTimeout(this._readPersistTimer);
+    this._readPersistTimer = setTimeout(() => {
+      this._readPersistTimer = null;
+      localStorage.setItem('vn_read_lines', JSON.stringify([...this.readLines]));
+    }, 800);
+  }
+
   _markGoodEndSeen(route) {
     if (!route || this.seenGoodEnds.has(route)) return;
     this.seenGoodEnds.add(route);
@@ -1296,10 +1315,12 @@ class VNEngine {
         break;
 
       case 'narrate':
+        this._curLineKey = cmd.text;
         this._displayDialog(null, this._resolveScenarioText(cmd.text), cmd.emphasis);
         break;
 
       case 'say':
+        this._curLineKey = cmd.text;
         this._displayDialog(cmd.char, this._resolveScenarioText(cmd.text));
         break;
 
@@ -1781,6 +1802,11 @@ class VNEngine {
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
 
+    // 既読管理（既読スキップ用）。表示前に既読状態を確定してからマーク
+    const _lineKey = this._curLineKey;
+    const _wasRead = !_lineKey || this.readLines.has(_lineKey);
+    this._markLineRead(_lineKey);
+
     // 連続2行表示の制御（emphasisモードは対象外）
     // 地の文は '__narration__' キーとして扱い、連続判定に使用
     const speakerKey = charKey || '__narration__';
@@ -1805,6 +1831,13 @@ class VNEngine {
       textEl.textContent  = '';
     }
     // displayRow===2 のときは行1を残すため textContent をクリアしない
+
+    // 既読のみスキップ設定: 未読行に到達したらスキップを止め、通常表示に切り替える
+    if (this.skipMode && this._skipReadOnly && !_wasRead) {
+      this.skipMode = false;
+      const _sb = document.getElementById('btn-skip');
+      if (_sb) _sb.classList.remove('active');
+    }
 
     if (this.skipMode) {
       const token = this._advanceToken;
@@ -2257,12 +2290,15 @@ class VNEngine {
    * 取り消し不可のため、必ず _showConfirm を通して呼ぶこと。
    */
   _resetProgress() {
-    const keys = ['vn_save_quick', 'vn_seen_stills', 'vn_seen_good_ends'];
+    const keys = ['vn_save_quick', 'vn_seen_stills', 'vn_seen_good_ends', 'vn_read_lines'];
     for (let i = 1; i <= 10; i++) keys.push(`vn_save_${i}`);
     keys.forEach(k => localStorage.removeItem(k));
     // メモリ上の解放状況もクリア
     this.seenStills    = new Set();
     this.seenGoodEnds  = new Set();
+    // 既読行もクリア（スキップ設定 vn_skip_read_only は設定なので残す）
+    if (this._readPersistTimer) { clearTimeout(this._readPersistTimer); this._readPersistTimer = null; }
+    this.readLines     = new Set();
     // タイトル背景（全ルート制覇後の変化）を即座に元へ戻す。
     // CONTINUEは空スロット表示、ギャラリーは開く度に再構築されるためリロード不要。
     const titleScreen = document.getElementById('title-screen');
@@ -3123,6 +3159,18 @@ class VNEngine {
         this._applyTextLayoutMode();
         document.querySelectorAll('#chain-mode-options .settings-opt')
           .forEach(b => b.classList.toggle('active', b.dataset.chain === this._chainMode));
+      };
+    });
+
+    // スキップ対象（すべて / 既読のみ）
+    const skipVal = () => (this._skipReadOnly ? 'read' : 'all');
+    document.querySelectorAll('#skip-mode-options .settings-opt').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.skip === skipVal());
+      btn.onclick = () => {
+        this._skipReadOnly = (btn.dataset.skip === 'read');
+        localStorage.setItem('vn_skip_read_only', this._skipReadOnly ? 'true' : 'false');
+        document.querySelectorAll('#skip-mode-options .settings-opt')
+          .forEach(b => b.classList.toggle('active', b.dataset.skip === skipVal()));
       };
     });
 
