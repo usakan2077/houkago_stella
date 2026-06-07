@@ -847,9 +847,7 @@ player: $chapter8.chapter8_rain_corridor.t015
 > $chapter8.chapter8_rain_corridor.t041
 
 @still_hide
-@wait 400
-@still mahiru_notebook_drop
-@wait 1200
+@wait 600
 
 > $chapter8.chapter8_rain_corridor.t042
 > $chapter8.chapter8_rain_corridor.t043
@@ -858,7 +856,6 @@ player: $chapter8.chapter8_rain_corridor.t015
 
 > $chapter8.chapter8_rain_corridor.t045
 
-@still_hide
 @wait 400
 
 @scene corridor_festival_rainy fade
