@@ -16,53 +16,53 @@
 @bgm school_festival.mp3
 @wait 1000
 
-> 十月の文化祭当日。
-> 雨だった。
+> $bad_end.bad_end_start.t001
+> $bad_end.bad_end_start.t002
 
-> ——あの日のことを、なぞる。
-
-@wait 800
-
-> 廊下には手作りの看板が並んでいた。
-> どこかから軽音部の音が漏れてきて、
-> 笑い声が折り重なって響いていた。
-> 窓の外では、空が灰色のままだった。
+> $bad_end.bad_end_start.t003
 
 @wait 800
 
-> 朝。
-> 俺は人の波の中を歩いていた。
-> どこかへ向かっている気もしなかった。
+> $bad_end.bad_end_start.t004
+> $bad_end.bad_end_start.t005
+> $bad_end.bad_end_start.t006
+> $bad_end.bad_end_start.t007
+
+@wait 800
+
+> $bad_end.bad_end_start.t008
+> $bad_end.bad_end_start.t009
+> $bad_end.bad_end_start.t010
 
 @wait 800
 
 @show sakura center happy fade_in
 @wait 400
 
-sakura: 勇くん！ 来た来た。うちのクラス、いまどき絶対行ってよね！
+sakura: $bad_end.bad_end_start.t011
 
 @wait 500
 
-> さくらは笑っていた。
-> よく笑う子だと思った。
-> 最初に会ったときから、ずっとそうだった。
+> $bad_end.bad_end_start.t012
+> $bad_end.bad_end_start.t013
+> $bad_end.bad_end_start.t014
 
 @wait 600
 
-> ……でも今日の笑顔は、
-> なんだか少し、前のめりすぎる気がした。
+> $bad_end.bad_end_start.t015
+> $bad_end.bad_end_start.t016
 
 @wait 700
 
-player: ……ああ、行くよ。
+player: $bad_end.bad_end_start.t017
 
-sakura: やった！ じゃ、あとでね！
+sakura: $bad_end.bad_end_start.t018
 
 @hide sakura fade_out
 @wait 1000
 
-> 呼び止めようとして、やめた。
-> 何を言うつもりだったのか、わからなかった。
+> $bad_end.bad_end_start.t019
+> $bad_end.bad_end_start.t020
 
 @wait 800
 
@@ -78,28 +78,28 @@ sakura: やった！ じゃ、あとでね！
 @scene music_room fade
 @wait 800
 
-> 昼過ぎ。
-> 音楽室の前を通りかかったとき、中から声がした。
+> $bad_end.bad_end_festival_kotoha.t001
+> $bad_end.bad_end_festival_kotoha.t002
 
 @wait 600
 
-kotoha（OFF）: ……できません。
+kotoha（OFF）: $bad_end.bad_end_festival_kotoha.t003
 
 @wait 1000
 
-> 静かな声だった。
-> 抑揚がなかった。
-> だからかえって、すごく響いた。
+> $bad_end.bad_end_festival_kotoha.t004
+> $bad_end.bad_end_festival_kotoha.t005
+> $bad_end.bad_end_festival_kotoha.t006
 
 @wait 800
 
-> ドアを開けようとした。
-> 開けなかった。
+> $bad_end.bad_end_festival_kotoha.t007
+> $bad_end.bad_end_festival_kotoha.t008
 
 @wait 800
 
-> 「できません」という声の続きを、俺は知らない。
-> 知らないまま、廊下を歩いた。
+> $bad_end.bad_end_festival_kotoha.t009
+> $bad_end.bad_end_festival_kotoha.t010
 
 @wait 1000
 
@@ -115,58 +115,58 @@ kotoha（OFF）: ……できません。
 @scene staircase_rainy fade
 @wait 800
 
-> まひるを探した。
+> $bad_end.bad_end_festival_mahiru.t001
 
 @wait 600
 
-> また後でね、と言って別れてから、
-> ずいぶん時間が経っていた。
-> でも、まひるはまだ現れていなかった。
+> $bad_end.bad_end_festival_mahiru.t002
+> $bad_end.bad_end_festival_mahiru.t003
+> $bad_end.bad_end_festival_mahiru.t004
 
 @wait 800
 
-> 踊り場の窓から屋上を見た。
-> 誰もいなかった。
+> $bad_end.bad_end_festival_mahiru.t005
+> $bad_end.bad_end_festival_mahiru.t006
 
 @wait 600
 
 @scene rooftop_rainy instant
 @show mahiru center normal fade_in
 
-> ——朝のことを思い出した。
+> $bad_end.bad_end_festival_mahiru.t007
 
 @wait 800
 
-> 開場前、ここに来たとき。
-> 屋上の柵に寄りかかって、
-> まひるは灰色の空をずっと見ていた。
+> $bad_end.bad_end_festival_mahiru.t008
+> $bad_end.bad_end_festival_mahiru.t009
+> $bad_end.bad_end_festival_mahiru.t010
 
 @wait 600
 
-> 呼びかけようとした。
-> そのとき委員の放送が流れて、
-> 体育館へ行かなければならなかった。
+> $bad_end.bad_end_festival_mahiru.t011
+> $bad_end.bad_end_festival_mahiru.t012
+> $bad_end.bad_end_festival_mahiru.t013
 
 @wait 600
 
-> ——後で声をかければいい、と思った。
+> $bad_end.bad_end_festival_mahiru.t014
 
 @wait 800
 
-> 廊下で会ったとき、
-> 「雨の音が会話を吸い込むから」とまひるは言っていた。
-> 俺はうまく返せなかった。
+> $bad_end.bad_end_festival_mahiru.t015
+> $bad_end.bad_end_festival_mahiru.t016
+> $bad_end.bad_end_festival_mahiru.t017
 
 @wait 600
 
-> そのあと、ずっと姿が見えない。
+> $bad_end.bad_end_festival_mahiru.t018
 
 @hide mahiru fade_out
 @scene staircase_rainy instant
 @wait 1000
 
-> スマホを見た。
-> 昼に送ったメッセージが、まだ既読になっていない。
+> $bad_end.bad_end_festival_mahiru.t019
+> $bad_end.bad_end_festival_mahiru.t020
 
 @wait 1000
 
@@ -183,24 +183,24 @@ kotoha（OFF）: ……できません。
 @bgm bad_end_loop.mp3
 @wait 1200
 
-> 文化祭が終わった。
+> $bad_end.bad_end_after.t001
 
-> 騒ぎが引いた後の校舎は、いつもより静かだった。
-> 飾り付けの残骸が、少しだけ廊下に転がっている。
-> もう誰も片づけない。
-> 明日の朝には、また別の誰かが来て、黙って片づけるんだろう。
+> $bad_end.bad_end_after.t002
+> $bad_end.bad_end_after.t003
+> $bad_end.bad_end_after.t004
+> $bad_end.bad_end_after.t005
 
 @wait 1000
 
-> 俺は、何もできなかった。
+> $bad_end.bad_end_after.t006
 
-> 気づいていた。
-> ちゃんと見ていた。
-> それでも、手が届かなかった。
+> $bad_end.bad_end_after.t007
+> $bad_end.bad_end_after.t008
+> $bad_end.bad_end_after.t009
 
 @wait 800
 
-> ……間に合わなかった、という感覚だけが残っている。
+> $bad_end.bad_end_after.t010
 
 @jump bad_end_sakura_fragment
 
@@ -214,62 +214,62 @@ kotoha（OFF）: ……できません。
 @scene corridor fade
 @wait 800
 
-> さくらは翌日、また全力で笑っていた。
+> $bad_end.bad_end_sakura_fragment.t001
 
 @show sakura center happy fade_in
 
-sakura: 文化祭終わったねー！
-sakura: 疲れたけど、楽しかったな！
+sakura: $bad_end.bad_end_sakura_fragment.t002
+sakura: $bad_end.bad_end_sakura_fragment.t003
 
 @wait 600
 
-> 何事もなかったように。
-> いつも通りに。
+> $bad_end.bad_end_sakura_fragment.t004
+> $bad_end.bad_end_sakura_fragment.t005
 
 @wait 500
 
 @expr sakura excited
 
-sakura: 次はもう期末だって、怖くない？
+sakura: $bad_end.bad_end_sakura_fragment.t006
 
 @wait 400
 
-> 昨日、白くなるほど握りしめていた手のことを、
-> 俺は言えなかった。
+> $bad_end.bad_end_sakura_fragment.t007
+> $bad_end.bad_end_sakura_fragment.t008
 
 @wait 600
 
-> 言う場所が、なかった。
-> あるいは、俺が作れなかった。
+> $bad_end.bad_end_sakura_fragment.t009
+> $bad_end.bad_end_sakura_fragment.t010
 
 @wait 600
 
 @expr sakura normal
 
-> 一瞬、さくらが俺を見た。
+> $bad_end.bad_end_sakura_fragment.t011
 
-> 普通の顔だった。
-> ただ見ただけかもしれない。
+> $bad_end.bad_end_sakura_fragment.t012
+> $bad_end.bad_end_sakura_fragment.t013
 
 @wait 600
 
-sakura: 勇くん？　どうかした？
+sakura: $bad_end.bad_end_sakura_fragment.t014
 
 @wait 500
 
-player: ……いや、なんでもない。
+player: $bad_end.bad_end_sakura_fragment.t015
 
 @wait 400
 
 @expr sakura happy
 
-sakura: そっか！ じゃ、次の授業行こ。
+sakura: $bad_end.bad_end_sakura_fragment.t016
 
 @hide sakura fade_out
 @wait 1000
 
-> 笑顔が戻るのが、一瞬速すぎた。
-> そのことに、今さら気づく。
+> $bad_end.bad_end_sakura_fragment.t017
+> $bad_end.bad_end_sakura_fragment.t018
 
 @wait 800
 
@@ -285,49 +285,49 @@ sakura: そっか！ じゃ、次の授業行こ。
 @scene library_evening fade
 @wait 800
 
-> 花園ことははいつの間にか、また本の中に戻っていた。
+> $bad_end.bad_end_kotoha_fragment.t001
 
 @show kotoha center normal fade_in
 
-> 図書室の窓際。
-> いつもの席。
-> ヘッドホンをつけて、誰も入れない場所にいる。
+> $bad_end.bad_end_kotoha_fragment.t002
+> $bad_end.bad_end_kotoha_fragment.t003
+> $bad_end.bad_end_kotoha_fragment.t004
 
 @wait 700
 
-> 伴奏のことは、誰も言わなかった。
-> ことは本人も言わなかった。
-> 担任も、もう触れなかった。
+> $bad_end.bad_end_kotoha_fragment.t005
+> $bad_end.bad_end_kotoha_fragment.t006
+> $bad_end.bad_end_kotoha_fragment.t007
 
 @wait 600
 
-> 「できません」
-> という言葉が、静かすぎたことを、俺だけが覚えている。
+> $bad_end.bad_end_kotoha_fragment.t008
+> $bad_end.bad_end_kotoha_fragment.t009
 
 @wait 500
 
-> 覚えているだけで、
-> 何も返せなかった。
+> $bad_end.bad_end_kotoha_fragment.t010
+> $bad_end.bad_end_kotoha_fragment.t011
 
 @wait 800
 
-> 声をかけようとして、ことはの手が動いているのが見えた。
-> ページをめくっている。
-> 規則正しく、一定のリズムで。
+> $bad_end.bad_end_kotoha_fragment.t012
+> $bad_end.bad_end_kotoha_fragment.t013
+> $bad_end.bad_end_kotoha_fragment.t014
 
 @wait 700
 
-> ——音楽みたいだった。
+> $bad_end.bad_end_kotoha_fragment.t015
 
 @wait 600
 
-> 俺は声をかけなかった。
-> ヘッドホンを外させるほどの言葉が、見つからなかった。
+> $bad_end.bad_end_kotoha_fragment.t016
+> $bad_end.bad_end_kotoha_fragment.t017
 
 @wait 800
 
-> 「また今度」
-> その「今度」が来るかどうか、わからないまま、席を立った。
+> $bad_end.bad_end_kotoha_fragment.t018
+> $bad_end.bad_end_kotoha_fragment.t019
 
 @hide kotoha fade_out
 @wait 1000
@@ -344,60 +344,60 @@ sakura: そっか！ じゃ、次の授業行こ。
 @scene rooftop fade
 @wait 800
 
-> まひるは、どこかに消えた。
+> $bad_end.bad_end_mahiru_fragment.t001
 
 @wait 600
 
-> 文化祭の翌日。
-> その次の日も。
-> まひるの気配がどこにもなかった。
+> $bad_end.bad_end_mahiru_fragment.t002
+> $bad_end.bad_end_mahiru_fragment.t003
+> $bad_end.bad_end_mahiru_fragment.t004
 
 @wait 700
 
-> さくらに聞いた。
+> $bad_end.bad_end_mahiru_fragment.t005
 
-> 「連絡したけど、既読がつかない」
+> $bad_end.bad_end_mahiru_fragment.t006
 
-> まひるのクラスに顔見知りがいた。
-> 廊下で捕まえて、聞いた。
+> $bad_end.bad_end_mahiru_fragment.t007
+> $bad_end.bad_end_mahiru_fragment.t008
 
-> 「なんか体調不良らしいよ。それ以上はわかんない」
-
-@wait 800
-
-> それだけだった。
-> それ以上は、誰も教えてくれなかった。
-> 俺も、それ以上は聞けなかった。
+> $bad_end.bad_end_mahiru_fragment.t009
 
 @wait 800
 
-> まひるの机の上に、教科書が一冊置いてあった。
-> 欠席が続いているのに、片づけられていない。
+> $bad_end.bad_end_mahiru_fragment.t010
+> $bad_end.bad_end_mahiru_fragment.t011
+> $bad_end.bad_end_mahiru_fragment.t012
+
+@wait 800
+
+> $bad_end.bad_end_mahiru_fragment.t013
+> $bad_end.bad_end_mahiru_fragment.t014
 
 @wait 600
 
-> 誰も持って帰っていない。
-> 先生も黙って見ている。
+> $bad_end.bad_end_mahiru_fragment.t015
+> $bad_end.bad_end_mahiru_fragment.t016
 
 @wait 700
 
-> 俺も黙って見ていた。
-> その教科書を、俺も持っていかなかった。
+> $bad_end.bad_end_mahiru_fragment.t017
+> $bad_end.bad_end_mahiru_fragment.t018
 
 @wait 1000
 
-> 理由を探して空を見る人がいると、
-> まひるは言っていた。
+> $bad_end.bad_end_mahiru_fragment.t019
+> $bad_end.bad_end_mahiru_fragment.t020
 
 @wait 600
 
-> 屋上で空を見ていたあの背中を、
-> 俺はちゃんと見ていたのに。
-> 呼びかけなかった。
+> $bad_end.bad_end_mahiru_fragment.t021
+> $bad_end.bad_end_mahiru_fragment.t022
+> $bad_end.bad_end_mahiru_fragment.t023
 
 @wait 600
 
-> 今日、理由は見つかっただろうか。
+> $bad_end.bad_end_mahiru_fragment.t024
 
 @wait 1000
 
@@ -414,22 +414,22 @@ sakura: そっか！ じゃ、次の授業行こ。
 @bgm bad_end_loop.mp3
 @wait 1200
 
-> 放課後。
-> 誰もいなくなった教室に、俺だけが残っていた。
+> $bad_end.bad_end_classroom.t001
+> $bad_end.bad_end_classroom.t002
 
-> 陸上をやめた頃も、こうだった。
-> 何も変わっていないように。
+> $bad_end.bad_end_classroom.t003
+> $bad_end.bad_end_classroom.t004
 
 @wait 1000
 
 @still bad_end_empty_classroom
 @wait 1500
 
-> 机と椅子の並びが、夜の光の中で静かに沈んでいる。
-> 朝はあんなに人の声で満ちていた場所が、
-> 夜になると別の建物みたいに見える。
+> $bad_end.bad_end_classroom.t005
+> $bad_end.bad_end_classroom.t006
+> $bad_end.bad_end_classroom.t007
 
-> 俺だけが、同じ場所に立っている。
+> $bad_end.bad_end_classroom.t008
 
 @wait 1200
 @still_hide
@@ -449,26 +449,26 @@ sakura: そっか！ じゃ、次の授業行こ。
 @still night_sky_no_stars
 @wait 1500
 
-> 窓の外を見上げる。
+> $bad_end.bad_end_window.t001
 
 @se heartbeat.mp3
 @wait 1200
 
-> 雲がかかっていた。
+> $bad_end.bad_end_window.t002
 
-> 星は、見えない。
+> $bad_end.bad_end_window.t003
 
 @wait 1500
 
-> **（また、間に合わなかった）**
+> **$bad_end.bad_end_window.t004**
 
 @wait 1000
 
-> **（見ていたのに。ちゃんと見ていたはずなのに）**
+> **$bad_end.bad_end_window.t005**
 
 @wait 800
 
-> **（それでも、何もできなかった）**
+> **$bad_end.bad_end_window.t006**
 
 @wait 1200
 @still_hide
@@ -486,53 +486,53 @@ sakura: そっか！ じゃ、次の授業行こ。
 @bgm bad_end_loop.mp3
 @wait 1000
 
-> 慎のときも、そうだった。
-> 父のときも、そうだった。
+> $bad_end.bad_end_monologue.t001
+> $bad_end.bad_end_monologue.t002
 
-> いつも通りの声。
-> いつも通りの笑顔。
-> 「大丈夫」という言葉。
+> $bad_end.bad_end_monologue.t003
+> $bad_end.bad_end_monologue.t004
+> $bad_end.bad_end_monologue.t005
 
-> 俺はそのどれも拾えなかった。
+> $bad_end.bad_end_monologue.t006
 
 @wait 1000
 
-> 気づいていたのに。
-> 今回は見ていたはずなのに。
+> $bad_end.bad_end_monologue.t007
+> $bad_end.bad_end_monologue.t008
 
-> それでも、手は届かなかった。
+> $bad_end.bad_end_monologue.t009
 
 @wait 1500
 
 @se heartbeat.mp3
 @wait 800
 
-player: ……大丈夫だ
+player: $bad_end.bad_end_monologue.t010
 
 @wait 1800
 
-> 誰もいない教室に、その言葉は落ちた。
+> $bad_end.bad_end_monologue.t011
 
 @wait 800
 
-> ひどい言葉を使った、と思った。
+> $bad_end.bad_end_monologue.t012
 
-> 大丈夫。
-> あの夜、あれほど嫌いだと思ったのに。
+> $bad_end.bad_end_monologue.t013
+> $bad_end.bad_end_monologue.t014
 
-> 便利で、軽くて、何も救わない言葉。
-> 言った側だけが安心して、
-> 言われた側だけが黙る言葉。
+> $bad_end.bad_end_monologue.t015
+> $bad_end.bad_end_monologue.t016
+> $bad_end.bad_end_monologue.t017
 
 @wait 1000
 
-> 誰にも言っていない。
-> 誰も聞いていない。
-> 自分に言い聞かせただけだ。
+> $bad_end.bad_end_monologue.t018
+> $bad_end.bad_end_monologue.t019
+> $bad_end.bad_end_monologue.t020
 
 @wait 800
 
-> 大丈夫じゃないのに。
+> $bad_end.bad_end_monologue.t021
 
 @wait 1500
 
@@ -548,30 +548,30 @@ player: ……大丈夫だ
 @scene overcast_night fade
 @wait 1000
 
-> 窓の外は曇ったままだった。
+> $bad_end.bad_end_ending.t001
 
-> 星はやっぱり、見えない。
+> $bad_end.bad_end_ending.t002
 
 @wait 1200
 
-> 今度こそ、ちゃんと手を伸ばせるだろうか。
-> 陸上をやめたあの頃も、同じことを考えた。
+> $bad_end.bad_end_ending.t003
+> $bad_end.bad_end_ending.t004
 
-> 答えは出ないままだった。
+> $bad_end.bad_end_ending.t005
 
 @wait 1000
 
-> 俺はたぶん、
-> 気づくのが遅い。
+> $bad_end.bad_end_ending.t006
+> $bad_end.bad_end_ending.t007
 
 @wait 800
 
-> 遅いままで、また、
-> 何もできなかった。
+> $bad_end.bad_end_ending.t008
+> $bad_end.bad_end_ending.t009
 
 @wait 1500
 
-> **また、間に合わなかった**
+> **$bad_end.bad_end_ending.t010**
 
 @wait 2000
 
@@ -579,4 +579,4 @@ player: ……大丈夫だ
 @wait 800
 
 @credits bad_end_loop.mp3
-@end "星の見えない朝に、俺はまた一人だった"
+@end "$bad_end.bad_end_ending.end_title"

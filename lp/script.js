@@ -85,6 +85,16 @@ const translations = {
       "#cta-title": "放課後の星空へ。",
       ".final-inner p:not(.section-kicker)": "すれ違った言葉も、遅すぎた願いも、まだ物語の中でなら拾い上げられる。あなたの選択で、彼女たちの放課後を見届けてください。",
       ".final-inner .button-primary": "ゲーム本体へ",
+      '.site-nav a[href="#updates"]': "更新履歴",
+      "#updates-title": "更新履歴",
+      ".update-entry:nth-child(1) .update-points li:nth-child(1)": "サブキャラクターとの短い日常シーンを共通ルートに追加しました。",
+      ".update-entry:nth-child(1) .update-points li:nth-child(2)": "文化祭クライマックスの会話と一枚絵（スチル）を追加し、展開をより自然にしました。",
+      ".update-entry:nth-child(1) .update-points li:nth-child(3)": "物語の細かな整合性とテンポを調整しました。",
+      ".update-entry:nth-child(1) .update-points li:nth-child(4)": "英語表示に対応しました（言語切り替えで English に切替できます）。",
+      ".update-entry:nth-child(1) .update-points li:nth-child(5)": "CONFIGに「既読のみスキップ」を追加しました。",
+      ".update-entry:nth-child(1) .update-points li:nth-child(6)": "一部の立ち絵・スチル表示を調整し、場面との整合性を高めました。",
+      ".update-entry:nth-child(2) .update-date": "初回公開",
+      ".update-entry:nth-child(2) .update-points li:nth-child(1)": "『放課後のステラ 嘘と願いのバウンドリー』を公開しました。",
       ".site-footer p": "放課後のステラ 嘘と願いのバウンドリー",
       ".site-footer a": "ページ上部へ",
     },
@@ -175,6 +185,16 @@ const translations = {
       "#cta-title": "Step into the after-school stars.",
       ".final-inner p:not(.section-kicker)": "Words that missed each other, wishes that arrived too late: in this story, they can still be picked up. Let your choices watch over their after school.",
       ".final-inner .button-primary": "Open the Game",
+      '.site-nav a[href="#updates"]': "Updates",
+      "#updates-title": "Update History",
+      ".update-entry:nth-child(1) .update-points li:nth-child(1)": "Added short slice-of-life scenes with supporting characters to the common route.",
+      ".update-entry:nth-child(1) .update-points li:nth-child(2)": "Added dialogue and a new still to the school-festival climax for a more natural flow.",
+      ".update-entry:nth-child(1) .update-points li:nth-child(3)": "Refined the story's consistency and pacing.",
+      ".update-entry:nth-child(1) .update-points li:nth-child(4)": "Added English language support (switch languages anytime).",
+      ".update-entry:nth-child(1) .update-points li:nth-child(5)": "Added a CONFIG option to skip only previously read text.",
+      ".update-entry:nth-child(1) .update-points li:nth-child(6)": "Adjusted select character sprites and still images for better scene consistency.",
+      ".update-entry:nth-child(2) .update-date": "Initial release",
+      ".update-entry:nth-child(2) .update-points li:nth-child(1)": "Released \"After School Stella: Boundary of Lies and Wishes.\"",
       ".site-footer p": "After School Stella: Boundary of Lies and Wishes",
       ".site-footer a": "Back to Top",
     },
@@ -205,10 +225,16 @@ function applyLanguage(language) {
   if (languageCurrent) {
     languageCurrent.textContent = locale.current;
   }
-  localStorage.setItem("houkagoStellaLanguage", language);
+  // ゲーム本編と同じキー (vn_language) に保存して言語設定を共有
+  localStorage.setItem("vn_language", language);
 }
 
-const savedLanguage = localStorage.getItem("houkagoStellaLanguage") === "en" ? "en" : "ja";
+// 既存ユーザー向け: 旧キー (houkagoStellaLanguage) が残っていれば一度だけ移行
+const savedLanguage =
+  (localStorage.getItem("vn_language") || localStorage.getItem("houkagoStellaLanguage")) === "en"
+    ? "en"
+    : "ja";
+try { localStorage.removeItem("houkagoStellaLanguage"); } catch (e) {}
 applyLanguage(savedLanguage);
 
 languageToggle?.addEventListener("click", () => {

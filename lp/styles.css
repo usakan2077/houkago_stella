@@ -817,6 +817,59 @@ h3 {
   color: rgba(255, 255, 255, 0.74);
 }
 
+.updates-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.update-entry {
+  border-radius: 8px;
+  padding: 22px 26px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+}
+
+.update-meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.update-version {
+  font-weight: 800;
+  font-size: 1.02rem;
+  letter-spacing: 0.04em;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.update-date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.update-points {
+  margin: 0;
+  padding-left: 1.1em;
+  color: rgba(255, 255, 255, 0.78);
+  display: grid;
+  gap: 6px;
+}
+
+.footer-version {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
 .final-cta {
   position: relative;
   overflow: hidden;

@@ -9,6 +9,7 @@ class VNEngine {
     this._debug      = VN_CONFIG.settings?.debug || false;
     this.parser      = new ScriptParser();
     this.labels      = {};           // { labelName: [cmd, ...] }
+    this.scenarioTexts = {};
     this.currentLabel= 'start';
     this.currentIndex= 0;
     this._lastAnalyticsCheckpoint = '';
@@ -16,6 +17,9 @@ class VNEngine {
     this._longPressTimer = null;
     this._longPressTriggered = false;
     this._resizeRaf = null;
+    this.currentLanguage = this._normalizeLanguage(
+      localStorage.getItem('vn_language') || VN_CONFIG.i18n?.defaultLanguage || 'ja'
+    );
 
     // 入力待ち / モード
     this.waitingForInput = false;
@@ -92,6 +96,14 @@ class VNEngine {
       JSON.parse(localStorage.getItem('vn_seen_good_ends') || '[]')
     );
 
+    // 既読行（既読スキップ用）。キー＝シナリオ行の生テキスト（$key 等）
+    this.readLines = new Set(
+      JSON.parse(localStorage.getItem('vn_read_lines') || '[]')
+    );
+    this._skipReadOnly = localStorage.getItem('vn_skip_read_only') === 'true';
+    this._curLineKey = null;
+    this._readPersistTimer = null;
+
     // オート速度設定の復元
     const savedDelay = localStorage.getItem('vn_auto_delay');
     if (savedDelay) VN_CONFIG.settings.autoDelay = parseInt(savedDelay, 10);
@@ -147,10 +159,210 @@ class VNEngine {
     window.addEventListener('orientationchange', () => setTimeout(() => this._scheduleResizeGame(), 300));
     const touchDevice = window.matchMedia?.('(hover: none) and (pointer: coarse)')?.matches;
     if (window.visualViewport && !touchDevice) window.visualViewport.addEventListener('resize', () => this._scheduleResizeGame());
+    this._applyStaticI18n();
+    await this._loadScenarioTexts();
     await this._loadScenarios();
     await this._preloadAssets();
     this._showTitleScreen();
     this._scheduleShootingStars();
+  }
+
+  _normalizeLanguage(language) {
+    const supported = VN_CONFIG.i18n?.supportedLanguages || ['ja'];
+    return supported.includes(language) ? language : (VN_CONFIG.i18n?.defaultLanguage || 'ja');
+  }
+
+  _t(path) {
+    const labels = VN_CONFIG.i18n?.labels || {};
+    const current = labels[this.currentLanguage] || labels.ja || {};
+    const fallback = labels[VN_CONFIG.i18n?.defaultLanguage || 'ja'] || labels.ja || {};
+    const resolve = (obj) => path.split('.').reduce((acc, key) => acc && acc[key], obj);
+    return resolve(current) ?? resolve(fallback) ?? path;
+  }
+
+  _tf(path, vars = {}) {
+    return String(this._t(path)).replace(/\{(\w+)\}/g, (_, key) => vars[key] ?? '');
+  }
+
+  _getScenarioFiles() {
+    const byLanguage = VN_CONFIG.scenarioFilesByLanguage || {};
+    return byLanguage[this.currentLanguage] || VN_CONFIG.scenarioFiles || [];
+  }
+
+  _getScenarioTextFile(language = this.currentLanguage) {
+    const files = VN_CONFIG.scenarioTextFiles || {};
+    return files[language] || files[VN_CONFIG.i18n?.defaultLanguage || 'ja'] || null;
+  }
+
+  _getOpeningLines() {
+    return (VN_CONFIG.openingLinesByLanguage || {})[this.currentLanguage]
+      || VN_CONFIG.openingLines
+      || [];
+  }
+
+  _getCharacterDisplayName(charKey) {
+    if (!charKey) return '';
+    const cfg = VN_CONFIG.characters[charKey];
+    if (!cfg) {
+      const speaker = VN_CONFIG.speakerNames?.[charKey];
+      if (speaker) return speaker[this.currentLanguage] || speaker.ja || charKey;
+      return '';
+    }
+    if (this.currentLanguage === 'en' && cfg.nameEn) return cfg.nameEn;
+    return cfg.name || '';
+  }
+
+  _scrollDialogTextToBottom(targetEl = null) {
+    const textEl = targetEl?.id === 'dialog-text'
+      ? targetEl
+      : targetEl?.closest?.('#dialog-text') || document.getElementById('dialog-text');
+    if (!textEl) return;
+    requestAnimationFrame(() => {
+      textEl.scrollTop = textEl.scrollHeight;
+    });
+  }
+
+  _applyStaticI18n() {
+    document.documentElement.lang = this.currentLanguage === 'en' ? 'en' : 'ja';
+    const setText = (id, text) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    };
+
+    setText('btn-newgame', this._t('titleNewGame'));
+    setText('btn-continue', this._t('titleContinue'));
+    setText('btn-gallery', this._t('titleGallery'));
+    setText('btn-modal-close', this._t('close'));
+    setText('btn-log-close', this._t('close'));
+    setText('btn-gallery-close', this._t('close'));
+    setText('btn-settings-close', this._t('close'));
+    setText('btn-confirm-ok', this._t('yes'));
+    setText('btn-confirm-no', this._t('no'));
+
+    const logTitle = document.querySelector('#log-modal h2');
+    if (logTitle) logTitle.textContent = this._t('textLog');
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      el.textContent = this._t(el.dataset.i18n);
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      el.innerHTML = this._t(el.dataset.i18nHtml);
+    });
+
+    document.querySelectorAll('[data-language]').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.language === this.currentLanguage);
+    });
+
+    this._applyTitleLogo();
+    this._applyTextLayoutMode();
+  }
+
+  _getTitleLogoConfig() {
+    const logos = VN_CONFIG.titleLogos || {};
+    const defaultLanguage = VN_CONFIG.i18n?.defaultLanguage || 'ja';
+    return logos[this.currentLanguage] || logos[defaultLanguage] || null;
+  }
+
+  _applyTitleLogo() {
+    const img = document.getElementById('title-logo-img');
+    const logo = this._getTitleLogoConfig();
+    if (!img || !logo) return;
+    img.alt = logo.alt || '';
+
+    const currentSrc = img.getAttribute('src');
+    const targetSrc = logo.src;
+    if (currentSrc === targetSrc) {
+      this._titleLogoApplied = true;
+      return;
+    }
+
+    // 初回適用（インラインHTMLの初期srcと一致しない場合など）はフェードなしで即時切替
+    if (!this._titleLogoApplied) {
+      img.src = targetSrc;
+      this._titleLogoApplied = true;
+      return;
+    }
+
+    // 言語切替などによる差替え: 新画像をプリロード → フェードアウト → 差替え → フェードイン
+    const preload = new Image();
+    const restoreOpacity = () => { img.style.opacity = ''; };
+    preload.onload = () => {
+      let done = false;
+      const swap = () => {
+        if (done) return;
+        done = true;
+        img.removeEventListener('transitionend', swap);
+        img.src = targetSrc;
+        // 次フレームでフェードイン（src差替え直後は念のため1フレーム待つ）
+        requestAnimationFrame(restoreOpacity);
+      };
+      img.addEventListener('transitionend', swap, { once: true });
+      img.style.opacity = '0';
+      // transitionend が来ないケースのフォールバック（CSSのtransitionより少し長め）
+      setTimeout(swap, 380);
+    };
+    preload.onerror = () => {
+      // プリロード失敗時は無理に演出せず即時切替
+      restoreOpacity();
+      img.src = targetSrc;
+    };
+    preload.src = targetSrc;
+  }
+
+  _getLocalizedConfigText(item, key = 'text') {
+    if (!item) return '';
+    if (this.currentLanguage === 'en' && item[`${key}En`]) return item[`${key}En`];
+    return item[key] || '';
+  }
+
+  _applyTextLayoutMode() {
+    document.documentElement.classList.toggle('vn-chain-none', this._chainMode === 'none');
+  }
+
+  async _setLanguage(language, options = {}) {
+    const next = this._normalizeLanguage(language);
+    if (next === this.currentLanguage) {
+      this._applyStaticI18n();
+      return;
+    }
+
+    this.currentLanguage = next;
+    localStorage.setItem('vn_language', next);
+    this._applyStaticI18n();
+    await this._loadScenarioTexts();
+    await this._loadScenarios();
+
+    if (options.returnToTitle && this._gameActive) {
+      this._resetGameState();
+      this._showTitleScreen();
+    }
+  }
+
+  async _loadScenarioTexts() {
+    const defaultLanguage = VN_CONFIG.i18n?.defaultLanguage || 'ja';
+    const defaultFile = this._getScenarioTextFile(defaultLanguage);
+    const currentFile = this._getScenarioTextFile(this.currentLanguage);
+
+    const loadJson = async (file) => {
+      if (!file) return {};
+      try {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+      } catch (err) {
+        console.warn('[i18n] scenario text load failed:', file, err);
+        return {};
+      }
+    };
+
+    const fallback = await loadJson(defaultFile);
+    const current = currentFile === defaultFile ? fallback : await loadJson(currentFile);
+    this.scenarioTexts = { ...fallback, ...current };
+  }
+
+  _resolveScenarioText(text) {
+    if (typeof text !== 'string' || !text.startsWith('$')) return text;
+    const key = text.slice(1);
+    return this.scenarioTexts[key] ?? key;
   }
 
   // ============================================================
@@ -220,9 +432,12 @@ class VNEngine {
       tasks.push(tryStill(cg.key));
     }
 
-    // 進捗トラッキング: FirefoxではGoogle Fontsを読まず、他ブラウザではShipporiの準備も待つ。
+    // 進捗トラッキング: Webフォントが詰まっても開始不能にしない。
     if (document.fonts) {
-      tasks.push(document.fonts.ready);
+      tasks.push(Promise.race([
+        document.fonts.ready.catch(() => {}),
+        new Promise(resolve => setTimeout(resolve, 2500)),
+      ]));
     }
 
     const total = tasks.length;
@@ -281,6 +496,7 @@ class VNEngine {
     if (!VN_CONFIG.analytics?.enabled || typeof window.gtag !== 'function') return;
     window.gtag('event', name, {
       game_title: 'houkago_stella',
+      language: this.currentLanguage,
       ...params,
     });
   }
@@ -354,7 +570,8 @@ class VNEngine {
 
   /** シナリオ .md ファイルを順番に読み込む */
   async _loadScenarios() {
-    for (const file of VN_CONFIG.scenarioFiles) {
+    this.labels = {};
+    for (const file of this._getScenarioFiles()) {
       try {
         const res = await fetch(file);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -376,9 +593,7 @@ class VNEngine {
       'background:#7a0020;color:#fff;padding:12px;',
       'text-align:center;z-index:9999;font-size:14px;',
     ].join('');
-    el.textContent =
-      `スクリプト読み込みエラー: ${file} ` +
-      `— start.bat でサーバーを起動してください。`;
+    el.textContent = this._tf('loadError', { file });
     document.body.appendChild(el);
   }
 
@@ -395,6 +610,10 @@ class VNEngine {
     on('btn-newgame',  'click', () => this._startNewGame());
     on('btn-continue', 'click', () => this._openSaveLoad('load'));
     on('btn-gallery',  'click', () => this._openGallery());
+    on('btn-title-settings', 'click', () => this._openSettings());
+    document.querySelectorAll('#title-language-switch [data-language]').forEach(btn => {
+      btn.addEventListener('click', () => this._setLanguage(btn.dataset.language));
+    });
     if (VN_CONFIG.settings.debug) {
       on('btn-debug', 'click', () => this._openDebugMenu());
     } else {
@@ -522,6 +741,9 @@ class VNEngine {
         return;
       }
 
+      // プロローグやタイトルなど本編外では、本編用ショートカットを動かさない。
+      if (!this._gameActive) return;
+
       // F5/F7はモーダルが出ていなければ選択肢中・エンディング中でも有効
       if (['F5', 'F6', 'F7', 'F8'].includes(e.code)) {
         if (hasModal) return;
@@ -565,6 +787,7 @@ class VNEngine {
     on('btn-log-close',      'click', () => document.getElementById('log-modal').classList.add('hidden'));
     on('btn-gallery-close',  'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
     on('btn-settings-close', 'click', () => document.getElementById('settings-modal').classList.add('hidden'));
+    on('btn-reset-progress', 'click', () => this._showConfirm(this._t('settings.resetConfirm'), () => this._resetProgress()));
     on('btn-ending-title',  'click', () => this._returnFromEndingToTitle());
     on('btn-next-chapter',  'click', () => this._continueToNextChapter());
     on('btn-credits-skip',  'click', () => this._skipCredits());
@@ -593,7 +816,10 @@ class VNEngine {
   // ============================================================
   _showTitleScreen() {
     this._gameActive = false;
+    this._applyStaticI18n();
     const titleScreen = document.getElementById('title-screen');
+    const verEl = document.getElementById('title-version');
+    if (verEl && VN_CONFIG.version) verEl.textContent = 'ver ' + VN_CONFIG.version;
     titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
     titleScreen.classList.remove('hidden');
     document.getElementById('game-screen').classList.add('hidden');
@@ -607,6 +833,17 @@ class VNEngine {
     return routes.every(route =>
       this.seenGoodEnds.has(route) || this.seenStills.has(this.goodEndEpilogueStills[route])
     );
+  }
+
+  _markLineRead(key) {
+    if (!key || this.readLines.has(key)) return;
+    this.readLines.add(key);
+    // 連打/スキップ中の頻繁な書き込みを避けるためデバウンス保存
+    if (this._readPersistTimer) clearTimeout(this._readPersistTimer);
+    this._readPersistTimer = setTimeout(() => {
+      this._readPersistTimer = null;
+      localStorage.setItem('vn_read_lines', JSON.stringify([...this.readLines]));
+    }, 800);
   }
 
   _markGoodEndSeen(route) {
@@ -647,7 +884,7 @@ class VNEngine {
     this._stopBGM();
     if (VN_CONFIG.introVideo) {
       this._playIntroVideo();
-    } else if (VN_CONFIG.openingLines && VN_CONFIG.openingLines.length > 0) {
+    } else if (this._getOpeningLines().length > 0) {
       this._playOpeningMonologue();
     } else {
       this._beginGame();
@@ -681,7 +918,7 @@ class VNEngine {
     // BGM
     if (VN_CONFIG.openingBGM) this._playBGM(VN_CONFIG.openingBGM);
 
-    const lines = [...(VN_CONFIG.openingLines || [])];
+    const lines = [...this._getOpeningLines()];
     let idx      = 0;
     let finished = false;
 
@@ -754,7 +991,7 @@ class VNEngine {
       setTimeout(() => {
         screen.classList.add('hidden');
         screen.classList.remove('fade-out');
-        if (VN_CONFIG.openingLines && VN_CONFIG.openingLines.length > 0) {
+        if (this._getOpeningLines().length > 0) {
           this._playOpeningMonologue();
         } else {
           this._beginGame();
@@ -1078,11 +1315,13 @@ class VNEngine {
         break;
 
       case 'narrate':
-        this._displayDialog(null, cmd.text, cmd.emphasis);
+        this._curLineKey = cmd.text;
+        this._displayDialog(null, this._resolveScenarioText(cmd.text), cmd.emphasis);
         break;
 
       case 'say':
-        this._displayDialog(cmd.char, cmd.text);
+        this._curLineKey = cmd.text;
+        this._displayDialog(cmd.char, this._resolveScenarioText(cmd.text));
         break;
 
       case 'choice':
@@ -1130,7 +1369,7 @@ class VNEngine {
         break;
 
       case 'end':
-        this._displayEnding(cmd.title, cmd.next);
+        this._displayEnding(this._resolveScenarioText(cmd.title), cmd.next);
         break;
 
       default:
@@ -1146,6 +1385,9 @@ class VNEngine {
     this._stopAllSE();
     this.currentBG = bgKey;
     const el = document.getElementById('background');
+    const isFlashbackBG = /^elementary_/.test(bgKey);
+    el.classList.toggle('flashback-bg', isFlashbackBG);
+    document.getElementById('game-screen')?.classList.toggle('flashback-scene', isFlashbackBG);
 
     // 背景を適用してコールバックを呼ぶ
     const applyBG = (onReady) => {
@@ -1216,6 +1458,9 @@ class VNEngine {
     // キャラ画像はすべて PNG
     const imgEl = new Image();
     imgEl.alt = cfg.name;
+    // 立ち絵の表示倍率・接地オフセット（キャラ間のサイズ差を吸収）
+    imgEl.style.transformOrigin = '50% 100%';
+    imgEl.style.transform = `translateY(${cfg.offsetY || 0}px) scale(${cfg.scale || 1})`;
     imgEl.onerror = () => {
       // PNG が見つからない場合のみプレースホルダー
       const ph = document.createElement('div');
@@ -1319,8 +1564,11 @@ class VNEngine {
         const sprite = slot?.querySelector('.char-sprite');
         if (!sprite) return;
 
+        const cfg = VN_CONFIG.characters[charKey] || {};
         const imgEl = new Image();
         imgEl.alt = charKey;
+        imgEl.style.transformOrigin = '50% 100%';
+        imgEl.style.transform = `translateY(${cfg.offsetY || 0}px) scale(${cfg.scale || 1})`;
         imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
         // 新画像を先に追加してから旧画像を削除（空白フレームを防ぐ）
         const swap = () => {
@@ -1382,6 +1630,8 @@ class VNEngine {
     // instant（ロード復元時など）はロック不要、それ以外は連打でスチルが即流れないよう最低表示時間を設ける
     this._stillLockUntil = effect === 'instant' ? 0 : Date.now() + 2200;
     const el = document.getElementById('still-layer');
+    const isFlashbackStill = effect === 'flashback' || effect === 'flashback_pan';
+    const isFlashbackPan = effect === 'flashback_pan';
     el.className  = '';
     el.innerHTML  = '';
     el.style.backgroundImage = '';
@@ -1391,8 +1641,8 @@ class VNEngine {
     const applyStill = (src) => {
       el.style.background         = '';
       el.style.backgroundImage    = `url(${src})`;
-      el.style.backgroundSize     = 'contain';
-      el.style.backgroundPosition = 'center';
+      el.style.backgroundSize     = isFlashbackPan ? '185% auto' : 'contain';
+      el.style.backgroundPosition = isFlashbackPan ? '65% 46%' : 'center';
       el.style.backgroundRepeat   = 'no-repeat';
       el.style.backgroundColor    = 'rgba(0,0,0,.85)';
       if (!this.seenStills.has(imageName)) {
@@ -1425,6 +1675,7 @@ class VNEngine {
     }
 
     el.classList.remove('hidden');
+    if (isFlashbackStill) el.classList.add('flashback-still');
     if (effect !== 'instant') el.classList.add(`effect-${effect}`);
     this.currentStill = imageName;
   }
@@ -1434,6 +1685,10 @@ class VNEngine {
     el.classList.remove(
       'effect-fade-in',
       'effect-slide-in-bottom',
+      'effect-flashback',
+      'effect-flashback_pan',
+      'effect-pan_out',
+      'flashback-still',
       'ending-intro-still',
       'ending-intro-kotoha',
       'ending-intro-sakura',
@@ -1444,6 +1699,8 @@ class VNEngine {
     el.style.transition = '';
     el.style.transform = '';
     el.style.filter = '';
+    el.style.backgroundSize = '';
+    el.style.backgroundPosition = '';
   }
 
   _hideStill(effect = 'fade_out') {
@@ -1522,14 +1779,16 @@ class VNEngine {
     textEl.classList.remove('narrate-inner', 'narrate-climax');
 
     const cfg = charKey ? VN_CONFIG.characters[charKey] : null;
+    const speakerName = this._getCharacterDisplayName(charKey);
 
-    if (cfg && cfg.name) {
-      nameEl.textContent  = cfg.name;
-      nameEl.style.color  = cfg.nameColor || '#ff99bb';
-      nameBox.style.setProperty('--accent-color', cfg.nameColor || '#ff99bb');
+    if (speakerName) {
+      nameEl.textContent  = speakerName;
+      nameEl.style.color  = cfg?.nameColor || '#ff99bb';
+      nameBox.style.setProperty('--accent-color', cfg?.nameColor || '#ff99bb');
       nameBox.classList.remove('no-speaker');
       nameBox.style.display = '';
-      this._highlightChar(charKey);
+      if (cfg) this._highlightChar(charKey);
+      else this._clearCharHighlights();
     } else {
       nameEl.textContent    = '';
       nameBox.style.setProperty('--accent-color', '#ff99bb');
@@ -1539,9 +1798,14 @@ class VNEngine {
     }
 
     // ログに追加
-    this.textLog.push({ name: cfg?.name || '', nameColor: cfg?.nameColor || '', text });
+    this.textLog.push({ name: speakerName, nameColor: cfg?.nameColor || '', text });
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
+
+    // 既読管理（既読スキップ用）。表示前に既読状態を確定してからマーク
+    const _lineKey = this._curLineKey;
+    const _wasRead = !_lineKey || this.readLines.has(_lineKey);
+    this._markLineRead(_lineKey);
 
     // 連続2行表示の制御（emphasisモードは対象外）
     // 地の文は '__narration__' キーとして扱い、連続判定に使用
@@ -1568,6 +1832,13 @@ class VNEngine {
     }
     // displayRow===2 のときは行1を残すため textContent をクリアしない
 
+    // 既読のみスキップ設定: 未読行に到達したらスキップを止め、通常表示に切り替える
+    if (this.skipMode && this._skipReadOnly && !_wasRead) {
+      this.skipMode = false;
+      const _sb = document.getElementById('btn-skip');
+      if (_sb) _sb.classList.remove('active');
+    }
+
     if (this.skipMode) {
       const token = this._advanceToken;
       // スキップ中は即表示して次へ
@@ -1580,6 +1851,7 @@ class VNEngine {
       } else {
         textEl.textContent = prefix + text;
       }
+      this._scrollDialogTextToBottom(textEl);
       this.waitingForInput = true;
       arrow.style.display = 'block';
       this.skipTimer = setTimeout(() => {
@@ -1612,10 +1884,12 @@ class VNEngine {
       // 締め：即表示＋CSSフェードイン
       textEl.classList.add('narrate-climax');
       textEl.textContent = prefix + text;
+      this._scrollDialogTextToBottom(textEl);
       onDone();
     } else {
       // 2行目の場合は行1テキスト+改行をプレフィックスとしてセットしてからタイプライター開始
       textEl.textContent = prefix;
+      this._scrollDialogTextToBottom(textEl);
       this._startTypewriter(textEl, text, onDone);
     }
   }
@@ -1624,6 +1898,7 @@ class VNEngine {
     const speed = VN_CONFIG.settings.typeSpeed;
     if (speed === 0) {
       el.textContent += text;
+      this._scrollDialogTextToBottom(el);
       onDone();
       return;
     }
@@ -1631,6 +1906,7 @@ class VNEngine {
     this.typewriterTimer = setInterval(() => {
       if (i < text.length) {
         el.textContent += text[i++];
+        this._scrollDialogTextToBottom(el);
       } else {
         clearInterval(this.typewriterTimer);
         this.typewriterTimer = null;
@@ -1690,6 +1966,7 @@ class VNEngine {
       } else {
         textEl.textContent = prefix + this.currentText;
       }
+      this._scrollDialogTextToBottom(textEl);
       this.waitingForInput = true;
       document.getElementById('next-arrow').style.display = 'block';
       if (this.autoMode) {
@@ -1735,15 +2012,16 @@ class VNEngine {
     });
 
     options.forEach(opt => {
+      const choiceText = this._resolveScenarioText(opt.text);
       const btn = document.createElement('button');
       btn.className   = 'choice-btn';
-      btn.textContent = opt.text;
+      btn.textContent = choiceText;
       btn.addEventListener('click', () => {
         this._trackEvent('vn_choice_select', {
           scenario_stage: this._getAnalyticsStage(),
           scenario_label: this.currentLabel,
           command_index: this.currentIndex,
-          choice_text: String(opt.text || '').slice(0, 100),
+          choice_text: String(choiceText || '').slice(0, 100),
           next_label: opt.next || '',
         });
         overlay.classList.add('hidden');
@@ -1890,7 +2168,7 @@ class VNEngine {
         slot.addEventListener('click', () => {
           document.getElementById('save-load-modal').classList.add('hidden');
           if (mode === 'save') {
-            this._showConfirm(`SLOT ${i} に上書きしますか？`, () => this._saveToSlot(i));
+            this._showConfirm(this._tf('saveOverwrite', { slot: i }), () => this._saveToSlot(i));
           } else {
             this._loadFromSlot(i);
           }
@@ -1926,6 +2204,7 @@ class VNEngine {
       currentBGMLoop: this.currentBGMLoop,
       currentStill: this.currentStill || null,
       windowColor:  this.windowColor || 'reset',
+      language: this.currentLanguage,
       preview,
       date: new Date().toLocaleString('ja-JP', {
         month: 'short', day: 'numeric',
@@ -1939,13 +2218,16 @@ class VNEngine {
       scenario_label: this.currentLabel,
       command_index: this.currentIndex,
     });
-    this._showToast(`${slotLabel} にセーブしました`);
+    this._showToast(this._tf('saveDone', { slotLabel }));
   }
 
-  _loadFromSlot(slot, slotLabel = '') {
+  async _loadFromSlot(slot, slotLabel = '') {
     const raw = localStorage.getItem(`vn_save_${slot}`);
     if (!raw) return;
     const d = JSON.parse(raw);
+    if (d.language && d.language !== this.currentLanguage) {
+      await this._setLanguage(d.language);
+    }
 
     this._resetGameState();
     this._gameActive = true;
@@ -1976,7 +2258,7 @@ class VNEngine {
     });
     this._trackProgress('load');
     this._executeNext();
-    if (slotLabel) this._showToast(`${slotLabel} しました`);
+    if (slotLabel) this._showToast(this._tf('loadDone', { slotLabel }));
   }
 
   _showConfirm(message, onOk, onCancel) {
@@ -2000,6 +2282,28 @@ class VNEngine {
     document.getElementById('btn-confirm-no').addEventListener('click', () => {
       cleanup(); if (onCancel) onCancel();
     }, { once: true });
+  }
+
+  /**
+   * 進行状況の初期化：セーブスロット（クイック＋1〜10）とギャラリー解放状況を削除。
+   * 設定（音量・速度・言語・ウィンドウ色など vn_ 系の設定キー）は残す。
+   * 取り消し不可のため、必ず _showConfirm を通して呼ぶこと。
+   */
+  _resetProgress() {
+    const keys = ['vn_save_quick', 'vn_seen_stills', 'vn_seen_good_ends', 'vn_read_lines'];
+    for (let i = 1; i <= 10; i++) keys.push(`vn_save_${i}`);
+    keys.forEach(k => localStorage.removeItem(k));
+    // メモリ上の解放状況もクリア
+    this.seenStills    = new Set();
+    this.seenGoodEnds  = new Set();
+    // 既読行もクリア（スキップ設定 vn_skip_read_only は設定なので残す）
+    if (this._readPersistTimer) { clearTimeout(this._readPersistTimer); this._readPersistTimer = null; }
+    this.readLines     = new Set();
+    // タイトル背景（全ルート制覇後の変化）を即座に元へ戻す。
+    // CONTINUEは空スロット表示、ギャラリーは開く度に再構築されるためリロード不要。
+    const titleScreen = document.getElementById('title-screen');
+    if (titleScreen) titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
+    this._showToast(this._t('settings.resetDone'));
   }
 
   _showToast(msg) {
@@ -2080,12 +2384,13 @@ class VNEngine {
     // クレジット行を生成
     const lines = VN_CONFIG.credits || [];
     roll.innerHTML = lines.map(item => {
+      const text = this._getLocalizedConfigText(item);
       switch (item.type) {
-        case 'game-title': return `<div class="credits-game-title">${item.text}</div>`;
-        case 'heading':    return `<div class="credits-heading">${item.text}</div>`;
-        case 'name':       return `<div class="credits-name">${item.text}</div>`;
-        case 'sub':        return `<div class="credits-sub">${item.text}</div>`;
-        case 'thanks':     return `<div class="credits-thanks">${item.text}</div>`;
+        case 'game-title': return `<div class="credits-game-title">${text}</div>`;
+        case 'heading':    return `<div class="credits-heading">${text}</div>`;
+        case 'name':       return `<div class="credits-name">${text}</div>`;
+        case 'sub':        return `<div class="credits-sub">${text}</div>`;
+        case 'thanks':     return `<div class="credits-thanks">${text}</div>`;
         case 'spacer':     return `<div class="credits-spacer"></div>`;
         case 'logo':       return `<div class="credits-logo"><img src="${item.text}" alt="logo"></div>`;
         default:           return '';
@@ -2155,6 +2460,8 @@ class VNEngine {
       memoryStills: Array.isArray(profile.memoryStills) ? profile.memoryStills : [],
       scrollSpeed: profile.scrollSpeed || 100,
       lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
+      lyricsRomaji: Array.isArray(profile.lyricsRomaji) ? profile.lyricsRomaji : [],
+      lyricsEn: Array.isArray(profile.lyricsEn) ? profile.lyricsEn : [],
       //lyricTimes: Array.isArray(profile.lyricTimes) ? profile.lyricTimes : null,
 
     };
@@ -2219,7 +2526,7 @@ class VNEngine {
 
   _getStillLabel(stillKey) {
     const item = (VN_CONFIG.cgList || []).find(cg => cg.key === stillKey);
-    return item?.label || stillKey;
+    return this._getLocalizedConfigText(item, 'label') || stillKey;
   }
 
 
@@ -2232,6 +2539,8 @@ class VNEngine {
     }
 
     const rawLyrics = profile.lyrics || [];
+    const romajiLyrics = Array.isArray(profile.lyricsRomaji) ? profile.lyricsRomaji : [];
+    const englishLyrics = Array.isArray(profile.lyricsEn) ? profile.lyricsEn : [];
     const hasExplicitTimes = rawLyrics.some(item =>
       item && !Array.isArray(item) && Number.isFinite(Number(item.time))
     );
@@ -2248,7 +2557,13 @@ class VNEngine {
         if (Array.isArray(item)) {
           entry = item;
         } else if (item && typeof item === 'object') {
-          entry = Array.isArray(item.text) ? item.text : [String(item.text || '')];
+          const romaji = Array.isArray(item.romaji) ? item.romaji : romajiLyrics[index];
+          const en = Array.isArray(item.en) ? item.en : englishLyrics[index];
+          entry = {
+            ja: Array.isArray(item.text) ? item.text : [String(item.text || '')],
+            romaji: Array.isArray(romaji) ? romaji : null,
+            en: Array.isArray(en) ? en : null,
+          };
           explicitTime = Number(item.time);
         } else {
           entry = [String(item || '')];
@@ -2261,7 +2576,10 @@ class VNEngine {
           entry,
         };
       })
-      .filter(item => item.entry[0] !== '');
+      .filter(item => {
+        const first = Array.isArray(item.entry) ? item.entry[0] : item.entry?.ja?.[0];
+        return first !== '';
+      });
 
     if (normalized.length === 0) return;
 
@@ -2322,8 +2640,20 @@ class VNEngine {
     const lyricsEl = document.getElementById('credits-lyrics');
     if (!lyricsEl) return;
 
-    const lines = Array.isArray(entry) ? entry : [entry];
-    lyricsEl.textContent = lines.join('\n');
+    if (entry && typeof entry === 'object' && !Array.isArray(entry)) {
+      const lines = [];
+      if (this.currentLanguage === 'en') {
+        if (entry.romaji && entry.romaji.length) lines.push(...entry.romaji);
+        if (entry.en && entry.en.length) lines.push('', ...entry.en);
+        if (lines.length === 0) lines.push(...(entry.ja || []));
+      } else {
+        lines.push(...(entry.ja || []));
+      }
+      lyricsEl.textContent = lines.join('\n');
+    } else {
+      const lines = Array.isArray(entry) ? entry : [entry];
+      lyricsEl.textContent = lines.join('\n');
+    }
 
     // 非表示状態を解除してフェードイン
     lyricsEl.classList.remove('hidden');
@@ -2718,7 +3048,7 @@ class VNEngine {
 
   _returnToTitle() {
     this._showConfirm(
-      'タイトルに戻りますか？\n（未セーブのデータは失われます）',
+      this._t('returnTitleConfirm'),
       () => {
         this._stopAllSE();
         this._nextChapterLabel = null;
@@ -2732,6 +3062,22 @@ class VNEngine {
   //  設定
   // ============================================================
   _openSettings() {
+    this._applyStaticI18n();
+    document.querySelectorAll('#language-options .settings-opt').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.language === this.currentLanguage);
+      btn.onclick = () => {
+        const next = btn.dataset.language;
+        if (next === this.currentLanguage) return;
+        const change = () => this._setLanguage(next, { returnToTitle: true });
+        if (this._gameActive) {
+          document.getElementById('settings-modal').classList.add('hidden');
+          this._showConfirm(this._t('languageSwitchConfirm'), change);
+        } else {
+          change();
+        }
+      };
+    });
+
     // オート速度
     const currentDelay = VN_CONFIG.settings.autoDelay;
     document.querySelectorAll('#auto-speed-options .settings-opt').forEach(btn => {
@@ -2810,8 +3156,21 @@ class VNEngine {
         this._dialogRow     = 1;
         this._line1Text     = '';
         this._line1Emphasis = null;
+        this._applyTextLayoutMode();
         document.querySelectorAll('#chain-mode-options .settings-opt')
           .forEach(b => b.classList.toggle('active', b.dataset.chain === this._chainMode));
+      };
+    });
+
+    // スキップ対象（すべて / 既読のみ）
+    const skipVal = () => (this._skipReadOnly ? 'read' : 'all');
+    document.querySelectorAll('#skip-mode-options .settings-opt').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.skip === skipVal());
+      btn.onclick = () => {
+        this._skipReadOnly = (btn.dataset.skip === 'read');
+        localStorage.setItem('vn_skip_read_only', this._skipReadOnly ? 'true' : 'false');
+        document.querySelectorAll('#skip-mode-options .settings-opt')
+          .forEach(b => b.classList.toggle('active', b.dataset.skip === skipVal()));
       };
     });
 
@@ -2857,7 +3216,7 @@ class VNEngine {
     const content = document.getElementById('gallery-content');
     const list    = VN_CONFIG.cgList || [];
     if (list.length === 0) {
-      content.innerHTML = '<p style="color:rgba(255,255,255,0.4);text-align:center;margin-top:40px;">スチル画像がありません</p>';
+      content.innerHTML = `<p style="color:rgba(255,255,255,0.4);text-align:center;margin-top:40px;">${this._t('galleryEmpty')}</p>`;
       document.getElementById('gallery-modal').classList.remove('hidden');
       return;
     }
@@ -2866,10 +3225,11 @@ class VNEngine {
     let html = `<div class="cg-total-count">${seenCount} / ${list.length}</div>`;
     html += `<div class="cg-grid">`;
     for (const item of list) {
+      const label = this._getStillLabel(item.key);
       if (this.seenStills.has(item.key)) {
-        html += `<div class="cg-thumb unlocked" data-key="${item.key}" title="${item.label}">
+        html += `<div class="cg-thumb unlocked" data-key="${item.key}" title="${label}">
           <div class="cg-thumb-img" style="background-image:url('${this._getStillAssetPath(item.key)}')"></div>
-          <div class="cg-thumb-label">${item.label}</div>
+          <div class="cg-thumb-label">${label}</div>
         </div>`;
       } else {
         html += `<div class="cg-thumb locked">
@@ -3086,12 +3446,36 @@ class VNEngine {
       { label: '── バッドエンド',                 key: 'bad_end_common' },
     ];
 
+    // サブキャラが登場するシーン（デバッグ確認用）。ラベル先頭にジャンプ。
+    const subcharScenes = [
+      { label: 'Ch1 朝の校門',       who: '延原（初登場・プリント）',          key: 'chapter1_morning_gate' },
+      { label: 'Ch1 ホームルーム',   who: '担任・延原（連絡＋傘ネタ）・転入生', key: 'chapter1_homeroom' },
+      { label: 'Ch1 最後の教室',     who: '慎（回想・夕方の教室）',            key: 'chapter1_last_classroom' },
+      { label: 'Ch2 体育',           who: '延原（体操服・PE）',                key: 'chapter2_pe' },
+      { label: 'Ch3 朝の教室',       who: '延原＋クラス男・担任（丸投げ）',     key: 'chapter3_start' },
+      { label: 'Ch3 昼休み（屋上前）', who: '自販機天丼①（売切）',             key: 'chapter3_lunch' },
+      { label: 'Ch3 図書室',         who: 'クラスメイト女（誤読）',            key: 'chapter3_library' },
+      { label: 'Ch4 帰り道（章末）', who: '慎（回想・スチル）',                key: 'chapter4_end' },
+      { label: 'Ch5 まひる窓辺',     who: '自販機天丼②（最後の一本）',        key: 'chapter5_mahiru_window' },
+      { label: 'Ch5 帰り道（章末）', who: '延原（荷物・倒れてから〜）',        key: 'chapter5_end' },
+      { label: 'Ch6 さくら体育館',   who: 'バド部員A/B・橋本先輩',             key: 'chapter6_sakura_gym' },
+      { label: 'Ch6 商店街（ことは前）', who: '延原（実家手伝い・素）',          key: 'chapter6_kotoha_piano' },
+      { label: 'Ch7 朝',             who: '自販機天丼③（達観オチ）',          key: 'chapter7_start' },
+      { label: 'Ch7 文化祭前日昼',   who: '担任（傘14本・着地）',              key: 'chapter7_festival_lunch' },
+      { label: 'Ch7 文化祭準備',     who: '延原×2・実行委員・クラス男',        key: 'chapter7_festival' },
+      { label: 'Ch8 当日朝',         who: '延原（会計係）',                    key: 'chapter8_start' },
+      { label: 'Ch8 開場',           who: '担任（雨天連絡）・バド部員（反転）', key: 'chapter8_festival_open' },
+      { label: 'Ch8 さくらカフェ',   who: 'クラスメイト女（助けて→助け返す）', key: 'chapter8_sakura_cafe' },
+      { label: 'Ch8 分岐前',         who: '実行委員・延原（こっちは俺がやる）', key: 'chapter8_branch' },
+    ];
+
     const overlay = document.createElement('div');
     overlay.id = 'debug-jump-overlay';
     overlay.style.cssText = [
       'position:fixed;inset:0;z-index:1000000;',
       'background:rgba(0,0,0,.78);',
-      'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;',
+      'display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;',
+      'overflow-y:auto;padding:24px 12px;',
     ].join('');
 
     const title = document.createElement('div');
@@ -3113,6 +3497,30 @@ class VNEngine {
       btn.addEventListener('click', () => {
         overlay.remove();
         this._startFromLabel(ch.key);
+      });
+      overlay.appendChild(btn);
+    }
+
+    // ── サブキャラ登場シーン ──
+    const subTitle = document.createElement('div');
+    subTitle.textContent = '── サブキャラ登場シーン ──';
+    subTitle.style.cssText = 'color:#9fe;font-size:.95em;font-family:monospace;margin:14px 0 4px;';
+    overlay.appendChild(subTitle);
+
+    for (const sc of subcharScenes) {
+      const btn = document.createElement('button');
+      btn.innerHTML = `${sc.label}<span style="opacity:.55;font-size:.78em;margin-left:8px;">${sc.who}</span>`;
+      btn.style.cssText = [
+        'width:420px;padding:8px 16px;text-align:left;',
+        'background:rgba(120,220,200,.06);border:1px solid rgba(150,230,210,.25);',
+        'color:#dfe;font-size:.9em;font-family:monospace;cursor:pointer;',
+        'transition:background .15s;',
+      ].join('');
+      btn.onmouseenter = () => { btn.style.background = 'rgba(150,230,210,.18)'; };
+      btn.onmouseleave = () => { btn.style.background = 'rgba(120,220,200,.06)'; };
+      btn.addEventListener('click', () => {
+        overlay.remove();
+        this._startFromLabel(sc.key);
       });
       overlay.appendChild(btn);
     }
@@ -3146,6 +3554,7 @@ class VNEngine {
       kotoha_interlude:  { kotoha_favor: 12 },
       mahiru_interlude:  { mahiru_favor: 12 },
       chapter8_start:    { sakura_favor: 10, kotoha_favor: 10, mahiru_favor: 10 },
+      chapter8_branch:   { sakura_favor: 10, kotoha_favor: 10, mahiru_favor: 10 },
     };
     if (favorPresets[label]) Object.assign(this.flags, favorPresets[label]);
     this._gotoLabel(label);
