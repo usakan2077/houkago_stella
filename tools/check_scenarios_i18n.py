@@ -1,137 +1,185 @@
+"""Check each language's current scripts, text references, assets and branches.
+
+Japanese and English share text keys, speakers, branches and presentation cues.
+The retired scenarios/old migration inputs are no longer required.
+"""
 from __future__ import annotations
 
 import json
 import re
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
-OLD_DIR = ROOT / "scenarios" / "old"
-SCENARIO_DIR = ROOT / "scenarios"
-JA_LOCALE = ROOT / "locales" / "scenario.ja.json"
-EN_LOCALE = ROOT / "locales" / "scenario.en.json"
-
-SCENARIO_FILES = [
-    "chapter1.md",
-    "chapter2.md",
-    "chapter3.md",
-    "chapter4.md",
-    "chapter5.md",
-    "chapter6.md",
-    "chapter7.md",
-    "chapter8.md",
-    "bad_end.md",
-    "route_sakura.md",
-    "route_kotoha.md",
-    "route_mahiru.md",
-]
+KEY = re.compile(r"\$([\w.]+)")
+IMAGE_EXTENSIONS = (".webp", ".png", ".jpg", ".jpeg")
 
 
-def display_items(path: Path):
-    items = []
-    for no, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-        line = raw.strip()
-        match = re.match(r'^@end\s+"(.+?)"', line)
-        if match:
-            items.append(("end", "", match.group(1), no))
-            continue
-        if not line or line.startswith("//") or line == "---" or line.startswith("@") or line.startswith("# "):
-            continue
-        if line.startswith(">"):
-            has_narration_space = line.startswith("> ")
-            text = line[1:].strip()
-            text = re.sub(r"^\*\*(.+)\*\*$", r"\1", text)
-            text = re.sub(r"^\*(.+)\*$", r"\1", text)
-            if not has_narration_space:
-                text = re.sub(r"^「((?:(?!」).)*)」$", r"\1", text)
-            items.append(("narrate", "", text, no))
-            continue
-        colon_idx = line.find(":")
-        if 0 < colon_idx <= 20:
-            speaker = line[:colon_idx].strip()
-            text = line[colon_idx + 1:].strip()
-            text = re.sub(r'^「((?:(?!」).)*)」$', r"\1", text)
-            text = re.sub(r'^"((?:(?!").)*)"$', r"\1", text)
-            items.append(("say", speaker, text, no))
-            continue
-        match = re.match(r"^(\S+)「(.+)」$", line)
-        if match:
-            items.append(("say", match.group(1), match.group(2), no))
-            continue
-    return items
-
-
-def control_lines(path: Path):
-    lines = []
-    for raw in path.read_text(encoding="utf-8").splitlines():
-        line = raw.strip()
-        if line.startswith("# "):
-            lines.append(line)
-        elif line.startswith("@"):
-            if line.startswith("@end "):
-                line = re.sub(r'^@end\s+".+?"', '@end "<title>"', line)
-            lines.append(line)
-    return lines
+def load_locale(path: Path) -> dict[str, str]:
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"{path.name}: duplicate key {key}")
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(f"{path.name}: empty or non-string value for {key}")
+            result[key] = value
+        return result
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique)
 
 
 def main() -> int:
     errors = []
-    ja = json.loads(JA_LOCALE.read_text(encoding="utf-8"))
-    en = json.loads(EN_LOCALE.read_text(encoding="utf-8"))
+    config = (ROOT / "config.js").read_text(encoding="utf-8")
+    files_block = re.search(r"scenarioFilesByLanguage:\s*\{(.*?)\n  \},", config, re.S)
+    text_block = re.search(r"scenarioTextFiles:\s*\{(.*?)\n  \},", config, re.S)
+    if not files_block or not text_block:
+        print("FAILED: language file configuration not found")
+        return 1
+    files = {lang: re.findall(r"'([^']+)'", body) for lang, body in
+             re.findall(r"(\w+):\s*\[(.*?)\]", files_block[1], re.S)}
+    text_files = dict(re.findall(r"(\w+):\s*'([^']+)'", text_block[1]))
+    known_commands = set(re.findall(r"case '([^']+)':", (ROOT / "parser.js").read_text(encoding="utf-8")))
+    bg_block = config.split("  backgrounds: {", 1)[1].split("  settings:", 1)[0]
+    backgrounds = set(re.findall(r"^    ['\"]?([\w-]+)['\"]?:", bg_block, re.M))
+    char_block = config.split("  characters: {", 1)[1].split("  speakerNames:", 1)[0]
+    characters = {}
+    for name, body in re.findall(r"^    (\w+): \{(.*?)^    \},", char_block, re.M | re.S):
+        expression = re.search(r"expressions:\s*\[(.*?)\]", body, re.S)
+        characters[name] = set(re.findall(r"'([^']+)'", expression[1])) if expression else set()
 
-    if set(ja) != set(en):
-        errors.append(f"locale key mismatch: ja={len(ja)} en={len(en)}")
+    def image_exists(folder, key):
+        return any((ROOT / "assets/images" / folder / (key + ext)).is_file() for ext in IMAGE_EXTENSIONS)
 
-    total_items = 0
-    for filename in SCENARIO_FILES:
-        old_path = OLD_DIR / filename
-        current_path = SCENARIO_DIR / filename
-        old_items = display_items(old_path)
-        current_items = display_items(current_path)
-        total_items += len(current_items)
-
-        if len(old_items) != len(current_items):
-            errors.append(f"{filename}: display item count mismatch old={len(old_items)} current={len(current_items)}")
-
-        for index, (old, current) in enumerate(zip(old_items, current_items), 1):
-            old_kind, old_speaker, old_text, old_line = old
-            cur_kind, cur_speaker, cur_text, cur_line = current
-            if old_kind != cur_kind or old_speaker != cur_speaker:
-                errors.append(
-                    f"{filename}: display kind mismatch #{index}: old {old_line} {old_kind}/{old_speaker} "
-                    f"current {cur_line} {cur_kind}/{cur_speaker}"
-                )
+    flows, presentations, locale_keys = {}, {}, {}
+    for lang, paths in files.items():
+        try:
+            locale = load_locale(ROOT / text_files[lang])
+        except (OSError, ValueError, KeyError) as exc:
+            errors.append(str(exc))
+            continue
+        locale_keys[lang] = set(locale)
+        presentations[lang] = []
+        used, labels = set(), set()
+        targets, controls = [], []
+        endings = 0
+        if not paths or len(paths) != len(set(paths)):
+            errors.append(f"{lang}: empty or duplicate scenario paths")
+        for relative in paths:
+            path = ROOT / relative
+            if not path.is_file():
+                errors.append(f"missing script: {relative}")
                 continue
-            if not cur_text.startswith("$"):
-                errors.append(f"{filename}: current display text is not keyed at line {cur_line}: {cur_text}")
-                continue
-            key = cur_text[1:]
-            if ja.get(key) != old_text:
-                errors.append(f"{filename}: ja text mismatch for {key}: old line {old_line}")
-
-        old_controls = control_lines(old_path)
-        current_controls = control_lines(current_path)
-        if old_controls != current_controls:
-            errors.append(f"{filename}: control lines differ between old and current")
-            for i, (a, b) in enumerate(zip(old_controls, current_controls), 1):
-                if a != b:
-                    errors.append(f" {filename}: first control diff #{i}: old={a} current={b}")
-                    break
-            if len(old_controls) != len(current_controls):
-                errors.append(f" {filename}: control count old={len(old_controls)} current={len(current_controls)}")
-
-    fallback = sum(1 for key, value in ja.items() if en.get(key) == value)
-    print(f"display items: {total_items}")
-    print(f"locale keys: {len(ja)}")
-    print(f"english fallback items: {fallback}")
-
+            script_lines = path.read_text(encoding="utf-8").splitlines()
+            presentations[lang].append((path.name, [
+                line.strip() for line in script_lines
+                if line.strip() and not line.strip().startswith("//") and line.strip() != "---"
+            ]))
+            in_choice, option_count = False, 0
+            for number, raw in enumerate(script_lines, 1):
+                line = raw.strip()
+                where = f"{relative}:{number}"
+                if not line or line.startswith("//") or line == "---":
+                    continue
+                if in_choice and not line.startswith("-"):
+                    if option_count < 2:
+                        errors.append(f"{where}: choice has fewer than two options")
+                    in_choice = False
+                references = KEY.findall(line)
+                used.update(references)
+                for key in references:
+                    if key not in locale:
+                        errors.append(f"{where}: missing {lang} text {key}")
+                if line.startswith("# "):
+                    label = line[2:]
+                    if label in labels:
+                        errors.append(f"{where}: duplicate label {label}")
+                    labels.add(label)
+                    controls.append(line)
+                elif line.startswith("- "):
+                    match = re.fullmatch(r"- (\$[\w.]+)(?:\s+\[([^]]+)\])?\s+->\s+(\S+)", line)
+                    if not in_choice or not match:
+                        errors.append(f"{where}: invalid or unlocalized choice")
+                    else:
+                        option_count += 1
+                        targets.append((match[3], where))
+                        controls.append(("choice", match[2], match[3]))
+                elif line.startswith("@"):
+                    args = line.split()
+                    cmd = args[0][1:]
+                    if cmd not in known_commands:
+                        errors.append(f"{where}: unknown command {cmd}")
+                    if cmd == "choice":
+                        in_choice, option_count = True, 0
+                    elif cmd in ("jump", "if"):
+                        targets.append((args[-1], where))
+                        controls.append(line)
+                    elif cmd.startswith("flag") or cmd == "route_select":
+                        controls.append(line)
+                        if cmd == "route_select":
+                            targets.extend((arg.split(":")[-1], where) for arg in args[1:])
+                    elif cmd == "end":
+                        match = re.fullmatch(r'@end "(\$[\w.]+)"(?:\s+->\s+(\S+))?', line)
+                        if not match:
+                            errors.append(f"{where}: invalid or unlocalized end title")
+                        else:
+                            controls.append(("end", match[2]))
+                            if match[2]:
+                                targets.append((match[2], where))
+                            else:
+                                endings += 1
+                    elif cmd == "scene":
+                        if args[1] not in backgrounds and not image_exists("bg", args[1]):
+                            errors.append(f"{where}: unknown background {args[1]}")
+                    elif cmd == "still":
+                        if not image_exists("stills", args[1]):
+                            errors.append(f"{where}: missing still {args[1]}")
+                    elif cmd in ("show", "expr"):
+                        char = args[1]
+                        index = 3 if cmd == "show" else 2
+                        expression = args[index] if len(args) > index else "normal"
+                        if char not in characters or expression not in characters[char]:
+                            errors.append(f"{where}: unknown sprite {char}/{expression}")
+                        elif not (ROOT / "assets/images/chars" / char / (expression + ".png")).is_file():
+                            errors.append(f"{where}: missing sprite {char}/{expression}")
+                    elif cmd in ("bgm", "se", "credits", "ending_intro") and len(args) > 1:
+                        if args[1] not in ("stop", "current"):
+                            folder = "se" if cmd == "se" else "bgm"
+                            if not (ROOT / "assets/audio" / folder / args[1]).is_file():
+                                errors.append(f"{where}: missing audio {args[1]}")
+                else:
+                    if line.startswith(">"):
+                        payload = line[1:].strip().strip("*")
+                    elif match := re.match(r"^([^:]{1,20}):\s*(.*)$", line):
+                        payload = match[2]
+                    else:
+                        errors.append(f"{where}: unrecognized script line")
+                        continue
+                    if not re.fullmatch(r"\$[\w.]+", payload):
+                        errors.append(f"{where}: display text is not localized")
+            if in_choice and option_count < 2:
+                errors.append(f"{relative}: final choice has fewer than two options")
+        for target, where in targets:
+            if target not in labels:
+                errors.append(f"{where}: missing target {target}")
+        unused = set(locale) - used
+        if unused:
+            errors.append(f"{lang}: {len(unused)} unused text keys")
+        flows[lang] = controls
+        print(f"{lang}: {len(paths)} scripts, {len(labels)} labels, {len(used)} text keys, {endings} endings")
+    if "ja" in flows and "en" in flows and flows["ja"] != flows["en"]:
+        errors.append("Japanese and English branch structure/flags differ")
+    if "ja" in locale_keys and "en" in locale_keys and locale_keys["ja"] != locale_keys["en"]:
+        missing = locale_keys["ja"] - locale_keys["en"]
+        extra = locale_keys["en"] - locale_keys["ja"]
+        errors.append(f"English text keys differ from Japanese: {len(missing)} missing, {len(extra)} extra")
+    if "ja" in presentations and "en" in presentations and presentations["ja"] != presentations["en"]:
+        errors.append("Japanese and English presentation/text order differ (check speakers, stills and scene cues)")
     if errors:
         print("FAILED")
-        for err in errors[:40]:
-            print(("- " + err).encode("utf-8", errors="replace").decode("utf-8"))
+        for error in errors[:60]:
+            print("- " + error)
         return 1
-
-    print("OK")
+    print("OK: localized text, assets, targets, language branch and presentation parity")
     return 0
 
 

@@ -98,11 +98,15 @@ narrator セリフ（地の文）
 | `backgrounds` | 背景キー → フォールバックグラデーション |
 | `settings` | タイプ速度・音量・フェード時間・デバッグフラグ |
 | `scenarioFiles` | 読み込むシナリオファイルの順序 |
+| `scenarioFilesByLanguage` | 日英それぞれのシナリオ読み込み先 |
+| `scenarioTextFiles` | 日英の本文JSON（`locales/scenario.ja.json` / `scenario.en.json`） |
 | `titleBGM` | タイトル画面 BGM |
 | `clickSE` | ボタンクリック SE |
 | `introVideo` | NEW GAME 後に流す動画 |
 | `openingBGM` | モノローグ時の BGM |
 | `openingLines` | オープニングモノローグのテキスト配列 |
+
+日本語の `scenarios/*.md` と英語の `scenarios/en/*.md` は、同じテキストキー・話者・分岐・演出を使用します。本文は各言語のJSONで編集します。変更後は `python tools/check_scenarios_i18n.py` を実行し、翻訳の参照漏れや表示指示のずれを確認してください。改稿の方針は [改稿メモ](docs/scenario-rewrite-ja.md) にあります。
 
 ---
 
