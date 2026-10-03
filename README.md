@@ -36,6 +36,16 @@ npx serve -l 3000 .
 
 ---
 
+## 起動時のOPとタイトル待機
+
+ロード完了後に「OK」を押すと、完成版OP（`assets/video/stella-op.mp4`）を音付きで再生します。終了・スキップ時は0.65秒で暗転し、タイトル画面を0.45秒で表示します。クリック・Enter・Space・Escでスキップできます。OPの音量はCONFIGのBGM音量に従います。
+
+タイトル画面で約10秒無操作になるとOPを再上映します。マウス・タッチ・キー・ホイール操作で待機時間をリセットし、設定・ロード・ギャラリー・デバッグメニューの表示中、ゲーム中、非アクティブなタブでは再上映しません。再生がブラウザーに制限された場合は再生ボタンを表示し、動画の読み込みに失敗した場合はタイトルに進みます。
+
+`config.js` の `openingMovie` と `openingMovieIdleMs` で動画と待機時間を指定します。NEW GAME後の導入動画 `introVideo` は別のものです。
+
+Windows / Edgeでの動作確認は `python tools/check_opening_movie.py` で実行できます。専用ゲストプロファイルとローカルサーバーを使用し、確認結果・画像をリポジトリの隣の `stella-op-integration-check/` に保存します。
+
 ## プロジェクト構成
 
 ```
@@ -101,6 +111,8 @@ narrator セリフ（地の文）
 | `titleBGM` | タイトル画面 BGM |
 | `clickSE` | ボタンクリック SE |
 | `introVideo` | NEW GAME 後に流す動画 |
+| `openingMovie` | ロード後・タイトル待機中に流すOP |
+| `openingMovieIdleMs` | タイトル無操作時のOP再上映までの待機時間（ミリ秒） |
 | `openingBGM` | モノローグ時の BGM |
 | `openingLines` | オープニングモノローグのテキスト配列 |
 

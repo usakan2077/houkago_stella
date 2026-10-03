@@ -629,6 +629,10 @@ const VN_CONFIG = {
   // ===========================================================
   introVideo: 'assets/images/bg/title.mp4',
 
+  // ロード後のOP。タイトルで10秒無操作の場合も再生。
+  openingMovie: 'assets/video/stella-op.mp4',
+  openingMovieIdleMs: 10000,
+
   // ===========================================================
   // オープニングモノローグ設定
   // モノローグ → 動画 → chapter1 の順で再生されます

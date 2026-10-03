@@ -149,6 +149,7 @@ class VNEngine {
   //  初期化
   // ============================================================
   async _init() {
+    this.openingMovie = new OpeningMovie(this);
     this._bindEvents();
     this._preventMobileZoomGestures();
     this._resizeGame();
@@ -163,7 +164,6 @@ class VNEngine {
     await this._loadScenarioTexts();
     await this._loadScenarios();
     await this._preloadAssets();
-    this._showTitleScreen();
     this._scheduleShootingStars();
   }
 
@@ -458,19 +458,15 @@ class VNEngine {
     await loadDone;
     if (okBtn) okBtn.style.visibility = '';
     await new Promise(resolve => {
-      if (okBtn) okBtn.addEventListener('click', resolve, { once: true });
-      else resolve();
+      const start = () => {
+        if (screen) screen.classList.add('hidden');
+        // Keep play() inside the gesture so mobile browsers allow OP audio.
+        this.openingMovie.play();
+        resolve();
+      };
+      if (okBtn) okBtn.addEventListener('click', start, { once: true });
+      else start();
     });
-
-    // ローディング画面をフェードアウトして非表示
-    if (screen) {
-      screen.style.transition = 'opacity 0.6s ease';
-      screen.style.opacity = '0';
-      await new Promise(r => setTimeout(r, 600));
-      screen.classList.add('hidden');
-      screen.style.opacity = '';
-      screen.style.transition = '';
-    }
   }
 
   /** スマホ横向きロック（可能な場合）*/
@@ -815,6 +811,7 @@ class VNEngine {
   //  タイトル / ゲーム開始
   // ============================================================
   _showTitleScreen() {
+    this.openingMovie?.resetIdle();
     this._gameActive = false;
     this._applyStaticI18n();
     const titleScreen = document.getElementById('title-screen');
