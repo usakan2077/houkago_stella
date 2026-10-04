@@ -123,6 +123,9 @@ def main():
         c.wait("engine.openingMovie.phase==='idle'")
         assert c.evaluate("!document.getElementById('title-screen').classList.contains('hidden') && engine.currentBGM===VN_CONFIG.titleBGM")
         c.shot('title-after-op');passed('Repeated skip produces one fade through black and returns to title')
+        assert c.evaluate("VN_CONFIG.version==='1.2' && document.querySelector('#title-version').textContent==='ver 1.2'")
+        assert c.evaluate("VN_CONFIG.scenarioFilesByLanguage.en.every(path=>path.startsWith('scenarios/en/'))")
+        passed('Title version is 1.2 and revised English scripts are configured')
         # Exercise the real ten-second timeout, then reset it with actual pointer input.
         time.sleep(8)
         c.send('Input.dispatchMouseEvent',dict(type='mouseMoved',x=50,y=50))
@@ -170,10 +173,12 @@ def main():
         c.wait("!!document.querySelector('#update-op') && !!document.querySelector('.language-toggle')")
         ja=c.evaluate("document.querySelector('#update-op').innerText")
         assert '10' in ja
+        assert c.evaluate("document.querySelector('#update-1-2 .update-version').textContent==='ver 1.2' && document.querySelector('#update-1-2 .update-points').children.length===5 && document.querySelector('.footer-version').textContent==='ver 1.2'")
         c.click('.language-toggle')
         c.wait("document.documentElement.lang==='en'")
         assert 'Opening Movie Added' in c.evaluate("document.querySelector('#update-op').innerText")
-        assert 'supporting characters' in c.evaluate("document.querySelector('#update-v11').innerText")
+        assert 'supporting characters' in c.evaluate("document.querySelector('#update-1-1').innerText")
+        assert 'Revised dialogue' in c.evaluate("document.querySelector('#update-1-2').innerText")
         c.evaluate("document.querySelector('#updates').scrollIntoView({behavior:'instant'})")
         time.sleep(1)
         c.shot('lp-updates-en');passed('LP update notes and previous release notes work in Japanese and English')
