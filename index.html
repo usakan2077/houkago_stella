@@ -271,7 +271,14 @@
     <div id="opening-skip-hint">クリック / Enter: 次へ &nbsp; Esc: スキップ</div>
   </div>
 
-  <!-- ======= オープニング動画 ======= -->
+  <!-- ======= 起動時・タイトル待機中のOP ======= -->
+  <div id="op-movie-screen" class="hidden" role="dialog" aria-modal="true" aria-label="Opening movie">
+    <video id="op-movie" playsinline preload="metadata"></video>
+    <button id="op-movie-play" hidden>OPを再生</button>
+    <button id="op-movie-skip">タイトルへスキップ</button>
+  </div>
+
+  <!-- ======= NEW GAME の導入動画 ======= -->
   <div id="intro-video-screen" class="hidden">
     <video id="intro-video" playsinline></video>
     <div id="intro-skip-hint">クリック / Enter /Esc でスキップ</div>
@@ -537,6 +544,7 @@
 
 <script src="config.js"></script>
 <script src="parser.js"></script>
+<script src="opening-movie.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

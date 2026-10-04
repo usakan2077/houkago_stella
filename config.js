@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.1',
+  version: '1.2',
 
   analytics: {
     enabled: true,
@@ -628,6 +628,10 @@ const VN_CONFIG = {
   // なしにする場合は null に設定
   // ===========================================================
   introVideo: 'assets/images/bg/title.mp4',
+
+  // ロード後のOP。タイトルで10秒無操作の場合も再生。
+  openingMovie: 'assets/video/stella-op.mp4',
+  openingMovieIdleMs: 10000,
 
   // ===========================================================
   // オープニングモノローグ設定
