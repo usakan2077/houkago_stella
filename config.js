@@ -24,6 +24,13 @@ const VN_CONFIG = {
         yes: 'はい',
         no: 'いいえ',
         textLog: 'テキストログ',
+        voiceReplay: 'ボイス再生',
+        voiceStop: '再生停止',
+        voiceAvailable: 'ボイス付き',
+        voicePlaying: 'ボイス再生中',
+        voiceAvailableMuted: 'ボイス付き（ミュート中）',
+        voiceUnavailable: '音声を再生できませんでした',
+        voiceMuted: 'ボイス音量が0です。CONFIGで調整してください',
         saveOverwrite: 'SLOT {slot} に上書きしますか？',
         saveDone: '{slotLabel} にセーブしました',
         loadDone: '{slotLabel} しました',
@@ -40,6 +47,7 @@ const VN_CONFIG = {
           typeSpeed: '文字速度',
           bgmVolume: 'BGM音量',
           seVolume: 'SE音量',
+          voiceVolume: 'ボイス音量',
           fontSize: '文字サイズ',
           chainMode: '２行表示',
           skipMode: 'スキップ',
@@ -69,6 +77,13 @@ const VN_CONFIG = {
         yes: 'Yes',
         no: 'No',
         textLog: 'Text Log',
+        voiceReplay: 'Play voice',
+        voiceStop: 'Stop voice',
+        voiceAvailable: 'Voiced dialogue',
+        voicePlaying: 'Voice playing',
+        voiceAvailableMuted: 'Voiced dialogue (muted)',
+        voiceUnavailable: 'Voice playback unavailable',
+        voiceMuted: 'Voice is muted. Adjust the volume in CONFIG.',
         saveOverwrite: 'Overwrite SLOT {slot}?',
         saveDone: 'Saved to {slotLabel}',
         loadDone: '{slotLabel} loaded',
@@ -85,6 +100,7 @@ const VN_CONFIG = {
           typeSpeed: 'Text Speed',
           bgmVolume: 'BGM Volume',
           seVolume: 'SE Volume',
+          voiceVolume: 'Voice Volume',
           fontSize: 'Text Size',
           chainMode: 'Two-line Text',
           skipMode: 'Skip',
@@ -118,7 +134,7 @@ const VN_CONFIG = {
   characters: {
     player: {
       name: '桐島 勇',
-      nameEn: 'Yu Kirishima',
+      nameEn: 'Isamu Kirishima',
       nameColor: '#aac8ff',
       charColor: 'rgba(140, 180, 255, 0.6)',
     },
@@ -469,6 +485,7 @@ const VN_CONFIG = {
     autoDelay:   2000,    // オートモード: 文字表示完了後の待機時間 (ms)
     bgmVolume:   0.65,    // BGM音量 (0.0 〜 1.0)
     seVolume:    0.85,    // SE音量  (0.0 〜 1.0)
+    voiceVolume: 0.85,    // ボイス音量 (0.0 〜 1.0、0で読み込みも停止)
     chainMode:   'dialogue', // 連続2行表示: 'none' | 'dialogue' | 'all'
     skipReadOnly: false,  // スキップ対象: false=すべて / true=既読のみ
     fadeTime:    400,     // 背景フェード時間 (ms)
@@ -480,6 +497,14 @@ const VN_CONFIG = {
     //   false : デバッグ機能を一切表示しない（公開時は false に）
     // ----------------------------------------------------------
     debug: true,
+  },
+
+  voice: {
+    manifests: { ja: 'assets/voice/ja/manifest.json', en: 'assets/voice/en/manifest.json' },
+    lookAhead: 3,       // 分岐までの次の3台詞（主人公・地の文を除く）
+    cacheEntries: 12,
+    cacheBytes: 32 * 1024 * 1024,
+    loadTimeout: 8000,
   },
 
   // ===========================================================

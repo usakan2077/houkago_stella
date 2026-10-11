@@ -1,0 +1,145 @@
+{
+  "language": "ja",
+  "clips": {
+    "chapter1.chapter1_morning_gate.r003": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r003.directed-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_morning_gate.r006": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r006.directed-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_morning_gate.r009": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r009.directed-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_morning_gate.r011": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r011.directed-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_morning_gate.r012": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r012.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r014": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r014.directed-v1-retake01.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r016": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r016.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r018": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r018.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r020": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r020.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r022": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r022.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r024": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r024.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r026": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r026.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r028": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r028.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r031": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r031.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_morning_gate.r032": {
+      "src": "assets/voice/ja/chapter1.chapter1_morning_gate.r032.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_homeroom.r002": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r002.directed-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_homeroom.r004": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r004.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_homeroom.r006": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r006.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_homeroom.r010": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r010.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_homeroom.r012": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r012.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_homeroom.r015": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r015.directed-v1.mp3",
+      "gainDb": -3.5
+    },
+    "chapter1.chapter1_breaktime.r002": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r002.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_breaktime.r004": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r004.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_breaktime.r006": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r006.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_breaktime.r008": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r008.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_breaktime.r010": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r010.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_breaktime.r013": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r013.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_breaktime.r015": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r015.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_breaktime.r017": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r017.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_breaktime.r019": {
+      "src": "assets/voice/ja/chapter1.chapter1_breaktime.r019.directed-v1.mp3",
+      "gainDb": 4.5
+    },
+    "chapter1.chapter1_homeroom.r001": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r001.bilingual-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_homeroom.r003": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r003.bilingual-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_homeroom.r005": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r005.bilingual-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_homeroom.r008": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r008.bilingual-v1.mp3",
+      "gainDb": -0.5
+    },
+    "chapter1.chapter1_homeroom.r014": {
+      "src": "assets/voice/ja/chapter1.chapter1_homeroom.r014.bilingual-v1.mp3",
+      "gainDb": -0.5
+    }
+  }
+}

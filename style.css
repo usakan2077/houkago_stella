@@ -1211,6 +1211,52 @@ body {
   color: #ff99bb;  /* キャラ色はJSで上書き */
 }
 
+.voice-speaker-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+#dialog-voice-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 12px;
+  color: var(--accent-color, #ff99bb);
+  opacity: .65;
+  flex-shrink: 0;
+}
+#dialog-voice-indicator[hidden] { display: none; }
+#dialog-voice-indicator.is-playing { opacity: 1; }
+#dialog-voice-indicator.is-muted { opacity: .35; }
+.voice-meter { display: inline-flex; align-items: center; gap: 2px; height: 20px; }
+.voice-meter i {
+  display: block;
+  width: 3px;
+  height: 14px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleY(.25);
+}
+.is-playing .voice-meter i { animation: voice-meter-bounce .8s ease-in-out infinite alternate; }
+.is-playing .voice-meter i:nth-child(2) { animation-delay: -.3s; animation-duration: .65s; }
+.is-playing .voice-meter i:nth-child(3) { animation-delay: -.5s; animation-duration: .9s; }
+.is-playing .voice-meter i:nth-child(4) { animation-delay: -.2s; animation-duration: .55s; }
+.is-playing .voice-meter i:nth-child(5) { animation-delay: -.6s; animation-duration: .75s; }
+@keyframes voice-meter-bounce {
+  0% { transform: scaleY(.25); }
+  50% { transform: scaleY(.55); }
+  100% { transform: scaleY(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-playing .voice-meter i { animation: none; transform: scaleY(.75); }
+  .is-playing .voice-meter i:nth-child(even) { transform: scaleY(.45); }
+}
+
 #quick-command-row {
   display: flex;
   flex-wrap: wrap;
@@ -1827,6 +1873,31 @@ html[lang="en"] #char-name {
   font-weight: bold;
   margin-right: 12px;
 }
+.log-voice-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 36px;
+  height: 36px;
+  margin: 0 8px 4px 0;
+  padding: 6px;
+  min-height: 36px;
+  border: 1px solid rgba(220,140,190,.5);
+  border-radius: 6px;
+  background: rgba(30,15,45,.8);
+  color: #f0e0ea;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+.log-voice-btn:hover, .log-voice-btn[aria-pressed="true"] {
+  background: #623c64;
+}
+.log-voice-btn:focus-visible { outline: 2px solid #ffc5e3; outline-offset: 2px; }
+.log-voice-btn .voice-icon-stop { display: none; }
+.log-voice-btn[aria-pressed="true"] .voice-icon-stop { display: block; }
+.log-voice-btn[aria-pressed="true"] .voice-icon-waves { display: none; }
 
 /* ---- ギャラリー ---- */
 #gallery-content {

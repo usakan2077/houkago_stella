@@ -50,6 +50,14 @@ npx serve -l 3000 .
 
 Windows / Edgeでの動作確認は `python tools/check_opening_movie.py` で実行できます。専用ゲストプロファイルとローカルサーバーを使用し、確認結果・画像をリポジトリの隣の `stella-op-integration-check/` に保存します。
 
+## 台詞ボイス
+
+全編収録の前にシナリオ・演出を見直す段階です。配役と制作手順、改稿時の既存音声の扱いは [ボイス制作仕様](../houkago-stella-voice/ボイス制作仕様.md) を参照してください。
+
+主人公以外の台詞に、先読み付きの音声再生を組み込んでいます。現在の台詞と先の3台詞を読み込み、スキップ中は再生・取得を止めます。ログからの再生とCONFIGのボイス音量に対応しています。Chapter 1の朝の教室〜まひるとの休み時間まで、ヒロイン3人・延原・担任の日本語35台詞と英語35台詞を試作収録済み。表示言語に合わせて音声も切り替わります。昼休み以降は未収録です。
+
+音声ファイルの登録方法・動作仕様は [docs/voice.md](docs/voice.md) を参照してください。制御テストは `node --test tools/check_voice.cjs`、Windows / Edgeでの結合確認は `python tools/check_voice_browser.py` です。ブラウザテストでは合成したテスト音を使い、証跡はリポジトリの隣の `stella-voice-integration-check/` に保存します。
+
 ## プロジェクト構成
 
 ```
@@ -58,6 +66,7 @@ houkago-stella/
 ├── index.html          ← エントリポイント（DOM構造）
 ├── style.css           ← 全スタイル
 ├── game.js             ← ゲームエンジン本体（VNEngine クラス）
+├── voice.js            ← 台詞音声の再生・先読み・キャッシュ
 ├── parser.js           ← シナリオ .md パーサー
 ├── config.js           ← キャラ・背景・BGM・ゲーム設定
 │

@@ -131,7 +131,7 @@ const translations = {
       ".hero-actions .button-primary": "Play for Free",
       ".hero-actions .button-ghost": "Explore the Story",
       "#story-title": "Things left unsaid regain their outline beneath the stars.",
-      ".story-copy p:nth-of-type(2)": "For protagonist Yu Kirishima, after school had slowly begun to lose its color. A promise on the rooftop, a silence left in a clubroom, and a profile waiting for dawn start time moving again.",
+      ".story-copy p:nth-of-type(2)": "For protagonist Isamu Kirishima, after school had slowly begun to lose its color. A promise on the rooftop, a silence left in a clubroom, and a profile waiting for dawn start time moving again.",
       ".story-copy p:nth-of-type(3)": "Choices in the common route branch into the stories of Sakura Sakurazaki, Kotoha Kanzaki, and Mahiru Tsukiyono. Each route touches a different lie, a different wish, and the distance between two hearts.",
       ".feature-image figcaption": "From an after-school sky full of stars, the story opens quietly.",
       "#mood-title": "The glitter of youth, and the fear of stepping closer.",
