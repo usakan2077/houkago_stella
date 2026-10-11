@@ -1,8 +1,9 @@
 from PIL import Image
 import os
+from asset_paths import GAME_ROOT, asset_source
 
-SRC_DIR = "assets-src/bg_re_re/"
-DST_DIR = "assets/images/bg/"
+SRC_DIR = asset_source("bg_re_re")
+DST_DIR = GAME_ROOT / "assets/images/bg"
 SIZE = (1280, 720)
 QUALITY = 90
 

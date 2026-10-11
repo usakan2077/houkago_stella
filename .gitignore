@@ -24,6 +24,13 @@ Thumbs.db
 *.swp
 *.swo
 
+# Pythonの実行キャッシュ
+__pycache__/
+*.py[cod]
+
+# 編集用元素材は隣の houkago-stella-assets リポジトリで管理
+/assets-src/
+
 # Claude作業メモ
 CLAUDE.md
 
