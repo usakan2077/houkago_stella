@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.2',
+  version: '1.3',
 
   analytics: {
     enabled: true,
