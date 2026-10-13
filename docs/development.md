@@ -84,3 +84,9 @@ git check-ignore assets-src/README.md
 ```
 
 古い履歴の表示が複雑な場合は、本流の履歴を `git log --first-parent --oneline master` で確認できる。新しい squash merge の運用は今後の履歴を整理するもので、既存のマージ履歴はそのまま残る。
+
+## ローカル確認ページ
+
+単独の表示見本やUI試作HTMLは、Git管理外のdev-preview/へまとめる。emote-preview.html、ui_message_menu_test.html、transition_test.htmlを移動済み。本編と同じサーバーで/dev-preview/から開く。素材・スクリプトはbase href="../"で本編のルートから参照する。
+
+ルートの*_test.html、*-preview.htmlとdebug.logもignoreする。ゲームやLPが実際に読み込むJS/CSS、シナリオエディターのソース、再現可能な検査ツールは引き続きGitで管理する。

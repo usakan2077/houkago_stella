@@ -2,8 +2,11 @@
 *.png.png
 FireShot*.png
 
-# テスト・開発用
-transition_test.html
+# ローカル専用の確認ページ・実行ログ
+/dev-preview/
+/*_test.html
+/*-preview.html
+/debug.log
 
 # 旧バージョン
 scenarios/old/
