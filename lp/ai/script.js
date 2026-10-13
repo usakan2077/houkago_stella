@@ -14,6 +14,7 @@
   };
   function apply(language) {
     document.documentElement.lang = language;
+    document.dispatchEvent(new CustomEvent("lp-language-change", {detail:{language}}));
     document.title = titles[language];
     nodes.forEach(node => {
       if (language === 'en') node.textContent = node.dataset.en;
