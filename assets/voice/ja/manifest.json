@@ -286,8 +286,8 @@
       "gainDb": 6.0
     },
     "chapter2.chapter2_start.r011": {
-      "src": "assets/voice/ja/chapter2.chapter2_start.r011.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter2.chapter2_start.r011.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter2.chapter2_start.r012": {
       "src": "assets/voice/ja/chapter2.chapter2_start.r012.kotoha-leira-v1.mp3",
@@ -298,8 +298,8 @@
       "gainDb": 6.0
     },
     "chapter2.chapter2_start.r015": {
-      "src": "assets/voice/ja/chapter2.chapter2_start.r015.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter2.chapter2_start.r015.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter2.chapter2_start.r016": {
       "src": "assets/voice/ja/chapter2.chapter2_start.r016.kotoha-leira-v1.mp3",
@@ -366,8 +366,8 @@
       "gainDb": 4.5
     },
     "chapter2.chapter2_lunch.r014": {
-      "src": "assets/voice/ja/chapter2.chapter2_lunch.r014.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter2.chapter2_lunch.r014.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter2.chapter2_lunch.r015": {
       "src": "assets/voice/ja/chapter2.chapter2_lunch.r015.kotoha-leira-v1.mp3",
@@ -438,8 +438,8 @@
       "gainDb": 4.5
     },
     "chapter2.chapter2_lunch.r040": {
-      "src": "assets/voice/ja/chapter2.chapter2_lunch.r040.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter2.chapter2_lunch.r040.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter2.chapter2_lunch.r041": {
       "src": "assets/voice/ja/chapter2.chapter2_lunch.r041.kotoha-leira-v1.mp3",
@@ -702,8 +702,8 @@
       "gainDb": -3.0
     },
     "chapter3.chapter3_start.r017": {
-      "src": "assets/voice/ja/chapter3.chapter3_start.r017.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter3.chapter3_start.r017.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter3.chapter3_start.r018": {
       "src": "assets/voice/ja/chapter3.chapter3_start.r018.kotoha-leira-v1.mp3",
@@ -718,8 +718,8 @@
       "gainDb": -3.0
     },
     "chapter3.chapter3_start.r023": {
-      "src": "assets/voice/ja/chapter3.chapter3_start.r023.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter3.chapter3_start.r023.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter3.chapter3_start.r024": {
       "src": "assets/voice/ja/chapter3.chapter3_start.r024.kotoha-leira-v1.mp3",
@@ -738,8 +738,8 @@
       "gainDb": -3.0
     },
     "chapter3.chapter3_start.r028": {
-      "src": "assets/voice/ja/chapter3.chapter3_start.r028.full-v2.mp3",
-      "gainDb": 4.5
+      "src": "assets/voice/ja/chapter3.chapter3_start.r028.kotoha-name-v1.mp3",
+      "gainDb": 5.0
     },
     "chapter3.chapter3_start.r030": {
       "src": "assets/voice/ja/chapter3.chapter3_start.r030.full-v2.mp3",
@@ -754,8 +754,8 @@
       "gainDb": 6.0
     },
     "chapter3.chapter3_start.r033": {
-      "src": "assets/voice/ja/chapter3.chapter3_start.r033.full-v2.mp3",
-      "gainDb": 4.5
+      "src": "assets/voice/ja/chapter3.chapter3_start.r033.kotoha-name-v1.mp3",
+      "gainDb": 5.0
     },
     "chapter3.chapter3_start.r035": {
       "src": "assets/voice/ja/chapter3.chapter3_start.r035.full-v2.mp3",
@@ -974,8 +974,8 @@
       "gainDb": 4.5
     },
     "chapter3.chapter3_mahiru_photo.r009": {
-      "src": "assets/voice/ja/chapter3.chapter3_mahiru_photo.r009.full-v2.mp3",
-      "gainDb": 4.5
+      "src": "assets/voice/ja/chapter3.chapter3_mahiru_photo.r009.kotoha-name-v1.mp3",
+      "gainDb": 5.0
     },
     "chapter3.chapter3_mahiru_photo.r011": {
       "src": "assets/voice/ja/chapter3.chapter3_mahiru_photo.r011.full-v2.mp3",
@@ -1322,8 +1322,8 @@
       "gainDb": 6.0
     },
     "chapter5.chapter5_morning_class.r007": {
-      "src": "assets/voice/ja/chapter5.chapter5_morning_class.r007.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter5.chapter5_morning_class.r007.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter5.chapter5_morning_class.r008": {
       "src": "assets/voice/ja/chapter5.chapter5_morning_class.r008.kotoha-leira-v1.mp3",
@@ -1482,8 +1482,8 @@
       "gainDb": 6.0
     },
     "chapter5.chapter5_after_school.r008": {
-      "src": "assets/voice/ja/chapter5.chapter5_after_school.r008.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter5.chapter5_after_school.r008.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter5.chapter5_after_school.r009": {
       "src": "assets/voice/ja/chapter5.chapter5_after_school.r009.kotoha-leira-v1.mp3",
@@ -2138,8 +2138,8 @@
       "gainDb": 4.5
     },
     "chapter7.chapter7_rooftop.r007": {
-      "src": "assets/voice/ja/chapter7.chapter7_rooftop.r007.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter7.chapter7_rooftop.r007.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter7.chapter7_rooftop.r008": {
       "src": "assets/voice/ja/chapter7.chapter7_rooftop.r008.kotoha-leira-v1.mp3",
@@ -2210,16 +2210,16 @@
       "gainDb": -3.0
     },
     "chapter7.chapter7_rooftop.r032": {
-      "src": "assets/voice/ja/chapter7.chapter7_rooftop.r032.full-v2.mp3",
-      "gainDb": 4.5
+      "src": "assets/voice/ja/chapter7.chapter7_rooftop.r032.kotoha-name-v1.mp3",
+      "gainDb": 3.5
     },
     "chapter7.chapter7_rooftop.r033": {
       "src": "assets/voice/ja/chapter7.chapter7_rooftop.r033.kotoha-leira-v1.mp3",
       "gainDb": 6.0
     },
     "chapter7.chapter7_rooftop.r034": {
-      "src": "assets/voice/ja/chapter7.chapter7_rooftop.r034.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter7.chapter7_rooftop.r034.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter7.chapter7_rooftop.r035": {
       "src": "assets/voice/ja/chapter7.chapter7_rooftop.r035.kotoha-leira-v1.mp3",
@@ -2366,8 +2366,8 @@
       "gainDb": 6.0
     },
     "chapter8.chapter8_start.r007": {
-      "src": "assets/voice/ja/chapter8.chapter8_start.r007.full-v2.mp3",
-      "gainDb": -3.0
+      "src": "assets/voice/ja/chapter8.chapter8_start.r007.kotoha-name-v1.mp3",
+      "gainDb": -2.5
     },
     "chapter8.chapter8_start.r009": {
       "src": "assets/voice/ja/chapter8.chapter8_start.r009.kotoha-leira-v1.mp3",
@@ -4022,8 +4022,8 @@
       "gainDb": 4.5
     },
     "route_mahiru.mahiru_good_end_dawn.r037": {
-      "src": "assets/voice/ja/route_mahiru.mahiru_good_end_dawn.r037.full-v2.mp3",
-      "gainDb": 4.5
+      "src": "assets/voice/ja/route_mahiru.mahiru_good_end_dawn.r037.kotoha-name-v1.mp3",
+      "gainDb": 5.0
     },
     "route_mahiru.mahiru_good_end_dawn.r039": {
       "src": "assets/voice/ja/route_mahiru.mahiru_good_end_dawn.r039.full-v2.mp3",
