@@ -4,6 +4,7 @@
 @bgm tension_rain.mp3
 @se rain_window.mp3
 > $chapter4.chapter4_start.r001
+> $chapter4.chapter4_start.r001.s002
 @show sakura right happy fade_in
 @show kotoha left normal fade_in
 sakura: $chapter4.chapter4_start.r002
@@ -14,6 +15,7 @@ sakura: $chapter4.chapter4_start.r006
 player: $chapter4.chapter4_start.r007
 sakura: $chapter4.chapter4_start.r008
 > $chapter4.chapter4_start.r009
+> $chapter4.chapter4_start.r009.s002
 player: $chapter4.chapter4_start.r010
 sakura: $chapter4.chapter4_start.r011
 player: $chapter4.chapter4_start.r012
@@ -24,6 +26,7 @@ player: $chapter4.chapter4_start.r016
 sakura: $chapter4.chapter4_start.r017
 kotoha: $chapter4.chapter4_start.r018
 > $chapter4.chapter4_start.r019
+> $chapter4.chapter4_start.r019.s002
 sakura: $chapter4.chapter4_start.r020
 player: $chapter4.chapter4_start.r021
 > $chapter4.chapter4_start.r022
@@ -34,6 +37,7 @@ player: $chapter4.chapter4_start.r021
 @bgm daily_life.mp3
 @se rain_window.mp3 loop
 > $chapter4.chapter4_mahiru_corridor.r001
+> $chapter4.chapter4_mahiru_corridor.r001.s002
 @show mahiru center normal fade_in
 mahiru: $chapter4.chapter4_mahiru_corridor.r002
 player: $chapter4.chapter4_mahiru_corridor.r003
@@ -41,6 +45,7 @@ mahiru: $chapter4.chapter4_mahiru_corridor.r004
 player: $chapter4.chapter4_mahiru_corridor.r005
 mahiru: $chapter4.chapter4_mahiru_corridor.r006
 > $chapter4.chapter4_mahiru_corridor.r007
+> $chapter4.chapter4_mahiru_corridor.r007.s002
 player: $chapter4.chapter4_mahiru_corridor.r008
 mahiru: $chapter4.chapter4_mahiru_corridor.r009
 player: $chapter4.chapter4_mahiru_corridor.r010
@@ -48,6 +53,7 @@ mahiru: $chapter4.chapter4_mahiru_corridor.r011
 player: $chapter4.chapter4_mahiru_corridor.r012
 mahiru: $chapter4.chapter4_mahiru_corridor.r013
 > $chapter4.chapter4_mahiru_corridor.r014
+> $chapter4.chapter4_mahiru_corridor.r014.s002
 mahiru: $chapter4.chapter4_mahiru_corridor.r015
 player: $chapter4.chapter4_mahiru_corridor.r016
 mahiru: $chapter4.chapter4_mahiru_corridor.r017
@@ -69,13 +75,22 @@ mahiru: $chapter4.chapter4_mahiru_corridor.r024
 player: $chapter4.chapter4_music_room.r002
 kotoha: $chapter4.chapter4_music_room.r003
 > $chapter4.chapter4_music_room.r004
+> $chapter4.chapter4_music_room.r004.s002
 player: $chapter4.chapter4_music_room.r005
 kotoha: $chapter4.chapter4_music_room.r006
 player: $chapter4.chapter4_music_room.r007
 kotoha: $chapter4.chapter4_music_room.r008
 > $chapter4.chapter4_music_room.r009
+> $chapter4.chapter4_music_room.r009.s002
+@if kotoha_library_talk == 1 -> chapter4_kotoha_recall
+player: $chapter4.chapter4_music_room.first_question
+kotoha: $chapter4.chapter4_music_room.first_answer
+@jump chapter4_kotoha_resume
+# chapter4_kotoha_recall
 player: $chapter4.chapter4_music_room.r010
 kotoha: $chapter4.chapter4_music_room.r011
+@jump chapter4_kotoha_resume
+# chapter4_kotoha_resume
 player: $chapter4.chapter4_music_room.r012
 kotoha: $chapter4.chapter4_music_room.r013
 @expr kotoha thinking
@@ -83,6 +98,7 @@ kotoha: $chapter4.chapter4_music_room.r014
 player: $chapter4.chapter4_music_room.r015
 kotoha: $chapter4.chapter4_music_room.r016
 > $chapter4.chapter4_music_room.r017
+> $chapter4.chapter4_music_room.r017.s002
 kotoha: $chapter4.chapter4_music_room.r018
 player: $chapter4.chapter4_music_room.r019
 kotoha: $chapter4.chapter4_music_room.r020
@@ -91,24 +107,33 @@ kotoha: $chapter4.chapter4_music_room.r022
 player: $chapter4.chapter4_music_room.r023
 kotoha: $chapter4.chapter4_music_room.r024
 > $chapter4.chapter4_music_room.r025
+> $chapter4.chapter4_music_room.r025.s002
 @hide kotoha fade_out
 @jump chapter4_corridor
 # chapter4_corridor
 @scene corridor_evening fade
 @bgm evening_piano.mp3
 > $chapter4.chapter4_corridor.r001
+> $chapter4.chapter4_corridor.r001.s002
+> $chapter4.chapter4_corridor.r001.s003
 > $chapter4.chapter4_corridor.r002
+> $chapter4.chapter4_corridor.r002.s002
+> $chapter4.chapter4_corridor.r002.s003
 @show mahiru center normal fade_in
 mahiru: $chapter4.chapter4_corridor.r003
 player: $chapter4.chapter4_corridor.r004
 @expr mahiru surprised
+@emote mahiru startle 0.35
 mahiru: $chapter4.chapter4_corridor.r005
 > $chapter4.chapter4_corridor.r006
 @se notebook_open.mp3
 @still mahiru_notebook_drop
 > $chapter4.chapter4_corridor.r007
+> $chapter4.chapter4_corridor.r007.s002
+> $chapter4.chapter4_corridor.r007.s003
 @still_hide
 player: $chapter4.chapter4_corridor.r008
+@expr mahiru normal
 mahiru: $chapter4.chapter4_corridor.r009
 > $chapter4.chapter4_corridor.r010
 player: $chapter4.chapter4_corridor.r011
@@ -116,6 +141,7 @@ mahiru: $chapter4.chapter4_corridor.r012
 player: $chapter4.chapter4_corridor.r013
 mahiru: $chapter4.chapter4_corridor.r014
 player: $chapter4.chapter4_corridor.r015
+@expr mahiru thinking
 mahiru: $chapter4.chapter4_corridor.r016
 > $chapter4.chapter4_corridor.r017
 @choice
@@ -130,8 +156,10 @@ mahiru: $chapter4.chapter4_corridor_talk.r004
 player: $chapter4.chapter4_corridor_talk.r005
 mahiru: $chapter4.chapter4_corridor_talk.r006
 player: $chapter4.chapter4_corridor_talk.r007
+@expr mahiru happy
 mahiru: $chapter4.chapter4_corridor_talk.r008
 > $chapter4.chapter4_corridor_talk.r009
+@expr mahiru normal
 mahiru: $chapter4.chapter4_corridor_talk.r010
 player: $chapter4.chapter4_corridor_talk.r011
 mahiru: $chapter4.chapter4_corridor_talk.r012
@@ -154,13 +182,17 @@ player: $chapter4.chapter4_corridor_end.r007
 mahiru: $chapter4.chapter4_corridor_end.r008
 player: $chapter4.chapter4_corridor_end.r009
 @expr mahiru shy
+@emote mahiru shy 0.4
 mahiru: $chapter4.chapter4_corridor_end.r010
 player: $chapter4.chapter4_corridor_end.r011
 mahiru: $chapter4.chapter4_corridor_end.r012
 > $chapter4.chapter4_corridor_end.r013
+> $chapter4.chapter4_corridor_end.r013.s002
 mahiru: $chapter4.chapter4_corridor_end.r014
 @hide mahiru fade_out
 > $chapter4.chapter4_corridor_end.r015
+> $chapter4.chapter4_corridor_end.r015.s002
+> $chapter4.chapter4_corridor_end.r015.s003
 @jump chapter4_walk
 # chapter4_walk
 @scene school_gate_june_rainy fade
@@ -168,6 +200,7 @@ mahiru: $chapter4.chapter4_corridor_end.r014
 @se rain_window.mp3 loop
 @show mahiru center happy fade_in
 > $chapter4.chapter4_walk.context001
+> $chapter4.chapter4_walk.context001.s002
 mahiru: $chapter4.chapter4_walk.r001
 player: $chapter4.chapter4_walk.r002
 mahiru: $chapter4.chapter4_walk.r003
@@ -175,6 +208,8 @@ mahiru: $chapter4.chapter4_walk.r003
 @scene commute_road_june_evening fade
 @still evening_walk_two
 > $chapter4.chapter4_walk.r004
+> $chapter4.chapter4_walk.r004.s002
+> $chapter4.chapter4_walk.r004.s003
 @still_hide
 mahiru: $chapter4.chapter4_walk.r005
 player: $chapter4.chapter4_walk.r006
@@ -184,35 +219,48 @@ mahiru: $chapter4.chapter4_walk.r009
 player: $chapter4.chapter4_walk.r010
 mahiru: $chapter4.chapter4_walk.r011
 > $chapter4.chapter4_walk.r012
+> $chapter4.chapter4_walk.r012.s002
 player: $chapter4.chapter4_walk.r013
+@emote mahiru nod 0.4
 mahiru: $chapter4.chapter4_walk.r014
 > $chapter4.chapter4_walk.r015
 mahiru: $chapter4.chapter4_walk.r016
 player: $chapter4.chapter4_walk.r017
 mahiru: $chapter4.chapter4_walk.r018
 > $chapter4.chapter4_walk.r019
+> $chapter4.chapter4_walk.r019.s002
+> $chapter4.chapter4_walk.r019.s003
 mahiru: $chapter4.chapter4_walk.r020
 player: $chapter4.chapter4_walk.r021
 mahiru: $chapter4.chapter4_walk.r022
 > $chapter4.chapter4_walk.r023
+> $chapter4.chapter4_walk.r023.s002
 @hide mahiru fade_out
 @jump chapter4_end
 # chapter4_end
 @scene commute_road_june_evening fade
 @bgm mystery_shadow.mp3
 > $chapter4.chapter4_end.r001
+> $chapter4.chapter4_end.r001.s002
+> $chapter4.chapter4_end.r001.s003
 @still shin_flashback flashback_pan
 > $chapter4.chapter4_end.r002
 shin_child: $chapter4.chapter4_end.r003
 player: $chapter4.chapter4_end.r004
 shin_child: $chapter4.chapter4_end.r005
 > $chapter4.chapter4_end.r006
+> $chapter4.chapter4_end.r006.s002
 shin_child: $chapter4.chapter4_end.r007
 > $chapter4.chapter4_end.r008
+> $chapter4.chapter4_end.r008.s002
 @still_hide
 @scene commute_road_june_evening fade
 > $chapter4.chapter4_end.r009
+> $chapter4.chapter4_end.r009.s002
 > $chapter4.chapter4_end.r010
+> $chapter4.chapter4_end.r010.s002
 > $chapter4.chapter4_end.r011
+> $chapter4.chapter4_end.r011.s002
+> $chapter4.chapter4_end.r011.s003
 @bgm stop
 @end "$chapter4.chapter4_end.r012" -> chapter5_start

@@ -1,6 +1,7 @@
 """Check each language's current scripts, text references, assets and branches.
 
-Japanese and English share text keys, speakers, branches and presentation cues.
+Japanese and English share primary text IDs, speakers, branches and presentation cues.
+Narration continuations may have different sentence counts by language.
 The retired scenarios/old migration inputs are no longer required.
 """
 from __future__ import annotations
@@ -8,6 +9,8 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+
+from narration_sentences import NARRATION_REF, narration_key, normalize_narration, split_sentences
 
 ROOT = Path(__file__).resolve().parents[1]
 KEY = re.compile(r"\$([\w.]+)")
@@ -39,6 +42,7 @@ def main() -> int:
              re.findall(r"(\w+):\s*\[(.*?)\]", files_block[1], re.S)}
     text_files = dict(re.findall(r"(\w+):\s*'([^']+)'", text_block[1]))
     known_commands = set(re.findall(r"case '([^']+)':", (ROOT / "parser.js").read_text(encoding="utf-8")))
+    emotes = set(re.findall(r"^\s{4}(\w+):\{label:", (ROOT / "character-emotes.js").read_text(encoding="utf-8"), re.M)) | {"clear"}
     bg_block = config.split("  backgrounds: {", 1)[1].split("  settings:", 1)[0]
     backgrounds = set(re.findall(r"^    ['\"]?([\w-]+)['\"]?:", bg_block, re.M))
     char_block = config.split("  characters: {", 1)[1].split("  speakerNames:", 1)[0]
@@ -70,10 +74,14 @@ def main() -> int:
                 errors.append(f"missing script: {relative}")
                 continue
             script_lines = path.read_text(encoding="utf-8").splitlines()
-            presentations[lang].append((path.name, [
+            meaningful_lines = [
                 line.strip() for line in script_lines
                 if line.strip() and not line.strip().startswith("//") and line.strip() != "---"
-            ]))
+            ]
+            try:
+                presentations[lang].append((path.name, normalize_narration(meaningful_lines)))
+            except ValueError as exc:
+                errors.append(f"{relative}: {exc}")
             in_choice, option_count = False, 0
             for number, raw in enumerate(script_lines, 1):
                 line = raw.strip()
@@ -127,6 +135,20 @@ def main() -> int:
                                 targets.append((match[2], where))
                             else:
                                 endings += 1
+                    elif cmd == "emote":
+                        if len(args) not in (3, 4):
+                            errors.append(f"{where}: emote requires target, name and optional strength")
+                        else:
+                            if args[1] not in characters and args[1] not in ("left", "center", "right", "all"):
+                                errors.append(f"{where}: unknown emote target {args[1]}")
+                            if args[2] not in emotes:
+                                errors.append(f"{where}: unknown emote {args[2]}")
+                            if len(args) == 4:
+                                try:
+                                    if not .35 <= float(args[3]) <= 1.5:
+                                        errors.append(f"{where}: emote strength must be between 0.35 and 1.5")
+                                except ValueError:
+                                    errors.append(f"{where}: emote strength is not a number")
                     elif cmd == "scene":
                         if args[1] not in backgrounds and not image_exists("bg", args[1]):
                             errors.append(f"{where}: unknown background {args[1]}")
@@ -149,6 +171,11 @@ def main() -> int:
                 else:
                     if line.startswith(">"):
                         payload = line[1:].strip().strip("*")
+                        narration = NARRATION_REF.fullmatch(line)
+                        if narration and payload[1:] in locale:
+                            text = locale[payload[1:]]
+                            if len(split_sentences(text, lang)) > 1:
+                                errors.append(f"{where}: narration contains multiple sentences: {payload}")
                     elif match := re.match(r"^([^:]{1,20}):\s*(.*)$", line):
                         payload = match[2]
                     else:
@@ -168,10 +195,13 @@ def main() -> int:
         print(f"{lang}: {len(paths)} scripts, {len(labels)} labels, {len(used)} text keys, {endings} endings")
     if "ja" in flows and "en" in flows and flows["ja"] != flows["en"]:
         errors.append("Japanese and English branch structure/flags differ")
-    if "ja" in locale_keys and "en" in locale_keys and locale_keys["ja"] != locale_keys["en"]:
-        missing = locale_keys["ja"] - locale_keys["en"]
-        extra = locale_keys["en"] - locale_keys["ja"]
-        errors.append(f"English text keys differ from Japanese: {len(missing)} missing, {len(extra)} extra")
+    if "ja" in locale_keys and "en" in locale_keys:
+        primary_keys = {lang: {narration_key(key)[0] for key in keys}
+                        for lang, keys in locale_keys.items()}
+        if primary_keys["ja"] != primary_keys["en"]:
+            missing = primary_keys["ja"] - primary_keys["en"]
+            extra = primary_keys["en"] - primary_keys["ja"]
+            errors.append(f"English primary text keys differ from Japanese: {len(missing)} missing, {len(extra)} extra")
     if "ja" in presentations and "en" in presentations and presentations["ja"] != presentations["en"]:
         errors.append("Japanese and English presentation/text order differ (check speakers, stills and scene cues)")
     if errors:

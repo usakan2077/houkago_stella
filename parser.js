@@ -247,6 +247,9 @@ class ScriptParser {
       case 'expr':
         return { cmd: 'expr', char: args[0], expr: args[1] || 'normal' };
 
+      case 'emote':
+        return { cmd: 'emote', target: args[0], name: args[1] || 'clear', strength: parseFloat(args[2]) || 1 };
+
       case 'move':
         return { cmd: 'move', char: args[0], pos: args[1], effect: args[2] || 'slide' };
 

@@ -3,17 +3,21 @@
 @scene corridor fade
 @bgm spring_breeze.mp3
 > $chapter7.chapter7_start.context001
+> $chapter7.chapter7_start.context001.s002
 @still vending_corner fade_in
 @still vending_soldout fade_in
 > $chapter7.chapter7_start.r001
+> $chapter7.chapter7_start.r001.s002
 player: $chapter7.chapter7_start.r002
 > $chapter7.chapter7_start.r003
 @still_hide fade_out
 @scene classroom fade
 @se school_bell.mp3
 > $chapter7.chapter7_start.r004
+> $chapter7.chapter7_start.r004.s002
 @show sakura right happy fade_in
 @show kotoha left normal fade_in
+@emote sakura bounce 0.45
 sakura: $chapter7.chapter7_start.r005
 player: $chapter7.chapter7_start.r006
 sakura: $chapter7.chapter7_start.r007
@@ -21,12 +25,14 @@ kotoha: $chapter7.chapter7_start.r008
 player: $chapter7.chapter7_start.r009
 sakura: $chapter7.chapter7_start.r010
 > $chapter7.chapter7_start.r011
+> $chapter7.chapter7_start.r011.s002
 @jump chapter7_festival_lunch
 # chapter7_festival_lunch
 @scene classroom_festival_prep fade
 @bgm school_festival.mp3
 @show teacher_male center normal fade_in
 > $chapter7.chapter7_festival_lunch.context001
+> $chapter7.chapter7_festival_lunch.context001.s002
 teacher_male: $chapter7.chapter7_festival_lunch.r001
 nobuhara: $chapter7.chapter7_festival_lunch.r002
 teacher_male: $chapter7.chapter7_festival_lunch.r003
@@ -41,13 +47,16 @@ sakura: $chapter7.chapter7_festival_lunch.r010
 player: $chapter7.chapter7_festival_lunch.r011
 sakura: $chapter7.chapter7_festival_lunch.r012
 > $chapter7.chapter7_festival_lunch.r013
+> $chapter7.chapter7_festival_lunch.r013.s002
 sakura: $chapter7.chapter7_festival_lunch.r014
 player: $chapter7.chapter7_festival_lunch.r015
 > $chapter7.chapter7_festival_lunch.r016
+> $chapter7.chapter7_festival_lunch.r016.s002
 player: $chapter7.chapter7_festival_lunch.r017
 sakura: $chapter7.chapter7_festival_lunch.r018
 kotoha: $chapter7.chapter7_festival_lunch.r019
 > $chapter7.chapter7_festival_lunch.r020
+> $chapter7.chapter7_festival_lunch.r020.s002
 player: $chapter7.chapter7_festival_lunch.r021
 sakura: $chapter7.chapter7_festival_lunch.r022
 player: $chapter7.chapter7_festival_lunch.r023
@@ -55,31 +64,40 @@ sakura: $chapter7.chapter7_festival_lunch.r024
 player: $chapter7.chapter7_festival_lunch.r025
 kotoha: $chapter7.chapter7_festival_lunch.r026
 > $chapter7.chapter7_festival_lunch.r027
+> $chapter7.chapter7_festival_lunch.r027.s002
 sakura: $chapter7.chapter7_festival_lunch.r028
 player: $chapter7.chapter7_festival_lunch.r029
 > $chapter7.chapter7_festival_lunch.r030
+> $chapter7.chapter7_festival_lunch.r030.s002
+> $chapter7.chapter7_festival_lunch.r030.s003
 @hide_all fade_out
 @jump chapter7_festival
 # chapter7_festival
 @scene classroom_festival_prep fade
 @bgm school_festival.mp3
 > $chapter7.chapter7_festival.r001
+> $chapter7.chapter7_festival.r001.s002
 @show teacher_male center serious fade_in
 @show sakura right normal fade_in
 teacher_male: $chapter7.chapter7_festival.r002
 sakura: $chapter7.chapter7_festival.r003
 teacher_male: $chapter7.chapter7_festival.r004
 > $chapter7.chapter7_festival.r005
+> $chapter7.chapter7_festival.r005.s002
 @hide teacher_male fade_out
 @show kotoha left normal fade_in
 sakura: $chapter7.chapter7_festival.r006
 @show nobuhara_nobag center panic fade_in
 nobuhara_nobag: $chapter7.chapter7_festival.r007
 kotoha: $chapter7.chapter7_festival.r008
+@expr nobuhara_nobag happy
+@emote nobuhara nod 0.45
 nobuhara_nobag: $chapter7.chapter7_festival.r009
 sakura: $chapter7.chapter7_festival.r010
 @hide nobuhara_nobag fade_out
 > $chapter7.chapter7_festival.r011
+> $chapter7.chapter7_festival.r011.s002
+> $chapter7.chapter7_festival.r011.s003
 @show festival_committee center panic pop_in
 festival_committee: $chapter7.chapter7_festival.r012
 player: $chapter7.chapter7_festival.r013
@@ -94,10 +112,13 @@ kotoha: $chapter7.chapter7_festival.r020
 player: $chapter7.chapter7_festival.r021
 sakura: $chapter7.chapter7_festival.r022
 > $chapter7.chapter7_festival.r023
+> $chapter7.chapter7_festival.r023.s002
 player: $chapter7.chapter7_festival.r024
+@emote kotoha irritated 0.35
 kotoha: $chapter7.chapter7_festival.r025
 player: $chapter7.chapter7_festival.r026
 > $chapter7.chapter7_festival.r027
+> $chapter7.chapter7_festival.r027.s002
 kotoha: $chapter7.chapter7_festival.r028
 player: $chapter7.chapter7_festival.r029
 @show classmate_male_a center work pop_in
@@ -109,9 +130,11 @@ nobuhara_nobag: $chapter7.chapter7_festival.r032
 sakura: $chapter7.chapter7_festival.r033
 nobuhara_nobag: $chapter7.chapter7_festival.r034
 > $chapter7.chapter7_festival.r035
+> $chapter7.chapter7_festival.r035.s002
 player: $chapter7.chapter7_festival.r036
 nobuhara_nobag: $chapter7.chapter7_festival.r037
 > $chapter7.chapter7_festival.r038
+> $chapter7.chapter7_festival.r038.s002
 @hide_all fade_out
 @bgm stop
 @jump chapter7_sakura_break
@@ -119,14 +142,20 @@ nobuhara_nobag: $chapter7.chapter7_festival.r037
 @scene classroom_festival_prep fade
 @still sakura_corner_resting
 > $chapter7.chapter7_sakura_break.r001
+> $chapter7.chapter7_sakura_break.r001.s002
 @still_hide
 @show sakura right normal fade_in
 player: $chapter7.chapter7_sakura_break.r002
+@expr sakura angry
 sakura: $chapter7.chapter7_sakura_break.r003
 > $chapter7.chapter7_sakura_break.r004
+> $chapter7.chapter7_sakura_break.r004.s002
 player: $chapter7.chapter7_sakura_break.r005
+@expr sakura normal
 sakura: $chapter7.chapter7_sakura_break.r006
 > $chapter7.chapter7_sakura_break.r007
+> $chapter7.chapter7_sakura_break.r007.s002
+> $chapter7.chapter7_sakura_break.r007.s003
 sakura: $chapter7.chapter7_sakura_break.r008
 player: $chapter7.chapter7_sakura_break.r009
 > $chapter7.chapter7_sakura_break.r010
@@ -134,6 +163,7 @@ sakura: $chapter7.chapter7_sakura_break.r011
 player: $chapter7.chapter7_sakura_break.r012
 sakura: $chapter7.chapter7_sakura_break.r013
 > $chapter7.chapter7_sakura_break.r014
+> $chapter7.chapter7_sakura_break.r014.s002
 @choice
 - $chapter7.chapter7_sakura_break.r015 [sakura_favor+3] -> chapter7_sakura_warm
 - $chapter7.chapter7_sakura_break.r016 -> chapter7_sakura_resume
@@ -142,10 +172,14 @@ player: $chapter7.chapter7_sakura_warm.r001
 sakura: $chapter7.chapter7_sakura_warm.r002
 player: $chapter7.chapter7_sakura_warm.r003
 > $chapter7.chapter7_sakura_warm.r004
+> $chapter7.chapter7_sakura_warm.r004.s002
+> $chapter7.chapter7_sakura_warm.r004.s003
 @jump chapter7_sakura_resume
 # chapter7_sakura_resume
 sakura: $chapter7.chapter7_sakura_resume.r001
 > $chapter7.chapter7_sakura_resume.r002
+> $chapter7.chapter7_sakura_resume.r002.s002
+> $chapter7.chapter7_sakura_resume.r002.s003
 sakura: $chapter7.chapter7_sakura_resume.r003
 player: $chapter7.chapter7_sakura_resume.r004
 @hide sakura fade_out
@@ -155,14 +189,18 @@ player: $chapter7.chapter7_sakura_resume.r004
 @bgm piano_distant.mp3 noloop
 @show kotoha center normal fade_in
 > $chapter7.chapter7_music_room.r001
+> $chapter7.chapter7_music_room.r001.s002
 kotoha: $chapter7.chapter7_music_room.r002
 player: $chapter7.chapter7_music_room.r003
 kotoha: $chapter7.chapter7_music_room.r004
 > $chapter7.chapter7_music_room.r005
 @still kotoha_frozen_piano_sound
 > $chapter7.chapter7_music_room.r006
+> $chapter7.chapter7_music_room.r006.s002
+> $chapter7.chapter7_music_room.r006.s003
 @se door_open.mp3
 > $chapter7.chapter7_music_room.r007
+> $chapter7.chapter7_music_room.r007.s002
 @still_hide
 player: $chapter7.chapter7_music_room.r008
 kotoha: $chapter7.chapter7_music_room.r009
@@ -180,6 +218,7 @@ kotoha: $chapter7.chapter7_music_room.r019
 player: $chapter7.chapter7_music_room.r021
 kotoha: $chapter7.chapter7_music_room.r022
 > $chapter7.chapter7_music_room.r023
+> $chapter7.chapter7_music_room.r023.s002
 kotoha: $chapter7.chapter7_music_room.r024
 @choice
 - $chapter7.chapter7_music_room.r025 [kotoha_favor+3] -> chapter7_kotoha_warm
@@ -188,9 +227,12 @@ kotoha: $chapter7.chapter7_music_room.r024
 player: $chapter7.chapter7_kotoha_warm.r001
 kotoha: $chapter7.chapter7_kotoha_warm.r002
 player: $chapter7.chapter7_kotoha_warm.r003
+> $chapter7.chapter7_kotoha_warm.promise
+> $chapter7.chapter7_kotoha_warm.promise.s002
 @jump chapter7_kotoha_resume
 # chapter7_kotoha_resume
 > $chapter7.chapter7_kotoha_resume.r001
+> $chapter7.chapter7_kotoha_resume.r001.s002
 kotoha: $chapter7.chapter7_kotoha_resume.r002
 player: $chapter7.chapter7_kotoha_resume.r003
 kotoha: $chapter7.chapter7_kotoha_resume.r004
@@ -201,12 +243,16 @@ kotoha: $chapter7.chapter7_kotoha_resume.r004
 @bgm evening_piano.mp3
 @show mahiru center happy fade_in
 > $chapter7.chapter7_rooftop_move.context001
+> $chapter7.chapter7_rooftop_move.context001.s002
 mahiru: $chapter7.chapter7_rooftop_move.r001
 player: $chapter7.chapter7_rooftop_move.r002
 mahiru: $chapter7.chapter7_rooftop_move.r003
 player: $chapter7.chapter7_rooftop_move.r004
 mahiru: $chapter7.chapter7_rooftop_move.r005
 > $chapter7.chapter7_rooftop_move.r006
+> $chapter7.chapter7_rooftop_move.r006.s002
+> $chapter7.chapter7_rooftop_move.r006.s003
+@expr mahiru normal
 mahiru: $chapter7.chapter7_rooftop_move.r007
 player: $chapter7.chapter7_rooftop_move.r008
 mahiru: $chapter7.chapter7_rooftop_move.r009
@@ -222,6 +268,7 @@ mahiru: $chapter7.chapter7_rooftop_move.r015
 # chapter7_mahiru_warm
 player: $chapter7.chapter7_mahiru_warm.r001
 mahiru: $chapter7.chapter7_mahiru_warm.r002
+@flag mahiru_invited_friends 1
 @jump chapter7_mahiru_resume
 # chapter7_mahiru_normal
 player: $chapter7.chapter7_mahiru_normal.r001
@@ -233,7 +280,13 @@ mahiru: $chapter7.chapter7_mahiru_normal.r002
 @show sakura center happy fade_in
 @show kotoha right normal fade_in
 sakura: $chapter7.chapter7_mahiru_resume.r002
+@if mahiru_invited_friends == 1 -> chapter7_friends_invited
 player: $chapter7.chapter7_mahiru_resume.r003
+@jump chapter7_friends_join
+# chapter7_friends_invited
+player: $chapter7.chapter7_mahiru_resume.invitation
+@jump chapter7_friends_join
+# chapter7_friends_join
 sakura: $chapter7.chapter7_mahiru_resume.r004
 @hide_all fade_out
 @jump chapter7_rooftop
@@ -246,6 +299,7 @@ sakura: $chapter7.chapter7_mahiru_resume.r004
 @show mahiru center normal fade_in
 @still mahiru_evening_rooftop
 > $chapter7.chapter7_rooftop.r001
+> $chapter7.chapter7_rooftop.r001.s002
 mahiru: $chapter7.chapter7_rooftop.r002
 sakura: $chapter7.chapter7_rooftop.r003
 mahiru: $chapter7.chapter7_rooftop.r004
@@ -258,11 +312,15 @@ sakura: $chapter7.chapter7_rooftop.r009
 player: $chapter7.chapter7_rooftop.r010
 sakura: $chapter7.chapter7_rooftop.r011
 > $chapter7.chapter7_rooftop.r012
+@expr sakura normal
 mahiru: $chapter7.chapter7_rooftop.r013
 > $chapter7.chapter7_rooftop.r014
+> $chapter7.chapter7_rooftop.r014.s002
 kotoha: $chapter7.chapter7_rooftop.r015
 @scene rooftop_night fade
 > $chapter7.chapter7_rooftop.context001
+> $chapter7.chapter7_rooftop.context001.s002
+> $chapter7.chapter7_rooftop.context001.s003
 mahiru: $chapter7.chapter7_rooftop.r016
 @bgm stop
 @se chime_soft.mp3
@@ -278,6 +336,7 @@ player: $chapter7.chapter7_rooftop.r024
 mahiru: $chapter7.chapter7_rooftop.r025
 @still rooftop_four_wishes
 > $chapter7.chapter7_rooftop.r026
+> $chapter7.chapter7_rooftop.r026.s002
 mahiru: $chapter7.chapter7_rooftop.r027
 sakura: $chapter7.chapter7_rooftop.r028
 kotoha: $chapter7.chapter7_rooftop.r029
@@ -292,6 +351,7 @@ kotoha: $chapter7.chapter7_rooftop.r037
 sakura: $chapter7.chapter7_rooftop.r038
 kotoha: $chapter7.chapter7_rooftop.r039
 > $chapter7.chapter7_rooftop.r040
+> $chapter7.chapter7_rooftop.r040.s002
 mahiru: $chapter7.chapter7_rooftop.r041
 player: $chapter7.chapter7_rooftop.r042
 sakura: $chapter7.chapter7_rooftop.r043
@@ -304,13 +364,18 @@ mahiru: $chapter7.chapter7_rooftop.r048
 mahiru: $chapter7.chapter7_rooftop.r050
 sakura: $chapter7.chapter7_rooftop.r051
 mahiru: $chapter7.chapter7_rooftop.r052
+@still_hide
 > $chapter7.chapter7_rooftop.r053
+> $chapter7.chapter7_rooftop.r053.s002
+@expr sakura happy
 sakura: $chapter7.chapter7_rooftop.r054
 kotoha: $chapter7.chapter7_rooftop.r055
 sakura: $chapter7.chapter7_rooftop.r056
 @bgm evening_piano.mp3
 @still_hide
 > $chapter7.chapter7_rooftop.r057
+> $chapter7.chapter7_rooftop.r057.s002
+> $chapter7.chapter7_rooftop.r057.s003
 @hide_all fade_out
 @jump chapter7_evening_classroom
 # chapter7_evening_classroom
@@ -320,6 +385,7 @@ sakura: $chapter7.chapter7_rooftop.r056
 @show kotoha right normal fade_in
 @show mahiru center happy fade_in
 > $chapter7.chapter7_evening_classroom.r001
+> $chapter7.chapter7_evening_classroom.r001.s002
 sakura: $chapter7.chapter7_evening_classroom.r002
 kotoha: $chapter7.chapter7_evening_classroom.r003
 sakura: $chapter7.chapter7_evening_classroom.r004
@@ -328,6 +394,7 @@ kotoha: $chapter7.chapter7_evening_classroom.r005
 player: $chapter7.chapter7_evening_classroom.r007
 sakura: $chapter7.chapter7_evening_classroom.r008
 > $chapter7.chapter7_evening_classroom.r009
+> $chapter7.chapter7_evening_classroom.r009.s002
 kotoha: $chapter7.chapter7_evening_classroom.r010
 sakura: $chapter7.chapter7_evening_classroom.r011
 player: $chapter7.chapter7_evening_classroom.r012
@@ -337,37 +404,56 @@ sakura: $chapter7.chapter7_evening_classroom.r015
 kotoha: $chapter7.chapter7_evening_classroom.r016
 sakura: $chapter7.chapter7_evening_classroom.r017
 > $chapter7.chapter7_evening_classroom.r018
+> $chapter7.chapter7_evening_classroom.r018.s002
+> $chapter7.chapter7_start.photo_context
+> $chapter7.chapter7_start.photo_context.s002
 player: $chapter7.chapter7_evening_classroom.r019
 mahiru: $chapter7.chapter7_evening_classroom.r020
 player: $chapter7.chapter7_evening_classroom.r021
+@expr mahiru normal
 mahiru: $chapter7.chapter7_evening_classroom.r022
 > $chapter7.chapter7_evening_classroom.r023
 player: $chapter7.chapter7_evening_classroom.r024
 sakura: $chapter7.chapter7_evening_classroom.r025
+@expr mahiru happy
 mahiru: $chapter7.chapter7_evening_classroom.r026
 kotoha: $chapter7.chapter7_evening_classroom.r027
 sakura: $chapter7.chapter7_evening_classroom.r028
 > $chapter7.chapter7_evening_classroom.r029
+> $chapter7.chapter7_evening_classroom.r029.s002
 sakura: $chapter7.chapter7_evening_classroom.r030
 player: $chapter7.chapter7_evening_classroom.r031
 > $chapter7.chapter7_evening_classroom.r032
+> $chapter7.chapter7_evening_classroom.r032.s002
 @hide_all fade_out
 @jump chapter7_mahiru_notebook
 # chapter7_mahiru_notebook
 @scene corridor_night fade
 @bgm stop
 > $chapter7.chapter7_mahiru_notebook.r001
+> $chapter7.chapter7_mahiru_notebook.r001.s002
+> $chapter7.chapter7_mahiru_notebook.r001.s003
 @scene school_exterior_night fade
 > $chapter7.chapter7_mahiru_notebook.r002
+> $chapter7.chapter7_mahiru_notebook.r002.s002
 @jump chapter7_monologue
 # chapter7_monologue
 @scene protagonist_room_night fade
 @bgm night_melody.mp3
 > $chapter7.chapter7_monologue.r001
+> $chapter7.chapter7_monologue.r001.s002
+> $chapter7.chapter7_monologue.r001.s003
 > $chapter7.chapter7_monologue.r002
+> $chapter7.chapter7_monologue.r002.s002
+> $chapter7.chapter7_monologue.r002.s003
 > $chapter7.chapter7_monologue.r003
+> $chapter7.chapter7_monologue.r003.s002
+> $chapter7.chapter7_monologue.r003.s003
 > $chapter7.chapter7_monologue.r004
+> $chapter7.chapter7_monologue.r004.s002
+> $chapter7.chapter7_monologue.r004.s003
 player: $chapter7.chapter7_monologue.r005
 > $chapter7.chapter7_monologue.r006
+> $chapter7.chapter7_monologue.r006.s002
 @bgm stop
 @end "$chapter7.chapter7_monologue.r007" -> chapter8_start

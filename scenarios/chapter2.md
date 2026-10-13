@@ -4,6 +4,7 @@
 @bgm spring_breeze.mp3
 @se school_bell.mp3
 > $chapter2.chapter2_start.r001
+> $chapter2.chapter2_start.r001.s002
 @show sakura right happy fade_in
 sakura: $chapter2.chapter2_start.r002
 player: $chapter2.chapter2_start.r003
@@ -14,6 +15,7 @@ sakura: $chapter2.chapter2_start.r006
 player: $chapter2.chapter2_start.r007
 sakura: $chapter2.chapter2_start.r008
 > $chapter2.chapter2_start.r009
+> $chapter2.chapter2_start.r009.s002
 kotoha: $chapter2.chapter2_start.r010
 sakura: $chapter2.chapter2_start.r011
 kotoha: $chapter2.chapter2_start.r012
@@ -21,17 +23,23 @@ player: $chapter2.chapter2_start.r013
 kotoha: $chapter2.chapter2_start.r014
 sakura: $chapter2.chapter2_start.r015
 @expr kotoha shy
+@emote kotoha shy 0.4
 kotoha: $chapter2.chapter2_start.r016
+@expr kotoha normal
 > $chapter2.chapter2_start.r017
+> $chapter2.chapter2_start.r017.s002
 player: $chapter2.chapter2_start.r018
 sakura: $chapter2.chapter2_start.r019
 @expr sakura blank
 @still sakura_blank_moment
 > $chapter2.chapter2_start.r020
+> $chapter2.chapter2_start.r020.s002
+> $chapter2.chapter2_start.r020.s003
 @still_hide
 @expr sakura happy
 sakura: $chapter2.chapter2_start.r021
 > $chapter2.chapter2_start.r022
+> $chapter2.chapter2_start.r022.s002
 sakura: $chapter2.chapter2_start.r023
 player: $chapter2.chapter2_start.r024
 kotoha: $chapter2.chapter2_start.r025
@@ -42,16 +50,22 @@ sakura: $chapter2.chapter2_start.r026
 @scene classroom fade
 @bgm daily_life.mp3
 > $chapter2.chapter2_class.r001
+> $chapter2.chapter2_class.r001.s002
 @show sakura right happy fade_in
 > $chapter2.chapter2_class.r002
+> $chapter2.chapter2_class.r002.s002
 > $chapter2.chapter2_class.r003
+> $chapter2.chapter2_class.r003.s002
 @expr sakura no_light_eyes
 > $chapter2.chapter2_class.r004
+> $chapter2.chapter2_class.r004.s002
 > $chapter2.chapter2_class.r005
+> $chapter2.chapter2_class.r005.s002
 @expr sakura happy
 teacher_male: $chapter2.chapter2_class.r006
 player: $chapter2.chapter2_class.r007
 > $chapter2.chapter2_class.r008
+> $chapter2.chapter2_class.r008.s002
 @hide sakura fade_out
 @jump chapter2_lunch
 # chapter2_lunch
@@ -62,10 +76,14 @@ player: $chapter2.chapter2_class.r007
 @show kotoha left normal fade_in
 @show mahiru center happy fade_in
 > $chapter2.chapter2_lunch.context001
+> $chapter2.chapter2_lunch.context001.s002
+@emote sakura bounce 0.5
 sakura: $chapter2.chapter2_lunch.r001
 player: $chapter2.chapter2_lunch.r002
 sakura: $chapter2.chapter2_lunch.r003
 > $chapter2.chapter2_lunch.r004
+> $chapter2.chapter2_lunch.r004.s002
+> $chapter2.chapter2_lunch.r004.s003
 mahiru: $chapter2.chapter2_lunch.r005
 sakura: $chapter2.chapter2_lunch.r006
 kotoha: $chapter2.chapter2_lunch.r007
@@ -73,6 +91,7 @@ mahiru: $chapter2.chapter2_lunch.r008
 player: $chapter2.chapter2_lunch.r009
 mahiru: $chapter2.chapter2_lunch.r010
 > $chapter2.chapter2_lunch.r011
+> $chapter2.chapter2_lunch.r011.s002
 kotoha: $chapter2.chapter2_lunch.r012
 mahiru: $chapter2.chapter2_lunch.r013
 sakura: $chapter2.chapter2_lunch.r014
@@ -85,9 +104,11 @@ sakura: $chapter2.chapter2_lunch.r020
 kotoha: $chapter2.chapter2_lunch.r021
 sakura: $chapter2.chapter2_lunch.r022
 > $chapter2.chapter2_lunch.r023
+> $chapter2.chapter2_lunch.r023.s002
 sakura: $chapter2.chapter2_lunch.r024
 @expr kotoha happy
 kotoha: $chapter2.chapter2_lunch.r025
+@emote sakura nod 0.45
 > $chapter2.chapter2_lunch.r026
 mahiru: $chapter2.chapter2_lunch.r027
 player: $chapter2.chapter2_lunch.r028
@@ -96,13 +117,16 @@ mahiru: $chapter2.chapter2_lunch.r029
 sakura: $chapter2.chapter2_lunch.r030
 mahiru: $chapter2.chapter2_lunch.r031
 > $chapter2.chapter2_lunch.r032
+> $chapter2.chapter2_lunch.r032.s002
 sakura: $chapter2.chapter2_lunch.r033
+@emote kotoha nod 0.4
 kotoha: $chapter2.chapter2_lunch.r034
 player: $chapter2.chapter2_lunch.r035
 mahiru: $chapter2.chapter2_lunch.r036
 player: $chapter2.chapter2_lunch.r037
 mahiru: $chapter2.chapter2_lunch.r038
 > $chapter2.chapter2_lunch.r039
+> $chapter2.chapter2_lunch.r039.s002
 sakura: $chapter2.chapter2_lunch.r040
 kotoha: $chapter2.chapter2_lunch.r041
 sakura: $chapter2.chapter2_lunch.r042
@@ -110,6 +134,7 @@ kotoha: $chapter2.chapter2_lunch.r043
 player: $chapter2.chapter2_lunch.r044
 sakura: $chapter2.chapter2_lunch.r045
 > $chapter2.chapter2_lunch.r046
+> $chapter2.chapter2_lunch.r046.s002
 kotoha: $chapter2.chapter2_lunch.r047
 mahiru: $chapter2.chapter2_lunch.r048
 sakura: $chapter2.chapter2_lunch.r049
@@ -121,7 +146,8 @@ player: $chapter2.chapter2_lunch.r050
 @bgm daily_life.mp3
 @se gym_whistle.mp3
 > $chapter2.chapter2_pe.r001
-@show nobuhara_sports left panic pop_in
+> $chapter2.chapter2_pe.r001.s002
+@show nobuhara_sports left happy pop_in
 nobuhara_sports: $chapter2.chapter2_pe.r002
 player: $chapter2.chapter2_pe.r003
 nobuhara_sports: $chapter2.chapter2_pe.r004
@@ -138,6 +164,8 @@ mahiru: $chapter2.chapter2_pe.r010
 mahiru: $chapter2.chapter2_pe.r012
 player: $chapter2.chapter2_pe.r013
 > $chapter2.chapter2_pe.r014
+> $chapter2.chapter2_pe.r014.s002
+> $chapter2.chapter2_pe.r014.s003
 nobuhara_sports: $chapter2.chapter2_pe.r015
 > $chapter2.chapter2_pe.r016
 sakura: $chapter2.chapter2_pe.r017
@@ -150,16 +178,20 @@ player: $chapter2.chapter2_pe.r018
 @bgm evening_piano.mp3
 @se school_bell.mp3
 > $chapter2.chapter2_after_school.r001
+> $chapter2.chapter2_after_school.r001.s002
 @show sakura center normal fade_in
 > $chapter2.chapter2_after_school.r002
+> $chapter2.chapter2_after_school.r002.s002
 @choice
 - $chapter2.chapter2_after_school.r003 [sakura_favor+5] -> chapter2_sakura_event
 - $chapter2.chapter2_after_school.r004 -> chapter2_leave
 # chapter2_sakura_event
 player: $chapter2.chapter2_sakura_event.r001
 @expr sakura surprised
+@emote sakura startle 0.4
 sakura: $chapter2.chapter2_sakura_event.r002
 player: $chapter2.chapter2_sakura_event.r003
+@expr sakura normal
 sakura: $chapter2.chapter2_sakura_event.r004
 player: $chapter2.chapter2_sakura_event.r005
 > $chapter2.chapter2_sakura_event.r006
@@ -171,22 +203,28 @@ sakura: $chapter2.chapter2_sakura_event.r011
 player: $chapter2.chapter2_sakura_event.r012
 sakura: $chapter2.chapter2_sakura_event.r013
 > $chapter2.chapter2_sakura_event.r014
+> $chapter2.chapter2_sakura_event.r014.s002
 @hide sakura fade_out
 @scene gymnasium_evening fade
 @bgm daily_life.mp3
 @se crowd_distant.mp3
 @show sakura_sports right normal fade_in
 > $chapter2.chapter2_sakura_event.r015
+> $chapter2.chapter2_sakura_event.r015.s002
+@expr sakura_sports serious
 sakura: $chapter2.chapter2_sakura_event.r016
 @se shuttle_hit.mp3
 > $chapter2.chapter2_sakura_event.r017
+> $chapter2.chapter2_sakura_event.r017.s002
 > $chapter2.chapter2_sakura_event.r018
 > $chapter2.chapter2_sakura_event.r019
+@expr sakura_sports normal
 sakura: $chapter2.chapter2_sakura_event.r020
 player: $chapter2.chapter2_sakura_event.r021
 @expr sakura_sports happy
 sakura: $chapter2.chapter2_sakura_event.r022
 player: $chapter2.chapter2_sakura_event.r023
+@emote sakura sparkle 0.4
 sakura: $chapter2.chapter2_sakura_event.r024
 player: $chapter2.chapter2_sakura_event.r025
 > $chapter2.chapter2_sakura_event.r026
@@ -195,7 +233,9 @@ sakura: $chapter2.chapter2_sakura_event.r028
 player: $chapter2.chapter2_sakura_event.r029
 sakura: $chapter2.chapter2_sakura_event.r030
 > $chapter2.chapter2_sakura_event.r031
+> $chapter2.chapter2_sakura_event.r031.s002
 @expr sakura_sports normal
+@emote sakura clear
 sakura: $chapter2.chapter2_sakura_event.r032
 player: $chapter2.chapter2_sakura_event.r033
 sakura: $chapter2.chapter2_sakura_event.r034
@@ -208,19 +248,23 @@ sakura: $chapter2.chapter2_sakura_event.r040
 player: $chapter2.chapter2_sakura_event.r041
 sakura: $chapter2.chapter2_sakura_event.r042
 > $chapter2.chapter2_sakura_event.r043
+> $chapter2.chapter2_sakura_event.r043.s002
 sakura: $chapter2.chapter2_sakura_event.r044
 player: $chapter2.chapter2_sakura_event.r045
 sakura: $chapter2.chapter2_sakura_event.r046
 > $chapter2.chapter2_sakura_event.r047
+> $chapter2.chapter2_sakura_event.r047.s002
 @hide sakura_sports fade_out
 @jump chapter2_library
 # chapter2_leave
 > $chapter2.chapter2_leave.r001
+> $chapter2.chapter2_leave.r001.s002
 player: $chapter2.chapter2_leave.r002
 sakura: $chapter2.chapter2_leave.r003
 @hide sakura fade_out
 @scene corridor_evening fade
 > $chapter2.chapter2_leave.r004
+> $chapter2.chapter2_leave.r004.s002
 @jump chapter2_library
 # chapter2_library
 @scene library_evening fade
@@ -228,15 +272,18 @@ sakura: $chapter2.chapter2_leave.r003
 @show kotoha center normal fade_in
 @still kotoha_library_headphones
 > $chapter2.chapter2_library.r001
+> $chapter2.chapter2_library.r001.s002
 @still_hide
 player: $chapter2.chapter2_library.r002
 kotoha: $chapter2.chapter2_library.r003
 > $chapter2.chapter2_library.r004
+> $chapter2.chapter2_library.r004.s002
 player: $chapter2.chapter2_library.r005
 kotoha: $chapter2.chapter2_library.r006
 player: $chapter2.chapter2_library.r007
 kotoha: $chapter2.chapter2_library.r008
 > $chapter2.chapter2_library.r009
+> $chapter2.chapter2_library.r009.s002
 player: $chapter2.chapter2_library.r010
 @expr kotoha thinking
 kotoha: $chapter2.chapter2_library.r011
@@ -248,14 +295,17 @@ kotoha: $chapter2.chapter2_library.r016
 player: $chapter2.chapter2_library.r017
 kotoha: $chapter2.chapter2_library.r018
 > $chapter2.chapter2_library.r019
+> $chapter2.chapter2_library.r019.s002
 kotoha: $chapter2.chapter2_library.r020
 player: $chapter2.chapter2_library.r021
 kotoha: $chapter2.chapter2_library.r022
 > $chapter2.chapter2_library.r023
+> $chapter2.chapter2_library.r023.s002
 kotoha: $chapter2.chapter2_library.r024
 player: $chapter2.chapter2_library.r025
 kotoha: $chapter2.chapter2_library.r026
 > $chapter2.chapter2_library.r027
+> $chapter2.chapter2_library.r027.s002
 @hide kotoha fade_out
 @jump chapter2_mahiru_corridor
 # chapter2_mahiru_corridor
@@ -263,10 +313,12 @@ kotoha: $chapter2.chapter2_library.r026
 @bgm evening_piano.mp3
 @show mahiru center normal fade_in
 > $chapter2.chapter2_mahiru_corridor.context001
+> $chapter2.chapter2_mahiru_corridor.context001.s002
 mahiru: $chapter2.chapter2_mahiru_corridor.r001
 player: $chapter2.chapter2_mahiru_corridor.r002
 mahiru: $chapter2.chapter2_mahiru_corridor.r003
 > $chapter2.chapter2_mahiru_corridor.r004
+> $chapter2.chapter2_mahiru_corridor.r004.s002
 player: $chapter2.chapter2_mahiru_corridor.r005
 mahiru: $chapter2.chapter2_mahiru_corridor.r006
 player: $chapter2.chapter2_mahiru_corridor.r007
@@ -282,10 +334,14 @@ player: $chapter2.chapter2_mahiru_corridor.r016
 mahiru: $chapter2.chapter2_mahiru_corridor.r017
 player: $chapter2.chapter2_mahiru_corridor.r018
 @expr mahiru happy
+@emote mahiru nod 0.4
 mahiru: $chapter2.chapter2_mahiru_corridor.r019
 @hide mahiru fade_out
 > $chapter2.chapter2_mahiru_corridor.r020
+> $chapter2.chapter2_mahiru_corridor.r020.s002
+> $chapter2.chapter2_mahiru_corridor.r020.s003
 > $chapter2.chapter2_mahiru_corridor.r021
+> $chapter2.chapter2_mahiru_corridor.r021.s002
 @jump chapter2_end
 # chapter2_mahiru_note
 @jump chapter2_mahiru_corridor
@@ -293,9 +349,14 @@ mahiru: $chapter2.chapter2_mahiru_corridor.r019
 @scene commute_road_spring_evening fade
 @bgm evening_piano.mp3
 > $chapter2.chapter2_end.r001
+> $chapter2.chapter2_end.r001.s002
 > $chapter2.chapter2_end.r002
+> $chapter2.chapter2_end.r002.s002
 > $chapter2.chapter2_end.r003
+> $chapter2.chapter2_end.r003.s002
 > $chapter2.chapter2_end.r004
+> $chapter2.chapter2_end.r004.s002
+> $chapter2.chapter2_end.r004.s003
 player: $chapter2.chapter2_end.r005
 > $chapter2.chapter2_end.r006
 @bgm stop

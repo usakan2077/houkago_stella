@@ -1,8 +1,8 @@
 from PIL import Image
-from pathlib import Path
+from asset_paths import GAME_ROOT, asset_source
 
-SRC = Path("assets-src/bg/title_logo_en.png")
-DST = Path("assets/images/bg/title_logo_en.webp")
+SRC = asset_source("bg/title_logo_en.png")
+DST = GAME_ROOT / "assets/images/bg/title_logo_en.webp"
 QUALITY = 90
 
 with Image.open(SRC) as img:

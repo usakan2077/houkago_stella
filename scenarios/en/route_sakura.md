@@ -4,13 +4,22 @@
 @scene classroom_night fade
 @bgm night_melody.mp3
 > $route_sakura.sakura_interlude.r001
+> $route_sakura.sakura_interlude.r001.s002
+> $route_sakura.sakura_interlude.r001.s003
 sakura: $route_sakura.sakura_interlude.r002
 > $route_sakura.sakura_interlude.r003
+> $route_sakura.sakura_interlude.r003.s002
 > $route_sakura.sakura_interlude.r004
+> $route_sakura.sakura_interlude.r004.s002
 sakura: $route_sakura.sakura_interlude.r005
 > $route_sakura.sakura_interlude.r006
+> $route_sakura.sakura_interlude.r006.s002
 > $route_sakura.sakura_interlude.r007
+> $route_sakura.sakura_interlude.r007.s002
+> $route_sakura.sakura_interlude.r007.s003
+> $route_sakura.sakura_interlude.r007.s004
 > $route_sakura.sakura_interlude.r008
+> $route_sakura.sakura_interlude.r008.s002
 sakura: $route_sakura.sakura_interlude.r009
 > $route_sakura.sakura_interlude.r010
 @bgm stop
@@ -21,7 +30,13 @@ sakura: $route_sakura.sakura_interlude.r009
 @bgm sakura_theme.mp3
 @se footsteps.mp3
 > $route_sakura.sakura_ch9_start.r001
+> $route_sakura.sakura_ch9_start.r001.s002
+> $route_sakura.sakura_ch9_start.r001.s003
+> $route_sakura.sakura_ch9_start.call_context
+> $route_sakura.sakura_ch9_start.call_context.s002
 > $route_sakura.sakura_ch9_start.r002
+> $route_sakura.sakura_ch9_start.r002.s002
+> $route_sakura.sakura_ch9_start.r002.s003
 @show sakura center normal fade_in
 player: $route_sakura.sakura_ch9_start.r003
 sakura: $route_sakura.sakura_ch9_start.r004
@@ -29,12 +44,16 @@ player: $route_sakura.sakura_ch9_start.r005
 sakura: $route_sakura.sakura_ch9_start.r006
 player: $route_sakura.sakura_ch9_start.r007
 > $route_sakura.sakura_ch9_start.r008
+> $route_sakura.sakura_ch9_start.r008.s002
+> $route_sakura.sakura_ch9_start.r008.s003
 player: $route_sakura.sakura_ch9_start.r009
 > $route_sakura.sakura_ch9_start.r010
+> $route_sakura.sakura_ch9_start.r010.s002
 sakura: $route_sakura.sakura_ch9_start.r011
 player: $route_sakura.sakura_ch9_start.r012
 sakura: $route_sakura.sakura_ch9_start.r013
 > $route_sakura.sakura_ch9_start.r014
+> $route_sakura.sakura_ch9_start.r014.s002
 @hide sakura fade_out
 @bgm stop
 @jump sakura_ch9_days
@@ -43,6 +62,8 @@ sakura: $route_sakura.sakura_ch9_start.r013
 @bgm daily_life.mp3
 @se school_bell.mp3
 > $route_sakura.sakura_ch9_days.r001
+> $route_sakura.sakura_ch9_days.r001.s002
+> $route_sakura.sakura_ch9_days.r001.s003
 > $route_sakura.sakura_ch9_days.r002
 @show sakura right happy fade_in
 sakura: $route_sakura.sakura_ch9_days.r003
@@ -56,12 +77,14 @@ sakura: $route_sakura.sakura_ch9_days.r010
 player: $route_sakura.sakura_ch9_days.r011
 sakura: $route_sakura.sakura_ch9_days.r012
 > $route_sakura.sakura_ch9_days.r013
+> $route_sakura.sakura_ch9_days.r013.s002
 @hide sakura fade_out
 @jump sakura_ch9_daily_life
 # sakura_ch9_daily_life
 @scene classroom fade
 @bgm daily_life.mp3
 > $route_sakura.sakura_ch9_daily_life.r001
+> $route_sakura.sakura_ch9_daily_life.r001.s002
 @show sakura left happy fade_in
 sakura: $route_sakura.sakura_ch9_daily_life.r002
 player: $route_sakura.sakura_ch9_daily_life.r003
@@ -71,9 +94,11 @@ sakura: $route_sakura.sakura_ch9_daily_life.r006
 player: $route_sakura.sakura_ch9_daily_life.r007
 sakura: $route_sakura.sakura_ch9_daily_life.r008
 > $route_sakura.sakura_ch9_daily_life.r009
+> $route_sakura.sakura_ch9_daily_life.r009.s002
 player: $route_sakura.sakura_ch9_daily_life.r010
 sakura: $route_sakura.sakura_ch9_daily_life.r011
 > $route_sakura.sakura_ch9_daily_life.r012
+> $route_sakura.sakura_ch9_daily_life.r012.s002
 @hide sakura fade_out
 @jump sakura_ch9_daily2
 # sakura_ch9_daily2
@@ -81,6 +106,7 @@ sakura: $route_sakura.sakura_ch9_daily_life.r011
 @bgm daily_life.mp3
 @show sakura center happy fade_in
 > $route_sakura.sakura_ch9_daily2.r001
+> $route_sakura.sakura_ch9_daily2.r001.s002
 sakura: $route_sakura.sakura_ch9_daily2.r002
 player: $route_sakura.sakura_ch9_daily2.r003
 sakura: $route_sakura.sakura_ch9_daily2.r004
@@ -97,6 +123,9 @@ sakura: $route_sakura.sakura_ch9_daily2.r014
 player: $route_sakura.sakura_ch9_daily2.r015
 sakura: $route_sakura.sakura_ch9_daily2.r016
 > $route_sakura.sakura_ch9_daily2.r017
+> $route_sakura.sakura_ch9_daily2.r017.s002
+> $route_sakura.sakura_ch9_daily2.r017.s003
+@emote sakura bounce 0.4
 sakura: $route_sakura.sakura_ch9_daily2.r018
 @hide sakura fade_out
 @jump sakura_ch9_gym
@@ -105,16 +134,22 @@ sakura: $route_sakura.sakura_ch9_daily2.r018
 @bgm daily_life.mp3
 @show sakura_sports left happy fade_in
 > $route_sakura.sakura_ch9_gym.r001
+> $route_sakura.sakura_ch9_gym.r001.s002
 sakura: $route_sakura.sakura_ch9_gym.r002
 > $route_sakura.sakura_ch9_gym.r003
+> $route_sakura.sakura_ch9_gym.r003.s002
 sakura: $route_sakura.sakura_ch9_gym.r004
 > $route_sakura.sakura_ch9_gym.r005
+> $route_sakura.sakura_ch9_gym.r005.s002
 sakura: $route_sakura.sakura_ch9_gym.r006
 > $route_sakura.sakura_ch9_gym.r007
+> $route_sakura.sakura_ch9_gym.r007.s002
 > $route_sakura.sakura_ch9_gym.r008
 player: $route_sakura.sakura_ch9_gym.r009
 sakura: $route_sakura.sakura_ch9_gym.r010
 > $route_sakura.sakura_ch9_gym.r011
+> $route_sakura.sakura_ch9_gym.r011.s002
+@emote sakura nod 0.4
 sakura: $route_sakura.sakura_ch9_gym.r012
 @hide sakura_sports fade_out
 @jump sakura_ch9_walk
@@ -123,12 +158,14 @@ sakura: $route_sakura.sakura_ch9_gym.r012
 @bgm evening_piano.mp3
 @show sakura_sports right normal fade_in
 > $route_sakura.sakura_ch9_walk.context001
+> $route_sakura.sakura_ch9_walk.context001.s002
 sakura: $route_sakura.sakura_ch9_walk.r001
 player: $route_sakura.sakura_ch9_walk.r002
 sakura: $route_sakura.sakura_ch9_walk.r003
 player: $route_sakura.sakura_ch9_walk.r004
 sakura: $route_sakura.sakura_ch9_walk.r005
 > $route_sakura.sakura_ch9_walk.r006
+> $route_sakura.sakura_ch9_walk.r006.s002
 player: $route_sakura.sakura_ch9_walk.r007
 sakura: $route_sakura.sakura_ch9_walk.r008
 player: $route_sakura.sakura_ch9_walk.r009
@@ -143,15 +180,25 @@ sakura: $route_sakura.sakura_ch9_walk.r014
 @scene protagonist_room_night fade
 @bgm night_melody.mp3
 > $route_sakura.sakura_ch9_mother.r001
+> $route_sakura.sakura_ch9_mother.r001.s002
 player: $route_sakura.sakura_ch9_mother.r002
 > $route_sakura.sakura_ch9_mother.r003
+> $route_sakura.sakura_ch9_mother.r003.s002
+> $route_sakura.sakura_ch9_mother.r003.s003
 > $route_sakura.sakura_ch9_mother.r004
+> $route_sakura.sakura_ch9_mother.r004.s002
 @bgm stop
 > $route_sakura.sakura_ch9_mother.r005
+> $route_sakura.sakura_ch9_mother.r005.s002
+> $route_sakura.sakura_ch9_mother.r005.s003
 > $route_sakura.sakura_ch9_mother.r006
+> $route_sakura.sakura_ch9_mother.r006.s002
 player: $route_sakura.sakura_ch9_mother.r007
 > $route_sakura.sakura_ch9_mother.r008
+> $route_sakura.sakura_ch9_mother.r008.s002
 > $route_sakura.sakura_ch9_mother.r009
+> $route_sakura.sakura_ch9_mother.r009.s002
+> $route_sakura.sakura_ch9_mother.r009.s003
 @bgm night_melody.mp3
 @jump sakura_ch9_daily3
 # sakura_ch9_daily3
@@ -167,6 +214,7 @@ sakura: $route_sakura.sakura_ch9_daily3.r006
 player: $route_sakura.sakura_ch9_daily3.r007
 sakura: $route_sakura.sakura_ch9_daily3.r008
 > $route_sakura.sakura_ch9_daily3.r009
+> $route_sakura.sakura_ch9_daily3.r009.s002
 player: $route_sakura.sakura_ch9_daily3.r010
 sakura: $route_sakura.sakura_ch9_daily3.r011
 player: $route_sakura.sakura_ch9_daily3.r012
@@ -179,6 +227,7 @@ player: $route_sakura.sakura_ch9_daily3.r012
 > $route_sakura.sakura_ch9_choice.r001
 sakura: $route_sakura.sakura_ch9_choice.r002
 > $route_sakura.sakura_ch9_choice.r003
+> $route_sakura.sakura_ch9_choice.r003.s002
 @choice
 - $route_sakura.sakura_ch9_choice.r004 -> sakura_ch9_ask
 - $route_sakura.sakura_ch9_choice.r005 -> sakura_ch9_silent
@@ -188,9 +237,11 @@ sakura: $route_sakura.sakura_ch9_ask.r002
 player: $route_sakura.sakura_ch9_ask.r003
 sakura: $route_sakura.sakura_ch9_ask.r004
 > $route_sakura.sakura_ch9_ask.r005
+> $route_sakura.sakura_ch9_ask.r005.s002
 @jump sakura_ch9_end
 # sakura_ch9_silent
 > $route_sakura.sakura_ch9_silent.r001
+> $route_sakura.sakura_ch9_silent.r001.s002
 sakura: $route_sakura.sakura_ch9_silent.r002
 player: $route_sakura.sakura_ch9_silent.r003
 sakura: $route_sakura.sakura_ch9_silent.r004
@@ -200,11 +251,14 @@ sakura: $route_sakura.sakura_ch9_silent.r004
 @scene commute_road_autumn_evening fade
 @bgm evening_piano.mp3
 > $route_sakura.sakura_ch9_end.context001
+> $route_sakura.sakura_ch9_end.context001.s002
 sakura: $route_sakura.sakura_ch9_end.r001
 player: $route_sakura.sakura_ch9_end.r002
 sakura: $route_sakura.sakura_ch9_end.r003
 @hide sakura fade_out
 > $route_sakura.sakura_ch9_end.r004
+> $route_sakura.sakura_ch9_end.r004.s002
+> $route_sakura.sakura_ch9_end.r004.s003
 @bgm stop
 @jump sakura_ch10_start
 # sakura_ch10_start
@@ -217,6 +271,7 @@ sakura: $route_sakura.sakura_ch10_start.r001
 player: $route_sakura.sakura_ch10_start.r002
 sakura: $route_sakura.sakura_ch10_start.r003
 > $route_sakura.sakura_ch10_start.r004
+> $route_sakura.sakura_ch10_start.r004.s002
 sakura: $route_sakura.sakura_ch10_start.r005
 player: $route_sakura.sakura_ch10_start.r006
 sakura: $route_sakura.sakura_ch10_start.r007
@@ -229,10 +284,15 @@ sakura: $route_sakura.sakura_ch10_start.r007
 player: $route_sakura.sakura_ch10_message.r002
 > $route_sakura.sakura_ch10_message.r003
 > $route_sakura.sakura_ch10_message.r004
+> $route_sakura.sakura_ch10_message.r004.s002
 @bgm stop
 > $route_sakura.sakura_ch10_message.r005
+> $route_sakura.sakura_ch10_message.r005.s002
 > $route_sakura.sakura_ch10_message.r006
+> $route_sakura.sakura_ch10_message.r006.s002
 > $route_sakura.sakura_ch10_message.r007
+> $route_sakura.sakura_ch10_message.r007.s002
+> $route_sakura.sakura_ch10_message.r007.s003
 @bgm night_melody.mp3
 @jump sakura_ch10_gym
 # sakura_ch10_gym
@@ -244,12 +304,18 @@ sakura: $route_sakura.sakura_ch10_gym.r002
 > $route_sakura.sakura_ch10_gym.r003
 sakura: $route_sakura.sakura_ch10_gym.r004
 > $route_sakura.sakura_ch10_gym.r005
+> $route_sakura.sakura_ch10_gym.r005.s002
+@expr sakura_sports serious
 sakura: $route_sakura.sakura_ch10_gym.r006
 > $route_sakura.sakura_ch10_gym.r007
+> $route_sakura.sakura_ch10_gym.r007.s002
 sakura: $route_sakura.sakura_ch10_gym.r008
 > $route_sakura.sakura_ch10_gym.r009
+> $route_sakura.sakura_ch10_gym.r009.s002
+@expr sakura_sports normal
 sakura: $route_sakura.sakura_ch10_gym.r010
 > $route_sakura.sakura_ch10_gym.r011
+> $route_sakura.sakura_ch10_gym.r011.s002
 @hide sakura_sports fade_out
 @jump sakura_ch10_after_practice
 # sakura_ch10_after_practice
@@ -257,13 +323,21 @@ sakura: $route_sakura.sakura_ch10_gym.r010
 @bgm daily_life.mp3
 @show sakura_sports right normal fade_in
 > $route_sakura.sakura_ch10_after_practice.r001
+> $route_sakura.sakura_ch10_after_practice.r001.s002
+> $route_sakura.sakura_ch10_after_practice.r001.s003
 > $route_sakura.sakura_ch10_after_practice.r002
+> $route_sakura.sakura_ch10_after_practice.r002.s002
+> $route_sakura.sakura_ch10_after_practice.r002.s003
 sakura: $route_sakura.sakura_ch10_after_practice.r003
 player: $route_sakura.sakura_ch10_after_practice.r004
 sakura: $route_sakura.sakura_ch10_after_practice.r005
 > $route_sakura.sakura_ch10_after_practice.r006
+> $route_sakura.sakura_ch10_after_practice.r006.s002
 @still sakura_crying_gym
 > $route_sakura.sakura_ch10_after_practice.r007
+> $route_sakura.sakura_ch10_after_practice.r007.s002
+> $route_sakura.sakura_ch10_after_practice.r007.s003
+> $route_sakura.sakura_ch10_after_practice.r007.s004
 @still_hide
 @hide sakura_sports fade_out
 @jump sakura_ch10_outside
@@ -273,12 +347,16 @@ sakura: $route_sakura.sakura_ch10_after_practice.r005
 @se door_open.mp3
 @show sakura_sports right normal fade_in
 > $route_sakura.sakura_ch10_outside.context001
+> $route_sakura.sakura_ch10_outside.context001.s002
+> $route_sakura.sakura_ch10_outside.context001.s003
 player: $route_sakura.sakura_ch10_outside.r001
 sakura: $route_sakura.sakura_ch10_outside.r002
 player: $route_sakura.sakura_ch10_outside.r003
 > $route_sakura.sakura_ch10_outside.r004
 sakura: $route_sakura.sakura_ch10_outside.r005
 > $route_sakura.sakura_ch10_outside.r006
+> $route_sakura.sakura_ch10_outside.r006.s002
+> $route_sakura.sakura_ch10_outside.r006.s003
 @bgm stop
 @hide sakura_sports instant
 @still sakura_cant_smile
@@ -286,43 +364,56 @@ sakura: $route_sakura.sakura_ch10_outside.r007
 player: $route_sakura.sakura_ch10_outside.r008
 sakura: $route_sakura.sakura_ch10_outside.r009
 > $route_sakura.sakura_ch10_outside.r010
+> $route_sakura.sakura_ch10_outside.r010.s002
 @still_hide
 @show sakura_sports center crying fade_in
 sakura: $route_sakura.sakura_ch10_outside.r011
 player: $route_sakura.sakura_ch10_outside.r012
 sakura: $route_sakura.sakura_ch10_outside.r013
 > $route_sakura.sakura_ch10_outside.r014
+> $route_sakura.sakura_ch10_outside.r014.s002
 sakura: $route_sakura.sakura_ch10_outside.r015
 player: $route_sakura.sakura_ch10_outside.r016
 sakura: $route_sakura.sakura_ch10_outside.r017
 > $route_sakura.sakura_ch10_outside.r018
+> $route_sakura.sakura_ch10_outside.r018.s002
 sakura: $route_sakura.sakura_ch10_outside.r019
 > $route_sakura.sakura_ch10_outside.r020
+> $route_sakura.sakura_ch10_outside.r020.s002
+> $route_sakura.sakura_ch10_outside.r020.s003
 @still sakura_embrace
 @se heartbeat.mp3
 @bgm sakura_breakdown.mp3
 > $route_sakura.sakura_ch10_outside.r021
+> $route_sakura.sakura_ch10_outside.r021.s002
 > $route_sakura.sakura_ch10_outside.r022
+> $route_sakura.sakura_ch10_outside.r022.s002
 sakura: $route_sakura.sakura_ch10_outside.r023
 > $route_sakura.sakura_ch10_outside.r024
 @still_hide
 @hide sakura_sports fade_out
 @bgm evening_piano.mp3
 > $route_sakura.sakura_ch10_outside.r025
+> $route_sakura.sakura_ch10_outside.r025.s002
+> $route_sakura.sakura_ch10_outside.r025.s003
 @scene gymnasium_back fade
 > $route_sakura.sakura_ch10_outside.r026
+> $route_sakura.sakura_ch10_outside.r026.s002
 @jump sakura_ch10_walk
 # sakura_ch10_walk
 @scene school_gate_autumn_evening fade
 @bgm evening_piano.mp3
 @show sakura left normal fade_in
 > $route_sakura.sakura_ch10_walk.context001
+> $route_sakura.sakura_ch10_walk.context001.s002
 sakura: $route_sakura.sakura_ch10_walk.r001
 player: $route_sakura.sakura_ch10_walk.r002
 sakura: $route_sakura.sakura_ch10_walk.r003
 player: $route_sakura.sakura_ch10_walk.r004
 sakura: $route_sakura.sakura_ch10_walk.r005
 > $route_sakura.sakura_ch10_walk.r006
+> $route_sakura.sakura_ch10_walk.r006.s002
+> $route_sakura.sakura_ch10_walk.r006.s003
 sakura: $route_sakura.sakura_ch10_walk.r007
 player: $route_sakura.sakura_ch10_walk.r008
 sakura: $route_sakura.sakura_ch10_walk.r009
@@ -339,10 +430,16 @@ sakura: $route_sakura.sakura_ch10_walk.r014
 @scene protagonist_room_night fade
 @bgm night_melody.mp3
 > $route_sakura.sakura_ch11_start.r001
+> $route_sakura.sakura_ch11_start.r001.s002
 > $route_sakura.sakura_ch11_start.r002
+> $route_sakura.sakura_ch11_start.r002.s002
+> $route_sakura.sakura_ch11_start.r002.s003
 > $route_sakura.sakura_ch11_start.r003
+> $route_sakura.sakura_ch11_start.r003.s002
+> $route_sakura.sakura_ch11_start.r003.s003
 @scene corridor fade
 > $route_sakura.sakura_ch11_start.r004
+> $route_sakura.sakura_ch11_start.r004.s002
 @bgm stop
 @jump sakura_ch11_morning
 # sakura_ch11_morning
@@ -350,14 +447,18 @@ sakura: $route_sakura.sakura_ch10_walk.r014
 @bgm stop
 @se chime_soft.mp3
 > $route_sakura.sakura_ch11_morning.r001
+> $route_sakura.sakura_ch11_morning.r001.s002
+> $route_sakura.sakura_ch11_morning.r001.s003
 @scene commute_road_autumn fade
 > $route_sakura.sakura_ch11_morning.r002
+> $route_sakura.sakura_ch11_morning.r002.s002
 > $route_sakura.sakura_ch11_morning.r003
 @jump sakura_ch11_hospital
 # sakura_ch11_hospital
 @scene commute_road_autumn fade
 @bgm stop
 > $route_sakura.sakura_ch11_hospital.r001
+> $route_sakura.sakura_ch11_hospital.r001.s002
 @se footsteps.mp3
 @show sakura left normal fade_in
 sakura: $route_sakura.sakura_ch11_hospital.r002
@@ -366,14 +467,20 @@ sakura: $route_sakura.sakura_ch11_hospital.r004
 player: $route_sakura.sakura_ch11_hospital.r005
 sakura: $route_sakura.sakura_ch11_hospital.r006
 > $route_sakura.sakura_ch11_hospital.r007
+> $route_sakura.sakura_ch11_hospital.r007.s002
+> $route_sakura.sakura_ch11_hospital.r007.s003
 player: $route_sakura.sakura_ch11_hospital.r008
 sakura: $route_sakura.sakura_ch11_hospital.r009
 player: $route_sakura.sakura_ch11_hospital.r010
 > $route_sakura.sakura_ch11_hospital.r011
+> $route_sakura.sakura_ch11_hospital.r011.s002
+@expr sakura crying
 sakura: $route_sakura.sakura_ch11_hospital.r012
 player: $route_sakura.sakura_ch11_hospital.r013
 sakura: $route_sakura.sakura_ch11_hospital.r014
 > $route_sakura.sakura_ch11_hospital.r015
+> $route_sakura.sakura_ch11_hospital.r015.s002
+> $route_sakura.sakura_ch11_hospital.r015.s003
 sakura: $route_sakura.sakura_ch11_hospital.r016
 player: $route_sakura.sakura_ch11_hospital.r017
 sakura: $route_sakura.sakura_ch11_hospital.r018
@@ -381,18 +488,25 @@ sakura: $route_sakura.sakura_ch11_hospital.r018
 sakura: $route_sakura.sakura_ch11_hospital.r020
 sakura: $route_sakura.sakura_ch11_hospital.r021
 > $route_sakura.sakura_ch11_hospital.r022
+> $route_sakura.sakura_ch11_hospital.r022.s002
+> $route_sakura.sakura_ch11_hospital.r022.s003
 sakura: $route_sakura.sakura_ch11_hospital.r023
 player: $route_sakura.sakura_ch11_hospital.r024
 sakura: $route_sakura.sakura_ch11_hospital.r025
 > $route_sakura.sakura_ch11_hospital.r026
+> $route_sakura.sakura_ch11_hospital.r026.s002
+> $route_sakura.sakura_ch11_hospital.r026.s003
 sakura: $route_sakura.sakura_ch11_hospital.r027
 player: $route_sakura.sakura_ch11_hospital.r028
 @bgm sakura_breakdown.mp3
 > $route_sakura.sakura_ch11_hospital.r029
+> $route_sakura.sakura_ch11_hospital.r029.s002
+@expr sakura normal
 sakura: $route_sakura.sakura_ch11_hospital.r030
 player: $route_sakura.sakura_ch11_hospital.r031
 sakura: $route_sakura.sakura_ch11_hospital.r032
 > $route_sakura.sakura_ch11_hospital.r033
+> $route_sakura.sakura_ch11_hospital.r033.s002
 @hide sakura fade_out
 @bgm stop
 @jump sakura_ch12_start
@@ -400,17 +514,22 @@ sakura: $route_sakura.sakura_ch11_hospital.r032
 @scene commute_road_autumn fade
 @bgm sakura_theme.mp3
 > $route_sakura.sakura_ch12_start.r001
+> $route_sakura.sakura_ch12_start.r001.s002
+> $route_sakura.sakura_ch12_start.r001.s003
 @show sakura center normal fade_in
 sakura: $route_sakura.sakura_ch12_start.r002
 > $route_sakura.sakura_ch12_start.r003
+> $route_sakura.sakura_ch12_start.r003.s002
 sakura: $route_sakura.sakura_ch12_start.r004
 > $route_sakura.sakura_ch12_start.r005
+> $route_sakura.sakura_ch12_start.r005.s002
 @hide sakura fade_out
 @jump sakura_ch12_branch
 # sakura_ch12_branch
 @scene corridor fade
 @bgm daily_life.mp3
 > $route_sakura.sakura_ch12_branch.r001
+> $route_sakura.sakura_ch12_branch.r001.s002
 @choice
 - $route_sakura.sakura_ch12_branch.r002 -> sakura_good_end
 - $route_sakura.sakura_ch12_branch.r003 -> sakura_bad_end
@@ -419,6 +538,7 @@ sakura: $route_sakura.sakura_ch12_start.r004
 @bgm sakura_good_end.mp3
 @show sakura right normal fade_in
 > $route_sakura.sakura_good_end.context001
+> $route_sakura.sakura_good_end.context001.s002
 sakura: $route_sakura.sakura_good_end.r001
 player: $route_sakura.sakura_good_end.r002
 sakura: $route_sakura.sakura_good_end.r003
@@ -436,12 +556,14 @@ player: $route_sakura.sakura_good_end.r010
 @bgm sakura_good_end.mp3
 @show sakura left normal fade_in
 > $route_sakura.sakura_good_end_daily.context001
+> $route_sakura.sakura_good_end_daily.context001.s002
 sakura: $route_sakura.sakura_good_end_daily.r001
 player: $route_sakura.sakura_good_end_daily.r002
 sakura: $route_sakura.sakura_good_end_daily.r003
 player: $route_sakura.sakura_good_end_daily.r004
 sakura: $route_sakura.sakura_good_end_daily.r005
 > $route_sakura.sakura_good_end_daily.r006
+> $route_sakura.sakura_good_end_daily.r006.s002
 player: $route_sakura.sakura_good_end_daily.r007
 sakura: $route_sakura.sakura_good_end_daily.r008
 > $route_sakura.sakura_good_end_daily.r009
@@ -452,6 +574,7 @@ sakura: $route_sakura.sakura_good_end_daily.r008
 @bgm sakura_good_end.mp3
 @show sakura center normal fade_in
 > $route_sakura.sakura_good_end_hospital.context001
+> $route_sakura.sakura_good_end_hospital.context001.s002
 sakura: $route_sakura.sakura_good_end_hospital.r001
 player: $route_sakura.sakura_good_end_hospital.r002
 sakura: $route_sakura.sakura_good_end_hospital.r003
@@ -468,27 +591,38 @@ sakura: $route_sakura.sakura_good_end_hospital.r009
 @bgm sakura_good_end.mp3
 @show sakura_sports center happy fade_in
 > $route_sakura.sakura_good_end_club.r001
+> $route_sakura.sakura_good_end_club.r001.s002
+@emote sakura bounce 0.45
 sakura: $route_sakura.sakura_good_end_club.r002
 badminton_member_a: $route_sakura.sakura_good_end_club.r003
 sakura: $route_sakura.sakura_good_end_club.r004
 > $route_sakura.sakura_good_end_club.r005
+> $route_sakura.sakura_good_end_club.r005.s002
 player: $route_sakura.sakura_good_end_club.r006
 sakura: $route_sakura.sakura_good_end_club.r007
 > $route_sakura.sakura_good_end_club.r008
+> $route_sakura.sakura_good_end_club.r008.s002
 @hide sakura_sports fade_out
 @jump sakura_good_end_message
 # sakura_good_end_message
 @scene protagonist_room_night fade
 @bgm sakura_good_end.mp3
 > $route_sakura.sakura_good_end_message.r001
+> $route_sakura.sakura_good_end_message.r001.s002
 > $route_sakura.sakura_good_end_message.r002
+> $route_sakura.sakura_good_end_message.r002.s002
+> $route_sakura.sakura_good_end_message.r002.s003
 > $route_sakura.sakura_good_end_message.r003
+> $route_sakura.sakura_good_end_message.r003.s002
 player: $route_sakura.sakura_good_end_message.r004
 > $route_sakura.sakura_good_end_message.r005
+> $route_sakura.sakura_good_end_message.r005.s002
 > $route_sakura.sakura_good_end_message.r006
+> $route_sakura.sakura_good_end_message.r006.s002
 player: $route_sakura.sakura_good_end_message.r007
 > $route_sakura.sakura_good_end_message.r008
 > $route_sakura.sakura_good_end_message.r009
+> $route_sakura.sakura_good_end_message.r009.s002
 @bgm stop
 @jump sakura_good_end_rooftop
 # sakura_good_end_rooftop
@@ -497,6 +631,9 @@ player: $route_sakura.sakura_good_end_message.r007
 @se chime_soft.mp3
 @show sakura center normal fade_in
 > $route_sakura.sakura_good_end_rooftop.r001
+> $route_sakura.sakura_good_end_rooftop.r001.s002
+> $route_sakura.sakura_good_end_rooftop.r001.s003
+> $route_sakura.sakura_good_end_rooftop.r001.s004
 sakura: $route_sakura.sakura_good_end_rooftop.r002
 player: $route_sakura.sakura_good_end_rooftop.r003
 sakura: $route_sakura.sakura_good_end_rooftop.r004
@@ -507,6 +644,7 @@ sakura: $route_sakura.sakura_good_end_rooftop.r008
 > $route_sakura.sakura_good_end_rooftop.r009
 sakura: $route_sakura.sakura_good_end_rooftop.r010
 > $route_sakura.sakura_good_end_rooftop.r011
+> $route_sakura.sakura_good_end_rooftop.r011.s002
 sakura: $route_sakura.sakura_good_end_rooftop.r012
 player: $route_sakura.sakura_good_end_rooftop.r013
 sakura: $route_sakura.sakura_good_end_rooftop.r014
@@ -516,11 +654,15 @@ sakura: $route_sakura.sakura_good_end_rooftop.r016
 @still sakura_good_end_rooftop1_pre1
 > $route_sakura.sakura_good_end_rooftop.r017
 > $route_sakura.sakura_good_end_rooftop.context001
+> $route_sakura.sakura_good_end_rooftop.context001.s002
 @still sakura_good_end_rooftop1_pre2
 sakura: $route_sakura.sakura_good_end_rooftop.r018
 @still sakura_good_end_rooftop1_pre3
 > $route_sakura.sakura_good_end_rooftop.r019
+> $route_sakura.sakura_good_end_rooftop.r019.s002
 > $route_sakura.sakura_good_end_rooftop.context002
+> $route_sakura.sakura_good_end_rooftop.context002.s002
+> $route_sakura.sakura_good_end_rooftop.context002.s003
 @still sakura_good_end_rooftop1
 sakura: $route_sakura.sakura_good_end_rooftop.r020
 player: $route_sakura.sakura_good_end_rooftop.r021
@@ -530,25 +672,36 @@ sakura: $route_sakura.sakura_good_end_rooftop.r024
 player: $route_sakura.sakura_good_end_rooftop.r025
 @still_hide
 > $route_sakura.sakura_good_end_rooftop.r026
+> $route_sakura.sakura_good_end_rooftop.r026.s002
 sakura: $route_sakura.sakura_good_end_rooftop.r027
 @hide_all instant
 @scene rooftop fade
 > $route_sakura.sakura_good_end_rooftop.context003
+> $route_sakura.sakura_good_end_rooftop.context003.s002
+> $route_sakura.sakura_good_end_rooftop.context003.s003
 @still sakura_good_end_rooftop2
 @ending_intro current sakura_good_end 10000
 @scene school_grounds_evening fade
 @bgm epilogue_sunset_for_each.mp3
 > $route_sakura.sakura_good_end_rooftop.r028
+> $route_sakura.sakura_good_end_rooftop.r028.s002
 > $route_sakura.sakura_good_end_rooftop.r029
+> $route_sakura.sakura_good_end_rooftop.r029.s002
+> $route_sakura.sakura_good_end_rooftop.r029.s003
 @show sakura center normal fade_in
 > $route_sakura.sakura_good_end_rooftop.r030
+> $route_sakura.sakura_good_end_rooftop.r030.s002
+> $route_sakura.sakura_good_end_rooftop.r030.s003
+> $route_sakura.sakura_good_end_rooftop.r030.s004
 player: $route_sakura.sakura_good_end_rooftop.r031
 sakura: $route_sakura.sakura_good_end_rooftop.r032
 > $route_sakura.sakura_good_end_rooftop.r033
+> $route_sakura.sakura_good_end_rooftop.r033.s002
 sakura: $route_sakura.sakura_good_end_rooftop.r034
 player: $route_sakura.sakura_good_end_rooftop.r035
 sakura: $route_sakura.sakura_good_end_rooftop.r036
 > $route_sakura.sakura_good_end_rooftop.r037
+> $route_sakura.sakura_good_end_rooftop.r037.s002
 @still sakura_epilogue fade_in
 @click_wait
 @end "$route_sakura.sakura_good_end_rooftop.r038"
@@ -556,7 +709,10 @@ sakura: $route_sakura.sakura_good_end_rooftop.r036
 @scene classroom_evening fade
 @bgm bad_end_loop.mp3
 @show sakura center happy fade_in
+> $route_sakura.sakura_bad_end.first_week
+> $route_sakura.sakura_bad_end.first_week.s002
 > $route_sakura.sakura_bad_end.r001
+> $route_sakura.sakura_bad_end.r001.s002
 sakura: $route_sakura.sakura_bad_end.r002
 player: $route_sakura.sakura_bad_end.r003
 > $route_sakura.sakura_bad_end.r004
@@ -564,6 +720,7 @@ sakura: $route_sakura.sakura_bad_end.r005
 player: $route_sakura.sakura_bad_end.r006
 sakura: $route_sakura.sakura_bad_end.r007
 > $route_sakura.sakura_bad_end.r008
+> $route_sakura.sakura_bad_end.r008.s002
 @hide sakura fade_out
 @jump sakura_bad_end_dependency
 # sakura_bad_end_dependency
@@ -579,7 +736,10 @@ sakura: $route_sakura.sakura_bad_end_dependency.r006
 player: $route_sakura.sakura_bad_end_dependency.r007
 sakura: $route_sakura.sakura_bad_end_dependency.r008
 > $route_sakura.sakura_bad_end_dependency.r009
+> $route_sakura.sakura_bad_end_dependency.r009.s002
 > $route_sakura.sakura_bad_end_dependency.r010
+> $route_sakura.sakura_bad_end_dependency.hesitation
+> $route_sakura.sakura_bad_end_dependency.hesitation.s002
 @hide sakura fade_out
 @jump sakura_bad_end_scene
 # sakura_bad_end_scene
@@ -587,10 +747,14 @@ sakura: $route_sakura.sakura_bad_end_dependency.r008
 @bgm bad_end_loop.mp3
 @show sakura center normal fade_in
 > $route_sakura.sakura_bad_end_scene.r001
+> $route_sakura.sakura_bad_end_scene.r001.s002
+> $route_sakura.sakura_bad_end_scene.r001.s003
 sakura: $route_sakura.sakura_bad_end_scene.r002
 player: $route_sakura.sakura_bad_end_scene.r003
 sakura: $route_sakura.sakura_bad_end_scene.r004
 > $route_sakura.sakura_bad_end_scene.r005
+> $route_sakura.sakura_bad_end_scene.r005.s002
+> $route_sakura.sakura_bad_end_scene.r005.s003
 @hide sakura fade_out
 @bgm stop
 @jump sakura_bad_end_alone
@@ -598,9 +762,12 @@ sakura: $route_sakura.sakura_bad_end_scene.r004
 @scene school_gate_autumn_evening fade
 @bgm bad_end_loop.mp3
 > $route_sakura.sakura_bad_end_alone.r001
+> $route_sakura.sakura_bad_end_alone.r001.s002
 > $route_sakura.sakura_bad_end_alone.r002
+> $route_sakura.sakura_bad_end_alone.r002.s002
 @show sakura left blank fade_in
 > $route_sakura.sakura_bad_end_alone.r003
+> $route_sakura.sakura_bad_end_alone.r003.s002
 sakura: $route_sakura.sakura_bad_end_alone.r004
 player: $route_sakura.sakura_bad_end_alone.r005
 sakura: $route_sakura.sakura_bad_end_alone.r006
@@ -612,16 +779,23 @@ sakura: $route_sakura.sakura_bad_end_alone.r006
 @bgm bad_end_loop.mp3
 @show sakura center happy fade_in
 > $route_sakura.sakura_bad_end_final.r001
+> $route_sakura.sakura_bad_end_final.r001.s002
 sakura: $route_sakura.sakura_bad_end_final.r002
 player: $route_sakura.sakura_bad_end_final.r003
 sakura: $route_sakura.sakura_bad_end_final.r004
 > $route_sakura.sakura_bad_end_final.r005
+> $route_sakura.sakura_bad_end_final.r005.s002
+> $route_sakura.sakura_bad_end_final.r005.s003
 @hide sakura instant
 @still bad_end_empty_classroom
 > $route_sakura.sakura_bad_end_final.r006
+> $route_sakura.sakura_bad_end_final.r006.s002
+> $route_sakura.sakura_bad_end_final.r006.s003
 @still_hide
 sakura: $route_sakura.sakura_bad_end_final.r007
 > $route_sakura.sakura_bad_end_final.r008
+> $route_sakura.sakura_bad_end_final.r008.s002
+> $route_sakura.sakura_bad_end_final.r008.s003
 @bgm stop
 @credits bad_end_loop.mp3
 @end "$route_sakura.sakura_bad_end_final.r009"

@@ -117,6 +117,15 @@ class VNEngine {
     if (savedBgm !== null) VN_CONFIG.settings.bgmVolume = parseFloat(savedBgm);
     const savedSe = localStorage.getItem('vn_se_volume');
     if (savedSe !== null) VN_CONFIG.settings.seVolume = parseFloat(savedSe);
+    const savedVoice = localStorage.getItem('vn_voice_volume');
+    const voiceVolume = savedVoice === null ? VN_CONFIG.settings.voiceVolume : Number(savedVoice);
+    this.voice = new VNVoicePlayer(VN_CONFIG.voice);
+    this.voice.setVolume(voiceVolume);
+    VN_CONFIG.settings.voiceVolume = this.voice.volume;
+    this._dialogVoicePromise = Promise.resolve(false);
+    this._dialogVoiceId = null;
+    this.voice.onStateChange = () => this._updateVoiceIndicator();
+    this._autoScheduleToken = 0;
 
     // 文字サイズの復元
     const savedFontSize = localStorage.getItem('vn_font_size');
@@ -163,6 +172,7 @@ class VNEngine {
     this._applyStaticI18n();
     await this._loadScenarioTexts();
     await this._loadScenarios();
+    await this.voice.loadManifest(this.currentLanguage, VN_CONFIG.voice?.manifests?.[this.currentLanguage]);
     await this._preloadAssets();
     this._scheduleShootingStars();
   }
@@ -254,6 +264,7 @@ class VNEngine {
 
     this._applyTitleLogo();
     this._applyTextLayoutMode();
+    this._updateVoiceIndicator();
   }
 
   _getTitleLogoConfig() {
@@ -325,11 +336,17 @@ class VNEngine {
       return;
     }
 
+    this._pauseForVoiceModal();
+    this._stopTypewriter();
+    this._advanceToken++;
+    this.voice.reset();
     this.currentLanguage = next;
     localStorage.setItem('vn_language', next);
     this._applyStaticI18n();
     await this._loadScenarioTexts();
     await this._loadScenarios();
+
+    await this.voice.loadManifest(next, VN_CONFIG.voice?.manifests?.[next]);
 
     if (options.returnToTitle && this._gameActive) {
       this._resetGameState();
@@ -597,6 +614,14 @@ class VNEngine {
   //  イベントバインド
   // ============================================================
   _bindEvents() {
+    // Resume Web Audio inside a real user gesture (including touch browsers).
+    const unlockVoice = () => { void this.voice.unlock(); };
+    document.addEventListener('pointerdown', unlockVoice, { capture: true });
+    document.addEventListener('keydown', unlockVoice, { capture: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) this._pauseForVoiceModal();
+    });
+    window.addEventListener('pagehide', () => this.voice.reset());
     const on = (id, ev, fn) => {
       const el = document.getElementById(id);
       if (el) el.addEventListener(ev, fn);
@@ -779,10 +804,10 @@ class VNEngine {
     }
 
     // モーダルクローズ
-    on('btn-modal-close',    'click', () => document.getElementById('save-load-modal').classList.add('hidden'));
-    on('btn-log-close',      'click', () => document.getElementById('log-modal').classList.add('hidden'));
-    on('btn-gallery-close',  'click', () => document.getElementById('gallery-modal').classList.add('hidden'));
-    on('btn-settings-close', 'click', () => document.getElementById('settings-modal').classList.add('hidden'));
+    on('btn-modal-close',    'click', () => this._closeVoiceModal('save-load-modal'));
+    on('btn-log-close',      'click', () => this._closeVoiceLog());
+    on('btn-gallery-close',  'click', () => this._closeVoiceModal('gallery-modal'));
+    on('btn-settings-close', 'click', () => this._closeVoiceModal('settings-modal'));
     on('btn-reset-progress', 'click', () => this._showConfirm(this._t('settings.resetConfirm'), () => this._resetProgress()));
     on('btn-ending-title',  'click', () => this._returnFromEndingToTitle());
     on('btn-next-chapter',  'click', () => this._continueToNextChapter());
@@ -791,11 +816,15 @@ class VNEngine {
     // モーダル外クリック / 右クリックで閉じる
     document.querySelectorAll('.modal').forEach(modal => {
       modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.add('hidden');
+        if (e.target === modal) {
+          if (modal.id === 'log-modal') this._closeVoiceLog();
+          else this._closeVoiceModal(modal.id);
+        }
       });
       modal.addEventListener('contextmenu', (e) => {
         e.preventDefault();
-        modal.classList.add('hidden');
+        if (modal.id === 'log-modal') this._closeVoiceLog();
+        else this._closeVoiceModal(modal.id);
       });
     });
 
@@ -811,6 +840,7 @@ class VNEngine {
   //  タイトル / ゲーム開始
   // ============================================================
   _showTitleScreen() {
+    this.voice.reset();
     this.openingMovie?.resetIdle();
     this._gameActive = false;
     this._applyStaticI18n();
@@ -1050,6 +1080,12 @@ class VNEngine {
   }
 
   _resetGameState() {
+    this.voice.reset();
+    this._dialogVoiceId = null;
+    this._updateVoiceIndicator();
+    this._dialogVoicePromise = Promise.resolve(false);
+    this._autoScheduleToken++;
+    this._pendingModalAdvance = false;
     this.flags       = {};
     this.textLog     = [];
     this.charState   = { left: null, center: null, right: null };
@@ -1110,6 +1146,8 @@ class VNEngine {
       if (this._debug) console.error(`[Engine] Label not found: "${label}"`);
       return;
     }
+    this.voice.stop();
+    this.voice.retainWindow([]);
     this._stopAllSE();
     this._stopTypewriter(); // 全タイマー（_stillHideWaitTimer含む）をキャンセル
     if (this.currentStill) this._hideStill('instant');
@@ -1120,6 +1158,14 @@ class VNEngine {
   }
 
   _executeNext() {
+    if (document.querySelector('.modal:not(.hidden)') && this._gameActive) {
+      this._pendingModalAdvance = true;
+      return;
+    }
+    this._pendingModalAdvance = false;
+    this.voice.stop();
+    this._dialogVoiceId = null;
+    this._updateVoiceIndicator();
     this._advanceToken += 1;
     const cmds = this.labels[this.currentLabel];
     if (!cmds || this.currentIndex >= cmds.length) {
@@ -1187,6 +1233,11 @@ class VNEngine {
 
       case 'expr':
         this._changeExpr(cmd.char, cmd.expr);
+        this._executeNext();
+        break;
+
+      case 'emote':
+        if (!this.skipMode) this._emoteChar(cmd.target, cmd.name, cmd.strength);
         this._executeNext();
         break;
 
@@ -1379,6 +1430,7 @@ class VNEngine {
   //  背景
   // ============================================================
   _changeBackground(bgKey, effect = 'fade') {
+    this._clearCharEmotes();
     this._stopAllSE();
     this.currentBG = bgKey;
     const el = document.getElementById('background');
@@ -1436,7 +1488,7 @@ class VNEngine {
   // ============================================================
   //  キャラクター管理
   // ============================================================
-  _showChar(charKey, pos, expr, effect = 'fade_in') {
+  _showChar(charKey, pos, expr, effect = 'fade_in', reservedState = null) {
     const cfg = VN_CONFIG.characters[charKey];
     if (!cfg) {
       if (this._debug) console.warn(`[Engine] Unknown character: ${charKey}`);
@@ -1445,12 +1497,15 @@ class VNEngine {
     const slot = document.getElementById(`char-${pos}`);
     if (!slot) return;
 
-    this.charState[pos] = { charKey, expr };
+    if (reservedState && this.charState[pos] !== reservedState) return;
+    const state = reservedState || { charKey, expr };
+    this.charState[pos] = state;
 
     // スプライト構築
     const sprite = document.createElement('div');
     sprite.className         = 'char-sprite';
     sprite.dataset.charKey   = charKey;
+    sprite._vnState = state;
 
     // キャラ画像はすべて PNG
     const imgEl = new Image();
@@ -1458,26 +1513,25 @@ class VNEngine {
     // 立ち絵の表示倍率・接地オフセット（キャラ間のサイズ差を吸収）
     imgEl.style.transformOrigin = '50% 100%';
     imgEl.style.transform = `translateY(${cfg.offsetY || 0}px) scale(${cfg.scale || 1})`;
-    imgEl.onerror = () => {
-      // PNG が見つからない場合のみプレースホルダー
-      const ph = document.createElement('div');
-      ph.className = 'char-placeholder';
-      ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
-      ph.innerHTML = `
-        <div class="char-ph-icon">♡</div>
-        <div class="char-ph-name">${cfg.name}</div>
-        <div class="char-ph-expr">[${expr}]</div>
-      `;
-      sprite.appendChild(ph);
-    };
+    let settled = false;
     const showSlot = () => {
-      sprite.appendChild(imgEl);
+      // Discard a sprite if skip, hide or another expression replaced it while decoding.
+      if (settled || this.charState[pos] !== state) return;
+      settled = true;
+      if (!sprite.childNodes.length) sprite.appendChild(imgEl);
+      if (typeof VNCharacterEmote !== 'undefined') VNCharacterEmote.clear(slot.querySelector?.('.char-sprite'));
       slot.innerHTML = '';
       slot.appendChild(sprite);
+      const emote = state.pendingEmote;
+      delete state.pendingEmote;
+      if (emote && !this.skipMode && typeof VNCharacterEmote !== 'undefined') {
+        VNCharacterEmote.play(sprite, emote.name, emote.strength);
+      }
       // エフェクトで表示（decode完了後に行うことで空スプライトの表示を防ぐ）
       slot.className = 'character-slot';
       void slot.offsetWidth; // reflow
       slot.classList.add('visible');
+      if (this._activeCharSpeaker != null) this._highlightChar(this._activeCharSpeaker);
       if (effect !== 'instant') {
         const animClass = {
           fade_in:         'anim-fade-in',
@@ -1490,7 +1544,8 @@ class VNEngine {
                    VN_CONFIG.settings.charFadeTime + 100);
       }
     };
-    imgEl.onerror = () => {
+    const showPlaceholder = () => {
+      if (settled || this.charState[pos] !== state) return;
       const ph = document.createElement('div');
       ph.className = 'char-placeholder';
       ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
@@ -1502,8 +1557,14 @@ class VNEngine {
       sprite.appendChild(ph);
       showSlot();
     };
+    imgEl.onerror = showPlaceholder;
+    imgEl.onload = showSlot;
     imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
-    (imgEl.decode ? imgEl.decode().then(showSlot).catch(showSlot) : (imgEl.onload = showSlot));
+    if (imgEl.decode) imgEl.decode().then(showSlot).catch(() => {
+      // A decode promise can abort while a valid image request is still loading.
+      // Native load/error events remain the fallback; state identity still cancels stale requests.
+      if (imgEl.complete) imgEl.naturalWidth ? showSlot() : showPlaceholder();
+    });
   }
 
   _hideChar(target, effect = 'fade_out') {
@@ -1512,10 +1573,9 @@ class VNEngine {
       this._doHideSlot(`char-${target}`, effect);
       this.charState[target] = null;
     } else {
-      // charKey で検索
+      // Pending images and reserved moves must be canceled before they reach the DOM.
       for (const pos of positions) {
-        const sprite = document.querySelector(`#char-${pos} .char-sprite`);
-        if (sprite && sprite.dataset.charKey === target) {
+        if (this.charState[pos]?.charKey === target) {
           this._doHideSlot(`char-${pos}`, effect);
           this.charState[pos] = null;
           break;
@@ -1526,6 +1586,7 @@ class VNEngine {
 
   _doHideSlot(slotId, effect) {
     const slot = document.getElementById(slotId);
+    if (typeof VNCharacterEmote !== 'undefined') VNCharacterEmote.clear(slot?.querySelector?.('.char-sprite'));
     if (!slot || !slot.classList.contains('visible')) return;
 
     if (effect === 'instant') {
@@ -1555,25 +1616,10 @@ class VNEngine {
 
   _changeExpr(charKey, expr) {
     for (const pos of ['left', 'center', 'right']) {
-      if (this.charState[pos]?.charKey === charKey) {
-        this.charState[pos].expr = expr;
-        const slot   = document.getElementById(`char-${pos}`);
-        const sprite = slot?.querySelector('.char-sprite');
-        if (!sprite) return;
-
-        const cfg = VN_CONFIG.characters[charKey] || {};
-        const imgEl = new Image();
-        imgEl.alt = charKey;
-        imgEl.style.transformOrigin = '50% 100%';
-        imgEl.style.transform = `translateY(${cfg.offsetY || 0}px) scale(${cfg.scale || 1})`;
-        imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
-        // 新画像を先に追加してから旧画像を削除（空白フレームを防ぐ）
-        const swap = () => {
-          sprite.appendChild(imgEl);
-          while (sprite.childNodes.length > 1) sprite.removeChild(sprite.firstChild);
-        };
-        (imgEl.decode ? imgEl.decode().then(swap).catch(swap) : (imgEl.onload = swap));
-        break;
+      const state = this.charState[pos];
+      if (state?.charKey === charKey) {
+        if (state.expr !== expr) this._showChar(charKey, pos, expr, 'instant');
+        return;
       }
     }
   }
@@ -1583,7 +1629,7 @@ class VNEngine {
     for (const pos of ['left', 'center', 'right']) {
       if (this.charState[pos]?.charKey === charKey) { fromPos = pos; break; }
     }
-    if (!fromPos) return;
+    if (!fromPos || fromPos === newPos) return;
 
     const state = { ...this.charState[fromPos] };
     const hideEffect  = effect === 'slide' ? 'fade_out' : 'instant';
@@ -1591,21 +1637,49 @@ class VNEngine {
     const delay       = effect === 'slide' ? 300 : 0;
 
     this._hideChar(fromPos, hideEffect);
-    setTimeout(() => this._showChar(charKey, newPos, state.expr, showEffect), delay);
+    this.charState[newPos] = state;
+    setTimeout(() => this._showChar(charKey, newPos, state.expr, showEffect, state), delay);
+  }
+
+  _emoteChar(target, name, strength = 1) {
+    if (typeof VNCharacterEmote === 'undefined' || this.skipMode) return;
+    if (name !== 'clear' && !VNCharacterEmote.definitions[name]) return;
+    const canonical = key => VN_CONFIG.characters[key]?.speakerKey || key;
+    for (const pos of ['left', 'center', 'right']) {
+      const state = this.charState[pos];
+      if (!state || (target !== 'all' && target !== pos && state.charKey !== target && canonical(state.charKey) !== canonical(target))) continue;
+      const sprite = document.getElementById(`char-${pos}`)?.querySelector?.('.char-sprite');
+      delete state.pendingEmote;
+      if (name === 'clear') { VNCharacterEmote.clear(sprite); continue; }
+      if (sprite?._vnState === state) VNCharacterEmote.play(sprite, name, strength);
+      else state.pendingEmote = { name, strength };
+    }
+  }
+
+  _clearCharEmotes() {
+    for (const pos of ['left', 'center', 'right']) {
+      if (this.charState?.[pos]) delete this.charState[pos].pendingEmote;
+      if (typeof VNCharacterEmote !== 'undefined') VNCharacterEmote.clear(document.getElementById(`char-${pos}`)?.querySelector?.('.char-sprite'));
+    }
   }
 
   /** キャラクターをハイライト/ディム */
   _highlightChar(activeKey) {
+    const activeSpeaker = VN_CONFIG.characters[activeKey]?.speakerKey || activeKey;
+    this._activeCharSpeaker = activeSpeaker;
     ['left', 'center', 'right'].forEach(pos => {
       const slot = document.getElementById(`char-${pos}`);
       if (!slot.classList.contains('visible')) return;
       const key = this.charState[pos]?.charKey;
-      slot.classList.toggle('dimmed',      key !== activeKey);
-      slot.classList.toggle('highlighted', key === activeKey);
+      const speaker = VN_CONFIG.characters[key]?.speakerKey || key;
+      const isSpeaking = speaker === activeSpeaker;
+      slot.classList.toggle('dimmed', !isSpeaking);
+      slot.classList.toggle('highlighted', isSpeaking);
     });
   }
 
   _clearCharHighlights() {
+    this._activeCharSpeaker = null;
     ['left', 'center', 'right'].forEach(pos => {
       document.getElementById(`char-${pos}`)
               .classList.remove('dimmed', 'highlighted');
@@ -1616,6 +1690,7 @@ class VNEngine {
   //  スチル (イベントCG)
   // ============================================================
   _showStill(imageName, effect = 'fade_in') {
+    this._clearCharEmotes();
     this._trackEvent('vn_still_show', {
       scenario_stage: this._getAnalyticsStage(),
       scenario_label: this.currentLabel,
@@ -1795,7 +1870,10 @@ class VNEngine {
     }
 
     // ログに追加
-    this.textLog.push({ name: speakerName, nameColor: cfg?.nameColor || '', text });
+    this._dialogVoiceId = this._getVoiceId({ cmd: 'say', char: charKey, text: this._curLineKey });
+    this._updateVoiceIndicator();
+    this.textLog.push({ name: speakerName, nameColor: cfg?.nameColor || '', text,
+      voiceId: this._dialogVoiceId, language: this.currentLanguage });
     this.currentText     = text;
     this.currentEmphasis = emphasis || null;
 
@@ -1836,6 +1914,15 @@ class VNEngine {
       if (_sb) _sb.classList.remove('active');
     }
 
+    this._dialogVoicePromise = Promise.resolve(false);
+    if (!this.skipMode && !document.hidden) {
+      this._dialogVoicePromise = this.voice.play(this._dialogVoiceId);
+      this._preloadUpcomingVoices();
+    } else {
+      this.voice.stop();
+      this.voice.retainWindow([]);
+    }
+
     if (this.skipMode) {
       const token = this._advanceToken;
       // スキップ中は即表示して次へ
@@ -1860,16 +1947,9 @@ class VNEngine {
     }
 
     const onDone = () => {
-      const token = this._advanceToken;
       this.waitingForInput = true;
       arrow.style.display  = 'block';
-      if (this.autoMode) {
-        const delay = Math.max(text.length * 60, VN_CONFIG.settings.autoDelay);
-        this.autoTimer = setTimeout(() => {
-          if (this._advanceToken !== token) return;
-          this._executeNext();
-        }, delay);
-      }
+      if (this.autoMode) this._scheduleAutoAdvance();
     };
 
     if (emphasis === 'inner') {
@@ -1938,6 +2018,7 @@ class VNEngine {
   /** クリック / スペース / Enter で進む */
   _onAdvance() {
     if (this._inputLocked || this._skipLocked) return;
+    if (document.querySelector('.modal:not(.hidden)')) return;
     const choicesVisible = !document.getElementById('choices-overlay')
                                    .classList.contains('hidden');
     if (choicesVisible) return;
@@ -1966,14 +2047,7 @@ class VNEngine {
       this._scrollDialogTextToBottom(textEl);
       this.waitingForInput = true;
       document.getElementById('next-arrow').style.display = 'block';
-      if (this.autoMode) {
-        const delay = Math.max(this.currentText.length * 60, VN_CONFIG.settings.autoDelay);
-        const token = this._advanceToken;
-        this.autoTimer = setTimeout(() => {
-          if (this._advanceToken !== token) return;
-          this._executeNext();
-        }, delay);
-      }
+      if (this.autoMode) this._scheduleAutoAdvance();
       return;
     }
 
@@ -1984,6 +2058,8 @@ class VNEngine {
   //  選択肢
   // ============================================================
   _displayChoices(options) {
+    this.voice.stop();
+    this.voice.retainWindow([]);
     this._stopTypewriter();
     this.waitingForInput = false;
     document.getElementById('next-arrow').style.display = 'none';
@@ -2041,14 +2117,118 @@ class VNEngine {
   // ============================================================
   //  スキップ / オート
   // ============================================================
+  _getVoiceId(cmd) {
+    if (cmd?.cmd !== 'say' || !cmd.char || /^player(?:_|$)/.test(cmd.char)) return null;
+    return typeof cmd.text === 'string' && cmd.text.startsWith('$') ? cmd.text.slice(1) : null;
+  }
+
+  _updateVoiceIndicator() {
+    const indicator = document.getElementById('dialog-voice-indicator');
+    if (!indicator || !this.voice) return;
+    const available = !!this._dialogVoiceId && this.voice.has(this._dialogVoiceId, this.currentLanguage);
+    const playing = available && !!this.voice.session?.started
+      && this.voice.session.id === this._dialogVoiceId && !this._logVoiceToken && !this.skipMode;
+    indicator.hidden = !available;
+    indicator.classList.toggle('is-playing', playing);
+    indicator.classList.toggle('is-muted', this.voice.volume === 0);
+    const label = this._t(this.voice.volume === 0 ? 'voiceAvailableMuted' : playing ? 'voicePlaying' : 'voiceAvailable');
+    indicator.setAttribute('aria-label', label);
+    indicator.title = label;
+  }
+
+  _setLogVoiceButtonState(button, playing) {
+    const action = this._t(playing ? 'voiceStop' : 'voiceReplay');
+    button.setAttribute('aria-pressed', String(playing));
+    button.setAttribute('aria-label', `${action}: ${button.dataset.voiceLabel}`);
+    button.title = action;
+  }
+
+  _preloadUpcomingVoices() {
+    if (this.skipMode || document.hidden || this.voice.volume === 0
+        || document.querySelector('.modal:not(.hidden)')) {
+      this.voice.retainWindow([]);
+      return;
+    }
+    const ids = this._dialogVoiceId ? [this._dialogVoiceId] : [];
+    const commands = this.labels[this.currentLabel] || [];
+    const boundaries = new Set(['jump', 'if', 'choice', 'route_select', 'end', 'credits', 'ending_intro', 'click_wait']);
+    let count = 0;
+    const limit = Math.max(0, Math.min(8, VN_CONFIG.voice?.lookAhead ?? 3));
+    for (let i = this.currentIndex; i < commands.length && count < limit; i++) {
+      const cmd = commands[i];
+      if (boundaries.has(cmd.cmd)) break;
+      const id = this._getVoiceId(cmd);
+      if (id) { ids.push(id); count++; }
+    }
+    this.voice.retainWindow(ids);
+  }
+
+  _scheduleAutoAdvance() {
+    clearTimeout(this.autoTimer);
+    const schedule = ++this._autoScheduleToken;
+    const token = this._advanceToken;
+    // Preserve the existing reading delay, then wait for this line's audio too.
+    const delay = Math.max(this.currentText.length * 60, VN_CONFIG.settings.autoDelay);
+    const voiceDone = this._dialogVoicePromise;
+    this.autoTimer = setTimeout(async () => {
+      this.autoTimer = null;
+      await voiceDone;
+      if (schedule !== this._autoScheduleToken || token !== this._advanceToken
+          || !this.autoMode || !this.waitingForInput || document.hidden
+          || document.querySelector('.modal:not(.hidden)')) return;
+      this._executeNext();
+    }, delay);
+  }
+
+  _pauseForVoiceModal({ keepVoice = false } = {}) {
+    this._autoScheduleToken++;
+    clearTimeout(this.autoTimer);
+    clearTimeout(this.skipTimer);
+    this.autoTimer = null;
+    this.skipTimer = null;
+    this.autoMode = false;
+    this.skipMode = false;
+    document.getElementById('btn-auto')?.classList.remove('active');
+    document.getElementById('btn-skip')?.classList.remove('active');
+    if (!keepVoice) this._stopLogVoice();
+    this.voice.retainWindow(keepVoice && this.voice.session ? [this.voice.session.id] : []);
+  }
+
+  _stopLogVoice() {
+    this._logVoiceToken = null;
+    this.voice.stop();
+    this.voice.retainWindow([]);
+    document.querySelectorAll('.log-voice-btn').forEach(button => {
+      this._setLogVoiceButtonState(button, false);
+    });
+  }
+
+  _closeVoiceModal(id) {
+    document.getElementById(id).classList.add('hidden');
+    if (this._pendingModalAdvance && !document.querySelector('.modal:not(.hidden)')) this._executeNext();
+  }
+
+  _closeVoiceLog() {
+    this._stopLogVoice();
+    this.voice.retainWindow([]);
+    this._closeVoiceModal('log-modal');
+  }
+
   _toggleSkip() {
     if (this._inputLocked || this._skipLocked) return;
     this.skipMode = !this.skipMode;
     document.getElementById('btn-skip').classList.toggle('active', this.skipMode);
     if (this.skipMode) {
+      this._clearCharEmotes();
+      this.voice.stop();
+      this.voice.retainWindow([]);
+      this._autoScheduleToken++;
       if (this.autoMode) this._toggleAuto();
-      if (this.typewriterTimer) this._onAdvance();
-      else if (this.waitingForInput) this._executeNext();
+      const canAdvance = this.typewriterTimer || this.waitingForInput;
+      if (canAdvance) { this._stopTypewriter(); this._executeNext(); }
+    } else {
+      if (this.skipTimer) { clearTimeout(this.skipTimer); this.skipTimer = null; }
+      this._preloadUpcomingVoices();
     }
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
@@ -2061,16 +2241,9 @@ class VNEngine {
     document.getElementById('btn-auto').classList.toggle('active', this.autoMode);
     if (this.autoMode) {
       if (this.skipMode) this._toggleSkip();
-      if (this.waitingForInput) {
-        const token = this._advanceToken;
-        this.autoTimer = setTimeout(
-          () => {
-            if (this._advanceToken !== token) return;
-            this._executeNext();
-          }, VN_CONFIG.settings.autoDelay
-        );
-      }
+      if (this.waitingForInput) this._scheduleAutoAdvance();
     } else {
+      this._autoScheduleToken++;
       // autoTimer のみキャンセル（typewriterTimer は継続させる）
       // typewriter中にオートを切っても文字表示が止まらないようにする
       if (this.autoTimer) { clearTimeout(this.autoTimer); this.autoTimer = null; }
@@ -2115,6 +2288,7 @@ class VNEngine {
   //  セーブ / ロード
   // ============================================================
   _openSaveLoad(mode) {
+    this._pauseForVoiceModal();
     this._setGameMenuOpen(false);
     // スキップ中はモーダルを開く前に停止
     if (this.skipMode) {
@@ -2221,6 +2395,9 @@ class VNEngine {
   async _loadFromSlot(slot, slotLabel = '') {
     const raw = localStorage.getItem(`vn_save_${slot}`);
     if (!raw) return;
+    this._pauseForVoiceModal();
+    this._stopTypewriter();
+    this._advanceToken++;
     const d = JSON.parse(raw);
     if (d.language && d.language !== this.currentLanguage) {
       await this._setLanguage(d.language);
@@ -2259,6 +2436,7 @@ class VNEngine {
   }
 
   _showConfirm(message, onOk, onCancel) {
+    this._pauseForVoiceModal();
     const modal = document.getElementById('confirm-modal');
     document.getElementById('confirm-message').textContent = message;
     modal.classList.remove('hidden');
@@ -2347,13 +2525,46 @@ class VNEngine {
   //  テキストログ
   // ============================================================
   _openLog() {
+    this._pauseForVoiceModal();
     const content = document.getElementById('log-content');
-    content.innerHTML = this.textLog.slice(-40).map(e => `
-      <div class="log-entry">
-        ${e.name ? `<span class="log-name" style="color:${e.nameColor || '#ff99bb'}">${e.name}</span>` : ''}
-        <span>${e.text}</span>
-      </div>
-    `).join('');
+    content.replaceChildren();
+    for (const entry of this.textLog.slice(-40)) {
+      const row = document.createElement('div');
+      row.className = 'log-entry';
+      if (entry.name) {
+        const name = document.createElement('span');
+        name.className = 'log-name';
+        name.style.color = entry.nameColor || '#ff99bb';
+        name.textContent = entry.name;
+        row.appendChild(name);
+      }
+      if (entry.voiceId && this.voice.has(entry.voiceId, entry.language)) {
+        const button = document.createElement('button');
+        button.className = 'log-voice-btn';
+        button.type = 'button';
+        button.innerHTML = '<svg class="voice-speaker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9h4l5-4v14l-5-4H3z"/><g class="voice-icon-waves"><path d="M16 8a6 6 0 0 1 0 8M19 5a10 10 0 0 1 0 14"/></g><rect class="voice-icon-stop" x="16" y="9" width="6" height="6" rx="1" fill="currentColor" stroke="none"/></svg>';
+        button.dataset.voiceLabel = `${entry.name} ${entry.text}`;
+        this._setLogVoiceButtonState(button, false);
+        button.addEventListener('click', async () => {
+          const wasPlaying = button.getAttribute('aria-pressed') === 'true';
+          this._stopLogVoice();
+          if (wasPlaying) return;
+          if (this.voice.volume === 0) return this._showToast(this._t('voiceMuted'));
+          const token = Symbol('log-voice');
+          this._logVoiceToken = token;
+          this._setLogVoiceButtonState(button, true);
+          const played = await this.voice.play(entry.voiceId, entry.language);
+          if (this._logVoiceToken !== token) return;
+          this._setLogVoiceButtonState(button, false);
+          if (!played) this._showToast(this._t('voiceUnavailable'));
+        });
+        row.appendChild(button);
+      }
+      const text = document.createElement('span');
+      text.textContent = entry.text;
+      row.appendChild(text);
+      content.appendChild(row);
+    }
     document.getElementById('log-modal').classList.remove('hidden');
     requestAnimationFrame(() => { content.scrollTop = content.scrollHeight; });
   }
@@ -2362,6 +2573,8 @@ class VNEngine {
   //  クレジットロール
   // ============================================================
   async _showCredits(bgmFile, profileKey = null) {
+    this.voice.stop();
+    this.voice.retainWindow([]);
     this._clearEndingIntro();
     this._stopTypewriter();
     const screen   = document.getElementById('credits-screen');
@@ -2921,6 +3134,8 @@ class VNEngine {
   //  エンディング
   // ============================================================
   _displayEnding(title, next = null) {
+    this.voice.stop();
+    this.voice.retainWindow([]);
     this._stopTypewriter();
     this.waitingForInput = false;
     this._trackEvent('vn_end', {
@@ -3059,6 +3274,7 @@ class VNEngine {
   //  設定
   // ============================================================
   _openSettings() {
+    this._pauseForVoiceModal({ keepVoice: true });
     this._applyStaticI18n();
     document.querySelectorAll('#language-options .settings-opt').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.language === this.currentLanguage);
@@ -3125,6 +3341,17 @@ class VNEngine {
       VN_CONFIG.settings.seVolume = v;
       localStorage.setItem('vn_se_volume', v);
       seVal.textContent = seSlider.value;
+    };
+
+    const voiceSlider = document.getElementById('voice-volume-slider');
+    const voiceValue = document.getElementById('voice-volume-value');
+    voiceSlider.value = Math.round(this.voice.volume * 100);
+    voiceValue.textContent = voiceSlider.value;
+    voiceSlider.oninput = () => {
+      this.voice.setVolume(Number(voiceSlider.value) / 100);
+      VN_CONFIG.settings.voiceVolume = this.voice.volume;
+      localStorage.setItem('vn_voice_volume', this.voice.volume);
+      voiceValue.textContent = voiceSlider.value;
     };
 
     // 文字サイズ

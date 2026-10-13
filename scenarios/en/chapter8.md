@@ -4,8 +4,11 @@
 @bgm festival_rain.mp3
 @se crowd_festival.mp3
 > $chapter8.chapter8_start.r001
+> $chapter8.chapter8_start.r001.s002
+> $chapter8.chapter8_start.r001.s003
 @se rain_window.mp3
 > $chapter8.chapter8_start.r002
+> $chapter8.chapter8_start.r002.s002
 @show sakura right excited fade_in
 @show kotoha left normal fade_in
 sakura: $chapter8.chapter8_start.r003
@@ -21,14 +24,18 @@ sakura: $chapter8.chapter8_start.r012
 @show nobuhara_nobag center panic fade_in
 nobuhara_nobag: $chapter8.chapter8_start.r013
 player: $chapter8.chapter8_start.r014
+@emote nobuhara sweat 0.4
 nobuhara_nobag: $chapter8.chapter8_start.r015
 > $chapter8.chapter8_start.r016
+> $chapter8.chapter8_start.r016.s002
 @hide_all fade_out
 @jump chapter8_festival_open
 # chapter8_festival_open
 @scene corridor_festival_rainy fade
 @bgm festival_rain.mp3
 > $chapter8.chapter8_festival_open.r001
+> $chapter8.chapter8_festival_open.r001.s002
+> $chapter8.chapter8_festival_open.r001.s003
 @show badminton_member_a center normal pop_in
 badminton_member_a: $chapter8.chapter8_festival_open.r002
 player: $chapter8.chapter8_festival_open.r003
@@ -47,7 +54,11 @@ player: $chapter8.chapter8_festival_open.r011
 mahiru: $chapter8.chapter8_festival_open.r012
 player: $chapter8.chapter8_festival_open.r013
 mahiru: $chapter8.chapter8_festival_open.r014
+@expr mahiru surprised
 > $chapter8.chapter8_festival_open.r015
+> $chapter8.chapter8_festival_open.r015.s002
+> $chapter8.chapter8_festival_open.r015.s003
+@expr mahiru normal
 @hide mahiru fade_out
 @jump chapter8_sakura_cafe
 # chapter8_sakura_cafe
@@ -55,8 +66,11 @@ mahiru: $chapter8.chapter8_festival_open.r014
 @bgm festival_rain.mp3
 @show sakura_apron center excited fade_in
 > $chapter8.chapter8_sakura_cafe.context001
+> $chapter8.chapter8_sakura_cafe.context001.s002
+> $chapter8.chapter8_sakura_cafe.context001.s003
 sakura: $chapter8.chapter8_sakura_cafe.r001
 > $chapter8.chapter8_sakura_cafe.r002
+> $chapter8.chapter8_sakura_cafe.r002.s002
 sakura: $chapter8.chapter8_sakura_cafe.r003
 player: $chapter8.chapter8_sakura_cafe.r004
 sakura: $chapter8.chapter8_sakura_cafe.r005
@@ -65,14 +79,20 @@ sakura: $chapter8.chapter8_sakura_cafe.r005
 classmate_female_a: $chapter8.chapter8_sakura_cafe.r007
 sakura: $chapter8.chapter8_sakura_cafe.r008
 > $chapter8.chapter8_sakura_cafe.r009
+> $chapter8.chapter8_sakura_cafe.r009.s002
+> $chapter8.chapter8_sakura_cafe.r009.s003
 @bgm stop
 > $chapter8.chapter8_sakura_cafe.r010
 > $chapter8.chapter8_sakura_cafe.r011
 sakura: $chapter8.chapter8_sakura_cafe.r012
 > $chapter8.chapter8_sakura_cafe.r013
+> $chapter8.chapter8_sakura_cafe.r013.s002
+> $chapter8.chapter8_sakura_cafe.r013.s003
 sakura: $chapter8.chapter8_sakura_cafe.r014
 player: $chapter8.chapter8_sakura_cafe.r015
 > $chapter8.chapter8_sakura_cafe.r016
+> $chapter8.chapter8_sakura_cafe.r016.s002
+@expr sakura_apron normal
 sakura: $chapter8.chapter8_sakura_cafe.r017
 player: $chapter8.chapter8_sakura_cafe.r018
 sakura: $chapter8.chapter8_sakura_cafe.r019
@@ -80,6 +100,8 @@ classmate_female_a: $chapter8.chapter8_sakura_cafe.r020
 sakura: $chapter8.chapter8_sakura_cafe.r021
 classmate_female_a: $chapter8.chapter8_sakura_cafe.r022
 > $chapter8.chapter8_sakura_cafe.r023
+> $chapter8.chapter8_sakura_cafe.r023.s002
+@emote sakura nod 0.4
 sakura: $chapter8.chapter8_sakura_cafe.r024
 @hide_all fade_out
 @jump chapter8_music_room
@@ -88,12 +110,15 @@ sakura: $chapter8.chapter8_sakura_cafe.r024
 @bgm piano_distant.mp3 noloop
 @show kotoha center normal fade_in
 > $chapter8.chapter8_music_room.r001
+> $chapter8.chapter8_music_room.r001.s002
 player: $chapter8.chapter8_music_room.r002
 kotoha: $chapter8.chapter8_music_room.r003
 > $chapter8.chapter8_music_room.r004
+> $chapter8.chapter8_music_room.r004.s002
 player: $chapter8.chapter8_music_room.r005
 kotoha: $chapter8.chapter8_music_room.r006
 > $chapter8.chapter8_music_room.r007
+> $chapter8.chapter8_music_room.r007.s002
 kotoha: $chapter8.chapter8_music_room.r008
 player: $chapter8.chapter8_music_room.r009
 kotoha: $chapter8.chapter8_music_room.r010
@@ -102,6 +127,7 @@ kotoha: $chapter8.chapter8_music_room.r012
 player: $chapter8.chapter8_music_room.r013
 kotoha: $chapter8.chapter8_music_room.r014
 > $chapter8.chapter8_music_room.r015
+> $chapter8.chapter8_music_room.r015.s002
 @hide kotoha fade_out
 @jump chapter8_mahiru_reason
 # chapter8_mahiru_reason
@@ -109,6 +135,7 @@ kotoha: $chapter8.chapter8_music_room.r014
 @bgm festival_rain.mp3
 @show mahiru center happy fade_in
 > $chapter8.chapter8_mahiru_reason.context001
+> $chapter8.chapter8_mahiru_reason.context001.s002
 mahiru: $chapter8.chapter8_mahiru_reason.r001
 player: $chapter8.chapter8_mahiru_reason.r002
 mahiru: $chapter8.chapter8_mahiru_reason.r003
@@ -121,6 +148,7 @@ mahiru: $chapter8.chapter8_mahiru_reason.r009
 player: $chapter8.chapter8_mahiru_reason.r010
 mahiru: $chapter8.chapter8_mahiru_reason.r011
 > $chapter8.chapter8_mahiru_reason.r012
+> $chapter8.chapter8_mahiru_reason.r012.s002
 player: $chapter8.chapter8_mahiru_reason.r013
 mahiru: $chapter8.chapter8_mahiru_reason.r014
 player: $chapter8.chapter8_mahiru_reason.r015
@@ -137,8 +165,13 @@ mahiru: $chapter8.chapter8_mahiru_reason.r020
 @se rain_window.mp3
 @still rain_festival_day
 > $chapter8.chapter8_rain_corridor.r001
+> $chapter8.chapter8_rain_corridor.r001.s002
+> $chapter8.chapter8_rain_corridor.r001.s003
 @still_hide
 > $chapter8.chapter8_rain_corridor.r002
+> $chapter8.chapter8_rain_corridor.r002.s002
+> $chapter8.chapter8_rain_corridor.r002.s003
+> $chapter8.chapter8_rain_corridor.r002.s004
 > $chapter8.chapter8_rain_corridor.r003
 @jump chapter8_sakura_crisis
 # chapter8_sakura_crisis
@@ -146,13 +179,19 @@ mahiru: $chapter8.chapter8_mahiru_reason.r020
 @bgm tension_rain.mp3
 @show sakura center normal fade_in
 > $chapter8.chapter8_sakura_crisis.context001
+> $chapter8.chapter8_sakura_crisis.context001.s002
+> $chapter8.chapter8_sakura_crisis.context001.s003
 sakura: $chapter8.chapter8_sakura_crisis.r001
 > $chapter8.chapter8_sakura_crisis.r002
+> $chapter8.chapter8_sakura_crisis.r002.s002
+@expr sakura surprised
 sakura: $chapter8.chapter8_sakura_crisis.r003
 sakura: $chapter8.chapter8_sakura_crisis.r004
 > $chapter8.chapter8_sakura_crisis.r005
+> $chapter8.chapter8_sakura_crisis.r005.s002
 sakura: $chapter8.chapter8_sakura_crisis.r006
 player: $chapter8.chapter8_sakura_crisis.r007
+@expr sakura blank
 sakura: $chapter8.chapter8_sakura_crisis.r008
 > $chapter8.chapter8_sakura_crisis.r009
 player: $chapter8.chapter8_sakura_crisis.r010
@@ -163,30 +202,43 @@ sakura: $chapter8.chapter8_sakura_crisis.r013
 sakura: $chapter8.chapter8_sakura_crisis.r015
 player: $chapter8.chapter8_sakura_crisis.r016
 > $chapter8.chapter8_sakura_crisis.r017
+> $chapter8.chapter8_sakura_crisis.r017.s002
 @hide sakura fade_out
 @jump chapter8_kotoha_crisis
 # chapter8_kotoha_crisis
 @scene corridor_festival_rainy fade
 @bgm piano_distant.mp3 noloop
 > $chapter8.chapter8_kotoha_crisis.r001
+> $chapter8.chapter8_kotoha_crisis.r001.s002
 @show kotoha center normal fade_in
 teacher_male: $chapter8.chapter8_kotoha_crisis.r002
 teacher_male: $chapter8.chapter8_kotoha_crisis.r003
 kotoha: $chapter8.chapter8_kotoha_crisis.r004
 teacher_male: $chapter8.chapter8_kotoha_crisis.r005
 > $chapter8.chapter8_kotoha_crisis.r006
+> $chapter8.chapter8_kotoha_crisis.r006.s002
 > $chapter8.chapter8_kotoha_crisis.r007
+> $chapter8.chapter8_kotoha_crisis.r007.s002
 > $chapter8.chapter8_kotoha_crisis.r008
+> $chapter8.chapter8_kotoha_crisis.r008.s002
 @hide kotoha fade_out
 @jump chapter8_mahiru_missing
 # chapter8_mahiru_missing
 @scene corridor_festival_rainy fade
 @bgm tension_rain.mp3
 > $chapter8.chapter8_mahiru_missing.r001
+> $chapter8.chapter8_mahiru_missing.r001.s002
 > $chapter8.chapter8_mahiru_missing.r002
+> $chapter8.chapter8_mahiru_missing.r002.s002
 > $chapter8.chapter8_mahiru_missing.r003
+> $chapter8.chapter8_mahiru_missing.r003.s002
+> $chapter8.chapter8_mahiru_missing.r003.s003
 > $chapter8.chapter8_mahiru_missing.r004
+> $chapter8.chapter8_mahiru_missing.r004.s002
+> $chapter8.chapter8_mahiru_missing.r004.s003
+> $chapter8.chapter8_mahiru_missing.r004.s004
 > $chapter8.chapter8_mahiru_missing.r005
+> $chapter8.chapter8_mahiru_missing.r005.s002
 @bgm stop
 @jump chapter8_branch
 # chapter8_branch
@@ -194,6 +246,8 @@ teacher_male: $chapter8.chapter8_kotoha_crisis.r005
 @bgm mystery_shadow.mp3
 @se rain_window.mp3
 > $chapter8.chapter8_branch.r001
+> $chapter8.chapter8_branch.r001.s002
+> $chapter8.chapter8_branch.r001.s003
 > $chapter8.chapter8_branch.r002
 @show festival_committee center panic fade_in
 festival_committee: $chapter8.chapter8_branch.r003
@@ -217,12 +271,23 @@ nobuhara_nobag: $chapter8.chapter8_branch.r011
 - $chapter8.chapter8_branch.r015 -> chapter8_to_mahiru
 # chapter8_to_sakura
 @if sakura_favor >= 8 -> sakura_interlude
+> $chapter8.chapter8_to_sakura.missed
+> $chapter8.chapter8_to_sakura.missed.s002
+> $chapter8.chapter8_to_sakura.missed.s003
+> $chapter8.chapter8_to_sakura.missed.s004
 @jump bad_end_common
 # chapter8_to_kotoha
 @if kotoha_favor >= 8 -> kotoha_interlude
+> $chapter8.chapter8_to_kotoha.missed
+> $chapter8.chapter8_to_kotoha.missed.s002
+> $chapter8.chapter8_to_kotoha.missed.s003
+> $chapter8.chapter8_to_kotoha.missed.s004
 @jump bad_end_common
 # chapter8_to_mahiru
 @if mahiru_favor >= 8 -> mahiru_interlude
+> $chapter8.chapter8_to_mahiru.missed
+> $chapter8.chapter8_to_mahiru.missed.s002
+> $chapter8.chapter8_to_mahiru.missed.s003
 @jump bad_end_common
 # bad_end_common
 @scene corridor_festival_rainy fade

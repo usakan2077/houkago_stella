@@ -58,6 +58,7 @@
     })();
   </script>
   <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="character-emotes.css">
 </head>
 <body>
 
@@ -360,6 +361,10 @@
           <div id="window-top">
             <div id="char-name-box">
               <span id="char-name"></span>
+              <span id="dialog-voice-indicator" hidden role="img" aria-label="ボイス付き" title="ボイス付き">
+                <svg class="voice-speaker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9h4l5-4v14l-5-4H3z"/><path d="M16 8a6 6 0 0 1 0 8"/></svg>
+                <span class="voice-meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              </span>
             </div>
             <div id="quick-command-row">
               <button class="menu-btn quick-menu-btn" id="btn-quick-save">Q.SAVE<span class="menu-key">F6</span></button>
@@ -502,6 +507,13 @@
           </div>
         </div>
         <div class="settings-row">
+          <label for="voice-volume-slider" class="settings-label" data-i18n="settings.voiceVolume">ボイス音量</label>
+          <div class="settings-options">
+            <input type="range" id="voice-volume-slider" min="0" max="100" step="5" class="settings-slider">
+            <span id="voice-volume-value" class="settings-slider-value">85</span>
+          </div>
+        </div>
+        <div class="settings-row">
           <span class="settings-label" data-i18n="settings.fontSize">文字サイズ</span>
           <div class="settings-options" id="font-size-options">
             <button class="settings-opt" data-size="22" data-i18n="settings.small">小</button>
@@ -545,6 +557,8 @@
 <script src="config.js"></script>
 <script src="parser.js"></script>
 <script src="opening-movie.js"></script>
+<script src="voice.js"></script>
+<script src="character-emotes.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ from pathlib import Path
 import check_opening_movie as browser
 
 OUT=browser.ROOT.parent/'stella-lp-variants-check'
+
 browser.OUT=OUT
 
 def main():
@@ -12,7 +13,12 @@ def main():
     # Edge opens many asset connections together; avoid Windows' small backlog.
     class Server(browser.http.server.ThreadingHTTPServer):
         request_queue_size=64
-    server=Server(('127.0.0.1',0),browser.Handler)
+    class Handler(browser.Handler):
+        protocol_version='HTTP/1.1'
+        def handle(self):
+            try: super().handle()
+            except (ConnectionResetError, ConnectionAbortedError, BrokenPipeError): pass
+    server=Server(('127.0.0.1',0),Handler)
     threading.Thread(target=server.serve_forever,daemon=True).start()
     startup=subprocess.STARTUPINFO();startup.dwFlags|=subprocess.STARTF_USESHOWWINDOW;startup.wShowWindow=0
     log=(OUT/'edge.log').open('w')
@@ -42,6 +48,17 @@ def main():
             else:
                 existing_image_warnings=c.evaluate("[...document.images].filter(i=>i.complete && !i.naturalWidth).map(i=>new URL(i.src).pathname)")
                 if existing_image_warnings:print('WARN: existing LP image requests failed locally: '+str(existing_image_warnings),flush=True)
+            assert c.evaluate("!!document.querySelector('[data-voice-samples]') && !document.querySelector('#voices') && document.querySelectorAll('.voice-play').length===3 && !performance.getEntriesByType('resource').some(r=>r.name.includes('/assets/voice/'))")
+            c.evaluate("document.querySelector('[data-voice-samples]').scrollIntoView({behavior:'instant'})")
+            c.wait("[...document.querySelectorAll('[data-voice-character] img')].every(i=>i.complete&&i.naturalWidth>0)")
+            c.shot(variant+'-voices-ja')
+            c.click('[data-voice-character][data-role="kotoha"] .voice-play')
+            c.wait("document.querySelector('[data-voice-character][data-role=\"kotoha\"] .voice-play').dataset.state==='playing'")
+            assert c.evaluate("performance.getEntriesByType('resource').some(r=>r.name.includes('kotoha-leira-v1.mp3')) && document.querySelectorAll('.voice-play[aria-pressed=\"true\"]').length===1")
+            c.click('[data-voice-character][data-role="kotoha"] .voice-play')
+            assert c.evaluate("document.querySelectorAll('.voice-play[aria-pressed=\"true\"]').length===0")
+            c.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+            assert c.evaluate("document.querySelector('#lp-op').preload==='none' && document.querySelector('#lp-op').paused && !performance.getEntriesByType('resource').some(r=>r.name.includes('stella-op.mp4'))")
             c.shot(variant+'-desktop-ja')
             if variant=='ai_solo':
                 assert c.evaluate("document.querySelector('video').preload==='none' && document.querySelector('video').paused && !performance.getEntriesByType('resource').some(r=>r.name.includes('stella-op.mp4'))")
@@ -54,12 +71,22 @@ def main():
             c.click('.language' if variant=='ai_solo' else '.language-toggle')
             assert c.evaluate("document.documentElement.lang==='en'")
             if variant=='ai_solo':assert c.evaluate("document.querySelector('h1').innerText.includes('One creator.')")
+            assert c.evaluate("document.querySelector('.voice-play-label').innerText==='Listen'")
+            c.evaluate("document.querySelector('[data-voice-samples]').scrollIntoView({behavior:'instant'})")
+            c.click('[data-voice-character][data-role="kotoha"] .voice-play')
+            c.wait("document.querySelector('[data-voice-character][data-role=\"kotoha\"] .voice-play').dataset.state==='playing'")
+            c.click('.language' if variant=='ai_solo' else '.language-toggle')
+            assert c.evaluate("document.querySelectorAll('.voice-play[aria-pressed=\"true\"]').length===0")
+            c.click('.language' if variant=='ai_solo' else '.language-toggle')
+
             for width in [390,320]:
                 c.send('Emulation.setDeviceMetricsOverride',dict(width=width,height=844,deviceScaleFactor=1,mobile=False))
                 c.evaluate("window.scrollTo({top:0,behavior:'instant'})")
                 time.sleep(.2)
                 assert c.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(variant,width,'overflow')
                 c.shot(f'{variant}-mobile-{width}-en')
+                c.evaluate("document.querySelector('[data-voice-samples]').scrollIntoView({behavior:'instant'})")
+                c.shot(f'{variant}-voices-mobile-{width}-en')
             if variant=='ai_solo':
                 c.click('.language')
                 assert c.evaluate("document.documentElement.lang==='ja' && document.querySelector('.lead br')!==null")
@@ -81,10 +108,21 @@ def main():
                 c.wait("document.querySelector('video').currentTime>.4")
                 assert c.evaluate("Array.from(dataLayer).filter(e=>e[1]==='lp_op_play').length===1")
                 c.evaluate("document.querySelector('video').pause()")
-                passed('AI LP: Japanese/English, responsive layout, deferred OP playback and once-only OP event')
+                passed('AI LP: bilingual voice samples, responsive layout, deferred OP playback and once-only OP event')
             else:
                 assert c.evaluate("!!document.querySelector('#update-1-2') && !!document.querySelector('#update-op')")
-                passed('Original LP: layout, languages, existing release notes and hero-click event preserved')
+                c.evaluate("document.querySelector('#film').scrollIntoView({behavior:'instant'});document.querySelector('video').muted=true;document.querySelector('video').play()")
+                c.wait("document.querySelector('video').currentTime>.2")
+                assert c.evaluate("Array.from(dataLayer).filter(e=>e[1]==='lp_op_play').length===1")
+                c.shot('story-film-en')
+                c.evaluate("document.querySelector('[data-voice-samples]').scrollIntoView({behavior:'instant'})")
+                c.click('[data-voice-character][data-role="kotoha"] .voice-play')
+                c.wait("document.querySelector('[data-role=\"kotoha\"] .voice-play').dataset.state==='playing'")
+                assert c.evaluate("document.querySelector('video').paused")
+                c.evaluate("document.querySelector('video').play()")
+                c.wait("document.querySelectorAll('.voice-play[aria-pressed=\"true\"]').length===0")
+                c.evaluate("document.querySelector('video').pause()")
+                passed('Original LP: full-voice promotion, bilingual samples, responsive layout and play-click event')
         assert not c.errors,c.errors
         report=dict(result='PASS' if not existing_image_warnings else 'PASS_WITH_EXISTING_IMAGE_WARNINGS',checks=checks,existing_image_warnings=existing_image_warnings,javascript_errors=c.errors,analytics='Local dataLayer events verified; remote collection blocked for this test')
         (OUT/'result.json').write_text(json.dumps(report,indent=2),encoding='utf-8')

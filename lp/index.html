@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>放課後のステラ 嘘と願いのバウンドリー</title>
-  <meta name="description" content="無料で遊べる全年齢ブラウザ恋愛アドベンチャーゲーム『放課後のステラ 嘘と願いのバウンドリー』公式紹介ページ。">
+  <title>放課後のステラ｜日英フルボイス・無料ブラウザノベル</title>
+  <meta name="description" content="日本語・英語フルボイスの無料ブラウザ恋愛アドベンチャー『放課後のステラ』。三人のヒロインの声を試聴して、最後まで無料でプレイ。">
   <meta name="keywords" content="放課後のステラ,無料ゲーム,ブラウザゲーム,恋愛アドベンチャー,ノベルゲーム,全年齢,ビジュアルノベル">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="application-name" content="放課後のステラ">
@@ -26,7 +26,7 @@
   <link rel="icon" type="image/png" href="../icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta property="og:title" content="放課後のステラ 嘘と願いのバウンドリー">
-  <meta property="og:description" content="無料で遊べる全年齢ブラウザ恋愛アドベンチャー。放課後、星空、言えなかった言葉。三人の少女との物語。">
+  <meta property="og:description" content="日本語・英語フルボイス。三人の声と、放課後の物語へ。試聴も本編も、ブラウザで無料。">
   <meta property="og:image" content="https://usakan2077.github.io/houkago_stella/og.png?v=20260512">
   <meta property="og:image:secure_url" content="https://usakan2077.github.io/houkago_stella/og.png?v=20260512">
   <meta property="og:image:type" content="image/png">
@@ -38,7 +38,7 @@
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="放課後のステラ 嘘と願いのバウンドリー">
-  <meta name="twitter:description" content="無料で遊べる全年齢ブラウザ恋愛アドベンチャー。放課後、星空、言えなかった言葉。三人の少女との物語。">
+  <meta name="twitter:description" content="日本語・英語フルボイス。三人の声と、放課後の物語へ。試聴も本編も、ブラウザで無料。">
   <meta name="twitter:image" content="https://usakan2077.github.io/houkago_stella/og.png?v=20260512">
   <script type="application/ld+json">
     {
@@ -53,7 +53,7 @@
       "gamePlatform": "Web browser",
       "operatingSystem": "Windows, macOS, iOS, Android",
       "genre": ["恋愛アドベンチャー", "ノベルゲーム", "ビジュアルノベル"],
-      "inLanguage": "ja",
+      "inLanguage": ["ja", "en"],
       "isAccessibleForFree": true,
       "contentRating": "全年齢",
       "offers": {
@@ -65,6 +65,7 @@
     }
   </script>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="voice-preview.css">
 </head>
 <body data-lp-variant="story">
   <header class="site-header" aria-label="サイトヘッダー">
@@ -73,6 +74,7 @@
       <span>放課後のステラ</span>
     </a>
     <nav class="site-nav" aria-label="ページ内ナビゲーション">
+      <a href="#film">OP</a>
       <a href="#story">物語</a>
       <a href="#characters">登場人物</a>
       <a href="#gallery">ギャラリー</a>
@@ -94,11 +96,8 @@
         <p class="eyebrow">Browser Visual Novel</p>
         <h1 id="hero-title">放課後のステラ</h1>
         <p class="hero-subtitle">嘘と願いのバウンドリー</p>
-        <p class="hero-copy">
-          無料で遊べる全年齢ブラウザ恋愛アドベンチャー。
-          放課後の屋上で見上げた星空は、隠してきた本音を少しずつ照らしていく。
-          笑顔、音、夜明け。三つの願いが、ひとつの季節を変えていく。
-        </p>
+        <div class="hero-voiceheadline"><span class="voice-lang">日本語・英語対応</span><strong class="voice-title">フルボイス</strong></div>
+        <p class="hero-copy">明るい冗談も、ためらう返事も。<br>声で近づく、三人の放課後。<br>最後まで無料で遊べる、ブラウザ恋愛アドベンチャー。</p>
         <div class="hero-badges" aria-label="作品情報">
           <span>無料プレイ</span>
           <span>全年齢対象</span>
@@ -106,12 +105,29 @@
         </div>
         <div class="hero-actions">
           <a class="button button-primary" href="../index.html">無料でプレイ</a>
-          <a class="button button-ghost" href="#story">作品を知る</a>
+          <a class="button button-ghost" href="#characters">まずは声を聴く</a>
         </div>
       </div>
       <a class="scroll-cue" href="#story" aria-label="物語セクションへ移動">
         <span></span>
       </a>
+    </section>
+
+
+
+    <section class="section op-section" id="film" aria-labelledby="film-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="section-kicker">Opening Movie</p>
+          <h2 id="film-title">オープニングムービー</h2>
+          <p class="film-lead">主題歌とともに、三人の放課後へ。</p>
+        </div>
+        <video id="lp-op" controls playsinline preload="none" poster="assets/images/stills/rooftop_shooting_star.webp" aria-label="放課後のステラ オープニングムービー">
+          <source src="../assets/video/stella-op.mp4" type="video/mp4">
+          <a class="film-fallback" href="../assets/video/stella-op.mp4">OP動画を開く</a>
+        </video>
+        <p class="film-duration">主題歌付きOP ／ 約1分43秒</p>
+      </div>
     </section>
 
     <section class="section story-section" id="story" aria-labelledby="story-title">
@@ -125,7 +141,7 @@
             止まっていた時間をもう一度動かしていく。
           </p>
           <p>
-            共通ルートから選択で分岐し、桜咲さくら、神崎琴葉、月夜野まひるの物語へ。
+            共通ルートから選択で分岐し、桜咲さくら、花園ことは、月夜野まひるの物語へ。
             それぞれの「嘘」と「願い」に触れた先で、プレイヤーは彼女たちとの境界線を越える。
           </p>
         </div>
@@ -159,16 +175,16 @@
       </div>
     </section>
 
-    <section class="section characters-section" id="characters" aria-labelledby="characters-title">
+    <section class="section characters-section" id="characters" data-voice-samples aria-labelledby="characters-title">
       <div class="section-inner">
         <div class="section-heading">
           <p class="section-kicker">Characters</p>
           <h2 id="characters-title">放課後に出会う三人のヒロイン</h2>
         </div>
         <div class="character-grid">
-          <article class="character-card sakura">
+          <article class="character-card sakura" data-voice-character data-role="sakura" data-name-ja="桜咲さくら" data-name-en="Sakura Sakurazaki">
             <div class="character-portrait">
-              <img src="assets/images/chars/sakura.png" alt="桜咲さくら">
+              <img src="assets/images/chars/sakura-voice.webp" alt="桜咲さくら">
             </div>
             <div class="character-text">
               <p class="role">Badminton Club</p>
@@ -178,27 +194,29 @@
                 その笑顔は強さであり、誰にも見せられなかった弱さを隠す鎧でもある。
               </p>
               <blockquote class="character-quote">「新学期って、一回しかないんだからさ」</blockquote>
+              <div class="voice-sample"><p class="voice-model">VOICE / Suzu</p><button class="voice-play" type="button" data-ja-src="../assets/voice/ja/chapter1.chapter1_morning_gate.r016.directed-v1.mp3" data-ja-gain="-3.5" data-en-src="../assets/voice/en/chapter1.chapter1_morning_gate.r016.bilingual-v1.mp3" data-en-gain="-2.0" aria-pressed="false"><span class="voice-play-icon" aria-hidden="true">▶</span><span class="voice-play-label">声を聴く</span><span class="voice-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div>
             </div>
           </article>
 
-          <article class="character-card kotoha">
+          <article class="character-card kotoha" data-voice-character data-role="kotoha" data-name-ja="花園ことは" data-name-en="Kotoha Hanazono">
             <div class="character-portrait">
-              <img src="assets/images/chars/kotoha.png" alt="神崎琴葉">
+              <img src="assets/images/chars/kotoha-voice.webp" alt="花園ことは">
             </div>
             <div class="character-text">
               <p class="role">Quiet Melody</p>
-              <h3>神崎 琴葉</h3>
+              <h3>花園 ことは</h3>
               <p>
                 静かな時間を好み、言葉よりも沈黙に本音がにじむ少女。
                 近づくほどに、閉じていた音が少しずつほどけていく。
               </p>
               <blockquote class="character-quote">「水面って少し、音楽に似てるんです」</blockquote>
+              <div class="voice-sample"><p class="voice-model">VOICE / Leira</p><button class="voice-play" type="button" data-ja-src="../assets/voice/ja/chapter1.chapter1_homeroom.r004.kotoha-leira-v1.mp3" data-ja-gain="6.0" data-en-src="../assets/voice/en/chapter1.chapter1_homeroom.r004.kotoha-leira-v1.mp3" data-en-gain="6.5" aria-pressed="false"><span class="voice-play-icon" aria-hidden="true">▶</span><span class="voice-play-label">声を聴く</span><span class="voice-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div>
             </div>
           </article>
 
-          <article class="character-card mahiru">
+          <article class="character-card mahiru" data-voice-character data-role="mahiru" data-name-ja="月夜野まひる" data-name-en="Mahiru Tsukiyono">
             <div class="character-portrait">
-              <img src="assets/images/chars/mahiru.png" alt="月夜野まひる">
+              <img src="assets/images/chars/mahiru-voice.webp" alt="月夜野まひる">
             </div>
             <div class="character-text">
               <p class="role">Dawn Notebook</p>
@@ -208,10 +226,12 @@
                 「今日、生きていて良かったこと」を書き続けながら、夜明けを待っている。
               </p>
               <blockquote class="character-quote">「ただ、覚えていたいだけ」</blockquote>
+              <div class="voice-sample"><p class="voice-model">VOICE / Yuki</p><button class="voice-play" type="button" data-ja-src="../assets/voice/ja/chapter1.chapter1_breaktime.r004.directed-v1.mp3" data-ja-gain="4.5" data-en-src="../assets/voice/en/chapter1.chapter1_breaktime.r004.bilingual-v1.mp3" data-en-gain="7.0" aria-pressed="false"><span class="voice-play-icon" aria-hidden="true">▶</span><span class="voice-play-label">声を聴く</span><span class="voice-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button></div>
             </div>
           </article>
         </div>
       </div>
+      <p class="voice-status" role="status" aria-live="polite"></p>
     </section>
 
     <section class="section gallery-section" id="gallery" aria-labelledby="gallery-title">
@@ -225,10 +245,10 @@
             <img src="assets/images/stills/rooftop_four_wishes.webp" alt="屋上で願いを語る四人">
           </figure>
           <figure class="gallery-item">
-            <img src="assets/images/stills/kotoha_piano_trembling.webp" alt="ピアノのそばで震える琴葉">
+            <img src="assets/images/stills/kotoha_piano_trembling.webp" alt="ピアノのそばで震えることは">
           </figure>
           <figure class="gallery-item">
-            <img src="assets/images/stills/kotoha_library_headphones.webp" alt="図書室でヘッドホンをつける琴葉">
+            <img src="assets/images/stills/kotoha_library_headphones.webp" alt="図書室でヘッドホンをつけることは">
           </figure>
           <figure class="gallery-item">
             <img src="assets/images/stills/sakura_embrace.webp" alt="体育館の倉庫で抱き合うさくら">
@@ -237,7 +257,7 @@
             <img src="assets/images/stills/sakura_after_match.webp" alt="試合後のさくら">
           </figure>
           <figure class="gallery-item tall">
-            <img src="assets/images/stills/kotoha_window_ch1.webp" alt="窓辺に立つ琴葉">
+            <img src="assets/images/stills/kotoha_window_ch1.webp" alt="窓辺に立つことは">
           </figure>
           <figure class="gallery-item">
             <img src="assets/images/stills/evening_walk_two.webp" alt="夕方に並んで歩く二人">
@@ -273,8 +293,8 @@
           </article>
           <article>
             <span class="feature-mark">04</span>
-            <h3>BGM / SE</h3>
-            <p>星空、放課後、沈黙の温度を音で支える演出。</p>
+            <h3>日英ボイス / BGM / SE</h3>
+            <p>主人公以外の全台詞に日本語・英語ボイスを収録。BGM・SEとともに、放課後の空気を届けます。</p>
           </article>
           <article>
             <span class="feature-mark">05</span>
@@ -367,15 +387,24 @@
           <h2 id="updates-title">更新履歴</h2>
         </div>
         <ol class="updates-list">
+          <li class="update-entry" id="update-voice-2026-10-13">
+            <div class="update-meta">
+              <span class="update-version">日英フルボイス対応</span>
+              <span class="update-date">2026.10.13</span>
+            </div>
+            <ul class="update-points">
+              <li>主人公以外の台詞が、日本語・英語フルボイスに対応。三人の物語を、声とともに楽しめます。</li>
+              <li>会話や表情・動きの演出を磨き、キャラクターの気持ちがより伝わるようにしました。</li>
+              <li>ログから台詞を聴き直せるようになりました。</li>
+            </ul>
+          </li>
           <li class="update-entry" id="update-op">
             <div class="update-meta">
               <span class="update-version">OPムービー追加</span>
               <span class="update-date">2026.10.04</span>
             </div>
             <ul class="update-points">
-              <li>主題歌付きのオープニングムービーを追加しました。ロード完了後に「OK」を押すと再生され、フェードアウトしてタイトル画面へ移ります。</li>
-              <li>タイトル画面で約10秒操作しないと、OPをもう一度再生します。設定・ロード・CGギャラリーの表示中は再生しません。</li>
-              <li>OPはクリック、Enter、Space、Escでスキップしてタイトル画面へ進めます。</li>
+              <li>主題歌付きのOPムービーを追加。歌と映像で、三人の物語の雰囲気を楽しめます。</li>
             </ul>
           </li>
           <li class="update-entry" id="update-1-2">
@@ -384,11 +413,9 @@
               <span class="update-date">2026.09.18</span>
             </div>
             <ul class="update-points">
-              <li>物語の設定や重要な出来事を保ちながら、全ルートの会話と地の文を改稿しました。人物ごとの話し方や日常のやり取りを見直しています。</li>
-              <li>場面転換の説明を補い、冒頭の夢から朝の支度・登校までの流れを整理しました。</li>
-              <li>スチルと本文の動作・位置関係を調整し、さくらルートの倉庫で立ち絵が残る不具合を修正しました。</li>
-              <li>英語版の本文と演出を、改稿後の日本語版に合わせて更新しました。</li>
-              <li>以前の途中セーブでは再開位置がずれる場合があります。読み直す際は、最初からのプレイをおすすめします。</li>
+              <li>全ルートの会話と演出を見直し、三人の個性や日常のやり取りをより自然に。</li>
+              <li>英語版も、改稿後の物語に合わせて更新しました。</li>
+              <li>以前のセーブでは再開位置がずれる場合があります。読み直す際は、最初からのプレイをおすすめします。</li>
             </ul>
           </li>
           <li class="update-entry" id="update-1-1">
@@ -397,12 +424,9 @@
               <span class="update-date">2026.07.05</span>
             </div>
             <ul class="update-points">
-              <li>サブキャラクターとの短い日常シーンを共通ルートに追加しました。</li>
-              <li>文化祭クライマックスの会話と一枚絵（スチル）を追加し、展開をより自然にしました。</li>
-              <li>物語の細かな整合性とテンポを調整しました。</li>
-              <li>英語表示に対応しました（言語切り替えで English に切替できます）。</li>
-              <li>CONFIGに「既読のみスキップ」を追加しました。</li>
-              <li>一部の立ち絵・スチル表示を調整し、場面との整合性を高めました。</li>
+              <li>サブキャラクターとの会話や文化祭のシーンを追加。学校生活をより賑やかに。</li>
+              <li>英語表示に対応しました。</li>
+              <li>既読スキップなど、読み進めやすさを改善しました。</li>
             </ul>
           </li>
           <li class="update-entry" id="update-1-0">
@@ -438,6 +462,7 @@
     <a href="#top">ページ上部へ</a>
   </footer>
 
+  <script src="voice-preview.js"></script>
   <script src="script.js"></script>
   <script src="experiment.js"></script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
