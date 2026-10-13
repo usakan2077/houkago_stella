@@ -1,0 +1,10 @@
+.char-sprite {position:relative;isolation:isolate;}
+.char-emote-particles {position:absolute;inset:0;pointer-events:none;z-index:2;overflow:visible;}
+.char-emote-particle {position:absolute;display:block;color:#ead7a8;text-shadow:0 0 2px #ead7a833;line-height:1;}
+.char-emote-particle.emote-heart {color:#dfa0b0;text-shadow:none;opacity:.45;}
+.char-emote-particle.emote-sparkle {opacity:.55;}
+.char-emote-particle.emote-anger {width:18px;height:18px;color:#7c8faa;text-shadow:none;opacity:.65;transform-origin:center;}
+.char-emote-particle.emote-anger svg {display:block;width:100%;height:100%;}
+.char-emote-particle.emote-sigh {color:#e0e2f4;text-shadow:0 0 9px #b8c1df;}
+.char-emote-particle.emote-sweat {width:11px;height:17px;background:#a5d4e6;border:1px solid #e4f8ff;border-radius:50% 50% 50% 0;box-shadow:0 1px 3px #264b6b66;}
+@media(prefers-reduced-motion:reduce){.char-emote-particle.emote-sweat{opacity:.9;}}

@@ -199,3 +199,31 @@ test('protagonist and narration never receive voice replay IDs', () => {
   engine._displayDialog(null, 'narration');
   assert.ok(engine.textLog.every(entry => entry.voiceId === null));
 });
+
+
+test('outfit identity highlights the speaker without changing voice character keys', () => {
+  const { engine, document } = environment();
+  delete engine._highlightChar;
+  const state = new Map();
+  for (const pos of ['left', 'center', 'right']) {
+    document.getElementById('char-' + pos).classList = {
+      contains: () => true,
+      toggle: (name, on) => state.set(pos + ':' + name, on),
+    };
+  }
+  for (const [speaker, outfit] of [
+    ['sakura', 'sakura_swimsuit'], ['sakura', 'sakura_sports'], ['sakura', 'sakura_apron'],
+    ['kotoha', 'kotoha_swimsuit'], ['mahiru', 'mahiru_no_camera'],
+    ['mahiru', 'mahiru_private'], ['mahiru', 'mahiru_sports'],
+    ['nobuhara', 'nobuhara_nobag'], ['nobuhara', 'nobuhara_sports'], ['nobuhara', 'nobuhara_private'],
+  ]) {
+    engine.charState = { left: { charKey: outfit }, center: { charKey: 'teacher_male' }, right: { charKey: 'kotoha' } };
+    engine._highlightChar(speaker);
+    assert.equal(state.get('left:highlighted'), true, outfit);
+    assert.equal(state.get('left:dimmed'), false, outfit);
+    assert.equal(state.get('center:dimmed'), true, outfit);
+    engine._highlightChar('teacher_male');
+    assert.equal(state.get('left:dimmed'), true, outfit);
+    assert.equal(state.get('center:highlighted'), true, outfit);
+  }
+});

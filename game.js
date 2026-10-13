@@ -1236,6 +1236,11 @@ class VNEngine {
         this._executeNext();
         break;
 
+      case 'emote':
+        if (!this.skipMode) this._emoteChar(cmd.target, cmd.name, cmd.strength);
+        this._executeNext();
+        break;
+
       case 'move':
         this._moveChar(cmd.char, cmd.pos, cmd.effect);
         this._executeNext();
@@ -1425,6 +1430,7 @@ class VNEngine {
   //  背景
   // ============================================================
   _changeBackground(bgKey, effect = 'fade') {
+    this._clearCharEmotes();
     this._stopAllSE();
     this.currentBG = bgKey;
     const el = document.getElementById('background');
@@ -1482,7 +1488,7 @@ class VNEngine {
   // ============================================================
   //  キャラクター管理
   // ============================================================
-  _showChar(charKey, pos, expr, effect = 'fade_in') {
+  _showChar(charKey, pos, expr, effect = 'fade_in', reservedState = null) {
     const cfg = VN_CONFIG.characters[charKey];
     if (!cfg) {
       if (this._debug) console.warn(`[Engine] Unknown character: ${charKey}`);
@@ -1491,12 +1497,15 @@ class VNEngine {
     const slot = document.getElementById(`char-${pos}`);
     if (!slot) return;
 
-    this.charState[pos] = { charKey, expr };
+    if (reservedState && this.charState[pos] !== reservedState) return;
+    const state = reservedState || { charKey, expr };
+    this.charState[pos] = state;
 
     // スプライト構築
     const sprite = document.createElement('div');
     sprite.className         = 'char-sprite';
     sprite.dataset.charKey   = charKey;
+    sprite._vnState = state;
 
     // キャラ画像はすべて PNG
     const imgEl = new Image();
@@ -1504,26 +1513,25 @@ class VNEngine {
     // 立ち絵の表示倍率・接地オフセット（キャラ間のサイズ差を吸収）
     imgEl.style.transformOrigin = '50% 100%';
     imgEl.style.transform = `translateY(${cfg.offsetY || 0}px) scale(${cfg.scale || 1})`;
-    imgEl.onerror = () => {
-      // PNG が見つからない場合のみプレースホルダー
-      const ph = document.createElement('div');
-      ph.className = 'char-placeholder';
-      ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
-      ph.innerHTML = `
-        <div class="char-ph-icon">♡</div>
-        <div class="char-ph-name">${cfg.name}</div>
-        <div class="char-ph-expr">[${expr}]</div>
-      `;
-      sprite.appendChild(ph);
-    };
+    let settled = false;
     const showSlot = () => {
-      sprite.appendChild(imgEl);
+      // Discard a sprite if skip, hide or another expression replaced it while decoding.
+      if (settled || this.charState[pos] !== state) return;
+      settled = true;
+      if (!sprite.childNodes.length) sprite.appendChild(imgEl);
+      if (typeof VNCharacterEmote !== 'undefined') VNCharacterEmote.clear(slot.querySelector?.('.char-sprite'));
       slot.innerHTML = '';
       slot.appendChild(sprite);
+      const emote = state.pendingEmote;
+      delete state.pendingEmote;
+      if (emote && !this.skipMode && typeof VNCharacterEmote !== 'undefined') {
+        VNCharacterEmote.play(sprite, emote.name, emote.strength);
+      }
       // エフェクトで表示（decode完了後に行うことで空スプライトの表示を防ぐ）
       slot.className = 'character-slot';
       void slot.offsetWidth; // reflow
       slot.classList.add('visible');
+      if (this._activeCharSpeaker != null) this._highlightChar(this._activeCharSpeaker);
       if (effect !== 'instant') {
         const animClass = {
           fade_in:         'anim-fade-in',
@@ -1536,7 +1544,8 @@ class VNEngine {
                    VN_CONFIG.settings.charFadeTime + 100);
       }
     };
-    imgEl.onerror = () => {
+    const showPlaceholder = () => {
+      if (settled || this.charState[pos] !== state) return;
       const ph = document.createElement('div');
       ph.className = 'char-placeholder';
       ph.style.background = cfg.charColor || 'rgba(150,150,200,.7)';
@@ -1548,8 +1557,14 @@ class VNEngine {
       sprite.appendChild(ph);
       showSlot();
     };
+    imgEl.onerror = showPlaceholder;
+    imgEl.onload = showSlot;
     imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
-    (imgEl.decode ? imgEl.decode().then(showSlot).catch(showSlot) : (imgEl.onload = showSlot));
+    if (imgEl.decode) imgEl.decode().then(showSlot).catch(() => {
+      // A decode promise can abort while a valid image request is still loading.
+      // Native load/error events remain the fallback; state identity still cancels stale requests.
+      if (imgEl.complete) imgEl.naturalWidth ? showSlot() : showPlaceholder();
+    });
   }
 
   _hideChar(target, effect = 'fade_out') {
@@ -1558,10 +1573,9 @@ class VNEngine {
       this._doHideSlot(`char-${target}`, effect);
       this.charState[target] = null;
     } else {
-      // charKey で検索
+      // Pending images and reserved moves must be canceled before they reach the DOM.
       for (const pos of positions) {
-        const sprite = document.querySelector(`#char-${pos} .char-sprite`);
-        if (sprite && sprite.dataset.charKey === target) {
+        if (this.charState[pos]?.charKey === target) {
           this._doHideSlot(`char-${pos}`, effect);
           this.charState[pos] = null;
           break;
@@ -1572,6 +1586,7 @@ class VNEngine {
 
   _doHideSlot(slotId, effect) {
     const slot = document.getElementById(slotId);
+    if (typeof VNCharacterEmote !== 'undefined') VNCharacterEmote.clear(slot?.querySelector?.('.char-sprite'));
     if (!slot || !slot.classList.contains('visible')) return;
 
     if (effect === 'instant') {
@@ -1601,25 +1616,10 @@ class VNEngine {
 
   _changeExpr(charKey, expr) {
     for (const pos of ['left', 'center', 'right']) {
-      if (this.charState[pos]?.charKey === charKey) {
-        this.charState[pos].expr = expr;
-        const slot   = document.getElementById(`char-${pos}`);
-        const sprite = slot?.querySelector('.char-sprite');
-        if (!sprite) return;
-
-        const cfg = VN_CONFIG.characters[charKey] || {};
-        const imgEl = new Image();
-        imgEl.alt = charKey;
-        imgEl.style.transformOrigin = '50% 100%';
-        imgEl.style.transform = `translateY(${cfg.offsetY || 0}px) scale(${cfg.scale || 1})`;
-        imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
-        // 新画像を先に追加してから旧画像を削除（空白フレームを防ぐ）
-        const swap = () => {
-          sprite.appendChild(imgEl);
-          while (sprite.childNodes.length > 1) sprite.removeChild(sprite.firstChild);
-        };
-        (imgEl.decode ? imgEl.decode().then(swap).catch(swap) : (imgEl.onload = swap));
-        break;
+      const state = this.charState[pos];
+      if (state?.charKey === charKey) {
+        if (state.expr !== expr) this._showChar(charKey, pos, expr, 'instant');
+        return;
       }
     }
   }
@@ -1629,7 +1629,7 @@ class VNEngine {
     for (const pos of ['left', 'center', 'right']) {
       if (this.charState[pos]?.charKey === charKey) { fromPos = pos; break; }
     }
-    if (!fromPos) return;
+    if (!fromPos || fromPos === newPos) return;
 
     const state = { ...this.charState[fromPos] };
     const hideEffect  = effect === 'slide' ? 'fade_out' : 'instant';
@@ -1637,21 +1637,49 @@ class VNEngine {
     const delay       = effect === 'slide' ? 300 : 0;
 
     this._hideChar(fromPos, hideEffect);
-    setTimeout(() => this._showChar(charKey, newPos, state.expr, showEffect), delay);
+    this.charState[newPos] = state;
+    setTimeout(() => this._showChar(charKey, newPos, state.expr, showEffect, state), delay);
+  }
+
+  _emoteChar(target, name, strength = 1) {
+    if (typeof VNCharacterEmote === 'undefined' || this.skipMode) return;
+    if (name !== 'clear' && !VNCharacterEmote.definitions[name]) return;
+    const canonical = key => VN_CONFIG.characters[key]?.speakerKey || key;
+    for (const pos of ['left', 'center', 'right']) {
+      const state = this.charState[pos];
+      if (!state || (target !== 'all' && target !== pos && state.charKey !== target && canonical(state.charKey) !== canonical(target))) continue;
+      const sprite = document.getElementById(`char-${pos}`)?.querySelector?.('.char-sprite');
+      delete state.pendingEmote;
+      if (name === 'clear') { VNCharacterEmote.clear(sprite); continue; }
+      if (sprite?._vnState === state) VNCharacterEmote.play(sprite, name, strength);
+      else state.pendingEmote = { name, strength };
+    }
+  }
+
+  _clearCharEmotes() {
+    for (const pos of ['left', 'center', 'right']) {
+      if (this.charState?.[pos]) delete this.charState[pos].pendingEmote;
+      if (typeof VNCharacterEmote !== 'undefined') VNCharacterEmote.clear(document.getElementById(`char-${pos}`)?.querySelector?.('.char-sprite'));
+    }
   }
 
   /** キャラクターをハイライト/ディム */
   _highlightChar(activeKey) {
+    const activeSpeaker = VN_CONFIG.characters[activeKey]?.speakerKey || activeKey;
+    this._activeCharSpeaker = activeSpeaker;
     ['left', 'center', 'right'].forEach(pos => {
       const slot = document.getElementById(`char-${pos}`);
       if (!slot.classList.contains('visible')) return;
       const key = this.charState[pos]?.charKey;
-      slot.classList.toggle('dimmed',      key !== activeKey);
-      slot.classList.toggle('highlighted', key === activeKey);
+      const speaker = VN_CONFIG.characters[key]?.speakerKey || key;
+      const isSpeaking = speaker === activeSpeaker;
+      slot.classList.toggle('dimmed', !isSpeaking);
+      slot.classList.toggle('highlighted', isSpeaking);
     });
   }
 
   _clearCharHighlights() {
+    this._activeCharSpeaker = null;
     ['left', 'center', 'right'].forEach(pos => {
       document.getElementById(`char-${pos}`)
               .classList.remove('dimmed', 'highlighted');
@@ -1662,6 +1690,7 @@ class VNEngine {
   //  スチル (イベントCG)
   // ============================================================
   _showStill(imageName, effect = 'fade_in') {
+    this._clearCharEmotes();
     this._trackEvent('vn_still_show', {
       scenario_stage: this._getAnalyticsStage(),
       scenario_label: this.currentLabel,
@@ -2190,6 +2219,7 @@ class VNEngine {
     this.skipMode = !this.skipMode;
     document.getElementById('btn-skip').classList.toggle('active', this.skipMode);
     if (this.skipMode) {
+      this._clearCharEmotes();
       this.voice.stop();
       this.voice.retainWindow([]);
       this._autoScheduleToken++;
