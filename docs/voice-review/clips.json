@@ -1,0 +1,949 @@
+{
+  "status": "installed",
+  "clips": [
+    {
+      "key": "ja:chapter1.chapter1_after_school_intro.r011",
+      "language": "ja",
+      "id": "chapter1.chapter1_after_school_intro.r011",
+      "character": "sakura",
+      "display": "え？",
+      "tts": "[startled] えっ？",
+      "direction": "無意識に止まっていた作業へ呼び戻される「え」。初対面の相手を見て嬉しく跳ねる驚きとは分ける。",
+      "before": {
+        "src": "assets/voice/ja/chapter1/chapter1.chapter1_after_school_intro.r011.full-v2.mp3",
+        "gainDb": -3.0
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter1/chapter1.chapter1_after_school_intro.r011.debug11-v1.mp3",
+        "gainDb": -4.5
+      },
+      "sha256": "554baf4db8b781b4b6b8acfc85dccf9529895e0642c5a88ccd279d9f330f72fe",
+      "duration": 0.88,
+      "old_duration": 1.12,
+      "peak_after_gain_dbfs": -7.695720321095276,
+      "rms_delta_db": 0.21497851728515016,
+      "trailing_silence_seconds": 0.242,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter2.chapter2_lunch.r003",
+      "language": "ja",
+      "id": "chapter2.chapter2_lunch.r003",
+      "character": "sakura",
+      "display": "開いてるって聞いたもん。実際開いてたし",
+      "tts": "[casual] 開いてるって聞いたもん。実際、あいてたし。",
+      "direction": "親しい相手への軽口。皮肉や高笑いを強くしない。",
+      "before": {
+        "src": "assets/voice/ja/chapter2/chapter2.chapter2_lunch.r003.full-v2.mp3",
+        "gainDb": -3.0
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter2/chapter2.chapter2_lunch.r003.debug11-v1.mp3",
+        "gainDb": -3.0
+      },
+      "sha256": "4091ff91ed6e3f61dc539972fed1a35e1d9eff61ecad9b1698b002e259b79792",
+      "duration": 3.52,
+      "old_duration": 3.44,
+      "peak_after_gain_dbfs": -6.644814843971442,
+      "rms_delta_db": 0.04292841147542603,
+      "trailing_silence_seconds": 0.15052083333333333,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter2.chapter2_sakura_event.r013",
+      "language": "ja",
+      "id": "chapter2.chapter2_sakura_event.r013",
+      "character": "sakura",
+      "display": "一人だとここであと十分くらい過ごしちゃうから",
+      "tts": "[casual] 一人だと、ここであとじゅっぷんくらい過ごしちゃうから。",
+      "direction": "ユーザー試聴後の指定。「もうじゅっぷん」を「あとじゅっぷん」に置換。ここでの後に不必要な区切りを入れず、あとじゅっぷんくらいをひと続きに読む。",
+      "before": {
+        "src": "assets/voice/ja/chapter2/chapter2.chapter2_sakura_event.r013.debug11-v1.mp3",
+        "gainDb": -4.0
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter2/chapter2.chapter2_sakura_event.r013.debug11-v2.mp3",
+        "gainDb": -5.0
+      },
+      "sha256": "cd6d565c8c3766839f2a1cbc0e21700a4bb30d0fab8cb91ff0c198e18838fc46",
+      "duration": 3.68,
+      "old_duration": 3.92,
+      "peak_after_gain_dbfs": -8.891493204955738,
+      "rms_delta_db": -0.13321267764095523,
+      "trailing_silence_seconds": 0.0965,
+      "needs_tail_listening": false,
+      "previous_comparisons": [
+        {
+          "key": "ja:chapter2.chapter2_sakura_event.r013",
+          "language": "ja",
+          "id": "chapter2.chapter2_sakura_event.r013",
+          "character": "sakura",
+          "display": "一人だとここでもう十分くらい過ごしちゃうから",
+          "tts": "[casual] 一人だと、ここで、もうじゅっぷんくらい過ごしちゃうから。",
+          "direction": "言葉を選ぶ短い間。全ての語の前で長く止まらない。",
+          "before": {
+            "src": "assets/voice/ja/chapter2/chapter2.chapter2_sakura_event.r013.full-v2.mp3",
+            "gainDb": -3.0
+          },
+          "after": {
+            "src": "assets/voice/ja/chapter2/chapter2.chapter2_sakura_event.r013.debug11-v1.mp3",
+            "gainDb": -4.0
+          },
+          "sha256": "18fa33f1c628801d9850ce70be49bb0619b617fa79161a47504a069b421ad278",
+          "duration": 3.92,
+          "old_duration": 3.52,
+          "peak_after_gain_dbfs": -8.388056162730805,
+          "rms_delta_db": -0.10449231498561673,
+          "trailing_silence_seconds": 0.10664583333333333,
+          "needs_tail_listening": false
+        }
+      ],
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter3.chapter3_start.r028",
+      "language": "ja",
+      "id": "chapter3.chapter3_start.r028",
+      "character": "mahiru",
+      "display": "そっか。ことはちゃん、昨日の本、持ってきた",
+      "tts": "[matter-of-fact] そっか。コトハちゃん、昨日の本、持ってきた。",
+      "direction": "普通の会話の速さ。説明を朗読調にしない。",
+      "before": {
+        "src": "assets/voice/ja/chapter3/chapter3.chapter3_start.r028.kotoha-name-v1.mp3",
+        "gainDb": 5.0
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter3/chapter3.chapter3_start.r028.debug11-v1.mp3",
+        "gainDb": 4.0
+      },
+      "sha256": "fb41e520e59ae5764446c0f1cc5a7b26cb1ab3dbb463969e7d73383492b61802",
+      "duration": 4.08,
+      "old_duration": 3.76,
+      "peak_after_gain_dbfs": -7.125497005123325,
+      "rms_delta_db": -0.07720802521926373,
+      "trailing_silence_seconds": 0.35041666666666665,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter3.chapter3_lunch.r011",
+      "language": "ja",
+      "id": "chapter3.chapter3_lunch.r011",
+      "character": "mahiru",
+      "display": "雲。魚だったんだよ",
+      "tts": "[thoughtful] くも。魚だったんだよ。",
+      "direction": "相手に届く実務的な案内・指示。早口で潰さない。",
+      "before": {
+        "src": "assets/voice/ja/chapter3/chapter3.chapter3_lunch.r011.full-v2.mp3",
+        "gainDb": 4.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter3/chapter3.chapter3_lunch.r011.debug11-v1.mp3",
+        "gainDb": 6.0
+      },
+      "sha256": "f9d25e8cba9dc1f7025f86904270847449eb832d39d22173e686b09bad591065",
+      "duration": 2.48,
+      "old_duration": 2,
+      "peak_after_gain_dbfs": -7.929411372551254,
+      "rms_delta_db": -0.1067123540807593,
+      "trailing_silence_seconds": 0.08966666666666667,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter4.chapter4_start.r017",
+      "language": "ja",
+      "id": "chapter4.chapter4_start.r017",
+      "character": "sakura",
+      "display": "力仕事だけでいいから。手伝いの名簿、まだあたしの名前しかないんだよ",
+      "tts": "[casual] 力仕事だけでいいから。手伝いの名簿、[a little disappointed] まだあたしの名前しかないんだよ。",
+      "direction": "ユーザー指定：後半「まだあたしの名前しかないんだよ」を、手伝いが集まらず少し困っている・残念そうなニュアンスに。前半の親しげな誘いは保ち、泣くほど深刻にしない。表示本文は維持。",
+      "before": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v3.mp3",
+        "gainDb": -1.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v4.mp3",
+        "gainDb": -1.0
+      },
+      "sha256": "6d088e29dc3232697c69a79fd0a6773629dab2ddd668fae4c34ed95fef3a4f5e",
+      "duration": 6.08,
+      "old_duration": 5.76,
+      "peak_after_gain_dbfs": -3.67210213885058,
+      "rms_delta_db": -0.049140259244108364,
+      "trailing_silence_seconds": 0.08204166666666667,
+      "needs_tail_listening": false,
+      "previous_comparisons": [
+        {
+          "key": "ja:chapter4.chapter4_start.r017",
+          "language": "ja",
+          "id": "chapter4.chapter4_start.r017",
+          "character": "sakura",
+          "display": "力仕事だけでいいから。担当表、まだあたしの名前しかないんだよ",
+          "tts": "[casual] 力仕事だけでいいから。たんとうひょう、まだあたしの名前しかないんだよ。",
+          "direction": "相手が動けるように具体的に促す。上から慰める声にしない。",
+          "before": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.full-v2.mp3",
+            "gainDb": -3.0
+          },
+          "after": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v1.mp3",
+            "gainDb": -2.5
+          },
+          "sha256": "e26d262c17ab47a5005c4c63cc587b1a9c319e6b9f865e0e031522965eb5d63b",
+          "duration": 6.48,
+          "old_duration": 5.36,
+          "peak_after_gain_dbfs": -5.961414949061004,
+          "rms_delta_db": -0.18323263004758417,
+          "trailing_silence_seconds": 0.8052708333333334,
+          "needs_tail_listening": false
+        },
+        {
+          "key": "ja:chapter4.chapter4_start.r017",
+          "language": "ja",
+          "id": "chapter4.chapter4_start.r017",
+          "character": "sakura",
+          "display": "力仕事だけでいいから。担当表、まだあたしの名前しかないんだよ",
+          "tts": "[casual] 力仕事だけでいいから。担当表（たんとうひょう）、まだあたしの名前しかないんだよ。",
+          "direction": "ユーザーの試聴指摘。「ひょう」のアクセント改善を試すため、仮名だけから漢字＋括弧の読み指定へ変更。括弧内の重複読みがないかも試聴で確認する。",
+          "before": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v1.mp3",
+            "gainDb": -2.5
+          },
+          "after": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v2.mp3",
+            "gainDb": -2.0
+          },
+          "sha256": "e953c9df07ad48f1f44d9f1112d0b1c15c23aa8694c8ef630398677edfcff93a",
+          "duration": 5.68,
+          "old_duration": 6.48,
+          "peak_after_gain_dbfs": -5.55949680609406,
+          "rms_delta_db": 0.12818874460054275,
+          "trailing_silence_seconds": 0.16760416666666667,
+          "needs_tail_listening": false,
+          "user_listening_result": "Pronunciation not improved, per user feedback."
+        },
+        {
+          "key": "ja:chapter4.chapter4_start.r017",
+          "language": "ja",
+          "id": "chapter4.chapter4_start.r017",
+          "character": "sakura",
+          "display": "力仕事だけでいいから。手伝いの名簿、まだあたしの名前しかないんだよ",
+          "tts": "[casual] 力仕事だけでいいから。手伝いの名簿、まだあたしの名前しかないんだよ。",
+          "direction": "漢字＋括弧やカタカナでも改善しなかったユーザー試聴結果を受け、発音が崩れる語を使わない自然な言い換えへ変更。場面の意味・人物の口調を維持し、画面本文も一致させる。",
+          "before": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v2.mp3",
+            "gainDb": -2.0
+          },
+          "after": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v3.mp3",
+            "gainDb": -1.5
+          },
+          "sha256": "e5dc75a474c69e4d6771606e7acaf45c8c09b43032fb5021701cee0f7cee5f19",
+          "duration": 5.76,
+          "old_duration": 5.68,
+          "peak_after_gain_dbfs": -5.382804998575363,
+          "rms_delta_db": 0.10594612130915593,
+          "trailing_silence_seconds": 0.12683333333333333,
+          "needs_tail_listening": false,
+          "user_feedback": "Request a mildly troubled/disappointed nuance on the final clause."
+        }
+      ],
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter4.chapter4_start.r018",
+      "language": "ja",
+      "id": "chapter4.chapter4_start.r018",
+      "character": "kotoha",
+      "display": "それは、その紙を回していないからでは",
+      "tts": "[calm] それは、その紙を回していないからでは。",
+      "direction": "漢字＋括弧やカタカナでも改善しなかったユーザー試聴結果を受け、発音が崩れる語を使わない自然な言い換えへ変更。場面の意味・人物の口調を維持し、画面本文も一致させる。",
+      "before": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v2.mp3",
+        "gainDb": 4.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v3.mp3",
+        "gainDb": 3.5
+      },
+      "sha256": "798acacf8c4b7a1ab734e38f5795d60e7e2c368478d58db49bad4b4130e7c26d",
+      "duration": 3.6,
+      "old_duration": 3.2,
+      "peak_after_gain_dbfs": -4.990385231997491,
+      "rms_delta_db": 0.20261394166927715,
+      "trailing_silence_seconds": 0.059333333333333335,
+      "needs_tail_listening": false,
+      "previous_comparisons": [
+        {
+          "key": "ja:chapter4.chapter4_start.r018",
+          "language": "ja",
+          "id": "chapter4.chapter4_start.r018",
+          "character": "kotoha",
+          "display": "それは、表を回していないからでは",
+          "tts": "[calm] それは、ひょうを回していないからでは。",
+          "direction": "声を抑えた落ち着いた演技を基本にする。聞き取れる普通の声で、常時ささやかない。戸惑い・問い・乾いた冗談・嬉しさは小さく残し、拒否は静かに明確に。涙はこらえ、驚きでも声を張らない。 必要な事実を端的に返す。無感情でなく、相手へ届く返事。",
+          "before": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.kotoha-leira-v1.mp3",
+            "gainDb": 6.0
+          },
+          "after": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v1.mp3",
+            "gainDb": 3.5
+          },
+          "sha256": "44e106642a594da9861303f3ecaeb6d2c2b5c25f89795a8a74120091b2868307",
+          "duration": 3.2,
+          "old_duration": 3.44,
+          "peak_after_gain_dbfs": -4.775666593184871,
+          "rms_delta_db": -0.0026599215532989717,
+          "trailing_silence_seconds": 0.09464583333333333,
+          "needs_tail_listening": false
+        },
+        {
+          "key": "ja:chapter4.chapter4_start.r018",
+          "language": "ja",
+          "id": "chapter4.chapter4_start.r018",
+          "character": "kotoha",
+          "display": "それは、表を回していないからでは",
+          "tts": "[calm] それは、表（ひょう）を回していないからでは。",
+          "direction": "ユーザーの試聴指摘。「ひょう」のアクセント改善を試すため、仮名だけから漢字＋括弧の読み指定へ変更。括弧内の重複読みがないかも試聴で確認する。",
+          "before": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v1.mp3",
+            "gainDb": 3.5
+          },
+          "after": {
+            "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v2.mp3",
+            "gainDb": 4.5
+          },
+          "sha256": "b670620e4cc9c029f48b2ca5cae75c0c1a5bfb2c86974fedfe08e90774473049",
+          "duration": 3.2,
+          "old_duration": 3.2,
+          "peak_after_gain_dbfs": -5.7364773878266,
+          "rms_delta_db": 0.20116554539850995,
+          "trailing_silence_seconds": 0.05452083333333333,
+          "needs_tail_listening": false,
+          "user_listening_result": "Pronunciation not improved, per user feedback."
+        }
+      ],
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter7.chapter7_music_room.r024",
+      "language": "ja",
+      "id": "chapter7.chapter7_music_room.r024",
+      "character": "kotoha",
+      "display": "入れたら、呼んでもいいですか",
+      "tts": "[gentle] はいれたら、呼んでもいいですか。",
+      "direction": "声を抑えた落ち着いた演技を基本にする。聞き取れる普通の声で、常時ささやかない。戸惑い・問い・乾いた冗談・嬉しさは小さく残し、拒否は静かに明確に。涙はこらえ、驚きでも声を張らない。 言葉を選ぶ短い間。全ての語の前で長く止まらない。",
+      "before": {
+        "src": "assets/voice/ja/chapter7/chapter7.chapter7_music_room.r024.kotoha-leira-v1.mp3",
+        "gainDb": 6.0
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter7/chapter7.chapter7_music_room.r024.debug11-v1.mp3",
+        "gainDb": -1.0
+      },
+      "sha256": "161769374bbe13d8b476b0dd3beeefbace3eea8baa66c6224efac950bda55eaa",
+      "duration": 2.88,
+      "old_duration": 3.28,
+      "peak_after_gain_dbfs": -7.683223535059472,
+      "rms_delta_db": -0.10086622121698241,
+      "trailing_silence_seconds": 0.17652083333333332,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter7.chapter7_rooftop.r050",
+      "language": "ja",
+      "id": "chapter7.chapter7_rooftop.r050",
+      "character": "mahiru",
+      "display": "明日も空がきれいだといいな",
+      "tts": "[softly] 明日も空がきれいだといいな。",
+      "direction": "相手へ親しさを渡す。甘い囁きへ寄せすぎない。",
+      "before": {
+        "src": "assets/voice/ja/chapter7/chapter7.chapter7_rooftop.r050.full-v2.mp3",
+        "gainDb": 4.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter7/chapter7.chapter7_rooftop.r050.debug11-v1.mp3",
+        "gainDb": 10.5
+      },
+      "sha256": "fa995e19f318867df979fc3a8ea72216f221313ad36c62a3179be284a47d70fb",
+      "duration": 2.64,
+      "old_duration": 2.08,
+      "peak_after_gain_dbfs": -8.465458263522027,
+      "rms_delta_db": 0.1904993007222373,
+      "trailing_silence_seconds": 0.03270833333333333,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:route_sakura.sakura_good_end_hospital.r003",
+      "language": "ja",
+      "id": "route_sakura.sakura_good_end_hospital.r003",
+      "character": "sakura",
+      "display": "うん。勇くんが荷物取りに戻ったとき",
+      "tts": "[gentle] うん。イサムくんが、荷物、取りに戻ったとき。",
+      "direction": "控えめでも聞き取れる声。丁寧さと意思を残す。",
+      "before": {
+        "src": "assets/voice/ja/route_sakura/route_sakura.sakura_good_end_hospital.r003.full-v2.mp3",
+        "gainDb": -3.0
+      },
+      "after": {
+        "src": "assets/voice/ja/route_sakura/route_sakura.sakura_good_end_hospital.r003.debug11-v1.mp3",
+        "gainDb": -3.0
+      },
+      "sha256": "7d6ce9f167a5053b69d0263af81f1c445a32b0272fa9b39e23151041cf8425df",
+      "duration": 4.72,
+      "old_duration": 3.52,
+      "peak_after_gain_dbfs": -8.938366546346789,
+      "rms_delta_db": -0.10667968751517876,
+      "trailing_silence_seconds": 0.35060416666666666,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:route_kotoha.kotoha_ch9_daily2.r005",
+      "language": "ja",
+      "id": "route_kotoha.kotoha_ch9_daily2.r005",
+      "character": "kotoha",
+      "display": "はい。困っています",
+      "tts": "[calm] はい。こまっています。",
+      "direction": "声を抑えた落ち着いた演技を基本にする。聞き取れる普通の声で、常時ささやかない。戸惑い・問い・乾いた冗談・嬉しさは小さく残し、拒否は静かに明確に。涙はこらえ、驚きでも声を張らない。 控えめでも聞き取れる声。丁寧さと意思を残す。",
+      "before": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch9_daily2.r005.kotoha-leira-v1.mp3",
+        "gainDb": 6.0
+      },
+      "after": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch9_daily2.r005.debug11-v1.mp3",
+        "gainDb": 1.5
+      },
+      "sha256": "51ad2007f0536c2a07b6c03bc70f68844aad884c2901739be76e7b7474225bdb",
+      "duration": 2.4,
+      "old_duration": 2.24,
+      "peak_after_gain_dbfs": -8.110566765716229,
+      "rms_delta_db": 0.015698957463612828,
+      "trailing_silence_seconds": 0.10245833333333333,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+      "language": "ja",
+      "id": "route_kotoha.kotoha_ch11_start.r041",
+      "character": "kotoha",
+      "display": "こんなふうに。力を入れないで",
+      "tts": "[gentle] こんなふうに。力を入れないで。",
+      "direction": "漢字＋括弧やカタカナでも改善しなかったユーザー試聴結果を受け、発音が崩れる語を使わない自然な言い換えへ変更。場面の意味・人物の口調を維持し、画面本文も一致させる。",
+      "before": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v2.mp3",
+        "gainDb": 3.5
+      },
+      "after": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v3.mp3",
+        "gainDb": -0.5
+      },
+      "sha256": "492ee04bcf59cced3bfd2d1112d838faf09bca10dd79c5da4655033ab34b6136",
+      "duration": 2.88,
+      "old_duration": 2.64,
+      "peak_after_gain_dbfs": -7.789582446192088,
+      "rms_delta_db": -0.08380531056193519,
+      "trailing_silence_seconds": 0.08972916666666667,
+      "needs_tail_listening": false,
+      "previous_comparisons": [
+        {
+          "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+          "language": "ja",
+          "id": "route_kotoha.kotoha_ch11_start.r041",
+          "character": "kotoha",
+          "display": "こう。力を入れないで",
+          "tts": "[gentle] こう。力を入れないで。",
+          "direction": "声を抑えた落ち着いた演技を基本にする。聞き取れる普通の声で、常時ささやかない。戸惑い・問い・乾いた冗談・嬉しさは小さく残し、拒否は静かに明確に。涙はこらえ、驚きでも声を張らない。 相手に届く実務的な案内・指示。早口で潰さない。",
+          "before": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.kotoha-leira-v1.mp3",
+            "gainDb": 6.0
+          },
+          "after": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v1.mp3",
+            "gainDb": 1.0
+          },
+          "sha256": "372a06f80815d8919ed7651b05edd95b39a8a124c0a842d9a5a3a0065c3b9416",
+          "duration": 2.48,
+          "old_duration": 2.56,
+          "peak_after_gain_dbfs": -6.329359414550516,
+          "rms_delta_db": 0.04963531634799523,
+          "trailing_silence_seconds": 0.06283333333333334,
+          "needs_tail_listening": false
+        },
+        {
+          "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+          "language": "ja",
+          "id": "route_kotoha.kotoha_ch11_start.r041",
+          "character": "kotoha",
+          "display": "こう。力を入れないで",
+          "tts": "[gentle] コウ。力を入れないで。",
+          "direction": "ユーザーの再試聴指摘。「こう」が「ちょう」に聞こえるため、冒頭をカタカナ「コウ。」にして再生成。表示本文は維持し、子音の聞こえ方は試聴で確認する。",
+          "before": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v1.mp3",
+            "gainDb": 1.0
+          },
+          "after": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v2.mp3",
+            "gainDb": 3.5
+          },
+          "sha256": "c3a37a1b57064cadf4cae37d756d28e8af7cab2b6ffd88cd77d59c1ff2bdc5c9",
+          "duration": 2.64,
+          "old_duration": 2.48,
+          "peak_after_gain_dbfs": -8.058415580909404,
+          "rms_delta_db": -0.023630185450741692,
+          "trailing_silence_seconds": 0.07116666666666667,
+          "needs_tail_listening": false,
+          "user_listening_result": "Pronunciation not improved, per user feedback."
+        }
+      ],
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:route_kotoha.kotoha_ch12_practice.r004",
+      "language": "ja",
+      "id": "route_kotoha.kotoha_ch12_practice.r004",
+      "character": "kotoha",
+      "display": "聴いてください。次は意識して",
+      "tts": "[softly] 聴いてください。次は、意識して。",
+      "direction": "ユーザー指定：steadyは使用しない。前半「聴いてください」と後半「次は意識して」の両方を抑えた声色で揃える。一文ごとに別の演技タグを置かず、全体へsoftlyを指定。表示本文は維持。",
+      "before": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.debug11-v2.mp3",
+        "gainDb": 4.0
+      },
+      "after": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.debug11-v3.mp3",
+        "gainDb": 9.0
+      },
+      "sha256": "e04126b93dc1a56ec271f02705fd02b46e44e098d63955098b0a393c29dc62b4",
+      "duration": 3.28,
+      "old_duration": 3.2,
+      "peak_after_gain_dbfs": -1.6819700854318143,
+      "rms_delta_db": 0.10867230301705888,
+      "trailing_silence_seconds": 0.09252083333333333,
+      "needs_tail_listening": false,
+      "previous_comparisons": [
+        {
+          "key": "ja:route_kotoha.kotoha_ch12_practice.r004",
+          "language": "ja",
+          "id": "route_kotoha.kotoha_ch12_practice.r004",
+          "character": "kotoha",
+          "display": "聴いてください。次は意識して",
+          "tts": "[calm, steady] 聴いてください。次は意識して。",
+          "direction": "声を抑えた落ち着いた演技を基本にする。聞き取れる普通の声で、常時ささやかない。戸惑い・問い・乾いた冗談・嬉しさは小さく残し、拒否は静かに明確に。涙はこらえ、驚きでも声を張らない。 相手に届く実務的な案内・指示。早口で潰さない。",
+          "before": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.kotoha-leira-v1.mp3",
+            "gainDb": 6.0
+          },
+          "after": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.debug11-v1.mp3",
+            "gainDb": 2.5
+          },
+          "sha256": "5122056274acdc7ffbf22f7f1b009b37f664976064d1b2ea2f786cfd59370635",
+          "duration": 3.04,
+          "old_duration": 2.96,
+          "peak_after_gain_dbfs": -1.1873821621086567,
+          "rms_delta_db": -1.6444300911056082,
+          "trailing_silence_seconds": 0.0020416666666666665,
+          "needs_tail_listening": true,
+          "user_listening_result": "Mechanical/robotic intonation, per user feedback."
+        },
+        {
+          "key": "ja:route_kotoha.kotoha_ch12_practice.r004",
+          "language": "ja",
+          "id": "route_kotoha.kotoha_ch12_practice.r004",
+          "character": "kotoha",
+          "display": "聴いてください。次は意識して",
+          "tts": "[gentle] 聴いてください。次は、意識して。",
+          "direction": "ユーザー試聴で機械的な抑揚との指摘。calm, steadyを外す。自分のピアノ演奏を聴く主人公へ、近い距離でやさしく注意を向ける会話。二文で声色を急変させず、後半は軽い念押し。表示本文は維持。",
+          "before": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.debug11-v1.mp3",
+            "gainDb": 2.5
+          },
+          "after": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.debug11-v2.mp3",
+            "gainDb": 4.0
+          },
+          "sha256": "c4d82c483a5fe5a50c79e99dff5043529a11c5157b827bbba0e8ac787cf1ed9a",
+          "duration": 3.2,
+          "old_duration": 3.04,
+          "peak_after_gain_dbfs": -5.814198248462372,
+          "rms_delta_db": -0.05132410563453149,
+          "trailing_silence_seconds": 0.0916875,
+          "needs_tail_listening": false,
+          "user_feedback": "Use a subdued delivery for both sentences without steady."
+        }
+      ],
+      "review_status": "approved_by_user",
+      "review_date": "2026-10-19",
+      "user_feedback": "これでいいです。"
+    },
+    {
+      "key": "ja:route_kotoha.kotoha_ch12_good_end.r026",
+      "language": "ja",
+      "id": "route_kotoha.kotoha_ch12_good_end.r026",
+      "character": "kotoha",
+      "display": "こちらへどうぞ。最初の音だけ、一緒に押してみませんか",
+      "tts": "[quiet, restrained voice] こちらへどうぞ。\n[quiet, restrained voice] 最初の音だけ、一緒に押してみませんか。",
+      "direction": "前後の文を別々にquiet, restrained voice指定で生成し、各文の音量を抑えた共通基準へ揃えて結合。steadyは不使用。実際の演技は試聴確認待ち。",
+      "before": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v2.mp3",
+        "gainDb": 5.0
+      },
+      "after": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v3.mp3",
+        "gainDb": 9.0
+      },
+      "sha256": "46b6a1fb425f3deb3d858d0c57d0c4090fa86e4eea55ffe44e15e136670560ec",
+      "duration": 5.187619047619048,
+      "old_duration": 5.12,
+      "peak_after_gain_dbfs": -3.0302724700498977,
+      "rms_delta_db": -5.6478671414081845,
+      "trailing_silence_seconds": 0.11065759637188209,
+      "needs_tail_listening": false,
+      "previous_comparisons": [
+        {
+          "key": "ja:route_kotoha.kotoha_ch12_good_end.r026",
+          "language": "ja",
+          "id": "route_kotoha.kotoha_ch12_good_end.r026",
+          "character": "kotoha",
+          "display": "こちらへどうぞ。最初の音だけ、一緒に押してみませんか",
+          "tts": "[gentle, steady] こちらへどうぞ。最初の音だけ、一緒に押してみませんか。",
+          "direction": "声を抑えた落ち着いた演技を基本にする。聞き取れる普通の声で、常時ささやかない。戸惑い・問い・乾いた冗談・嬉しさは小さく残し、拒否は静かに明確に。涙はこらえ、驚きでも声を張らない。 相手が動けるように具体的に促す。上から慰める声にしない。",
+          "before": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.kotoha-leira-v1.mp3",
+            "gainDb": 6.0
+          },
+          "after": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v1.mp3",
+            "gainDb": 3.0
+          },
+          "sha256": "77eb0fa66488fad38fd2a23aee4da48adaee917c4828768cc6a332e62eefb84f",
+          "duration": 5.04,
+          "old_duration": 5.04,
+          "peak_after_gain_dbfs": -1.2697822583337324,
+          "rms_delta_db": -1.1087383075209516,
+          "trailing_silence_seconds": 0.09991666666666667,
+          "needs_tail_listening": false,
+          "user_feedback": "Request both sentences subdued, matching the approved practice take."
+        },
+        {
+          "key": "ja:route_kotoha.kotoha_ch12_good_end.r026",
+          "language": "ja",
+          "id": "route_kotoha.kotoha_ch12_good_end.r026",
+          "character": "kotoha",
+          "display": "こちらへどうぞ。最初の音だけ、一緒に押してみませんか",
+          "tts": "[softly] こちらへどうぞ。最初の音だけ、一緒に押してみませんか。",
+          "direction": "ユーザーが承認した練習台詞v3と同じsoftly指定を使う。steadyは使わず、前半「こちらへどうぞ」と後半「最初の音だけ、一緒に押してみませんか」を両方抑えた声色で揃える。本文・配役・モデルは維持。",
+          "before": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v1.mp3",
+            "gainDb": 3.0
+          },
+          "after": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v2.mp3",
+            "gainDb": 5.0
+          },
+          "sha256": "225f78c412360ce662558bcdb9c6e6de9b05c0204f5a04277b0e28c8757a4e09",
+          "duration": 5.12,
+          "old_duration": 5.04,
+          "peak_after_gain_dbfs": -2.409912978045834,
+          "rms_delta_db": 0.07172874107500249,
+          "trailing_silence_seconds": 0.25835416666666666,
+          "needs_tail_listening": false,
+          "review_status": "pending_user_listening",
+          "user_listening_result": "No perceived change in subdued delivery, per user feedback."
+        }
+      ],
+      "review_status": "approved_by_user",
+      "gain_method": "Both clauses level-matched to a common quiet raw target constrained by the approved reference and safe peak headroom; approved reference manifest gain retained."
+    },
+    {
+      "key": "ja:route_mahiru.mahiru_ch9_corridor.r003",
+      "language": "ja",
+      "id": "route_mahiru.mahiru_ch9_corridor.r003",
+      "character": "mahiru",
+      "display": "今日、ひとりがいい",
+      "tts": "[quiet, tired] きょう、ひとりがいい。",
+      "direction": "必要な意思を短く明確に。大声や威圧に置き換えない。",
+      "before": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.full-v2.mp3",
+        "gainDb": 3.0
+      },
+      "after": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug11-v1.mp3",
+        "gainDb": 12
+      },
+      "sha256": "c40902608fa821019d9106a87920909a642374da3ab729ab9c1fabf86dc6c297",
+      "duration": 2.4,
+      "old_duration": 1.44,
+      "peak_after_gain_dbfs": -3.6387402092737595,
+      "rms_delta_db": -3.063041750983661,
+      "trailing_silence_seconds": 0.5031875,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:route_mahiru.mahiru_ch9_walk.r007",
+      "language": "ja",
+      "id": "route_mahiru.mahiru_ch9_walk.r007",
+      "character": "mahiru",
+      "display": "まひるは遅いもん。もう一回くらいいいでしょ",
+      "tts": "[casual] まひるは遅いもん。もういっかいくらい、いいでしょ。",
+      "direction": "親しい相手への軽口。皮肉や高笑いを強くしない。",
+      "before": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_walk.r007.full-v2.mp3",
+        "gainDb": 4.5
+      },
+      "after": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_walk.r007.debug11-v1.mp3",
+        "gainDb": 6.0
+      },
+      "sha256": "a64597b69d523ac683e5faf26259053621f680d7ed58d2b28d10071b528d8358",
+      "duration": 3.84,
+      "old_duration": 3.44,
+      "peak_after_gain_dbfs": -5.887334641795626,
+      "rms_delta_db": 0.14836308210152183,
+      "trailing_silence_seconds": 0.3465625,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:route_mahiru.mahiru_ch12_branch.teacher_safety",
+      "language": "ja",
+      "id": "route_mahiru.mahiru_ch12_branch.teacher_safety",
+      "character": "teacher_male",
+      "display": "扉の内側にも入れるようにしておく。見回りには来るからな",
+      "tts": "[reassuring] 扉の内側にも、はいれるようにしておく。見回りには来るからな。",
+      "direction": "相手に届く実務的な案内・指示。早口で潰さない。",
+      "before": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch12_branch.teacher_safety.full-v2.mp3",
+        "gainDb": -1.0
+      },
+      "after": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch12_branch.teacher_safety.debug11-v1.mp3",
+        "gainDb": -0.5
+      },
+      "sha256": "d5a9e4ca9ed36d089a57b4f8fc5036823bc3ba244051a507f3a572a0f2249ea9",
+      "duration": 4.72,
+      "old_duration": 4.16,
+      "peak_after_gain_dbfs": -2.9826368887772716,
+      "rms_delta_db": -0.0844022713784085,
+      "trailing_silence_seconds": 0.15091666666666667,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:route_mahiru.mahiru_good_end_school.r016",
+      "language": "ja",
+      "id": "route_mahiru.mahiru_good_end_school.r016",
+      "character": "sakura",
+      "display": "もう見ちゃった。あたし、髪はねてるじゃん",
+      "tts": "[playful] もう見ちゃった。あたし、髪、はねてるじゃん。",
+      "direction": "親しい相手への軽口。皮肉や高笑いを強くしない。",
+      "before": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_good_end_school.r016.full-v2.mp3",
+        "gainDb": -3.0
+      },
+      "after": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_good_end_school.r016.debug11-v1.mp3",
+        "gainDb": -3.5
+      },
+      "sha256": "9217be83f43a5053d69fcf67bc7021c1e75360eca833ab666ec92f8d572db617",
+      "duration": 4.08,
+      "old_duration": 3.68,
+      "peak_after_gain_dbfs": -6.963680249119882,
+      "rms_delta_db": 0.07060335063653866,
+      "trailing_silence_seconds": 0.17058333333333334,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:route_mahiru.mahiru_good_end_school.r050",
+      "language": "ja",
+      "id": "route_mahiru.mahiru_good_end_school.r050",
+      "character": "mahiru",
+      "display": "いったん離して",
+      "tts": "[matter-of-fact, conversational] いったん離して。",
+      "direction": "財布を出すため、つないでいる手をいったん離してもらう普通の依頼。ささやかず、怒らず、照れや甘さを足さず、普段の会話の声量とフラットな口調。",
+      "before": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_good_end_school.r050.debug11-v1.mp3",
+        "gainDb": 12
+      },
+      "after": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_good_end_school.r050.debug11-v2.mp3",
+        "gainDb": 10.0
+      },
+      "sha256": "834a5d8ddca21d3773e4b2c6c21d1526b4d4e6e4c3f19d26dcb3670b0dd67930",
+      "duration": 1.2,
+      "old_duration": 1.68,
+      "peak_after_gain_dbfs": -2.1884033807318417,
+      "rms_delta_db": -0.10479038706249,
+      "trailing_silence_seconds": 0.10614583333333333,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user",
+      "previous_comparisons": [
+        {
+          "key": "ja:route_mahiru.mahiru_good_end_school.r050",
+          "language": "ja",
+          "id": "route_mahiru.mahiru_good_end_school.r050",
+          "character": "mahiru",
+          "display": "いったん離して",
+          "tts": "[softly, embarrassed] いったん離して。",
+          "direction": "必要な意思を短く明確に。大声や威圧に置き換えない。",
+          "before": {
+            "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_good_end_school.r050.full-v2.mp3",
+            "gainDb": 4.0
+          },
+          "after": {
+            "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_good_end_school.r050.debug11-v1.mp3",
+            "gainDb": 12
+          },
+          "sha256": "fa03337d566d3ac3b236406ef03a92dce8fa8160f15139aa71e434cac4520d9f",
+          "duration": 1.68,
+          "old_duration": 1.04,
+          "peak_after_gain_dbfs": -5.880707635343434,
+          "rms_delta_db": -5.755496430758402,
+          "trailing_silence_seconds": 0.12202083333333333,
+          "needs_tail_listening": false,
+          "review_status": "superseded_after_user_feedback",
+          "user_feedback": "ささやくように言う感じじゃなく。怒ってもなく。フラットな感じで"
+        }
+      ],
+      "user_review": {
+        "date": "2026-10-19",
+        "result": "approved",
+        "feedback": "OK",
+        "scope": "Mahiru r050 neutral conversational retake v2."
+      }
+    },
+    {
+      "key": "ja:chapter1.chapter1_homeroom.r001",
+      "language": "ja",
+      "id": "chapter1.chapter1_homeroom.r001",
+      "character": "teacher_male",
+      "display": "座れ。まず連絡。去年の落とし物の傘が十二本、職員室にある。心当たりのある者は、今日のうちに取りに来るように",
+      "tts": "[matter-of-fact] 座れ。まず連絡。去年の落とし物の傘が十二本、職員室にある。心当たりのある者は、今日のうちに取りに来るように",
+      "direction": "教室全体へ着席を促す。威圧せず、連絡は慣れた先生の事務的な口調。",
+      "before": {
+        "src": "assets/voice/ja/chapter1/chapter1.chapter1_homeroom.r001.bilingual-v1.mp3",
+        "gainDb": -0.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter1/chapter1.chapter1_homeroom.r001.debug11-v1.mp3",
+        "gainDb": -1.0
+      },
+      "sha256": "dd39cbf2d4f8e0e33ddbe0b69cfc6c5500dcf625b456685b71a509656b26c70c",
+      "duration": 9.76,
+      "old_duration": 6.24,
+      "peak_after_gain_dbfs": -2.316329424006911,
+      "rms_delta_db": -0.05677147014931094,
+      "trailing_silence_seconds": 0.5363333333333333,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "ja:chapter4.chapter4_corridor_end.r014",
+      "language": "ja",
+      "id": "chapter4.chapter4_corridor_end.r014",
+      "character": "mahiru",
+      "display": "傘、借りに行ってくる。ノート返してくれてありがと",
+      "tts": "[casual] 傘、借りに行ってくる。ノート返してくれてありがと",
+      "direction": "相手へ親しさを渡す。甘い囁きへ寄せすぎない。",
+      "before": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_corridor_end.r014.full-v2.mp3",
+        "gainDb": 4.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_corridor_end.r014.debug11-v1.mp3",
+        "gainDb": 5.5
+      },
+      "sha256": "82f7f2a647ce3988d421d20de994f8bbef71a424bc1cdae7b6d0a6c28d7fc370",
+      "duration": 3.36,
+      "old_duration": 3.04,
+      "peak_after_gain_dbfs": -5.799113560173373,
+      "rms_delta_db": -0.03835579609695117,
+      "trailing_silence_seconds": 0.04027083333333333,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "en:chapter1.chapter1_homeroom.r001",
+      "language": "en",
+      "id": "chapter1.chapter1_homeroom.r001",
+      "character": "teacher_male",
+      "display": "Sit down. First announcement: twelve umbrellas left behind last year are in the staff room. If one is yours, come and collect it today.",
+      "tts": "[matter-of-fact] Sit down. First announcement: twelve umbrellas left behind last year are in the staff room. If one is yours, come and collect it today.",
+      "direction": "教室全体へ着席を促す。威圧せず、連絡は慣れた先生の事務的な口調。 英語の語順と意味のまとまりで間を置き、日本語の一語ごとの間を機械的に移さない。",
+      "before": {
+        "src": "assets/voice/en/chapter1/chapter1.chapter1_homeroom.r001.bilingual-v1.mp3",
+        "gainDb": -0.5
+      },
+      "after": {
+        "src": "assets/voice/en/chapter1/chapter1.chapter1_homeroom.r001.debug11-v1.mp3",
+        "gainDb": -1.0
+      },
+      "sha256": "4c59b2af44108bd4a8a11f41d1ebc1bbe1b0d99c0d75de682e23fb52760d3c4b",
+      "duration": 8.4,
+      "old_duration": 6.24,
+      "peak_after_gain_dbfs": -3.3597711705005993,
+      "rms_delta_db": 0.06249273612600703,
+      "trailing_silence_seconds": 0.115375,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    },
+    {
+      "key": "en:chapter4.chapter4_corridor_end.r014",
+      "language": "en",
+      "id": "chapter4.chapter4_corridor_end.r014",
+      "character": "mahiru",
+      "display": "I’m going to borrow an umbrella. Thanks for giving my notebook back.",
+      "tts": "[casual] I’m going to borrow an umbrella. Thanks for giving my notebook back.",
+      "direction": "相手へ親しさを渡す。甘い囁きへ寄せすぎない。 英語の語順と意味のまとまりで間を置き、日本語の一語ごとの間を機械的に移さない。",
+      "before": {
+        "src": "assets/voice/en/chapter4/chapter4.chapter4_corridor_end.r014.full-v2.mp3",
+        "gainDb": 6.5
+      },
+      "after": {
+        "src": "assets/voice/en/chapter4/chapter4.chapter4_corridor_end.r014.debug11-v1.mp3",
+        "gainDb": 5.5
+      },
+      "sha256": "6f28339a07e5b69579c9a7076c37ce6d4428e381394dedd68b385c2ae3e3b80a",
+      "duration": 3.68,
+      "old_duration": 2.96,
+      "peak_after_gain_dbfs": -6.703642986739659,
+      "rms_delta_db": -0.15353004627998956,
+      "trailing_silence_seconds": 0.10345833333333333,
+      "needs_tail_listening": false,
+      "review_status": "approved_by_user"
+    }
+  ],
+  "total_clips": 23,
+  "japanese_clips": 21,
+  "english_clips": 2,
+  "charged_characters_response_total": 617,
+  "subjective_listening": true,
+  "gain_method": "Match previous take active RMS after its manifest gain; half-dB steps, +/-12 dB, sample-peak ceiling -1 dBFS. Not LUFS/true-peak measurement.",
+  "previous_audio_preserved": true,
+  "total_generation_requests": 37,
+  "review_status": "approved_by_user",
+  "listened_by": "user",
+  "user_review": {
+    "date": "2026-10-19",
+    "result": "approved",
+    "feedback": "OK。ボイスの修正もOKです。",
+    "scope": "All current report-11 retakes and base-volume adjustment; Mahiru r050 v2 subsequently approved separately."
+  },
+  "pending_user_listening": [],
+  "latest_user_review": {
+    "date": "2026-10-19",
+    "result": "approved",
+    "feedback": "OK",
+    "scope": "Mahiru r050 neutral conversational retake v2."
+  }
+}

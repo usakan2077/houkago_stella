@@ -52,6 +52,12 @@ def main():
             c.evaluate("document.querySelector('[data-voice-samples]').scrollIntoView({behavior:'instant'})")
             c.wait("[...document.querySelectorAll('[data-voice-character] img')].every(i=>i.complete&&i.naturalWidth>0)")
             c.shot(variant+'-voices-ja')
+            samples=c.evaluate("""(async()=>{const context=new OfflineAudioContext(1,44100,44100),out=[];for(const lang of ['ja','en']){const manifest=await fetch('/assets/voice/'+lang+'/manifest.json').then(r=>r.json());for(const button of document.querySelectorAll('.voice-play')){const source=button.dataset[lang+'Src'],id=source.split('/').pop().split('.').slice(0,3).join('.'),clip=manifest.clips[id];if(new URL(source,location.href).pathname!=='/'+clip.src||Number(button.dataset[lang+'Gain'])!==clip.gainDb)throw new Error('Stale voice sample '+id);const response=await fetch(source);if(!response.ok)throw new Error(source);const buffer=await context.decodeAudioData(await response.arrayBuffer());out.push({language:lang,id,duration:buffer.duration})}}return out})()""")
+            assert len(samples)==6 and all(s['duration']>.1 for s in samples)
+            if variant=='story':
+                assert c.evaluate("document.querySelector('.footer-version').textContent==='ver 1.3.1'&&document.querySelector('#update-1-3-1 .update-points').children.length===5&&document.querySelector('#update-1-3-1 .update-date').textContent==='2026.10.20'")
+            else:
+                assert c.evaluate("document.querySelector('.visual-version').textContent.includes('1.3.1')&&document.querySelector('.footer').textContent.includes('1.3.1')")
             c.click('[data-voice-character][data-role="kotoha"] .voice-play')
             c.wait("document.querySelector('[data-voice-character][data-role=\"kotoha\"] .voice-play').dataset.state==='playing'")
             assert c.evaluate("performance.getEntriesByType('resource').some(r=>r.name.includes('kotoha-leira-v1.mp3')) && document.querySelectorAll('.voice-play[aria-pressed=\"true\"]').length===1")
@@ -70,6 +76,8 @@ def main():
             assert c.evaluate(f"Array.from(dataLayer).some(e=>e[1]==='lp_play_click' && e[2].lp_variant==='{variant}' && e[2].cta_position==='hero' && e[2].language==='ja')")
             c.click('.language' if variant=='ai_solo' else '.language-toggle')
             assert c.evaluate("document.documentElement.lang==='en'")
+            if variant=='story':
+                assert c.evaluate("document.querySelector('#update-1-3-1 .update-version').textContent.includes('Voice fixes')&&document.querySelector('#update-1-3-1 .update-points').textContent.includes('pronunciation')&&document.querySelector('#update-1-3-1 .update-points').textContent.includes('Mahiru')")
             if variant=='ai_solo':assert c.evaluate("document.querySelector('h1').innerText.includes('One creator.')")
             assert c.evaluate("document.querySelector('.voice-play-label').innerText==='Listen'")
             c.evaluate("document.querySelector('[data-voice-samples]').scrollIntoView({behavior:'instant'})")

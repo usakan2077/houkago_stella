@@ -1,0 +1,41 @@
+{
+  "version": "debug11-kotoha-kou-v2",
+  "date": "2026-10-19",
+  "status": "superseded",
+  "id": "route_kotoha.kotoha_ch11_start.r041",
+  "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+  "language": "ja",
+  "display": "こう。力を入れないで",
+  "tts": "[gentle] コウ。力を入れないで。",
+  "voice_id": "SYjaeawCEiQrxiyl1IWh",
+  "voice_name": "Leira - Elegant Lady",
+  "model": "eleven_v4",
+  "payload": {
+    "text": "[gentle] コウ。力を入れないで。",
+    "language_code": "ja",
+    "previous_text": "地の文: ことはが椅子の上で横へずれた。空いた場所へ座ると、肩が触れる。\n地の文: 俺の手を取って、けんばんの上へ置いた。指をいっぽんずつ曲げられる。",
+    "next_text": "地の文: ことはの手が俺の指を押した。思ったより大きな音が出た。\nことは: ……へたですね",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    }
+  },
+  "before": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v1.mp3",
+    "gainDb": 1.0
+  },
+  "after": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v2.mp3",
+    "gainDb": 3.5
+  },
+  "sha256": "c3a37a1b57064cadf4cae37d756d28e8af7cab2b6ffd88cd77d59c1ff2bdc5c9",
+  "duration": 2.64,
+  "peak_after_gain_dbfs": -8.058415580909404,
+  "trailing_silence_seconds": 0.07116666666666667,
+  "charged_characters_response": 9,
+  "subjective_listening": false,
+  "previous_audio_preserved": true,
+  "user_listening_result": "Pronunciation not improved, per user feedback.",
+  "superseded_by": "phrasing-v3.json"
+}

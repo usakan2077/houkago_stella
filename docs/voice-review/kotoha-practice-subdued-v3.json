@@ -1,0 +1,46 @@
+{
+  "version": "debug11-kotoha-practice-subdued-v3",
+  "date": "2026-10-19",
+  "status": "approved_by_user",
+  "id": "route_kotoha.kotoha_ch12_practice.r004",
+  "key": "ja:route_kotoha.kotoha_ch12_practice.r004",
+  "language": "ja",
+  "display": "聴いてください。次は意識して",
+  "tts": "[softly] 聴いてください。次は、意識して。",
+  "direction": "ユーザー指定：steadyは使用しない。前半「聴いてください」と後半「次は意識して」の両方を抑えた声色で揃える。一文ごとに別の演技タグを置かず、全体へsoftlyを指定。表示本文は維持。",
+  "voice_id": "SYjaeawCEiQrxiyl1IWh",
+  "voice_name": "Leira - Elegant Lady",
+  "model": "eleven_v4",
+  "payload": {
+    "text": "[softly] 聴いてください。次は、意識して。",
+    "language_code": "ja",
+    "previous_text": "ことは: 左手が遅れます。ここ\nいさむ: 俺、わからなかった",
+    "next_text": "地の文: もう一度ひく。言われた場所で手元を見ていると、今度は別のところを間違えた。\nことは: 今のは右手です。そこはいいです",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    }
+  },
+  "before": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.debug11-v2.mp3",
+    "gainDb": 4.0
+  },
+  "after": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.debug11-v3.mp3",
+    "gainDb": 9.0
+  },
+  "sha256": "e04126b93dc1a56ec271f02705fd02b46e44e098d63955098b0a393c29dc62b4",
+  "duration": 3.28,
+  "peak_after_gain_dbfs": -1.6819700854318143,
+  "trailing_silence_seconds": 0.09252083333333333,
+  "charged_characters_response": 11,
+  "subjective_listening": true,
+  "previous_audio_preserved": true,
+  "listened_by": "user",
+  "user_review": {
+    "date": "2026-10-19",
+    "result": "approved",
+    "feedback": "これでいいです。"
+  }
+}

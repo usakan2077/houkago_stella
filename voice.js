@@ -1,13 +1,14 @@
 /** Dialogue audio only. No synthesis/API credentials are used in the browser. */
 class VNVoicePlayer {
   constructor(options = {}, dependencies = {}) {
-    this.options = { cacheEntries: 12, cacheBytes: 32 * 1024 * 1024, loadTimeout: 8000, ...options };
+    this.options = { baseGainDb: 0, cacheEntries: 12, cacheBytes: 32 * 1024 * 1024, loadTimeout: 8000, ...options };
     this.fetch = dependencies.fetch || ((...args) => fetch(...args));
     this.createContext = dependencies.createContext || (() => {
       const Context = window.AudioContext || window.webkitAudioContext;
       return Context ? new Context() : null;
     });
     this.context = null;
+    this.input = null;
     this.output = null;
     this.volume = 0.85;
     this.language = '';
@@ -25,6 +26,24 @@ class VNVoicePlayer {
         this.output = this.context.createGain();
         this.output.gain.value = this.volume;
         this.output.connect(this.context.destination);
+        // Boost dialogue before peak control; keep the user's volume after it
+        // so lowering the slider does not change the compression or clip balance.
+        this.input = this.context.createGain();
+        const baseGainDb = Number(this.options.baseGainDb);
+        this.input.gain.value = 10 ** ((Number.isFinite(baseGainDb) ? Math.max(-12, Math.min(12, baseGainDb)) : 0) / 20);
+        this.peakControl = this.context.createDynamicsCompressor();
+        this.peakControl.threshold.value = -6;
+        this.peakControl.knee.value = 0;
+        this.peakControl.ratio.value = 20;
+        this.peakControl.attack.value = 0.003;
+        this.peakControl.release.value = 0.1;
+        // Reserve headroom for the compressor's automatic makeup gain and
+        // brief transients. Quiet dialogue stays close to the configured boost.
+        this.headroom = this.context.createGain();
+        this.headroom.gain.value = 10 ** (-3.5 / 20);
+        this.input.connect(this.peakControl);
+        this.peakControl.connect(this.headroom);
+        this.headroom.connect(this.output);
       }
       if (this.context.state !== 'running') await this.context.resume();
       return this.context.state === 'running';
@@ -166,7 +185,7 @@ class VNVoicePlayer {
           // Per-file production correction is optional; default is unity gain.
           session.gain.gain.value = 10 ** (Math.max(-12, Math.min(12, gainDb || 0)) / 20);
           session.source.connect(session.gain);
-          session.gain.connect(this.output);
+          session.gain.connect(this.input);
           session.source.onended = () => session.finish(true);
           clearTimeout(session.timer);
           session.timer = setTimeout(() => session.finish(false), buffer.duration * 1000 + 2000);

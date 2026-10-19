@@ -313,7 +313,14 @@
       <button class="language-btn" type="button" data-language="ja">日本語</button>
       <button class="language-btn" type="button" data-language="en">EN</button>
     </div>
-    <div id="title-version" aria-hidden="true"></div>
+    <details id="title-updates">
+      <summary id="title-version" aria-controls="title-updates-panel"></summary>
+      <section id="title-updates-panel" aria-labelledby="title-updates-heading">
+        <h2 id="title-updates-heading" data-i18n="updateHistory">更新履歴</h2>
+        <div id="title-update-entries"></div>
+        <a href="lp/index.html" target="_blank" rel="noopener" data-i18n="visitWebsite">作品紹介サイトへ</a>
+      </section>
+    </details>
   </div>
 
   <!-- ======================================================

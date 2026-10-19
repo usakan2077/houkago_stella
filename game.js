@@ -847,12 +847,37 @@ class VNEngine {
     const titleScreen = document.getElementById('title-screen');
     const verEl = document.getElementById('title-version');
     if (verEl && VN_CONFIG.version) verEl.textContent = 'ver ' + VN_CONFIG.version;
+    this._renderTitleUpdates();
     titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
     titleScreen.classList.remove('hidden');
     document.getElementById('game-screen').classList.add('hidden');
     this._startTitleBGM();
     this._playTitleLogoAnim();
     this.titleFx.start();
+  }
+
+  _renderTitleUpdates() {
+    const details = document.getElementById('title-updates');
+    const entries = document.getElementById('title-update-entries');
+    const summary = document.getElementById('title-version');
+    if (!details || !entries || !summary) return;
+    details.open = false;
+    summary.setAttribute('aria-label', `${summary.textContent}: ${this._t('openUpdateHistory')}`);
+    entries.replaceChildren();
+    for (const release of VN_CONFIG.releaseNotes || []) {
+      const heading = document.createElement('h3');
+      heading.textContent = `ver ${release.version}${release.date ? ' / ' + release.date : ''}`;
+      const list = document.createElement('ul');
+      for (const note of release[this.currentLanguage] || release.ja || []) {
+        const item = document.createElement('li');
+        item.textContent = note;
+        list.appendChild(item);
+      }
+      entries.append(heading, list);
+    }
+    details.onkeydown = event => {
+      if (event.key === 'Escape') { details.open = false; summary.focus(); }
+    };
   }
 
   _hasAllGoodEndsSeen() {
@@ -1080,6 +1105,8 @@ class VNEngine {
   }
 
   _resetGameState() {
+    this._backgroundMotion?.cancel();
+    this._backgroundMotion = null;
     this.voice.reset();
     this._dialogVoiceId = null;
     this._updateVoiceIndicator();
@@ -1432,6 +1459,8 @@ class VNEngine {
   _changeBackground(bgKey, effect = 'fade') {
     this._clearCharEmotes();
     this._stopAllSE();
+    this._backgroundMotion?.cancel();
+    this._backgroundMotion = null;
     this.currentBG = bgKey;
     const el = document.getElementById('background');
     const isFlashbackBG = /^elementary_/.test(bgKey);
@@ -1476,8 +1505,23 @@ class VNEngine {
       }
     };
 
+    // A short forward push with footfall bobbing, confined to the background
+    // so text and controls stay still. Each scene owns and cancels its motion.
+    const startRush = () => {
+      if (this.skipMode || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      this._backgroundMotion = el.animate([
+        { transform: 'translate(0, 0) scale(1.025)', offset: 0 },
+        { transform: 'translate(-0.25%, 0.55%) scale(1.045)', offset: 0.22 },
+        { transform: 'translate(0.25%, -0.45%) scale(1.065)', offset: 0.46 },
+        { transform: 'translate(-0.15%, 0.35%) scale(1.085)', offset: 0.70 },
+        { transform: 'translate(0, 0) scale(1.105)', offset: 1 },
+      ], { duration: 820, easing: 'linear', fill: 'forwards' });
+    };
+
     if (effect === 'instant') {
       applyBG(() => {});
+    } else if (effect === 'rush') {
+      applyBG(startRush);
     } else if (effect === 'fade') {
       this.tx.diamond(1000, () => applyBG(() => {}), null);
     } else {
@@ -3013,7 +3057,39 @@ class VNEngine {
     requestAnimationFrame(check);
   }
 
+  _clearEndingCoda() {
+    (this._endingCodaTimers || []).forEach(timer => clearTimeout(timer));
+    this._endingCodaTimers = [];
+    document.getElementById('ending-coda')?.remove();
+    document.getElementById('game-screen')?.classList.remove('ending-coda-active');
+  }
+
+  _startEndingCoda(session, duration) {
+    const keys = VN_CONFIG.endingCoda?.[this.currentLabel] || [];
+    if (!keys.length || duration <= 0) return;
+    const screen = document.getElementById('game-screen');
+    const caption = document.createElement('p');
+    caption.id = 'ending-coda';
+    caption.setAttribute('aria-live', 'polite');
+    screen.appendChild(caption);
+    screen.classList.add('ending-coda-active');
+    this._endingCodaTimers = [];
+    keys.forEach((key, index) => {
+      const show = () => {
+        if (this._endingIntroSession !== session) return;
+        const text = this._resolveScenarioText(key);
+        caption.textContent = text;
+        caption.dataset.page = String(index + 1);
+        this._markLineRead(key);
+        this.textLog.push({ name: '', nameColor: '', text, voiceId: null, language: this.currentLanguage });
+      };
+      if (index === 0) show();
+      else this._endingCodaTimers.push(setTimeout(show, Math.round(duration * index / keys.length)));
+    });
+  }
+
   _clearEndingIntro() {
+    this._clearEndingCoda();
     if (this._endingIntroTimer) {
       clearTimeout(this._endingIntroTimer);
       this._endingIntroTimer = null;
@@ -3097,6 +3173,7 @@ class VNEngine {
     const delay = Math.max(0, Number(waitMs) || 0);
     const session = Symbol('endingIntro');
     this._endingIntroSession = session;
+    this._startEndingCoda(session, delay);
 
     // ▼ 新規追加：エンディングロール開始時点での「本来のオーディオ時間(秒)」を設計値として記録
     this._creditsExpectedAudioOffset = delay / 1000;
@@ -3105,6 +3182,7 @@ class VNEngine {
       if (this._endingIntroSession !== session) return;
       this._endingIntroTimer = null;
       this._endingIntroSession = null;
+      this._clearEndingCoda();
       this._showCredits(track, profileKey);
     }, delay);
   }
@@ -3667,6 +3745,8 @@ class VNEngine {
       { label: '── 分岐: さくらルート',           key: 'sakura_interlude' },
       { label: '── 分岐: ことはルート',           key: 'kotoha_interlude' },
       { label: '── 分岐: まひるルート',           key: 'mahiru_interlude' },
+      { label: 'まひる Ch10 — 屋上を発見',       key: 'mahiru_ch10_start' },
+      { label: 'まひる Ch10 — 屋上へ走る演出',   key: 'mahiru_ch10_run' },
       { label: '── バッドエンド',                 key: 'bad_end_common' },
     ];
 

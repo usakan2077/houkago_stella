@@ -4,7 +4,53 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3',
+  version: '1.3.1',
+  endingCoda: {
+  "bad_end_ending": [
+    "$bad_end.bad_end_ending.coda001",
+    "$bad_end.bad_end_ending.coda002",
+    "$bad_end.bad_end_ending.coda003"
+  ],
+  "kotoha_ch12_good_end": [
+    "$route_kotoha.kotoha_ch12_good_end.coda001",
+    "$route_kotoha.kotoha_ch12_good_end.coda002",
+    "$route_kotoha.kotoha_ch12_good_end.coda003"
+  ],
+  "kotoha_ch12_bad_end": [
+    "$route_kotoha.kotoha_ch12_bad_end.coda001",
+    "$route_kotoha.kotoha_ch12_bad_end.coda002",
+    "$route_kotoha.kotoha_ch12_bad_end.coda003"
+  ],
+  "mahiru_good_end_school": [
+    "$route_mahiru.mahiru_good_end_school.coda001",
+    "$route_mahiru.mahiru_good_end_school.coda002",
+    "$route_mahiru.mahiru_good_end_school.coda003"
+  ],
+  "mahiru_bad_end": [
+    "$route_mahiru.mahiru_bad_end.coda001",
+    "$route_mahiru.mahiru_bad_end.coda002",
+    "$route_mahiru.mahiru_bad_end.coda003"
+  ],
+  "sakura_good_end_rooftop": [
+    "$route_sakura.sakura_good_end_rooftop.coda001",
+    "$route_sakura.sakura_good_end_rooftop.coda002",
+    "$route_sakura.sakura_good_end_rooftop.coda003"
+  ],
+  "sakura_bad_end_final": [
+    "$route_sakura.sakura_bad_end_final.coda001",
+    "$route_sakura.sakura_bad_end_final.coda002",
+    "$route_sakura.sakura_bad_end_final.coda003"
+  ]
+},
+  releaseNotes: [
+    { version: '1.3.1', date: '2026-10-20',
+      ja: ['一部ボイスの発音・抑揚を修正し、全体の基準音量を調整。', '場面の時間帯・天候・会話のつながりと人物の表情を調整。', 'まひるルートの屋上へ走る場面に、夜の玄関・階段・扉のカットと足音を追加。', '全7エンディングの締めとBGM中の自動進行を調整。', 'タイトルに更新履歴と作品紹介へのリンクを追加し、バージョン表記を見やすく改善。'],
+      en: ['Corrected pronunciation and delivery in selected voice lines and raised the base dialogue volume.', 'Adjusted scene timing, weather, narrative continuity and character expressions.', "Added nighttime entrance, stairwell and door shots with running footsteps to Mahiru's rooftop approach.", 'Adjusted closing passages and automatic transitions during the music for all seven endings.', 'Added release history and a website link to the title screen, and improved version-label visibility.'] },
+    { version: '1.3', ja: ['日本語・英語のフルボイスに対応。', '音声設定とログからの再生機能を追加。'],
+      en: ['Added full voice support in Japanese and English.', 'Added voice settings and playback from the text log.'] },
+    { version: '1.2', ja: ['シナリオを全編改稿。日本語・英語表示と演出を調整。'],
+      en: ['Revised the scenario and adjusted Japanese/English presentation.'] },
+  ],
 
   analytics: {
     enabled: true,
@@ -17,6 +63,9 @@ const VN_CONFIG = {
     supportedLanguages: ['ja', 'en'],
     labels: {
       ja: {
+        updateHistory: '更新履歴',
+        visitWebsite: '作品紹介サイトへ',
+        openUpdateHistory: '更新履歴を開く',
         titleNewGame: 'NEW  GAME',
         titleContinue: 'CONTINUE',
         titleGallery: 'CG GALLERY',
@@ -70,6 +119,9 @@ const VN_CONFIG = {
         },
       },
       en: {
+        updateHistory: 'Update history',
+        visitWebsite: 'Visit the game website',
+        openUpdateHistory: 'Open update history',
         titleNewGame: 'NEW  GAME',
         titleContinue: 'CONTINUE',
         titleGallery: 'CG GALLERY',
@@ -385,6 +437,13 @@ const VN_CONFIG = {
   },
 
   backgrounds: {
+    school_entrance_shoebox_night: 'linear-gradient(180deg, #101c32, #242a32)',
+    mahiru_run_stairs_night: 'linear-gradient(180deg, #101b32, #202a3d)',
+    rooftop_door_closed_night: 'linear-gradient(180deg, #152032, #172431)',
+    rooftop_door_open_night: 'linear-gradient(180deg, #101b32, #202a3d)',
+    classroom_late_afternoon: 'linear-gradient(180deg, #c1daf1, #edd7b1)',
+    gymnasium_back_day: 'linear-gradient(180deg, #a7d5ef, #dcc8a4)',
+    school_gate_autumn_late_afternoon: 'linear-gradient(180deg, #9ec8ee, #efd7b6)',
     // ── 校門 ──────────────────────────────────────────────
     school_gate:                 'linear-gradient(180deg, #87CEEB 0%, #b8d8f0 40%, #c8e0c0 70%, #90b860 100%)',
     school_gate_evening:         'linear-gradient(180deg, #ff8040 0%, #ffb060 30%, #ffd090 60%, #e8c890 100%)',
@@ -510,6 +569,7 @@ const VN_CONFIG = {
   },
 
   voice: {
+    baseGainDb: 3,      // ボイス全体の基準音量。保存済みのスライダー設定にも適用
     manifests: { ja: 'assets/voice/ja/manifest.json', en: 'assets/voice/en/manifest.json' },
     lookAhead: 3,       // 分岐までの次の3台詞（主人公・地の文を除く）
     cacheEntries: 12,

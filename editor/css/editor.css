@@ -1017,3 +1017,6 @@ button.primary:hover:not(:disabled) {
 ::-webkit-scrollbar-thumb:hover {
   background: #3a3a48;
 }
+
+.locale-continuation { border-left: 3px solid #8aa3d9; padding: 10px 16px; }
+.locale-continuation-note { font-size: 12px; overflow-wrap: anywhere; color: #929db2; }

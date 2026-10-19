@@ -1,0 +1,38 @@
+{
+  "version": "debug11-sakura-tenminutes-v2",
+  "date": "2026-10-19",
+  "status": "installed",
+  "id": "chapter2.chapter2_sakura_event.r013",
+  "language": "ja",
+  "display_before": "一人だとここでもう十分くらい過ごしちゃうから",
+  "display_after": "一人だとここであと十分くらい過ごしちゃうから",
+  "tts": "[casual] 一人だと、ここであとじゅっぷんくらい過ごしちゃうから。",
+  "voice_id": "6awt6FKyZGV0HyQEwisX",
+  "voice_name": "Suzu - Cute, Clear & Calm",
+  "model": "eleven_v4",
+  "payload": {
+    "text": "[casual] 一人だと、ここであとじゅっぷんくらい過ごしちゃうから。",
+    "language_code": "ja",
+    "previous_text": "さくら: それも雑！　いさむくんも来て。見学\nいさむ: なんで俺が",
+    "next_text": "地の文: ラケットを持たされた。教室を出るところで返した。",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    }
+  },
+  "before": {
+    "src": "assets/voice/ja/chapter2/chapter2.chapter2_sakura_event.r013.debug11-v1.mp3",
+    "gainDb": -4.0
+  },
+  "after": {
+    "src": "assets/voice/ja/chapter2/chapter2.chapter2_sakura_event.r013.debug11-v2.mp3",
+    "gainDb": -5.0
+  },
+  "sha256": "cd6d565c8c3766839f2a1cbc0e21700a4bb30d0fab8cb91ff0c198e18838fc46",
+  "duration": 3.68,
+  "peak_after_gain_dbfs": -8.891493204955738,
+  "charged_characters_response": 16,
+  "subjective_listening": false,
+  "previous_audio_preserved": true
+}

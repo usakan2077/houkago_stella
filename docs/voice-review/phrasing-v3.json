@@ -1,0 +1,122 @@
+{
+  "version": "debug11-phrasing-v3",
+  "date": "2026-10-19",
+  "status": "installed_candidate",
+  "reason": "User heard the same incorrect pronunciations in all three v2 attempts; change the spoken words and matching display text instead of reading notation.",
+  "clips": [
+    {
+      "id": "chapter4.chapter4_start.r017",
+      "key": "ja:chapter4.chapter4_start.r017",
+      "language": "ja",
+      "display_before": "力仕事だけでいいから。担当表、まだあたしの名前しかないんだよ",
+      "display_after": "力仕事だけでいいから。手伝いの名簿、まだあたしの名前しかないんだよ",
+      "tts": "[casual] 力仕事だけでいいから。手伝いの名簿、まだあたしの名前しかないんだよ。",
+      "voice_id": "6awt6FKyZGV0HyQEwisX",
+      "voice_name": "Suzu - Cute, Clear & Calm",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[casual] 力仕事だけでいいから。手伝いの名簿、まだあたしの名前しかないんだよ。",
+        "language_code": "ja",
+        "previous_text": "さくら: じゃ、ついでに装飾も手伝って。体育館と廊下\nいさむ: ついでがでかい",
+        "next_text": "ことは: それは、その紙を回していないからでは\n地の文: ことはがさくらの机から用紙を引き出した。隣の席まで回っていなかった。",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v2.mp3",
+        "gainDb": -2.0
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v3.mp3",
+        "gainDb": -1.5
+      },
+      "sha256": "e5dc75a474c69e4d6771606e7acaf45c8c09b43032fb5021701cee0f7cee5f19",
+      "duration": 5.76,
+      "peak_after_gain_dbfs": -5.382804998575363,
+      "trailing_silence_seconds": 0.12683333333333333,
+      "charged_characters_response": 19,
+      "subjective_listening": false,
+      "previous_audio_preserved": true
+    },
+    {
+      "id": "chapter4.chapter4_start.r018",
+      "key": "ja:chapter4.chapter4_start.r018",
+      "language": "ja",
+      "display_before": "それは、表を回していないからでは",
+      "display_after": "それは、その紙を回していないからでは",
+      "tts": "[calm] それは、その紙を回していないからでは。",
+      "voice_id": "SYjaeawCEiQrxiyl1IWh",
+      "voice_name": "Leira - Elegant Lady",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[calm] それは、その紙を回していないからでは。",
+        "language_code": "ja",
+        "previous_text": "いさむ: ついでがでかい\nさくら: 力仕事だけでいいから。手伝いの名簿、まだあたしの名前しかないんだよ",
+        "next_text": "地の文: ことはがさくらの机から用紙を引き出した。隣の席まで回っていなかった。\nさくら: あ、ほんとだ。あたしがやる仕事だと思ってた",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v2.mp3",
+        "gainDb": 4.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v3.mp3",
+        "gainDb": 3.5
+      },
+      "sha256": "798acacf8c4b7a1ab734e38f5795d60e7e2c368478d58db49bad4b4130e7c26d",
+      "duration": 3.6,
+      "peak_after_gain_dbfs": -4.990385231997491,
+      "trailing_silence_seconds": 0.059333333333333335,
+      "charged_characters_response": 11,
+      "subjective_listening": false,
+      "previous_audio_preserved": true
+    },
+    {
+      "id": "route_kotoha.kotoha_ch11_start.r041",
+      "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+      "language": "ja",
+      "display_before": "こう。力を入れないで",
+      "display_after": "こんなふうに。力を入れないで",
+      "tts": "[gentle] こんなふうに。力を入れないで。",
+      "voice_id": "SYjaeawCEiQrxiyl1IWh",
+      "voice_name": "Leira - Elegant Lady",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[gentle] こんなふうに。力を入れないで。",
+        "language_code": "ja",
+        "previous_text": "地の文: ことはが椅子の上で横へずれた。空いた場所へ座ると、肩が触れる。\n地の文: 俺の手を取って、けんばんの上へ置いた。指をいっぽんずつ曲げられる。",
+        "next_text": "地の文: ことはの手が俺の指を押した。思ったより大きな音が出た。\nことは: ……へたですね",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v2.mp3",
+        "gainDb": 3.5
+      },
+      "after": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v3.mp3",
+        "gainDb": -0.5
+      },
+      "sha256": "492ee04bcf59cced3bfd2d1112d838faf09bca10dd79c5da4655033ab34b6136",
+      "duration": 2.88,
+      "peak_after_gain_dbfs": -7.789582446192088,
+      "trailing_silence_seconds": 0.08972916666666667,
+      "charged_characters_response": 11,
+      "subjective_listening": false,
+      "previous_audio_preserved": true
+    }
+  ],
+  "charged_characters_response_total": 41,
+  "subjective_listening": false,
+  "prior_live_audio_distinctness_verified": true
+}

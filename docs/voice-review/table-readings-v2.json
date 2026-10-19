@@ -1,0 +1,84 @@
+{
+  "version": "debug11-table-readings-v2",
+  "date": "2026-10-19",
+  "status": "superseded",
+  "method": "Kanji plus parenthetical reading, requested pronunciation experiment. Accent and accidental repeated reading require listening.",
+  "clips": [
+    {
+      "id": "chapter4.chapter4_start.r017",
+      "key": "ja:chapter4.chapter4_start.r017",
+      "language": "ja",
+      "display": "力仕事だけでいいから。担当表、まだあたしの名前しかないんだよ",
+      "tts": "[casual] 力仕事だけでいいから。担当表（たんとうひょう）、まだあたしの名前しかないんだよ。",
+      "voice_id": "6awt6FKyZGV0HyQEwisX",
+      "voice_name": "Suzu - Cute, Clear & Calm",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[casual] 力仕事だけでいいから。担当表（たんとうひょう）、まだあたしの名前しかないんだよ。",
+        "language_code": "ja",
+        "previous_text": "さくら: じゃ、ついでに装飾も手伝って。体育館と廊下\nいさむ: ついでがでかい",
+        "next_text": "ことは: それは、表を回していないからでは\n地の文: ことはがさくらの机から用紙を引き出した。隣の席まで回っていなかった。",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v1.mp3",
+        "gainDb": -2.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v2.mp3",
+        "gainDb": -2.0
+      },
+      "sha256": "e953c9df07ad48f1f44d9f1112d0b1c15c23aa8694c8ef630398677edfcff93a",
+      "duration": 5.68,
+      "peak_after_gain_dbfs": -5.55949680609406,
+      "trailing_silence_seconds": 0.16760416666666667,
+      "charged_characters_response": 22,
+      "subjective_listening": false,
+      "previous_audio_preserved": true
+    },
+    {
+      "id": "chapter4.chapter4_start.r018",
+      "key": "ja:chapter4.chapter4_start.r018",
+      "language": "ja",
+      "display": "それは、表を回していないからでは",
+      "tts": "[calm] それは、表（ひょう）を回していないからでは。",
+      "voice_id": "SYjaeawCEiQrxiyl1IWh",
+      "voice_name": "Leira - Elegant Lady",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[calm] それは、表（ひょう）を回していないからでは。",
+        "language_code": "ja",
+        "previous_text": "いさむ: ついでがでかい\nさくら: 力仕事だけでいいから。担当表、まだあたしの名前しかないんだよ",
+        "next_text": "地の文: ことはがさくらの机から用紙を引き出した。隣の席まで回っていなかった。\nさくら: あ、ほんとだ。あたしがやる仕事だと思ってた",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v1.mp3",
+        "gainDb": 3.5
+      },
+      "after": {
+        "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r018.debug11-v2.mp3",
+        "gainDb": 4.5
+      },
+      "sha256": "b670620e4cc9c029f48b2ca5cae75c0c1a5bfb2c86974fedfe08e90774473049",
+      "duration": 3.2,
+      "peak_after_gain_dbfs": -5.7364773878266,
+      "trailing_silence_seconds": 0.05452083333333333,
+      "charged_characters_response": 13,
+      "subjective_listening": false,
+      "previous_audio_preserved": true
+    }
+  ],
+  "charged_characters_response_total": 35,
+  "subjective_listening": false,
+  "user_listening_result": "Pronunciation not improved, per user feedback.",
+  "superseded_by": "phrasing-v3.json"
+}

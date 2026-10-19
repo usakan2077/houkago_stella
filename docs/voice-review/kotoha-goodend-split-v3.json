@@ -1,0 +1,88 @@
+{
+  "version": "debug11-kotoha-goodend-split-v3",
+  "date": "2026-10-19",
+  "status": "approved_by_user",
+  "id": "route_kotoha.kotoha_ch12_good_end.r026",
+  "key": "ja:route_kotoha.kotoha_ch12_good_end.r026",
+  "language": "ja",
+  "display": "こちらへどうぞ。最初の音だけ、一緒に押してみませんか",
+  "method": "Two independent restrained-voice generations, conservative silence trims, 4 ms boundary fades, per-clause level matching, 120 ms inserted gap, single MP3 encode",
+  "parts": [
+    {
+      "segment_index": 1,
+      "text": "こちらへどうぞ。",
+      "tts": "[quiet, restrained voice] こちらへどうぞ。",
+      "payload": {
+        "text": "[quiet, restrained voice] こちらへどうぞ。",
+        "language_code": "ja",
+        "previous_text": "いさむ: 聴く\n地の文: 椅子を引き寄せようとすると、ことはが自分の隣を指した。",
+        "next_text": "ことは: 最初の音だけ、一緒に押してみませんか。\n地の文: 隣に座り、教わったけんばんへ右手を伸ばした。ことはの指も重なる。顔を見合わせてから、ふたりで最初の音を押した。",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "sha256": "a4bad940f99147eb3057aa8a41dc8374fd49925a1562f9c022885135d65d3bca",
+      "trim_start_seconds": 0.050861678004535144,
+      "trim_end_seconds": 1.36,
+      "gain_db": -3.5,
+      "rms_after_gain_dbfs": -31.863150034344677
+    },
+    {
+      "segment_index": 2,
+      "text": "最初の音だけ、一緒に押してみませんか。",
+      "tts": "[quiet, restrained voice] 最初の音だけ、一緒に押してみませんか。",
+      "payload": {
+        "text": "[quiet, restrained voice] 最初の音だけ、一緒に押してみませんか。",
+        "language_code": "ja",
+        "previous_text": "いさむ: 聴く\n地の文: 椅子を引き寄せようとすると、ことはが自分の隣を指した。\nことは: こちらへどうぞ。",
+        "next_text": "地の文: 隣に座り、教わったけんばんへ右手を伸ばした。ことはの指も重なる。顔を見合わせてから、ふたりで最初の音を押した。",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "sha256": "7cd919fc1eda64a150e3058519a10ca0a9498d6494d204d674dd599dba63e9bb",
+      "trim_start_seconds": 0.0015192743764172317,
+      "trim_end_seconds": 3.76,
+      "gain_db": -4.5,
+      "rms_after_gain_dbfs": -32.06436828574502
+    }
+  ],
+  "inserted_gap_seconds": 0.12,
+  "matched_raw_target_rms_dbfs": -31.863150034344677,
+  "approved_reference": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_practice.r004.debug11-v3.mp3",
+    "gainDb": 9.0
+  },
+  "before": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v2.mp3",
+    "gainDb": 5.0
+  },
+  "after": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v3.mp3",
+    "gainDb": 9.0
+  },
+  "sha256": "46b6a1fb425f3deb3d858d0c57d0c4090fa86e4eea55ffe44e15e136670560ec",
+  "duration": 5.187619047619048,
+  "peak_after_gain_dbfs": -3.0302724700498977,
+  "trailing_silence_seconds": 0.11065759637188209,
+  "frame_check": {
+    "bytes": 84052,
+    "frames": 201,
+    "duration_approx": 5.250612244897967
+  },
+  "generation_requests": 2,
+  "charged_characters_response_total": 35,
+  "subjective_listening": true,
+  "previous_audio_preserved": true,
+  "source_documentation": "https://elevenlabs.io/docs/overview/capabilities/text-to-speech/best-practices#prompting-eleven-v4",
+  "listened_by": "user",
+  "user_review": {
+    "date": "2026-10-19",
+    "result": "approved",
+    "feedback": "OK。ボイスの修正もOKです。"
+  }
+}

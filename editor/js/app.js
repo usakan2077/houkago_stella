@@ -84,6 +84,8 @@
   async function loadScenarios() {
     for (const f of SCENARIO_FILES) {
       const raw = await EditorAPI.fetchText(`../scenarios/${f}`);
+      const englishRaw = await EditorAPI.fetchText(`../scenarios/en/${f}`);
+      EditorLineEditor.setEnglishScenario(f, ScenarioIO.parse(englishRaw));
       const parsed = ScenarioIO.parse(raw);
       const labels = ScenarioIO.extractLabels(parsed);
       state.files[f] = { raw, parsed, labels, dirty: false };

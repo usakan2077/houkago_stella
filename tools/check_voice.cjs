@@ -29,6 +29,9 @@ function environment(options = {}) {
   const context = {
     state: 'running', destination: {}, resume: async () => {},
     createGain: () => ({ gain: { value: 1 }, connect() {}, disconnect() {} }),
+    createDynamicsCompressor: () => ({
+      threshold: {}, knee: {}, ratio: {}, attack: {}, release: {}, connect() {},
+    }),
     decodeAudioData: async () => ({ duration: 1, length: 100, numberOfChannels: 1 }),
     createBufferSource: () => {
       const source = { connect() {}, disconnect() {}, start() { this.started = true; }, stop() { this.stopped = true; } };
@@ -70,6 +73,22 @@ test('startup manifest loads metadata only; mismatched language is ignored', asy
   await loading;
   assert.equal(player.has('v0'), false);
   assert.equal(requests.length, 1);
+});
+
+test('base boost preserves per-clip correction and the user volume, including mute', async () => {
+  const { player, scope, respond } = environment();
+  player.options.baseGainDb = vm.runInContext('VN_CONFIG.voice.baseGainDb', scope);
+  player.setVolume(0.5);
+  player.clips.v0.gainDb = -2;
+  const playing = player.play('v0'); await tick(); respond(0); await tick();
+  assert.ok(Math.abs(player.input.gain.value - 10 ** (3 / 20)) < 0.000001);
+  assert.ok(Math.abs(player.session.gain.gain.value - 10 ** (-2 / 20)) < 0.000001);
+  assert.equal(player.output.gain.value, 0.5);
+  player.setVolume(0.25);
+  assert.equal(player.output.gain.value, 0.25);
+  player.setVolume(0);
+  assert.equal(player.output.gain.value, 0);
+  assert.equal(await playing, false);
 });
 
 test('cancelled downloads and stale responses cannot start old audio', async () => {

@@ -1,0 +1,54 @@
+{
+  "version": "debug11-mahiru-flat-v2",
+  "date": "2026-10-19",
+  "status": "approved_by_user",
+  "id": "route_mahiru.mahiru_good_end_school.r050",
+  "key": "ja:route_mahiru.mahiru_good_end_school.r050",
+  "language": "ja",
+  "display": "いったん離して",
+  "tts": "[matter-of-fact, conversational] いったん離して。",
+  "direction": "財布を出すため、つないでいる手をいったん離してもらう普通の依頼。ささやかず、怒らず、照れや甘さを足さず、普段の会話の声量とフラットな口調。",
+  "voice_id": "JTlYtJrcTzPC71hMLOxo",
+  "voice_name": "Yuki",
+  "model": "eleven_v4",
+  "payload": {
+    "text": "[matter-of-fact, conversational] いったん離して。",
+    "language_code": "ja",
+    "previous_text": "まひる: プリン買っていい？\nいさむ: 財布出せるか",
+    "next_text": "地の文: 買い物を済ませて店を出た。まひるはプリンの袋を持つ手を替え、空いた手をもう一度こちらへ差し出した。俺も取って歩き出した。",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    }
+  },
+  "before": {
+    "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_good_end_school.r050.debug11-v1.mp3",
+    "gainDb": 12
+  },
+  "after": {
+    "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_good_end_school.r050.debug11-v2.mp3",
+    "gainDb": 10.0
+  },
+  "sha256": "834a5d8ddca21d3773e4b2c6c21d1526b4d4e6e4c3f19d26dcb3670b0dd67930",
+  "duration": 1.2,
+  "peak_after_gain_dbfs": -2.1884033807318417,
+  "rms_delta_db": -0.10479038706249,
+  "trailing_silence_seconds": 0.10614583333333333,
+  "charged_characters_response": 18,
+  "frame_check": {
+    "bytes": 20105,
+    "frames": 48,
+    "duration_approx": 1.2538775510204085
+  },
+  "subjective_listening": true,
+  "previous_audio_preserved": true,
+  "gain_method": "Match original non-whisper take active RMS, bounded by +/-12 dB and -1 dBFS sample peak before the global voice chain.",
+  "listened_by": "user",
+  "user_review": {
+    "date": "2026-10-19",
+    "result": "approved",
+    "feedback": "OK",
+    "scope": "Mahiru r050 neutral conversational retake v2."
+  }
+}

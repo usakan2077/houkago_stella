@@ -42,3 +42,5 @@ voice-preview.css／voice-preview.jsが両LP共通の試聴表示・操作です
 検査は tools/check_lp_variants.py に日英の実音声試聴・停止・言語切替時停止・初期音声未取得を追加。PCと390px／320pxで両LPを確認済み。試聴用WebPは元PNGとRGBAピクセルが完全一致する可逆変換で、構図はCSSで調整しています。
 
 通常LPにも冒頭の次にOPムービー再生セクションを追加。既存assets/video/stella-op.mp4を参照し、controls／playsinline／preload=noneで手動再生。試聴とOPは互いに再生を停止し、音が重ならないようにしています。
+
+2026-10-20：ver 1.3.1の更新履歴を日英で統一。ボイス修正・音量、場面のつながり、まひるの屋上への走行、全7ENDとタイトルの改善を掲載。両LPの試聴音声は現行manifestの章別パス・補正音量へ更新。

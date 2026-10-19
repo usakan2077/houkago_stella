@@ -332,17 +332,30 @@ body {
   backdrop-filter: blur(2px);
 }
 
-#title-version {
-  position: absolute;
-  left: 22px;
-  bottom: 18px;
-  z-index: 6;
-  color: rgba(255,228,242,.45);
-  font-size: 11px;
-  letter-spacing: .08em;
-  pointer-events: none;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+#title-updates {
+  position: absolute; left: 22px; bottom: 14px; z-index: 12;
+  color: #fff; font: 13px/1.7 sans-serif;
 }
+#title-updates-panel {
+  position: absolute; left: 0; bottom: 48px; width: 480px;
+  max-height: 440px; overflow: auto; padding: 20px 24px;
+  color: #f9f8fc; background: #211e2bf5; border: 1px solid #a99dbb;
+  border-radius: 10px; box-shadow: 0 6px 28px #0008;
+}
+#title-updates-panel h2 { margin: 0 0 12px; font-size: 19px; }
+#title-updates-panel h3 { margin: 16px 0 4px; font-size: 14px; }
+#title-updates-panel ul { margin: 0 0 12px; padding-left: 1.4em; }
+#title-updates-panel a { color: #f8da9b; text-decoration: underline; }
+#title-version {
+  display: flex; align-items: center; min-height: 40px; padding: 2px 12px;
+  color: #fff; background: #211e2b; border: 1px solid #aaa1b8;
+  border-radius: 6px; font-size: 12px; letter-spacing: .05em;
+  list-style: none; cursor: pointer; user-select: none;
+}
+#title-version::-webkit-details-marker { display: none; }
+#title-version::after { content: ' ▴'; margin-left: 9px; }
+#title-version:hover, #title-version:focus-visible { background: #42394f; outline: 2px solid #f4d19f; outline-offset: 2px; }
+
 
 .language-btn {
   min-width: 0;
@@ -2611,4 +2624,14 @@ html[lang="en"] #char-name {
 @keyframes arrowFadePulse {
   0%, 100% { opacity: 0.24; }
   50% { opacity: 0.72; }
+}
+
+/* Timed closing narration, before the credits; remains legible over every CG. */
+#game-screen.ending-coda-active #text-area { visibility: hidden; }
+#ending-coda {
+  position: absolute; z-index: 41; left: 9%; right: 9%; bottom: 100px;
+  margin: 0; padding: 22px 30px; border-radius: 8px;
+  background: #171321df; color: #fff; text-align: center;
+  font-size: 25px; line-height: 1.9; white-space: pre-wrap;
+  box-shadow: 0 4px 24px #0006;
 }

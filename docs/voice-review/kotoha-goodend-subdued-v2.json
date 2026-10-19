@@ -1,0 +1,43 @@
+{
+  "version": "debug11-kotoha-goodend-subdued-v2",
+  "date": "2026-10-19",
+  "status": "superseded",
+  "id": "route_kotoha.kotoha_ch12_good_end.r026",
+  "key": "ja:route_kotoha.kotoha_ch12_good_end.r026",
+  "language": "ja",
+  "display": "こちらへどうぞ。最初の音だけ、一緒に押してみませんか",
+  "tts": "[softly] こちらへどうぞ。最初の音だけ、一緒に押してみませんか。",
+  "direction": "ユーザーが承認した練習台詞v3と同じsoftly指定を使う。steadyは使わず、前半「こちらへどうぞ」と後半「最初の音だけ、一緒に押してみませんか」を両方抑えた声色で揃える。本文・配役・モデルは維持。",
+  "acting_direction_reference": "User-approved practice take: route_kotoha.kotoha_ch12_practice.r004.debug11-v3.mp3; same single softly cue.",
+  "voice_id": "SYjaeawCEiQrxiyl1IWh",
+  "voice_name": "Leira - Elegant Lady",
+  "model": "eleven_v4",
+  "payload": {
+    "text": "[softly] こちらへどうぞ。最初の音だけ、一緒に押してみませんか。",
+    "language_code": "ja",
+    "previous_text": "いさむ: 聴く\n地の文: 椅子を引き寄せようとすると、ことはが自分の隣を指した。",
+    "next_text": "地の文: 隣に座り、教わったけんばんへ右手を伸ばした。ことはの指も重なる。顔を見合わせてから、ふたりで最初の音を押した。",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    }
+  },
+  "before": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v1.mp3",
+    "gainDb": 3.0
+  },
+  "after": {
+    "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch12_good_end.r026.debug11-v2.mp3",
+    "gainDb": 5.0
+  },
+  "sha256": "225f78c412360ce662558bcdb9c6e6de9b05c0204f5a04277b0e28c8757a4e09",
+  "duration": 5.12,
+  "peak_after_gain_dbfs": -2.409912978045834,
+  "trailing_silence_seconds": 0.25835416666666666,
+  "charged_characters_response": 16,
+  "subjective_listening": false,
+  "previous_audio_preserved": true,
+  "user_listening_result": "No perceived change, per user feedback: いや変わってない",
+  "superseded_by": "debug11-kotoha-goodend-split-v3"
+}

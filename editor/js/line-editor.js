@@ -23,12 +23,24 @@ window.EditorLineEditor = (() => {
     dirtyLineIdx: new Set(),
     expandedCmdIdx: null,
     selectedLineIdx: null,
+    englishScenarios: {},
   };
 
   function init(containerEl, callbacks) {
     _container = containerEl;
     _callbacks = callbacks || {};
+    if (typeof ResizeObserver !== 'undefined') {
+      let lastWidth = -1;
+      new ResizeObserver(entries => {
+        const width = entries[0]?.contentRect.width;
+        if (width === lastWidth) return;
+        lastWidth = width;
+        requestAnimationFrame(() => _container.querySelectorAll('textarea').forEach(autoGrow));
+      }).observe(_container);
+    }
   }
+
+  function setEnglishScenario(file, parsed) { _state.englishScenarios[file] = parsed; }
 
   function setLocales(locales) { _state.locales = locales; }
   function setAllLabels(labels) { _state.allLabels = labels; }
@@ -74,16 +86,51 @@ window.EditorLineEditor = (() => {
     }
 
     const { startIdx, endIdx } = _state.labelRange;
+    const extras = englishExtras();
+    const appendExtras = key => {
+      for (const line of extras.get(key) || []) {
+        const row = document.createElement('article');
+        row.className = 'line-row locale-continuation';
+        const note = document.createElement('p');
+        note.className = 'locale-continuation-note';
+        note.textContent = `EN側の追加行 / ${line.key}`;
+        row.append(note, makeTextField('EN', 'en', line));
+        _container.appendChild(row);
+      }
+    };
 
     // ラベル先頭の上に挿入バー（ラベル行直後＝最初の行の上）
     _container.appendChild(makeInsertBar(startIdx + 1));
 
     for (let i = startIdx + 1; i < endIdx; i++) {
       const line = _state.parsed[i];
+      if (line.key) appendExtras(line.key);
       const el = renderLine(line, i);
       if (el) _container.appendChild(el);
       _container.appendChild(makeInsertBar(i + 1));
     }
+    appendExtras(null);
+    requestAnimationFrame(() => _container.querySelectorAll('textarea').forEach(autoGrow));
+  }
+
+  // Keep both runtime scripts intact while exposing EN-only split lines at their next shared anchor.
+  function englishExtras() {
+    const parsed = _state.englishScenarios[_state.fileName];
+    const range = parsed && ScenarioIO.extractLabels(parsed).find(label => label.name === _state.labelName);
+    const result = new Map();
+    if (!range) return result;
+    const localKeys = new Set(_state.parsed.slice(_state.labelRange.startIdx + 1, _state.labelRange.endIdx).map(line => line.key).filter(Boolean));
+    const lines = parsed.slice(range.startIdx + 1, range.endIdx).filter(line => line.key);
+    const seen = new Set();
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      if (localKeys.has(line.key) || seen.has(line.key)) continue;
+      seen.add(line.key);
+      const anchor = lines.slice(i + 1).find(next => localKeys.has(next.key))?.key || null;
+      if (!result.has(anchor)) result.set(anchor, []);
+      result.get(anchor).push(line);
+    }
+    return result;
   }
 
   function makeInsertBar(atIdx) {
@@ -487,7 +534,7 @@ window.EditorLineEditor = (() => {
 
   function autoGrow(ta) {
     ta.style.height = 'auto';
-    ta.style.height = Math.max(32, ta.scrollHeight) + 'px';
+    ta.style.height = Math.max(32, ta.scrollHeight + 2) + 'px';
   }
 
   function escapeHtml(s) {
@@ -501,7 +548,7 @@ window.EditorLineEditor = (() => {
   }
 
   return {
-    init, setLocales, setAllLabels, setCharacters,
+    init, setLocales, setAllLabels, setCharacters, setEnglishScenario,
     showLabel, markTextDirty, markLineDirty, clearDirty,
     expandCommandAt,
   };

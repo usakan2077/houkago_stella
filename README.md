@@ -1,5 +1,7 @@
 # 放課後のステラ　嘘と願いのバウンドリー
 
+現行版：**ver 1.3.1（2026-10-20）**。変更点は [更新履歴](CHANGELOG.md) を参照。
+
 恋愛アドベンチャーゲーム（ブラウザ動作・バニラJS）
 
 ## 開発と素材の管理
@@ -100,7 +102,7 @@ houkago-stella/
 
 ```
 # ラベル名
-@scene 背景キー [fade|cut]       ← 背景切替
+@scene 背景キー [fade|cut|rush]       ← 背景切替
 @bgm ファイル名.mp3 / @bgm stop  ← BGM
 @se ファイル名.mp3               ← SE
 @show キャラID 表情 [left|center|right]
@@ -231,3 +233,12 @@ debug: false,
 | 背景画像 | ✅ |
 | キャラクター立ち絵 | ✅ |
 | スチル（イベントCG・37枚） | ✅ |
+
+
+## 制作ファイルを探す
+
+[ファイル案内](docs/project-map.md) ／ [本文・音声索引](docs/scenario-reference/index.html) ／ [デバッグ報告11の対応状況](docs/debug-report11-status.md)
+
+## デバッグ報告11の音声
+
+23台詞を撮り直し、旧版を保存したまま登録しています。[旧新の比較試聴](docs/voice-review/index.html) / [対応状況](docs/debug-report11-status.md)。

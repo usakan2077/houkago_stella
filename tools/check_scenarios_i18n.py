@@ -188,6 +188,14 @@ def main() -> int:
         for target, where in targets:
             if target not in labels:
                 errors.append(f"{where}: missing target {target}")
+        coda_match = re.search(r'endingCoda:\s*({.*?}),\n\s*releaseNotes:', config, re.S)
+        if coda_match:
+            for label, keys in json.loads(coda_match[1]).items():
+                if label not in labels: errors.append(f'{lang}: coda has missing label {label}')
+                for reference in keys:
+                    key = reference.lstrip('$')
+                    if key not in locale: errors.append(f'{lang}: coda has missing text {key}')
+                    used.add(key)
         unused = set(locale) - used
         if unused:
             errors.append(f"{lang}: {len(unused)} unused text keys")

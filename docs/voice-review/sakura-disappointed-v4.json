@@ -1,0 +1,40 @@
+{
+  "version": "debug11-sakura-disappointed-v4",
+  "date": "2026-10-19",
+  "status": "installed_candidate",
+  "id": "chapter4.chapter4_start.r017",
+  "key": "ja:chapter4.chapter4_start.r017",
+  "language": "ja",
+  "display": "力仕事だけでいいから。手伝いの名簿、まだあたしの名前しかないんだよ",
+  "tts": "[casual] 力仕事だけでいいから。手伝いの名簿、[a little disappointed] まだあたしの名前しかないんだよ。",
+  "direction": "ユーザー指定：後半「まだあたしの名前しかないんだよ」を、手伝いが集まらず少し困っている・残念そうなニュアンスに。前半の親しげな誘いは保ち、泣くほど深刻にしない。表示本文は維持。",
+  "voice_id": "6awt6FKyZGV0HyQEwisX",
+  "voice_name": "Suzu - Cute, Clear & Calm",
+  "model": "eleven_v4",
+  "payload": {
+    "text": "[casual] 力仕事だけでいいから。手伝いの名簿、[a little disappointed] まだあたしの名前しかないんだよ。",
+    "language_code": "ja",
+    "previous_text": "さくら: じゃ、ついでに装飾も手伝って。体育館と廊下\nいさむ: ついでがでかい",
+    "next_text": "ことは: それは、その紙を回していないからでは\n地の文: ことはがさくらの机から用紙を引き出した。隣の席まで回っていなかった。",
+    "model_id": "eleven_v4",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75
+    }
+  },
+  "before": {
+    "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v3.mp3",
+    "gainDb": -1.5
+  },
+  "after": {
+    "src": "assets/voice/ja/chapter4/chapter4.chapter4_start.r017.debug11-v4.mp3",
+    "gainDb": -1.0
+  },
+  "sha256": "6d088e29dc3232697c69a79fd0a6773629dab2ddd668fae4c34ed95fef3a4f5e",
+  "duration": 6.08,
+  "peak_after_gain_dbfs": -3.67210213885058,
+  "trailing_silence_seconds": 0.08204166666666667,
+  "charged_characters_response": 29,
+  "subjective_listening": false,
+  "previous_audio_preserved": true
+}
