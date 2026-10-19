@@ -32,6 +32,22 @@ def main():
         c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
         import sys
+        if '--chapter2-evening-only' in sys.argv:
+            for lang in ['ja','en']:
+                c.evaluate("(async()=>{await engine._setLanguage("+json.dumps(lang)+",{returnToTitle:true});VN_CONFIG.settings.typeSpeed=0;engine._chainMode='none';engine._startFromLabel('chapter2_after_school')})()")
+                c.wait("engine.currentBG==='classroom_evening'&&getComputedStyle(document.getElementById('background')).backgroundImage.includes('classroom_evening.webp')")
+                c.wait("getComputedStyle(document.getElementById('transition-canvas')).display==='none'")
+                for _ in range(40):
+                    if c.evaluate("!document.getElementById('choices-overlay').classList.contains('hidden')"):break
+                    c.evaluate('engine._onAdvance()');time.sleep(.015)
+                c.click('#choices-overlay .choice-btn')
+                c.wait("engine.currentLabel==='chapter2_sakura_event'")
+                assert c.evaluate("engine.currentBG==='classroom_evening'&&getComputedStyle(document.getElementById('background')).backgroundImage.includes('classroom_evening.webp')")
+                c.shot('chapter2-sakura-evening-'+lang)
+                passed(lang+': after-school scene and Sakura choice branch both use the corrected evening classroom')
+            assert not c.errors,c.errors
+            (OUT/'chapter2-evening-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--mahiru-run-only' in sys.argv:
             expected=['school_exterior_night','school_entrance_shoebox_night','staircase_night','mahiru_run_stairs_night','rooftop_door_closed_night','rooftop_door_open_night','rooftop_night']
             c.evaluate("window._rushScenes=[];window._originalChangeBackground=engine._changeBackground;engine._changeBackground=function(...args){_rushScenes.push(args[0]);return _originalChangeBackground.apply(this,args)}")
@@ -118,7 +134,7 @@ def main():
         c.click('#title-version');assert c.evaluate("document.getElementById('title-updates-heading').textContent==='Update history'")
         passed('Accessible title history, English labels, website link and contrast-safe version on cleared background')
         c.evaluate("engine._setLanguage('ja',{returnToTitle:true});engine._beginGame()")
-        for label,expected in [('chapter1_after_school_intro','classroom_late_afternoon'),('chapter2_after_school','classroom_late_afternoon'),('chapter4_music_room','corridor_rainy'),('chapter6_sakura_talk','gymnasium_back_day'),('mahiru_ch9_reason','school_gate_autumn_late_afternoon')]:
+        for label,expected in [('chapter1_after_school_intro','classroom_late_afternoon'),('chapter2_after_school','classroom_evening'),('chapter4_music_room','corridor_rainy'),('chapter6_sakura_talk','gymnasium_back_day'),('mahiru_ch9_reason','school_gate_autumn_late_afternoon')]:
             c.evaluate('engine._gotoLabel('+json.dumps(label)+')');c.wait('engine.currentBG==='+json.dumps(expected));time.sleep(.7)
             c.shot('scene-'+label)
         assert c.evaluate("engine._resolveScenarioText('$chapter1.chapter1_after_school_intro.r001').includes('六時間目')")

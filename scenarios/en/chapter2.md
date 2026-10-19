@@ -310,7 +310,7 @@ player: $chapter2.chapter2_pe.r018
 
 # chapter2_after_school
 
-@scene classroom_late_afternoon fade
+@scene classroom_evening fade
 @bgm evening_piano.mp3
 @se school_bell.mp3
 
