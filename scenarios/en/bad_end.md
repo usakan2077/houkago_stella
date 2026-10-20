@@ -226,5 +226,9 @@ player: $bad_end.bad_end_ending.r002
 > $bad_end.bad_end_ending.r003.s003
 > $bad_end.bad_end_ending.r004
 
-@ending_intro bad_end_loop.mp3 bad_end 10500
+> $bad_end.bad_end_ending.coda001
+> $bad_end.bad_end_ending.coda002
+> $bad_end.bad_end_ending.coda003
+
+@credits bad_end_loop.mp3 bad_end
 @end "$bad_end.bad_end_ending.r005"

@@ -3518,25 +3518,25 @@ EN：Her hair was still down.
 
 `route_sakura.sakura_good_end_rooftop.coda001`
 
-JA：予鈴が鳴った。さくらは階段へ向かいかけて、こちらへ戻ってきた。
+JA：予鈴が鳴ると、さくらは階段へ二、三歩進んでから振り返った。
 
-EN：The warning bell rang. Sakura started toward the stairs, then came back to me.
+EN：The warning bell rang, and Sakura took a few steps toward the stairs before looking back.
 
 ## sakura_good_end_rooftop / narrator
 
 `route_sakura.sakura_good_end_rooftop.coda002`
 
-JA：今度は俺から、その手を取った。
+JA：差し出された手を、今度は俺から取った。階段を下りる途中で、さくらがまた笑った。
 
-EN：This time, I reached for her hand.
+EN：This time, I reached for her outstretched hand. She laughed again on the way downstairs.
 
 ## sakura_good_end_rooftop / narrator
 
 `route_sakura.sakura_good_end_rooftop.coda003`
 
-JA：二人分の足音が、階段を下りていった。
+JA：教室の手前でようやく手を離した。ドアを開ける順番を譲り合って、また二人とも止まった。
 
-EN：Two sets of footsteps made their way down the stairs.
+EN：We finally let go outside our classroom. Each waited for the other to open the door, and we both stopped again.
 
 ## sakura_good_end_rooftop / narrator
 

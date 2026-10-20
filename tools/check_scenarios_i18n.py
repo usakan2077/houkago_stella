@@ -64,7 +64,7 @@ def main() -> int:
         locale_keys[lang] = set(locale)
         presentations[lang] = []
         used, labels = set(), set()
-        targets, controls = [], []
+        targets, controls, ending_intros = [], [], []
         endings = 0
         if not paths or len(paths) != len(set(paths)):
             errors.append(f"{lang}: empty or duplicate scenario paths")
@@ -164,6 +164,8 @@ def main() -> int:
                         elif not (ROOT / "assets/images/chars" / char / (expression + ".png")).is_file():
                             errors.append(f"{where}: missing sprite {char}/{expression}")
                     elif cmd in ("bgm", "se", "credits", "ending_intro") and len(args) > 1:
+                        if cmd == "ending_intro":
+                            ending_intros.append((args[2] if len(args) > 2 else "", where))
                         if args[1] not in ("stop", "current"):
                             folder = "se" if cmd == "se" else "bgm"
                             if not (ROOT / "assets/audio" / folder / args[1]).is_file():
@@ -190,8 +192,11 @@ def main() -> int:
                 errors.append(f"{where}: missing target {target}")
         coda_match = re.search(r'endingCoda:\s*({.*?}),\n\s*releaseNotes:', config, re.S)
         if coda_match:
-            for label, keys in json.loads(coda_match[1]).items():
-                if label not in labels: errors.append(f'{lang}: coda has missing label {label}')
+            codas = json.loads(coda_match[1])
+            for profile, where in ending_intros:
+                if not codas.get(profile): errors.append(f'{where}: ending_intro has no closing text for profile {profile}')
+            for profile, keys in codas.items():
+                if profile not in {p for p, _ in ending_intros}: errors.append(f'{lang}: coda has no ending_intro for profile {profile}')
                 for reference in keys:
                     key = reference.lstrip('$')
                     if key not in locale: errors.append(f'{lang}: coda has missing text {key}')

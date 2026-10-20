@@ -4,45 +4,28 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3.1',
+  version: '1.3.2',
   endingCoda: {
-  "bad_end_ending": [
-    "$bad_end.bad_end_ending.coda001",
-    "$bad_end.bad_end_ending.coda002",
-    "$bad_end.bad_end_ending.coda003"
-  ],
-  "kotoha_ch12_good_end": [
+  "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
     "$route_kotoha.kotoha_ch12_good_end.coda002",
     "$route_kotoha.kotoha_ch12_good_end.coda003"
   ],
-  "kotoha_ch12_bad_end": [
-    "$route_kotoha.kotoha_ch12_bad_end.coda001",
-    "$route_kotoha.kotoha_ch12_bad_end.coda002",
-    "$route_kotoha.kotoha_ch12_bad_end.coda003"
-  ],
-  "mahiru_good_end_school": [
+  "mahiru_good_end": [
     "$route_mahiru.mahiru_good_end_school.coda001",
     "$route_mahiru.mahiru_good_end_school.coda002",
     "$route_mahiru.mahiru_good_end_school.coda003"
   ],
-  "mahiru_bad_end": [
-    "$route_mahiru.mahiru_bad_end.coda001",
-    "$route_mahiru.mahiru_bad_end.coda002",
-    "$route_mahiru.mahiru_bad_end.coda003"
-  ],
-  "sakura_good_end_rooftop": [
+  "sakura_good_end": [
     "$route_sakura.sakura_good_end_rooftop.coda001",
     "$route_sakura.sakura_good_end_rooftop.coda002",
     "$route_sakura.sakura_good_end_rooftop.coda003"
-  ],
-  "sakura_bad_end_final": [
-    "$route_sakura.sakura_bad_end_final.coda001",
-    "$route_sakura.sakura_bad_end_final.coda002",
-    "$route_sakura.sakura_bad_end_final.coda003"
   ]
 },
   releaseNotes: [
+    { version: '1.3.2', date: '2026-10-20',
+      ja: ['放課後の教室背景・時計と、昼休みから授業へのつなぎを修正。', 'GOOD ENDの締めとことはの文章表示を改善し、BAD ENDは手動で読み進める形に変更。', 'タイトル待機からOP再上映までを30秒に延長。', 'ことは・まひるの一部ボイスを再調整。', 'エディターの英語追加行の位置を修正し、設計資料と開発用画面を整理。'],
+      en: ['Corrected the after-school classroom, clock and transition from lunch to lessons.', 'Improved GOOD END closing passages and Kotoha text display; BAD END closing text now waits for input.', 'Extended the title-screen OP replay delay to 30 seconds.', 'Adjusted selected Kotoha and Mahiru voice lines.', 'Fixed English continuation placement in the editor and organized design documents and development previews.'] },
     { version: '1.3.1', date: '2026-10-20',
       ja: ['一部ボイスの発音・抑揚を修正し、全体の基準音量を調整。', '場面の時間帯・天候・会話のつながりと人物の表情を調整。', 'まひるルートの屋上へ走る場面に、夜の玄関・階段・扉のカットと足音を追加。', '全7エンディングの締めとBGM中の自動進行を調整。', 'タイトルに更新履歴と作品紹介へのリンクを追加し、バージョン表記を見やすく改善。'],
       en: ['Corrected pronunciation and delivery in selected voice lines and raised the base dialogue volume.', 'Adjusted scene timing, weather, narrative continuity and character expressions.', "Added nighttime entrance, stairwell and door shots with running footsteps to Mahiru's rooftop approach.", 'Adjusted closing passages and automatic transitions during the music for all seven endings.', 'Added release history and a website link to the title screen, and improved version-label visibility.'] },
@@ -726,7 +709,7 @@ const VN_CONFIG = {
 
   // ロード後のOP。タイトルで10秒無操作の場合も再生。
   openingMovie: 'assets/video/stella-op.mp4',
-  openingMovieIdleMs: 10000,
+  openingMovieIdleMs: 30000,
 
   // ===========================================================
   // オープニングモノローグ設定

@@ -15,6 +15,10 @@
 |背景・立ち絵・スチルの原本|隣接する `houkago-stella-assets/assets-src/`|
 |再生成済みの本文・音声資料|`docs/scenario-reference/`|
 |テストプレイヤーの報告原文|`デバッグ用/`|
+|プロット・キャラクター設定資料|`docs/design/`|
+|エモート・メッセージUIの比較画面|`tools/previews/`（[入口](../tools/previews/README.md)）|
+
+2026-10-20の整理で、ルート直下の設計資料2本は `docs/design/`、開発用HTML2本は `tools/previews/` へ移動した。相対リンクと共有CSS・画像の参照も更新済み。ゲームの入口と読込先、既存セーブの本文・音声IDは維持する。
 
 `manifest.json` の `clips` はテキストIDをキーにし、`src` が音声のパス、`gainDb` がゲーム内の音量補正。音声は現役を言語・章別、旧テイクをarchiveへ分類し、manifestのsrcだけを更新した。ファイル名や台詞IDを振り直す必要はない。音声ファイルを探す際は索引で章・話者を絞り込む。
 

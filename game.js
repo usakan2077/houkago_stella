@@ -3064,8 +3064,9 @@ class VNEngine {
     document.getElementById('game-screen')?.classList.remove('ending-coda-active');
   }
 
-  _startEndingCoda(session, duration) {
-    const keys = VN_CONFIG.endingCoda?.[this.currentLabel] || [];
+  _startEndingCoda(session, duration, profileKey) {
+    // Route branches can enter the same ending under different scene labels.
+    const keys = VN_CONFIG.endingCoda?.[profileKey] || [];
     if (!keys.length || duration <= 0) return;
     const screen = document.getElementById('game-screen');
     const caption = document.createElement('p');
@@ -3173,7 +3174,7 @@ class VNEngine {
     const delay = Math.max(0, Number(waitMs) || 0);
     const session = Symbol('endingIntro');
     this._endingIntroSession = session;
-    this._startEndingCoda(session, delay);
+    this._startEndingCoda(session, delay, profileKey);
 
     // ▼ 新規追加：エンディングロール開始時点での「本来のオーディオ時間(秒)」を設計値として記録
     this._creditsExpectedAudioOffset = delay / 1000;

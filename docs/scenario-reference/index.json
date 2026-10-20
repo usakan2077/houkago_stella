@@ -1278,8 +1278,8 @@
     "scene": "chapter1_homeroom",
     "speaker": "teacher_male",
     "source": "scenarios/chapter1.md",
-    "ja": "座れ。まず連絡。去年の落とし物の傘が十二本、職員室にある。心当たりのある者は、今日のうちに取りに来るように",
-    "en": "Sit down. First announcement: twelve umbrellas left behind last year are in the staff room. If one is yours, come and collect it today.",
+    "ja": "座れ。まず連絡。去年の落とし物の傘が十二本、職員室にある。\n心当たりのある者は、今日のうちに取りに来るように",
+    "en": "Sit down. First announcement: twelve umbrellas left behind last year are in the staff room.\nIf one is yours, come and collect it today.",
     "audio": {
       "ja": {
         "src": "assets/voice/ja/chapter1/chapter1.chapter1_homeroom.r001.debug11-v1.mp3",
@@ -2350,6 +2350,32 @@
     }
   },
   {
+    "id": "chapter1.chapter1_lunch.pack_up",
+    "chapter": "chapter1",
+    "scene": "chapter1_lunch",
+    "speaker": "narrator",
+    "source": "scenarios/chapter1.md",
+    "ja": "さくらが弁当箱の蓋を閉める頃には、午後の授業を知らせるチャイムが鳴り始めていた。",
+    "en": "As Sakura put the lid on her lunch box, the bell for afternoon classes began to ring.",
+    "audio": {
+      "ja": null,
+      "en": null
+    }
+  },
+  {
+    "id": "chapter1.chapter1_lunch.pack_up.s002",
+    "chapter": "chapter1",
+    "scene": "chapter1_lunch",
+    "speaker": "narrator",
+    "source": "scenarios/chapter1.md",
+    "ja": "パンの袋を机にしまい、教科書を取り出すために鞄を引き寄せた。",
+    "en": "I put the bread wrapper away in my desk and pulled my bag closer to get my textbook.",
+    "audio": {
+      "ja": null,
+      "en": null
+    }
+  },
+  {
     "id": "chapter1.chapter1_after_school_intro.r001",
     "chapter": "chapter1",
     "scene": "chapter1_after_school_intro",
@@ -2368,8 +2394,8 @@
     "scene": "chapter1_after_school_intro",
     "speaker": "narrator",
     "source": "scenarios/chapter1.md",
-    "ja": "昼休みに広げた時間割を、帰りの支度をしながらもう一度眺めた。",
-    "en": "While packing my bag, I looked again at the timetable I had unfolded over lunch.",
+    "ja": "鞄に教科書を詰めながら、配られた時間割をもう一度眺めた。",
+    "en": "While packing my textbooks away, I looked over the timetable we'd been given again.",
     "audio": {
       "ja": null,
       "en": null
@@ -2377,6 +2403,19 @@
   },
   {
     "id": "chapter1.chapter1_after_school_intro.r001.s003",
+    "chapter": "chapter1",
+    "scene": "chapter1_after_school_intro",
+    "speaker": "narrator",
+    "source": "scenarios/chapter1.md",
+    "ja": "金曜の六時間目は体育らしい。",
+    "en": "PE in sixth period on Friday.",
+    "audio": {
+      "ja": null,
+      "en": null
+    }
+  },
+  {
+    "id": "chapter1.chapter1_after_school_intro.r001.s004",
     "chapter": "chapter1",
     "scene": "chapter1_after_school_intro",
     "speaker": "narrator",
@@ -33822,8 +33861,8 @@
     "en": "Like this. Don't tense them.",
     "audio": {
       "ja": {
-        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v3.mp3",
-        "gainDb": -0.5
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug12-v2.mp3",
+        "gainDb": 7.5
       },
       "en": {
         "src": "assets/voice/en/route_kotoha/route_kotoha.kotoha_ch11_start.r041.kotoha-leira-v1.mp3",
@@ -35272,6 +35311,45 @@
     "source": "scenarios/route_kotoha.md",
     "ja": "顔を見合わせてから、二人で最初の音を押した。",
     "en": "We looked at each other, then pressed our first note together.",
+    "audio": {
+      "ja": null,
+      "en": null
+    }
+  },
+  {
+    "id": "route_kotoha.kotoha_ch12_good_end.coda001",
+    "chapter": "route_kotoha",
+    "scene": "kotoha_concert_resume",
+    "speaker": "narrator",
+    "source": "scenarios/route_kotoha.md",
+    "ja": "指を離すと、音が準備室へ広がった。ことはの右手が、次の小節へ進む。",
+    "en": "We lifted our fingers, and the note spread through the practice room. Her right hand moved into the next bar.",
+    "audio": {
+      "ja": null,
+      "en": null
+    }
+  },
+  {
+    "id": "route_kotoha.kotoha_ch12_good_end.coda002",
+    "chapter": "route_kotoha",
+    "scene": "kotoha_concert_resume",
+    "speaker": "narrator",
+    "source": "scenarios/route_kotoha.md",
+    "ja": "俺は隣で、その曲を最後まで聴いた。弾き終えたことはが譜面を閉じても、すぐには立たなかった。",
+    "en": "I stayed beside her until the piece was over. Even after she closed the score, neither of us stood up right away.",
+    "audio": {
+      "ja": null,
+      "en": null
+    }
+  },
+  {
+    "id": "route_kotoha.kotoha_ch12_good_end.coda003",
+    "chapter": "route_kotoha",
+    "scene": "kotoha_concert_resume",
+    "speaker": "narrator",
+    "source": "scenarios/route_kotoha.md",
+    "ja": "鞄を持って、準備室の灯りを消した。鍵を返しに行く間も、ことははさっきの曲を口ずさんでいた。",
+    "en": "We picked up our bags and turned out the light. On the way to return the key, Kotoha was still humming the tune.",
     "audio": {
       "ja": null,
       "en": null
@@ -36983,11 +37061,11 @@
     "scene": "mahiru_ch9_corridor",
     "speaker": "mahiru",
     "source": "scenarios/route_mahiru.md",
-    "ja": "今日、ひとりがいい",
+    "ja": "今日は、ひとりがいい",
     "en": "Want to be alone today.",
     "audio": {
       "ja": {
-        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug11-v1.mp3",
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug12-v2.mp3",
         "gainDb": 12
       },
       "en": {
@@ -42502,8 +42580,8 @@
     "scene": "mahiru_good_end_school",
     "speaker": "narrator",
     "source": "scenarios/route_mahiru.md",
-    "ja": "明日の朝、まひるに見せる場所を相談しよう。",
-    "en": "Tomorrow morning, I would ask Mahiru where we should put it.",
+    "ja": "手を離すと写真が倒れたので、後ろに消しゴムを置いて支えた。",
+    "en": "The photo fell when I let go, so I propped it up with an eraser.",
     "audio": {
       "ja": null,
       "en": null
@@ -42515,8 +42593,8 @@
     "scene": "mahiru_good_end_school",
     "speaker": "narrator",
     "source": "scenarios/route_mahiru.md",
-    "ja": "机の上に写真を立ててから、部屋の灯りを消した。",
-    "en": "I propped the photograph on my desk before turning out the light.",
+    "ja": "明日、まひるに飾り方を聞こう。写真を立てたまま、部屋の灯りを消した。",
+    "en": "I'd ask Mahiru how to display it tomorrow. I left the photo standing and switched off the light.",
     "audio": {
       "ja": null,
       "en": null
@@ -43490,8 +43568,21 @@
     "scene": "mahiru_bad_end",
     "speaker": "narrator",
     "source": "scenarios/route_mahiru.md",
-    "ja": "もう一度、画面をつけた。帰ったよ、の四文字が残っていた。",
-    "en": "I woke the screen again. Her message was still there: “I’m home.”",
+    "ja": "もう一度、画面をつけた。",
+    "en": "I woke the screen again. ",
+    "audio": {
+      "ja": null,
+      "en": null
+    }
+  },
+  {
+    "id": "route_mahiru.mahiru_bad_end.coda001.s002",
+    "chapter": "route_mahiru",
+    "scene": "mahiru_bad_end",
+    "speaker": "narrator",
+    "source": "scenarios/route_mahiru.md",
+    "ja": "帰ったよ、の四文字が残っていた。",
+    "en": "Her message was still there: “I’m home.”",
     "audio": {
       "ja": null,
       "en": null
@@ -43503,8 +43594,21 @@
     "scene": "mahiru_bad_end",
     "speaker": "narrator",
     "source": "scenarios/route_mahiru.md",
-    "ja": "明日は顔を見て話そう。送らないまま、そう決めた。",
-    "en": "Tomorrow, I would talk to her in person. I decided that without sending a word.",
+    "ja": "明日は顔を見て話そう。",
+    "en": "Tomorrow, I would talk to her in person. ",
+    "audio": {
+      "ja": null,
+      "en": null
+    }
+  },
+  {
+    "id": "route_mahiru.mahiru_bad_end.coda002.s002",
+    "chapter": "route_mahiru",
+    "scene": "mahiru_bad_end",
+    "speaker": "narrator",
+    "source": "scenarios/route_mahiru.md",
+    "ja": "送らないまま、そう決めた。",
+    "en": "I decided that without sending a word.",
     "audio": {
       "ja": null,
       "en": null
@@ -50005,8 +50109,8 @@
     "scene": "sakura_good_end_rooftop",
     "speaker": "narrator",
     "source": "scenarios/route_sakura.md",
-    "ja": "予鈴が鳴った。さくらは階段へ向かいかけて、こちらへ戻ってきた。",
-    "en": "The warning bell rang. Sakura started toward the stairs, then came back to me.",
+    "ja": "予鈴が鳴ると、さくらは階段へ二、三歩進んでから振り返った。",
+    "en": "The warning bell rang, and Sakura took a few steps toward the stairs before looking back.",
     "audio": {
       "ja": null,
       "en": null
@@ -50018,8 +50122,8 @@
     "scene": "sakura_good_end_rooftop",
     "speaker": "narrator",
     "source": "scenarios/route_sakura.md",
-    "ja": "今度は俺から、その手を取った。",
-    "en": "This time, I reached for her hand.",
+    "ja": "差し出された手を、今度は俺から取った。階段を下りる途中で、さくらがまた笑った。",
+    "en": "This time, I reached for her outstretched hand. She laughed again on the way downstairs.",
     "audio": {
       "ja": null,
       "en": null
@@ -50031,8 +50135,8 @@
     "scene": "sakura_good_end_rooftop",
     "speaker": "narrator",
     "source": "scenarios/route_sakura.md",
-    "ja": "二人分の足音が、階段を下りていった。",
-    "en": "Two sets of footsteps made their way down the stairs.",
+    "ja": "教室の手前でようやく手を離した。ドアを開ける順番を譲り合って、また二人とも止まった。",
+    "en": "We finally let go outside our classroom. Each waited for the other to open the door, and we both stopped again.",
     "audio": {
       "ja": null,
       "en": null

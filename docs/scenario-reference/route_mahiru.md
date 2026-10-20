@@ -606,7 +606,7 @@ EN：If you're going home—
 
 `route_mahiru.mahiru_ch9_corridor.r003`
 
-JA：今日、ひとりがいい
+JA：今日は、ひとりがいい
 
 EN：Want to be alone today.
 
@@ -3574,17 +3574,17 @@ EN：The three people in the photograph were smiling in different directions.
 
 `route_mahiru.mahiru_good_end_school.coda002`
 
-JA：明日の朝、まひるに見せる場所を相談しよう。
+JA：手を離すと写真が倒れたので、後ろに消しゴムを置いて支えた。
 
-EN：Tomorrow morning, I would ask Mahiru where we should put it.
+EN：The photo fell when I let go, so I propped it up with an eraser.
 
 ## mahiru_good_end_school / narrator
 
 `route_mahiru.mahiru_good_end_school.coda003`
 
-JA：机の上に写真を立ててから、部屋の灯りを消した。
+JA：明日、まひるに飾り方を聞こう。写真を立てたまま、部屋の灯りを消した。
 
-EN：I propped the photograph on my desk before turning out the light.
+EN：I'd ask Mahiru how to display it tomorrow. I left the photo standing and switched off the light.
 
 ## mahiru_good_end_school / narrator
 
@@ -4134,17 +4134,33 @@ EN：While I tried to think of something else, the screen went dark.
 
 `route_mahiru.mahiru_bad_end.coda001`
 
-JA：もう一度、画面をつけた。帰ったよ、の四文字が残っていた。
+JA：もう一度、画面をつけた。
 
-EN：I woke the screen again. Her message was still there: “I’m home.”
+EN：I woke the screen again.
+
+## mahiru_bad_end / narrator
+
+`route_mahiru.mahiru_bad_end.coda001.s002`
+
+JA：帰ったよ、の四文字が残っていた。
+
+EN：Her message was still there: “I’m home.”
 
 ## mahiru_bad_end / narrator
 
 `route_mahiru.mahiru_bad_end.coda002`
 
-JA：明日は顔を見て話そう。送らないまま、そう決めた。
+JA：明日は顔を見て話そう。
 
-EN：Tomorrow, I would talk to her in person. I decided that without sending a word.
+EN：Tomorrow, I would talk to her in person.
+
+## mahiru_bad_end / narrator
+
+`route_mahiru.mahiru_bad_end.coda002.s002`
+
+JA：送らないまま、そう決めた。
+
+EN：I decided that without sending a word.
 
 ## mahiru_bad_end / narrator
 

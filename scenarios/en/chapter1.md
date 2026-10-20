@@ -382,18 +382,22 @@ sakura: $chapter1.chapter1_lunch.r020
 > $chapter1.chapter1_lunch.r021
 > $chapter1.chapter1_lunch.r021.s002
 
+> $chapter1.chapter1_lunch.pack_up
+> $chapter1.chapter1_lunch.pack_up.s002
+
 @hide sakura fade_out
 @jump chapter1_after_school_intro
 
 # chapter1_after_school_intro
 
-@scene classroom_late_afternoon fade
+@scene classroom_evening fade
 @bgm evening_piano.mp3
 @se school_bell.mp3
 
 > $chapter1.chapter1_after_school_intro.r001
 > $chapter1.chapter1_after_school_intro.r001.s002
 > $chapter1.chapter1_after_school_intro.r001.s003
+> $chapter1.chapter1_after_school_intro.r001.s004
 
 @show sakura left happy fade_in
 

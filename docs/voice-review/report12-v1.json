@@ -1,0 +1,97 @@
+{
+  "version": "debug12-v1",
+  "date": "2026-10-20",
+  "status": "superseded_after_user_feedback",
+  "clips": [
+    {
+      "id": "route_kotoha.kotoha_ch11_start.r041",
+      "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+      "language": "ja",
+      "display": "こんなふうに。力を入れないで",
+      "tts": "[calm, conversational] こんなふうに。力を入れないで。",
+      "direction": "隣で指の形を直して教える普段の会話。gentleの甘い演技を外し、前後の落ち着いた声へ寄せる。ささやかず、声を張らず、二文とも抑えた自然な案内。",
+      "voice_id": "SYjaeawCEiQrxiyl1IWh",
+      "voice_name": "Leira - Elegant Lady",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[calm, conversational] こんなふうに。力を入れないで。",
+        "language_code": "ja",
+        "previous_text": "地の文: ことはが椅子の上で横へずれた。空いた場所へ座ると、肩が触れる。\n地の文: 俺の手を取って、けんばんの上へ置いた。指をいっぽんずつ曲げられる。",
+        "next_text": "地の文: ことはの手が俺の指を押した。思ったより大きな音が出た。\nことは: ……へたですね",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v3.mp3",
+        "gainDb": -0.5
+      },
+      "after": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug12-v1.mp3",
+        "gainDb": -1.5
+      },
+      "sha256": "db6e31c97420529777d3d712c183480bfe4a893f25b005a20e3386894bca7d33",
+      "duration": 2.8,
+      "peak_after_gain_dbfs": -8.307302169476054,
+      "rms_delta_db": 0.005869705442254514,
+      "trailing_silence_seconds": 0.09997916666666666,
+      "charged_characters_response": 17,
+      "frame_check": {
+        "bytes": 46018,
+        "frames": 110,
+        "duration_approx": 2.8734693877551005
+      },
+      "subjective_listening": false,
+      "previous_audio_preserved": true
+    },
+    {
+      "id": "route_mahiru.mahiru_ch9_corridor.r003",
+      "key": "ja:route_mahiru.mahiru_ch9_corridor.r003",
+      "language": "ja",
+      "display": "今日は、ひとりがいい",
+      "tts": "[quiet, tired] 今日は、ひとりがいい。",
+      "direction": "前版の疲れた静かなトーンを維持。冒頭を漢字の「今日は」にして語を切らず、きょうはと発音。「ちょう」にしない。",
+      "voice_id": "JTlYtJrcTzPC71hMLOxo",
+      "voice_name": "Yuki",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[quiet, tired] 今日は、ひとりがいい。",
+        "language_code": "ja",
+        "previous_text": "地の文: じゅうがつの下旬、放課後の廊下でまひるに追いついた。写真部とは反対の方へ歩いている。\nいさむ: 帰るなら",
+        "next_text": "地の文: まだ何も誘っていなかった。俺は出した片手を鞄のベルトへ戻した。\nいさむ: ああ",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug11-v1.mp3",
+        "gainDb": 12
+      },
+      "after": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug12-v1.mp3",
+        "gainDb": 12
+      },
+      "sha256": "714e2df33d0b72adac05207d5e6bec18638622c831d442f29aa42238ce7cedcf",
+      "duration": 1.92,
+      "peak_after_gain_dbfs": -3.025691396798976,
+      "rms_delta_db": -0.98547501314982,
+      "trailing_silence_seconds": 0.11745833333333333,
+      "charged_characters_response": 11,
+      "frame_check": {
+        "bytes": 31807,
+        "frames": 76,
+        "duration_approx": 1.9853061224489825
+      },
+      "subjective_listening": false,
+      "previous_audio_preserved": true
+    }
+  ],
+  "generation_requests": 2,
+  "charged_characters_response": 28,
+  "gain_method": "Original reference active RMS, gain +/-12 dB and sample peak <= -1 dBFS before global +3dB/limiter chain; not a subjective pronunciation check.",
+  "user_feedback": "ことははもっと抑える。まひるはまだ「ちょうは」と聞こえる。"
+}

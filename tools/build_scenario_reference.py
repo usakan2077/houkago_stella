@@ -21,7 +21,9 @@ def main():
             for line in path.read_text(encoding='utf8').splitlines():
                 if line.startswith('# '):label=line[2:].strip()
                 keys=re.findall(r'\$([\w.]+)',line)
-                if line.startswith('@ending_intro'):keys += [key[1:] for key in codas.get(label,[])]
+                if line.startswith('@ending_intro'):
+                    profile=line.split()[2]
+                    keys += [key[1:] for key in codas.get(profile,[])]
                 for key in keys:
                     if key not in locales[lang]:continue
                     if key not in order[lang]:order[lang].append(key)

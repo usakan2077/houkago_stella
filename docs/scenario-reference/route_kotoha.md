@@ -2916,6 +2916,30 @@ EN：We looked at each other, then pressed our first note together.
 
 ## kotoha_concert_resume / narrator
 
+`route_kotoha.kotoha_ch12_good_end.coda001`
+
+JA：指を離すと、音が準備室へ広がった。ことはの右手が、次の小節へ進む。
+
+EN：We lifted our fingers, and the note spread through the practice room. Her right hand moved into the next bar.
+
+## kotoha_concert_resume / narrator
+
+`route_kotoha.kotoha_ch12_good_end.coda002`
+
+JA：俺は隣で、その曲を最後まで聴いた。弾き終えたことはが譜面を閉じても、すぐには立たなかった。
+
+EN：I stayed beside her until the piece was over. Even after she closed the score, neither of us stood up right away.
+
+## kotoha_concert_resume / narrator
+
+`route_kotoha.kotoha_ch12_good_end.coda003`
+
+JA：鞄を持って、準備室の灯りを消した。鍵を返しに行く間も、ことははさっきの曲を口ずさんでいた。
+
+EN：We picked up our bags and turned out the light. On the way to return the key, Kotoha was still humming the tune.
+
+## kotoha_concert_resume / narrator
+
 `route_kotoha.kotoha_ch12_good_end.r028`
 
 JA：また暖かい季節になって、商店街の広場にピアノが出た。

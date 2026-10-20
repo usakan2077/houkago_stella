@@ -895,7 +895,8 @@ kotoha: $route_kotoha.kotoha_ch12_good_end.r026
 > $route_kotoha.kotoha_ch12_good_end.r027.s003
 
 @still kotoha_piano_side
-@ending_intro きみと触れる音.mp3 kotoha_good_end 13000
+@wait 900
+@ending_intro きみと触れる音.mp3 kotoha_good_end 18000
 @scene street_plaza_summer fade
 @bgm epilogue_sunset_for_each.mp3
 
@@ -990,5 +991,9 @@ kotoha: $route_kotoha.kotoha_ch12_bad_end.r009
 > $route_kotoha.kotoha_ch12_bad_end.r014
 > $route_kotoha.kotoha_ch12_bad_end.r014.s002
 
-@ending_intro bad_end_loop.mp3 bad_end 10500
+> $route_kotoha.kotoha_ch12_bad_end.coda001
+> $route_kotoha.kotoha_ch12_bad_end.coda002
+> $route_kotoha.kotoha_ch12_bad_end.coda003
+
+@credits bad_end_loop.mp3 bad_end
 @end "$route_kotoha.kotoha_ch12_bad_end.r015"

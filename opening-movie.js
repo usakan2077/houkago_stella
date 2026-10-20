@@ -55,7 +55,7 @@ class OpeningMovie {
     this.idleTimer = setInterval(() => {
       if (!this.canReplay()) { this.idleSince = null; return; }
       if (this.idleSince === null) this.idleSince = performance.now();
-      if (performance.now() - this.idleSince >= (VN_CONFIG.openingMovieIdleMs ?? 10000)) this.play();
+      if (performance.now() - this.idleSince >= (VN_CONFIG.openingMovieIdleMs ?? 30000)) this.play();
     }, 250);
   }
 

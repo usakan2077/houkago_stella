@@ -1,0 +1,155 @@
+{
+  "version": "debug12-v2",
+  "date": "2026-10-20",
+  "status": "installed_approved_by_user",
+  "clips": [
+    {
+      "actual_payloads": [
+        {
+          "text": "[quiet, restrained voice] こんなふうに。",
+          "language_code": "ja",
+          "previous_text": "地の文: ことはが椅子の上で横へずれた。空いた場所へ座ると、肩が触れる。\n地の文: 俺の手を取って、けんばんの上へ置いた。指をいっぽんずつ曲げられる。",
+          "next_text": "ことは: 力を入れないで。\n地の文: ことはの手が俺の指を押した。思ったより大きな音が出た。\nことは: ……へたですね",
+          "model_id": "eleven_v4",
+          "voice_settings": {
+            "stability": 0.5,
+            "similarity_boost": 0.75
+          }
+        },
+        {
+          "text": "[quiet, restrained voice] 力を入れないで。",
+          "language_code": "ja",
+          "previous_text": "地の文: ことはが椅子の上で横へずれた。空いた場所へ座ると、肩が触れる。\n地の文: 俺の手を取って、けんばんの上へ置いた。指をいっぽんずつ曲げられる。\nことは: こんなふうに。",
+          "next_text": "地の文: ことはの手が俺の指を押した。思ったより大きな音が出た。\nことは: ……へたですね",
+          "model_id": "eleven_v4",
+          "voice_settings": {
+            "stability": 0.5,
+            "similarity_boost": 0.75
+          }
+        }
+      ],
+      "generation_method": "Two independent restrained-voice generations, conservative silence trims, 4 ms boundary fades, per-clause level matching, 120 ms inserted gap, single MP3 encode",
+      "id": "route_kotoha.kotoha_ch11_start.r041",
+      "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+      "language": "ja",
+      "display": "こんなふうに。力を入れないで",
+      "tts": "[quiet, restrained voice] こんなふうに。[quiet, restrained voice] 力を入れないで。",
+      "direction": "前半・後半を別々に抑えた声で生成し、承認済み練習音声を基準に音量・間をそろえて結合。",
+      "voice_id": "SYjaeawCEiQrxiyl1IWh",
+      "voice_name": "Leira - Elegant Lady",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[quiet, restrained voice] こんなふうに。[quiet, restrained voice] 力を入れないで。",
+        "language_code": "ja",
+        "previous_text": "地の文: ことはが椅子の上で横へずれた。空いた場所へ座ると、肩が触れる。\n地の文: 俺の手を取って、けんばんの上へ置いた。指をいっぽんずつ曲げられる。",
+        "next_text": "ことは: 力を入れないで。\n地の文: ことはの手が俺の指を押した。思ったより大きな音が出た。\nことは: ……へたですね",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug12-v1.mp3",
+        "gainDb": -1.5
+      },
+      "after": {
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug12-v2.mp3",
+        "gainDb": 7.5
+      },
+      "sha256": "5eb073511cef007521ffd83fe839bf57f5b7167383912f7b2002767137701831",
+      "duration": 3.2404375,
+      "peak_after_gain_dbfs": -2.909813621606869,
+      "rms_delta_db": 0.05173203650586089,
+      "trailing_silence_seconds": 0.08025,
+      "charged_characters_response": 30,
+      "frame_check": {
+        "bytes": 53123,
+        "frames": 127,
+        "duration_approx": 3.3175510204081595
+      },
+      "subjective_listening": false,
+      "previous_audio_preserved": true,
+      "user_review": {
+        "date": "2026-10-20",
+        "result": "approved",
+        "feedback": "2本ともOK",
+        "scope": "Report 12 Kotoha r041 restrained split take and Mahiru r003 explicit 今日（きょう）は reading, debug12-v2."
+      }
+    },
+    {
+      "actual_payloads": [
+        {
+          "text": "[quiet, tired] 今日（きょう）は、ひとりがいい。",
+          "language_code": "ja",
+          "previous_text": "地の文: じゅうがつの下旬、放課後の廊下でまひるに追いついた。写真部とは反対の方へ歩いている。\nいさむ: 帰るなら",
+          "next_text": "地の文: まだ何も誘っていなかった。俺は出した片手を鞄のベルトへ戻した。\nいさむ: ああ",
+          "model_id": "eleven_v4",
+          "voice_settings": {
+            "stability": 0.5,
+            "similarity_boost": 0.75
+          }
+        }
+      ],
+      "generation_method": "single_request",
+      "id": "route_mahiru.mahiru_ch9_corridor.r003",
+      "key": "ja:route_mahiru.mahiru_ch9_corridor.r003",
+      "language": "ja",
+      "display": "今日は、ひとりがいい",
+      "tts": "[quiet, tired] 今日（きょう）は、ひとりがいい。",
+      "direction": "ユーザー指定の漢字＋括弧読み。「きょうは」と発音し、「ちょうは」にしない。quiet/tiredの静かなトーンは維持。",
+      "voice_id": "JTlYtJrcTzPC71hMLOxo",
+      "voice_name": "Yuki",
+      "model": "eleven_v4",
+      "payload": {
+        "text": "[quiet, tired] 今日（きょう）は、ひとりがいい。",
+        "language_code": "ja",
+        "previous_text": "地の文: じゅうがつの下旬、放課後の廊下でまひるに追いついた。写真部とは反対の方へ歩いている。\nいさむ: 帰るなら",
+        "next_text": "地の文: まだ何も誘っていなかった。俺は出した片手を鞄のベルトへ戻した。\nいさむ: ああ",
+        "model_id": "eleven_v4",
+        "voice_settings": {
+          "stability": 0.5,
+          "similarity_boost": 0.75
+        }
+      },
+      "before": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug12-v1.mp3",
+        "gainDb": 12
+      },
+      "after": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug12-v2.mp3",
+        "gainDb": 12
+      },
+      "sha256": "24183ddfaec6d3b31792bdbf0f3bcee0dba5b818b51e9838c9a24d9937482618",
+      "duration": 1.84,
+      "peak_after_gain_dbfs": -8.925614417579549,
+      "rms_delta_db": -0.8469623067859189,
+      "trailing_silence_seconds": 0.10410416666666666,
+      "charged_characters_response": 14,
+      "frame_check": {
+        "bytes": 30554,
+        "frames": 73,
+        "duration_approx": 1.9069387755102067
+      },
+      "subjective_listening": false,
+      "previous_audio_preserved": true,
+      "user_review": {
+        "date": "2026-10-20",
+        "result": "approved",
+        "feedback": "2本ともOK",
+        "scope": "Report 12 Kotoha r041 restrained split take and Mahiru r003 explicit 今日（きょう）は reading, debug12-v2."
+      }
+    }
+  ],
+  "generation_requests": 3,
+  "charged_characters_response": 44,
+  "gain_method": "Original reference active RMS, gain +/-12 dB and sample peak <= -1 dBFS before global +3dB/limiter chain; not a subjective pronunciation check.",
+  "total_report12_generation_requests": 5,
+  "total_report12_charged_characters_response": 72,
+  "user_review": {
+    "date": "2026-10-20",
+    "result": "approved",
+    "feedback": "2本ともOK",
+    "scope": "Report 12 Kotoha r041 restrained split take and Mahiru r003 explicit 今日（きょう）は reading, debug12-v2."
+  }
+}

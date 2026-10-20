@@ -1073,7 +1073,8 @@ sakura: $route_sakura.sakura_good_end_rooftop.r027
 > $route_sakura.sakura_good_end_rooftop.context003.s002
 
 @still sakura_good_end_rooftop2
-@ending_intro current sakura_good_end 10000
+@wait 900
+@ending_intro current sakura_good_end 18000
 @scene school_grounds_evening fade
 @bgm epilogue_sunset_for_each.mp3
 
@@ -1247,5 +1248,9 @@ sakura: $route_sakura.sakura_bad_end_final.r007
 > $route_sakura.sakura_bad_end_final.r008
 > $route_sakura.sakura_bad_end_final.r008.s002
 
-@ending_intro bad_end_loop.mp3 bad_end 10500
+> $route_sakura.sakura_bad_end_final.coda001
+> $route_sakura.sakura_bad_end_final.coda002
+> $route_sakura.sakura_bad_end_final.coda003
+
+@credits bad_end_loop.mp3 bad_end
 @end "$route_sakura.sakura_bad_end_final.r009"

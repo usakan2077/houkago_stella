@@ -87,8 +87,8 @@ window.EditorLineEditor = (() => {
 
     const { startIdx, endIdx } = _state.labelRange;
     const extras = englishExtras();
-    const appendExtras = key => {
-      for (const line of extras.get(key) || []) {
+    const appendExtras = index => {
+      for (const line of extras.get(index) || []) {
         const row = document.createElement('article');
         row.className = 'line-row locale-continuation';
         const note = document.createElement('p');
@@ -104,29 +104,39 @@ window.EditorLineEditor = (() => {
 
     for (let i = startIdx + 1; i < endIdx; i++) {
       const line = _state.parsed[i];
-      if (line.key) appendExtras(line.key);
+      appendExtras(i);
       const el = renderLine(line, i);
       if (el) _container.appendChild(el);
       _container.appendChild(makeInsertBar(i + 1));
     }
-    appendExtras(null);
+    appendExtras(endIdx);
     requestAnimationFrame(() => _container.querySelectorAll('textarea').forEach(autoGrow));
   }
 
-  // Keep both runtime scripts intact while exposing EN-only split lines at their next shared anchor.
+  // Insert extra sentences immediately after their narration group, before scene/BGM cues.
   function englishExtras() {
     const parsed = _state.englishScenarios[_state.fileName];
     const range = parsed && ScenarioIO.extractLabels(parsed).find(label => label.name === _state.labelName);
     const result = new Map();
     if (!range) return result;
-    const localKeys = new Set(_state.parsed.slice(_state.labelRange.startIdx + 1, _state.labelRange.endIdx).map(line => line.key).filter(Boolean));
+    const { startIdx, endIdx } = _state.labelRange;
+    const localKeys = new Map();
+    for (let i = startIdx + 1; i < endIdx; i++) {
+      if (_state.parsed[i].key) localKeys.set(_state.parsed[i].key, i);
+    }
     const lines = parsed.slice(range.startIdx + 1, range.endIdx).filter(line => line.key);
     const seen = new Set();
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      if (localKeys.has(line.key) || seen.has(line.key)) continue;
+    let previousIndex = startIdx;
+    for (const line of lines) {
+      if (localKeys.has(line.key)) {
+        previousIndex = localKeys.get(line.key);
+        continue;
+      }
+      if (seen.has(line.key)) continue;
       seen.add(line.key);
-      const anchor = lines.slice(i + 1).find(next => localKeys.has(next.key))?.key || null;
+      const base = line.key.replace(/\.s\d+$/, '');
+      const siblings = [...localKeys].filter(([key]) => key.replace(/\.s\d+$/, '') === base);
+      const anchor = (siblings.length ? siblings[siblings.length - 1][1] : previousIndex) + 1;
       if (!result.has(anchor)) result.set(anchor, []);
       result.get(anchor).push(line);
     }

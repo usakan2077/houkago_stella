@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>デバッグ報告11 — ボイス聴き比べ</title>
+<title>デバッグ報告11・12 — ボイス聴き比べ</title>
 <style>
 :root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101725;color:#eef3ff}body{max-width:1020px;margin:40px auto;padding:0 20px}h1{font-size:28px}p{line-height:1.8;color:#bdc9dd}a{color:#9bcaff}.toolbar{position:sticky;top:0;background:#101725f5;padding:15px 0;display:flex;gap:12px;flex-wrap:wrap;z-index:2}input,select,button{font:inherit;padding:10px;border:1px solid #4b5b75;border-radius:8px;background:#202e45;color:inherit}input[type=search]{flex:1;min-width:180px}article{padding:22px;margin:18px 0;border:1px solid #3c4a63;border-radius:12px;background:#182237}h2{font-size:17px;margin:0 0 12px}.identity{font-size:12px;color:#9eafc9;overflow-wrap:anywhere}.text{font-size:20px;color:#fff}.tts{font-size:14px}.actions{display:flex;gap:10px;flex-wrap:wrap}button{cursor:pointer}button[aria-pressed=true]{background:#2566a3}.flag{color:#ffd391}label{display:flex;align-items:center;gap:8px}#status{min-height:1.6em}small{color:#bdc9dd}
 </style>
 <body>
 <a href="../../index.html">← ゲーム</a> · <a href="../scenario-reference/index.html">本文・音声索引</a>
-<h1>撮り直した23台詞を聴き比べる</h1>
+<h1>デバッグ報告11・12 — 撮り直した23台詞を聴き比べる</h1>
 <p>日本語21台詞・英語2台詞。再生時にはゲームと同じgainDbを適用します。旧音声も保存しています。発音、演技、語尾の聞こえ方を確認してください。自動検査で発音の正しさを判定したものではありません。</p>
 <div class="toolbar"><select id="language" aria-label="言語"><option value="">日英すべて</option value="ja">日本語</option><option value="en">英語</option></select><select id="character" aria-label="人物"><option value="">全員</option><option>sakura</option><option>kotoha</option><option>mahiru</option><option>teacher_male</option></select><input id="search" type="search" placeholder="本文・台詞IDを検索" aria-label="本文・台詞IDを検索"><button id="stop">停止</button><label>音量<input id="volume" type="range" min="0" max="1" step=".05" value=".8"></label></div>
 <p id="status" role="status" aria-live="polite">読み込み中…</p><main id="clips"></main>

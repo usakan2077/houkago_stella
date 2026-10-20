@@ -435,22 +435,22 @@
       "id": "route_kotoha.kotoha_ch11_start.r041",
       "character": "kotoha",
       "display": "こんなふうに。力を入れないで",
-      "tts": "[gentle] こんなふうに。力を入れないで。",
-      "direction": "漢字＋括弧やカタカナでも改善しなかったユーザー試聴結果を受け、発音が崩れる語を使わない自然な言い換えへ変更。場面の意味・人物の口調を維持し、画面本文も一致させる。",
+      "tts": "[quiet, restrained voice] こんなふうに。[quiet, restrained voice] 力を入れないで。",
+      "direction": "前半・後半を別々に抑えた声で生成し、承認済み練習音声を基準に音量・間をそろえて結合。",
       "before": {
-        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v2.mp3",
-        "gainDb": 3.5
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug12-v1.mp3",
+        "gainDb": -1.5
       },
       "after": {
-        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v3.mp3",
-        "gainDb": -0.5
+        "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug12-v2.mp3",
+        "gainDb": 7.5
       },
-      "sha256": "492ee04bcf59cced3bfd2d1112d838faf09bca10dd79c5da4655033ab34b6136",
-      "duration": 2.88,
-      "old_duration": 2.64,
-      "peak_after_gain_dbfs": -7.789582446192088,
-      "rms_delta_db": -0.08380531056193519,
-      "trailing_silence_seconds": 0.08972916666666667,
+      "sha256": "5eb073511cef007521ffd83fe839bf57f5b7167383912f7b2002767137701831",
+      "duration": 3.2404375,
+      "old_duration": 2.8,
+      "peak_after_gain_dbfs": -2.909813621606869,
+      "rms_delta_db": 0.05173203650586089,
+      "trailing_silence_seconds": 0.08025,
       "needs_tail_listening": false,
       "previous_comparisons": [
         {
@@ -501,9 +501,66 @@
           "trailing_silence_seconds": 0.07116666666666667,
           "needs_tail_listening": false,
           "user_listening_result": "Pronunciation not improved, per user feedback."
+        },
+        {
+          "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+          "language": "ja",
+          "id": "route_kotoha.kotoha_ch11_start.r041",
+          "character": "kotoha",
+          "display": "こんなふうに。力を入れないで",
+          "tts": "[gentle] こんなふうに。力を入れないで。",
+          "direction": "漢字＋括弧やカタカナでも改善しなかったユーザー試聴結果を受け、発音が崩れる語を使わない自然な言い換えへ変更。場面の意味・人物の口調を維持し、画面本文も一致させる。",
+          "before": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v2.mp3",
+            "gainDb": 3.5
+          },
+          "after": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v3.mp3",
+            "gainDb": -0.5
+          },
+          "sha256": "492ee04bcf59cced3bfd2d1112d838faf09bca10dd79c5da4655033ab34b6136",
+          "duration": 2.88,
+          "old_duration": 2.64,
+          "peak_after_gain_dbfs": -7.789582446192088,
+          "rms_delta_db": -0.08380531056193519,
+          "trailing_silence_seconds": 0.08972916666666667,
+          "needs_tail_listening": false,
+          "review_status": "superseded_after_debug_report12"
+        },
+        {
+          "key": "ja:route_kotoha.kotoha_ch11_start.r041",
+          "language": "ja",
+          "id": "route_kotoha.kotoha_ch11_start.r041",
+          "character": "kotoha",
+          "display": "こんなふうに。力を入れないで",
+          "tts": "[calm, conversational] こんなふうに。力を入れないで。",
+          "direction": "隣で指の形を直して教える普段の会話。gentleの甘い演技を外し、前後の落ち着いた声へ寄せる。ささやかず、声を張らず、二文とも抑えた自然な案内。",
+          "before": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v3.mp3",
+            "gainDb": -0.5
+          },
+          "after": {
+            "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug12-v1.mp3",
+            "gainDb": -1.5
+          },
+          "sha256": "db6e31c97420529777d3d712c183480bfe4a893f25b005a20e3386894bca7d33",
+          "duration": 2.8,
+          "old_duration": 2.88,
+          "peak_after_gain_dbfs": -8.307302169476054,
+          "rms_delta_db": 0.005869705442254514,
+          "trailing_silence_seconds": 0.09997916666666666,
+          "needs_tail_listening": false,
+          "review_status": "rejected_after_user_listening",
+          "user_feedback": "Kotoha: more restrained; Mahiru: still sounds like cho-wa; user requested ????????."
         }
       ],
-      "review_status": "approved_by_user"
+      "review_status": "approved_by_user",
+      "user_review": {
+        "date": "2026-10-20",
+        "result": "approved",
+        "feedback": "2本ともOK",
+        "scope": "Report 12 Kotoha r041 restrained split take and Mahiru r003 explicit 今日（きょう）は reading, debug12-v2."
+      }
     },
     {
       "key": "ja:route_kotoha.kotoha_ch12_practice.r004",
@@ -668,25 +725,84 @@
       "language": "ja",
       "id": "route_mahiru.mahiru_ch9_corridor.r003",
       "character": "mahiru",
-      "display": "今日、ひとりがいい",
-      "tts": "[quiet, tired] きょう、ひとりがいい。",
-      "direction": "必要な意思を短く明確に。大声や威圧に置き換えない。",
+      "display": "今日は、ひとりがいい",
+      "tts": "[quiet, tired] 今日（きょう）は、ひとりがいい。",
+      "direction": "ユーザー指定の漢字＋括弧読み。「きょうは」と発音し、「ちょうは」にしない。quiet/tiredの静かなトーンは維持。",
       "before": {
-        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.full-v2.mp3",
-        "gainDb": 3.0
-      },
-      "after": {
-        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug11-v1.mp3",
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug12-v1.mp3",
         "gainDb": 12
       },
-      "sha256": "c40902608fa821019d9106a87920909a642374da3ab729ab9c1fabf86dc6c297",
-      "duration": 2.4,
-      "old_duration": 1.44,
-      "peak_after_gain_dbfs": -3.6387402092737595,
-      "rms_delta_db": -3.063041750983661,
-      "trailing_silence_seconds": 0.5031875,
+      "after": {
+        "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug12-v2.mp3",
+        "gainDb": 12
+      },
+      "sha256": "24183ddfaec6d3b31792bdbf0f3bcee0dba5b818b51e9838c9a24d9937482618",
+      "duration": 1.84,
+      "old_duration": 1.92,
+      "peak_after_gain_dbfs": -8.925614417579549,
+      "rms_delta_db": -0.8469623067859189,
+      "trailing_silence_seconds": 0.10410416666666666,
       "needs_tail_listening": false,
-      "review_status": "approved_by_user"
+      "review_status": "approved_by_user",
+      "previous_comparisons": [
+        {
+          "key": "ja:route_mahiru.mahiru_ch9_corridor.r003",
+          "language": "ja",
+          "id": "route_mahiru.mahiru_ch9_corridor.r003",
+          "character": "mahiru",
+          "display": "今日、ひとりがいい",
+          "tts": "[quiet, tired] きょう、ひとりがいい。",
+          "direction": "必要な意思を短く明確に。大声や威圧に置き換えない。",
+          "before": {
+            "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.full-v2.mp3",
+            "gainDb": 3.0
+          },
+          "after": {
+            "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug11-v1.mp3",
+            "gainDb": 12
+          },
+          "sha256": "c40902608fa821019d9106a87920909a642374da3ab729ab9c1fabf86dc6c297",
+          "duration": 2.4,
+          "old_duration": 1.44,
+          "peak_after_gain_dbfs": -3.6387402092737595,
+          "rms_delta_db": -3.063041750983661,
+          "trailing_silence_seconds": 0.5031875,
+          "needs_tail_listening": false,
+          "review_status": "superseded_after_debug_report12"
+        },
+        {
+          "key": "ja:route_mahiru.mahiru_ch9_corridor.r003",
+          "language": "ja",
+          "id": "route_mahiru.mahiru_ch9_corridor.r003",
+          "character": "mahiru",
+          "display": "今日は、ひとりがいい",
+          "tts": "[quiet, tired] 今日は、ひとりがいい。",
+          "direction": "前版の疲れた静かなトーンを維持。冒頭を漢字の「今日は」にして語を切らず、きょうはと発音。「ちょう」にしない。",
+          "before": {
+            "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug11-v1.mp3",
+            "gainDb": 12
+          },
+          "after": {
+            "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug12-v1.mp3",
+            "gainDb": 12
+          },
+          "sha256": "714e2df33d0b72adac05207d5e6bec18638622c831d442f29aa42238ce7cedcf",
+          "duration": 1.92,
+          "old_duration": 2.4,
+          "peak_after_gain_dbfs": -3.025691396798976,
+          "rms_delta_db": -0.98547501314982,
+          "trailing_silence_seconds": 0.11745833333333333,
+          "needs_tail_listening": false,
+          "review_status": "rejected_after_user_listening",
+          "user_feedback": "Kotoha: more restrained; Mahiru: still sounds like cho-wa; user requested ????????."
+        }
+      ],
+      "user_review": {
+        "date": "2026-10-20",
+        "result": "approved",
+        "feedback": "2本ともOK",
+        "scope": "Report 12 Kotoha r041 restrained split take and Mahiru r003 explicit 今日（きょう）は reading, debug12-v2."
+      }
     },
     {
       "key": "ja:route_mahiru.mahiru_ch9_walk.r007",
@@ -926,11 +1042,11 @@
   "total_clips": 23,
   "japanese_clips": 21,
   "english_clips": 2,
-  "charged_characters_response_total": 617,
-  "subjective_listening": true,
+  "charged_characters_response_total": 689,
+  "subjective_listening": false,
   "gain_method": "Match previous take active RMS after its manifest gain; half-dB steps, +/-12 dB, sample-peak ceiling -1 dBFS. Not LUFS/true-peak measurement.",
   "previous_audio_preserved": true,
-  "total_generation_requests": 37,
+  "total_generation_requests": 42,
   "review_status": "approved_by_user",
   "listened_by": "user",
   "user_review": {
@@ -941,9 +1057,9 @@
   },
   "pending_user_listening": [],
   "latest_user_review": {
-    "date": "2026-10-19",
+    "date": "2026-10-20",
     "result": "approved",
-    "feedback": "OK",
-    "scope": "Mahiru r050 neutral conversational retake v2."
+    "feedback": "2本ともOK",
+    "scope": "Report 12 Kotoha r041 restrained split take and Mahiru r003 explicit 今日（きょう）は reading, debug12-v2."
   }
 }

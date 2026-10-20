@@ -734,9 +734,11 @@ EN：Students returned from the hall.
 
 `chapter1.chapter1_homeroom.r001`
 
-JA：座れ。まず連絡。去年の落とし物の傘が十二本、職員室にある。心当たりのある者は、今日のうちに取りに来るように
+JA：座れ。まず連絡。去年の落とし物の傘が十二本、職員室にある。
+心当たりのある者は、今日のうちに取りに来るように
 
-EN：Sit down. First announcement: twelve umbrellas left behind last year are in the staff room. If one is yours, come and collect it today.
+EN：Sit down. First announcement: twelve umbrellas left behind last year are in the staff room.
+If one is yours, come and collect it today.
 
 ## chapter1_homeroom / nobuhara
 
@@ -1282,6 +1284,22 @@ JA：箸を向けられて、パンの袋で受けた。
 
 EN：She pointed her chopsticks at me.
 
+## chapter1_lunch / narrator
+
+`chapter1.chapter1_lunch.pack_up`
+
+JA：さくらが弁当箱の蓋を閉める頃には、午後の授業を知らせるチャイムが鳴り始めていた。
+
+EN：As Sakura put the lid on her lunch box, the bell for afternoon classes began to ring.
+
+## chapter1_lunch / narrator
+
+`chapter1.chapter1_lunch.pack_up.s002`
+
+JA：パンの袋を机にしまい、教科書を取り出すために鞄を引き寄せた。
+
+EN：I put the bread wrapper away in my desk and pulled my bag closer to get my textbook.
+
 ## chapter1_after_school_intro / narrator
 
 `chapter1.chapter1_after_school_intro.r001`
@@ -1294,13 +1312,21 @@ EN：The bell rang at the end of sixth period.
 
 `chapter1.chapter1_after_school_intro.r001.s002`
 
-JA：昼休みに広げた時間割を、帰りの支度をしながらもう一度眺めた。
+JA：鞄に教科書を詰めながら、配られた時間割をもう一度眺めた。
 
-EN：While packing my bag, I looked again at the timetable I had unfolded over lunch.
+EN：While packing my textbooks away, I looked over the timetable we'd been given again.
 
 ## chapter1_after_school_intro / narrator
 
 `chapter1.chapter1_after_school_intro.r001.s003`
+
+JA：金曜の六時間目は体育らしい。
+
+EN：PE in sixth period on Friday.
+
+## chapter1_after_school_intro / narrator
+
+`chapter1.chapter1_after_school_intro.r001.s004`
 
 JA：雨なら楽なのに、と思う。
 

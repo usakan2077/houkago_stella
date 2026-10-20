@@ -995,7 +995,8 @@ mahiru: $route_mahiru.mahiru_good_end_school.r032
 > $route_mahiru.mahiru_good_end_school.context001.s002
 
 @still mahiru_rooftop_friends_photo
-@ending_intro 理由のない明日へ.mp3 mahiru_good_end 14000
+@wait 900
+@ending_intro 理由のない明日へ.mp3 mahiru_good_end 18000
 @hide_all fade_out
 @scene commute_road_autumn_evening fade
 @bgm epilogue_sunset_for_each.mp3
@@ -1125,5 +1126,11 @@ mahiru: $route_mahiru.mahiru_bad_end.r017
 > $route_mahiru.mahiru_bad_end.r026
 > $route_mahiru.mahiru_bad_end.r026.s002
 
-@ending_intro bad_end_loop.mp3 bad_end 10500
+> $route_mahiru.mahiru_bad_end.coda001
+> $route_mahiru.mahiru_bad_end.coda001.s002
+> $route_mahiru.mahiru_bad_end.coda002
+> $route_mahiru.mahiru_bad_end.coda002.s002
+> $route_mahiru.mahiru_bad_end.coda003
+
+@credits bad_end_loop.mp3 bad_end
 @end "$route_mahiru.mahiru_bad_end.r027"

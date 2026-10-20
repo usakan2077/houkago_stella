@@ -3486,8 +3486,8 @@
       "gainDb": 6.0
     },
     "route_kotoha.kotoha_ch11_start.r041": {
-      "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug11-v3.mp3",
-      "gainDb": -0.5
+      "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r041.debug12-v2.mp3",
+      "gainDb": 7.5
     },
     "route_kotoha.kotoha_ch11_start.r043": {
       "src": "assets/voice/ja/route_kotoha/route_kotoha.kotoha_ch11_start.r043.kotoha-leira-v1.mp3",
@@ -3646,7 +3646,7 @@
       "gainDb": 4.5
     },
     "route_mahiru.mahiru_ch9_corridor.r003": {
-      "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug11-v1.mp3",
+      "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_ch9_corridor.r003.debug12-v2.mp3",
       "gainDb": 12
     },
     "route_mahiru.mahiru_ch9_corridor.r006": {

@@ -29,9 +29,15 @@ def main():
         base=f'http://127.0.0.1:{server.server_port}'
         c.send('Page.navigate',dict(url=base+'/index.html'))
         c.wait("typeof engine!=='undefined'&&document.querySelector('#btn-loading-ok')?.style.visibility===''",100)
-        c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
+        c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();window._configuredOPIdleMs=VN_CONFIG.openingMovieIdleMs;VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
         import sys
+        if '--report12-only' in sys.argv:
+            from check_report12 import run
+            run(c, passed, OUT)
+            assert not c.errors,c.errors
+            (OUT/'report12-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--summer-drink-only' in sys.argv:
             c.evaluate("window._transitions=[];window._originalDiamond=engine.tx.diamond;engine.tx.diamond=function(duration,onSwap,onDone){const sample={duration,start:performance.now()};_transitions.push(sample);return _originalDiamond.call(this,duration,()=>{sample.swap=performance.now()-sample.start;onSwap()},()=>{sample.end=performance.now()-sample.start;if(onDone)onDone()})}")
             for lang in ['ja','en']:
@@ -150,7 +156,7 @@ def main():
             assert not c.errors,c.errors
             (OUT/'voice-path-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks,audio=decoded),ensure_ascii=False,indent=2),encoding='utf8')
             return
-        assert c.evaluate("document.getElementById('title-version').textContent==='ver 1.3.1'")
+        assert c.evaluate("document.getElementById('title-version').textContent==='ver '+VN_CONFIG.version")
         c.click('#title-version');assert c.evaluate("document.getElementById('title-updates').open&&document.querySelector('#title-updates-panel a').getAttribute('href')==='lp/index.html'")
         c.shot('01-title-updates')
         c.key('Escape');assert not c.evaluate("document.getElementById('title-updates').open")
@@ -166,7 +172,7 @@ def main():
         c.click('#title-version');assert c.evaluate("document.getElementById('title-updates-heading').textContent==='Update history'")
         passed('Accessible title history, English labels, website link and contrast-safe version on cleared background')
         c.evaluate("engine._setLanguage('ja',{returnToTitle:true});engine._beginGame()")
-        for label,expected in [('chapter1_after_school_intro','classroom_late_afternoon'),('chapter2_after_school','classroom_evening'),('chapter4_music_room','corridor_rainy'),('chapter6_sakura_talk','gymnasium_back_day'),('mahiru_ch9_reason','school_gate_autumn_late_afternoon')]:
+        for label,expected in [('chapter1_after_school_intro','classroom_evening'),('chapter2_after_school','classroom_evening'),('chapter4_music_room','corridor_rainy'),('chapter6_sakura_talk','gymnasium_back_day'),('mahiru_ch9_reason','school_gate_autumn_late_afternoon')]:
             c.evaluate('engine._gotoLabel('+json.dumps(label)+')');c.wait('engine.currentBG==='+json.dumps(expected));time.sleep(.7)
             c.shot('scene-'+label)
         assert c.evaluate("engine._resolveScenarioText('$chapter1.chapter1_after_school_intro.r001').includes('六時間目')")
@@ -178,8 +184,8 @@ def main():
             c.evaluate('engine._stillLockUntil=0;engine._onAdvance()');time.sleep(.008)
         assert c.evaluate("Object.values(engine.charState).some(s=>s?.charKey==='kotoha'&&s.expr==='thinking')")
         c.shot('03-kotoha-lunch-expression');passed('Kotoha has a reserved expression during lunch and a thinking expression at the awkward pause')
-        # Exercise the actual timers for one good and one bad ending, including the transition to credits.
-        for label in ['sakura_good_end_rooftop','sakura_bad_end_final']:
+        # BAD END closing text is manually advanced as of report 12.
+        for label in ['sakura_good_end_rooftop']:
             c.evaluate('engine._resetGameState();engine._gameActive=true;document.getElementById("title-screen").classList.add("hidden");document.getElementById("game-screen").classList.remove("hidden");engine._gotoLabel('+json.dumps(label)+')')
             for _ in range(180):
                 if c.evaluate("!!document.getElementById('ending-coda')"):break
@@ -191,7 +197,7 @@ def main():
             c.wait("document.getElementById('ending-coda')?.dataset.page==='3'",7)
             c.shot('ending-'+label+'-page3')
             c.wait("!document.getElementById('credits-screen').classList.contains('hidden')&&!document.getElementById('ending-coda')",12)
-        passed('Good and bad ending codas advance through all three pages without clicks and enter credits')
+        passed('Good ending coda advances through all three pages without clicks and enters credits')
         c.evaluate('engine._resetGameState();engine._showTitleScreen()')
         assert c.evaluate("!document.getElementById('ending-coda')&&!document.getElementById('game-screen').classList.contains('ending-coda-active')&&engine._endingCodaTimers.length===0")
         c.evaluate("(async()=>{await engine._setLanguage('en',{returnToTitle:true});engine._gameActive=true;document.getElementById('title-screen').classList.add('hidden');document.getElementById('game-screen').classList.remove('hidden');engine.currentLabel='kotoha_ch12_good_end';engine._startEndingIntro(null,'kotoha_good_end',3000)})()")
