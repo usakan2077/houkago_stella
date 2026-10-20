@@ -557,7 +557,7 @@ const VN_CONFIG = {
     voiceVolume: 0.85,    // ボイス音量 (0.0 〜 1.0、0で読み込みも停止)
     chainMode:   'dialogue', // 連続2行表示: 'none' | 'dialogue' | 'all'
     skipReadOnly: false,  // スキップ対象: false=すべて / true=既読のみ
-    fadeTime:    400,     // 背景フェード時間 (ms)
+    fadeTime:    1200,    // 通常の場面切り替え全体の時間 (ms、閉じる＋開く)
     charFadeTime:500,     // キャラクターフェード時間 (ms)
 
     // ----------------------------------------------------------
