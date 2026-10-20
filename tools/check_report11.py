@@ -88,9 +88,9 @@ def main():
             return
         if '--mahiru-run-only' in sys.argv:
             expected=['school_exterior_night','school_entrance_shoebox_night','staircase_night','mahiru_run_stairs_night','rooftop_door_closed_night','rooftop_door_open_night','rooftop_night']
-            c.evaluate("window._rushScenes=[];window._originalChangeBackground=engine._changeBackground;engine._changeBackground=function(...args){_rushScenes.push(args[0]);return _originalChangeBackground.apply(this,args)}")
+            c.evaluate("window._rushScenes=[];window._rushTimes={};window._revealEvents=[];window._originalChangeBackground=engine._changeBackground;engine._changeBackground=function(...args){_rushScenes.push(args[0]);_rushTimes[args[0]]=performance.now();return _originalChangeBackground.apply(this,args)};window._originalRushBGM=engine._playBGM;engine._playBGM=function(...args){_revealEvents.push({type:'bgm',key:args[0],time:performance.now()});return _originalRushBGM.apply(this,args)};window._originalRushStill=engine._showStill;engine._showStill=function(...args){_revealEvents.push({type:'still',key:args[0],time:performance.now()});return _originalRushStill.apply(this,args)}")
             for lang in ['ja','en']:
-                c.evaluate("(async()=>{await engine._setLanguage("+json.dumps(lang)+",{returnToTitle:true});VN_CONFIG.settings.typeSpeed=0;engine._chainMode='none';window._rushScenes=[];engine._openDebugMenu();const button=[...document.querySelectorAll('#debug-jump-overlay button')].find(b=>b.textContent==='まひる Ch10 — 屋上へ走る演出');if(!button)throw new Error('Missing rooftop debug shortcut');button.click()})()")
+                c.evaluate("(async()=>{await engine._setLanguage("+json.dumps(lang)+",{returnToTitle:true});VN_CONFIG.settings.typeSpeed=0;engine._chainMode='none';window._rushScenes=[];window._rushTimes={};window._revealEvents=[];engine._openDebugMenu();const button=[...document.querySelectorAll('#debug-jump-overlay button')].find(b=>b.textContent==='まひる Ch10 — 屋上へ走る演出');if(!button)throw new Error('Missing rooftop debug shortcut');button.click()})()")
                 for suffix,bg in [('r001','school_exterior_night'),('r002','school_entrance_shoebox_night'),('landing','staircase_night'),('r008','mahiru_run_stairs_night'),('r009.s002','rooftop_door_closed_night')]:
                     target='$route_mahiru.mahiru_ch10_run.'+suffix
                     for _ in range(100):
@@ -106,6 +106,18 @@ def main():
                 c.wait("engine.currentLabel==='mahiru_ch10_rooftop'&&engine.currentBG==='rooftop_night'",4)
                 assert c.evaluate('JSON.stringify(_rushScenes)===JSON.stringify('+json.dumps(expected)+')')
                 assert c.evaluate("!engine._backgroundMotion&&engine.seAudios.every(a=>!a.src.includes('running_school'))")
+                pause=c.evaluate('_rushTimes.rooftop_night-_rushTimes.rooftop_door_open_night')
+                assert 1050<=pause<=2200,pause
+                assert c.evaluate("document.getElementById('still-layer').classList.contains('effect-fade_in_slow')&&document.getElementById('still-layer').getAnimations().some(a=>a.effect.getTiming().duration===1600)")
+                timing=c.evaluate("(()=>{const music=_revealEvents.find(e=>e.type==='bgm'&&e.key==='predawn_tension.mp3'),still=_revealEvents.find(e=>e.type==='still'&&e.key==='mahiru_rooftop_night');return {music:music.time,still:still.time}})()")
+                assert abs(timing['music']-timing['still'])<50,timing
+                time.sleep(.35)
+                alpha=c.evaluate("Number(getComputedStyle(document.getElementById('still-layer')).opacity)")
+                assert 0<alpha<1,alpha
+                if lang=='ja':c.shot('rush-rooftop-reveal-fading')
+                c.wait("Number(getComputedStyle(document.getElementById('still-layer')).opacity)===1",3)
+                if lang=='ja':c.shot('rush-rooftop-reveal-complete')
+                passed(lang+': door pauses for '+str(round(pause))+'ms, CG fades in over 1600ms and BGM starts in the same frame')
                 passed(lang+': exterior, entrance, stairs, running insert, closed door, hand opening door and rooftop execute in order; running audio and motion stop on arrival')
             c.evaluate("engine.skipMode=true;engine._changeBackground('staircase_night','rush')")
             assert c.evaluate('!engine._backgroundMotion')

@@ -1800,6 +1800,7 @@ class VNEngine {
     if (!el) return;
     el.classList.remove(
       'effect-fade-in',
+      'effect-fade_in_slow',
       'effect-slide-in-bottom',
       'effect-flashback',
       'effect-flashback_pan',

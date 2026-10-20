@@ -409,7 +409,7 @@ player: $route_mahiru.mahiru_ch10_run.r007
 
 @scene rooftop_door_open_night rush
 @se door_open.mp3
-@wait 700
+@wait 1100
 @jump mahiru_ch10_rooftop
 
 # mahiru_ch10_rooftop
@@ -417,7 +417,7 @@ player: $route_mahiru.mahiru_ch10_run.r007
 @scene rooftop_night cut
 @bgm predawn_tension.mp3
 @se wind_rooftop.mp3
-@still mahiru_rooftop_night
+@still mahiru_rooftop_night fade_in_slow
 
 > $route_mahiru.mahiru_ch10_rooftop.r001
 > $route_mahiru.mahiru_ch10_rooftop.r001.s002

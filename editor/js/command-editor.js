@@ -22,7 +22,7 @@ window.EditorCommandEditor = (() => {
   const HIDE_EFFECT = ['fade_out', 'slide_out_left', 'slide_out_right', 'instant'];
   const SCENE_EFFECT = ['fade', 'instant', 'slide_left', 'slide_right'];
   const MOVE_EFFECT = ['slide', 'instant'];
-  const STILL_EFFECT_IN = ['fade_in', 'slide_in_bottom'];
+  const STILL_EFFECT_IN = ['fade_in', 'fade_in_slow', 'slide_in_bottom'];
   const STILL_EFFECT_OUT = ['fade_out', 'instant'];
   const WINDOW_TARGETS = ['sakura', 'kotoha', 'mahiru', 'reset'];
 

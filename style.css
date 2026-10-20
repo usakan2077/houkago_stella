@@ -630,6 +630,7 @@ body {
   isolation: isolate;
 }
 #still-layer.effect-fade-in         { animation: animFadeIn .6s ease forwards; }
+#still-layer.effect-fade_in_slow    { animation: animFadeIn 1.6s ease-in-out both; }
 #still-layer.effect-slide-in-bottom { animation: animStillSlideUp .5s ease forwards; }
 #still-layer.flashback-still {
   filter: sepia(.46) saturate(.7) contrast(1.08) brightness(.86);
