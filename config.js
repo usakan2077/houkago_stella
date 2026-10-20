@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3.3',
+  version: '1.3.4',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,17 +23,20 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.3.4', date: '2026-10-21',
+      ja: ['再生・スキップ動作を改善。'],
+      en: ['Improved playback and skipping.'] },
     { version: '1.3.3', date: '2026-10-21',
-      ja: ['場面切り替えが四隅まで覆うよう修正し、一瞬の全面暗転を追加。', 'CONFIGにメッセージウィンドウの透明度とプレビューを追加。設定は再起動後も復元。'],
-      en: ['Scene transitions now cover every corner and briefly hold on full black.', 'Added message-window transparency and a live preview to CONFIG, with settings restored after restart.'] },
+      ja: ['表示・操作性を改善。'],
+      en: ['Improved display and controls.'] },
     { version: '1.3.2', date: '2026-10-20',
-      ja: ['放課後の教室背景・時計と、昼休みから授業へのつなぎを修正。', 'GOOD ENDの締めとことはの文章表示を改善し、BAD ENDは手動で読み進める形に変更。', 'タイトル待機からOP再上映までを30秒に延長。', 'ことは・まひるの一部ボイスを再調整。', 'エディターの英語追加行の位置を修正し、設計資料と開発用画面を整理。'],
-      en: ['Corrected the after-school classroom, clock and transition from lunch to lessons.', 'Improved GOOD END closing passages and Kotoha text display; BAD END closing text now waits for input.', 'Extended the title-screen OP replay delay to 30 seconds.', 'Adjusted selected Kotoha and Mahiru voice lines.', 'Fixed English continuation placement in the editor and organized design documents and development previews.'] },
+      ja: ['シナリオ・演出・ボイスを調整。'],
+      en: ['Refined the story, presentation and voices.'] },
     { version: '1.3.1', date: '2026-10-20',
-      ja: ['一部ボイスの発音・抑揚を修正し、全体の基準音量を調整。', '場面の時間帯・天候・会話のつながりと人物の表情を調整。', 'まひるルートの屋上へ走る場面に、夜の玄関・階段・扉のカットと足音を追加。', '全7エンディングの締めとBGM中の自動進行を調整。', 'タイトルに更新履歴と作品紹介へのリンクを追加し、バージョン表記を見やすく改善。'],
-      en: ['Corrected pronunciation and delivery in selected voice lines and raised the base dialogue volume.', 'Adjusted scene timing, weather, narrative continuity and character expressions.', "Added nighttime entrance, stairwell and door shots with running footsteps to Mahiru's rooftop approach.", 'Adjusted closing passages and automatic transitions during the music for all seven endings.', 'Added release history and a website link to the title screen, and improved version-label visibility.'] },
-    { version: '1.3', ja: ['日本語・英語のフルボイスに対応。', '音声設定とログからの再生機能を追加。'],
-      en: ['Added full voice support in Japanese and English.', 'Added voice settings and playback from the text log.'] },
+      ja: ['演出・ボイスを改善し、不具合を修正。'],
+      en: ['Improved presentation and voices, and fixed bugs.'] },
+    { version: '1.3', ja: ['日英フルボイス・ログからの音声再生に対応。'],
+      en: ['Added Japanese/English voices and voice replay from the log.'] },
     { version: '1.2', ja: ['シナリオを全編改稿。日本語・英語表示と演出を調整。'],
       en: ['Revised the scenario and adjusted Japanese/English presentation.'] },
   ],
@@ -922,6 +925,7 @@ const VN_CONFIG = {
     },
     kotoha_good_end: {
       themeTrack: 'きみと触れる音.mp3',
+      lyricAudioOffset: 13,
       themeTitle: 'Ending Theme「きみと触れる音」',
       themeCredit: 'Kotoha Good End Memorial Roll',
       scrollSpeed: 55,
@@ -992,6 +996,7 @@ const VN_CONFIG = {
     },
     mahiru_good_end: {
       themeTrack: '理由のない明日へ.mp3',
+      lyricAudioOffset: 14,
       themeTitle: 'Ending Theme「理由のない明日へ」',
       themeCredit: 'Mahiru Good End Memorial Roll',
       scrollSpeed: 55,

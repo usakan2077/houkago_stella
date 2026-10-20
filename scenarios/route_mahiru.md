@@ -973,7 +973,7 @@ mahiru: $route_mahiru.mahiru_good_end_school.r032
 
 @still mahiru_rooftop_friends_photo
 @wait 900
-@ending_intro 理由のない明日へ.mp3 mahiru_good_end 18000
+@ending_intro 理由のない明日へ.mp3 mahiru_good_end 14000
 @hide_all fade_out
 @scene commute_road_autumn_evening fade
 @bgm epilogue_sunset_for_each.mp3

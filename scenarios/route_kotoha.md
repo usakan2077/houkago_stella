@@ -884,7 +884,7 @@ kotoha: $route_kotoha.kotoha_ch12_good_end.r026
 
 @still kotoha_piano_side
 @wait 900
-@ending_intro きみと触れる音.mp3 kotoha_good_end 18000
+@ending_intro きみと触れる音.mp3 kotoha_good_end 13000
 @scene street_plaza_summer fade
 @bgm epilogue_sunset_for_each.mp3
 

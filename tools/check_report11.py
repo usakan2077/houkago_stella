@@ -31,9 +31,17 @@ def main():
         base=f'http://127.0.0.1:{server.server_port}'
         c.send('Page.navigate',dict(url=base+'/index.html'))
         c.wait("typeof engine!=='undefined'&&document.querySelector('#btn-loading-ok')?.style.visibility===''",100)
+        import sys
+        if '--report13-only' in sys.argv:
+            c.evaluate("window._report13Clicks=[];window._report13PlaySE=engine._playSE;engine._playSE=function(file,...args){_report13Clicks.push(file);return _report13PlaySE.call(this,file,...args)}")
         c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();window._configuredOPIdleMs=VN_CONFIG.openingMovieIdleMs;VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
-        import sys
+        if '--report13-only' in sys.argv:
+            from check_report13 import run
+            run(c, passed, OUT)
+            assert not c.errors,c.errors
+            (OUT/'report13-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--display-settings-only' in sys.argv:
             from check_display_settings import run
             run(c, passed, OUT)

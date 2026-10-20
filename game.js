@@ -833,7 +833,8 @@ class VNEngine {
 
     // ボタンクリック音 (選択肢ボタン含む全ボタンを一括カバー)
     document.getElementById('game-container').addEventListener('click', (e) => {
-      if (e.target.closest('button') && VN_CONFIG.clickSE) {
+      const button = e.target.closest('button');
+      if (button && button.id !== 'btn-loading-ok' && VN_CONFIG.clickSE) {
         this._playSE(VN_CONFIG.clickSE);
       }
     });
@@ -1296,7 +1297,7 @@ class VNEngine {
         break;
 
       case 'still_hide': {
-        const remaining = this._stillLockUntil - Date.now();
+        const remaining = this.skipMode ? 0 : this._stillLockUntil - Date.now();
         if (remaining > 0) {
           const token = this._advanceToken;
           // 最低表示時間が残っている → 解除まで待機（専用タイマーで管理）
@@ -1751,6 +1752,7 @@ class VNEngine {
   //  スチル (イベントCG)
   // ============================================================
   _showStill(imageName, effect = 'fade_in') {
+    if (this.skipMode) effect = 'instant';
     this._clearCharEmotes();
     this._trackEvent('vn_still_show', {
       scenario_stage: this._getAnalyticsStage(),
@@ -1838,6 +1840,7 @@ class VNEngine {
   }
 
   _hideStill(effect = 'fade_out') {
+    if (this.skipMode) effect = 'instant';
     this._stillLockUntil = 0;
     this.currentStill = null;
     if (this._hideStillTimer) { clearTimeout(this._hideStillTimer); this._hideStillTimer = null; }
@@ -1879,7 +1882,7 @@ class VNEngine {
     }
   }
 
-  async _playEndingIntroStillOutro() {
+  async _playEndingIntroStillOutro(session) {
     const el = document.getElementById('still-layer');
     if (!el || !this.currentStill || !el.classList.contains('ending-intro-still')) return;
 
@@ -1889,6 +1892,7 @@ class VNEngine {
     el.style.opacity = computed.opacity;
     el.classList.add('ending-intro-out');
     await new Promise(resolve => setTimeout(resolve, 820));
+    if (this._creditsSession !== session) return;
     this._clearStillFxClasses(el);
     el.style.backgroundImage = '';
     el.style.background = 'rgba(0,0,0,1)';
@@ -2286,7 +2290,9 @@ class VNEngine {
       this.voice.retainWindow([]);
       this._autoScheduleToken++;
       if (this.autoMode) this._toggleAuto();
-      const canAdvance = this.typewriterTimer || this.waitingForInput;
+      this._stillLockUntil = 0;
+      const canAdvance = this.typewriterTimer || this.waitingForInput || this._waitTimer || this._stillHideWaitTimer;
+      if (this._stillHideWaitTimer) this._hideStill('instant');
       if (canAdvance) { this._stopTypewriter(); this._executeNext(); }
     } else {
       if (this.skipTimer) { clearTimeout(this.skipTimer); this.skipTimer = null; }
@@ -2675,7 +2681,9 @@ class VNEngine {
 
     screen.classList.remove('hidden');
     await new Promise(resolve => requestAnimationFrame(resolve));
-    await this._playEndingIntroStillOutro();
+    if (this._creditsSession !== session) return;
+    await this._playEndingIntroStillOutro(session);
+    if (this._creditsSession !== session) return;
     this._hideStill('instant');
 
     // 同一トラックが既に再生中の場合は再起動しない（@bgm_sync連携）
@@ -2683,10 +2691,6 @@ class VNEngine {
     if (bgmTrack && (this.currentBGM !== bgmTrack || !this.bgmAudio || this.currentBGMLoop !== false)) {
       this.currentBGM = '';
       this._playBGM(bgmTrack, { loop: false });
-      // ▼ 新規追加：直接呼び出された場合はオフセットを0にリセット
-      this._creditsExpectedAudioOffset = 0;
-    } else if (this._creditsExpectedAudioOffset === undefined) {
-      this._creditsExpectedAudioOffset = 0;
     }
 
     const fallbackDuration = this._estimateCreditsDuration(screen, roll, profile.scrollSpeed || 100);
@@ -2736,6 +2740,7 @@ class VNEngine {
       lyrics: Array.isArray(profile.lyrics) ? profile.lyrics : [],
       lyricsRomaji: Array.isArray(profile.lyricsRomaji) ? profile.lyricsRomaji : [],
       lyricsEn: Array.isArray(profile.lyricsEn) ? profile.lyricsEn : [],
+      lyricAudioOffset: Number(profile.lyricAudioOffset) || 0,
       //lyricTimes: Array.isArray(profile.lyricTimes) ? profile.lyricTimes : null,
 
     };
@@ -2873,8 +2878,10 @@ class VNEngine {
       return { ...item, endSec };
     });
 
-    // ▼ 修正：動的取得をやめ、エンジンに記録された「本来のオフセット」を絶対基準にする
-    const initialAudioTime = this._creditsExpectedAudioOffset || 0;
+    // Explicit lyric cues are relative to the song's vocal entry, not to
+    // when the roll happened to become visible (buffering/skip can vary).
+    const initialAudioTime = profile.lyricAudioOffset || 0;
+    const audioAtStart = this.bgmAudio?.currentTime || 0;
     const virtualStartTime = performance.now();
 
     let currentIndex = -1;
@@ -2887,7 +2894,7 @@ class VNEngine {
       if (this.bgmAudio) {
         elapsedSec = this.bgmAudio.currentTime - initialAudioTime;
       } else {
-        elapsedSec = (performance.now() - virtualStartTime) / 1000;
+        elapsedSec = audioAtStart - initialAudioTime + (performance.now() - virtualStartTime) / 1000;
       }
 
       const activeIndex = lyricsWithTimes.findIndex(
@@ -3084,7 +3091,7 @@ class VNEngine {
     document.getElementById('game-screen')?.classList.remove('ending-coda-active');
   }
 
-  _startEndingCoda(session, duration, profileKey) {
+  _startEndingCoda(session, duration, profileKey, elapsedMs = null) {
     // Route branches can enter the same ending under different scene labels.
     const keys = VN_CONFIG.endingCoda?.[profileKey] || [];
     if (!keys.length || duration <= 0) return;
@@ -3098,6 +3105,10 @@ class VNEngine {
     keys.forEach((key, index) => {
       const show = () => {
         if (this._endingIntroSession !== session) return;
+        if (elapsedMs && elapsedMs() < duration * index / keys.length) {
+          this._endingCodaTimers.push(setTimeout(show, 50));
+          return;
+        }
         const text = this._resolveScenarioText(key);
         caption.textContent = text;
         caption.dataset.page = String(index + 1);
@@ -3194,18 +3205,26 @@ class VNEngine {
     const delay = Math.max(0, Number(waitMs) || 0);
     const session = Symbol('endingIntro');
     this._endingIntroSession = session;
-    this._startEndingCoda(session, delay, profileKey);
-
-    // ▼ 新規追加：エンディングロール開始時点での「本来のオーディオ時間(秒)」を設計値として記録
-    this._creditsExpectedAudioOffset = delay / 1000;
-
-    this._endingIntroTimer = setTimeout(() => {
+    const audio = track ? this.bgmAudio : null;
+    const startedAt = performance.now();
+    const elapsedMs = () => audio && !audio.error
+      ? audio.currentTime * 1000 : performance.now() - startedAt;
+    // Finish the 820ms still outro at the vocal entry, rather than adding
+    // it after the instrumental intro. Sakura keeps her existing passage.
+    const codaDuration = track ? Math.max(0, delay - 820) : delay;
+    this._startEndingCoda(session, codaDuration, profileKey, elapsedMs);
+    const finishIntro = () => {
       if (this._endingIntroSession !== session) return;
+      if (elapsedMs() < codaDuration) {
+        this._endingIntroTimer = setTimeout(finishIntro, 50);
+        return;
+      }
       this._endingIntroTimer = null;
       this._endingIntroSession = null;
       this._clearEndingCoda();
       this._showCredits(track, profileKey);
-    }, delay);
+    };
+    this._endingIntroTimer = setTimeout(finishIntro, codaDuration);
   }
 
   _skipCredits() {
@@ -3219,7 +3238,23 @@ class VNEngine {
   }
 
   _endCredits() {
+    if (!this._creditsSession) return;
     this._clearCreditsPresentation();
+    this._hideStill('instant');
+    this._clearAllChars('instant');
+    this._stopTypewriter();
+    // Preserve the backlog, but never carry the outgoing message or image
+    // into the playable epilogue while its first scene transition closes.
+    this.currentText = '';
+    this._prevSpeaker = null;
+    this._dialogRow = 1;
+    this._line1Text = '';
+    document.getElementById('dialog-text').textContent = '';
+    document.getElementById('char-name').textContent = '';
+    document.getElementById('next-arrow').style.display = 'none';
+    const background = document.getElementById('background');
+    background.style.backgroundImage = '';
+    background.style.background = '#000';
     this._stopBGM();
     this._inputLocked = false;
     this._skipLocked = false;
