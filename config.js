@@ -41,6 +41,12 @@ const VN_CONFIG = {
     { version: '1.2',
       ja: ["シナリオを全編改稿し、日英表示・演出を調整。", "旧セーブでは再開位置がずれる場合があります。"],
       en: ["Revised the full scenario and Japanese/English presentation.", "Older saves may resume at a different point."] },
+    { version: '1.1', date: '2026-07-05',
+      ja: ['サブキャラクターの会話と文化祭シーンを追加。', '英語表示に対応し、既読スキップを改善。'],
+      en: ['Added supporting-character dialogue and school-festival scenes.', 'Added English text support and improved read-text skipping.'] },
+    { version: '1.0',
+      ja: ['『放課後のステラ 嘘と願いのバウンドリー』を公開しました。'],
+      en: ['Released "After School Stella: Boundary of Lies and Wishes."'] },
   ],
 
   analytics: {
