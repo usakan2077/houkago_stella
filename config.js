@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3.4',
+  version: '1.3.5',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.3.5', date: '2026-10-21',
+      ja: ["メッセージウィンドウの初期透明度を70%に変更。", "Q.SAVE・Q.LOAD・AUTO・SKIPにも透明度設定を反映。"],
+      en: ["Changed the default message-window transparency to 70%.", "Applied transparency settings to Q.SAVE, Q.LOAD, AUTO and SKIP."] },
     { version: '1.3.4', date: '2026-10-21',
       ja: ["OP開始時にクリック音が重なる不具合を修正。", "ED・スチルのスキップ時に表示が残る・進行が止まる問題を修正。", "ことは・まひるのED曲とロール・歌詞表示のタイミングを調整。"],
       en: ["Fixed the click sound overlapping the start of the opening movie.", "Fixed leftover images and stalled progress when skipping credits or event CGs.", "Aligned Kotoha and Mahiru ending credits and lyrics with their songs."] },
@@ -559,7 +562,7 @@ const VN_CONFIG = {
     voiceVolume: 0.85,    // ボイス音量 (0.0 〜 1.0、0で読み込みも停止)
     chainMode:   'dialogue', // 連続2行表示: 'none' | 'dialogue' | 'all'
     skipReadOnly: false,  // スキップ対象: false=すべて / true=既読のみ
-    windowOpacity: .8,   // メッセージ背景の不透明度（設定画面は透明度0〜100%で表示）
+    windowOpacity: .3,   // 背景の不透明度。初期透明度70%（設定画面は透明度0〜100%で表示）
     fadeTime:    1200,    // 通常の場面切り替え全体の時間 (ms、閉じる＋開く)
     charFadeTime:500,     // キャラクターフェード時間 (ms)
 

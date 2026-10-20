@@ -1101,11 +1101,11 @@ class VNEngine {
     const textBox = document.getElementById('text-box');
     const nameBox = document.getElementById('char-name-box');
     if (textBox) {
-      textBox.style.background = c.textBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .8))');
+      textBox.style.background = c.textBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .3))');
       textBox.style.boxShadow = c.shadow.replace(/rgba\(([^)]+),\s*([\d.]+)\)/g,
-        (_, rgb, alpha) => `rgba(${rgb}, ${Math.min(1, Number(alpha) * (this._windowOpacity ?? .8) / .8)})`);
+        (_, rgb, alpha) => `rgba(${rgb}, ${Math.min(1, Number(alpha) * (this._windowOpacity ?? .3) / .8)})`);
     }
-    if (nameBox) nameBox.style.background = c.nameBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .8))');
+    if (nameBox) nameBox.style.background = c.nameBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .3))');
     const preview = document.getElementById('window-opacity-sample');
     if (preview && textBox) {
       preview.style.background = textBox.style.background;
@@ -1116,7 +1116,7 @@ class VNEngine {
 
   _setWindowOpacity(value) {
     const parsed = value === '' || value == null ? NaN : Number(value);
-    this._windowOpacity = Number.isFinite(parsed) ? Math.max(0, Math.min(1, parsed)) : .8;
+    this._windowOpacity = Number.isFinite(parsed) ? Math.max(0, Math.min(1, parsed)) : .3;
     VN_CONFIG.settings.windowOpacity = this._windowOpacity;
     document.documentElement.style.setProperty('--vn-window-opacity', String(this._windowOpacity));
     this._setWindowColor(this.windowColor || 'reset');

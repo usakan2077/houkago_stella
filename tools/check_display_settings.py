@@ -46,23 +46,42 @@ def run(c, passed, out):
     passed('Real 1.2-second transition holds black across multiple frames and swaps while fully opaque: '+str(timing))
 
     # Disable only color interpolation so the following checks read settled slider targets.
-    c.evaluate("const testStyle=document.createElement('style');testStyle.id='settled-settings-test';testStyle.textContent='#text-box,#char-name-box{transition:none!important}';document.head.append(testStyle)")
+    c.evaluate("const testStyle=document.createElement('style');testStyle.id='settled-settings-test';testStyle.textContent='#text-box,#char-name-box,.quick-menu-btn{transition:none!important}';document.head.append(testStyle)")
     def state():
         return c.evaluate("""(()=>{const text=getComputedStyle(document.getElementById('text-box')),name=getComputedStyle(document.getElementById('char-name-box')),sample=getComputedStyle(document.getElementById('window-opacity-sample'));
           return {text:text.backgroundColor,name:name.backgroundColor,sample:sample.backgroundColor,opacity:text.opacity,letters:getComputedStyle(document.getElementById('dialog-text')).opacity,blur:text.backdropFilter,stored:localStorage.getItem('vn_window_opacity'),value:document.getElementById('window-opacity-value').textContent}})()""")
     def alpha(color):
         return float(color.rstrip(')').split(',')[-1]) if color.startswith('rgba') else 1
+    assert c.evaluate("localStorage.getItem('vn_window_opacity')===null&&Math.abs(engine._windowOpacity-.3)<.001")
+    c.shot('game-default-transparency-70')
     c.evaluate('engine._openSettings()')
-    assert c.evaluate("document.getElementById('window-opacity-slider').value==='20'")
-    for transparency in [0,50,100,65]:
+    assert c.evaluate("document.getElementById('window-opacity-slider').value==='70'")
+    c.send('DOM.enable');c.send('CSS.enable')
+    root=c.send('DOM.getDocument')['root']['nodeId']
+    buttons={key:c.send('DOM.querySelector',dict(nodeId=root,selector='#'+key))['nodeId']
+             for key in ['btn-quick-save','btn-quick-load','btn-auto','btn-skip']}
+    for transparency in [0,50,70,100,65]:
         c.evaluate("(()=>{const s=document.getElementById('window-opacity-slider');s.value="+str(transparency)+";s.dispatchEvent(new Event('input',{bubbles:true}))})()")
         s=state();expected=round(1-transparency/100,2)
         assert all(abs(alpha(s[key])-expected)<.001 for key in ['text','name','sample']),s
         assert s['opacity']=='1' and s['letters']=='1' and abs(float(s['stored'])-expected)<.001,s
         assert s['value']==str(transparency)+'%',s
         if transparency==100:assert s['blur']=='blur(0px)',s
+        for key,node in buttons.items():
+            for mode in ['normal','hover','focus-visible','active']:
+                c.send('CSS.forcePseudoState',dict(nodeId=node,forcedPseudoClasses=[mode] if mode in ['hover','focus-visible'] else []))
+                c.evaluate("document.getElementById("+json.dumps(key)+").classList.toggle('active',"+json.dumps(mode=='active')+")")
+                button=c.evaluate("(()=>{const el=document.getElementById("+json.dumps(key)+"),s=getComputedStyle(el);return {image:s.backgroundImage,opacity:s.opacity,color:s.color,blur:s.backdropFilter,shadow:s.boxShadow}})()")
+                import re
+                colors=re.findall(r'rgba?\([^)]+\)',button['image'])
+                assert len(colors)==2 and all(abs(alpha(color)-expected)<.001 for color in colors),(key,mode,transparency,button)
+                assert button['opacity']=='1' and alpha(button['color'])>.8,button
+                if transparency==100:
+                    assert button['blur']=='blur(0px)' and all(alpha(color)==0 for color in re.findall(r'rgba?\([^)]+\)',button['shadow'])),button
+            c.evaluate("document.getElementById("+json.dumps(key)+").classList.remove('active')")
+            c.send('CSS.forcePseudoState',dict(nodeId=node,forcedPseudoClasses=[]))
     c.shot('settings-transparency-ja')
-    passed('CONFIG slider changes backgrounds and preview at 0/50/100/65%, preserves text opacity, removes blur at full transparency, and saves the value')
+    passed('Default transparency is 70%; slider updates message, preview and all four quick buttons in normal/hover/focus/active states at 0/50/70/100/65%, preserves text and saves the value')
 
     for palette in ['default','navy','forest','sepia','black']:
         c.evaluate("document.querySelector('#palette-options [data-palette="+palette+"]').click()")

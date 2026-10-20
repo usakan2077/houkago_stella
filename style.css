@@ -14,7 +14,7 @@
   --vn-dialog-visible-lines: 2;
   --vn-dialog-box-padding-y: 46px;
   --vn-dialog-letter-spacing: .06em;
-  --vn-window-opacity: .8;
+  --vn-window-opacity: .3;
 }
 
 html.is-firefox {
@@ -1289,24 +1289,28 @@ body {
   min-height: 32px;
   padding: 0 10px;
   border-radius: 12px 12px 0 0;
-  background: linear-gradient(180deg, rgba(17, 9, 31, 0.9), rgba(11, 6, 22, 0.82));
+  background: linear-gradient(180deg, rgba(17, 9, 31, var(--vn-window-opacity)), rgba(11, 6, 22, var(--vn-window-opacity)));
   border: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(.05 * var(--vn-window-opacity)));
+  backdrop-filter: blur(calc(12px * var(--vn-window-opacity)));
+  -webkit-backdrop-filter: blur(calc(12px * var(--vn-window-opacity)));
 }
 
 .quick-menu-btn:hover,
 .quick-menu-btn:focus-visible {
   transform: none;
+  background: linear-gradient(180deg, rgba(28, 16, 48, var(--vn-window-opacity)), rgba(14, 9, 27, var(--vn-window-opacity)));
+  box-shadow: 0 14px 28px rgba(0, 0, 0, calc(.26 * var(--vn-window-opacity))), 0 0 18px rgba(255, 151, 196, calc(.16 * var(--vn-window-opacity)));
 }
 
 .quick-menu-btn.is-primary {
-  background: linear-gradient(180deg, rgba(255, 147, 188, 0.2), rgba(138, 74, 118, 0.16));
+  background: linear-gradient(180deg, rgba(255, 147, 188, var(--vn-window-opacity)), rgba(138, 74, 118, var(--vn-window-opacity)));
 }
 
 .quick-menu-btn.active {
-  background: linear-gradient(180deg, rgba(255, 147, 188, 0.88), rgba(156, 73, 124, 0.82));
+  background: linear-gradient(180deg, rgba(255, 147, 188, var(--vn-window-opacity)), rgba(156, 73, 124, var(--vn-window-opacity)));
   border-color: rgba(255, 225, 239, 0.82);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 0 18px rgba(255, 151, 196, 0.34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(.18 * var(--vn-window-opacity))), 0 0 18px rgba(255, 151, 196, calc(.34 * var(--vn-window-opacity)));
 }
 
 #text-box {
