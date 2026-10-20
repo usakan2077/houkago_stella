@@ -135,6 +135,9 @@ class VNEngine {
     const savedPalette = localStorage.getItem('vn_window_palette');
     if (savedPalette) this._applyWindowPalette(savedPalette);
 
+    const savedWindowOpacity = localStorage.getItem('vn_window_opacity');
+    this._setWindowOpacity(savedWindowOpacity === null ? VN_CONFIG.settings.windowOpacity : savedWindowOpacity);
+
     // ページ離脱ロック（ゲームプレイ中のみ有効）
     this._gameActive = false;
     window.addEventListener('beforeunload', (e) => {
@@ -1097,11 +1100,25 @@ class VNEngine {
     const textBox = document.getElementById('text-box');
     const nameBox = document.getElementById('char-name-box');
     if (textBox) {
-      textBox.style.background = c.textBox;
-      textBox.style.boxShadow  = c.shadow;
+      textBox.style.background = c.textBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .8))');
+      textBox.style.boxShadow = c.shadow.replace(/rgba\(([^)]+),\s*([\d.]+)\)/g,
+        (_, rgb, alpha) => `rgba(${rgb}, ${Math.min(1, Number(alpha) * (this._windowOpacity ?? .8) / .8)})`);
     }
-    if (nameBox) nameBox.style.background = c.nameBox;
+    if (nameBox) nameBox.style.background = c.nameBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .8))');
+    const preview = document.getElementById('window-opacity-sample');
+    if (preview && textBox) {
+      preview.style.background = textBox.style.background;
+      preview.style.boxShadow = textBox.style.boxShadow;
+    }
     this.windowColor = target;
+  }
+
+  _setWindowOpacity(value) {
+    const parsed = value === '' || value == null ? NaN : Number(value);
+    this._windowOpacity = Number.isFinite(parsed) ? Math.max(0, Math.min(1, parsed)) : .8;
+    VN_CONFIG.settings.windowOpacity = this._windowOpacity;
+    document.documentElement.style.setProperty('--vn-window-opacity', String(this._windowOpacity));
+    this._setWindowColor(this.windowColor || 'reset');
   }
 
   _resetGameState() {
@@ -3436,6 +3453,19 @@ class VNEngine {
       voiceValue.textContent = voiceSlider.value;
     };
 
+    const opacitySlider = document.getElementById('window-opacity-slider');
+    const opacityValue = document.getElementById('window-opacity-value');
+    opacitySlider.value = Math.round((1 - VN_CONFIG.settings.windowOpacity) * 100);
+    opacityValue.textContent = opacitySlider.value + '%';
+    opacitySlider.oninput = () => {
+      this._setWindowOpacity(1 - Number(opacitySlider.value) / 100);
+      localStorage.setItem('vn_window_opacity', this._windowOpacity);
+      opacityValue.textContent = opacitySlider.value + '%';
+    };
+    const previewBackground = document.getElementById(this.currentStill ? 'still-layer' : 'background');
+    document.getElementById('window-opacity-preview').style.backgroundImage = previewBackground.style.backgroundImage;
+    this._setWindowColor(this.windowColor || 'reset');
+
     // 文字サイズ
     const currentFontSize = parseInt(
       getComputedStyle(document.documentElement).getPropertyValue('--vn-font-size') || '26', 10
@@ -3508,10 +3538,7 @@ class VNEngine {
     this._paletteReset = p;
     // 現在 reset 状態なら即時反映
     if (!this.windowColor || this.windowColor === 'reset') {
-      const textBox = document.getElementById('text-box');
-      const nameBox = document.getElementById('char-name-box');
-      if (textBox) textBox.style.background = p.textBox;
-      if (nameBox) nameBox.style.background = p.nameBox;
+      this._setWindowColor('reset');
     }
   }
 
@@ -4174,24 +4201,33 @@ class TransitionCanvas {
     if (!this.ctx) { onSwap(); if (onDone) onDone(); return; }
     const W = this.canvas.width, H = this.canvas.height;
     const SIZE = Math.min(W, H) / 7;
-    const cols = Math.ceil(W / SIZE) + 2;
-    const rows = Math.ceil(H / SIZE) + 2;
-    const half = duration / 2;
+    // At 45 degrees both grid axes must span the projected width AND height.
+    const span = (W + H) / Math.SQRT2;
+    const cols = Math.ceil(span / SIZE) + 2;
+    const rows = Math.ceil(span / SIZE) + 2;
+    const hold = Math.min(150, duration * .2) / duration;
+    const closeEnd = (1 - hold) / 2;
+    const openStart = closeEnd + hold;
+    let swapped = false;
     const ctx  = this.ctx;
 
     const draw = (progress) => {
       this._clear();
-      ctx.fillStyle = '#0a0508';
+      ctx.fillStyle = '#000';
+      if (progress >= 1) {
+        ctx.fillRect(0, 0, W, H);
+        return;
+      }
       ctx.save();
       ctx.translate(W / 2, H / 2);
       ctx.rotate(Math.PI / 4);
-      const ox = -Math.ceil(cols / 2) * SIZE;
-      const oy = -Math.ceil(rows / 2) * SIZE;
+      const ox = -cols * SIZE / 2;
+      const oy = -rows * SIZE / 2;
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const delay = (c + r) / (cols + rows);
           const t = Math.max(0, Math.min(1, (progress - delay * .6) / .4));
-          const s = SIZE * t;
+          const s = (SIZE + 2) * t;
           ctx.fillRect(ox + c * SIZE + SIZE / 2 - s / 2, oy + r * SIZE + SIZE / 2 - s / 2, s, s);
         }
       }
@@ -4199,13 +4235,22 @@ class TransitionCanvas {
     };
 
     this.canvas.style.display = 'block';
-    this._animate(half, t => draw(this._easeIn(t)), () => {
-      onSwap();
-      this._animate(half, t => draw(1 - this._easeOut(t)), () => {
-        this._clear();
-        this.canvas.style.display = 'none';
-        if (onDone) onDone();
-      });
+    this._animate(duration, t => {
+      if (t < closeEnd) {
+        draw(this._easeIn(t / closeEnd));
+      } else {
+        // Keep an opaque black frame while swapping the background.
+        if (!swapped) {
+          draw(1);
+          swapped = true;
+          onSwap();
+        }
+        draw(t <= openStart ? 1 : 1 - this._easeOut((t - openStart) / closeEnd));
+      }
+    }, () => {
+      this._clear();
+      this.canvas.style.display = 'none';
+      if (onDone) onDone();
     });
   }
 

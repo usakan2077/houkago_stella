@@ -520,6 +520,19 @@
             <span id="voice-volume-value" class="settings-slider-value">85</span>
           </div>
         </div>
+        <div class="settings-row settings-opacity-row">
+          <label for="window-opacity-slider" class="settings-label" data-i18n="settings.windowTransparency">ウィンドウ透明度</label>
+          <div class="settings-opacity-control">
+            <div class="settings-options">
+              <input type="range" id="window-opacity-slider" min="0" max="100" step="5" class="settings-slider" aria-describedby="window-opacity-hint">
+              <span id="window-opacity-value" class="settings-slider-value">20%</span>
+            </div>
+            <p id="window-opacity-hint" class="settings-hint" data-i18n="settings.windowTransparencyHint">0%：不透明 ／ 100%：透明</p>
+            <div id="window-opacity-preview" aria-hidden="true">
+              <div id="window-opacity-sample" data-i18n="settings.windowPreview">メッセージの表示サンプル</div>
+            </div>
+          </div>
+        </div>
         <div class="settings-row">
           <span class="settings-label" data-i18n="settings.fontSize">文字サイズ</span>
           <div class="settings-options" id="font-size-options">

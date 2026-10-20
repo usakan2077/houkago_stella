@@ -14,6 +14,7 @@
   --vn-dialog-visible-lines: 2;
   --vn-dialog-box-padding-y: 46px;
   --vn-dialog-letter-spacing: .06em;
+  --vn-window-opacity: .8;
 }
 
 html.is-firefox {
@@ -29,11 +30,11 @@ html[lang="en"] {
 }
 
 html[lang="en"] #text-box {
-  background: rgba(8, 3, 20, .68);
+  background: rgba(8, 3, 20, var(--vn-window-opacity));
 }
 
 html[lang="en"] #char-name-box {
-  background: rgba(12, 4, 24, .68);
+  background: rgba(12, 4, 24, var(--vn-window-opacity));
 }
 
 /* ---- リセット ---- */
@@ -1180,7 +1181,7 @@ body {
   align-items: center;
   width: fit-content;
   position: relative;
-  background: rgba(12, 4, 24, .8);
+  background: rgba(12, 4, 24, var(--vn-window-opacity));
   border: none;
   border-radius: 14px 14px 0 0;
   padding: 0 22px 0 18px;
@@ -1189,8 +1190,8 @@ body {
   min-height: 42px;
   overflow: hidden;
   pointer-events: auto;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(calc(15px * var(--vn-window-opacity)));
+  -webkit-backdrop-filter: blur(calc(15px * var(--vn-window-opacity)));
   transition: background 0.7s ease;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
@@ -1309,13 +1310,14 @@ body {
 }
 
 #text-box {
-  background: rgba(8, 3, 20, .8);
+  background: rgba(8, 3, 20, var(--vn-window-opacity));
   border: none;
   border-radius: 0 18px 18px 18px;
   padding: 18px 26px 28px;
   height: calc(var(--vn-dialog-font-size, var(--vn-font-size, 26px)) * var(--vn-dialog-line-height, 1.85) * var(--vn-dialog-visible-lines, 2) + var(--vn-dialog-box-padding-y, 46px));
   position: relative;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(calc(10px * var(--vn-window-opacity)));
+  -webkit-backdrop-filter: blur(calc(10px * var(--vn-window-opacity)));
   transition: background 0.7s ease, box-shadow 0.7s ease;
 }
 
@@ -2320,6 +2322,33 @@ html[lang="en"] #char-name {
 .confirm-no  { border-color: rgba(160,120,180,.4); }
 
 /* ---- 設定モーダル ---- */
+.settings-row.settings-opacity-row { align-items: flex-start; }
+.settings-opacity-row > .settings-label { padding-top: 2px; }
+.settings-opacity-control {
+  min-width: 0;
+  flex: 1;
+}
+.settings-hint {
+  margin: 10px 0;
+  font-size: 11px;
+  color: #cbb9d8;
+}
+#window-opacity-preview {
+  padding: 16px 10px;
+  border-radius: 8px;
+  background-color: #706b8a;
+  background-image: linear-gradient(135deg, #8170a0, #e8ac86);
+  background-size: cover;
+  background-position: center;
+}
+#window-opacity-sample {
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #f5eaf0;
+  font-size: 13px;
+  backdrop-filter: blur(calc(10px * var(--vn-window-opacity)));
+  -webkit-backdrop-filter: blur(calc(10px * var(--vn-window-opacity)));
+}
 .settings-list {
   padding: 10px 0 20px;
 }

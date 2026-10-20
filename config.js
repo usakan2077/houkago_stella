@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3.2',
+  version: '1.3.3',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.3.3', date: '2026-10-21',
+      ja: ['場面切り替えが四隅まで覆うよう修正し、一瞬の全面暗転を追加。', 'CONFIGにメッセージウィンドウの透明度とプレビューを追加。設定は再起動後も復元。'],
+      en: ['Scene transitions now cover every corner and briefly hold on full black.', 'Added message-window transparency and a live preview to CONFIG, with settings restored after restart.'] },
     { version: '1.3.2', date: '2026-10-20',
       ja: ['放課後の教室背景・時計と、昼休みから授業へのつなぎを修正。', 'GOOD ENDの締めとことはの文章表示を改善し、BAD ENDは手動で読み進める形に変更。', 'タイトル待機からOP再上映までを30秒に延長。', 'ことは・まひるの一部ボイスを再調整。', 'エディターの英語追加行の位置を修正し、設計資料と開発用画面を整理。'],
       en: ['Corrected the after-school classroom, clock and transition from lunch to lessons.', 'Improved GOOD END closing passages and Kotoha text display; BAD END closing text now waits for input.', 'Extended the title-screen OP replay delay to 30 seconds.', 'Adjusted selected Kotoha and Mahiru voice lines.', 'Fixed English continuation placement in the editor and organized design documents and development previews.'] },
@@ -86,6 +89,9 @@ const VN_CONFIG = {
           skipAll: 'すべて',
           skipRead: '既読のみ',
           windowColor: 'ウィンドウ色',
+          windowTransparency: 'ウィンドウ透明度',
+          windowTransparencyHint: '0%：不透明 ／ 100%：透明',
+          windowPreview: 'メッセージの表示サンプル',
           slow: '遅め',
           normal: '普通',
           fast: '速め',
@@ -142,6 +148,9 @@ const VN_CONFIG = {
           skipAll: 'All',
           skipRead: 'Read only',
           windowColor: 'Window Color',
+          windowTransparency: 'Window Transparency',
+          windowTransparencyHint: '0%: opaque / 100%: transparent',
+          windowPreview: 'Message preview',
           slow: 'Slow',
           normal: 'Normal',
           fast: 'Fast',
@@ -539,6 +548,7 @@ const VN_CONFIG = {
     voiceVolume: 0.85,    // ボイス音量 (0.0 〜 1.0、0で読み込みも停止)
     chainMode:   'dialogue', // 連続2行表示: 'none' | 'dialogue' | 'all'
     skipReadOnly: false,  // スキップ対象: false=すべて / true=既読のみ
+    windowOpacity: .8,   // メッセージ背景の不透明度（設定画面は透明度0〜100%で表示）
     fadeTime:    1200,    // 通常の場面切り替え全体の時間 (ms、閉じる＋開く)
     charFadeTime:500,     // キャラクターフェード時間 (ms)
 

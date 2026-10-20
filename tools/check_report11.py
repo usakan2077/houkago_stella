@@ -9,7 +9,9 @@ h=importlib.util.module_from_spec(spec);spec.loader.exec_module(h);h.ROOT=ROOT;h
 def main():
     OUT.mkdir(exist_ok=True)
     profile=OUT/('edge-profile-'+str(time.time_ns()))
-    server=h.http.server.ThreadingHTTPServer(('127.0.0.1',0),h.Handler)
+    class Server(h.http.server.ThreadingHTTPServer):
+        request_queue_size=64
+    server=Server(('127.0.0.1',0),h.Handler)
     threading.Thread(target=server.serve_forever,daemon=True).start()
     startup=subprocess.STARTUPINFO();startup.dwFlags|=subprocess.STARTF_USESHOWWINDOW;startup.wShowWindow=0
     log=(OUT/'edge.log').open('w')
@@ -32,6 +34,12 @@ def main():
         c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();window._configuredOPIdleMs=VN_CONFIG.openingMovieIdleMs;VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
         import sys
+        if '--display-settings-only' in sys.argv:
+            from check_display_settings import run
+            run(c, passed, OUT)
+            assert not c.errors,c.errors
+            (OUT/'display-settings-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--report12-only' in sys.argv:
             from check_report12 import run
             run(c, passed, OUT)
@@ -45,7 +53,7 @@ def main():
                 c.wait("_transitions.length===1&&!!_transitions[0].end")
                 timing=c.evaluate('_transitions[0]')
                 assert timing['duration']==1200 and 1100<=timing['end']<=2200,timing
-                assert 550<=timing['swap']<=1200,timing
+                assert 500<=timing['swap']<=1000,timing
                 passed(lang+': normal scene closes and opens in 1.2 seconds: '+str(timing))
                 prefix='$chapter6.chapter6_kotoha_piano.'
                 def advance_to(key,limit=40):
