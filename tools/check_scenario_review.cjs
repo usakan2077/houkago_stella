@@ -9,6 +9,28 @@ const scope = vm.createContext({console});
 vm.runInContext(fs.readFileSync(path.join(root, 'config.js'), 'utf8') + '\nthis.config = VN_CONFIG;', scope);
 vm.runInContext(fs.readFileSync(path.join(root, 'parser.js'), 'utf8') + '\nthis.Parser = ScriptParser;', scope);
 const parser = new scope.Parser();
+test('saved classroom background restores old and current saves without the unused asset', async () => {
+  let save;
+  const restore = vm.createContext({
+    localStorage: { getItem: () => JSON.stringify(save) },
+    document: { getElementById: () => ({ classList: { add() {}, remove() {} } }) },
+  });
+  vm.runInContext(fs.readFileSync(path.join(root, 'game.js'), 'utf8').replace('const engine = new VNEngine();', 'this.Engine = VNEngine;'), restore);
+  for (const language of ['ja', 'en']) for (const background of ['classroom_late_afternoon', 'classroom_evening', 'classroom']) {
+    save = { label: 'chapter1_after_school_intro', index: 4, currentBG: background, language, flags: { sakura_favor: 3 } };
+    const engine = Object.create(restore.Engine.prototype);
+    Object.assign(engine, { currentLanguage: language, _advanceToken: 0,
+      _pauseForVoiceModal() {}, _stopTypewriter() {}, _resetGameState() {}, _setWindowColor() {},
+      _trackEvent() {}, _trackProgress() {}, _executeNext() {},
+      _changeBackground(key, effect) { this.currentBG = key; assert.equal(effect, 'instant'); },
+    });
+    await engine._loadFromSlot(1);
+    assert.equal(engine.currentBG, background === 'classroom_late_afternoon' ? 'classroom_evening' : background);
+    assert.equal(engine.currentLabel, save.label);
+    assert.equal(engine.currentIndex, save.index);
+    assert.equal(engine.flags.sakura_favor, 3);
+  }
+});
 function walk(language, start, decisions = {}, initialFlags = {}, stop = null) {
   const labels = {};
   for (const file of scope.config.scenarioFilesByLanguage[language]) {

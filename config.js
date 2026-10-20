@@ -424,7 +424,6 @@ const VN_CONFIG = {
     mahiru_run_stairs_night: 'linear-gradient(180deg, #101b32, #202a3d)',
     rooftop_door_closed_night: 'linear-gradient(180deg, #152032, #172431)',
     rooftop_door_open_night: 'linear-gradient(180deg, #101b32, #202a3d)',
-    classroom_late_afternoon: 'linear-gradient(180deg, #c1daf1, #edd7b1)',
     gymnasium_back_day: 'linear-gradient(180deg, #a7d5ef, #dcc8a4)',
     school_gate_autumn_late_afternoon: 'linear-gradient(180deg, #9ec8ee, #efd7b6)',
     // ── 校門 ──────────────────────────────────────────────

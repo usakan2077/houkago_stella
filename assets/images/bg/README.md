@@ -1,6 +1,6 @@
 # 背景画像
 
-Ch.1・2の放課後の教室は `classroom_evening.webp`（明るい夕焼け、時計16:05）を使う。`classroom_late_afternoon.webp` は昼の青空を残す午後の別素材で、時計は報告12に合わせて16:05へ修正済み。夕焼けの廊下へ続く場面で昼の背景に置き換えない。
+Ch.1・2の放課後の教室は `classroom_evening.webp`（明るい夕焼け、時計16:05）を使う。未使用となった `classroom_late_afternoon.webp` は設定・配信用素材から除外済み。旧セーブの背景名はロード時に `classroom_evening` へ読み替える。
 
 ## 画像仕様
 

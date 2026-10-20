@@ -2443,6 +2443,8 @@ class VNEngine {
     this._stopTypewriter();
     this._advanceToken++;
     const d = JSON.parse(raw);
+    // The temporary afternoon classroom was replaced by the corrected sunset asset.
+    if (d.currentBG === 'classroom_late_afternoon') d.currentBG = 'classroom_evening';
     if (d.language && d.language !== this.currentLanguage) {
       await this._setLanguage(d.language);
     }

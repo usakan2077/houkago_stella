@@ -4,7 +4,7 @@
 
 |指摘|対応|
 |---|---|
-|午後の教室の時計|組み込みimage_genで時計を16:05へ修正。元の午後の構図・明るさを維持し、WebPへ変換。放課後の指定とは別に素材自体も修正した。|
+|午後の教室の時計|Ch.1・2とも修正済みの夕焼け教室（時計16:05）を使うため、午後の別背景は不要。初回対応では時計を修正したが、未使用を確認し設定と配信用WebPを除外した。旧セーブの背景名はロード時に夕焼け教室へ読み替える。|
 |OP再上映が早い|ユーザー指定で無操作30秒へ延長。操作・モーダル・非アクティブ時の待機解除は維持。|
 |先生の傘の連絡|「職員室にある。」の後へ明示改行を追加（日英）。発言内容と既存音声IDは維持。|
 |昼食から急に放課後になる|昼食を片づけ、午後の授業のチャイムを聞いて教科書を出す描写を追加。場面切り替え後は六時間目終了を描く。時間割の体育に言及せず「雨なら楽」と続いていた本文も補修。|
@@ -23,10 +23,11 @@
 
 音声は初回2回＋再調整3回（ことはを二分割）、計5回生成。APIレスポンスの課金文字数ヘッダーは初回28＋再調整44、計72。v2の2新音声と比較用4音声をデコードし、既存の原音を基準に音量を合わせた。ことはの二文は保守的に無音を詰め、4msの端のフェードと120msの間を入れて一つのMP3に結合した。声のピッチ・速度は加工していない。サンプルピークと末尾無音も測定したが、発音・演技の改善とは区別する。[最新生成・組込記録](voice-review/report12.json)、[初回記録](voice-review/report12-v1.json)、[旧新比較](voice-review/index.html)。音声全体の基準音量は維持する。
 
-画像の原本、編集前画像と最終プロンプトは隣の素材リポジトリ `assets-src/debug12_20261020/README.md` に保存。ゲーム用は `assets/images/bg/classroom_late_afternoon.webp`。組み込みimage_genを使い、Pillowはサイズ・形式の変換に使用した。
+初回に作成した午後の別背景の原本、編集前画像と最終プロンプトは隣の素材リポジトリ `assets-src/debug12_20261020/README.md` に制作記録として保存。本編では使わないため、`assets/images/bg/classroom_late_afternoon.webp` と背景設定は除外済み。現在の放課後は既存の修正済み `classroom_evening.webp` を使う。
 
 ## 検証
 
+- 未使用背景を除外した後、旧背景名・夕焼け教室・通常教室のセーブを日英計6ケースでロードし、背景の読み替えと進行位置・好感度の維持を確認（`tools/check_scenario_review.cjs` の `saved classroom` テスト）。
 - `python tools/check_scenarios_i18n.py`：日英の本文・分岐・素材・演出・7ENDの整合性。GOODの文章設定と実際のEDコマンドの対応も検査。
 - `python -m unittest discover -s tools -p test_narration_sentences.py`：10件PASS。
 - `deno test --allow-read --cached-only --no-check tools/check_voice.cjs tools/check_scenario_review.cjs`：音声15＋シナリオ26、計41件PASS。
