@@ -18724,8 +18724,8 @@
     "scene": "chapter6_kotoha_piano",
     "speaker": "player",
     "source": "scenarios/chapter6.md",
-    "ja": "宣伝か",
-    "en": "Sales pitch?",
+    "ja": "宣伝か。じゃあ、一本もらう",
+    "en": "Sales pitch? All right, I'll take one.",
     "audio": {
       "ja": null,
       "en": null
@@ -18756,8 +18756,8 @@
     "scene": "chapter6_kotoha_piano",
     "speaker": "narrator",
     "source": "scenarios/chapter6.md",
-    "ja": "延原と別れ、飲み物を買いに商店街の奥へ自転車を押した。",
-    "en": "After parting with Nobuhara, I pushed my bike farther along the shopping street to find a drink.",
+    "ja": "店先で買ったジュースをひと口飲んでから、広場へ自転車を押した。",
+    "en": "I took a sip of the juice I'd bought at his shop, then pushed my bike toward the square.",
     "audio": {
       "ja": null,
       "en": null
@@ -20747,8 +20747,8 @@
     "scene": "chapter6_end",
     "speaker": "player",
     "source": "scenarios/chapter6.md",
-    "ja": "飲み物、買ってない",
-    "en": "Didn't buy a drink.",
+    "ja": "家で飲む分、買ってない",
+    "en": "Forgot to get some for home.",
     "audio": {
       "ja": null,
       "en": null

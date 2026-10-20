@@ -830,9 +830,9 @@ EN：Buy something cold before you go.
 
 `chapter6.chapter6_kotoha_piano.r010`
 
-JA：宣伝か
+JA：宣伝か。じゃあ、一本もらう
 
-EN：Sales pitch?
+EN：Sales pitch? All right, I'll take one.
 
 ## chapter6_kotoha_piano / nobuhara_private
 
@@ -846,9 +846,9 @@ EN：Family business!
 
 `chapter6.chapter6_kotoha_piano.plaza_approach`
 
-JA：延原と別れ、飲み物を買いに商店街の奥へ自転車を押した。
+JA：店先で買ったジュースをひと口飲んでから、広場へ自転車を押した。
 
-EN：After parting with Nobuhara, I pushed my bike farther along the shopping street to find a drink.
+EN：I took a sip of the juice I'd bought at his shop, then pushed my bike toward the square.
 
 ## chapter6_kotoha_piano / narrator
 
@@ -1942,9 +1942,9 @@ EN：Opened the fridge too.
 
 `chapter6.chapter6_end.r005`
 
-JA：飲み物、買ってない
+JA：家で飲む分、買ってない
 
-EN：Didn't buy a drink.
+EN：Forgot to get some for home.
 
 ## chapter6_end / narrator
 

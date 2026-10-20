@@ -32,6 +32,38 @@ def main():
         c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
         import sys
+        if '--summer-drink-only' in sys.argv:
+            c.evaluate("window._transitions=[];window._originalDiamond=engine.tx.diamond;engine.tx.diamond=function(duration,onSwap,onDone){const sample={duration,start:performance.now()};_transitions.push(sample);return _originalDiamond.call(this,duration,()=>{sample.swap=performance.now()-sample.start;onSwap()},()=>{sample.end=performance.now()-sample.start;if(onDone)onDone()})}")
+            for lang in ['ja','en']:
+                c.evaluate("(async()=>{await engine._setLanguage("+json.dumps(lang)+",{returnToTitle:true});VN_CONFIG.settings.typeSpeed=0;engine._chainMode='none';window._transitions=[];engine._startFromLabel('chapter6_kotoha_piano')})()")
+                c.wait("_transitions.length===1&&!!_transitions[0].end")
+                timing=c.evaluate('_transitions[0]')
+                assert timing['duration']==1200 and 1100<=timing['end']<=2200,timing
+                assert 550<=timing['swap']<=1200,timing
+                passed(lang+': normal scene closes and opens in 1.2 seconds: '+str(timing))
+                prefix='$chapter6.chapter6_kotoha_piano.'
+                def advance_to(key,limit=40):
+                    for _ in range(limit):
+                        if c.evaluate('engine._curLineKey==='+json.dumps(key)):return
+                        c.evaluate('engine._onAdvance()');time.sleep(.02)
+                    raise AssertionError((lang,key,c.evaluate('engine._curLineKey')))
+                advance_to(prefix+'r010')
+                reply=c.evaluate('engine._resolveScenarioText('+json.dumps(prefix+'r010')+')')
+                assert ('一本もらう' if lang=='ja' else "I'll take one") in reply,reply
+                c.shot('summer-drink-accept-'+lang)
+                advance_to(prefix+'r011')
+                advance_to(prefix+'plaza_approach')
+                bridge=c.evaluate('engine._resolveScenarioText('+json.dumps(prefix+'plaza_approach')+')')
+                assert ('店先で買ったジュース' if lang=='ja' else "bought at his shop") in bridge,bridge
+                c.shot('summer-drink-purchased-'+lang)
+                c.evaluate("engine._gotoLabel('chapter6_end')")
+                advance_to('$chapter6.chapter6_end.r005')
+                ending=c.evaluate("engine._resolveScenarioText('$chapter6.chapter6_end.r005')")
+                assert ('家で飲む分' if lang=='ja' else 'for home') in ending,ending
+                passed(lang+': accepts Nobuhara\'s offer, buys juice at his shop, then forgets the supply for home')
+            assert not c.errors,c.errors
+            (OUT/'summer-drink-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--chapter2-evening-only' in sys.argv:
             for lang in ['ja','en']:
                 c.evaluate("(async()=>{await engine._setLanguage("+json.dumps(lang)+",{returnToTitle:true});VN_CONFIG.settings.typeSpeed=0;engine._chainMode='none';engine._startFromLabel('chapter2_after_school')})()")

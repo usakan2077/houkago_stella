@@ -1523,7 +1523,7 @@ class VNEngine {
     } else if (effect === 'rush') {
       applyBG(startRush);
     } else if (effect === 'fade') {
-      this.tx.diamond(1000, () => applyBG(() => {}), null);
+      this.tx.diamond(VN_CONFIG.settings.fadeTime, () => applyBG(() => {}), null);
     } else {
       applyBG(() => {});
     }
