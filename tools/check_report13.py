@@ -10,7 +10,7 @@ def run(c, passed, out):
     c.click('#btn-settings-close')
     c.evaluate('engine._playSE=_report13PlaySE')
     passed('Loading OK has no click SE; normal buttons retain their click sound')
-    assert c.evaluate("VN_CONFIG.releaseNotes.slice(0,4).every(n=>n.ja.length===1&&n.en.length===1)&&document.querySelector('#title-version').textContent==='ver 1.3.4'")
+    assert c.evaluate("VN_CONFIG.releaseNotes.every(n=>n.ja.length>=1&&n.ja.length<=3&&n.en.length>=1&&n.en.length<=3)&&document.querySelector('#title-version').textContent==='ver 1.3.4'")
     passed('Game shows the new version and concise bilingual patch notes')
 
     def language(lang):
