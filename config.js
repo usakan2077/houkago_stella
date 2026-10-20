@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3.5',
+  version: '1.3.6',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.3.6', date: '2026-10-21',
+      ja: ["男子クラスメイトの3表情と、まひるの驚き表情の立ち絵ノイズを修正。"],
+      en: ["Cleaned noise in three male-classmate sprites and Mahiru's surprised sprite."] },
     { version: '1.3.5', date: '2026-10-21',
       ja: ["メッセージウィンドウの初期透明度を70%に変更。", "Q.SAVE・Q.LOAD・AUTO・SKIPにも透明度設定を反映。"],
       en: ["Changed the default message-window transparency to 70%.", "Applied transparency settings to Q.SAVE, Q.LOAD, AUTO and SKIP."] },
