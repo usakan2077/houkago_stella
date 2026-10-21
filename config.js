@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3.6',
+  version: '1.3.7',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.3.7', date: '2026-10-21',
+      ja: ["まひる・男子クラスメイトの立ち絵を、元の色合いを保った修正版へ更新。", "まひるのカメラなし制服の驚き表情を修正。"],
+      en: ["Updated Mahiru and male-classmate sprites while preserving their original colors.", "Fixed Mahiru's surprised expression in her uniform without a camera."] },
     { version: '1.3.6', date: '2026-10-21',
       ja: ["男子クラスメイトの3表情と、まひるの驚き表情の立ち絵ノイズを修正。"],
       en: ["Cleaned noise in three male-classmate sprites and Mahiru's surprised sprite."] },
