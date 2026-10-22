@@ -1101,11 +1101,11 @@ class VNEngine {
     const textBox = document.getElementById('text-box');
     const nameBox = document.getElementById('char-name-box');
     if (textBox) {
-      textBox.style.background = c.textBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .3))');
+      textBox.style.background = c.textBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .5))');
       textBox.style.boxShadow = c.shadow.replace(/rgba\(([^)]+),\s*([\d.]+)\)/g,
-        (_, rgb, alpha) => `rgba(${rgb}, ${Math.min(1, Number(alpha) * (this._windowOpacity ?? .3) / .8)})`);
+        (_, rgb, alpha) => `rgba(${rgb}, ${Math.min(1, Number(alpha) * (this._windowOpacity ?? .5) / .8)})`);
     }
-    if (nameBox) nameBox.style.background = c.nameBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .3))');
+    if (nameBox) nameBox.style.background = c.nameBox.replace(/,[\s\d.]+\)$/, ', var(--vn-window-opacity, .5))');
     const preview = document.getElementById('window-opacity-sample');
     if (preview && textBox) {
       preview.style.background = textBox.style.background;
@@ -1116,13 +1116,17 @@ class VNEngine {
 
   _setWindowOpacity(value) {
     const parsed = value === '' || value == null ? NaN : Number(value);
-    this._windowOpacity = Number.isFinite(parsed) ? Math.max(0, Math.min(1, parsed)) : .3;
+    this._windowOpacity = Number.isFinite(parsed) ? Math.max(0, Math.min(1, parsed)) : .5;
     VN_CONFIG.settings.windowOpacity = this._windowOpacity;
     document.documentElement.style.setProperty('--vn-window-opacity', String(this._windowOpacity));
     this._setWindowColor(this.windowColor || 'reset');
   }
 
   _resetGameState() {
+    this.tx.cancel();
+    this._backgroundSession = null;
+    this._nextSceneInstant = false;
+    this._sceneEntryCover = null;
     this._backgroundMotion?.cancel();
     this._backgroundMotion = null;
     this.voice.reset();
@@ -1139,6 +1143,8 @@ class VNEngine {
     // 前回プレイの背景をDOMからクリア（残存背景が一瞬表示されるのを防ぐ）
     const bgEl = document.getElementById('background');
     if (bgEl) {
+      bgEl.style.transition = '';
+      bgEl.style.opacity = '';
       bgEl.style.backgroundImage = '';
       bgEl.style.background      = '';
     }
@@ -1242,12 +1248,21 @@ class VNEngine {
   _processCommand(cmd) {
     switch (cmd.cmd) {
 
-      case 'scene':
+      case 'scene': {
         this._prevSpeaker = null;
         this._dialogRow   = 1;
-        this._changeBackground(cmd.bg, cmd.effect);
-        this._executeNext();
+        this.waitingForInput = false;
+        const effect = this._nextSceneInstant || this.skipMode ? 'instant' : cmd.effect;
+        this._nextSceneInstant = false;
+        const reveal = this._sceneEntryCover;
+        this._sceneEntryCover = null;
+        const token = this._advanceToken;
+        this._changeBackground(cmd.bg, effect, () => {
+          if (!this._continueIfAdvanceTokenMatches(token)) return;
+          if (reveal) reveal();
+        });
         break;
+      }
 
       case 'bgm':
         if (cmd.action === 'play') { this._stopAllSE(); this._playBGM(cmd.track, { loop: cmd.loop !== false }); }
@@ -1474,7 +1489,10 @@ class VNEngine {
   // ============================================================
   //  背景
   // ============================================================
-  _changeBackground(bgKey, effect = 'fade') {
+  _changeBackground(bgKey, effect = 'fade', onApplied = null) {
+    const session = Symbol('background');
+    this._backgroundSession = session;
+    const isCurrent = () => this._backgroundSession === session;
     this._clearCharEmotes();
     this._stopAllSE();
     this._backgroundMotion?.cancel();
@@ -1487,6 +1505,7 @@ class VNEngine {
 
     // 背景を適用してコールバックを呼ぶ
     const applyBG = (onReady) => {
+      if (!isCurrent()) return;
       const gradient = VN_CONFIG.backgrounds[bgKey] || '#1a1a2e';
       const resolvedExt = this._resolvedBGExt && this._resolvedBGExt[bgKey];
 
@@ -1501,6 +1520,7 @@ class VNEngine {
         // フォールバック: 拡張子を順に試す（プリロード前やconfig未登録の場合）
         const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
         const tryNext = (i) => {
+          if (!isCurrent()) return;
           if (i >= tryExts.length) {
             el.style.backgroundImage = '';
             el.style.background      = gradient;
@@ -1509,6 +1529,7 @@ class VNEngine {
           }
           const img = new Image();
           img.onload = () => {
+            if (!isCurrent()) return;
             if (this._resolvedBGExt) this._resolvedBGExt[bgKey] = tryExts[i];
             el.style.background         = '';
             el.style.backgroundImage    = `url(assets/images/bg/${bgKey}${tryExts[i]})`;
@@ -1536,14 +1557,15 @@ class VNEngine {
       ], { duration: 820, easing: 'linear', fill: 'forwards' });
     };
 
+    const applied = () => { if (isCurrent() && onApplied) onApplied(); };
     if (effect === 'instant') {
-      applyBG(() => {});
+      applyBG(applied);
     } else if (effect === 'rush') {
-      applyBG(startRush);
+      applyBG(() => { startRush(); applied(); });
     } else if (effect === 'fade') {
-      this.tx.diamond(VN_CONFIG.settings.fadeTime, () => applyBG(() => {}), null);
+      this.tx.diamond(VN_CONFIG.settings.fadeTime, () => applyBG(applied), null);
     } else {
-      applyBG(() => {});
+      applyBG(applied);
     }
   }
 
@@ -3258,10 +3280,19 @@ class VNEngine {
     this._stopBGM();
     this._inputLocked = false;
     this._skipLocked = false;
-    document.getElementById('credits-screen').classList.add('hidden');
     document.getElementById('credits-roll').style.animation = 'none';
-    document.getElementById('credits-roll').style.opacity = '';
+    document.getElementById('credits-roll').style.opacity = '0';
+    // Prepare the epilogue under the credits cover; its first scene must
+    // not close a second transition after the new characters appear.
+    this._nextSceneInstant = true;
+    this._sceneEntryCover = () => document.getElementById('credits-screen').classList.add('hidden');
     this._executeNext();
+    if (this._nextSceneInstant) {
+      // BAD END has no following scene to prepare.
+      this._nextSceneInstant = false;
+      this._sceneEntryCover = null;
+      document.getElementById('credits-screen').classList.add('hidden');
+    }
   }
 
   // ============================================================
@@ -3302,13 +3333,16 @@ class VNEngine {
     this._clearAllChars('fade_out');
 
     if (next) {
+      const token = this._advanceToken;
       // 背景も暗転フェード（starPan開始までの間に旧背景が残らないよう）
       const bgEl = document.getElementById('background');
       bgEl.style.transition = 'opacity 0.6s ease';
       bgEl.style.opacity    = '0';
       // ── チャプター切り替え: ボタン不要、自動でstarPan ──
       setTimeout(() => {
+        if (this._advanceToken !== token) return;
         this.tx.starPan(title, () => {
+          if (this._advanceToken !== token) return;
           // canvas が非表示になった直後に旧背景・テキストを即クリア（一瞬残るちらつき防止）
           const bgEl = document.getElementById('background');
           bgEl.style.transition      = '';
@@ -3331,6 +3365,7 @@ class VNEngine {
             el.style.opacity       = '1';
             el.style.pointerEvents = '';
           });
+          this._nextSceneInstant = true;
           this._gotoLabel(next);
         });
       }, 800);
@@ -4216,9 +4251,21 @@ class TransitionCanvas {
     if (this.ctx) this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
+  cancel() {
+    this._animationToken = null;
+    this._clear();
+    if (this.canvas) {
+      this.canvas.style.display = 'none';
+      this.canvas.style.pointerEvents = 'none';
+    }
+  }
+
   _animate(duration, onFrame, onDone) {
+    const token = Symbol('transition');
+    this._animationToken = token;
     const start = performance.now();
     const tick = (now) => {
+      if (this._animationToken !== token) return;
       const t = Math.min((now - start) / duration, 1);
       onFrame(t);
       if (t < 1) requestAnimationFrame(tick);

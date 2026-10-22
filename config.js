@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3.7',
+  version: '1.3.8',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.3.8', date: '2026-10-22',
+      ja: ["ED後・章タイトル後に前の画面が一瞬見える問題と、暗転の重複を修正。", "メッセージウィンドウの初期透明度を50%に変更。"],
+      en: ["Removed flashes of the previous scene and duplicate transitions after credits and chapter titles.", "Changed the default message-window transparency to 50%."] },
     { version: '1.3.7', date: '2026-10-21',
       ja: ["まひる・男子クラスメイトの立ち絵を、元の色合いを保った修正版へ更新。", "まひるのカメラなし制服の驚き表情を修正。"],
       en: ["Updated Mahiru and male-classmate sprites while preserving their original colors.", "Fixed Mahiru's surprised expression in her uniform without a camera."] },
@@ -568,7 +571,7 @@ const VN_CONFIG = {
     voiceVolume: 0.85,    // ボイス音量 (0.0 〜 1.0、0で読み込みも停止)
     chainMode:   'dialogue', // 連続2行表示: 'none' | 'dialogue' | 'all'
     skipReadOnly: false,  // スキップ対象: false=すべて / true=既読のみ
-    windowOpacity: .3,   // 背景の不透明度。初期透明度70%（設定画面は透明度0〜100%で表示）
+    windowOpacity: .5,   // 背景の不透明度。初期透明度50%（設定画面は透明度0〜100%で表示）
     fadeTime:    1200,    // 通常の場面切り替え全体の時間 (ms、閉じる＋開く)
     charFadeTime:500,     // キャラクターフェード時間 (ms)
 

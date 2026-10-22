@@ -14,7 +14,7 @@
   --vn-dialog-visible-lines: 2;
   --vn-dialog-box-padding-y: 46px;
   --vn-dialog-letter-spacing: .06em;
-  --vn-window-opacity: .3;
+  --vn-window-opacity: .5;
 }
 
 html.is-firefox {

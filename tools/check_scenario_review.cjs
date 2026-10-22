@@ -31,6 +31,33 @@ test('saved classroom background restores old and current saves without the unus
     assert.equal(engine.flags.sakura_favor, 3);
   }
 });
+test('reset after a chapter fade restores background visibility and cancels the old cover', () => {
+  const elements = new Map();
+  const restore = vm.createContext({document: {getElementById(id) {
+    if (!elements.has(id)) elements.set(id, {style: {}, classList: {add() {}, remove() {}}});
+    return elements.get(id);
+  }}});
+  vm.runInContext(fs.readFileSync(path.join(root, 'game.js'), 'utf8').replace('const engine = new VNEngine();', 'this.Engine = VNEngine;'), restore);
+  const background = restore.document.getElementById('background');
+  Object.assign(background.style, {opacity: '0', transition: 'opacity 0.6s ease', backgroundImage: 'old chapter'});
+  const engine = Object.create(restore.Engine.prototype);
+  let cancelled = false;
+  Object.assign(engine, {
+    tx: {cancel() {cancelled = true;}}, voice: {reset() {}}, _autoScheduleToken: 0,
+    _backgroundSession: Symbol('pending'), _nextSceneInstant: true, _sceneEntryCover() {},
+    _updateVoiceIndicator() {}, _stopTypewriter() {}, _clearAllChars() {}, _hideStill() {},
+    _clearEndingIntro() {}, _clearCreditsPresentation() {}, _setGameMenuOpen() {},
+    _stopBGM() {}, _setWindowColor() {},
+  });
+  engine._resetGameState();
+  assert.equal(cancelled, true);
+  assert.equal(background.style.opacity, '');
+  assert.equal(background.style.transition, '');
+  assert.equal(engine._backgroundSession, null);
+  assert.equal(engine._sceneEntryCover, null);
+  assert.equal(engine._nextSceneInstant, false);
+});
+
 function walk(language, start, decisions = {}, initialFlags = {}, stop = null) {
   const labels = {};
   for (const file of scope.config.scenarioFilesByLanguage[language]) {

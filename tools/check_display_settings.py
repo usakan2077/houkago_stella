@@ -52,10 +52,10 @@ def run(c, passed, out):
           return {text:text.backgroundColor,name:name.backgroundColor,sample:sample.backgroundColor,opacity:text.opacity,letters:getComputedStyle(document.getElementById('dialog-text')).opacity,blur:text.backdropFilter,stored:localStorage.getItem('vn_window_opacity'),value:document.getElementById('window-opacity-value').textContent}})()""")
     def alpha(color):
         return float(color.rstrip(')').split(',')[-1]) if color.startswith('rgba') else 1
-    assert c.evaluate("localStorage.getItem('vn_window_opacity')===null&&Math.abs(engine._windowOpacity-.3)<.001")
-    c.shot('game-default-transparency-70')
+    assert c.evaluate("localStorage.getItem('vn_window_opacity')===null&&Math.abs(engine._windowOpacity-.5)<.001")
+    c.shot('game-default-transparency-50')
     c.evaluate('engine._openSettings()')
-    assert c.evaluate("document.getElementById('window-opacity-slider').value==='70'")
+    assert c.evaluate("document.getElementById('window-opacity-slider').value==='50'")
     c.send('DOM.enable');c.send('CSS.enable')
     root=c.send('DOM.getDocument')['root']['nodeId']
     buttons={key:c.send('DOM.querySelector',dict(nodeId=root,selector='#'+key))['nodeId']
@@ -81,7 +81,7 @@ def run(c, passed, out):
             c.evaluate("document.getElementById("+json.dumps(key)+").classList.remove('active')")
             c.send('CSS.forcePseudoState',dict(nodeId=node,forcedPseudoClasses=[]))
     c.shot('settings-transparency-ja')
-    passed('Default transparency is 70%; slider updates message, preview and all four quick buttons in normal/hover/focus/active states at 0/50/70/100/65%, preserves text and saves the value')
+    passed('Default transparency is 50%; slider updates message, preview and all four quick buttons in normal/hover/focus/active states at 0/50/70/100/65%, preserves text and saves the value')
 
     for palette in ['default','navy','forest','sepia','black']:
         c.evaluate("document.querySelector('#palette-options [data-palette="+palette+"]').click()")
@@ -102,8 +102,15 @@ def run(c, passed, out):
     c.shot('settings-transparency-mobile')
     passed('Transparency controls and preview fit the mobile settings panel')
 
+    # Return to title so the game's beforeunload confirmation does not
+    # suspend JavaScript execution during this persistence check.
+    c.evaluate('engine._resetGameState();engine._showTitleScreen();window._settingsBeforeReload=true')
+    c.sock.settimeout(90)
     c.send('Page.reload',dict(ignoreCache=True))
-    c.wait("typeof engine!=='undefined'&&document.querySelector('#btn-loading-ok')?.style.visibility===''",100)
+    # Do not mistake the previous document's already-visible loading button
+    # for completion of the new navigation.
+    time.sleep(.5)
+    c.wait("!window._settingsBeforeReload&&typeof engine!=='undefined'&&document.querySelector('#btn-loading-ok')?.style.visibility===''",150)
     c.click('#btn-loading-ok');c.evaluate("engine.openingMovie.finish();VN_CONFIG.openingMovieIdleMs=3600000")
     c.wait("engine.openingMovie.phase==='idle'")
     c.evaluate('engine._openSettings()')
