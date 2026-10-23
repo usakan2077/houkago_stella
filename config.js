@@ -84,7 +84,7 @@ const VN_CONFIG = {
         titleNewGame: 'NEW  GAME',
         titleContinue: 'CONTINUE',
         titleGallery: 'CG GALLERY',
-        titleSound: 'サウンドモード',
+        titleSound: 'SOUND MODE',
         soundIntro: 'あの放課後の音を、もう一度。',
         soundChoose: '曲を選んでください',
         soundSongs: 'OP・ED曲',
