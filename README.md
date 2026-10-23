@@ -260,6 +260,8 @@ debug: false,
 
 [ファイル案内](docs/project-map.md) ／ [本文・音声索引](docs/scenario-reference/index.html) ／ [デバッグ報告11の対応状況](docs/debug-report11-status.md)
 
+PLiCy・itch.ioの投稿用ZIP、再作成コマンド、配布ごとの最適化と動作確認は [投稿用データの案内](docs/portal-distribution.md) を参照。
+
 ## デバッグ報告11の音声
 
 23台詞を撮り直し、旧版を保存したまま登録しています。[旧新の比較試聴](docs/voice-review/index.html) / [対応状況](docs/debug-report11-status.md)。
