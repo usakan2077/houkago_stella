@@ -461,6 +461,10 @@
   </div>
 
   <div id="sound-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="sound-heading">
+    <div class="sound-scenery" aria-hidden="true">
+      <div class="sound-scene"><div></div></div>
+      <div class="sound-scene"><div></div></div>
+    </div>
     <div class="modal-inner sound-inner">
       <div class="sound-header"><span class="sound-kicker">AFTER SCHOOL STELLA · SOUND COLLECTION</span>
         <h2 id="sound-heading" data-i18n="titleSound">SOUND MODE</h2>
@@ -471,6 +475,7 @@
           <div class="sound-record" aria-hidden="true"><span>STELLA<br>♪</span></div>
           <p class="sound-track-kind" id="sound-kind">—</p>
           <h3 id="sound-now" aria-live="polite" data-i18n="soundChoose">曲を選んでください</h3>
+          <div class="sound-meter" aria-hidden="true"><span>LIVE AUDIO</span><canvas id="sound-meter" width="800" height="128"></canvas><span class="sound-meter-scale">LOW <i></i> HIGH</span></div>
           <audio id="sound-audio" controls preload="none" aria-label="音楽プレーヤー"></audio>
           <div class="sound-transport">
             <button id="sound-prev" type="button" data-i18n="soundPrevious">前の曲</button>
@@ -487,7 +492,10 @@
           <ol id="sound-tracks"></ol>
         </div>
       </div>
-      <button class="modal-close-btn" id="btn-sound-close" data-i18n="close">閉じる</button>
+      <div class="sound-footer">
+        <a id="sound-download" class="sound-download-current" aria-disabled="true" tabindex="-1"><span aria-hidden="true">↓</span> <span data-i18n="soundDownload">この曲をダウンロード</span><small>MP3</small></a>
+        <button class="modal-close-btn" id="btn-sound-close" data-i18n="close">閉じる</button>
+      </div>
     </div>
   </div>
 
@@ -614,6 +622,7 @@
 <script src="character-emotes.js"></script>
 <script src="bonus-scenario-data.js"></script>
 <script src="bonus-scenario.js"></script>
+<script src="sound-mode-visuals.js"></script>
 <script src="sound-mode.js"></script>
 <script src="game.js"></script>
 </body>

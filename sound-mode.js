@@ -7,6 +7,7 @@ class SoundMode {
     this.filter = 'songs';
     this.selected = null;
     this.session = 0;
+    this.visuals = new SoundModeVisuals(this);
     document.getElementById('btn-sound').addEventListener('click', () => this.open());
     document.getElementById('btn-sound-close').addEventListener('click', () => engine._closeVoiceModal('sound-modal'));
     document.getElementById('sound-prev').addEventListener('click', () => this.step(-1));
@@ -15,9 +16,9 @@ class SoundMode {
     document.querySelectorAll('[data-sound-filter]').forEach(button => {
       button.addEventListener('click', () => { this.filter = button.dataset.soundFilter; this.render(); });
     });
-    this.audio.addEventListener('play', () => this.modal.classList.add('is-playing'));
-    this.audio.addEventListener('pause', () => this.modal.classList.remove('is-playing'));
-    this.audio.addEventListener('ended', () => this.modal.classList.remove('is-playing'));
+    this.audio.addEventListener('play', () => { this.modal.classList.add('is-playing'); this.visuals.startMeter(); });
+    this.audio.addEventListener('pause', () => { this.modal.classList.remove('is-playing'); this.visuals.stopMeter(); });
+    this.audio.addEventListener('ended', () => { this.modal.classList.remove('is-playing'); this.visuals.stopMeter(); });
     this.audio.addEventListener('error', () => {
       if (this.isOpen && this.audio.getAttribute('src')) this.error();
     });
@@ -31,7 +32,7 @@ class SoundMode {
         event.preventDefault();
         engine._closeVoiceModal('sound-modal');
       } else if (event.key === 'Tab') {
-        const controls = [...this.modal.querySelectorAll('button, input, audio')].filter(el => el.getClientRects().length);
+        const controls = [...this.modal.querySelectorAll('button, input, audio, a[href]')].filter(el => el.getClientRects().length);
         const first = controls[0], last = controls[controls.length - 1];
         if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
         else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
@@ -78,6 +79,7 @@ class SoundMode {
     this.audio.loop = document.getElementById('sound-loop').checked;
     document.getElementById('sound-error').textContent = '';
     this.localize();
+    this.visuals.open();
     document.getElementById('btn-sound-close').focus();
   }
 
@@ -101,10 +103,36 @@ class SoundMode {
       button.append(badge, name);
       button.addEventListener('click', () => this.play(track));
       item.appendChild(button);
+      const download = document.createElement('a');
+      download.className = 'sound-download';
+      this.setDownload(download, track);
+      download.textContent = '↓';
+      item.appendChild(download);
       list.appendChild(item);
     }
     document.getElementById('sound-now').textContent = this.selected ? this.title(this.selected) : this.engine._t('soundChoose');
     document.getElementById('sound-kind').textContent = this.selected?.kind || '—';
+    const download = document.getElementById('sound-download');
+    if (this.selected) this.setDownload(download, this.selected);
+    else {
+      download.removeAttribute('href');
+      download.removeAttribute('download');
+      download.removeAttribute('data-download-track');
+      download.removeAttribute('aria-label');
+      download.removeAttribute('title');
+      download.setAttribute('aria-disabled', 'true');
+      download.tabIndex = -1;
+    }
+  }
+
+  setDownload(link, track) {
+    link.href = track.src;
+    link.download = 'Stella - ' + track.title.replace(/[<>:"/\\|?*\x00-\x1f]/g, '-') + '.mp3';
+    link.dataset.downloadTrack = track.id;
+    link.setAttribute('aria-label', this.engine._t('soundDownload') + ': ' + this.title(track));
+    link.title = link.getAttribute('aria-label');
+    link.removeAttribute('aria-disabled');
+    link.tabIndex = 0;
   }
 
   play(track) {
@@ -114,6 +142,8 @@ class SoundMode {
     this.selected = track;
     document.getElementById('sound-error').textContent = '';
     this.audio.src = track.src;
+    this.visuals.prepareAudio();
+    this.visuals.setTrack(track);
     this.render();
     this.audio.play().catch(error => {
       if (session === this.session && this.isOpen && error.name !== 'AbortError') this.error();
@@ -132,6 +162,7 @@ class SoundMode {
     const wasOpen = this.isOpen;
     ++this.session;
     this.audio.pause();
+    this.visuals.close();
     this.audio.removeAttribute('src');
     this.audio.load();
     this.selected = null;

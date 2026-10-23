@@ -1,6 +1,6 @@
 """Isolated-browser verification of report-11 presentation, editor and ending transitions."""
 from pathlib import Path
-import importlib.util,json,subprocess,threading,time,urllib.request
+import importlib.util,json,subprocess,threading,time,urllib.request,sys
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT.parent/'verification' if ROOT.name=='review' else ROOT.parent/'stella-debug-report11-20261019/verification'
 spec=importlib.util.spec_from_file_location('browser_helper',ROOT/'tools/check_opening_movie.py')
@@ -15,7 +15,11 @@ def main():
     threading.Thread(target=server.serve_forever,daemon=True).start()
     startup=subprocess.STARTUPINFO();startup.dwFlags|=subprocess.STARTF_USESHOWWINDOW;startup.wShowWindow=0
     log=(OUT/'edge.log').open('w')
-    process=subprocess.Popen(['C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe','--headless=new','--guest','--disable-gpu','--in-process-gpu','--no-first-run','--no-default-browser-check','--disable-background-networking','--mute-audio','--remote-debugging-address=127.0.0.1','--remote-debugging-port=0','--remote-allow-origins=*','--user-data-dir='+str(profile),'about:blank'],startupinfo=startup,creationflags=subprocess.CREATE_NO_WINDOW,stdout=subprocess.DEVNULL,stderr=log)
+    browser_args=['C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe','--headless=new','--disable-gpu','--in-process-gpu','--no-first-run','--no-default-browser-check','--disable-background-networking','--mute-audio','--remote-debugging-address=127.0.0.1','--remote-debugging-port=0','--remote-allow-origins=*','--user-data-dir='+str(profile),'about:blank']
+    # Guest contexts cannot be configured for CDP downloads in Edge. The
+    # unique user-data-dir still isolates this profile from real player data.
+    if '--sound-mode-only' not in sys.argv:browser_args.insert(2,'--guest')
+    process=subprocess.Popen(browser_args,startupinfo=startup,creationflags=subprocess.CREATE_NO_WINDOW,stdout=subprocess.DEVNULL,stderr=log)
     c=None;checks=[]
     def passed(text):checks.append(text);print('PASS:',text,flush=True)
     try:
@@ -36,11 +40,16 @@ def main():
         base=f'http://127.0.0.1:{server.server_port}'
         c.send('Page.navigate',dict(url=base+'/index.html'))
         c.wait("typeof engine!=='undefined'&&document.querySelector('#btn-loading-ok')?.style.visibility===''",100)
-        import sys
         if '--report13-only' in sys.argv:
             c.evaluate("window._report13Clicks=[];window._report13PlaySE=engine._playSE;engine._playSE=function(file,...args){_report13Clicks.push(file);return _report13PlaySE.call(this,file,...args)}")
         c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();window._configuredOPIdleMs=VN_CONFIG.openingMovieIdleMs;VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
+        if '--sound-mode-only' in sys.argv:
+            from check_sound_mode import run
+            run(c, passed, OUT)
+            assert not c.errors,c.errors
+            (OUT/'sound-mode-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--report15-only' in sys.argv:
             from check_report15 import run
             run(c, passed, OUT)

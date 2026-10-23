@@ -59,7 +59,7 @@ def main():
             samples=c.evaluate("""(async()=>{const context=new OfflineAudioContext(1,44100,44100),out=[];for(const lang of ['ja','en']){const manifest=await fetch('/assets/voice/'+lang+'/manifest.json').then(r=>r.json());for(const button of document.querySelectorAll('.voice-play')){const source=button.dataset[lang+'Src'],id=source.split('/').pop().split('.').slice(0,3).join('.'),clip=manifest.clips[id];if(new URL(source,location.href).pathname!=='/'+clip.src||Number(button.dataset[lang+'Gain'])!==clip.gainDb)throw new Error('Stale voice sample '+id);const response=await fetch(source);if(!response.ok)throw new Error(source);const buffer=await context.decodeAudioData(await response.arrayBuffer());out.push({language:lang,id,duration:buffer.duration})}}return out})()""")
             assert len(samples)==6 and all(s['duration']>.1 for s in samples)
             if variant=='story':
-                assert c.evaluate("document.querySelector('.footer-version').textContent==='ver 1.4'&&document.querySelector('#update-1-4 .update-points').children.length===2&&document.querySelector('#update-1-4 .update-date').textContent==='2026.10.23'")
+                assert c.evaluate("document.querySelector('.footer-version').textContent==='ver 1.4'&&document.querySelector('#update-1-4 .update-points').children.length===3&&document.querySelector('#update-1-4 .update-date').textContent==='2026.10.23'")
             else:
                 assert c.evaluate("document.querySelector('.visual-version').textContent.includes('1.4')&&document.querySelector('.footer').textContent.includes('1.4')")
             c.click('[data-voice-character][data-role="kotoha"] .voice-play')
