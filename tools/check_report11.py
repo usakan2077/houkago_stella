@@ -20,9 +20,14 @@ def main():
     def passed(text):checks.append(text);print('PASS:',text,flush=True)
     try:
         deadline=time.monotonic()+45
-        while not (profile/'DevToolsActivePort').exists():
-            assert time.monotonic()<deadline,'Edge startup timeout';time.sleep(.1)
-        port=int((profile/'DevToolsActivePort').read_text().splitlines()[0]);pages=json.load(urllib.request.urlopen(f'http://127.0.0.1:{port}/json/list'))
+        while True:
+            assert time.monotonic()<deadline,'Edge startup timeout'
+            try:
+                port=int((profile/'DevToolsActivePort').read_text().splitlines()[0])
+                pages=json.load(urllib.request.urlopen(f'http://127.0.0.1:{port}/json/list'))
+                break
+            except (OSError,IndexError,ValueError):
+                time.sleep(.1)
         c=h.CDP(next(p['webSocketDebuggerUrl'] for p in pages if p['type']=='page'))
         c.send('Page.enable');c.send('Runtime.enable');c.send('Network.enable')
         c.send('Network.setBlockedURLs',dict(urls=['https://*']))
@@ -36,6 +41,12 @@ def main():
             c.evaluate("window._report13Clicks=[];window._report13PlaySE=engine._playSE;engine._playSE=function(file,...args){_report13Clicks.push(file);return _report13PlaySE.call(this,file,...args)}")
         c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();window._configuredOPIdleMs=VN_CONFIG.openingMovieIdleMs;VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
+        if '--report15-only' in sys.argv:
+            from check_report15 import run
+            run(c, passed, OUT)
+            assert not c.errors,c.errors
+            (OUT/'report15-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--report14-voice-only' in sys.argv:
             from check_report14_voice import run
             run(c, passed, OUT)

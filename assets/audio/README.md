@@ -24,6 +24,10 @@ MP3 / OGG / WAV（MP3推奨）
 
 ## BGM 一覧
 
+サウンドモードには下記の既存曲と追加BGMを含む32曲、およびOP・EDの4曲を収録。
+曲名・日英表示・ファイルの対応は `config.js` の `soundTracks` を参照。
+OPの `bgm/opening_theme.mp3` は、制作元 `../houkago-stella-op/放課後のステラ.mp3` の音源をそのままコピーしたもの。
+
 優先度：★★★ 必須 ／ ★★ 重要 ／ ★ あると良い
 
 ### システム・タイトル

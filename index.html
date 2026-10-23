@@ -303,6 +303,7 @@
         <button class="title-btn" id="btn-newgame">NEW  GAME</button>
         <button class="title-btn" id="btn-continue">CONTINUE</button>
         <button class="title-btn" id="btn-gallery">CG GALLERY</button>
+        <button class="title-btn hidden" id="btn-sound" data-i18n="titleSound">サウンドモード</button>
         <button class="title-btn" id="btn-title-settings">CONFIG</button>
         <!-- DEBUG: 後で削除 -->
         <button class="title-btn" id="btn-debug" style="margin-top:1.2em;opacity:.55;font-size:.78em;letter-spacing:.15em;display:none;">⚙ DEBUG JUMP</button>
@@ -458,6 +459,37 @@
     </div>
   </div>
 
+  <div id="sound-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="sound-heading">
+    <div class="modal-inner sound-inner">
+      <div class="sound-header"><span class="sound-kicker">AFTER SCHOOL STELLA · SOUND COLLECTION</span>
+        <h2 id="sound-heading" data-i18n="titleSound">サウンドモード</h2>
+        <p data-i18n="soundIntro">あの放課後の音を、もう一度。</p>
+      </div>
+      <div class="sound-layout">
+        <div class="sound-player">
+          <div class="sound-record" aria-hidden="true"><span>STELLA<br>♪</span></div>
+          <p class="sound-track-kind" id="sound-kind">—</p>
+          <h3 id="sound-now" aria-live="polite" data-i18n="soundChoose">曲を選んでください</h3>
+          <audio id="sound-audio" controls preload="none" aria-label="音楽プレーヤー"></audio>
+          <div class="sound-transport">
+            <button id="sound-prev" type="button" data-i18n="soundPrevious">前の曲</button>
+            <button id="sound-next" type="button" data-i18n="soundNext">次の曲</button>
+            <label><input id="sound-loop" type="checkbox" checked> <span data-i18n="soundLoop">リピート</span></label>
+          </div>
+          <p id="sound-error" role="status"></p>
+        </div>
+        <div class="sound-library">
+          <div class="sound-filters" role="group" aria-label="曲の種類">
+            <button type="button" data-sound-filter="songs" aria-pressed="true" data-i18n="soundSongs">OP・ED曲</button>
+            <button type="button" data-sound-filter="bgm" aria-pressed="false">BGM</button>
+          </div>
+          <ol id="sound-tracks"></ol>
+        </div>
+      </div>
+      <button class="modal-close-btn" id="btn-sound-close" data-i18n="close">閉じる</button>
+    </div>
+  </div>
+
   <!-- ======= カスタム確認ダイアログ ======= -->
   <div id="confirm-modal" class="modal hidden">
     <div class="modal-inner confirm-inner">
@@ -579,6 +611,7 @@
 <script src="opening-movie.js"></script>
 <script src="voice.js"></script>
 <script src="character-emotes.js"></script>
+<script src="sound-mode.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

@@ -162,6 +162,7 @@ class VNEngine {
   // ============================================================
   async _init() {
     this.openingMovie = new OpeningMovie(this);
+    this.soundMode = new SoundMode(this);
     this._bindEvents();
     this._preventMobileZoomGestures();
     this._resizeGame();
@@ -268,6 +269,7 @@ class VNEngine {
     this._applyTitleLogo();
     this._applyTextLayoutMode();
     this._updateVoiceIndicator();
+    this.soundMode?.localize();
   }
 
   _getTitleLogoConfig() {
@@ -853,6 +855,7 @@ class VNEngine {
     if (verEl && VN_CONFIG.version) verEl.textContent = 'ver ' + VN_CONFIG.version;
     this._renderTitleUpdates();
     titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
+    this.soundMode.refreshUnlock();
     titleScreen.classList.remove('hidden');
     document.getElementById('game-screen').classList.add('hidden');
     this._startTitleBGM();
@@ -1123,9 +1126,11 @@ class VNEngine {
   }
 
   _resetGameState() {
+    this.soundMode?.close({ resume: false });
     this.tx.cancel();
     this._backgroundSession = null;
     this._nextSceneInstant = false;
+    this._nextSceneReveal = false;
     this._sceneEntryCover = null;
     this._backgroundMotion?.cancel();
     this._backgroundMotion = null;
@@ -1252,7 +1257,8 @@ class VNEngine {
         this._prevSpeaker = null;
         this._dialogRow   = 1;
         this.waitingForInput = false;
-        const effect = this._nextSceneInstant || this.skipMode ? 'instant' : cmd.effect;
+        const effect = this._nextSceneReveal ? 'reveal' : this._nextSceneInstant || this.skipMode ? 'instant' : cmd.effect;
+        this._nextSceneReveal = false;
         this._nextSceneInstant = false;
         const reveal = this._sceneEntryCover;
         this._sceneEntryCover = null;
@@ -1560,6 +1566,12 @@ class VNEngine {
     const applied = () => { if (isCurrent() && onApplied) onApplied(); };
     if (effect === 'instant') {
       applyBG(applied);
+    } else if (effect === 'reveal') {
+      this.tx.coverBlack();
+      applyBG(() => {
+        applied();
+        if (isCurrent()) this.tx.diamond(VN_CONFIG.settings.fadeTime / 2, () => {}, null, { revealOnly: true });
+      });
     } else if (effect === 'rush') {
       applyBG(() => { startRush(); applied(); });
     } else if (effect === 'fade') {
@@ -2292,6 +2304,7 @@ class VNEngine {
   }
 
   _closeVoiceModal(id) {
+    if (id === 'sound-modal') this.soundMode.close();
     document.getElementById(id).classList.add('hidden');
     if (this._pendingModalAdvance && !document.querySelector('.modal:not(.hidden)')) this._executeNext();
   }
@@ -2557,7 +2570,7 @@ class VNEngine {
    * 取り消し不可のため、必ず _showConfirm を通して呼ぶこと。
    */
   _resetProgress() {
-    const keys = ['vn_save_quick', 'vn_seen_stills', 'vn_seen_good_ends', 'vn_read_lines'];
+    const keys = ['vn_save_quick', 'vn_seen_stills', 'vn_seen_good_ends', 'vn_read_lines', 'vn_sound_unlocked'];
     for (let i = 1; i <= 10; i++) keys.push(`vn_save_${i}`);
     keys.forEach(k => localStorage.removeItem(k));
     // メモリ上の解放状況もクリア
@@ -2570,6 +2583,7 @@ class VNEngine {
     // CONTINUEは空スロット表示、ギャラリーは開く度に再構築されるためリロード不要。
     const titleScreen = document.getElementById('title-screen');
     if (titleScreen) titleScreen.classList.toggle('all-good-ends-cleared', this._hasAllGoodEndsSeen());
+    this.soundMode.refreshUnlock();
     this._showToast(this._t('settings.resetDone'));
   }
 
@@ -3365,13 +3379,15 @@ class VNEngine {
             el.style.opacity       = '1';
             el.style.pointerEvents = '';
           });
-          this._nextSceneInstant = true;
+          this.tx.coverBlack();
+          this._nextSceneReveal = true;
           this._gotoLabel(next);
         });
       }, 800);
     } else {
       // ── 最終エンディング: タイトルへ戻るボタンを表示 ──
       this._markGoodEndSeen(this._getGoodEndRouteFromEnding(title));
+      this.soundMode.unlock();
       const endingEl = document.getElementById('ending-screen');
       endingEl.classList.remove('good-end-epilogue-bg');
       if (this.currentStill) {
@@ -4279,7 +4295,16 @@ class TransitionCanvas {
   _easeInOut(t) { return t < .5 ? 2*t*t : -1+(4-2*t)*t; }
 
   // ── ダイヤモンドトランジション（シーン切り替え） ───────────
-  diamond(duration, onSwap, onDone) {
+  coverBlack() {
+    if (!this.ctx) return;
+    this.canvas.style.display = 'block';
+    this.canvas.style.pointerEvents = 'auto';
+    this._clear();
+    this.ctx.fillStyle = '#000';
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  diamond(duration, onSwap, onDone, { revealOnly = false } = {}) {
     if (!this.ctx) { onSwap(); if (onDone) onDone(); return; }
     const W = this.canvas.width, H = this.canvas.height;
     const SIZE = Math.min(W, H) / 7;
@@ -4317,8 +4342,11 @@ class TransitionCanvas {
     };
 
     this.canvas.style.display = 'block';
+    if (revealOnly) { draw(1); onSwap(); }
     this._animate(duration, t => {
-      if (t < closeEnd) {
+      if (revealOnly) {
+        draw(1 - this._easeOut(t));
+      } else if (t < closeEnd) {
         draw(this._easeIn(t / closeEnd));
       } else {
         // Keep an opaque black frame while swapping the background.

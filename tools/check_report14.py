@@ -69,9 +69,9 @@ def run(c, passed, out):
         # Keep the actual star-pan chapter animation, rather than replacing it.
         c.evaluate("engine._startFromLabel('report14_sentinel');_report14Diamonds=0;engine._displayEnding('Chapter 2','chapter2_start')")
         c.wait("engine.currentLabel==='chapter2_start'&&engine.waitingForInput&&getComputedStyle(engine.tx.canvas).display==='none'",25)
-        assert c.evaluate("_report14Diamonds===0&&engine.currentBG==='classroom'&&document.getElementById('background').style.backgroundImage.includes('/classroom.')")
+        assert c.evaluate("_report14Diamonds===1&&engine.currentBG==='classroom'&&document.getElementById('background').style.backgroundImage.includes('/classroom.')")
         c.shot('chapter-entry-'+lang)
-        passed(lang+': real chapter title hands off directly to the next scene without a second transition')
+        passed(lang+': real chapter title reveals the next scene with one opening transition')
 
     c.evaluate("engine._startFromLabel('report14_sentinel');engine._displayEnding('Cancelled chapter','chapter2_start')")
     time.sleep(.1)
