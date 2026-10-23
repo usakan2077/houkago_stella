@@ -26,8 +26,8 @@ def run(c, passed, out):
         c.evaluate('(async()=>{await engine._setLanguage('+json.dumps(lang)+",{returnToTitle:true});VN_CONFIG.settings.typeSpeed=0;engine._chainMode='none';engine.labels.report15_old=_r15Fixture})()")
         c.evaluate("engine._startFromLabel('report15_old');_r15Reveal=[];_r15PreparedBlack=false;engine._displayEnding('Chapter 2','chapter2_start')")
         c.wait("_r15Reveal.length===1", 25)
-        assert c.evaluate("_r15Reveal[0].revealOnly&&_r15Reveal[0].duration===VN_CONFIG.settings.fadeTime/2&&_r15PreparedBlack"), c.evaluate('_r15Reveal')
-        time.sleep(.15)
+        assert c.evaluate("_r15Reveal[0].revealOnly&&_r15Reveal[0].duration===1200&&_r15PreparedBlack"), c.evaluate('_r15Reveal')
+        c.wait("getComputedStyle(engine.tx.canvas).display!=='none'&&!_r15Black()", 2)
         assert c.evaluate("getComputedStyle(engine.tx.canvas).display!=='none'&&!_r15Black()"), 'Expected opening diamonds, without another closing phase'
         c.shot('chapter-opening-'+lang)
         c.wait("engine.currentLabel==='chapter2_start'&&engine.waitingForInput&&getComputedStyle(engine.tx.canvas).display==='none'")

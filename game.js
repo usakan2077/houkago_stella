@@ -1647,7 +1647,7 @@ class VNEngine {
       this.tx.coverBlack();
       applyBG(() => {
         applied();
-        if (isCurrent()) this.tx.diamond(VN_CONFIG.settings.fadeTime / 2, () => {}, null, { revealOnly: true });
+        if (isCurrent()) this.tx.diamond(VN_CONFIG.settings.fadeTime, () => {}, null, { revealOnly: true });
       });
     } else if (effect === 'rush') {
       applyBG(() => { startRush(); applied(); });
@@ -3375,14 +3375,14 @@ class VNEngine {
     this._skipLocked = false;
     document.getElementById('credits-roll').style.animation = 'none';
     document.getElementById('credits-roll').style.opacity = '0';
-    // Prepare the epilogue under the credits cover; its first scene must
-    // not close a second transition after the new characters appear.
-    this._nextSceneInstant = true;
+    // Prepare under the credits cover, then reveal the epilogue with the
+    // same opening-only transition as a new chapter.
+    this._nextSceneReveal = true;
     this._sceneEntryCover = () => document.getElementById('credits-screen').classList.add('hidden');
     this._executeNext();
-    if (this._nextSceneInstant) {
+    if (this._nextSceneReveal) {
       // BAD END has no following scene to prepare.
-      this._nextSceneInstant = false;
+      this._nextSceneReveal = false;
       this._sceneEntryCover = null;
       document.getElementById('credits-screen').classList.add('hidden');
     }

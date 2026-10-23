@@ -260,12 +260,13 @@
       "language": "ja",
       "character": "mahiru",
       "source_text_sha256": "ed319f13d13fb3ce8765fea0fff63672987d5598d5c1d96ce207e986a0d8e21f",
-      "sha256": "f319fa17d6b7c067cba522ea8c9c4d302e293252ea620c83d1ec471bf5f32b64",
+      "sha256": "88987d7f9bcf7c69050645787b0c0d51b2a574fe3a830ba6b7548904b62702fd",
       "voice_id": "JTlYtJrcTzPC71hMLOxo",
-      "duration": 3.44,
-      "peakDbFS": -14.282304156970191,
-      "src": "assets/voice/ja/bonus/bonus.r045.bonus-v2.mp3",
-      "gainDb": 8.0
+      "duration": 2.88,
+      "peakDbFS": -10.305806542814736,
+      "take": "report16-readings-20261023",
+      "src": "assets/voice/ja/bonus/bonus.r045.report16-readings.mp3",
+      "gainDb": 5.0
     },
     "ja:bonus.r049": {
       "id": "bonus.r049",
@@ -669,12 +670,13 @@
       "language": "ja",
       "character": "kotoha",
       "source_text_sha256": "68412692bccdd356097704ba6b5d162c57c81e264453a76383b8eddf73b37b5b",
-      "sha256": "96a6dd9d4d57e287175549d2e10c3fd7d81aec23a347a5ea6870f5bbea5518d9",
+      "sha256": "23ee0c0ab49d04216aa0e237837bf13c5921f7c591d3311e07378fb3c64b0b27",
       "voice_id": "SYjaeawCEiQrxiyl1IWh",
       "duration": 4.08,
-      "peakDbFS": -2.865143034481361,
-      "src": "assets/voice/ja/bonus/bonus.r102.bonus-v2.mp3",
-      "gainDb": -4.5
+      "peakDbFS": -1.526409881700238,
+      "take": "report16-readings-20261023",
+      "src": "assets/voice/ja/bonus/bonus.r102.report16-readings.mp3",
+      "gainDb": -3.5
     },
     "ja:bonus.r104": {
       "id": "bonus.r104",
@@ -1487,12 +1489,13 @@
       "language": "ja",
       "character": "kotoha",
       "source_text_sha256": "7d153b315f6c428c1296804d8f1150e098ff9f2fff1f835895e171374bbc2b03",
-      "sha256": "d5153311705b7211334775154a76adb7d45966d8497a7bce1905a8aa95bff184",
+      "sha256": "0eef2d7396f4a15ee9b336728b3c4f994e5231ba2d883f793e965e3044cbb8d6",
       "voice_id": "SYjaeawCEiQrxiyl1IWh",
-      "duration": 4.24,
-      "peakDbFS": -3.695247127924002,
-      "src": "assets/voice/ja/bonus/bonus.r212.bonus-v2.mp3",
-      "gainDb": -0.5
+      "duration": 4,
+      "peakDbFS": -2.844675788136904,
+      "take": "report16-readings-20261023",
+      "src": "assets/voice/ja/bonus/bonus.r212.report16-readings.mp3",
+      "gainDb": -1.0
     },
     "ja:bonus.r213": {
       "id": "bonus.r213",
@@ -3765,6 +3768,19 @@
     "readings": [
       "コトハ",
       "マージャン"
+    ]
+  },
+  "report16_revision": {
+    "version": "report16-readings-20261023",
+    "ids": [
+      "bonus.r045",
+      "bonus.r102",
+      "bonus.r212"
+    ],
+    "readings": [
+      "ハイ",
+      "ホー",
+      "エヌハラくん"
     ]
   }
 }

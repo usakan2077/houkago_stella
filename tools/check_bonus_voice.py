@@ -21,7 +21,7 @@ def run(c, passed, out):
             assert state['id']==identity and state['context']=='running' and state['peak']>.0001 and state['duration']>.1 and state['volume']>0,state
             assert state['src'].startswith('assets/voice/'+lang+'/bonus/'),state
             samples.append(dict(language=lang,**state))
-        retakes=c.evaluate("fetch('assets/voice/bonus-production.json').then(r=>r.json()).then(m=>m.reading_revision?.ids||[])") if lang=='ja' else []
+        retakes=c.evaluate("fetch('assets/voice/bonus-production.json').then(r=>r.json()).then(m=>[...(m.reading_revision?.ids||[]),...(m.report16_revision?.ids||[])])") if lang=='ja' else []
         suffixes=[identity.removeprefix('bonus.') for identity in retakes]+['r006','r013','r051','r079','r104','r107','r112','r126','r129','r166','r195','r217','r220','r234','r252','r272']
         for suffix in suffixes:
             identity='bonus.'+suffix

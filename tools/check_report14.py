@@ -4,10 +4,10 @@ import time
 
 
 def run(c, passed, out):
-    c.evaluate("""window._report14Events=[];window._report14Diamonds=0;
+    c.evaluate("""window._report14Events=[];window._report14Diamonds=0;window._report14Reveals=[];
       window._report14Command=engine._processCommand;
       window._report14Diamond=engine.tx.diamond;
-      engine.tx.diamond=function(...args){_report14Diamonds++;return _report14Diamond.apply(this,args)};
+      engine.tx.diamond=function(...args){_report14Diamonds++;_report14Reveals.push({duration:args[0],revealOnly:!!args[3]?.revealOnly});return _report14Diamond.apply(this,args)};
       engine._processCommand=function(cmd){
         if(['show','say','narrate'].includes(cmd.cmd)){
           const tx=this.tx,w=tx.canvas.width,h=tx.canvas.height;
@@ -60,11 +60,12 @@ def run(c, passed, out):
               void engine._showCredits(null,"""+json.dumps(profile)+""");
             })()""")
             c.wait('!!engine._creditsAnimEnd',25)
-            c.evaluate('_report14Events=[];_report14Diamonds=0;engine._skipCredits()')
+            c.evaluate('_report14Events=[];_report14Diamonds=0;_report14Reveals=[];engine._skipCredits()')
             c.wait('engine.waitingForInput&&engine.currentBG===_report14ExpectedBG')
-            assert c.evaluate("_report14Diamonds===0&&_report14Events.some(e=>['narrate','say'].includes(e.cmd)&&e.credits)&&document.getElementById('credits-screen').classList.contains('hidden')&&getComputedStyle(engine.tx.canvas).display==='none'")
+            assert c.evaluate("_report14Diamonds===1&&_report14Reveals[0].duration===1200&&_report14Reveals[0].revealOnly&&_report14Events.some(e=>['narrate','say'].includes(e.cmd)&&e.credits&&e.black)&&document.getElementById('credits-screen').classList.contains('hidden')")
+            c.wait("getComputedStyle(engine.tx.canvas).display==='none'")
             c.shot('epilogue-'+profile+'-'+lang)
-            passed(lang+': '+profile+' prepares epilogue under credits and reveals it without another blackout')
+            passed(lang+': '+profile+' prepares epilogue under credits and opens over 1200ms without a closing phase')
 
         # Keep the actual star-pan chapter animation, rather than replacing it.
         c.evaluate("engine._startFromLabel('report14_sentinel');_report14Diamonds=0;engine._displayEnding('Chapter 2','chapter2_start')")

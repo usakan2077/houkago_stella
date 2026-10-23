@@ -56,6 +56,12 @@ def main():
             assert not c.errors,c.errors
             (OUT/'sound-mode-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
             return
+        if '--report16-only' in sys.argv:
+            from check_report16 import run
+            run(c, passed, OUT)
+            assert not c.errors,c.errors
+            (OUT/'report16-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--report15-only' in sys.argv:
             from check_report15 import run
             run(c, passed, OUT)

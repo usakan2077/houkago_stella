@@ -118,7 +118,15 @@ def main():
         c.shot('01-title-without-bonus')
         passed('Title has no bonus entry at 0/3, 2/3 or 3/3 endings; locked direct start rejected')
         endcards_seen=set()
+        def reach_endcard():
+            for _ in range(55):
+                if c.evaluate("!!document.getElementById('bonus-endcard')"):
+                    return
+                c.evaluate('engine._stillLockUntil=0;engine._onAdvance()')
+                time.sleep(.1)
+            raise AssertionError('Closing photo-exhibition scene did not reach the endcard')
         def close_endcard(lang):
+            reach_endcard()
             c.wait("document.querySelector('#bonus-endcard img')?.complete&&document.querySelector('#bonus-endcard img').naturalWidth===1920")
             assert c.evaluate("engine._inputLocked&&!engine.autoMode&&!engine.skipMode&&getComputedStyle(document.getElementById('ui-layer')).visibility==='hidden'&&engine.currentBGM==='evening_gentle.mp3'&&engine.bonus.layer.getAttribute('aria-hidden')!=='true'")
             index=c.evaluate('engine.currentIndex')
@@ -155,7 +163,7 @@ def main():
         c.wait('!document.getElementById("bonus-video")',10)
         assert c.evaluate("engine.currentText.includes('爆発') && !engine._inputLocked && _bonusFinishedVideo.paused && !_bonusFinishedVideo.getAttribute('src')")
         passed('Native video ended event resumes the punchline and releases media resources')
-        c.evaluate('engine._onAdvance();engine._onAdvance();engine._onAdvance()')
+        reach_endcard()
         close_endcard('ja')
         c.evaluate('engine._resetGameState();engine._showTitleScreen()')
         if '--video-only' in sys.argv:return
@@ -306,7 +314,7 @@ def main():
         passed('English library dialogue and PC panels use All Your Base and Badgers in place of Japanese Flash references')
         assert c.evaluate("document.querySelector('#bonus-video-skip').textContent==='Skip video'")
         c.click('#bonus-video-skip')
-        c.evaluate('engine._onAdvance();engine._onAdvance();engine._onAdvance()')
+        reach_endcard()
         close_endcard('en')
         assert endcards_seen=={'ja','en'},endcards_seen
         passed('Meteor end/skip leads to the full-screen ensemble end card; normal advance cannot dismiss it; localized return button cleans up in both languages')

@@ -4246,8 +4246,8 @@
       "gainDb": -5.0
     },
     "bonus.r045": {
-      "src": "assets/voice/ja/bonus/bonus.r045.bonus-v2.mp3",
-      "gainDb": 8.0
+      "src": "assets/voice/ja/bonus/bonus.r045.report16-readings.mp3",
+      "gainDb": 5.0
     },
     "bonus.r049": {
       "src": "assets/voice/ja/bonus/bonus.r049.bonus-v2.mp3",
@@ -4382,8 +4382,8 @@
       "gainDb": -1.0
     },
     "bonus.r102": {
-      "src": "assets/voice/ja/bonus/bonus.r102.bonus-v2.mp3",
-      "gainDb": -4.5
+      "src": "assets/voice/ja/bonus/bonus.r102.report16-readings.mp3",
+      "gainDb": -3.5
     },
     "bonus.r104": {
       "src": "assets/voice/ja/bonus/bonus.r104.bonus-v2.mp3",
@@ -4654,8 +4654,8 @@
       "gainDb": -2.5
     },
     "bonus.r212": {
-      "src": "assets/voice/ja/bonus/bonus.r212.bonus-v2.mp3",
-      "gainDb": -0.5
+      "src": "assets/voice/ja/bonus/bonus.r212.report16-readings.mp3",
+      "gainDb": -1.0
     },
     "bonus.r213": {
       "src": "assets/voice/ja/bonus/bonus.r213.bonus-v2.mp3",

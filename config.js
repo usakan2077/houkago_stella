@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.4.1',
+  version: '1.4.2',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.4.2', date: '2026-10-23',
+      ja: ["章・ED後の暗転明けを1.2秒に統一。", "オマケの画像・場面のつながり・結末を修正。", "麻雀用語と「Ｎ原くん」の読みを録り直し。"],
+      en: ["Chapter and post-credits transitions now open over 1.2 seconds.", "Revised bonus illustrations, scene continuity and ending.", "Rerecorded mahjong terms and the reading of “N-hara.”"] },
     { version: '1.4.1', date: '2026-10-23',
       ja: ['本文の再取得と全件検査を追加し、内部IDの表示を防止。', 'シナリオ・本文・プログラムのバージョンを揃えて読み込むよう改善。'],
       en: ['Added story-text reloading and full reference checks to prevent internal IDs appearing in dialogue.', 'Load story scripts, text and program files with matching version identifiers.'] },
