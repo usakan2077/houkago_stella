@@ -170,6 +170,7 @@ def build(profile,out,c,b,files,manifests,converted,thumbnail):
             if relative=='config.js':
                 patch={'analytics':{'enabled':False},'settings':{'debug':False}}
                 if optimized:
+                    patch['i18n']={'defaultLanguage':'en'}
                     for kind in ['backgroundExtOverrides','stillExtOverrides']:
                         patch[kind]={key:'.webp' if value=='.png' else value for key,value in c[kind].items()}
                 text+='\n// Distribution-specific settings; game content is shared.\n'
@@ -202,6 +203,7 @@ def build(profile,out,c,b,files,manifests,converted,thumbnail):
         for p in paths:z.write(p,p.relative_to(dest).as_posix(),compress_type=zipfile.ZIP_DEFLATED if p.suffix in ['.js','.css','.html','.json','.md','.txt','.svg'] else zipfile.ZIP_STORED)
     if not optimized:assert archive.stat().st_size<=2_000_000_000
     report={'profile':profile,'version':c['version'],'files':len(paths),'uncompressed_bytes':total,'zip_bytes':archive.stat().st_size,'zip':str(archive),
+        'default_language':'en' if optimized else c['i18n']['defaultLanguage'],'debug':False,
         'voice_clips':sum(len(m['clips']) for m in manifests.values()),'voice_packs':pack_count,'transformations':transformed,
         'source_files':sorted(files),'voice_hashes':voice_records,'files_sha256':{p.relative_to(dest).as_posix():sha(p) for p in paths}}
     (out/f'{profile}-build.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
@@ -215,23 +217,25 @@ def main():
     parser.add_argument('--ffmpeg',default=shutil.which('ffmpeg') or 'D:/AI/houkago-stella-op/試作_v1/tools/imageio_ffmpeg/binaries/ffmpeg-win-x86_64-v7.1.exe')
     parser.add_argument('--thumbnail',type=Path,default=ROOT/'og.png')
     parser.add_argument('--screenshots',type=Path,help='Optional directory of publication screenNN.jpg/png and captions.txt')
+    parser.add_argument('--profile',choices=['both','plicy','itchio'],default='both',help='Build both portals or only the selected portal')
     args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
     out=args.output/('build-'+time.strftime('%Y%m%d-%H%M%S'));out.mkdir()
     cache=args.output/'conversion-cache';cache.mkdir(exist_ok=True)
     data=config(args.node);c,b=data['config'],data['bonus'];files,manifests=inventory(c,b)
     print('INPUT',len(files),'files',round(sum((ROOT/p).stat().st_size for p in files)/2**20,1),'MiB',flush=True)
-    build('plicy',out,c,b,files,manifests,{},args.thumbnail)
+    if args.profile in ['both','plicy']:build('plicy',out,c,b,files,manifests,{},args.thumbnail)
     converted={};images=[p for p in files if p.startswith('assets/images/') and p.endswith('.png')]
     videos=[p for p in files if p.endswith('.mp4') and (ROOT/p).stat().st_size>10*2**20]
     # Separate paths/cache keys, so conversions can safely run in parallel.
-    with ThreadPoolExecutor(max_workers=2) as pool:
-        futures=[pool.submit(convert_video,p,cache,args.ffmpeg) for p in videos]
-        futures.extend(pool.submit(convert_image,p,cache) for p in images)
-        done=0
-        for future in as_completed(futures):
-            p,result=future.result();converted[p]=result;done+=1
-            if done%20==0:print('CONVERTED',done,'/',len(futures),flush=True)
-    build('itchio',out,c,b,files,manifests,converted,args.thumbnail)
+    if args.profile in ['both','itchio']:
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            futures=[pool.submit(convert_video,p,cache,args.ffmpeg) for p in videos]
+            futures.extend(pool.submit(convert_image,p,cache) for p in images)
+            done=0
+            for future in as_completed(futures):
+                p,result=future.result();converted[p]=result;done+=1
+                if done%20==0:print('CONVERTED',done,'/',len(futures),flush=True)
+        build('itchio',out,c,b,files,manifests,converted,args.thumbnail)
     write_kit(out,c['version'],args.screenshots)
     (args.output/'latest.txt').write_text(str(out)+'\n',encoding='utf8')
     print('ALL READY',out,flush=True)

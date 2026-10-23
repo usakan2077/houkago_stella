@@ -27,6 +27,8 @@ git switch -c feat/scenario-direction-review
 
 ブランチ名は作業内容に応じて `feat/*`、`fix/*`、`docs/*` などにする。長期の `assets-dev` を次の作業に再利用しない。
 
+`master` の `VN_CONFIG.settings.debug` は通常 `false` に保つ。作業中だけデバッグを有効にした場合も、本流へ統合する前にOFFへ戻す。itch.io配布版もデバッグOFFとし、初期言語は英語にする。
+
 ## 元素材からゲームへ反映する
 
 元素材は `houkago-stella-assets/assets-src/` で編集し、素材リポジトリでコミットする。変換済みファイルはゲーム側の `assets/` に書き出す。

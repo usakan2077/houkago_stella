@@ -64,21 +64,26 @@ def main():
         (out/'boot.json').write_text(json.dumps(boot,ensure_ascii=False,indent=2),encoding='utf8')
         assert not any(boot.values()),boot
         passed('Every configured background, event CG and character expression loads with external requests blocked')
+        expected_language='en' if framed else 'ja'
+        defaults=evaluate("({language:engine.currentLanguage,defaultLanguage:VN_CONFIG.i18n.defaultLanguage,debug:VN_CONFIG.settings.debug,engineDebug:engine._debug,debugButton:getComputedStyle(document.getElementById('btn-debug')).display,debugPanel:!!document.getElementById('debug-flag-panel')})")
+        assert defaults==dict(language=expected_language,defaultLanguage=expected_language,debug=False,engineDebug=False,debugButton='none',debugPanel=False),defaults
+        passed('Fresh profile uses '+expected_language+' by default with debug mode and debug UI disabled')
         click('#btn-loading-ok');wait("engine.openingMovie.phase==='playing'&&engine.openingMovie.video.currentTime>.4",30)
         media=evaluate("(()=>{const v=engine.openingMovie.video;return {source:v.currentSrc,width:v.videoWidth,height:v.videoHeight,duration:v.duration,audio:v.webkitAudioDecodedByteCount}})()")
         assert (media['width'],media['height'])==((1280,720) if framed else (1920,1080)) and media['audio']>0 and abs(media['duration']-102.8667)<.1,media
+        assert media['source'].endswith('stella-op-'+expected_language+'-v143.mp4'),media
         evaluate('engine.openingMovie.finish();VN_CONFIG.openingMovieIdleMs=3600000');wait("engine.openingMovie.phase==='idle'")
         if not framed:
             wait("document.querySelector('canvas').id==='plicy-thumbnail'&&document.querySelector('canvas').dataset.ready==='true'")
             data=evaluate("document.querySelector('canvas').toDataURL('image/png').split(',')[1]")
             (out/'plicy-thumbnail.png').write_bytes(base64.b64decode(data))
             passed('First canvas supplies a 1280x720 real-game thumbnail without replacing the HTML renderer')
-        passed('Japanese opening plays real video/audio at the profile resolution and returns to the title')
+        passed('Default-language opening plays real video/audio at the profile resolution and returns to the title')
         # Exercise main and bonus voice storage, including approved retakes, in both languages.
         for language in ['ja','en']:
             evaluate('(async()=>{engine._resetGameState();engine._showTitleScreen();await engine._setLanguage('+json.dumps(language)+',{returnToTitle:true});await engine.voice.unlock();engine.voice.setVolume(.85)})()')
-            if language=='en':
-                evaluate('engine.openingMovie.play()');wait("engine.openingMovie.video.currentTime>.3&&engine.openingMovie.video.currentSrc.endsWith('stella-op-en-v143.mp4')",30)
+            if language!=expected_language:
+                evaluate('engine.openingMovie.play()');wait("engine.openingMovie.video.currentTime>.3&&engine.openingMovie.video.currentSrc.endsWith('stella-op-"+language+"-v143.mp4')",30)
                 assert evaluate('engine.openingMovie.video.videoWidth==='+str(1280 if framed else 1920)+'&&engine.openingMovie.video.webkitAudioDecodedByteCount>0')
                 evaluate('engine.openingMovie.finish()');wait("engine.openingMovie.phase==='idle'")
             for identity in ['chapter1.chapter1_morning_gate.r003','bonus.r045','bonus.r100','bonus.r212']:
@@ -111,7 +116,7 @@ def main():
         passed('Sound Mode plays with a real meter and a local download target; landscape mobile layout fits')
         assert not missing,sorted(set(missing))
         assert not c.errors,c.errors
-        result=dict(status='PASS',profile=args.profile,embedded=framed,checks=checks,media=media,voices=voices,missing_assets=missing)
+        result=dict(status='PASS',profile=args.profile,embedded=framed,defaults=defaults,checks=checks,media=media,voices=voices,missing_assets=missing)
         (out/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf8')
     finally:
         if c:c.sock.close()
