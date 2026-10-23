@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.4',
+  version: '1.4.1',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.4.1', date: '2026-10-23',
+      ja: ['本文の再取得と全件検査を追加し、内部IDの表示を防止。', 'シナリオ・本文・プログラムのバージョンを揃えて読み込むよう改善。'],
+      en: ['Added story-text reloading and full reference checks to prevent internal IDs appearing in dialogue.', 'Load story scripts, text and program files with matching version identifiers.'] },
     { version: '1.4', date: '2026-10-23',
       ja: ['全員のGOOD ENDクリア後、第4章から分岐するオマケシナリオを追加。', 'オマケにも日英ボイス、専用演出、集合エンドカードを収録。', 'SOUND MODEに音連動メーター・背景演出・MP3ダウンロードを追加。'],
       en: ['Added a bonus scenario branching from Chapter 4 after completing all three GOOD ENDs.', 'The bonus includes Japanese/English voices, special scenes and a group end card.', 'SOUND MODE now has a live audio meter, animated scenery and MP3 downloads.'] },
@@ -95,6 +98,8 @@ const VN_CONFIG = {
         soundCategory: '曲の種類',
         soundError: '曲を再生できませんでした。曲を選び直してください。',
         soundDownload: 'この曲をダウンロード',
+        scenarioLoadError: '本文データを読み込めませんでした。通信を確認して、もう一度読み込んでください。セーブデータは保持されています。',
+        reloadScenario: '再読み込み',
         close: '閉じる',
         yes: 'はい',
         no: 'いいえ',
@@ -165,6 +170,8 @@ const VN_CONFIG = {
         soundCategory: 'Track category',
         soundError: 'Unable to play this track. Please select a track to try again.',
         soundDownload: 'Download track',
+        scenarioLoadError: 'Unable to load the story text. Please check your connection and reload. Your saved games are preserved.',
+        reloadScenario: 'Reload',
         close: 'Close',
         yes: 'Yes',
         no: 'No',

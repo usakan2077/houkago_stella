@@ -44,6 +44,12 @@ def main():
             c.evaluate("window._report13Clicks=[];window._report13PlaySE=engine._playSE;engine._playSE=function(file,...args){_report13Clicks.push(file);return _report13PlaySE.call(this,file,...args)}")
         c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();window._configuredOPIdleMs=VN_CONFIG.openingMovieIdleMs;VN_CONFIG.openingMovieIdleMs=3600000;VN_CONFIG.settings.typeSpeed=0;engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
+        if '--scenario-text-only' in sys.argv:
+            from check_scenario_text_loading import run
+            run(c, passed, OUT)
+            assert not c.errors,c.errors
+            (OUT/'scenario-text-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--sound-mode-only' in sys.argv:
             from check_sound_mode import run
             run(c, passed, OUT)

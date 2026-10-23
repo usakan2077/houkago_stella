@@ -25,6 +25,8 @@ def load_locale(path: Path) -> dict[str, str]:
                 raise ValueError(f"{path.name}: duplicate key {key}")
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"{path.name}: empty or non-string value for {key}")
+            if value.strip() in (key, '$' + key) or re.fullmatch(r'\$?(?:chapter\d+|route_\w+|bad_end|bonus)\.[\w.]+', value.strip()):
+                raise ValueError(f"{path.name}: raw text key used as the value for {key}")
             result[key] = value
         return result
     return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique)

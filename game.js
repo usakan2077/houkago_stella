@@ -175,8 +175,7 @@ class VNEngine {
     const touchDevice = window.matchMedia?.('(hover: none) and (pointer: coarse)')?.matches;
     if (window.visualViewport && !touchDevice) window.visualViewport.addEventListener('resize', () => this._scheduleResizeGame());
     this._applyStaticI18n();
-    await this._loadScenarioTexts();
-    await this._loadScenarios();
+    if (!await this._loadScenarioBundle()) return;
     await this.voice.loadManifest(this.currentLanguage, VN_CONFIG.voice?.manifests?.[this.currentLanguage]);
     await this._preloadAssets();
     this._scheduleShootingStars();
@@ -349,8 +348,7 @@ class VNEngine {
     this.currentLanguage = next;
     localStorage.setItem('vn_language', next);
     this._applyStaticI18n();
-    await this._loadScenarioTexts();
-    await this._loadScenarios();
+    if (!await this._loadScenarioBundle()) return;
 
     await this.voice.loadManifest(next, VN_CONFIG.voice?.manifests?.[next]);
 
@@ -366,15 +364,16 @@ class VNEngine {
     const currentFile = this._getScenarioTextFile(this.currentLanguage);
 
     const loadJson = async (file) => {
-      if (!file) return {};
-      try {
-        const res = await fetch(file);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return await res.json();
-      } catch (err) {
-        console.warn('[i18n] scenario text load failed:', file, err);
-        return {};
+      if (!file) throw new Error('Scenario text file is not configured');
+      const res = await fetch(this._scenarioRequestPath(file), { cache: 'no-store' });
+      if (!res.ok) throw new Error(`${file}: HTTP ${res.status}`);
+      const data = await res.json();
+      if (!data || typeof data !== 'object' || Array.isArray(data)
+        || !Object.entries(data).length
+        || Object.entries(data).some(([key, value]) => !this._validScenarioText(key, value))) {
+        throw new Error(`${file}: invalid scenario text data`);
       }
+      return data;
     };
 
     const fallback = await loadJson(defaultFile);
@@ -382,10 +381,76 @@ class VNEngine {
     this.scenarioTexts = { ...fallback, ...current };
   }
 
+  _scenarioRequestPath(file) {
+    return `${file}${file.includes('?') ? '&' : '?'}v=${encodeURIComponent(VN_CONFIG.version)}`;
+  }
+
+  _validScenarioText(key, value) {
+    return typeof value === 'string' && value.trim().length > 0
+      && value.trim() !== key && value.trim() !== '$' + key
+      && !/^\$?(?:chapter\d+|route_\w+|bad_end|bonus)\.[\w.]+$/.test(value.trim());
+  }
+
+  _commandTextReferences(cmd) {
+    return [cmd.text, cmd.title, ...(cmd.options || []).map(option => option.text)]
+      .filter(text => typeof text === 'string' && text.startsWith('$'));
+  }
+
+  _missingScenarioTexts() {
+    const refs = Object.values(this.labels).flat().flatMap(cmd => this._commandTextReferences(cmd));
+    refs.push(...Object.values(VN_CONFIG.endingCoda || {}).flat());
+    return [...new Set(refs)].map(ref => ref.slice(1))
+      .filter(key => !this._validScenarioText(key, this.scenarioTexts[key]));
+  }
+
+  async _loadScenarioBundle() {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        await this._loadScenarioTexts();
+        await this._loadScenarios();
+        const missing = this._missingScenarioTexts();
+        if (missing.length) throw new Error(`Missing scenario texts (${missing.length}): ${missing.slice(0, 8).join(', ')}`);
+        return true;
+      } catch (error) {
+        console.warn('[i18n] scenario load attempt failed:', error);
+      }
+    }
+    this._showScenarioLoadError();
+    return false;
+  }
+
+  _showScenarioLoadError() {
+    this._inputLocked = true;
+    this.voice?.stop();
+    this._stopTypewriter();
+    if (document.getElementById('scenario-load-error')) return;
+    const modal = document.createElement('div');
+    modal.id = 'scenario-load-error';
+    modal.className = 'modal';
+    modal.setAttribute('role', 'alertdialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'scenario-load-message');
+    modal.style.zIndex = '9999';
+    const panel = document.createElement('div');
+    panel.className = 'modal-inner';
+    const message = document.createElement('p');
+    message.id = 'scenario-load-message';
+    message.textContent = this._t('scenarioLoadError');
+    const retry = document.createElement('button');
+    retry.className = 'modal-close-btn';
+    retry.textContent = this._t('reloadScenario');
+    retry.onclick = () => window.location.reload();
+    panel.append(message, retry);
+    modal.appendChild(panel);
+    document.getElementById('game-container').appendChild(modal);
+    retry.focus();
+  }
+
   _resolveScenarioText(text) {
     if (typeof text !== 'string' || !text.startsWith('$')) return text;
     const key = text.slice(1);
-    return this.scenarioTexts[key] ?? key;
+    if (!this._validScenarioText(key, this.scenarioTexts[key])) throw new Error(`Missing scenario text: ${key}`);
+    return this.scenarioTexts[key];
   }
 
   // ============================================================
@@ -593,7 +658,7 @@ class VNEngine {
     this.labels = {};
     for (const file of this._getScenarioFiles()) {
       try {
-        const res = await fetch(file);
+        const res = await fetch(this._scenarioRequestPath(file), { cache: 'no-store' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const text   = await res.text();
         const parsed = this.parser.parse(text);
@@ -601,7 +666,7 @@ class VNEngine {
         if (this._debug) console.log(`[Engine] Loaded: ${file}`, Object.keys(parsed));
       } catch (e) {
         if (this._debug) console.error(`[Engine] Failed to load ${file}:`, e);
-        this._showLoadError(file);
+        throw e;
       }
     }
     this.bonus?.install();
@@ -1255,6 +1320,10 @@ class VNEngine {
   }
 
   _processCommand(cmd) {
+    if (this._commandTextReferences(cmd).some(ref => !this._validScenarioText(ref.slice(1), this.scenarioTexts[ref.slice(1)]))) {
+      this._showScenarioLoadError();
+      return;
+    }
     switch (cmd.cmd) {
 
       case 'scene': {
