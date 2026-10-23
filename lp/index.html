@@ -122,9 +122,9 @@
           <h2 id="film-title">オープニングムービー</h2>
           <p class="film-lead">主題歌とともに、三人の放課後へ。</p>
         </div>
-        <video id="lp-op" controls playsinline preload="none" poster="assets/images/stills/rooftop_shooting_star.webp" aria-label="放課後のステラ オープニングムービー">
-          <source src="../assets/video/stella-op.mp4" type="video/mp4">
-          <a class="film-fallback" href="../assets/video/stella-op.mp4">OP動画を開く</a>
+        <video id="lp-op" data-src-ja="../assets/video/stella-op-ja-v143.mp4" data-src-en="../assets/video/stella-op-en-v143.mp4" controls playsinline preload="none" poster="assets/images/stills/rooftop_shooting_star.webp" aria-label="放課後のステラ オープニングムービー">
+          <source src="../assets/video/stella-op-ja-v143.mp4" type="video/mp4">
+          <a class="film-fallback" href="../assets/video/stella-op-ja-v143.mp4">OP動画を開く</a>
         </video>
         <p class="film-duration">主題歌付きOP ／ 約1分43秒</p>
       </div>
@@ -387,9 +387,13 @@
           <h2 id="updates-title">更新履歴</h2>
         </div>
         <ol class="updates-list">
+          <li class="update-entry" id="update-1-4-3">
+            <div class="update-meta"><span class="update-version">ver 1.4.3</span><span class="update-date">2026.10.23</span></div>
+            <ul class="update-points"><li>まひるのスチルとOPのカメラを立ち絵と統一。</li><li>英語の文字・タイトルロゴに対応したOPを追加。</li><li>ゲームと紹介ページで、言語設定に合わせてOPを切り替え。</li></ul>
+          </li>
           <li class="update-entry" id="update-1-4-2">
             <div class="update-meta"><span class="update-version">ver 1.4.2</span><span class="update-date">2026.10.23</span></div>
-            <ul class="update-points"><li>章・ED後の暗転明けを1.2秒に統一。</li><li>オマケの画像・場面のつながり・結末を修正。</li><li>麻雀用語と「Ｎ原くん」の読みを録り直し。</li></ul>
+            <ul class="update-points"><li>章・ED後の暗転明けを1.2秒に統一。</li><li>おまけシナリオの画像・演出を調整。</li><li>音声の読み方を一部修正。</li></ul>
           </li>
           <li class="update-entry" id="update-1-4-1">
             <div class="update-meta"><span class="update-version">ver 1.4.1</span><span class="update-date">2026.10.23</span></div>
@@ -397,7 +401,7 @@
           </li>
           <li class="update-entry" id="update-1-4">
             <div class="update-meta"><span class="update-version">ver 1.4</span><span class="update-date">2026.10.23</span></div>
-            <ul class="update-points"><li>全員のGOOD ENDクリア後、第4章から分岐するオマケシナリオを追加。</li><li>オマケにも日英ボイス、専用演出、集合エンドカードを収録。</li><li>SOUND MODEに音連動メーター・背景演出・MP3ダウンロードを追加。</li></ul>
+            <ul class="update-points"><li>クリア後に楽しめるおまけシナリオを追加。</li><li>おまけシナリオも日英ボイスと専用演出に対応。</li><li>SOUND MODEに音連動メーター・背景演出・MP3ダウンロードを追加。</li></ul>
           </li>
           <li class="update-entry" id="update-1-3-9">
             <div class="update-meta"><span class="update-version">ver 1.3.9</span><span class="update-date">2026.10.23</span></div>
@@ -521,13 +525,13 @@
 
   <footer class="site-footer">
     <p>放課後のステラ 嘘と願いのバウンドリー</p>
-    <p class="footer-version">ver 1.4.2</p>
+    <p class="footer-version">ver 1.4.3</p>
     <a href="#top">ページ上部へ</a>
   </footer>
 
   <script src="voice-preview.js"></script>
-  <script src="script.js"></script>
-  <script src="experiment.js"></script>
+  <script src="script.js?v=1.4.3"></script>
+  <script src="experiment.js?v=1.4.3"></script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>

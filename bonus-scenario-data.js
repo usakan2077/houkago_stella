@@ -661,7 +661,7 @@ const VN_BONUS = {
     "ja": "assets/bonus/bonus_newspaper_ja.svg",
     "en": "assets/bonus/bonus_newspaper_en.svg"
   },
-  "endcard": "assets/bonus/bonus_endcard_v4.webp",
+  "endcard": "assets/bonus/bonus_endcard_v5.webp",
   "assets": [
     "assets/images/stills/bonus_01_sooty_back.webp",
     "assets/images/stills/bonus_02_goburei_ron.webp",
@@ -693,6 +693,6 @@ const VN_BONUS = {
     "assets/bonus/bonus_board_en_thread.svg",
     "assets/bonus/bonus_newspaper_ja.svg",
     "assets/bonus/bonus_newspaper_en.svg",
-    "assets/bonus/bonus_endcard_v4.webp"
+    "assets/bonus/bonus_endcard_v5.webp"
   ]
 };

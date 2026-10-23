@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.4.2',
+  version: '1.4.3',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,15 +23,18 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.4.3', date: '2026-10-23',
+      ja: ["まひるのスチルとOPのカメラを立ち絵と統一。", "英語の文字・タイトルロゴに対応したOPを追加。", "ゲームと紹介ページで、言語設定に合わせてOPを切り替え。"],
+      en: ["Matched Mahiru’s cameras in illustrations and the opening to her sprite.", "Added an opening with English text and title logo.", "The game and both websites now select the opening by language."] },
     { version: '1.4.2', date: '2026-10-23',
-      ja: ["章・ED後の暗転明けを1.2秒に統一。", "オマケの画像・場面のつながり・結末を修正。", "麻雀用語と「Ｎ原くん」の読みを録り直し。"],
-      en: ["Chapter and post-credits transitions now open over 1.2 seconds.", "Revised bonus illustrations, scene continuity and ending.", "Rerecorded mahjong terms and the reading of “N-hara.”"] },
+      ja: ["章・ED後の暗転明けを1.2秒に統一。", "おまけシナリオの画像・演出を調整。", "音声の読み方を一部修正。"],
+      en: ["Chapter and post-credits transitions now open over 1.2 seconds.", "Adjusted bonus illustrations and presentation.", "Corrected pronunciation in selected voice lines."] },
     { version: '1.4.1', date: '2026-10-23',
       ja: ['本文の再取得と全件検査を追加し、内部IDの表示を防止。', 'シナリオ・本文・プログラムのバージョンを揃えて読み込むよう改善。'],
       en: ['Added story-text reloading and full reference checks to prevent internal IDs appearing in dialogue.', 'Load story scripts, text and program files with matching version identifiers.'] },
     { version: '1.4', date: '2026-10-23',
-      ja: ['全員のGOOD ENDクリア後、第4章から分岐するオマケシナリオを追加。', 'オマケにも日英ボイス、専用演出、集合エンドカードを収録。', 'SOUND MODEに音連動メーター・背景演出・MP3ダウンロードを追加。'],
-      en: ['Added a bonus scenario branching from Chapter 4 after completing all three GOOD ENDs.', 'The bonus includes Japanese/English voices, special scenes and a group end card.', 'SOUND MODE now has a live audio meter, animated scenery and MP3 downloads.'] },
+      ja: ['クリア後に楽しめるおまけシナリオを追加。', 'おまけシナリオも日英ボイスと専用演出に対応。', 'SOUND MODEに音連動メーター・背景演出・MP3ダウンロードを追加。'],
+      en: ['Added a bonus scenario to enjoy after completing the game.', 'The bonus supports Japanese/English voices and special presentation.', 'SOUND MODE now has a live audio meter, animated scenery and MP3 downloads.'] },
     { version: '1.3.9', date: '2026-10-23',
       ja: ['章タイトル後に、暗転が明けて次章が始まる演出を追加。', 'クリア後のタイトルメニューに、BGM・OP・ED曲を聴けるサウンドモードを追加。'],
       en: ['Chapter titles now lead into an opening transition to the next scene.', 'Added Sound Mode to the title menu after clearing an ending, with BGM and OP/ED songs.'] },
@@ -746,7 +749,7 @@ const VN_CONFIG = {
     },
     en: {
       src: 'assets/images/bg/title_logo_en.webp',
-      alt: 'Houkago Stella',
+      alt: 'After School Stella',
     },
   },
 
@@ -858,8 +861,18 @@ const VN_CONFIG = {
   // ===========================================================
   introVideo: 'assets/images/bg/title.mp4',
 
-  // ロード後のOP。タイトルで10秒無操作の場合も再生。
-  openingMovie: 'assets/video/stella-op.mp4',
+  // ロード後のOP。タイトルで30秒無操作の場合も再生。
+  stillRevisions: {
+    mahiru_rooftop_photo: 'camera-v143',
+    mahiru_riverbank: 'camera-v143',
+    bonus_02_goburei_ron: 'camera-v143',
+    bonus_10_gunya_mahiru: 'camera-v143',
+  },
+  openingMovie: 'assets/video/stella-op-ja-v143.mp4',
+  openingMovies: {
+    ja: 'assets/video/stella-op-ja-v143.mp4',
+    en: 'assets/video/stella-op-en-v143.mp4',
+  },
   openingMovieIdleMs: 30000,
 
   // ===========================================================

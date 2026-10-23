@@ -10,7 +10,8 @@ class OpeningMovie {
     this.idleSince = null;
     this.focused = document.hasFocus();
     this.failed = false;
-    this.video.src = VN_CONFIG.openingMovie || '';
+    this.currentSource = this.source;
+    this.video.src = this.currentSource;
     this.video.addEventListener('ended', () => this.finish());
     this.video.addEventListener('error', () => this.fail());
     this.video.addEventListener('waiting', () => this.watchBuffering());
@@ -59,8 +60,25 @@ class OpeningMovie {
     }, 250);
   }
 
+  get source() {
+    return VN_CONFIG.openingMovies?.[this.engine.currentLanguage]
+      || VN_CONFIG.openingMovie || '';
+  }
+
+  syncSource() {
+    const source = this.source;
+    if (this.currentSource === source) return;
+    this.currentSource = source;
+    this.failed = false;
+    clearTimeout(this.bufferTimer);
+    this.video.pause();
+    this.video.src = source;
+    this.video.load();
+  }
+
   canReplay() {
-    return !!VN_CONFIG.openingMovie && !this.failed && this.phase === 'idle'
+    if (this.phase === 'idle') this.syncSource();
+    return !!this.source && !this.failed && this.phase === 'idle'
       && this.focused && !document.hidden && !this.engine._gameActive
       && !document.getElementById('title-screen').classList.contains('hidden')
       && !document.querySelector('.modal:not(.hidden), #debug-jump-overlay')
@@ -71,7 +89,8 @@ class OpeningMovie {
 
   play() {
     if (this.phase !== 'idle') return;
-    if (!VN_CONFIG.openingMovie || this.failed) { this.engine._showTitleScreen(); return; }
+    this.syncSource();
+    if (!this.source || this.failed) { this.engine._showTitleScreen(); return; }
     this.phase = 'playing';
     this.resetIdle();
     this.engine._stopBGM();

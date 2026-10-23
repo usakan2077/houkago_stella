@@ -1899,7 +1899,7 @@ class VNEngine {
 
     const resolvedExt = this._resolvedStillExt && this._resolvedStillExt[imageName];
     if (resolvedExt) {
-      applyStill(`assets/images/stills/${imageName}${resolvedExt}`);
+      applyStill(this._getStillAssetPath(imageName, resolvedExt));
     } else {
       // フォールバック（config未登録のスチル）
       const tryExts = ['.webp', '.png', '.jpg', '.jpeg'];
@@ -1915,7 +1915,7 @@ class VNEngine {
           applyStill(img.src);
         };
         img.onerror = () => tryImage(i + 1);
-        img.src = `assets/images/stills/${imageName}${tryExts[i]}`;
+        img.src = this._getStillAssetPath(imageName, tryExts[i]);
       };
       tryImage(0);
     }
@@ -2912,10 +2912,10 @@ class VNEngine {
     this._creditsMemoryIndex++;
   }
 
-  _getStillAssetPath(stillKey) {
-    const resolvedExt = this._resolvedStillExt && this._resolvedStillExt[stillKey];
-    if (resolvedExt) return `assets/images/stills/${stillKey}${resolvedExt}`;
-    return `assets/images/stills/${stillKey}.webp`;
+  _getStillAssetPath(stillKey, extension = null) {
+    const resolvedExt = extension || this._resolvedStillExt?.[stillKey] || '.webp';
+    const revision = VN_CONFIG.stillRevisions?.[stillKey];
+    return `assets/images/stills/${stillKey}${resolvedExt}${revision ? '?v=' + encodeURIComponent(revision) : ''}`;
   }
 
   _getStillLabel(stillKey) {

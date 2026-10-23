@@ -59,19 +59,20 @@ def main():
             samples=c.evaluate("""(async()=>{const context=new OfflineAudioContext(1,44100,44100),out=[];for(const lang of ['ja','en']){const manifest=await fetch('/assets/voice/'+lang+'/manifest.json').then(r=>r.json());for(const button of document.querySelectorAll('.voice-play')){const source=button.dataset[lang+'Src'],id=source.split('/').pop().split('.').slice(0,3).join('.'),clip=manifest.clips[id];if(new URL(source,location.href).pathname!=='/'+clip.src||Number(button.dataset[lang+'Gain'])!==clip.gainDb)throw new Error('Stale voice sample '+id);const response=await fetch(source);if(!response.ok)throw new Error(source);const buffer=await context.decodeAudioData(await response.arrayBuffer());out.push({language:lang,id,duration:buffer.duration})}}return out})()""")
             assert len(samples)==6 and all(s['duration']>.1 for s in samples)
             if variant=='story':
-                assert c.evaluate("document.querySelector('.footer-version').textContent==='ver 1.4.2'&&document.querySelector('#update-1-4-2 .update-points').children.length===3&&document.querySelector('#update-1-4-2 .update-date').textContent==='2026.10.23'")
+                assert c.evaluate("document.querySelector('.footer-version').textContent==='ver 1.4.3'&&document.querySelector('#update-1-4-3 .update-points').children.length===3&&document.querySelector('#update-1-4-3 .update-date').textContent==='2026.10.23'")
             else:
-                assert c.evaluate("document.querySelector('.visual-version').textContent.includes('1.4.2')&&document.querySelector('.footer').textContent.includes('1.4.2')")
+                assert c.evaluate("document.querySelector('.visual-version').textContent.includes('1.4.3')&&document.querySelector('.footer').textContent.includes('1.4.3')")
             c.click('[data-voice-character][data-role="kotoha"] .voice-play')
             c.wait("document.querySelector('[data-voice-character][data-role=\"kotoha\"] .voice-play').dataset.state==='playing'")
             assert c.evaluate("performance.getEntriesByType('resource').some(r=>r.name.includes('kotoha-leira-v1.mp3')) && document.querySelectorAll('.voice-play[aria-pressed=\"true\"]').length===1")
             c.click('[data-voice-character][data-role="kotoha"] .voice-play')
             assert c.evaluate("document.querySelectorAll('.voice-play[aria-pressed=\"true\"]').length===0")
             c.evaluate("window.scrollTo({top:0,behavior:'instant'})")
-            assert c.evaluate("document.querySelector('#lp-op').preload==='none' && document.querySelector('#lp-op').paused && !performance.getEntriesByType('resource').some(r=>r.name.includes('stella-op.mp4'))")
+            assert c.evaluate("document.querySelector('#lp-op').preload==='none' && document.querySelector('#lp-op').paused && !performance.getEntriesByType('resource').some(r=>r.name.includes('stella-op-'))")
+            assert c.evaluate("document.querySelector('#lp-op source').getAttribute('src').includes('stella-op-ja-v143.mp4')")
             c.shot(variant+'-desktop-ja')
             if variant=='ai_solo':
-                assert c.evaluate("document.querySelector('video').preload==='none' && document.querySelector('video').paused && !performance.getEntriesByType('resource').some(r=>r.name.includes('stella-op.mp4'))")
+                assert c.evaluate("document.querySelector('video').preload==='none' && document.querySelector('video').paused && !performance.getEntriesByType('resource').some(r=>r.name.includes('stella-op-'))")
                 # Every internal section link resolves; no dead placeholder CTA.
                 assert c.evaluate("[...document.querySelectorAll('a[href^=\"#\"]')].every(a=>document.querySelector(a.getAttribute('href')))")
             c.evaluate("document.addEventListener('click', e=>{const a=e.target.closest('a[href]');if(a && new URL(a.href).pathname==='/index.html')e.preventDefault()})")
@@ -80,6 +81,7 @@ def main():
             assert c.evaluate(f"Array.from(dataLayer).some(e=>e[1]==='lp_play_click' && e[2].lp_variant==='{variant}' && e[2].cta_position==='hero' && e[2].language==='ja')")
             c.click('.language' if variant=='ai_solo' else '.language-toggle')
             assert c.evaluate("document.documentElement.lang==='en'")
+            assert c.evaluate("document.querySelector('#lp-op source').getAttribute('src').includes('stella-op-en-v143.mp4')&&document.querySelector('#lp-op a').href.includes('stella-op-en-v143.mp4')")
             if variant=='story':
                 assert c.evaluate("document.querySelector('#update-1-4-1 .update-points').textContent.includes('internal IDs')&&[...document.querySelectorAll('.update-points')].every(el=>el.children.length>=1&&el.children.length<=3)")
             if variant=='ai_solo':assert c.evaluate("document.querySelector('h1').innerText.includes('One creator.')")

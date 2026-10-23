@@ -21,7 +21,7 @@ def run(c, passed, out):
         c.wait("engine.currentBG==='classroom_evening'&&engine.waitingForInput&&getComputedStyle(engine.tx.canvas).display==='none'")
         c.shot('return-classroom-'+language)
         passed(language+': photo presentation returns to the classroom')
-        assert c.evaluate("VN_BONUS.endcard.endsWith('bonus_endcard_v4.webp')&&Object.keys(VN_BONUS.texts[engine.currentLanguage]).length===285")
+        assert c.evaluate("VN_BONUS.endcard.endsWith('bonus_endcard_v5.webp')&&Object.keys(VN_BONUS.texts[engine.currentLanguage]).length===285")
         passed(language+': revised ending and adopted endcard are present with all original dialogue IDs')
     assert c.evaluate("VN_BONUS.texts.ja.r034==='勇、そっちの机持って！'&&VN_BONUS.texts.ja.r040==='まひるも参加！　あと一人！'&&VN_BONUS.texts.ja.r044==='四人目、ことは呼んでこよ！'")
     passed('Sakura’s approved familiar forms of address remain unchanged')

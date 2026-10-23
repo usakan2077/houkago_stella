@@ -21,5 +21,23 @@
     send('lp_play_click', { cta_position: position });
   });
   const movie = document.querySelector('#lp-op');
+  const syncMovieLanguage = () => {
+    if (!movie) return;
+    const source = movie.querySelector('source');
+    const language = document.documentElement.lang === 'en' ? 'en' : 'ja';
+    const target = movie.dataset[language === 'en' ? 'srcEn' : 'srcJa'];
+    if (!source || !target || source.getAttribute('src') === target) return;
+    const time = movie.currentTime;
+    movie.pause();
+    source.src = target;
+    const link = movie.querySelector('a');
+    if (link) link.href = target;
+    if (time > 0) movie.addEventListener('loadedmetadata', () => {
+      movie.currentTime = Math.min(time, movie.duration || time);
+    }, { once: true });
+    movie.load();
+  };
+  document.addEventListener('lp-language-change', syncMovieLanguage);
+  syncMovieLanguage();
   movie?.addEventListener('playing', () => send('lp_op_play'), { once: true });
 })();
