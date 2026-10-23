@@ -162,6 +162,7 @@ class VNEngine {
   // ============================================================
   async _init() {
     this.openingMovie = new OpeningMovie(this);
+    this.bonus = new BonusScenario(this);
     this.soundMode = new SoundMode(this);
     this._bindEvents();
     this._preventMobileZoomGestures();
@@ -433,6 +434,7 @@ class VNEngine {
     // ImageオブジェクトをGC対象にしないよう _preloadedCharImgs に保持する
     this._preloadedCharImgs = [];
     for (const [charKey, charData] of Object.entries(VN_CONFIG.characters)) {
+      if (charData.bonusOnly) continue;
       for (const expr of (charData.expressions || [])) {
         tasks.push(new Promise(resolve => {
           const img = new Image();
@@ -602,6 +604,7 @@ class VNEngine {
         this._showLoadError(file);
       }
     }
+    this.bonus?.install();
   }
 
   _showLoadError(file) {
@@ -1126,6 +1129,7 @@ class VNEngine {
   }
 
   _resetGameState() {
+    this.bonus?.reset();
     this.soundMode?.close({ resume: false });
     this.tx.cancel();
     this._backgroundSession = null;
@@ -1362,6 +1366,10 @@ class VNEngine {
       case 'effect':
         this.fx.setEffect(cmd.type);
         this._executeNext();
+        break;
+
+      case 'bonus':
+        this.bonus.run(cmd.action, cmd.args);
         break;
 
       case 'shake':
@@ -1655,7 +1663,7 @@ class VNEngine {
     };
     imgEl.onerror = showPlaceholder;
     imgEl.onload = showSlot;
-    imgEl.src = `assets/images/chars/${charKey}/${expr}.png`;
+    imgEl.src = cfg.images?.[expr] || `assets/images/chars/${charKey}/${expr}.png`;
     if (imgEl.decode) imgEl.decode().then(showSlot).catch(() => {
       // A decode promise can abort while a valid image request is still loading.
       // Native load/error events remain the fallback; state identity still cancels stale requests.
@@ -2157,7 +2165,7 @@ class VNEngine {
   // ============================================================
   //  選択肢
   // ============================================================
-  _displayChoices(options) {
+  _displayChoices(options, onSelect = null) {
     this.voice.stop();
     this.voice.retainWindow([]);
     this._stopTypewriter();
@@ -2206,7 +2214,8 @@ class VNEngine {
           }
           this._debugUpdatePanel();
         }
-        this._gotoLabel(opt.next);
+        if (onSelect) onSelect(opt);
+        else this._gotoLabel(opt.next);
       });
       container.appendChild(btn);
     });
@@ -2515,6 +2524,7 @@ class VNEngine {
 
     // 状態復元
     this.flags = d.flags || {};
+    this.bonus?.restore();
     this.currentLabel = d.label;
     this.currentIndex = d.index;
     if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
@@ -3920,6 +3930,31 @@ class VNEngine {
         this._startFromLabel(ch.key);
       });
       overlay.appendChild(btn);
+    }
+
+    if (this.bonus?.debugEnabled) {
+      const heading = document.createElement('div');
+      heading.textContent = '── おまけ（全END不要・解放記録は変更しません）──';
+      heading.style.cssText = 'color:#ffe0a8;font-family:monospace;margin:14px 0 4px;';
+      overlay.appendChild(heading);
+      for (const [key, name] of [
+        ['bonus_start', 'おまけを最初から（注意画面あり）'],
+        ['bonus_library', '図書室のFLASH'],
+        ['bonus_table', 'ドタバタ麻雀'],
+        ['bonus_board', '掲示板：VIP／英語版imageboard'],
+        ['bonus_aa', 'やる夫・やらない夫'],
+        ['bonus_yukkuri', 'ゆっくり解説'],
+        ['bonus_nobuhara_round', '哲也なりきり／ツバメ返し（修正版）'],
+        ['bonus_apology', '謝罪→爆発オチ（動画は最初から）'],
+      ]) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.bonusDebug = key;
+        button.textContent = name;
+        button.style.cssText = 'width:420px;max-width:90vw;padding:10px 16px;background:#342c22;color:#ffe0a8;border:1px solid #9c8355;cursor:pointer;';
+        button.onclick = () => { overlay.remove(); this.bonus.startDebug(key); };
+        overlay.appendChild(button);
+      }
     }
 
     // ── サブキャラ登場シーン ──

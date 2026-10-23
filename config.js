@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.3.9',
+  version: '1.4',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.4', date: '2026-10-23',
+      ja: ['全員のGOOD ENDクリア後、第4章から分岐するオマケシナリオを追加。', 'オマケにも日英ボイス、専用演出、集合エンドカードを収録。'],
+      en: ['Added a bonus scenario branching from Chapter 4 after completing all three GOOD ENDs.', 'The bonus includes Japanese/English voices, special scenes and a group end card.'] },
     { version: '1.3.9', date: '2026-10-23',
       ja: ['章タイトル後に、暗転が明けて次章が始まる演出を追加。', 'クリア後のタイトルメニューに、BGM・OP・ED曲を聴けるサウンドモードを追加。'],
       en: ['Chapter titles now lead into an opening transition to the next scene.', 'Added Sound Mode to the title menu after clearing an ending, with BGM and OP/ED songs.'] },

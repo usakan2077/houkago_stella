@@ -4160,6 +4160,630 @@
     "route_mahiru.mahiru_bad_end.r017": {
       "src": "assets/voice/ja/route_mahiru/route_mahiru.mahiru_bad_end.r017.full-v2.mp3",
       "gainDb": 4.5
+    },
+    "bonus.r006": {
+      "src": "assets/voice/ja/bonus/bonus.r006.bonus-v2.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r007": {
+      "src": "assets/voice/ja/bonus/bonus.r007.bonus-v2.mp3",
+      "gainDb": 1.5
+    },
+    "bonus.r009": {
+      "src": "assets/voice/ja/bonus/bonus.r009.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r011": {
+      "src": "assets/voice/ja/bonus/bonus.r011.bonus-v2.mp3",
+      "gainDb": 0.5
+    },
+    "bonus.r013": {
+      "src": "assets/voice/ja/bonus/bonus.r013.bonus-v2.mp3",
+      "gainDb": 1.0
+    },
+    "bonus.r015": {
+      "src": "assets/voice/ja/bonus/bonus.r015.bonus-v2.mp3",
+      "gainDb": -3.0
+    },
+    "bonus.r016": {
+      "src": "assets/voice/ja/bonus/bonus.r016.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r022": {
+      "src": "assets/voice/ja/bonus/bonus.r022.bonus-v2.mp3",
+      "gainDb": -5.5
+    },
+    "bonus.r023": {
+      "src": "assets/voice/ja/bonus/bonus.r023.bonus-v2.mp3",
+      "gainDb": 4.5
+    },
+    "bonus.r025": {
+      "src": "assets/voice/ja/bonus/bonus.r025.bonus-v2.mp3",
+      "gainDb": 3.0
+    },
+    "bonus.r026": {
+      "src": "assets/voice/ja/bonus/bonus.r026.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r029": {
+      "src": "assets/voice/ja/bonus/bonus.r029.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r031": {
+      "src": "assets/voice/ja/bonus/bonus.r031.bonus-readings-v3.mp3",
+      "gainDb": 0.0
+    },
+    "bonus.r033": {
+      "src": "assets/voice/ja/bonus/bonus.r033.bonus-v2.mp3",
+      "gainDb": 0.5
+    },
+    "bonus.r034": {
+      "src": "assets/voice/ja/bonus/bonus.r034.bonus-v2.mp3",
+      "gainDb": -5.5
+    },
+    "bonus.r037": {
+      "src": "assets/voice/ja/bonus/bonus.r037.bonus-v2.mp3",
+      "gainDb": 0.5
+    },
+    "bonus.r039": {
+      "src": "assets/voice/ja/bonus/bonus.r039.bonus-v2.mp3",
+      "gainDb": 4.5
+    },
+    "bonus.r040": {
+      "src": "assets/voice/ja/bonus/bonus.r040.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r041": {
+      "src": "assets/voice/ja/bonus/bonus.r041.bonus-v2.mp3",
+      "gainDb": 9.5
+    },
+    "bonus.r043": {
+      "src": "assets/voice/ja/bonus/bonus.r043.bonus-v2.mp3",
+      "gainDb": 5.5
+    },
+    "bonus.r044": {
+      "src": "assets/voice/ja/bonus/bonus.r044.bonus-readings-v3.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r045": {
+      "src": "assets/voice/ja/bonus/bonus.r045.bonus-v2.mp3",
+      "gainDb": 8.0
+    },
+    "bonus.r049": {
+      "src": "assets/voice/ja/bonus/bonus.r049.bonus-v2.mp3",
+      "gainDb": 0.0
+    },
+    "bonus.r050": {
+      "src": "assets/voice/ja/bonus/bonus.r050.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r051": {
+      "src": "assets/voice/ja/bonus/bonus.r051.bonus-v2.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r053": {
+      "src": "assets/voice/ja/bonus/bonus.r053.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r054": {
+      "src": "assets/voice/ja/bonus/bonus.r054.bonus-v2.mp3",
+      "gainDb": 1.5
+    },
+    "bonus.r057": {
+      "src": "assets/voice/ja/bonus/bonus.r057.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r059": {
+      "src": "assets/voice/ja/bonus/bonus.r059.bonus-v2.mp3",
+      "gainDb": 1.0
+    },
+    "bonus.r060": {
+      "src": "assets/voice/ja/bonus/bonus.r060.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r062": {
+      "src": "assets/voice/ja/bonus/bonus.r062.bonus-v2.mp3",
+      "gainDb": 1.5
+    },
+    "bonus.r064": {
+      "src": "assets/voice/ja/bonus/bonus.r064.bonus-v2.mp3",
+      "gainDb": 1.5
+    },
+    "bonus.r066": {
+      "src": "assets/voice/ja/bonus/bonus.r066.bonus-v2.mp3",
+      "gainDb": -2.0
+    },
+    "bonus.r067": {
+      "src": "assets/voice/ja/bonus/bonus.r067.bonus-v2.mp3",
+      "gainDb": 2.5
+    },
+    "bonus.r069": {
+      "src": "assets/voice/ja/bonus/bonus.r069.bonus-v2.mp3",
+      "gainDb": 2.0
+    },
+    "bonus.r072": {
+      "src": "assets/voice/ja/bonus/bonus.r072.bonus-v2.mp3",
+      "gainDb": -1.0
+    },
+    "bonus.r073": {
+      "src": "assets/voice/ja/bonus/bonus.r073.bonus-v2.mp3",
+      "gainDb": -6.0
+    },
+    "bonus.r077": {
+      "src": "assets/voice/ja/bonus/bonus.r077.bonus-v2.mp3",
+      "gainDb": 0.5
+    },
+    "bonus.r079": {
+      "src": "assets/voice/ja/bonus/bonus.r079.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r080": {
+      "src": "assets/voice/ja/bonus/bonus.r080.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r082": {
+      "src": "assets/voice/ja/bonus/bonus.r082.bonus-v2.mp3",
+      "gainDb": 5.0
+    },
+    "bonus.r084": {
+      "src": "assets/voice/ja/bonus/bonus.r084.bonus-v2.mp3",
+      "gainDb": -3.5
+    },
+    "bonus.r085": {
+      "src": "assets/voice/ja/bonus/bonus.r085.bonus-v2.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r087": {
+      "src": "assets/voice/ja/bonus/bonus.r087.bonus-v2.mp3",
+      "gainDb": 2.5
+    },
+    "bonus.r089": {
+      "src": "assets/voice/ja/bonus/bonus.r089.bonus-v2.mp3",
+      "gainDb": -2.0
+    },
+    "bonus.r090": {
+      "src": "assets/voice/ja/bonus/bonus.r090.bonus-v2.mp3",
+      "gainDb": 2.5
+    },
+    "bonus.r092": {
+      "src": "assets/voice/ja/bonus/bonus.r092.bonus-v2.mp3",
+      "gainDb": -2.0
+    },
+    "bonus.r093": {
+      "src": "assets/voice/ja/bonus/bonus.r093.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r094": {
+      "src": "assets/voice/ja/bonus/bonus.r094.bonus-v2.mp3",
+      "gainDb": -2.5
+    },
+    "bonus.r095": {
+      "src": "assets/voice/ja/bonus/bonus.r095.bonus-v2.mp3",
+      "gainDb": 0.5
+    },
+    "bonus.r096": {
+      "src": "assets/voice/ja/bonus/bonus.r096.bonus-v2.mp3",
+      "gainDb": 0.5
+    },
+    "bonus.r098": {
+      "src": "assets/voice/ja/bonus/bonus.r098.bonus-v2.mp3",
+      "gainDb": -6.0
+    },
+    "bonus.r099": {
+      "src": "assets/voice/ja/bonus/bonus.r099.bonus-v2.mp3",
+      "gainDb": 0.0
+    },
+    "bonus.r100": {
+      "src": "assets/voice/ja/bonus/bonus.r100.bonus-kotoha-serious-v5.mp3",
+      "gainDb": -2.5
+    },
+    "bonus.r101": {
+      "src": "assets/voice/ja/bonus/bonus.r101.bonus-v2.mp3",
+      "gainDb": -1.0
+    },
+    "bonus.r102": {
+      "src": "assets/voice/ja/bonus/bonus.r102.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r104": {
+      "src": "assets/voice/ja/bonus/bonus.r104.bonus-v2.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r106": {
+      "src": "assets/voice/ja/bonus/bonus.r106.bonus-v2.mp3",
+      "gainDb": -4.0
+    },
+    "bonus.r107": {
+      "src": "assets/voice/ja/bonus/bonus.r107.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r108": {
+      "src": "assets/voice/ja/bonus/bonus.r108.bonus-v2.mp3",
+      "gainDb": 7.0
+    },
+    "bonus.r109": {
+      "src": "assets/voice/ja/bonus/bonus.r109.bonus-v2.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r112": {
+      "src": "assets/voice/ja/bonus/bonus.r112.bonus-v2.mp3",
+      "gainDb": 2.5
+    },
+    "bonus.r113": {
+      "src": "assets/voice/ja/bonus/bonus.r113.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r115": {
+      "src": "assets/voice/ja/bonus/bonus.r115.bonus-v2.mp3",
+      "gainDb": -2.5
+    },
+    "bonus.r117": {
+      "src": "assets/voice/ja/bonus/bonus.r117.bonus-v2.mp3",
+      "gainDb": 12
+    },
+    "bonus.r118": {
+      "src": "assets/voice/ja/bonus/bonus.r118.bonus-v2.mp3",
+      "gainDb": -2.5
+    },
+    "bonus.r120": {
+      "src": "assets/voice/ja/bonus/bonus.r120.bonus-v2.mp3",
+      "gainDb": 9.0
+    },
+    "bonus.r122": {
+      "src": "assets/voice/ja/bonus/bonus.r122.bonus-v2.mp3",
+      "gainDb": -6.0
+    },
+    "bonus.r124": {
+      "src": "assets/voice/ja/bonus/bonus.r124.bonus-v2.mp3",
+      "gainDb": -9.0
+    },
+    "bonus.r126": {
+      "src": "assets/voice/ja/bonus/bonus.r126.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r128": {
+      "src": "assets/voice/ja/bonus/bonus.r128.bonus-v2.mp3",
+      "gainDb": 3.0
+    },
+    "bonus.r129": {
+      "src": "assets/voice/ja/bonus/bonus.r129.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r130": {
+      "src": "assets/voice/ja/bonus/bonus.r130.bonus-readings-v3.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r133": {
+      "src": "assets/voice/ja/bonus/bonus.r133.bonus-v2.mp3",
+      "gainDb": 1.5
+    },
+    "bonus.r135": {
+      "src": "assets/voice/ja/bonus/bonus.r135.bonus-v2.mp3",
+      "gainDb": -3.5
+    },
+    "bonus.r137": {
+      "src": "assets/voice/ja/bonus/bonus.r137.bonus-v2.mp3",
+      "gainDb": -2.5
+    },
+    "bonus.r138": {
+      "src": "assets/voice/ja/bonus/bonus.r138.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r140": {
+      "src": "assets/voice/ja/bonus/bonus.r140.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r141": {
+      "src": "assets/voice/ja/bonus/bonus.r141.bonus-v2.mp3",
+      "gainDb": 1.0
+    },
+    "bonus.r143": {
+      "src": "assets/voice/ja/bonus/bonus.r143.bonus-v2.mp3",
+      "gainDb": 0.5
+    },
+    "bonus.r144": {
+      "src": "assets/voice/ja/bonus/bonus.r144.bonus-v2.mp3",
+      "gainDb": -3.5
+    },
+    "bonus.r146": {
+      "src": "assets/voice/ja/bonus/bonus.r146.bonus-v2.mp3",
+      "gainDb": 1.0
+    },
+    "bonus.r148": {
+      "src": "assets/voice/ja/bonus/bonus.r148.bonus-v2.mp3",
+      "gainDb": 4.5
+    },
+    "bonus.r149": {
+      "src": "assets/voice/ja/bonus/bonus.r149.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r150": {
+      "src": "assets/voice/ja/bonus/bonus.r150.bonus-v2.mp3",
+      "gainDb": 4.5
+    },
+    "bonus.r151": {
+      "src": "assets/voice/ja/bonus/bonus.r151.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r152": {
+      "src": "assets/voice/ja/bonus/bonus.r152.bonus-v2.mp3",
+      "gainDb": -1.0
+    },
+    "bonus.r153": {
+      "src": "assets/voice/ja/bonus/bonus.r153.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r155": {
+      "src": "assets/voice/ja/bonus/bonus.r155.bonus-v2.mp3",
+      "gainDb": 3.5
+    },
+    "bonus.r156": {
+      "src": "assets/voice/ja/bonus/bonus.r156.bonus-v2.mp3",
+      "gainDb": 5.0
+    },
+    "bonus.r158": {
+      "src": "assets/voice/ja/bonus/bonus.r158.bonus-v2.mp3",
+      "gainDb": 0.0
+    },
+    "bonus.r160": {
+      "src": "assets/voice/ja/bonus/bonus.r160.bonus-v2.mp3",
+      "gainDb": -1.0
+    },
+    "bonus.r163": {
+      "src": "assets/voice/ja/bonus/bonus.r163.bonus-v2.mp3",
+      "gainDb": 1.0
+    },
+    "bonus.r166": {
+      "src": "assets/voice/ja/bonus/bonus.r166.bonus-v2.mp3",
+      "gainDb": -2.5
+    },
+    "bonus.r168": {
+      "src": "assets/voice/ja/bonus/bonus.r168.bonus-v2.mp3",
+      "gainDb": 8.0
+    },
+    "bonus.r171": {
+      "src": "assets/voice/ja/bonus/bonus.r171.bonus-v2.mp3",
+      "gainDb": -6.5
+    },
+    "bonus.r173": {
+      "src": "assets/voice/ja/bonus/bonus.r173.bonus-v2.mp3",
+      "gainDb": 4.5
+    },
+    "bonus.r174": {
+      "src": "assets/voice/ja/bonus/bonus.r174.bonus-v2.mp3",
+      "gainDb": 2.5
+    },
+    "bonus.r176": {
+      "src": "assets/voice/ja/bonus/bonus.r176.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r178": {
+      "src": "assets/voice/ja/bonus/bonus.r178.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r180": {
+      "src": "assets/voice/ja/bonus/bonus.r180.bonus-v2.mp3",
+      "gainDb": -3.5
+    },
+    "bonus.r181": {
+      "src": "assets/voice/ja/bonus/bonus.r181.bonus-v2.mp3",
+      "gainDb": -1.0
+    },
+    "bonus.r182": {
+      "src": "assets/voice/ja/bonus/bonus.r182.bonus-v2.mp3",
+      "gainDb": 6.5
+    },
+    "bonus.r183": {
+      "src": "assets/voice/ja/bonus/bonus.r183.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r184": {
+      "src": "assets/voice/ja/bonus/bonus.r184.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r185": {
+      "src": "assets/voice/ja/bonus/bonus.r185.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r187": {
+      "src": "assets/voice/ja/bonus/bonus.r187.bonus-v2.mp3",
+      "gainDb": 2.5
+    },
+    "bonus.r189": {
+      "src": "assets/voice/ja/bonus/bonus.r189.bonus-v2.mp3",
+      "gainDb": 4.5
+    },
+    "bonus.r190": {
+      "src": "assets/voice/ja/bonus/bonus.r190.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r192": {
+      "src": "assets/voice/ja/bonus/bonus.r192.bonus-readings-v3.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r195": {
+      "src": "assets/voice/ja/bonus/bonus.r195.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r197": {
+      "src": "assets/voice/ja/bonus/bonus.r197.bonus-v2.mp3",
+      "gainDb": -2.0
+    },
+    "bonus.r199": {
+      "src": "assets/voice/ja/bonus/bonus.r199.bonus-v2.mp3",
+      "gainDb": -3.0
+    },
+    "bonus.r200": {
+      "src": "assets/voice/ja/bonus/bonus.r200.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r201": {
+      "src": "assets/voice/ja/bonus/bonus.r201.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r203": {
+      "src": "assets/voice/ja/bonus/bonus.r203.bonus-v2.mp3",
+      "gainDb": 2.0
+    },
+    "bonus.r204": {
+      "src": "assets/voice/ja/bonus/bonus.r204.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r205": {
+      "src": "assets/voice/ja/bonus/bonus.r205.bonus-v2.mp3",
+      "gainDb": 0.0
+    },
+    "bonus.r206": {
+      "src": "assets/voice/ja/bonus/bonus.r206.bonus-v2.mp3",
+      "gainDb": -3.5
+    },
+    "bonus.r207": {
+      "src": "assets/voice/ja/bonus/bonus.r207.bonus-v2.mp3",
+      "gainDb": 0.0
+    },
+    "bonus.r209": {
+      "src": "assets/voice/ja/bonus/bonus.r209.bonus-v2.mp3",
+      "gainDb": -2.0
+    },
+    "bonus.r210": {
+      "src": "assets/voice/ja/bonus/bonus.r210.bonus-v2.mp3",
+      "gainDb": 3.0
+    },
+    "bonus.r211": {
+      "src": "assets/voice/ja/bonus/bonus.r211.bonus-v2.mp3",
+      "gainDb": -2.5
+    },
+    "bonus.r212": {
+      "src": "assets/voice/ja/bonus/bonus.r212.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r213": {
+      "src": "assets/voice/ja/bonus/bonus.r213.bonus-v2.mp3",
+      "gainDb": -1.0
+    },
+    "bonus.r215": {
+      "src": "assets/voice/ja/bonus/bonus.r215.bonus-v2.mp3",
+      "gainDb": -3.0
+    },
+    "bonus.r217": {
+      "src": "assets/voice/ja/bonus/bonus.r217.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r219": {
+      "src": "assets/voice/ja/bonus/bonus.r219.bonus-v2.mp3",
+      "gainDb": -6.5
+    },
+    "bonus.r220": {
+      "src": "assets/voice/ja/bonus/bonus.r220.bonus-v2.mp3",
+      "gainDb": 1.0
+    },
+    "bonus.r222": {
+      "src": "assets/voice/ja/bonus/bonus.r222.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r223": {
+      "src": "assets/voice/ja/bonus/bonus.r223.bonus-v2.mp3",
+      "gainDb": 0.5
+    },
+    "bonus.r225": {
+      "src": "assets/voice/ja/bonus/bonus.r225.bonus-v2.mp3",
+      "gainDb": 3.0
+    },
+    "bonus.r227": {
+      "src": "assets/voice/ja/bonus/bonus.r227.bonus-v2.mp3",
+      "gainDb": 4.0
+    },
+    "bonus.r229": {
+      "src": "assets/voice/ja/bonus/bonus.r229.bonus-v2.mp3",
+      "gainDb": -3.5
+    },
+    "bonus.r231": {
+      "src": "assets/voice/ja/bonus/bonus.r231.bonus-v2.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r233": {
+      "src": "assets/voice/ja/bonus/bonus.r233.bonus-v2.mp3",
+      "gainDb": 0.0
+    },
+    "bonus.r234": {
+      "src": "assets/voice/ja/bonus/bonus.r234.bonus-v2.mp3",
+      "gainDb": -0.5
+    },
+    "bonus.r237": {
+      "src": "assets/voice/ja/bonus/bonus.r237.bonus-v2.mp3",
+      "gainDb": 2.5
+    },
+    "bonus.r239": {
+      "src": "assets/voice/ja/bonus/bonus.r239.bonus-v2.mp3",
+      "gainDb": -5.0
+    },
+    "bonus.r241": {
+      "src": "assets/voice/ja/bonus/bonus.r241.bonus-v2.mp3",
+      "gainDb": 3.0
+    },
+    "bonus.r242": {
+      "src": "assets/voice/ja/bonus/bonus.r242.bonus-v2.mp3",
+      "gainDb": -7.0
+    },
+    "bonus.r243": {
+      "src": "assets/voice/ja/bonus/bonus.r243.bonus-v2.mp3",
+      "gainDb": 5.0
+    },
+    "bonus.r246": {
+      "src": "assets/voice/ja/bonus/bonus.r246.bonus-v2.mp3",
+      "gainDb": -4.5
+    },
+    "bonus.r247": {
+      "src": "assets/voice/ja/bonus/bonus.r247.bonus-v2.mp3",
+      "gainDb": 8.0
+    },
+    "bonus.r248": {
+      "src": "assets/voice/ja/bonus/bonus.r248.bonus-v2.mp3",
+      "gainDb": 6.0
+    },
+    "bonus.r249": {
+      "src": "assets/voice/ja/bonus/bonus.r249.bonus-readings-v3.mp3",
+      "gainDb": 1.0
+    },
+    "bonus.r252": {
+      "src": "assets/voice/ja/bonus/bonus.r252.bonus-v2.mp3",
+      "gainDb": -3.0
+    },
+    "bonus.r255": {
+      "src": "assets/voice/ja/bonus/bonus.r255.bonus-v2.mp3",
+      "gainDb": -3.5
+    },
+    "bonus.r257": {
+      "src": "assets/voice/ja/bonus/bonus.r257.bonus-v2.mp3",
+      "gainDb": -3.0
+    },
+    "bonus.r258": {
+      "src": "assets/voice/ja/bonus/bonus.r258.bonus-v2.mp3",
+      "gainDb": 0.0
+    },
+    "bonus.r260": {
+      "src": "assets/voice/ja/bonus/bonus.r260.bonus-v2.mp3",
+      "gainDb": 5.0
+    },
+    "bonus.r267": {
+      "src": "assets/voice/ja/bonus/bonus.r267.bonus-v2.mp3",
+      "gainDb": -1.5
+    },
+    "bonus.r269": {
+      "src": "assets/voice/ja/bonus/bonus.r269.bonus-v2.mp3",
+      "gainDb": -1.0
+    },
+    "bonus.r270": {
+      "src": "assets/voice/ja/bonus/bonus.r270.bonus-v2.mp3",
+      "gainDb": -3.0
+    },
+    "bonus.r272": {
+      "src": "assets/voice/ja/bonus/bonus.r272.bonus-v2.mp3",
+      "gainDb": 3.0
+    },
+    "bonus.r274": {
+      "src": "assets/voice/ja/bonus/bonus.r274.bonus-v2.mp3",
+      "gainDb": 9.5
     }
   }
 }

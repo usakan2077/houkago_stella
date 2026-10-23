@@ -20,6 +20,8 @@ sakura: $chapter4.chapter4_start.r004
 
 kotoha: $chapter4.chapter4_start.r005
 
+@bonus offer
+
 sakura: $chapter4.chapter4_start.r006
 
 player: $chapter4.chapter4_start.r007

@@ -269,6 +269,9 @@ class ScriptParser {
         // @effect sakura / @effect rain / @effect snow / @effect stop
         return { cmd: 'effect', type: args[0] || 'stop' };
 
+      case 'bonus':
+        return { cmd: 'bonus', action: args[0], args: args.slice(1) };
+
       case 'shake':
         // @shake [strength] [duration_ms]
         return { cmd: 'shake', strength: parseInt(args[0]) || 8, duration: parseInt(args[1]) || 500 };
