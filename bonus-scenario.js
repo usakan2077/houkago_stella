@@ -38,7 +38,7 @@ class BonusScenario {
       const timer = setTimeout(() => reject(new Error('Bonus image timeout: ' + src)), 30000);
       img.onload = () => { clearTimeout(timer); resolve(img); };
       img.onerror = () => { clearTimeout(timer); reject(new Error('Bonus image unavailable: ' + src)); };
-      img.src = src;
+      img.src = this.engine._assetURL?.(src) || src;
     })));
     this.images = images;
     this.ready = true;
@@ -200,7 +200,7 @@ class BonusScenario {
     if (mode === 'newspaper') {
       const picture = document.createElement('img');
       picture.className = 'bonus-board-picture bonus-newspaper-picture';
-      picture.src = VN_BONUS.newspapers[this.english ? 'en' : 'ja'];
+      picture.src = this.engine._assetURL?.(VN_BONUS.newspapers[this.english ? 'en' : 'ja']) || VN_BONUS.newspapers[this.english ? 'en' : 'ja'];
       picture.alt = this.text('学園新聞号外：実況者、選手転向直後に不正。写真提供・まひる。', 'School newspaper extra: Commentator caught cheating on debut. Photo by Mahiru.');
       this.layer.appendChild(picture);
     }
@@ -220,7 +220,7 @@ class BonusScenario {
     this.layer.replaceChildren();
     const picture = document.createElement('img');
     picture.className = 'bonus-board-picture';
-    picture.src = VN_BONUS.boards[this.english ? 'en' : 'ja'][view];
+    picture.src = this.engine._assetURL?.(VN_BONUS.boards[this.english ? 'en' : 'ja'][view]) || VN_BONUS.boards[this.english ? 'en' : 'ja'][view];
     picture.alt = view === 'index'
       ? this.text('VIP風のスレッド一覧', 'Early imageboard thread index')
       : this.text('文化祭の相談スレ：詳細キボンヌとギコねこ', 'Anonymous festival thread: pics, sage and faces');
@@ -333,7 +333,7 @@ class BonusScenario {
     layer.addEventListener('keydown', event => event.stopPropagation());
     const video = document.createElement('video');
     video.id = 'bonus-video-player';
-    video.src = 'assets/video/bonus-meteor.mp4';
+    video.src = this.engine._assetURL?.('assets/video/bonus-meteor.mp4') || 'assets/video/bonus-meteor.mp4';
     video.controls = true;
     video.playsInline = true;
     video.preload = 'auto';
@@ -433,7 +433,7 @@ class BonusScenario {
     const card = document.createElement('div');
     card.id = 'bonus-endcard';
     const image = document.createElement('img');
-    image.src = VN_BONUS.endcard;
+    image.src = this.engine._assetURL?.(VN_BONUS.endcard) || VN_BONUS.endcard;
     image.alt = this.text('夕焼けの教室で笑い合う、さくら・ことは・まひる・勇・延原・先生の集合写真。', 'Sakura, Kotoha, Mahiru, Isamu, Nobuhara and their teacher sharing a smile in their sunset classroom.');
     const thanks = document.createElement('p');
     thanks.className = 'bonus-endcard-thanks';

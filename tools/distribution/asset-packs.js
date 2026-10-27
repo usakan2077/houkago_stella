@@ -30,7 +30,8 @@
       entry = { controller: new AbortController(), users: new Set(), data: null };
       entries.set(clip.pack, entry);
       entry.promise = (async () => {
-        const response = await nativeFetch(new URL(spec.src, root), { signal: entry.controller.signal });
+        const source = new URL(spec.src, root).href;
+        const response = await nativeFetch(typeof stellaAssetURL === 'function' ? stellaAssetURL(source) : source, { signal: entry.controller.signal });
         if (!response.ok) throw new Error('Voice pack unavailable');
         const bytes = await response.arrayBuffer();
         if (bytes.byteLength !== spec.bytes) throw new Error('Incomplete voice pack');

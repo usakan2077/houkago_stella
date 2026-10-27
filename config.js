@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.4.3',
+  version: '1.4.4',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.4.4', date: '2026-10-27',
+      ja: ['起動時の画像読み込みを減らし、進行に合わせた先読みに変更。', '読み込んだ素材を同じバージョンで再利用するキャッシュを追加。', '台詞用フォントを先読みし、取得が遅い場合も表示を安定化。'],
+      en: ['Reduced startup image loading and added progressive lookahead during play.', 'Downloaded media can be reused across visits to the same game version.', 'Preload dialogue fonts and keep text layout stable when font downloads are slow.'] },
     { version: '1.4.3', date: '2026-10-23',
       ja: ["まひるのスチルとOPのカメラを立ち絵と統一。", "英語の文字・タイトルロゴに対応したOPを追加。", "ゲームと紹介ページで、言語設定に合わせてOPを切り替え。"],
       en: ["Matched Mahiru’s cameras in illustrations and the opening to her sprite.", "Added an opening with English text and title logo.", "The game and both websites now select the opening by language."] },

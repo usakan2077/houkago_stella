@@ -126,7 +126,7 @@ class SoundMode {
   }
 
   setDownload(link, track) {
-    link.href = track.src;
+    link.href = this.engine._assetURL?.(track.src) || track.src;
     link.download = 'Stella - ' + track.title.replace(/[<>:"/\\|?*\x00-\x1f]/g, '-') + '.mp3';
     link.dataset.downloadTrack = track.id;
     link.setAttribute('aria-label', this.engine._t('soundDownload') + ': ' + this.title(track));
@@ -141,7 +141,7 @@ class SoundMode {
     this.audio.pause();
     this.selected = track;
     document.getElementById('sound-error').textContent = '';
-    this.audio.src = track.src;
+    this.audio.src = this.engine._assetURL?.(track.src) || track.src;
     this.visuals.prepareAudio();
     this.visuals.setTrack(track);
     this.render();

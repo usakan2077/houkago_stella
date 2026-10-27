@@ -49,7 +49,7 @@ def inventory(c,b):
     html=(ROOT/'index.html').read_text(encoding='utf8')
     for path in re.findall(r'(?:src|href)="([^"?#]+)',html):
         if not path.startswith(('https:','http:','#')) and (ROOT/path).is_file():add(path)
-    add('index.html');add('LICENSE')
+    add('index.html');add('LICENSE');add('asset-cache-worker.js')
     for kind,keys,overrides in [('bg',c['backgrounds'],c.get('backgroundExtOverrides',{})),('stills',[v['key'] for v in c['cgList']],c.get('stillExtOverrides',{}))]:
         for key in keys:
             if kind=='bg' and key in c['gradientOnlyBGs']:continue
@@ -179,10 +179,11 @@ def build(profile,out,c,b,files,manifests,converted,thumbnail):
                 needle='dependencies.fetch || ((...args) => fetch(...args))'
                 assert text.count(needle)==1,'Voice implementation changed; update the distribution adapter'
                 text=text.replace(needle,'dependencies.fetch || globalThis.VN_PORTAL_VOICE_FETCH || ((...args) => fetch(...args))')
-            if optimized and relative=='game.js':
-                needle='assets/images/chars/${charKey}/${expr}.png'
-                assert text.count(needle)==2,'Character image paths changed'
-                text=text.replace(needle,'assets/images/chars/${charKey}/${expr}.webp')
+            if optimized and relative in ['game.js','asset-loader.js']:
+                expression='expr' if relative=='game.js' else 'expression'
+                needle='assets/images/chars/${charKey}/${'+expression+'}.png'
+                assert text.count(needle)==1,'Character image paths changed'
+                text=text.replace(needle,needle.removesuffix('.png')+'.webp')
             write_text(dest,relative,text,mapping)
         else:shutil.copyfile(source,target)
         if source!=ROOT/relative:transformed.append({'source':relative,'target':target.relative_to(dest).as_posix(),'source_sha256':sha(ROOT/relative),'sha256':sha(target)})

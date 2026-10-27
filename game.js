@@ -161,6 +161,11 @@ class VNEngine {
   //  初期化
   // ============================================================
   async _init() {
+    this.assetLoader = new VNAssetLoader(VN_CONFIG);
+    this._resolvedBGExt = this.assetLoader.backgrounds;
+    this._resolvedStillExt = this.assetLoader.stills;
+    document.documentElement.style.setProperty('--vn-title-bg', `url("${this._assetURL('assets/images/bg/title_bg.webp')}")`);
+    document.documentElement.style.setProperty('--vn-title-end-bg', `url("${this._assetURL('assets/images/bg/title_end.webp')}")`);
     this.openingMovie = new OpeningMovie(this);
     this.bonus = new BonusScenario(this);
     this.soundMode = new SoundMode(this);
@@ -279,13 +284,14 @@ class VNEngine {
   }
 
   _applyTitleLogo() {
+    if (this.assetLoader && !this._startupImagesReady) return;
     const img = document.getElementById('title-logo-img');
     const logo = this._getTitleLogoConfig();
     if (!img || !logo) return;
     img.alt = logo.alt || '';
 
     const currentSrc = img.getAttribute('src');
-    const targetSrc = logo.src;
+    const targetSrc = this._assetURL(logo.src);
     if (currentSrc === targetSrc) {
       this._titleLogoApplied = true;
       return;
@@ -350,6 +356,7 @@ class VNEngine {
     this._applyStaticI18n();
     if (!await this._loadScenarioBundle()) return;
 
+    if (typeof prepareStellaFonts === 'function') await prepareStellaFonts(this.scenarioTexts);
     await this.voice.loadManifest(next, VN_CONFIG.voice?.manifests?.[next]);
 
     if (options.returnToTitle && this._gameActive) {
@@ -461,73 +468,18 @@ class VNEngine {
     const pctEl  = document.getElementById('loading-percent');
     const screen = document.getElementById('loading-screen');
 
-    // 拡張子の優先順位: webp > png > jpg > jpeg（ファイルサイズ・品質で優先）
-    const exts = ['.webp', '.png', '.jpg', '.jpeg'];
-    const tasks = [];
+    // Start cache registration alongside scenario loading; never wait forever
+    // for a worker on hosting services that disallow it in their iframe.
+    await Promise.race([stellaCacheReady, new Promise(resolve => setTimeout(resolve, 1500))]);
+    this._startupImagesReady = true;
+    this._applyTitleLogo();
+    const firstScene = (this.labels[VN_CONFIG.startLabel] || []).find(cmd => cmd.cmd === 'scene');
+    const tasks = [this.assetLoader.resolve('bg', VN_CONFIG.openingBG || 'title_bg', 10)];
+    if (firstScene) tasks.push(this.assetLoader.command(firstScene, 10));
 
-    // 解決済み拡張子をキャッシュ（BG・Still共通ヘルパー）
-    const makeResolver = (map, basePath, extOverrides = {}) => (key) => new Promise(resolve => {
-      const preferredExt = extOverrides[key];
-      const keyExts = preferredExt
-        ? [preferredExt, ...exts.filter(ext => ext !== preferredExt)]
-        : exts;
-      let i = 0;
-      const tryNext = () => {
-        if (i >= keyExts.length) { resolve(); return; }
-        const ext = keyExts[i++];
-        const img = new Image();
-        img.onload  = () => { map[key] = ext; resolve(); };
-        img.onerror = tryNext;
-        img.src = `${basePath}${key}${ext}`;
-      };
-      tryNext();
-    });
-
-    // 背景（gradientOnlyBGs に含まれるキーは画像なしのため除外）
-    this._resolvedBGExt = {};
-    const tryBG = makeResolver(
-      this._resolvedBGExt,
-      'assets/images/bg/',
-      VN_CONFIG.backgroundExtOverrides || {}
-    );
-    const gradientOnly = VN_CONFIG.gradientOnlyBGs || new Set();
-    for (const key of Object.keys(VN_CONFIG.backgrounds)) {
-      if (!gradientOnly.has(key)) tasks.push(tryBG(key));
-    }
-
-    // キャラクター立ち絵: すべて PNG なのでプリロードのみ（拡張子解決不要）
-    // ImageオブジェクトをGC対象にしないよう _preloadedCharImgs に保持する
-    this._preloadedCharImgs = [];
-    for (const [charKey, charData] of Object.entries(VN_CONFIG.characters)) {
-      if (charData.bonusOnly) continue;
-      for (const expr of (charData.expressions || [])) {
-        tasks.push(new Promise(resolve => {
-          const img = new Image();
-          img.onload = img.onerror = resolve;
-          img.src = `assets/images/chars/${charKey}/${expr}.png`;
-          this._preloadedCharImgs.push(img);
-        }));
-      }
-    }
-
-    // スチル（CG）: 拡張子を解決して記録
-    this._resolvedStillExt = {};
-    const tryStill = makeResolver(
-      this._resolvedStillExt,
-      'assets/images/stills/',
-      VN_CONFIG.stillExtOverrides || {}
-    );
-    for (const cg of (VN_CONFIG.cgList || [])) {
-      tasks.push(tryStill(cg.key));
-    }
-
-    // 進捗トラッキング: Webフォントが詰まっても開始不能にしない。
-    if (document.fonts) {
-      tasks.push(Promise.race([
-        document.fonts.ready.catch(() => {}),
-        new Promise(resolve => setTimeout(resolve, 2500)),
-      ]));
-    }
+    // Fonts remain a startup requirement, unlike later scene images. On a
+    // slow/failed connection the font loader pins stable system fonts.
+    tasks.push(prepareStellaFonts(this.scenarioTexts));
 
     const total = tasks.length;
     let done = 0;
@@ -549,6 +501,7 @@ class VNEngine {
     await new Promise(resolve => {
       const start = () => {
         if (screen) screen.classList.add('hidden');
+        this.assetLoader.lookAhead(this.labels, VN_CONFIG.startLabel, 0, this.charState);
         // Keep play() inside the gesture so mobile browsers allow OP audio.
         this.openingMovie.play();
         resolve();
@@ -556,6 +509,10 @@ class VNEngine {
       if (okBtn) okBtn.addEventListener('click', start, { once: true });
       else start();
     });
+  }
+
+  _assetURL(source) {
+    return typeof stellaAssetURL === 'function' ? stellaAssetURL(source) : source;
   }
 
   /** スマホ横向きロック（可能な場合）*/
@@ -1031,7 +988,7 @@ class VNEngine {
     const resolvedExt = this._resolvedBGExt && this._resolvedBGExt[bgKey];
     if (resolvedExt) {
       bgEl.style.background         = '';
-      bgEl.style.backgroundImage    = `url(assets/images/bg/${bgKey}${resolvedExt})`;
+      bgEl.style.backgroundImage    = `url("${this._assetURL(`assets/images/bg/${bgKey}${resolvedExt}`)}")`;
       bgEl.style.backgroundSize     = 'cover';
       bgEl.style.backgroundPosition = 'center';
     }
@@ -1106,7 +1063,7 @@ class VNEngine {
     const screen = document.getElementById('intro-video-screen');
     const video  = document.getElementById('intro-video');
 
-    video.src = VN_CONFIG.introVideo;
+    video.src = this._assetURL(VN_CONFIG.introVideo);
     video.currentTime = 0;
     screen.classList.remove('hidden', 'fade-out');
 
@@ -1139,6 +1096,7 @@ class VNEngine {
   }
 
   _beginGame() {
+    this.tx.prepareChapterBackground?.();
     this._gameActive = true;
     document.getElementById('game-screen').classList.remove('hidden');
     this._resetGameState();
@@ -1306,6 +1264,7 @@ class VNEngine {
       return;
     }
     const cmd = cmds[this.currentIndex++];
+    this.assetLoader?.lookAhead(this.labels, this.currentLabel, this.currentIndex, this.charState);
     const interval = VN_CONFIG.analytics?.progressCheckpointInterval || 0;
     if (interval > 0 && this.currentIndex % interval === 0) {
       this._trackProgress('checkpoint');
@@ -1319,7 +1278,15 @@ class VNEngine {
     return true;
   }
 
-  _processCommand(cmd) {
+  _processCommand(cmd, assetReady = false) {
+    if (!assetReady && this.assetLoader && ['scene', 'show', 'expr', 'still'].includes(cmd.cmd)) {
+      const token = this._advanceToken;
+      this.waitingForInput = false;
+      this.assetLoader.command(cmd, 10, this.charState).then(() => {
+        if (this._advanceToken === token) this._processCommand(cmd, true);
+      });
+      return;
+    }
     if (this._commandTextReferences(cmd).some(ref => !this._validScenarioText(ref.slice(1), this.scenarioTexts[ref.slice(1)]))) {
       this._showScenarioLoadError();
       return;
@@ -1595,13 +1562,13 @@ class VNEngine {
       if (resolvedExt) {
         // プリロード済み: 即時適用（onload待ち不要）
         el.style.background         = '';
-        el.style.backgroundImage    = `url(assets/images/bg/${bgKey}${resolvedExt})`;
+        el.style.backgroundImage    = `url("${this._assetURL(`assets/images/bg/${bgKey}${resolvedExt}`)}")`;
         el.style.backgroundSize     = 'cover';
         el.style.backgroundPosition = 'center';
         onReady();
       } else {
         // フォールバック: 拡張子を順に試す（プリロード前やconfig未登録の場合）
-        const tryExts = ['.jpg', '.jpeg', '.png', '.webp'];
+        const tryExts = [...new Set([VN_CONFIG.backgroundExtOverrides?.[bgKey], '.webp', '.png', '.jpg', '.jpeg'].filter(Boolean))];
         const tryNext = (i) => {
           if (!isCurrent()) return;
           if (i >= tryExts.length) {
@@ -1615,13 +1582,13 @@ class VNEngine {
             if (!isCurrent()) return;
             if (this._resolvedBGExt) this._resolvedBGExt[bgKey] = tryExts[i];
             el.style.background         = '';
-            el.style.backgroundImage    = `url(assets/images/bg/${bgKey}${tryExts[i]})`;
+            el.style.backgroundImage    = `url("${this._assetURL(`assets/images/bg/${bgKey}${tryExts[i]}`)}")`;
             el.style.backgroundSize     = 'cover';
             el.style.backgroundPosition = 'center';
             onReady();
           };
           img.onerror = () => tryNext(i + 1);
-          img.src = `assets/images/bg/${bgKey}${tryExts[i]}`;
+          img.src = this._assetURL(`assets/images/bg/${bgKey}${tryExts[i]}`);
         };
         tryNext(0);
       }
@@ -1681,7 +1648,8 @@ class VNEngine {
     sprite._vnState = state;
 
     // キャラ画像はすべて PNG
-    const imgEl = new Image();
+    const imageSource = this._assetURL(cfg.images?.[expr] || `assets/images/chars/${charKey}/${expr}.png`);
+    const imgEl = this.assetLoader?.borrowImage(imageSource) || new Image();
     imgEl.alt = cfg.name;
     // 立ち絵の表示倍率・接地オフセット（キャラ間のサイズ差を吸収）
     imgEl.style.transformOrigin = '50% 100%';
@@ -1732,11 +1700,14 @@ class VNEngine {
     };
     imgEl.onerror = showPlaceholder;
     imgEl.onload = showSlot;
-    imgEl.src = cfg.images?.[expr] || `assets/images/chars/${charKey}/${expr}.png`;
-    if (imgEl.decode) imgEl.decode().then(showSlot).catch(() => {
+    if (imgEl.src !== imageSource) imgEl.src = imageSource;
+    if (imgEl.complete && imgEl.naturalWidth > 0) showSlot();
+    else if (imgEl.decode) imgEl.decode().then(showSlot).catch(() => {
       // A decode promise can abort while a valid image request is still loading.
       // Native load/error events remain the fallback; state identity still cancels stale requests.
-      if (imgEl.complete) imgEl.naturalWidth ? showSlot() : showPlaceholder();
+      // Only the native error event establishes a failed download. A decode
+      // rejection must not settle a placeholder before a late load event.
+      if (imgEl.complete && imgEl.naturalWidth > 0) showSlot();
     });
   }
 
@@ -1902,7 +1873,7 @@ class VNEngine {
       applyStill(this._getStillAssetPath(imageName, resolvedExt));
     } else {
       // フォールバック（config未登録のスチル）
-      const tryExts = ['.webp', '.png', '.jpg', '.jpeg'];
+      const tryExts = [...new Set([VN_CONFIG.stillExtOverrides?.[imageName], '.webp', '.png', '.jpg', '.jpeg'].filter(Boolean))];
       const tryImage = (i) => {
         if (i >= tryExts.length) {
           el.style.background = 'rgba(0,0,0,.85)';
@@ -2596,6 +2567,17 @@ class VNEngine {
     this.bonus?.restore();
     this.currentLabel = d.label;
     this.currentIndex = d.index;
+    if (this.assetLoader) {
+      const token = this._advanceToken;
+      this.waitingForInput = false;
+      await Promise.all([
+        d.currentBG ? this.assetLoader.resolve('bg', d.currentBG, 10) : true,
+        d.currentStill ? this.assetLoader.resolve('still', d.currentStill, 10) : true,
+        ...Object.values(d.charState || {}).filter(Boolean).map(state => this.assetLoader.character(state.charKey, state.expr, 10)),
+      ]);
+      if (this._advanceToken !== token) return;
+      this.assetLoader.lookAhead(this.labels, d.label, d.index, d.charState);
+    }
     if (d.currentBG) this._changeBackground(d.currentBG, 'instant');
     if (d.currentBGM) this._playBGM(d.currentBGM, { loop: d.currentBGMLoop !== false });
     if (d.currentStill) this._showStill(d.currentStill, 'instant');
@@ -2913,9 +2895,9 @@ class VNEngine {
   }
 
   _getStillAssetPath(stillKey, extension = null) {
-    const resolvedExt = extension || this._resolvedStillExt?.[stillKey] || '.webp';
+    const resolvedExt = extension || this._resolvedStillExt?.[stillKey] || VN_CONFIG.stillExtOverrides?.[stillKey] || '.webp';
     const revision = VN_CONFIG.stillRevisions?.[stillKey];
-    return `assets/images/stills/${stillKey}${resolvedExt}${revision ? '?v=' + encodeURIComponent(revision) : ''}`;
+    return this._assetURL(`assets/images/stills/${stillKey}${resolvedExt}${revision ? '?v=' + encodeURIComponent(revision) : ''}`);
   }
 
   _getStillLabel(stillKey) {
@@ -3118,7 +3100,7 @@ class VNEngine {
       audio.preload = 'metadata';
       audio.addEventListener('loadedmetadata', onLoaded, { once: true });
       audio.addEventListener('error', onError, { once: true });
-      audio.src = `assets/audio/bgm/${track}`;
+      audio.src = this._assetURL(`assets/audio/bgm/${track}`);
     });
   }
 
@@ -3789,7 +3771,7 @@ class VNEngine {
       this.bgmAudio = null;
     }
 
-    const audio = new Audio(`assets/audio/bgm/${track}`);
+    const audio = new Audio(this._assetURL(`assets/audio/bgm/${track}`));
     audio.loop = loop;
     // iOS では volume は read-only のため 0 セットが効かない場合があるが
     // play() 後にフェードインを試みる（失敗しても音は出る）
@@ -3837,7 +3819,7 @@ class VNEngine {
 
   _playSE(file, loop = false) {
     try {
-      const audio = new Audio(`assets/audio/se/${file}`);
+      const audio = new Audio(this._assetURL(`assets/audio/se/${file}`));
       audio.volume = VN_CONFIG.settings.seVolume;
       audio.loop = loop;
       this.seAudios.push(audio);
@@ -4356,9 +4338,12 @@ class TransitionCanvas {
     this.ctx    = this.canvas ? this.canvas.getContext('2d') : null;
     this._resize();
     window.addEventListener('resize', () => this._resize());
-    // chapter_bg 先読み
+    // The chapter card is not needed until the player starts reading.
     this._chapterBg = new Image();
-    this._chapterBg.src = 'assets/images/bg/chapter_bg.png';
+  }
+
+  prepareChapterBackground() {
+    if (!this._chapterBg.src) this._chapterBg.src = typeof stellaAssetURL === 'function' ? stellaAssetURL('assets/images/bg/chapter_bg.png') : 'assets/images/bg/chapter_bg.png';
   }
 
   _resize() {
@@ -4470,6 +4455,7 @@ class TransitionCanvas {
 
   // ── 星空パン（チャプター切り替え） ─────────────────────────
   starPan(title, onDone) {
+    this.prepareChapterBackground();
     if (!this.ctx) { if (onDone) onDone(); return; }
     const W = this.canvas.width, H = this.canvas.height;
     const ctx = this.ctx;

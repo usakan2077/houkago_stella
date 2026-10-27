@@ -153,7 +153,7 @@ class SoundModeVisuals {
     }, 11000);
   }
 
-  showScene(key) {
+  async showScene(key) {
     const epoch = this.sceneEpoch;
     const request = this.sceneRequest = (this.sceneRequest || 0) + 1;
     const img = new Image();
@@ -179,8 +179,11 @@ class SoundModeVisuals {
     };
     img.onload = () => apply(true);
     img.onerror = () => apply(false);
-    const ext = this.mode.engine._resolvedBGExt?.[key] || '.webp';
-    img.src = `assets/images/bg/${key}${ext}`;
+    if (this.mode.engine.assetLoader) await this.mode.engine.assetLoader.resolve('bg', key, 10);
+    if (epoch !== this.sceneEpoch || request !== this.sceneRequest || !this.mode.isOpen) return;
+    const ext = this.mode.engine._resolvedBGExt?.[key] || VN_CONFIG.backgroundExtOverrides?.[key] || '.webp';
+    const source = `assets/images/bg/${key}${ext}`;
+    img.src = this.mode.engine._assetURL?.(source) || source;
   }
 
   stopMotion() {

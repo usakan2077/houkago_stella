@@ -10,8 +10,9 @@ class OpeningMovie {
     this.idleSince = null;
     this.focused = document.hasFocus();
     this.failed = false;
-    this.currentSource = this.source;
-    this.video.src = this.currentSource;
+    // Defer even the metadata request until loading has finished and the
+    // player starts the OP; it must not compete with startup images.
+    this.currentSource = '';
     this.video.addEventListener('ended', () => this.finish());
     this.video.addEventListener('error', () => this.fail());
     this.video.addEventListener('waiting', () => this.watchBuffering());
@@ -72,12 +73,12 @@ class OpeningMovie {
     this.failed = false;
     clearTimeout(this.bufferTimer);
     this.video.pause();
-    this.video.src = source;
+    this.video.src = this.engine._assetURL?.(source) || source;
     this.video.load();
   }
 
   canReplay() {
-    if (this.phase === 'idle') this.syncSource();
+    if (this.phase === 'idle' && document.getElementById('loading-screen').classList.contains('hidden')) this.syncSource();
     return !!this.source && !this.failed && this.phase === 'idle'
       && this.focused && !document.hidden && !this.engine._gameActive
       && !document.getElementById('title-screen').classList.contains('hidden')

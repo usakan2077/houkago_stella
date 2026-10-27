@@ -61,7 +61,7 @@ class VNVoicePlayer {
     this.manifestController = controller;
     const timeout = setTimeout(() => controller.abort(), this.options.loadTimeout);
     try {
-      const response = await this.fetch(url, { signal: controller.signal });
+      const response = await this.fetch(typeof stellaAssetURL === 'function' ? stellaAssetURL(url) : url, { signal: controller.signal });
       if (!response.ok) return;
       const manifest = await response.json();
       if (token === this.manifestToken && manifest.language === language && manifest.clips) {
@@ -130,7 +130,8 @@ class VNVoicePlayer {
     entry.promise = (async () => {
       const timeout = setTimeout(() => entry.controller.abort(), this.options.loadTimeout);
       try {
-        const response = await this.fetch(this.clips[id].src, { signal: entry.controller.signal });
+        const src = this.clips[id].src;
+        const response = await this.fetch(typeof stellaAssetURL === 'function' ? stellaAssetURL(src) : src, { signal: entry.controller.signal });
         if (!response.ok) throw new Error('Unavailable voice');
         const data = await response.arrayBuffer();
         if (entry.controller.signal.aborted || data.byteLength > this.options.cacheBytes) return null;

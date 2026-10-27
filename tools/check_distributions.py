@@ -60,7 +60,21 @@ def main():
             c.send('Input.dispatchMouseEvent',dict(type='mousePressed',button='left',clickCount=1,**rect));c.send('Input.dispatchMouseEvent',dict(type='mouseReleased',button='left',clickCount=1,**rect))
         print('Loading',args.profile,flush=True)
         wait("typeof engine!=='undefined'&&document.querySelector('#btn-loading-ok')?.style.visibility===''",240)
-        boot=evaluate("({failedCharacters:engine._preloadedCharImgs.filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src),missingBackgrounds:Object.keys(VN_CONFIG.backgrounds).filter(k=>!VN_CONFIG.gradientOnlyBGs.has(k)&&!engine._resolvedBGExt[k]),missingStills:VN_CONFIG.cgList.filter(c=>!engine._resolvedStillExt[c.key]).map(c=>c.key)})")
+        startup=evaluate("({backgrounds:Object.keys(engine._resolvedBGExt),stills:Object.keys(engine._resolvedStillExt),images:[...engine.assetLoader.jobs.keys()]})")
+        assert not startup['stills'] and len(startup['images'])<=3,startup
+        # Full asset verification is an explicit test operation, not startup.
+        c.sock.settimeout(240)
+        boot=evaluate("""(async()=>{
+          const loader=engine.assetLoader,failures={failedCharacters:[],missingBackgrounds:[],missingStills:[]};
+          for(const [actor,cfg] of Object.entries(VN_CONFIG.characters)){
+            if(cfg.bonusOnly)continue;
+            for(const expression of cfg.expressions||[])if(!await loader.character(actor,expression,10))failures.failedCharacters.push(actor+'/'+expression);
+          }
+          for(const key of Object.keys(VN_CONFIG.backgrounds))if(!await loader.resolve('bg',key,10))failures.missingBackgrounds.push(key);
+          for(const cg of VN_CONFIG.cgList)if(!await loader.resolve('still',cg.key,10))failures.missingStills.push(cg.key);
+          return failures;
+        })()""")
+        c.sock.settimeout(30)
         (out/'boot.json').write_text(json.dumps(boot,ensure_ascii=False,indent=2),encoding='utf8')
         assert not any(boot.values()),boot
         passed('Every configured background, event CG and character expression loads with external requests blocked')
@@ -71,7 +85,7 @@ def main():
         click('#btn-loading-ok');wait("engine.openingMovie.phase==='playing'&&engine.openingMovie.video.currentTime>.4",30)
         media=evaluate("(()=>{const v=engine.openingMovie.video;return {source:v.currentSrc,width:v.videoWidth,height:v.videoHeight,duration:v.duration,audio:v.webkitAudioDecodedByteCount}})()")
         assert (media['width'],media['height'])==((1280,720) if framed else (1920,1080)) and media['audio']>0 and abs(media['duration']-102.8667)<.1,media
-        assert media['source'].endswith('stella-op-'+expected_language+'-v143.mp4'),media
+        assert media['source'].split('?')[0].endswith('stella-op-'+expected_language+'-v143.mp4'),media
         evaluate('engine.openingMovie.finish();VN_CONFIG.openingMovieIdleMs=3600000');wait("engine.openingMovie.phase==='idle'")
         if not framed:
             wait("document.querySelector('canvas').id==='plicy-thumbnail'&&document.querySelector('canvas').dataset.ready==='true'")
@@ -83,7 +97,7 @@ def main():
         for language in ['ja','en']:
             evaluate('(async()=>{engine._resetGameState();engine._showTitleScreen();await engine._setLanguage('+json.dumps(language)+',{returnToTitle:true});await engine.voice.unlock();engine.voice.setVolume(.85)})()')
             if language!=expected_language:
-                evaluate('engine.openingMovie.play()');wait("engine.openingMovie.video.currentTime>.3&&engine.openingMovie.video.currentSrc.endsWith('stella-op-"+language+"-v143.mp4')",30)
+                evaluate('engine.openingMovie.play()');wait("engine.openingMovie.video.currentTime>.3&&engine.openingMovie.video.currentSrc.split('?')[0].endsWith('stella-op-"+language+"-v143.mp4')",30)
                 assert evaluate('engine.openingMovie.video.videoWidth==='+str(1280 if framed else 1920)+'&&engine.openingMovie.video.webkitAudioDecodedByteCount>0')
                 evaluate('engine.openingMovie.finish()');wait("engine.openingMovie.phase==='idle'")
             for identity in ['chapter1.chapter1_morning_gate.r003','bonus.r045','bonus.r100','bonus.r212']:
@@ -106,7 +120,7 @@ def main():
         passed('Actual story CG, save/load and text log work in the packaged build')
         evaluate('engine._resetGameState();engine._showTitleScreen();engine.soundMode.unlock()');click('#btn-sound');click('[data-sound-filter="bgm"]');click('[data-track="piano_resonance"]')
         wait('engine.soundMode.audio.currentTime>.2&&engine.soundMode.visuals.level>.0001',30)
-        path=evaluate("document.getElementById('sound-download').getAttribute('href')")
+        path=urllib.parse.unquote(urllib.parse.urlparse(evaluate("document.getElementById('sound-download').getAttribute('href')")).path).lstrip('/')
         assert (dest/path).is_file()
         c.shot('sound-mode');click('#btn-sound-close')
         c.send('Emulation.setDeviceMetricsOverride',dict(width=844,height=390,deviceScaleFactor=1,mobile=True))

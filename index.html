@@ -38,7 +38,7 @@
     (() => {
       const isFirefox = navigator.userAgent.includes('Firefox/');
       document.documentElement.classList.toggle('is-firefox', isFirefox);
-      if (isFirefox) return;
+      if (isFirefox) { window.stellaFontStylesReady = Promise.resolve(false); return; }
 
       const addLink = (attrs) => {
         const link = document.createElement('link');
@@ -51,13 +51,17 @@
 
       addLink({ rel: 'preconnect', href: 'https://fonts.googleapis.com' });
       addLink({ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true });
-      addLink({
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Shippori+Mincho+B1:wght@400&display=block'
+      window.stellaFontStylesReady = new Promise(resolve => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Shippori+Mincho+B1:wght@400&display=block';
+        link.onload = () => resolve(true);
+        link.onerror = () => resolve(false);
+        document.head.appendChild(link);
       });
     })();
   </script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1.4.4">
   <link rel="stylesheet" href="bonus-scenario.css">
 <link rel="stylesheet" href="character-emotes.css">
 </head>
@@ -192,7 +196,7 @@
 <div id="game-container">
 
   <!-- 明朝フォントのウォームアップ -->
-  <div aria-hidden="true" style="font-family:var(--vn-serif-font);position:absolute;opacity:0;pointer-events:none;font-size:1px;line-height:1;">
+  <div id="font-warmup" aria-hidden="true" style="font-family:var(--vn-serif-font);position:absolute;opacity:0;pointer-events:none;font-size:1px;line-height:1;">
     あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん
     アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン
     愛哀曖悪握渥旭葦芦鯵梓圧斡扱宛虻飴絢綾鮎或粟袷安庵按暗案闇位依偉囲委威尉惟意慰易椅為畏
@@ -297,7 +301,7 @@
     <div id="title-content">
       <div id="title-logo">
         <div id="title-logo-wrapper">
-          <img id="title-logo-img" src="assets/images/bg/title_logo.webp" alt="放課後のステラ">
+          <img id="title-logo-img" alt="放課後のステラ">
         </div>
       </div>
       <nav id="title-menu">
@@ -615,15 +619,17 @@
 
 </div><!-- /game-container -->
 
-<script src="config.js?v=1.4.3"></script>
-<script src="parser.js?v=1.4.3"></script>
-<script src="opening-movie.js?v=1.4.3"></script>
-<script src="voice.js?v=1.4.3"></script>
-<script src="character-emotes.js?v=1.4.3"></script>
-<script src="bonus-scenario-data.js?v=1.4.3"></script>
-<script src="bonus-scenario.js?v=1.4.3"></script>
-<script src="sound-mode-visuals.js?v=1.4.3"></script>
-<script src="sound-mode.js?v=1.4.3"></script>
-<script src="game.js?v=1.4.3"></script>
+<script src="config.js?v=1.4.4"></script>
+<script src="font-loader.js?v=1.4.4"></script>
+<script src="asset-loader.js?v=1.4.4"></script>
+<script src="parser.js?v=1.4.4"></script>
+<script src="opening-movie.js?v=1.4.4"></script>
+<script src="voice.js?v=1.4.4"></script>
+<script src="character-emotes.js?v=1.4.4"></script>
+<script src="bonus-scenario-data.js?v=1.4.4"></script>
+<script src="bonus-scenario.js?v=1.4.4"></script>
+<script src="sound-mode-visuals.js?v=1.4.4"></script>
+<script src="sound-mode.js?v=1.4.4"></script>
+<script src="game.js?v=1.4.4"></script>
 </body>
 </html>

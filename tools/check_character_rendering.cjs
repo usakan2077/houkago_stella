@@ -74,3 +74,11 @@ test('a late failed image cannot add a placeholder after a hide',async()=>{
   e.pending[0].image.onerror();e.pending[0].reject(new Error('missing'));await tick();
   assert.equal(e.slots['char-center'].childNodes.length,0);
 });
+test('decode rejection before a native load cannot permanently replace a valid image with a placeholder',async()=>{
+  const e=environment();e.engine._showChar('mahiru','center','sad','instant');
+  const image=e.pending[0].image;image.complete=true;image.naturalWidth=0;
+  e.pending[0].reject(new Error('decode interrupted'));await tick();
+  assert.equal(e.slots['char-center'].childNodes.length,0);
+  image.naturalWidth=100;image.onload();await tick();
+  assert.ok(e.source('center').endsWith('/sad.png'));
+});
