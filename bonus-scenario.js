@@ -31,6 +31,149 @@ class BonusScenario {
     }
   }
 
+  readClearReceipt() {
+    try {
+      const receipt = JSON.parse(localStorage.getItem('vn_bonus_clear_receipt'));
+      return this.validClearReceipt(receipt) ? this.ensureClearPhrase(receipt) : null;
+    } catch { return null; }
+  }
+
+  validClearReceipt(receipt) {
+    return /^ST-(?:[A-F0-9]{8}-){3}[A-F0-9]{8}$/.test(receipt?.code || '')
+      && typeof receipt.clearedAt === 'string' && Number.isFinite(Date.parse(receipt.clearedAt));
+  }
+
+  ensureClearPhrase(receipt) {
+    if (receipt.clear_phrase) return receipt;
+    const hex = receipt.code.slice(3).replaceAll('-', '');
+    const bytes = Uint8Array.from(hex.match(/../g), pair => parseInt(pair, 16));
+    const updated = { ...receipt, clear_phrase: vnCreateClearPhrase(bytes) };
+    try { localStorage.setItem('vn_bonus_clear_receipt', JSON.stringify(updated)); } catch { /* Still show the stable phrase without storage. */ }
+    this._phraseMigrations ??= new Set();
+    const key = receipt.code + '/' + receipt.clearedAt;
+    if (!this._phraseMigrations.has(key)) {
+      this._phraseMigrations.add(key);
+      try {
+        this.engine._trackEvent('bonus_clear_phrase_assigned', { clear_code: updated.code,
+          clear_phrase: updated.clear_phrase, cleared_at: updated.clearedAt, game_version: VN_CONFIG.version });
+      } catch { /* Updating an old display must not depend on analytics. */ }
+    }
+    return updated;
+  }
+
+  refreshClearReceiptButton() {
+    let button = document.getElementById('btn-bonus-receipt');
+    if (!button) {
+      button = document.createElement('button');
+      button.id = 'btn-bonus-receipt';
+      button.type = 'button';
+      button.onclick = () => this.openClearReceipt();
+      document.getElementById('title-screen').appendChild(button);
+    }
+    button.classList.toggle('hidden', !this.readClearReceipt());
+    button.textContent = this.text('おまけのクリア記録', 'Extra completion record');
+  }
+
+  clearReceipt() {
+    const e = this.engine;
+    if (this.validClearReceipt(e.flags.bonus_clear_receipt)) {
+      return (e.flags.bonus_clear_receipt = this.ensureClearPhrase(e.flags.bonus_clear_receipt));
+    }
+    // A client-generated receipt helps match posts; it is not proof against tampering.
+    const bytes = crypto.getRandomValues(new Uint8Array(16));
+    const hex = Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+    const receipt = { code: 'ST-' + hex.match(/.{8}/g).join('-'), clear_phrase: vnCreateClearPhrase(bytes), clearedAt: new Date().toISOString(),
+      ...e.playHistory.snapshot() };
+    e.flags.bonus_clear_receipt = receipt;
+    try { localStorage.setItem('vn_bonus_clear_receipt', JSON.stringify(receipt)); } catch { /* Sharing still works when storage is unavailable. */ }
+    try {
+      e._trackEvent('bonus_clear', { clear_code: receipt.code, clear_phrase: receipt.clear_phrase, cleared_at: receipt.clearedAt, game_version: VN_CONFIG.version,
+        play_time_seconds: receipt.play_time_seconds, all_skip_used: receipt.all_skip_used,
+        unread_skip_count: receipt.unread_skip_count,
+        play_tracking_started_at: receipt.play_tracking_started_at, play_history_partial: receipt.play_history_partial });
+    } catch { /* Analytics must never prevent the end card or sharing. */ }
+    return receipt;
+  }
+
+  receiptText(receipt) {
+    return this.text('『放課後のステラ』のおまけまでクリアしました！', 'I finished Houkago Stella, including the extra!')
+      + '\n' + (receipt.clear_phrase ? this.text('合言葉：', 'Passphrase: ') : this.text('クリアコード：', 'Clear code: ')) + (receipt.clear_phrase || receipt.code)
+      + '\n' + this.text('クリア日時：', 'Completed: ') + receipt.clearedAt
+      + '\n@houkago_stella #放課後のステラ #キャンペーン応募\nhttps://www.houkago-stella.com/';
+  }
+
+  createReceiptPanel(receipt) {
+    const panel = document.createElement('section');
+    panel.className = 'bonus-clear-receipt';
+    const details = document.createElement('div');
+    const label = document.createElement('p');
+    label.textContent = receipt.clear_phrase
+      ? this.text('あなたの完走川柳（合言葉）。スクショで保存できます。', 'Your completion poem (passphrase). Save this screen as a screenshot.')
+      : this.text('おまけまでクリア！ この画面はスクショで保存できます。', 'Extra completed! You can save this screen as a screenshot.');
+    const code = document.createElement('code');
+    code.textContent = receipt.clear_phrase || receipt.code;
+    if (receipt.clear_phrase) code.className = 'bonus-clear-phrase';
+    const time = document.createElement('p');
+    // Include the timezone explicitly, so screenshots and GA4 can be compared unambiguously.
+    time.textContent = this.text('クリア日時：', 'Completed: ') + receipt.clearedAt.replace('T', ' ').replace('Z', ' UTC');
+    details.append(label, code, time);
+    const actions = document.createElement('div');
+    actions.className = 'bonus-clear-actions';
+    const share = document.createElement('a');
+    share.textContent = this.text('感想を添えてXに投稿', 'Share your thoughts on X');
+    share.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.receiptText(receipt));
+    share.target = '_blank';
+    share.rel = 'noopener noreferrer';
+    const copy = document.createElement('button');
+    copy.type = 'button';
+    copy.textContent = this.text('投稿文をコピー', 'Copy post text');
+    const status = document.createElement('p');
+    status.className = 'bonus-clear-status';
+    status.setAttribute('role', 'status');
+    copy.onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(this.receiptText(receipt));
+        status.textContent = this.text('コピーしました。感想を書き足して投稿してください。', 'Copied. Add your thoughts before posting.');
+      } catch {
+        status.textContent = this.text('コピーできませんでした。コードを控えるかスクショで保存してください。', 'Copy unavailable. Note the code or save a screenshot.');
+      }
+    };
+    actions.append(share, copy, status);
+    panel.append(details, actions);
+    return panel;
+  }
+
+  openClearReceipt() {
+    const receipt = this.readClearReceipt();
+    if (!receipt || document.querySelector('.modal:not(.hidden)')) return;
+    const modal = document.createElement('div');
+    modal.id = 'bonus-receipt-modal';
+    modal.className = 'modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', this.text('おまけのクリア記録', 'Extra completion record'));
+    const inner = document.createElement('div');
+    inner.className = 'modal-inner';
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'modal-close-btn';
+    close.textContent = this.text('閉じる', 'Close');
+    const dismiss = () => { modal.remove(); document.getElementById('btn-bonus-receipt')?.focus(); };
+    close.onclick = dismiss;
+    modal.onkeydown = event => {
+      if (event.key === 'Escape') { event.preventDefault(); dismiss(); }
+      if (event.key === 'Tab') {
+        const items = [...modal.querySelectorAll('a, button')];
+        if (event.shiftKey && document.activeElement === items[0]) { event.preventDefault(); items.at(-1).focus(); }
+        else if (!event.shiftKey && document.activeElement === items.at(-1)) { event.preventDefault(); items[0].focus(); }
+      }
+    };
+    inner.append(this.createReceiptPanel(receipt), close);
+    modal.append(inner);
+    document.getElementById('game-container').appendChild(modal);
+    close.focus();
+  }
+
   async preload() {
     if (this.ready) return;
     const images = await Promise.all(VN_BONUS.assets.map(src => new Promise((resolve, reject) => {
@@ -421,6 +564,7 @@ class BonusScenario {
 
   endcard() {
     const e = this.engine;
+    e.playHistory.setRunning(false);
     e._stopTypewriter();
     e.voice.stop();
     e.skipMode = e.autoMode = false;
@@ -438,6 +582,20 @@ class BonusScenario {
     const thanks = document.createElement('p');
     thanks.className = 'bonus-endcard-thanks';
     thanks.textContent = this.text('最後まで遊んでくれて、ありがとう。', 'Thank you for spending this afternoon with us.');
+    const info = document.createElement('div');
+    info.id = 'bonus-endcard-info';
+    info.append(thanks, this.createReceiptPanel(this.clearReceipt()));
+    const toggle = document.createElement('button');
+    toggle.id = 'bonus-endcard-toggle';
+    toggle.type = 'button';
+    toggle.setAttribute('aria-controls', info.id);
+    const setInfoVisible = visible => {
+      info.classList.toggle('hidden', !visible);
+      toggle.setAttribute('aria-expanded', String(visible));
+      toggle.textContent = visible ? this.text('クリア情報を隠す', 'Hide clear info') : this.text('クリア情報を表示', 'Show clear info');
+    };
+    toggle.onclick = () => setInfoVisible(info.classList.contains('hidden'));
+    setInfoVisible(true);
     const back = document.createElement('button');
     back.id = 'bonus-endcard-back';
     back.textContent = this.text('タイトルへ', 'Return to title');
@@ -447,7 +605,7 @@ class BonusScenario {
       e._inputLocked = false;
       e._continueIfAdvanceTokenMatches(token);
     };
-    card.append(image, thanks, back);
+    card.append(image, info, toggle, back);
     this.layer.appendChild(card);
   }
 }

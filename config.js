@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.4.4',
+  version: '1.4.5',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.4.5', date: '2026-11-01',
+      ja: ['おまけのクリア画面に、コード・日時の表示とXへの投稿機能を追加。', '最新のクリア記録をタイトル画面から再確認できるように改善。', 'タイトル画面と紹介ページに、キャンペーン画像と応募ルールの案内を追加。'],
+      en: ['Added a completion code, timestamp and X sharing to the extra ending screen.', 'Reopen the latest extra completion record from the title screen.', 'Added campaign artwork and entry rules to the title screen and website.'] },
     { version: '1.4.4', date: '2026-10-27',
       ja: ['起動時の画像読み込みを減らし、進行に合わせた先読みに変更。', '読み込んだ素材を同じバージョンで再利用するキャッシュを追加。', '台詞用フォントを先読みし、取得が遅い場合も表示を安定化。'],
       en: ['Reduced startup image loading and added progressive lookahead during play.', 'Downloaded media can be reused across visits to the same game version.', 'Preload dialogue fonts and keep text layout stable when font downloads are slow.'] },

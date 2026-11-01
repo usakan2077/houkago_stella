@@ -28,10 +28,29 @@
 #bonus-video { position: absolute; inset: 0; z-index: 100; display: flex; flex-direction: column; background: #000; color: #fff; }
 #bonus-endcard { position: absolute; inset: 0; pointer-events: auto; background: #17111c; animation: bonus-endcard-in 1.2s ease both; }
 #bonus-endcard img { display: block; width: 100%; height: 100%; object-fit: contain; }
+#bonus-endcard-info { position: absolute; inset: 0; pointer-events: none; }
 .bonus-running[data-bonus-mode="endcard"] #ui-layer, .bonus-running[data-bonus-mode="endcard"] #menu-bar, .bonus-running[data-bonus-mode="endcard"] #btn-menu-toggle { visibility: hidden; }
-.bonus-endcard-thanks { position: absolute; left: 35px; bottom: 22px; margin: 0; padding: 7px 14px; border-radius: 4px; background: #1b142044; color: #fff5df; font: 20px/1.5 serif; text-shadow: 0 1px 5px #241222; }
-#bonus-endcard-back { position: absolute; right: 32px; bottom: 25px; padding: 9px 18px; color: #fff5df; background: #241b2d99; border: 1px solid #fff3c999; border-radius: 4px; font: 17px/1.4 serif; cursor: pointer; }
-#bonus-endcard-back:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.bonus-endcard-thanks { position: absolute; left: 20px; top: 16px; margin: 0; padding: 5px 10px; border-radius: 5px; background: #1b142022; color: #fff5df; font: 15px/1.5 serif; text-shadow: 0 1px 5px #241222; }
+#bonus-endcard-back, #bonus-endcard-toggle { position: absolute; right: 20px; bottom: 18px; width: 160px; padding: 7px 10px; color: #fff5df; background: #241b2d55; border: 1px solid #fff3c955; border-radius: 6px; font: 14px/1.4 sans-serif; cursor: pointer; text-shadow: 0 1px 3px #241222; }
+#bonus-endcard-toggle { bottom: 62px; }
+#bonus-endcard-back:hover, #bonus-endcard-toggle:hover { background: #241b2d99; }
+#bonus-endcard-back:focus-visible, #bonus-endcard-toggle:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.bonus-clear-receipt { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 22px; color: #fff5df; background: #241b2d; border: 1px solid #fff3c966; border-radius: 8px; font: 17px/1.5 sans-serif; }
+#bonus-endcard .bonus-clear-receipt { position: absolute; left: 20px; right: 200px; bottom: 18px; padding: 12px 16px; gap: 16px; pointer-events: auto; background: linear-gradient(115deg,#241b2d22,#241b2d66); border-color: #fff3c933; backdrop-filter: blur(3px); font-size: 14px; text-shadow: 0 1px 4px #241222; }
+#bonus-endcard .bonus-clear-receipt code { font-size: 17px; }
+#bonus-endcard .bonus-clear-receipt code.bonus-clear-phrase { font-size: 20px; }
+#bonus-endcard .bonus-clear-actions { gap: 6px; }
+#bonus-endcard .bonus-clear-actions a, #bonus-endcard .bonus-clear-actions button { padding: 6px 12px; background: #45344f44; border-color: #fff3c955; }
+#bonus-endcard .bonus-clear-status { font-size: 12px; }
+.bonus-clear-receipt p { margin: 0; }
+.bonus-clear-receipt code { display: block; margin: 5px 0; font: bold 19px/1.5 monospace; user-select: text; }
+.bonus-clear-receipt code.bonus-clear-phrase { font: 600 21px/1.6 var(--vn-serif-font, serif); }
+.bonus-clear-actions { display: flex; flex-direction: column; align-items: stretch; gap: 8px; max-width: 320px; }
+.bonus-clear-actions a, .bonus-clear-actions button { display: block; padding: 8px 14px; border: 1px solid #fff3c999; border-radius: 5px; background: #45344f; color: #fff5df; font: inherit; text-decoration: none; text-align: center; cursor: pointer; }
+.bonus-clear-actions a:focus-visible, .bonus-clear-actions button:focus-visible, #btn-bonus-receipt:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.bonus-clear-status { font-size: 14px; }
+#btn-bonus-receipt { position: absolute; top: 22px; right: 24px; z-index: 5; padding: 9px 14px; color: #fff5df; background: #241b2dbb; border: 1px solid #fff3c999; border-radius: 5px; font: 17px/1.5 sans-serif; cursor: pointer; }
+#bonus-receipt-modal .modal-inner { width: 900px; max-width: 90%; }
 @keyframes bonus-endcard-in { from { opacity: 0; } to { opacity: 1; } }
 @media(prefers-reduced-motion:reduce) { #bonus-endcard { animation: none; } }
 #bonus-video video { display: block; width: 100%; height: 0; min-height: 0; flex: 1 1 auto; object-fit: contain; background: #000; }

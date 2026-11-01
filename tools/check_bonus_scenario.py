@@ -6,6 +6,7 @@ import subprocess
 import threading
 import time
 import urllib.request
+import urllib.parse
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT.parent / 'stella-bonus-implementation-20261018' / 'verification'
@@ -18,7 +19,9 @@ helper.OUT = OUT
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     profile = OUT / ('edge-profile-' + str(time.time_ns()))
-    server = helper.http.server.ThreadingHTTPServer(('127.0.0.1', 0), helper.Handler)
+    class Server(helper.http.server.ThreadingHTTPServer):
+        request_queue_size = 64
+    server = Server(('127.0.0.1', 0), helper.Handler)
     threading.Thread(target=server.serve_forever, daemon=True).start()
     startup = subprocess.STARTUPINFO()
     startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
@@ -57,6 +60,21 @@ def main():
         c.evaluate('engine.openingMovie.finish(); VN_CONFIG.openingMovieIdleMs=3600000; VN_CONFIG.settings.typeSpeed=0; engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
         import sys
+        if '--campaign-only' in sys.argv:
+            from check_campaign import run
+            run(c,passed,OUT,base)
+            (OUT/'campaign-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
+        if '--play-history-only' in sys.argv:
+            from check_play_history import run
+            run(c,passed,OUT)
+            (OUT/'play-history-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
+        if '--share-only' in sys.argv:
+            from check_bonus_share import run
+            run(c,passed,OUT)
+            (OUT/'share-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--story-entry-only' in sys.argv:
             from check_bonus_story_entry import run
             run(c,passed,OUT)
@@ -154,7 +172,7 @@ def main():
         c.wait("!!document.getElementById('bonus-video-player')")
         c.wait("(()=>{const v=document.getElementById('bonus-video-player');return v&&v.readyState>=3&&!v.paused&&v.currentTime>.2&&v.currentTime<10&&v.videoWidth>0})()",25)
         media=c.evaluate("(()=>{const v=document.getElementById('bonus-video-player');return {src:v.currentSrc,time:v.currentTime,duration:v.duration,width:v.videoWidth,height:v.videoHeight,paused:v.paused,audioBytes:v.webkitAudioDecodedByteCount,iframe:!!document.querySelector('#bonus-video iframe'),link:!!document.querySelector('#bonus-video a')}})()")
-        assert media['src'].endswith('/assets/video/bonus-meteor.mp4') and 50<media['duration']<60,media
+        assert urllib.parse.urlsplit(media['src']).path.endswith('/assets/video/bonus-meteor.mp4') and 50<media['duration']<60,media
         assert not media['iframe'] and not media['link'],media
         c.shot('18-local-meteor-video')
         (OUT/'local-video.json').write_text(json.dumps(media,ensure_ascii=False,indent=2),encoding='utf8')
@@ -204,19 +222,22 @@ def main():
         def walk(menu, ending, take_shots=False):
             c.evaluate('engine.bonus.start()')
             c.wait("engine.currentLabel==='bonus_start' && engine.bonus.active")
-            for i in range(800):
+            deadline = time.monotonic() + 120
+            # Runtime image loading can wait up to 30 seconds. Count elapsed time,
+            # rather than exhausting hundreds of clicks while an image is loading.
+            while time.monotonic() < deadline:
                 state=c.evaluate("({active:engine.bonus.active,label:engine.currentLabel,index:engine.currentIndex,video:!!document.getElementById('bonus-video'),choice:!document.getElementById('choices-overlay').classList.contains('hidden'),still:engine.currentStill,text:engine.currentText,language:engine.currentLanguage,flash:engine.flags.bonus_flash,board:engine.flags.bonus_board,mode:engine.flags.bonus_mode})")
                 visited.add(state['label'])
                 if state['language']=='ja' and (not label_order or label_order[-1]!=state['label']):label_order.append(state['label'])
                 if state['language']=='ja' and (not story_seen or story_seen[-1]!=state['text']): story_seen.append(state['text'])
                 if state.get('mode')=='newspaper' and state['language'] not in newspapers_seen:
                     c.wait("document.querySelector('.bonus-newspaper-picture')?.complete&&document.querySelector('.bonus-newspaper-picture').naturalWidth===1200")
-                    assert c.evaluate("(()=>{const img=document.querySelector('.bonus-newspaper-picture');return img.src.endsWith('bonus_newspaper_"+state['language']+".svg')&&img.getBoundingClientRect().bottom<document.getElementById('text-box').getBoundingClientRect().top})()")
+                    assert c.evaluate("(()=>{const img=document.querySelector('.bonus-newspaper-picture');return new URL(img.src).pathname.endsWith('bonus_newspaper_"+state['language']+".svg')&&img.getBoundingClientRect().bottom<document.getElementById('text-box').getBoundingClientRect().top})()")
                     c.shot('26-newspaper-'+state['language'])
                     newspapers_seen.add(state['language'])
                 if state.get('board') and (state['language'],state['board']) not in boards_seen:
                     c.wait("(()=>{const img=document.querySelector('.bonus-board-picture');return img?.complete&&img.naturalWidth===1200})()")
-                    assert c.evaluate("(()=>{const img=document.querySelector('.bonus-board-picture');return img.src.endsWith('bonus_board_"+state['language']+'_'+state['board']+".svg')&&img.getBoundingClientRect().bottom<document.getElementById('text-box').getBoundingClientRect().top})()")
+                    assert c.evaluate("(()=>{const img=document.querySelector('.bonus-board-picture');return new URL(img.src).pathname.endsWith('bonus_board_"+state['language']+'_'+state['board']+".svg')&&img.getBoundingClientRect().bottom<document.getElementById('text-box').getBoundingClientRect().top})()")
                     c.shot('24-board-'+state['language']+'-'+state['board'])
                     boards_seen.add((state['language'],state['board']))
                 if state['language']=='en' and state['label']=='bonus_library' and state.get('flash') in ['gonorego','perry'] and state['flash'] not in english_flash_seen:
@@ -238,12 +259,12 @@ def main():
                     c.evaluate(f'document.querySelectorAll("#choices-container button")[{option}].click()')
                 else:c.evaluate('engine._stillLockUntil=0;engine._onAdvance()')
                 time.sleep(.012)
-            raise AssertionError('Walk did not reach video')
+            raise AssertionError(('Walk did not reach video', state, c.evaluate("({locked:engine._inputLocked,skipLocked:engine._skipLocked,modal:document.querySelector('.modal:not(.hidden)')?.id,waiting:engine.waitingForInput,active:engine._gameActive,token:engine._advanceToken})"), c.errors))
 
         for i in range(3):
             walk(i,i,take_shots=i==0)
             source=c.evaluate('document.querySelector("#bonus-video-player").currentSrc')
-            assert source.endswith('/assets/video/bonus-meteor.mp4'),source
+            assert urllib.parse.urlsplit(source).path.endswith('/assets/video/bonus-meteor.mp4'),source
             assert c.evaluate('engine._inputLocked && !engine.autoMode && !engine.skipMode')
             c.evaluate('engine._onAdvance()')
             assert c.evaluate('!!document.getElementById("bonus-video")')
@@ -290,7 +311,7 @@ def main():
         c.wait("engine.flags.bonus_board==='thread'")
         c.evaluate("engine._saveToSlot(3);engine._resetGameState();engine._showTitleScreen();engine._loadFromSlot(3)")
         c.wait("engine.flags.bonus_mode==='board' && engine.flags.bonus_board==='thread' && document.querySelector('.bonus-board-picture')?.complete")
-        assert c.evaluate("document.querySelector('.bonus-board-picture').src.endsWith('bonus_board_ja_thread.svg')")
+        assert c.evaluate("new URL(document.querySelector('.bonus-board-picture').src).pathname.endsWith('bonus_board_ja_thread.svg')")
         passed('Board save/load restores the current thread illustration and presentation mode')
 
         c.evaluate("engine._gotoLabel('bonus_yukkuri')")
@@ -300,7 +321,7 @@ def main():
         c.wait("engine.flags.bonus_mode==='newspaper'")
         c.evaluate("engine._saveToSlot(4);engine._resetGameState();engine._showTitleScreen();engine._loadFromSlot(4)")
         c.wait("engine.flags.bonus_mode==='newspaper'&&document.querySelector('.bonus-newspaper-picture')?.complete")
-        assert c.evaluate("document.querySelector('.bonus-newspaper-picture').src.endsWith('bonus_newspaper_ja.svg')")
+        assert c.evaluate("new URL(document.querySelector('.bonus-newspaper-picture').src).pathname.endsWith('bonus_newspaper_ja.svg')")
         passed('Newspaper save/load restores the school extra with its embedded cheating photograph')
 
         c.evaluate("engine._setLanguage('en',{returnToTitle:true})")

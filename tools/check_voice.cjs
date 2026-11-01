@@ -212,6 +212,41 @@ test('unread dialogue exits read-only skip and starts its own voice', async () =
   player.reset();
 });
 
+test('only automatically skipped unread dialogue increments the review count', async () => {
+  const { engine, player } = environment();
+  let count = 0, advances = 0;
+  engine.playHistory = { markAllSkip() {}, markUnreadSkip() { count++; } };
+  engine._executeNext = () => advances++;
+  engine._skipReadOnly = false; engine.skipMode = true;
+  engine._curLineKey = '$v0'; engine._displayDialog('sakura', 'unread dialogue');
+  await sleep(80);
+  assert.equal(count, 1); assert.equal(advances, 1);
+  engine.readLines.add('$v0');
+  engine._displayDialog('sakura', 'already read dialogue');
+  await sleep(80);
+  assert.equal(count, 1); assert.equal(advances, 2);
+  engine._curLineKey = '$v1'; engine._displayDialog('player', 'unread protagonist dialogue');
+  await sleep(80);
+  assert.equal(count, 2);
+  engine._curLineKey = '$v2'; engine._displayDialog(null, 'unread narration');
+  await sleep(80);
+  assert.equal(count, 2); assert.equal(advances, 4);
+  player.reset();
+});
+
+test('cancelling skip before auto advance does not count the unread line', async () => {
+  const { engine, player } = environment();
+  let count = 0;
+  engine.playHistory = { markAllSkip() {}, markUnreadSkip() { count++; } };
+  engine._executeNext = () => {};
+  engine._skipReadOnly = false; engine.skipMode = true;
+  engine._curLineKey = '$v0'; engine._displayDialog('sakura', 'unread dialogue');
+  engine._toggleSkip();
+  await sleep(80);
+  assert.equal(count, 0);
+  player.reset();
+});
+
 test('protagonist and narration never receive voice replay IDs', () => {
   const { engine } = environment();
   engine._curLineKey = '$v0'; engine._displayDialog('player', 'test');

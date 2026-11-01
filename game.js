@@ -5,6 +5,12 @@
 
 class VNEngine {
 
+  get _gameActive() { return !!this._gameActiveValue; }
+  set _gameActive(value) {
+    this.playHistory?.setRunning(value);
+    this._gameActiveValue = !!value;
+  }
+
   constructor() {
     this._debug      = VN_CONFIG.settings?.debug || false;
     this.parser      = new ScriptParser();
@@ -100,7 +106,8 @@ class VNEngine {
     this.readLines = new Set(
       JSON.parse(localStorage.getItem('vn_read_lines') || '[]')
     );
-    this._skipReadOnly = localStorage.getItem('vn_skip_read_only') === 'true';
+    // Default to read-only skip; preserve an explicitly saved all-text setting.
+    this._skipReadOnly = localStorage.getItem('vn_skip_read_only') !== 'false';
     this._curLineKey = null;
     this._readPersistTimer = null;
 
@@ -140,6 +147,9 @@ class VNEngine {
 
     // ページ離脱ロック（ゲームプレイ中のみ有効）
     this._gameActive = false;
+    this.playHistory = new VNPlayHistory({ priorProgress: this.readLines.size > 0 || this.seenGoodEnds.size > 0 || this.seenStills.size > 0
+      || !!localStorage.getItem('vn_bonus_clear_receipt') || !!localStorage.getItem('vn_save_quick')
+      || Array.from({ length: 10 }, (_, i) => localStorage.getItem(`vn_save_${i + 1}`)).some(Boolean) });
     window.addEventListener('beforeunload', (e) => {
       if (!this._gameActive) return;
       e.preventDefault();
@@ -275,6 +285,7 @@ class VNEngine {
     this._applyTextLayoutMode();
     this._updateVoiceIndicator();
     this.soundMode?.localize();
+    this.bonus?.refreshClearReceiptButton();
   }
 
   _getTitleLogoConfig() {
@@ -2073,6 +2084,7 @@ class VNEngine {
 
     if (this.skipMode) {
       const token = this._advanceToken;
+      if (!this._skipReadOnly) this.playHistory?.markAllSkip();
       // スキップ中は即表示して次へ
       if (emphasis === 'inner') {
         textEl.classList.add('narrate-inner');
@@ -2089,6 +2101,7 @@ class VNEngine {
       this.skipTimer = setTimeout(() => {
         if (this._advanceToken !== token) return;
         this.skipTimer = null;
+        if (!_wasRead && charKey) this.playHistory?.markUnreadSkip();
         this._executeNext();
       }, 50);
       return;
@@ -2369,6 +2382,7 @@ class VNEngine {
     this.skipMode = !this.skipMode;
     document.getElementById('btn-skip').classList.toggle('active', this.skipMode);
     if (this.skipMode) {
+      if (!this._skipReadOnly) this.playHistory?.markAllSkip();
       this._clearCharEmotes();
       this.voice.stop();
       this.voice.retainWindow([]);
@@ -3651,6 +3665,7 @@ class VNEngine {
       btn.classList.toggle('active', btn.dataset.skip === skipVal());
       btn.onclick = () => {
         this._skipReadOnly = (btn.dataset.skip === 'read');
+        if (this.skipMode && !this._skipReadOnly) this.playHistory?.markAllSkip();
         localStorage.setItem('vn_skip_read_only', this._skipReadOnly ? 'true' : 'false');
         document.querySelectorAll('#skip-mode-options .settings-opt')
           .forEach(b => b.classList.toggle('active', b.dataset.skip === skipVal()));
