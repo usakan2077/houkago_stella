@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.4.5',
+  version: '1.4.6',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,9 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.4.6', date: '2026-11-02',
+      ja: ['おまけまで完走キャンペーンを開始し、公式告知ポストへのリンクを追加。'],
+      en: ['Launched the extra completion campaign and added a link to the official announcement.'] },
     { version: '1.4.5', date: '2026-11-01',
       ja: ['おまけのクリア画面に、コード・日時の表示とXへの投稿機能を追加。', '最新のクリア記録をタイトル画面から再確認できるように改善。', 'タイトル画面と紹介ページに、キャンペーン画像と応募ルールの案内を追加。'],
       en: ['Added a completion code, timestamp and X sharing to the extra ending screen.', 'Reopen the latest extra completion record from the title screen.', 'Added campaign artwork and entry rules to the title screen and website.'] },

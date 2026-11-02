@@ -1,5 +1,9 @@
 """Campaign placement, modal rules and keyboard behavior on the game and both LPs."""
 def run(c, passed, out, base):
+    # Keep campaign checks stable even when the host clock predates the announcement.
+    c.send('Page.addScriptToEvaluateOnNewDocument',dict(source="Date.now=()=>Date.parse('2026-11-03T00:00:00+09:00')"))
+    c.evaluate("Date.now=()=>Date.parse('2026-11-03T00:00:00+09:00');document.documentElement.lang='ja'")
+    c.wait("document.querySelector('[data-campaign-status]').textContent.startsWith('キャンペーン開催中')")
     c.wait("getComputedStyle(document.getElementById('title-logo-wrapper')).opacity==='1'")
     assert c.evaluate("(()=>{const b=document.querySelector('[data-campaign-open]').getBoundingClientRect(),m=document.getElementById('btn-title-settings').getBoundingClientRect();return b.top>m.bottom+5&&b.bottom<innerHeight})()")
     assert c.evaluate("(()=>{const b=document.querySelector('[data-campaign-open]').getBoundingClientRect(),v=document.getElementById('title-version').getBoundingClientRect();return b.height===v.height&&b.top===v.top&&getComputedStyle(document.querySelector('[data-campaign-open] img')).display==='none'})()")
@@ -23,9 +27,12 @@ def run(c, passed, out, base):
             assert c.evaluate("getComputedStyle(document.getElementById('custom-cursor')).visibility!=='hidden'")
 
     check_modal('campaign-game-dialog')
-    assert c.evaluate("document.querySelector('[data-campaign-status]').textContent==='開催準備中 · 日本国内在住者限定'")
+    assert c.evaluate("document.querySelector('[data-campaign-status]').textContent==='キャンペーン開催中 · 日本国内在住者限定'")
+    c.click('[data-campaign-open]')
+    assert c.evaluate("document.querySelector('.campaign-dialog-actions a:last-child').href==='https://x.com/houkago_stella/status/2117251255106261117'&&document.querySelector('.campaign-notice').textContent.includes('2026')")
+    c.key('Escape')
     assert c.evaluate("document.querySelector('.campaign-eligibility').textContent.includes('日本国内在住')")
-    passed('Dialog loads campaign image, four entry steps and JST deadline; Escape restores focus; missing launch information stays coming soon')
+    passed('Live campaign shows the announcement link, four entry steps and JST dates; Escape restores focus')
 
     c.evaluate("document.documentElement.lang='en'")
     c.wait("document.querySelector('[data-campaign-more]').textContent==='View rules'")
@@ -34,7 +41,12 @@ def run(c, passed, out, base):
     assert c.evaluate("document.querySelector('.campaign-eligibility').textContent.includes('residents of Japan')&&document.querySelector('[data-campaign-status]').textContent.includes('Japan residents only')")
     passed('Game campaign copy and rules switch to English')
 
-    c.evaluate("window._campaignOriginal={...STELLA_CAMPAIGN};STELLA_CAMPAIGN.endsAt='2000-01-01T00:00:00Z';document.documentElement.lang='ja'")
+    c.evaluate("window._campaignOriginal={...STELLA_CAMPAIGN};STELLA_CAMPAIGN.startsAt=null;STELLA_CAMPAIGN.announcementUrl=null;document.documentElement.lang='ja'")
+    c.wait("document.querySelector('[data-campaign-status]').textContent.startsWith('開催準備中')")
+    c.click('[data-campaign-open]')
+    assert c.evaluate("document.querySelectorAll('.campaign-dialog-actions a').length===1")
+    c.key('Escape')
+    c.evaluate("STELLA_CAMPAIGN.endsAt='2000-01-01T00:00:00Z';document.documentElement.lang='ja'")
     c.wait("document.querySelector('[data-campaign-status]').textContent.startsWith('応募受付終了')")
     c.click('[data-campaign-open]')
     assert c.evaluate("document.querySelector('#stella-campaign-dialog .campaign-status').textContent==='応募受付終了'")
