@@ -26,6 +26,7 @@
       const card = button.closest('[data-voice-character]');
       const name = audioLanguage() === 'en' ? card.dataset.nameEn : (globalThis.StellaI18n?.text(card.dataset.nameJa, language()) ?? card.dataset.nameJa);
       button.setAttribute('aria-label', name + ': ' + (selected ? text.stop : text.play));
+      button.dataset.stellaDynamicLabel = '';
     });
   }
   function stop() {

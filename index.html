@@ -23,6 +23,7 @@
 
   <!-- ファビコン -->
   <link rel="icon" type="image/png" href="icon.png">
+  <link rel="manifest" href="manifest.ja.webmanifest">
 
   <!-- OGP (SNSシェア用) -->
   <meta property="og:title" content="放課後のステラ">
@@ -292,6 +293,7 @@
   <div id="op-movie-screen" class="hidden" role="dialog" aria-modal="true" aria-label="Opening movie">
     <video id="op-movie" playsinline preload="metadata"></video>
     <button id="op-movie-play" hidden>OPを再生</button>
+    <button id="op-movie-captions" data-i18n="opLyricsSubtitles" aria-pressed="false">歌詞字幕</button>
     <button id="op-movie-skip">タイトルへスキップ</button>
   </div>
 

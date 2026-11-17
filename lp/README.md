@@ -5,7 +5,7 @@
 | `/lp/` | 物語・キャラクターから入る既存版 | `story` |
 | `/lp/ai/` | 一人の制作者がスキマ時間にAIとつくった作品、という制作背景から入る別パターン | `ai_solo` |
 
-本編と同じローカルサーバーで比較できます。例：`http://localhost:8080/lp/` と `http://localhost:8080/lp/ai/`。どちらも日本語・英語・簡体字・繁体字を切り替えられ、同じ本編へ進みます。中国語の音声試聴・OPは日本語版を使用します。OP動画・画像は既存素材を参照し、複製しません。
+本編と同じローカルサーバーで比較できます。例：`http://localhost:8080/lp/` と `http://localhost:8080/lp/ai/`。どちらも日本語・英語・簡体字・繁体字を切り替えられ、同じ本編へ進みます。試聴・画像・OP・歌詞字幕・ホーム画面追加用の表示は選択言語に対応します。素材はゲーム側の共通パスを参照します。
 
 AI制作版は「たった一人。スキマ時間。AIと、ここまで。」を入口に、制作の過程、完成OP、三人の物語、無料プレイの順で紹介します。制作時間・費用は未掲載。確認済みの制作表記として、シナリオ改稿・オープニングMVはChatGpt-6、ボイス制作はElevenLabsを掲載しています。全素材がAI生成であるとは表現していません。
 
@@ -47,4 +47,4 @@ voice-preview.css／voice-preview.jsが両LP共通の試聴表示・操作です
 
 2026-11-17：中国語（簡体字・繁体字）の本文・配音・タイトルロゴ・ポスター・キャンペーン画像・OG画像に対応。中国語では該当manifestから試聴音声を取得する。画像の切替とプレイ言語の引継ぎは共通の `localized-media.js` で行う。
 
-共有用の静的入口は `index.zh-CN.html` / `index.zh-TW.html`、制作紹介版は `ai/index.zh-CN.html` / `ai/index.zh-TW.html`。画像と文言を編集した後はゲームルートで `py tools/build_chinese_landing_pages.py` を実行する。手順と画像記録は [中国語対応](../docs/chinese-localization.md) を参照。生成した中国語HTMLは直接編集しない。
+共有用の静的入口は `index.en.html` / `index.zh-CN.html` / `index.zh-TW.html`。制作紹介版も `ai/` に同名で用意する。画像と文言を編集した後はゲームルートで `py tools/build_chinese_landing_pages.py` を実行する。手順と画像記録は [中国語対応](../docs/chinese-localization.md)、対応状況は [英語・中国語の棚卸し](../docs/localization-audit-20261117.md) を参照。生成したHTMLは直接編集しない。

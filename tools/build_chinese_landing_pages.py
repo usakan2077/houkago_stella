@@ -1,4 +1,4 @@
-"""Render local Chinese LP entries with static text/OG tags and working language switches.
+"""Render local English and Chinese LP entries with static text/OG tags and working language switches.
 
 Uses isolated headless Edge; external requests are blocked. No translation services.
 """
@@ -58,7 +58,7 @@ def main():
             source=(ROOT/folder/'index.html').read_text(encoding='utf-8')
             ja_title=html.unescape(re.search(r'<title>(.*?)</title>',source,re.S)[1])
             ja_description=html.unescape(re.search(r'<meta name="description" content="([^"]*)"',source)[1])
-            for language in ['zh-CN','zh-TW']:
+            for language in ['en','zh-CN','zh-TW']:
                 client.send('Page.navigate',{'url':base+'/'+folder+'/?lang='+language})
                 client.wait("document.readyState==='complete' && document.documentElement.lang==="+json.dumps(language),60)
                 client.wait("document.querySelector('meta[property=\"og:image\"]').content.includes('og."+language+"-v1.png')")

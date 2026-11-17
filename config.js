@@ -24,10 +24,10 @@ const VN_CONFIG = {
 },
   releaseNotes: [
     { version: '1.4.7', date: '2026-11-17',
-      ja: ['中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。', '本編・おまけの中国語音声と、紹介ページの試聴に対応。', 'タイトル画像・ポスター・紹介ページの共有画像を中国語に対応。'],
-      en: ['Added Simplified and Traditional Chinese story text, interface and website support.', 'Added Mandarin voices for the main story, bonus story and website samples.', 'Added Chinese title artwork, posters and website share images.'],
-      'zh-CN': ['新增简体中文、繁体中文的故事文本、操作界面和作品介绍页。', '新增正文、番外及介绍页试听的普通话配音。', '标题图片、海报及介绍页分享图片支持中文。'],
-      'zh-TW': ['新增簡體中文、繁體中文的故事文字、操作介面和作品介紹頁。', '新增本篇、番外及介紹頁試聽的華語配音。', '標題圖片、海報及介紹頁分享圖片支援中文。'] },
+      ja: ['中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。', '本編・おまけの中国語音声と、紹介ページの試聴に対応。', '英語・中国語の紹介画像・OP・字幕・ホーム画面表示に対応。'],
+      en: ['Added Simplified and Traditional Chinese story text, interface and website support.', 'Added Mandarin voices for the main story, bonus story and website samples.', 'Completed English and Chinese artwork, opening localization, subtitles and home-screen labels.'],
+      'zh-CN': ['新增简体中文、繁体中文的故事文本、操作界面和作品介绍页。', '新增正文、番外及介绍页试听的普通话配音。', '补齐英语、中文的宣传图片、片头动画、字幕及主屏幕显示。'],
+      'zh-TW': ['新增簡體中文、繁體中文的故事文字、操作介面和作品介紹頁。', '新增本篇、番外及介紹頁試聽的華語配音。', '補齊英語、中文的宣傳圖片、片頭動畫、字幕及主畫面顯示。'] },
     { version: '1.4.6', date: '2026-11-02',
       ja: ['おまけまで完走キャンペーンを開始し、公式告知ポストへのリンクを追加。'],
       en: ['Launched the extra completion campaign and added a link to the official announcement.'] },
@@ -101,6 +101,7 @@ const VN_CONFIG = {
     supportedLanguages: ['ja', 'en', 'zh-CN', 'zh-TW'],
     labels: {
       ja: {
+        opLyricsSubtitles: '歌詞字幕',
         updateHistory: '更新履歴',
         visitWebsite: '作品紹介サイトへ',
         openUpdateHistory: '更新履歴を開く',
@@ -173,6 +174,7 @@ const VN_CONFIG = {
         },
       },
       en: {
+        opLyricsSubtitles: 'Lyrics subtitles',
         updateHistory: 'Update history',
         visitWebsite: 'Visit the game website',
         openUpdateHistory: 'Open update history',
@@ -919,6 +921,8 @@ const VN_CONFIG = {
   openingMovies: {
     ja: 'assets/video/stella-op-ja-v143.mp4',
     en: 'assets/video/stella-op-en-v143.mp4',
+    'zh-CN': 'assets/video/stella-op-zh-CN-v147.mp4',
+    'zh-TW': 'assets/video/stella-op-zh-TW-v147.mp4',
   },
   openingMovieIdleMs: 30000,
 

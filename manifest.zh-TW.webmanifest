@@ -1,0 +1,20 @@
+{
+  "name": "放學後的星光 — 謊言與願望的邊界",
+  "short_name": "放學後的星光",
+  "description": "免費遊玩的全年齡瀏覽器戀愛視覺小說。",
+  "start_url": "index.html?lang=zh-TW",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101526",
+  "theme_color": "#101526",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "./",
+  "lang": "zh-TW"
+}

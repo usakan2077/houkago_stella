@@ -2138,6 +2138,8 @@ html[lang="en"] #char-name {
   transition: opacity .65s ease;
 }
 #op-movie-skip { right: 26px; bottom: 22px; }
+#op-movie-captions { left: 26px; bottom: 22px; }
+#op-movie-captions[aria-pressed="true"] { border-color: #f7d6ef; background: #30283ecc; }
 #op-movie-play { left: 50%; top: 50%; transform: translate(-50%, -50%); }
 #op-movie-screen button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
 

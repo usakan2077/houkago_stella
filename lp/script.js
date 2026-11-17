@@ -8,7 +8,7 @@ const translations = {
     text: {
       "#update-1-4-7 .update-points li:nth-child(1)": "中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。",
       "#update-1-4-7 .update-points li:nth-child(2)": "本編・おまけの中国語音声と、紹介ページの試聴に対応。",
-      "#update-1-4-7 .update-points li:nth-child(3)": "タイトル画像・ポスター・紹介ページの共有画像を中国語に対応。",
+      "#update-1-4-7 .update-points li:nth-child(3)": "英語・中国語の紹介画像・OP・字幕・ホーム画面表示に対応。",
 
       "#film-title": "オープニングムービー",
       ".film-lead": "主題歌とともに、三人の放課後へ。",
@@ -175,7 +175,7 @@ const translations = {
     text: {
       "#update-1-4-7 .update-points li:nth-child(1)": "Added Simplified and Traditional Chinese story text, interface and website support.",
       "#update-1-4-7 .update-points li:nth-child(2)": "Added Mandarin voices for the main story, bonus story and website samples.",
-      "#update-1-4-7 .update-points li:nth-child(3)": "Added Chinese title artwork, posters and website share images.",
+      "#update-1-4-7 .update-points li:nth-child(3)": "Completed English and Chinese artwork, opening localization, subtitles and home-screen labels.",
 
       "#film-title": "Opening Movie",
       ".film-lead": "Step into their after-school world with the theme song.",

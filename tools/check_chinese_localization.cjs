@@ -20,6 +20,13 @@ test('Chinese browser locales select a regional script and preserve Japanese/Eng
   assert.equal(i18n.normalize('ko-KR'), 'ja');
   assert.equal(i18n.browserLanguage(), 'zh-TW');
 });
+
+test('English accessibility text translates known attributes and safely preserves other strings', () => {
+  const { StellaI18n: i18n } = setup();
+  assert.equal(i18n.text('屋上で写真を撮るまひる', 'en'), 'Mahiru taking a photo on the rooftop');
+  assert.equal(i18n.text('Listen', 'en'), 'Listen');
+  assert.equal(i18n.text('Unmapped text', 'en'), 'Unmapped text');
+});
 test('both Chinese settings cover all Japanese interface labels and preserve placeholders', () => {
   const scope = setup();
   const strings = value => typeof value === 'string' ? [value] : Object.values(value).flatMap(strings);

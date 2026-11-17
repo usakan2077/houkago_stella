@@ -16,13 +16,27 @@ globalThis.StellaMedia = (() => {
     return StellaI18n.browserLanguage();
   }
   function asset(kind, language) {
-    if (!language.startsWith('zh-')) return null;
+    if (language === 'ja') return null;
+    if (language === 'en' && kind === 'logo') return 'assets/images/bg/title_logo_en.webp';
     return {
       logo: `assets/images/bg/title_logo_${language}-v1.webp`,
       poster: `assets/images/promo/poster.${language}-v1.webp`,
       campaign: `assets/campaign/clear-campaign.${language}-v1.webp`,
       share: `assets/images/promo/og.${language}-v1.png`,
     }[kind] || null;
+  }
+  function openingMovie(language) {
+    return `assets/video/stella-op-${language}-${language.startsWith('zh-') ? 'v147' : 'v143'}.mp4`;
+  }
+  function subtitles(video, language) {
+    if (video.dataset.subtitleLanguage === language) return;
+    for (const track of video.querySelectorAll('track[data-stella-subtitles]')) { track.track.mode = 'disabled'; track.remove(); }
+    const track = document.createElement('track');
+    track.dataset.stellaSubtitles = ''; track.kind = 'subtitles'; track.srclang = language;
+    track.label = ({ja:'日本語',en:'English','zh-CN':'简体中文','zh-TW':'繁體中文'})[language];
+    track.src = new URL(`assets/video/subtitles/op.${language}-v1.vtt`, root).href;
+    track.default = language !== 'ja'; video.append(track); track.track.mode = track.default ? 'showing' : 'disabled';
+    video.dataset.subtitleLanguage = language;
   }
   function apply(language, { updateUrl = false } = {}) {
     language = StellaI18n.normalize(language);
@@ -45,6 +59,7 @@ globalThis.StellaMedia = (() => {
       if (image.getAttribute('src') !== src) image.setAttribute('src', src);
     });
     const lp = document.body?.dataset.lpVariant;
+    document.querySelector('link[rel="manifest"]')?.setAttribute('href', new URL(lp ? `lp/site${language === 'ja' ? '' : '.' + language}.webmanifest` : `manifest.${language}.webmanifest`, root).href);
     const publicRoot = 'https://www.houkago-stella.com/';
     const share = new URL(asset('share', language) || 'og.png', publicRoot).href;
     document.querySelectorAll('meta[property="og:image"],meta[property="og:image:secure_url"],meta[name="twitter:image"]').forEach(node => node.content = share);
@@ -52,7 +67,7 @@ globalThis.StellaMedia = (() => {
     if (locale) locale.content = ({ja:'ja_JP',en:'en_US','zh-CN':'zh_CN','zh-TW':'zh_TW'})[language];
     if (lp) {
       const folder = lp === 'ai_solo' ? 'lp/ai/' : 'lp/';
-      const canonical = new URL(folder + (language.startsWith('zh-') ? `index.${language}.html` : ''), publicRoot).href;
+      const canonical = new URL(folder + (language !== 'ja' ? `index.${language}.html` : ''), publicRoot).href;
       document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
       document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonical);
       const structured = document.querySelector('script[type="application/ld+json"]');
@@ -75,10 +90,10 @@ globalThis.StellaMedia = (() => {
     }
     if (updateUrl) {
       const current = new URL(location.href);
-      if (lp) current.pathname = new URL(language.startsWith('zh-') ? `index.${language}.html` : './', current).pathname;
+      if (lp) current.pathname = new URL(language !== 'ja' ? `index.${language}.html` : './', current).pathname;
       current.searchParams.set('lang', language);
       history.replaceState(history.state, '', current.pathname + current.search + current.hash);
     }
   }
-  return { initialLanguage, asset, apply };
+  return { initialLanguage, asset, apply, openingMovie, subtitles };
 })();

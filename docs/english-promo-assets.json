@@ -1,0 +1,38 @@
+{
+  "version": "multilingual-release-20261117",
+  "assets": [
+    {
+      "language": "en",
+      "kind": "poster",
+      "src": "assets/images/promo/poster.en-v1.webp",
+      "size": [
+        848,
+        1264
+      ],
+      "bytes": 226668,
+      "sha256": "19b7a0f6fc548fb7dd58b6b60aa719085ca407da9a51fdb714a3144548ee9eaa"
+    },
+    {
+      "language": "en",
+      "kind": "og",
+      "src": "assets/images/promo/og.en-v1.png",
+      "size": [
+        1200,
+        630
+      ],
+      "bytes": 1105104,
+      "sha256": "633a0ff6a3ec4199a6d43278d58336acefce528d5bc25600c2d9a493e003a74c"
+    },
+    {
+      "language": "en",
+      "kind": "campaign",
+      "src": "assets/campaign/clear-campaign.en-v1.webp",
+      "size": [
+        1536,
+        864
+      ],
+      "bytes": 324304,
+      "sha256": "0e0ff872dd4953743a845d524e6ea931b5a258eeb05bb592256da2ead50d0a96"
+    }
+  ]
+}

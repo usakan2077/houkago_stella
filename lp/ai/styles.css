@@ -15,5 +15,5 @@ html[lang="en"] h1{font-size:clamp(38px,4.2vw,60px);letter-spacing:-.055em;line-
 html[lang="zh-CN"] body { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; }
 html[lang="zh-TW"] body { font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif; }
 /* Keep the Chinese title and all four characters inside the poster frame. */
-html[lang^="zh-"] .poster-frame { height: auto; max-height: none; aspect-ratio: 848 / 1264; }
-html[lang^="zh-"] .poster-frame img { object-fit: contain; object-position: center; }
+html:not([lang="ja"]) .poster-frame { height: auto; max-height: none; aspect-ratio: 848 / 1264; }
+html:not([lang="ja"]) .poster-frame img { object-fit: contain; object-position: center; }

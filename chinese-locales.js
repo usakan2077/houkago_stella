@@ -739,7 +739,11 @@ globalThis.StellaI18n = (() => {
     "スマホではホーム画面からの起動がおすすめです": "在手机上，建议从主屏幕启动游戏。",
     "iPhone: Safariの共有ボタン →「ホーム画面に追加」→「追加」": "iPhone：Safari 分享按钮 → 添加到主屏幕 → 添加",
     "Android: Chromeのメニュー →「ホーム画面に追加」→「追加」": "Android：Chrome 菜单 → 添加到主屏幕 → 添加",
-    "追加後は、ホーム画面のアイコンから起動してください。": "添加后，请点击主屏幕图标启动游戏。"
+    "追加後は、ホーム画面のアイコンから起動してください。": "添加后，请点击主屏幕图标启动游戏。",
+    "歌詞字幕": "歌词字幕",
+    "英語・中国語の紹介画像・OP・字幕・ホーム画面表示に対応。": "补齐英语、中文的宣传图片、片头动画、字幕及主屏幕显示。",
+    "OPを再生": "播放片头",
+    "タイトルへスキップ": "跳过并返回标题"
   },
   "zh-TW": {
     "更新履歴": "更新紀錄",
@@ -1479,10 +1483,29 @@ globalThis.StellaI18n = (() => {
     "スマホではホーム画面からの起動がおすすめです": "在手機上，建議從主畫面啟動遊戲。",
     "iPhone: Safariの共有ボタン →「ホーム画面に追加」→「追加」": "iPhone：Safari 分享按鈕 → 加入主畫面 → 新增",
     "Android: Chromeのメニュー →「ホーム画面に追加」→「追加」": "Android：Chrome 選單 → 加入主畫面 → 新增",
-    "追加後は、ホーム画面のアイコンから起動してください。": "新增後，請點擊主畫面圖示啟動遊戲。"
+    "追加後は、ホーム画面のアイコンから起動してください。": "新增後，請點擊主畫面圖示啟動遊戲。",
+    "歌詞字幕": "歌詞字幕",
+    "英語・中国語の紹介画像・OP・字幕・ホーム画面表示に対応。": "補齊英語、中文的宣傳圖片、片頭動畫、字幕及主畫面顯示。",
+    "OPを再生": "播放片頭",
+    "タイトルへスキップ": "跳過並返回標題"
   }
 };
   const originals = new WeakMap();
+  const englishAttributes = {
+    'サイトヘッダー': 'Site header', '放課後のステラ トップ': 'After School Stella home',
+    'ページ内ナビゲーション': 'Page navigation', '物語セクションへ移動': 'Go to the story',
+    'キャンペーン': 'Campaign', '作品の特徴': 'Game features', '作品情報': 'Game information',
+    'ゲーム内スチル': 'Scenes from the game', '放課後のステラ オープニングムービー': 'After School Stella opening movie',
+    '屋上で流れ星を見上げる四人': 'Four friends watching a shooting star on the rooftop',
+    '桜咲さくら': 'Sakura Sakurazaki', '花園ことは': 'Kotoha Hanazono', '月夜野まひる': 'Mahiru Tsukiyono',
+    '屋上で願いを語る四人': 'Four friends sharing their wishes on the rooftop',
+    'ピアノのそばで震えることは': 'Kotoha trembling beside the piano',
+    '図書室でヘッドホンをつけることは': 'Kotoha wearing headphones in the library',
+    '体育館の倉庫で抱き合うさくら': 'An embrace with Sakura in the gym storeroom',
+    '試合後のさくら': 'Sakura after a match', '窓辺に立つことは': 'Kotoha standing by a window',
+    '夕方に並んで歩く二人': 'Two friends walking together at dusk',
+    '屋上で写真を撮るまひる': 'Mahiru taking a photo on the rooftop',
+  };
   const names = {
     'zh-CN': { '放課後のステラ': '放学后的星光', '桐島': '桐岛', '桜咲': '樱咲', 'さくら': '樱', '花園': '花园', 'ことは': '琴叶', 'まひる': '真昼' },
     'zh-TW': { '放課後のステラ': '放學後的星光', '桐島': '桐島', '桜咲': '櫻咲', 'さくら': '櫻', '花園': '花園', 'ことは': '琴葉', 'まひる': '真晝' },
@@ -1495,11 +1518,11 @@ globalThis.StellaI18n = (() => {
     return 'ja';
   };
   function text(value, language) {
-    const dictionary = dictionaries[language];
+    const dictionary = language === 'en' ? englishAttributes : dictionaries[language];
     if (!dictionary || typeof value !== 'string') return value;
     if (Object.hasOwn(dictionary, value)) return dictionary[value];
     // Translate only a complete name, never a name-shaped substring in prose.
-    if (Object.hasOwn(names[language], value)) return names[language][value];
+    if (Object.hasOwn(names[language] || {}, value)) return names[language][value];
     return value;
   }
   function captureDocument() {
@@ -1517,6 +1540,7 @@ globalThis.StellaI18n = (() => {
       const original = originals.get(node);
       if (node.hasAttribute('data-en') && dictionaries[language]) node.textContent = text(original.text, language);
       for (const [attribute, key] of [['alt', 'alt'], ['aria-label', 'label'], ['title', 'title']]) {
+        if (attribute === 'aria-label' && node.hasAttribute('data-stella-dynamic-label')) continue;
         if (original[key] !== null) {
           const englishAlt = attribute === 'alt' && language === 'en' ? node.dataset.altEn : null;
           node.setAttribute(attribute, englishAlt || text(original[key], language));

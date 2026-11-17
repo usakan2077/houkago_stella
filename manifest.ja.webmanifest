@@ -1,0 +1,20 @@
+{
+  "name": "放課後のステラ — 嘘と願いのバウンドリー",
+  "short_name": "放課後のステラ",
+  "description": "無料で遊べる全年齢ブラウザ恋愛アドベンチャー。",
+  "start_url": "index.html?lang=ja",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101526",
+  "theme_color": "#101526",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "./",
+  "lang": "ja"
+}
