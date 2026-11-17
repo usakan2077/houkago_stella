@@ -51,11 +51,9 @@ def main():
                 assert c.evaluate("document.querySelector('.voice-status').textContent===''")
                 c.evaluate('scrollTo(0,0)')
                 c.shot(folder.replace('/','-')+'-'+language+'-desktop')
-                c.click('[data-campaign-open]')
-                c.wait("document.querySelector('#stella-campaign-dialog img')?.complete && document.querySelector('#stella-campaign-dialog img').naturalWidth>0")
-                assert c.evaluate("document.querySelector('#stella-campaign-dialog img').src.includes('clear-campaign."+language+"-v1.webp')")
-                assert c.evaluate("document.querySelector('.campaign-eligibility').textContent.includes('"+('日本国内' if language=='zh-CN' else '日本國內')+"')")
-                c.evaluate("document.querySelector('#stella-campaign-dialog').close()")
+                assert c.evaluate("document.querySelector('.campaign-lp').hidden")
+                c.evaluate("document.querySelector('[data-campaign-open]').click()")
+                assert c.evaluate("!document.querySelector('#stella-campaign-dialog[open]')")
                 for target in ['en','zh-TW','ja',language]:
                     c.evaluate("(()=>{const s=document.querySelector('.stella-language-select');s.value="+json.dumps(target)+";s.dispatchEvent(new Event('change',{bubbles:true}))})()")
                     c.wait('document.documentElement.lang==='+json.dumps(target))
@@ -67,7 +65,7 @@ def main():
                     assert c.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),[relative,width]
                     c.evaluate('scrollTo(0,0)');c.shot(folder.replace('/','-')+'-'+language+'-'+str(width))
                 c.send('Emulation.clearDeviceMetricsOverride')
-                passed(relative+': static Chinese text/OG, artwork, four-language roundtrip, eligibility, game link and mobile widths')
+                passed(relative+': static Chinese text/OG, artwork, four-language roundtrip, hidden campaign, game link and mobile widths')
         c.send('Page.navigate',{'url':base+'/index.html?lang=zh-CN'})
         c.wait("document.querySelector('#btn-loading-ok')?.style.visibility===''",100)
         c.click('#btn-loading-ok');c.evaluate('engine.openingMovie.finish();VN_CONFIG.openingMovieIdleMs=3600000')

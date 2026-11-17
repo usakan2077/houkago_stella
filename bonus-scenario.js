@@ -106,6 +106,7 @@ class BonusScenario {
   createReceiptPanel(receipt) {
     const panel = document.createElement('section');
     panel.className = 'bonus-clear-receipt';
+    panel.dataset.campaignReceipt = '';
     const details = document.createElement('div');
     const label = document.createElement('p');
     const code = document.createElement('code');
@@ -147,6 +148,7 @@ class BonusScenario {
       share.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.receiptText(receipt));
     };
     refresh();
+    panel.addEventListener('stella-campaign-visibility', () => { refresh(); status.textContent = ''; });
     globalThis.StellaCampaignVisibility?.ready.then(() => { if (panel.isConnected) refresh(); });
     return panel;
   }

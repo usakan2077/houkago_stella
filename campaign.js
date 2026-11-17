@@ -4,7 +4,8 @@
   if (!config) return;
   // Fail closed: language and timezone do not establish access from Japan.
   // Read only the country field; never log or persist the trace (which includes an IP).
-  let allowed = false;
+  let japanAccess = false;
+  const allowed = () => japanAccess && document.documentElement.lang === 'ja';
   const ready = (async () => {
     const controller = new AbortController();
     let timer;
@@ -22,12 +23,12 @@
         })(),
         new Promise(resolve => { timer = setTimeout(() => resolve(null), 3000); }),
       ]);
-      allowed = country === 'JP';
+      japanAccess = country === 'JP';
     } catch { /* Offline, blocked and unknown countries keep promotions hidden. */ }
     finally { clearTimeout(timer); controller.abort(); }
-    return allowed;
+    return japanAccess;
   })();
-  window.StellaCampaignVisibility = Object.freeze({ get allowed() { return allowed; }, ready });
+  window.StellaCampaignVisibility = Object.freeze({ get allowed() { return allowed(); }, ready });
   const buttons = [...document.querySelectorAll('[data-campaign-open]')];
   if (!buttons.length) return;
   let dialog, opener, previousOverflow;
@@ -55,7 +56,13 @@
     return link;
   }
   function render() {
-    for (const node of document.querySelectorAll('[data-japan-campaign]')) node.hidden = !allowed;
+    for (const node of document.querySelectorAll('[data-japan-campaign]')) node.hidden = !allowed();
+    for (const panel of document.querySelectorAll('[data-campaign-receipt]')) panel.dispatchEvent(new Event('stella-campaign-visibility'));
+    if (!allowed() && dialog) {
+      if (dialog.open) dialog.close();
+      dialog.remove(); dialog = null;
+      document.body.style.overflow = previousOverflow;
+    }
     globalThis.StellaMedia?.apply(document.documentElement.lang);
     for (const button of buttons) {
       button.setAttribute('aria-label', text('おまけまで完走キャンペーンの詳細・応募ルールを見る', 'View completion campaign details and rules'));
@@ -122,7 +129,7 @@
     dialog.scrollTop = scroll;
   }
   for (const button of buttons) button.onclick = () => {
-    if (!allowed) return;
+    if (!allowed()) return;
     if (!dialog) {
       dialog = document.createElement('dialog');
       dialog.id = 'stella-campaign-dialog';
@@ -136,7 +143,10 @@
         const rect = dialog.getBoundingClientRect();
         if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
       });
-      dialog.addEventListener('close', () => { dialog.classList.add('hidden'); document.body.style.overflow = previousOverflow; opener?.focus({ preventScroll: true }); });
+      dialog.addEventListener('close', event => {
+        event.currentTarget.classList.add('hidden'); document.body.style.overflow = previousOverflow;
+        if (opener?.getClientRects().length) opener.focus({ preventScroll: true });
+      });
     }
     opener = button; previousOverflow = document.body.style.overflow;
     render(); dialog.classList.remove('hidden'); dialog.showModal(); dialog.scrollTop = 0;

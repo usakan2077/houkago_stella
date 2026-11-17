@@ -13,7 +13,7 @@ def run(c,passed,out,base,mock):
         raw=urllib.request.urlopen(base+'/'+path).read().decode('utf-8')
         regions=re.findall(r'<[^>]*\bdata-japan-campaign\b[^>]*>',raw)
         assert regions and all(re.search(r'\bhidden(?:[\s=>])',node) for node in regions),path
-        assert 'campaign.js?v=1.4.7-jp1' in raw,path
+        assert 'campaign.js?v=1.4.7-ja1' in raw,path
     passed('All 9 static entries start with hidden campaign regions before JavaScript or country lookup')
 
     c.evaluate('StellaCampaignVisibility.ready')
@@ -21,15 +21,38 @@ def run(c,passed,out,base,mock):
     # A saved completion stays available overseas without advertising contest entry.
     receipt=c.evaluate('engine.bonus.clearReceipt()')
     assert '#キャンペーン応募' in c.evaluate('engine.bonus.receiptText(engine.bonus.readClearReceipt())')
+    c.evaluate("window._languageReceiptPanel=engine.bonus.createReceiptPanel(engine.bonus.readClearReceipt());document.body.append(_languageReceiptPanel)")
+    for lang in ['en','zh-CN','zh-TW','ja']:
+        c.evaluate('document.documentElement.lang='+json.dumps(lang))
+        campaign=lang=='ja'
+        c.wait("_languageReceiptPanel.querySelector('code').hidden==="+json.dumps(not campaign))
+        share=c.evaluate("new URL(_languageReceiptPanel.querySelector('a').href).searchParams.get('text')")
+        assert ('#キャンペーン応募' in share)==campaign
+        assert (receipt['clear_phrase'] in share)==campaign
+        c.evaluate('navigator.clipboard.writeText=async text=>{window._languageReceiptCopy=text};_languageReceiptPanel.querySelector("button").click()')
+        assert c.evaluate('_languageReceiptCopy')==share
+    c.evaluate('_languageReceiptPanel.remove()')
+    passed('Open completion panels, share links and copied text update immediately when switching JA/EN/CN/TW and back')
     for path in paths[1:]:
         c.send('Page.navigate',{'url':base+'/'+path})
         c.wait("document.readyState==='complete'&&!!window.StellaCampaignVisibility",40)
         assert c.evaluate('StellaCampaignVisibility.ready')
-        assert c.evaluate("[...document.querySelectorAll('[data-japan-campaign]')].every(n=>!n.hidden&&n.getClientRects().length>0)")
-        for lang in ['ja','en','zh-CN','zh-TW']:
-            c.evaluate('document.documentElement.lang='+json.dumps(lang))
-            assert c.evaluate("!document.querySelector('[data-campaign-open]').hidden&&_countryRequests===1")
-    passed('Japan access shows both LPs and all localized entries in every play language with one lookup per page')
+        if c.evaluate("document.documentElement.lang!=='ja'"):assert c.evaluate(HIDDEN),path
+        for lang in ['ja','en','zh-CN','zh-TW','ja']:
+            c.evaluate("(()=>{const s=document.querySelector('.stella-language-select');s.value="+json.dumps(lang)+";s.dispatchEvent(new Event('change',{bubbles:true}))})()")
+            c.wait('document.documentElement.lang==='+json.dumps(lang))
+            assert c.evaluate('StellaCampaignVisibility.allowed')==(lang=='ja'),[path,lang]
+            assert c.evaluate("document.querySelector('[data-campaign-open]').hidden")== (lang!='ja'),[path,lang]
+            assert c.evaluate('_countryRequests===1')
+            if lang!='ja':
+                assert c.evaluate(HIDDEN)
+                c.evaluate("document.querySelector('[data-campaign-open]').click()")
+                assert c.evaluate("!document.querySelector('#stella-campaign-dialog[open]')")
+        c.evaluate("document.querySelector('[data-campaign-open]').click()")
+        c.wait("!!document.querySelector('#stella-campaign-dialog[open]')")
+        c.evaluate("document.documentElement.lang='en'")
+        c.wait("!document.getElementById('stella-campaign-dialog')&&document.body.style.overflow!=='hidden'")
+    passed('Japan access shows campaigns only in Japanese on all LP entries; language switching hides banners, closes rules and blocks direct clicks')
 
     def change(body,mode='response'):
         nonlocal mock
@@ -63,9 +86,11 @@ def run(c,passed,out,base,mock):
     assert c.evaluate(HIDDEN)
     c.evaluate('_resolveCountry()')
     assert c.evaluate('StellaCampaignVisibility.ready')
-    assert c.evaluate("!document.querySelector('.campaign-lp').hidden")
+    assert c.evaluate(HIDDEN)
+    c.evaluate("document.documentElement.lang='ja'")
+    c.wait("!document.querySelector('.campaign-lp').hidden")
     assert c.evaluate("_countryOptions.credentials==='omit'&&_countryOptions.referrerPolicy==='no-referrer'&&_countryOptions.cache==='no-store'")
-    passed('Pending country lookup never flashes the promotion; confirmed JP reveals it without cookies or referrer')
+    passed('Pending lookup never flashes the promotion; confirmed JP stays hidden in English and appears after choosing Japanese')
 
     change('loc=CN\n')
     c.send('Page.navigate',{'url':base+'/index.html?lang=ja'})
