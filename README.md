@@ -158,7 +158,7 @@ narrator セリフ（地の文）
 
 日本語の `scenarios/*.md` と英語の `scenarios/en/*.md` は、同じテキストキー・話者・分岐・演出を使用します。本文は各言語のJSONで編集します。変更後は `python tools/check_scenarios_i18n.py` を実行し、翻訳の参照漏れや表示指示のずれを確認してください。改稿の方針は [改稿メモ](docs/scenario-rewrite-ja.md) にあります。
 
-1.4.7で簡体字・繁体字を追加。中国語表示は既存の日本語音声を使用し、後日の音声制作に向けた収録台本も用意しました。原稿の編集・生成・検証は [中国語対応](docs/chinese-localization.md) を参照。
+1.4.7で簡体字・繁体字を追加。本編・おまけに中国語音声を収録し、紹介ページでも試聴できます。原稿の編集・生成・検証は [中国語対応](docs/chinese-localization.md) を参照。
 
 ---
 

@@ -40,6 +40,13 @@ def main():
                     remaining=c.evaluate("[...document.querySelectorAll('[data-en]')].filter(n=>/[ぁ-ゖァ-ヺ]/.test(n.textContent)).map(n=>n.textContent)")
                     assert not remaining,remaining
                     assert c.evaluate("document.title.includes('星光')")
+                    # Exercise the shipped Chinese sample MP3, including the nested LP.
+                    c.evaluate("window.samplePlays=[];window.nativeSamplePlay??=HTMLMediaElement.prototype.play;HTMLMediaElement.prototype.play=function(){window.samplePlays.push(this.src);return window.nativeSamplePlay.call(this)}")
+                    c.click('.voice-play')
+                    c.wait("document.querySelector('.voice-play').dataset.state==='playing'",30)
+                    assert c.evaluate("window.samplePlays.at(-1).includes('/assets/voice/zh/chinese-v1-20261117/')")
+                    assert c.evaluate("document.querySelector('.voice-status').textContent===''")
+                    c.click('.voice-play')
                 passed(page+' switches to '+lang)
             for width in [390,320]:
                 c.send('Emulation.setDeviceMetricsOverride',dict(width=width,height=844,deviceScaleFactor=1,mobile=True))
@@ -55,7 +62,7 @@ def main():
             c.evaluate('engine._setLanguage('+json.dumps(lang)+',{returnToTitle:true})')
             assert c.evaluate('engine.currentLanguage==='+json.dumps(lang)+' && document.documentElement.lang==='+json.dumps(lang))
             assert c.evaluate('engine._missingScenarioTexts().length===0')
-            assert c.evaluate("engine.voice.language==="+json.dumps('en' if lang=='en' else 'ja'))
+            assert c.evaluate("engine.voice.language==="+json.dumps(lang))
             if lang.startswith('zh-'):
                 assert c.evaluate("engine.voice.has('chapter1.chapter1_morning_gate.r003',engine.currentLanguage)")
                 c.evaluate("VN_CONFIG.settings.typeSpeed=0;engine._chainMode='none';engine._startFromLabel('chapter1_morning_gate')")
@@ -68,8 +75,23 @@ def main():
                 assert save and save.get('language')==lang,save
                 c.evaluate("engine._setLanguage('en',{returnToTitle:true})")
                 c.evaluate('engine._loadFromSlot(91)')
-                assert c.evaluate('engine.currentLanguage==='+json.dumps(lang)+" && engine.voice.language==='ja' && engine._missingScenarioTexts().length===0")
-                passed(lang+': loading a Chinese save from English restores Chinese text and Japanese voice')
+                assert c.evaluate('engine.currentLanguage==='+json.dumps(lang)+" && engine.voice.language==="+json.dumps(lang)+" && engine._missingScenarioTexts().length===0")
+                passed(lang+': loading a Chinese save from English restores Chinese text and Chinese voice')
+                c.evaluate("""(()=>{
+                  engine.voice.setVolume(.85);
+                  engine.labels.__chinese_audio_check=[
+                    {cmd:'say',char:'sakura',text:'$chapter1.chapter1_morning_gate.r016'},
+                    {cmd:'click_wait'}];
+                  engine._gotoLabel('__chinese_audio_check');
+                })()""")
+                c.wait("engine.voice.session?.id==='chapter1.chapter1_morning_gate.r016' && !!engine.voice.session?.source",30)
+                assert c.evaluate("engine.voice.clips['chapter1.chapter1_morning_gate.r016'].src.startsWith('assets/voice/zh/')")
+                c.evaluate('engine._openLog()')
+                c.click('.log-voice-btn')
+                c.wait("!!engine.voice.session?.source",30)
+                c.click('#btn-log-close')
+                assert c.evaluate('engine.voice.session===null')
+                passed(lang+': real Chinese MP3 decodes and plays in the game and log')
             passed('game '+lang+': complete story/bonus text, language and matching voice metadata')
         assert not c.errors,c.errors
         (OUT/'result.json').write_text(json.dumps({'checks':checks,'exceptions':c.errors},ensure_ascii=False,indent=2),encoding='utf-8')

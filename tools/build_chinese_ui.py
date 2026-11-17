@@ -30,6 +30,7 @@ for language in ['zh-CN', 'zh-TW']:
             # A few old escaped examples are ordinary text, not executable markup.
             raise ValueError('Changed HTML: '+original)
         dictionary[original] = translated
+    dictionary.pop('中国語表示では日本語音声を再生。', None)
     path.write_text(json.dumps(dictionary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     dictionaries[language] = dictionary
     for svg in (ROOT/'assets/bonus').glob('*_ja*.svg'):

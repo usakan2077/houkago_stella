@@ -39,22 +39,23 @@ test('both Chinese settings cover all Japanese interface labels and preserve pla
     assert.equal(engine._getScenarioTextFile(), `locales/scenario.${lang}.json`);
   }
 });
-test('Chinese dialogue, prefetch and log replay share the Japanese manifest', async () => {
+test('Chinese dialogue, prefetch and log replay use the matching Chinese manifest', async () => {
   const scope = setup();
   vm.runInContext(read('voice.js') + ';this.Player=VNVoicePlayer;', scope);
   const requests = [];
   const player = new scope.Player(scope.config.voice, { fetch: async url => {
     requests.push(url);
-    return { ok: true, json: async () => ({ language: 'ja', clips: { sample: { src: 'sample.mp3' } } }) };
+    return { ok: true, json: async () => ({ language: url.includes('zh-TW') ? 'zh-TW' : 'zh-CN', clips: { sample: { src: 'sample.mp3' } } }) };
   } });
   for (const lang of ['zh-CN', 'zh-TW']) {
     await player.loadManifest(lang, scope.config.voice.manifests[lang]);
-    assert.equal(player.language, 'ja');
+    assert.equal(player.language, lang);
     assert.equal(player.has('sample', lang), true);
-    assert.equal(player.has('sample', 'ja'), true);
+    assert.equal(player.has('sample', 'ja'), false);
+    assert.equal(player.has('sample', lang === 'zh-CN' ? 'zh-TW' : 'zh-CN'), false);
     assert.equal(player.has('sample', 'en'), false);
   }
-  assert.deepEqual(requests, ['assets/voice/ja/manifest.json', 'assets/voice/ja/manifest.json']);
+  assert.deepEqual(requests, ['assets/voice/zh-CN/manifest.json', 'assets/voice/zh-TW/manifest.json']);
 });
 
 test('both Chinese editions contain every main/bonus text ID and keep filenames and variables intact', () => {
