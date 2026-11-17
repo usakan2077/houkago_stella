@@ -31,6 +31,8 @@ SNAPSHOT="""(()=>{
   const select=copy.querySelector('.stella-language-select');
   for(const option of select.options)option.toggleAttribute('selected',option.value===document.documentElement.lang);
   copy.querySelector('#stella-campaign-dialog')?.remove();
+  // A generated entry must never publish a country decision from the build machine.
+  copy.querySelectorAll('[data-japan-campaign]').forEach(node=>node.hidden=true);
   // Embedded social widgets load separately at runtime; never freeze their iframe state.
   copy.querySelectorAll('iframe').forEach(node=>node.remove());
   return '<!doctype html>\\n'+copy.outerHTML+'\\n';

@@ -96,10 +96,11 @@ class BonusScenario {
   }
 
   receiptText(receipt) {
+    const campaign = !!globalThis.StellaCampaignVisibility?.allowed;
     return this.text('『放課後のステラ』のおまけまでクリアしました！', 'I finished Houkago Stella, including the extra!')
-      + '\n' + (receipt.clear_phrase ? this.text('合言葉：', 'Passphrase: ') : this.text('クリアコード：', 'Clear code: ')) + (receipt.clear_phrase || receipt.code)
+      + (campaign ? '\n' + (receipt.clear_phrase ? this.text('合言葉：', 'Passphrase: ') : this.text('クリアコード：', 'Clear code: ')) + (receipt.clear_phrase || receipt.code) : '')
       + '\n' + this.text('クリア日時：', 'Completed: ') + receipt.clearedAt
-      + '\n@houkago_stella #放課後のステラ #キャンペーン応募\nhttps://www.houkago-stella.com/';
+      + '\n@houkago_stella #放課後のステラ' + (campaign ? ' #キャンペーン応募' : '') + '\nhttps://www.houkago-stella.com/';
   }
 
   createReceiptPanel(receipt) {
@@ -107,9 +108,6 @@ class BonusScenario {
     panel.className = 'bonus-clear-receipt';
     const details = document.createElement('div');
     const label = document.createElement('p');
-    label.textContent = receipt.clear_phrase
-      ? this.text('あなたの完走川柳（合言葉）。スクショで保存できます。', 'Your completion poem (passphrase). Save this screen as a screenshot.')
-      : this.text('おまけまでクリア！ この画面はスクショで保存できます。', 'Extra completed! You can save this screen as a screenshot.');
     const code = document.createElement('code');
     code.textContent = receipt.clear_phrase || receipt.code;
     if (receipt.clear_phrase) code.className = 'bonus-clear-phrase';
@@ -121,7 +119,6 @@ class BonusScenario {
     actions.className = 'bonus-clear-actions';
     const share = document.createElement('a');
     share.textContent = this.text('感想を添えてXに投稿', 'Share your thoughts on X');
-    share.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.receiptText(receipt));
     share.target = '_blank';
     share.rel = 'noopener noreferrer';
     const copy = document.createElement('button');
@@ -135,11 +132,22 @@ class BonusScenario {
         await navigator.clipboard.writeText(this.receiptText(receipt));
         status.textContent = this.text('コピーしました。感想を書き足して投稿してください。', 'Copied. Add your thoughts before posting.');
       } catch {
-        status.textContent = this.text('コピーできませんでした。コードを控えるかスクショで保存してください。', 'Copy unavailable. Note the code or save a screenshot.');
+        status.textContent = this.text('コピーできませんでした。スクショで保存してください。', 'Copy unavailable. Save a screenshot.');
       }
     };
     actions.append(share, copy, status);
     panel.append(details, actions);
+    const refresh = () => {
+      const campaign = !!globalThis.StellaCampaignVisibility?.allowed;
+      label.textContent = campaign && receipt.clear_phrase
+        ? this.text('あなたの完走川柳（合言葉）。スクショで保存できます。', 'Your completion poem (passphrase). Save this screen as a screenshot.')
+        : this.text('おまけまでクリア！ この画面はスクショで保存できます。', 'Extra completed! You can save this screen as a screenshot.');
+      code.hidden = !campaign;
+      code.toggleAttribute('data-japan-campaign', true);
+      share.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.receiptText(receipt));
+    };
+    refresh();
+    globalThis.StellaCampaignVisibility?.ready.then(() => { if (panel.isConnected) refresh(); });
     return panel;
   }
 

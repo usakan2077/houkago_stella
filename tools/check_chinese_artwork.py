@@ -29,6 +29,8 @@ def main():
         c=browser.CDP(next(t['webSocketDebuggerUrl'] for t in targets if t['type']=='page'))
         c.send('Page.enable');c.send('Runtime.enable');c.send('Network.enable');c.send('Network.setBlockedURLs',{'urls':['https://*']})
         c.send('Page.addScriptToEvaluateOnNewDocument',{'source':"localStorage.setItem('vn_language','en')"})
+        from campaign_test_country import install
+        install(c)
         base=f'http://127.0.0.1:{server.server_port}'
         for folder in ['lp','lp/ai']:
             for language in ['zh-CN','zh-TW']:

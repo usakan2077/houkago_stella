@@ -53,6 +53,9 @@ def main():
         c.send('Network.setBlockedURLs', dict(urls=['https://*']))
         c.send('Emulation.setDeviceMetricsOverride', dict(width=1280,height=720,deviceScaleFactor=1,mobile=False))
         c.send('Emulation.setFocusEmulationEnabled', dict(enabled=True))
+        # Campaign layout/sharing checks represent access from Japan in every language.
+        from campaign_test_country import install
+        country_mock = install(c)
         base = f'http://127.0.0.1:{server.server_port}'
         c.send('Page.navigate',dict(url=base+'/index.html'))
         c.wait("typeof engine!=='undefined' && document.querySelector('#btn-loading-ok')?.style.visibility === ''",90)
@@ -60,6 +63,11 @@ def main():
         c.evaluate('engine.openingMovie.finish(); VN_CONFIG.openingMovieIdleMs=3600000; VN_CONFIG.settings.typeSpeed=0; engine._chainMode="none"')
         c.wait("engine.openingMovie.phase==='idle'")
         import sys
+        if '--campaign-country-only' in sys.argv:
+            from check_campaign_country import run
+            run(c,passed,OUT,base,country_mock)
+            (OUT/'campaign-country-checks.json').write_text(json.dumps(dict(status='PASS',checks=checks),ensure_ascii=False,indent=2),encoding='utf8')
+            return
         if '--campaign-only' in sys.argv:
             from check_campaign import run
             run(c,passed,OUT,base)

@@ -2,6 +2,32 @@
   const base = new URL('.', document.currentScript.src);
   const config = window.STELLA_CAMPAIGN;
   if (!config) return;
+  // Fail closed: language and timezone do not establish access from Japan.
+  // Read only the country field; never log or persist the trace (which includes an IP).
+  let allowed = false;
+  const ready = (async () => {
+    const controller = new AbortController();
+    let timer;
+    try {
+      const country = await Promise.race([
+        (async () => {
+          const response = await fetch('https://www.cloudflare.com/cdn-cgi/trace', {
+            signal: controller.signal, credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer',
+          });
+          if (!response.ok) return null;
+          const body = await response.text();
+          if (body.length > 16384) return null;
+          const fields = body.split(/\r?\n/).filter(line => line.startsWith('loc='));
+          return fields.length === 1 && /^loc=[A-Z]{2}$/.test(fields[0]) ? fields[0].slice(4) : null;
+        })(),
+        new Promise(resolve => { timer = setTimeout(() => resolve(null), 3000); }),
+      ]);
+      allowed = country === 'JP';
+    } catch { /* Offline, blocked and unknown countries keep promotions hidden. */ }
+    finally { clearTimeout(timer); controller.abort(); }
+    return allowed;
+  })();
+  window.StellaCampaignVisibility = Object.freeze({ get allowed() { return allowed; }, ready });
   const buttons = [...document.querySelectorAll('[data-campaign-open]')];
   if (!buttons.length) return;
   let dialog, opener, previousOverflow;
@@ -29,6 +55,7 @@
     return link;
   }
   function render() {
+    for (const node of document.querySelectorAll('[data-japan-campaign]')) node.hidden = !allowed;
     globalThis.StellaMedia?.apply(document.documentElement.lang);
     for (const button of buttons) {
       button.setAttribute('aria-label', text('おまけまで完走キャンペーンの詳細・応募ルールを見る', 'View completion campaign details and rules'));
@@ -95,6 +122,7 @@
     dialog.scrollTop = scroll;
   }
   for (const button of buttons) button.onclick = () => {
+    if (!allowed) return;
     if (!dialog) {
       dialog = document.createElement('dialog');
       dialog.id = 'stella-campaign-dialog';
@@ -116,4 +144,5 @@
   };
   new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   render();
+  ready.then(render);
 })();
