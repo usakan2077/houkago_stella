@@ -10,11 +10,12 @@
   audio.preload = 'none';
   audio.volume = 0.85;
   let active = null, sequence = 0, context = null, gain = null;
-  const language = () => document.documentElement.lang === 'en' ? 'en' : 'ja';
+  const language = () => document.documentElement.lang;
+  const audioLanguage = () => language() === 'en' ? 'en' : 'ja';
   const labels = {ja: {play:'声を聴く', stop:'停止する', loading:'読み込み中', error:'音声を再生できませんでした。もう一度お試しください。'}, en: {play:'Listen', stop:'Stop', loading:'Loading', error:'Unable to play the sample. Please try again.'}};
   const status = section.querySelector('.voice-status');
   function updateButtons() {
-    const text = labels[language()];
+    const text = Object.fromEntries(Object.entries(labels[audioLanguage()]).map(([key, value]) => [key, globalThis.StellaI18n?.text(value, language()) ?? value]));
     buttons.forEach(button => {
       const selected = active === button;
       button.setAttribute('aria-pressed', String(selected));
@@ -22,7 +23,7 @@
       button.querySelector('.voice-play-label').textContent = loading ? text.loading : selected ? text.stop : text.play;
       button.querySelector('.voice-play-icon').textContent = selected ? '■' : '▶';
       const card = button.closest('[data-voice-character]');
-      const name = language() === 'en' ? card.dataset.nameEn : card.dataset.nameJa;
+      const name = audioLanguage() === 'en' ? card.dataset.nameEn : (globalThis.StellaI18n?.text(card.dataset.nameJa, language()) ?? card.dataset.nameJa);
       button.setAttribute('aria-label', name + ': ' + (selected ? text.stop : text.play));
     });
   }
@@ -41,6 +42,7 @@
     translations.forEach(node => {if (en) node.textContent = node.dataset.en; else node.innerHTML = japanese.get(node);});
     images.forEach(node => {node.alt = en ? node.dataset.altEn : japaneseAlts.get(node);});
     status.textContent = '';
+    globalThis.StellaI18n?.localizeDocument(language());
     updateButtons();
   }
   buttons.forEach(button => button.addEventListener('click', async () => {
@@ -51,6 +53,7 @@
     active = button;
     button.dataset.state = 'loading';
     status.textContent = '';
+    globalThis.StellaI18n?.localizeDocument(language());
     updateButtons();
     try {
       const Context = window.AudioContext || window.webkitAudioContext;
@@ -60,7 +63,7 @@
         context.createMediaElementSource(audio).connect(gain);
         gain.connect(context.destination);
       }
-      const lang = language();
+      const lang = audioLanguage();
       if (gain) gain.gain.value = 10 ** (Number(button.dataset[lang + 'Gain'] || 0) / 20);
       audio.src = button.dataset[lang + 'Src'];
       if (context) await context.resume();
@@ -72,13 +75,13 @@
     } catch (error) {
       if (ticket !== sequence) return;
       stop();
-      status.textContent = labels[language()].error;
+      status.textContent = globalThis.StellaI18n?.text(labels[audioLanguage()].error, language()) ?? labels[audioLanguage()].error;
     }
   }));
   audio.addEventListener('ended', stop);
   audio.addEventListener('error', () => {
     if (!active) return;
-    stop(); status.textContent = labels[language()].error;
+    stop(); status.textContent = globalThis.StellaI18n?.text(labels[audioLanguage()].error, language()) ?? labels[audioLanguage()].error;
   });
   document.addEventListener('lp-language-change', localize);
   document.addEventListener('visibilitychange', () => {if (document.hidden) stop();});

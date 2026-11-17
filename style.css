@@ -2739,3 +2739,10 @@ html[lang="en"] #char-name {
   font-size: 25px; line-height: 1.9; white-space: pre-wrap;
   box-shadow: 0 4px 24px #0006;
 }
+
+/* Chinese glyphs use installed regional fonts without another network dependency. */
+html[lang="zh-CN"] { --vn-serif-font: 'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif; }
+html[lang="zh-TW"] { --vn-serif-font: 'Songti TC', 'PMingLiU', 'Noto Serif CJK TC', serif; }
+html:lang(zh) #text-box { line-break: strict; overflow-wrap: anywhere; }
+#language-options { flex-wrap: wrap; }
+html:lang(zh) .language-btn, html:lang(zh) .settings-opt { font-family: system-ui, sans-serif; }

@@ -24,7 +24,7 @@
   const syncMovieLanguage = () => {
     if (!movie) return;
     const source = movie.querySelector('source');
-    const language = document.documentElement.lang === 'en' ? 'en' : 'ja';
+    const language = document.documentElement.lang;
     const target = movie.dataset[language === 'en' ? 'srcEn' : 'srcJa'];
     if (!source || !target || source.getAttribute('src') === target) return;
     const time = movie.currentTime;

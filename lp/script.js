@@ -6,6 +6,9 @@ const translations = {
     pressed: "false",
     lang: "ja",
     text: {
+      "#update-1-4-7 .update-points li:nth-child(1)": "中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。",
+      "#update-1-4-7 .update-points li:nth-child(2)": "中国語表示では日本語音声を再生。",
+
       "#film-title": "オープニングムービー",
       ".film-lead": "主題歌とともに、三人の放課後へ。",
       ".film-duration": "主題歌付きOP ／ 約1分43秒",
@@ -169,6 +172,9 @@ const translations = {
     pressed: "true",
     lang: "en",
     text: {
+      "#update-1-4-7 .update-points li:nth-child(1)": "Added Simplified and Traditional Chinese story text, interface and website support.",
+      "#update-1-4-7 .update-points li:nth-child(2)": "Chinese text uses the existing Japanese voices.",
+
       "#film-title": "Opening Movie",
       ".film-lead": "Step into their after-school world with the theme song.",
       ".film-duration": "Opening with theme song / about 1 min 43 sec",
@@ -327,48 +333,45 @@ const translations = {
   },
 };
 
-const languageToggle = document.querySelector(".language-toggle");
+const languageToggle = document.querySelector(".stella-language-select");
 const languageCurrent = document.querySelector(".language-toggle-current");
 
 function applyLanguage(language) {
+  language = StellaI18n.normalize(language);
   const locale = translations[language] || translations.ja;
-  document.documentElement.lang = locale.lang;
+  const chinese = language.startsWith("zh-");
+  const localize = text => chinese ? StellaI18n.text(text, language) : text;
+  document.documentElement.lang = language;
   document.querySelector("#lp-op")?.setAttribute("aria-label", locale.lang === "en" ? "After School Stella opening movie" : "放課後のステラ オープニングムービー");
-  document.dispatchEvent(new CustomEvent("lp-language-change", {detail:{language:locale.lang}}));
-  document.title = locale.title;
-  document.querySelector('meta[name="description"]')?.setAttribute("content", locale.description);
-  document.querySelector('meta[property="og:title"]')?.setAttribute("content", locale.title);
-  document.querySelector('meta[property="og:description"]')?.setAttribute("content", locale.description);
-  document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", locale.title);
-  document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", locale.description);
+  document.dispatchEvent(new CustomEvent("lp-language-change", {detail:{language}}));
+  document.title = localize(locale.title);
+  document.querySelector('meta[name="description"]')?.setAttribute("content", localize(locale.description));
+  document.querySelector('meta[property="og:title"]')?.setAttribute("content", localize(locale.title));
+  document.querySelector('meta[property="og:description"]')?.setAttribute("content", localize(locale.description));
+  document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", localize(locale.title));
+  document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", localize(locale.description));
 
   Object.entries(locale.text).forEach(([selector, value]) => {
     const node = document.querySelector(selector);
     if (node) {
-      node.textContent = value;
+      node.textContent = localize(value);
     }
   });
 
-  languageToggle?.setAttribute("aria-pressed", locale.pressed);
+  if (languageToggle) languageToggle.value = language;
+  StellaI18n.localizeDocument(language);
   if (languageCurrent) {
     languageCurrent.textContent = locale.current;
   }
   // ゲーム本編と同じキー (vn_language) に保存して言語設定を共有
-  localStorage.setItem("vn_language", language);
+  try { localStorage.setItem("vn_language", language); } catch (_) {}
 }
 
 // 既存ユーザー向け: 旧キー (houkagoStellaLanguage) が残っていれば一度だけ移行
-const savedLanguage =
-  (localStorage.getItem("vn_language") || localStorage.getItem("houkagoStellaLanguage")) === "en"
-    ? "en"
-    : "ja";
-try { localStorage.removeItem("houkagoStellaLanguage"); } catch (e) {}
+let savedLanguage = StellaI18n.browserLanguage();
+try { savedLanguage = localStorage.getItem('vn_language') || localStorage.getItem('houkagoStellaLanguage') || savedLanguage; localStorage.removeItem('houkagoStellaLanguage'); } catch (_) {}
 applyLanguage(savedLanguage);
-
-languageToggle?.addEventListener("click", () => {
-  const nextLanguage = document.documentElement.lang === "en" ? "ja" : "en";
-  applyLanguage(nextLanguage);
-});
+languageToggle?.addEventListener('change', () => applyLanguage(languageToggle.value));
 
 const navLinks = [...document.querySelectorAll(".site-nav a")];
 const sections = navLinks

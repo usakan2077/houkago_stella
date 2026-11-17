@@ -29,7 +29,7 @@ def split_sentences(text, language):
         if stack and char == stack[-1]:
             stack.pop()
             continue
-        if language == "ja":
+        if language == "ja" or language.startswith('zh-'):
             if stack or char != "。":
                 continue
         else:

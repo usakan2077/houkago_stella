@@ -18,7 +18,7 @@ class BonusScenario {
   get canStart() { return this.engine._hasAllGoodEndsSeen(); }
 
   get english() { return this.engine.currentLanguage === 'en'; }
-  text(ja, en) { return this.english ? en : ja; }
+  text(ja, en) { return this.english ? en : (this.engine._localize?.(ja) ?? ja); }
 
   install() {
     const e = this.engine;
@@ -26,7 +26,7 @@ class BonusScenario {
       VN_CONFIG.characters[key] = { ...VN_CONFIG.characters[actor.speakerKey], ...actor, bonusOnly: true };
     }
     Object.assign(e.labels, e.parser.parse(VN_BONUS.script));
-    for (const [key, value] of Object.entries(VN_BONUS.texts[this.english ? 'en' : 'ja'])) {
+    for (const [key, value] of Object.entries(VN_BONUS.texts[this.engine.currentLanguage] || VN_BONUS.texts.ja)) {
       e.scenarioTexts['bonus.' + key] = value;
     }
   }
@@ -343,7 +343,8 @@ class BonusScenario {
     if (mode === 'newspaper') {
       const picture = document.createElement('img');
       picture.className = 'bonus-board-picture bonus-newspaper-picture';
-      picture.src = this.engine._assetURL?.(VN_BONUS.newspapers[this.english ? 'en' : 'ja']) || VN_BONUS.newspapers[this.english ? 'en' : 'ja'];
+      const newspaper = VN_BONUS.newspapers[this.engine.currentLanguage] || VN_BONUS.newspapers.ja;
+      picture.src = this.engine._assetURL?.(newspaper) || newspaper;
       picture.alt = this.text('学園新聞号外：実況者、選手転向直後に不正。写真提供・まひる。', 'School newspaper extra: Commentator caught cheating on debut. Photo by Mahiru.');
       this.layer.appendChild(picture);
     }
@@ -363,7 +364,8 @@ class BonusScenario {
     this.layer.replaceChildren();
     const picture = document.createElement('img');
     picture.className = 'bonus-board-picture';
-    picture.src = this.engine._assetURL?.(VN_BONUS.boards[this.english ? 'en' : 'ja'][view]) || VN_BONUS.boards[this.english ? 'en' : 'ja'][view];
+    const board = (VN_BONUS.boards[this.engine.currentLanguage] || VN_BONUS.boards.ja)[view];
+    picture.src = this.engine._assetURL?.(board) || board;
     picture.alt = view === 'index'
       ? this.text('VIP風のスレッド一覧', 'Early imageboard thread index')
       : this.text('文化祭の相談スレ：詳細キボンヌとギコねこ', 'Anonymous festival thread: pics, sage and faces');
@@ -413,7 +415,7 @@ class BonusScenario {
     this.layer.querySelectorAll('.bonus-impact').forEach(node => node.remove());
     const word = document.createElement('div');
     word.className = 'bonus-impact bonus-impact-' + kind;
-    word.textContent = (words[kind] || words.switch)[this.english ? 1 : 0];
+    word.textContent = this.engine._localize((words[kind] || words.switch)[this.english ? 1 : 0]);
     this.layer.appendChild(word);
     this.later(() => word.remove(), 900);
     this.animate(word, [{ transform: 'scale(2.2) rotate(-12deg)', opacity: 0 }, { transform: 'scale(1) rotate(-5deg)', opacity: 1, offset: .25 }, { transform: 'scale(1.08) rotate(-5deg)', opacity: 0 }], { duration: 900, easing: 'ease-out' });

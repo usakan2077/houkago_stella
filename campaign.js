@@ -6,7 +6,7 @@
   if (!buttons.length) return;
   let dialog, opener, previousOverflow;
   const english = () => document.documentElement.lang === 'en';
-  const text = (ja, en) => english() ? en : ja;
+  const text = (ja, en) => english() ? en : (globalThis.StellaI18n?.text(ja, document.documentElement.lang) ?? ja);
   const phase = () => {
     const start = Date.parse(config.startsAt), end = Date.parse(config.endsAt);
     if (Number.isFinite(end) && Date.now() > end) return 'ended';
@@ -64,7 +64,7 @@
     } else if (Number.isFinite(Date.parse(config.startsAt))) {
       content.append(el('p', text('応募期間：', 'Entry period: ') + format(config.startsAt) + ' – ' + format(config.endsAt) + ' (JST)', 'campaign-notice'));
     }
-    content.append(el('p', text('応募対象：日本国内在住の方。国籍・プレイ言語は問いません。日本語・英語どちらでのプレイも対象です。', 'Eligibility: residents of Japan, regardless of nationality. Both Japanese and English playthroughs qualify.'), 'campaign-eligibility'),
+    content.append(el('p', text('応募対象：日本国内在住の方。国籍・プレイ言語は問いません。', 'Eligibility: residents of Japan, regardless of nationality or play language.'), 'campaign-eligibility'),
       el('h3', text('応募方法', 'How to enter')));
     const steps = el('ol');
     [text('公式Xアカウント @houkago_stella をフォロー。', 'Follow @houkago_stella on X.'),
