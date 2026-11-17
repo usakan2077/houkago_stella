@@ -68,6 +68,10 @@ py tools/check_chinese_artwork.py
 
 全件の試聴ページは [audition.html](../../houkago-stella-voice/samples/chinese-v1-20261117/audition.html)。機械検査は発音・演技の正しさを保証しない。母語話者による全件試聴は未実施。
 
+ユーザー許可とAPIキーのSpeech to Text有効化後、同じElevenLabsの `scribe_v3` で選定17音声だけを照合した。12役、人名、特定のおまけ台詞と繁体字版の1テイクを含む。全音声の認識は行っていない。[照合記録](chinese-voice-sample-review.json) に音声ハッシュ・台詞・認識結果を保存。
+
+8件は本文一致または句読点・数字・同音表記の差。9件は固有名詞・声調・n/ng・語尾などを要試聴とした。例えば桐岛→童童、樱笑樱→殷笑笑、琴叶→晴夜という認識結果がある。これは音声認識による候補抽出であり、音声そのものの誤読を確定したものではない。認識結果だけでは音声を差し替えず、[17件の確認用ページ](../../houkago-stella-voice/samples/chinese-v1-20261117/pilot-review.html)へまとめた。文字列類似度は発音の正答率として扱わない。
+
 ## 検証
 
 - 全4言語：12スクリプト・190ラベル・7結末。本文ID集合・分岐・演出・素材参照が一致。
