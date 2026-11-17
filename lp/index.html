@@ -33,6 +33,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://www.houkago-stella.com/lp/">
+  <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="放課後のステラ">
   <meta property="og:locale" content="ja_JP">
@@ -64,15 +65,18 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.4.7-art1">
   <link rel="stylesheet" href="voice-preview.css">
   <link rel="stylesheet" href="../campaign.css?v=1.4.7">
-<script src="../chinese-locales.js?v=1.4.7"></script>
+<script src="../chinese-locales.js?v=1.4.7-art1"></script>
+<script src="../localized-media.js?v=1.4.7-art1"></script>
+  <link rel="alternate" hreflang="zh-CN" href="https://www.houkago-stella.com/lp/index.zh-CN.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://www.houkago-stella.com/lp/index.zh-TW.html">
 </head>
 <body data-lp-variant="story">
   <header class="site-header" aria-label="サイトヘッダー">
     <a class="brand" href="#top" aria-label="放課後のステラ トップ">
-      <img src="assets/images/title_logo.webp" alt="" class="brand-logo">
+      <img data-stella-media="logo" data-original-src="assets/images/title_logo.webp" src="assets/images/title_logo.webp" alt="" class="brand-logo">
       <span>放課後のステラ</span>
     </a>
     <nav class="site-nav" aria-label="ページ内ナビゲーション">
@@ -90,7 +94,7 @@
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-art" aria-hidden="true"></div>
-      <img class="hero-poster" src="assets/images/poster.png" alt="" aria-hidden="true">
+      <img class="hero-poster" data-stella-media="poster" data-original-src="assets/images/poster.png" src="assets/images/poster.png" alt="" aria-hidden="true">
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-inner">
         <p class="eyebrow">Browser Visual Novel</p>
@@ -117,7 +121,7 @@
 
     <section class="campaign-lp" aria-label="キャンペーン">
       <button type="button" class="campaign-banner" data-campaign-open aria-haspopup="dialog" aria-controls="stella-campaign-dialog">
-        <img src="../assets/campaign/clear-campaign-v1.webp" alt="" width="150" height="104" loading="lazy">
+        <img data-stella-media="campaign" data-original-src="../assets/campaign/clear-campaign-v1.webp" src="../assets/campaign/clear-campaign-v1.webp" alt="" width="150" height="104" loading="lazy">
         <span class="campaign-banner-copy"><span data-campaign-status>キャンペーン開催中 · 日本国内在住者限定</span><strong data-campaign-title>おまけまで完走キャンペーン</strong><span data-campaign-prize>Amazonギフトカード 5,000円分 × 2名</span></span>
         <span data-campaign-more>応募ルールを見る</span>
       </button>
@@ -396,7 +400,7 @@
         <ol class="updates-list">
           <li class="update-entry" id="update-1-4-7">
               <div class="update-meta"><span class="update-version">ver 1.4.7</span><span class="update-date">2026.11.17</span></div>
-              <ul class="update-points"><li>中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。</li><li>本編・おまけの中国語音声と、紹介ページの試聴に対応。</li></ul>
+              <ul class="update-points"><li>中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。</li><li>本編・おまけの中国語音声と、紹介ページの試聴に対応。</li><li>タイトル画像・ポスター・紹介ページの共有画像を中国語に対応。</li></ul>
             </li>
             <li class="update-entry" id="update-1-4-6">
             <div class="update-meta"><span class="update-version">ver 1.4.6</span><span class="update-date">2026.11.02</span></div>
@@ -553,10 +557,10 @@
   </footer>
 
   <script src="voice-preview.js"></script>
-  <script src="script.js?v=1.4.7"></script>
+  <script src="script.js?v=1.4.7-art1"></script>
   <script src="experiment.js?v=1.4.7"></script>
   <script src="../campaign-config.js?v=1.4.7"></script>
-  <script src="../campaign.js?v=1.4.7"></script>
+  <script src="../campaign.js?v=1.4.7-art1"></script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>

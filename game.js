@@ -24,7 +24,7 @@ class VNEngine {
     this._longPressTriggered = false;
     this._resizeRaf = null;
     this.currentLanguage = this._normalizeLanguage(
-      localStorage.getItem('vn_language') || globalThis.StellaI18n?.browserLanguage() || VN_CONFIG.i18n?.defaultLanguage || 'ja'
+      globalThis.StellaMedia?.initialLanguage() || localStorage.getItem('vn_language') || globalThis.StellaI18n?.browserLanguage() || VN_CONFIG.i18n?.defaultLanguage || 'ja'
     );
 
     // 入力待ち / モード
@@ -258,6 +258,7 @@ class VNEngine {
 
   _applyStaticI18n() {
     document.documentElement.lang = this.currentLanguage;
+    globalThis.StellaMedia?.apply(this.currentLanguage, {updateUrl: new URL(location.href).searchParams.has('lang')});
     document.title = this._t('loadingGameTitle');
     const setText = (id, text) => {
       const el = document.getElementById(id);

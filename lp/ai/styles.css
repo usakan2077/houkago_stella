@@ -14,3 +14,6 @@ html[lang="en"] h1{font-size:clamp(38px,4.2vw,60px);letter-spacing:-.055em;line-
 .stella-language-select { max-width: 132px; min-width: 88px; padding: 8px 5px; border: 1px solid #8888; border-radius: 4px; background: #18182b; color: #fff; font: 13px system-ui, sans-serif; }
 html[lang="zh-CN"] body { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; }
 html[lang="zh-TW"] body { font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif; }
+/* Keep the Chinese title and all four characters inside the poster frame. */
+html[lang^="zh-"] .poster-frame { height: auto; max-height: none; aspect-ratio: 848 / 1264; }
+html[lang^="zh-"] .poster-frame img { object-fit: contain; object-position: center; }

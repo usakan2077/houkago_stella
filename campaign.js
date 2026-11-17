@@ -29,6 +29,7 @@
     return link;
   }
   function render() {
+    globalThis.StellaMedia?.apply(document.documentElement.lang);
     for (const button of buttons) {
       button.setAttribute('aria-label', text('おまけまで完走キャンペーンの詳細・応募ルールを見る', 'View completion campaign details and rules'));
       button.querySelector('[data-campaign-status]').textContent = status() + ' · ' + text('日本国内在住者限定', 'Japan residents only');
@@ -49,7 +50,8 @@
     const close = el('button', text('閉じる ×', 'Close ×'), 'campaign-close');
     close.type = 'button'; close.onclick = () => dialog.close();
     const image = el('img');
-    image.src = new URL('assets/campaign/clear-campaign-v1.webp', base).href;
+    const language = document.documentElement.lang;
+    image.src = new URL(globalThis.StellaMedia?.asset('campaign', language) || 'assets/campaign/clear-campaign-v1.webp', base).href;
     image.alt = text('放課後のステラ おまけまで完走キャンペーン。抽選で2名にAmazonギフトカード5,000円分。', 'Houkago Stella completion campaign: two winners receive a ¥5,000 Amazon.co.jp Gift Card.');
     image.className = 'campaign-poster'; image.width = 1536; image.height = 864;
     const content = el('div', null, 'campaign-rules');
@@ -57,7 +59,7 @@
     heading.id = 'stella-campaign-heading';
     content.append(el('p', status(), 'campaign-status'), heading,
       el('p', text('最後まで遊んでくれた方の中から、抽選で2名にAmazonギフトカード5,000円分をプレゼント！', 'Complete the extra and enter a random draw. Two winners will each receive a ¥5,000 Amazon.co.jp Gift Card.'), 'campaign-lead'));
-    const format = value => new Intl.DateTimeFormat(english() ? 'en-GB' : 'ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(value));
+    const format = value => new Intl.DateTimeFormat(english() ? 'en-GB' : document.documentElement.lang.startsWith('zh-') ? document.documentElement.lang : 'ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(value));
     if (Number.isFinite(Date.parse(config.endsAt))) content.append(el('p', text('応募締切：', 'Entry deadline: ') + format(config.endsAt) + ' (JST)', 'campaign-deadline'));
     if (phase() === 'preparing') {
       content.append(el('p', text('開催期間と告知ポストは準備中です。応募受付の開始は、公式Xでお知らせします。', 'Dates and the announcement post are being prepared. Applications are not open yet. Follow the official X account for updates.'), 'campaign-notice'));

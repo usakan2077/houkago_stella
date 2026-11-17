@@ -9,6 +9,7 @@
 - 保存済み設定がなければブラウザの中国語の地域に応じて初期表記を選択。タイトル・CONFIG・紹介ページで4言語を手動選択可能。
 - 中国語表示は各表示に対応する普通話音声を再生。日英の録音・manifestは保持。OPは既存の日本語版を使用。
 - 中国語はOSの地域別フォントを使用し、追加Webフォントは不要。
+- タイトルロゴ・LPポスター・共有画像・キャンペーン画像も両表記に対応。スマホの回転・ホーム画面追加案内も翻訳。
 
 ゲームと両LPのバージョン・公開履歴・キャッシュ用URLは1.4.7に統一。ブランチは `feat/chinese-localization`。PRでレビューし、本流への統合・本番公開は別途行う。
 
@@ -25,6 +26,27 @@ py tools/check_scenarios_i18n.py
 ```
 
 UI原稿は `ui-source.json` と `ui.txt`、追加文言は `ui-extra.json`。辞書と `chinese-locales.js` を生成する。実行時にも翻訳APIを呼ばない。旧作業フォルダーの外部翻訳スクリプトは起動時に停止するよう無効化済み。
+
+## タイトル画像とLP
+
+タイトルは簡体字「放学后的星光：谎言与愿望的边界」、繁体字「放學後的星光：謊言與願望的邊界」に統一。元の星・五線譜・淡い紫のロゴデザインを基に両表記を制作し、透明PNGの元素材を `houkago-stella-assets/assets-src/chinese-promo-v1/` に保存した。ポスター・OG画像・キャンペーン画像も同フォルダーで管理。配信用は [画像登録記録](chinese-promo-assets.json) の8点を参照。
+
+```powershell
+py tools/convert_chinese_promo.py
+py tools/build_chinese_ui.py
+py tools/build_chinese_landing_pages.py
+py tools/check_chinese_artwork.py
+```
+
+変換はPillowで寸法とWebP/PNG形式を揃える。ロゴは透明度を維持し、共有画像は1200×630px。画像生成は別作業であり、これらのビルドコマンドから生成APIや翻訳APIを呼ばない。
+
+中国語を選択すると、ゲームのタイトルと両LPの画像を同じ表記へ切り替える。キャンペーンのサムネイルと詳細画像も追従し、日本国内在住者という参加条件を両表記の画像・本文で維持。日英へ戻した際は既存画像を使う。
+
+共有・検索用の入口は `lp/index.zh-CN.html` / `lp/index.zh-TW.html`、制作紹介版は `lp/ai/index.zh-CN.html` / `lp/ai/index.zh-TW.html`。本文・タイトル・canonical・OG画像は静的HTMLへ書き出すため、JavaScriptを実行しないクローラーにも中国語の情報を返す。本文やUIの変更後は再ビルドする。元の日本語文言も属性へ保持し、生成したページ内でも4言語を切り替えられる。
+
+明示的なURLの `?lang=zh-CN` / `?lang=zh-TW`、中国語専用入口、保存済み設定、ブラウザ言語の順で初期言語を選ぶ。LPのプレイボタンは選択言語をゲームURLへ引き継ぐ。別言語を選ぶとURLも更新し、再読込で古い言語へ戻らない。
+
+外部ネットワークを遮断した実Edgeで、通常LPと中国語専用4ページの画像・音声試聴、4言語の往復、スマホ320px／390px、キャンペーン条件、ゲームタイトルの横画面表示を確認。画像・レポートは `D:/AI/stella-chinese-artwork-check-20261117/`。
 
 ## 音声台本
 

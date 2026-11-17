@@ -1,0 +1,103 @@
+{
+  "version": "chinese-promo-v1",
+  "source_root": "houkago-stella-assets/assets-src",
+  "artwork_review": "Chinese title/subtitle, marketing copy, eligibility, faces and layout visually checked.",
+  "assets": [
+    {
+      "language": "zh-CN",
+      "kind": "title_logo",
+      "source": "chinese-promo-v1/title_logo.zh-CN.png",
+      "src": "assets/images/bg/title_logo_zh-CN-v1.webp",
+      "size": [
+        1280,
+        427
+      ],
+      "bytes": 171378,
+      "sha256": "6ab46f4375e958a89f25787a2ac362cd2dc28e9fd1b2502dbd24ff0fb30e61a6"
+    },
+    {
+      "language": "zh-CN",
+      "kind": "poster",
+      "source": "chinese-promo-v1/poster.zh-CN.png",
+      "src": "assets/images/promo/poster.zh-CN-v1.webp",
+      "size": [
+        848,
+        1264
+      ],
+      "bytes": 230668,
+      "sha256": "2f5b8f52d1926c44efd321f521afd94fd8053821becfbcb94e76ee3b4a65d640"
+    },
+    {
+      "language": "zh-CN",
+      "kind": "og",
+      "source": "chinese-promo-v1/og.zh-CN.png",
+      "src": "assets/images/promo/og.zh-CN-v1.png",
+      "size": [
+        1200,
+        630
+      ],
+      "bytes": 1050576,
+      "sha256": "0882fc486c8865667bd9d07aef466767c8f2247aec9e3430ae203e382f5656eb"
+    },
+    {
+      "language": "zh-CN",
+      "kind": "campaign",
+      "source": "chinese-promo-v1/campaign.zh-CN.png",
+      "src": "assets/campaign/clear-campaign.zh-CN-v1.webp",
+      "size": [
+        1536,
+        864
+      ],
+      "bytes": 320586,
+      "sha256": "af4272a18b7928d45e3e9b2ee55b4e9931fb54215a30b92316bfe4e2ccdd1c88"
+    },
+    {
+      "language": "zh-TW",
+      "kind": "title_logo",
+      "source": "chinese-promo-v1/title_logo.zh-TW.png",
+      "src": "assets/images/bg/title_logo_zh-TW-v1.webp",
+      "size": [
+        1280,
+        427
+      ],
+      "bytes": 168558,
+      "sha256": "9c4ab38078b72455175166b27be167ecb43242e9061e7525a639ec7505e64c69"
+    },
+    {
+      "language": "zh-TW",
+      "kind": "poster",
+      "source": "chinese-promo-v1/poster.zh-TW.png",
+      "src": "assets/images/promo/poster.zh-TW-v1.webp",
+      "size": [
+        848,
+        1264
+      ],
+      "bytes": 234932,
+      "sha256": "6a64922adca637c3f58be302e99429094147f8bc4d60196653d5e81fb60f3f6c"
+    },
+    {
+      "language": "zh-TW",
+      "kind": "og",
+      "source": "chinese-promo-v1/og.zh-TW.png",
+      "src": "assets/images/promo/og.zh-TW-v1.png",
+      "size": [
+        1200,
+        630
+      ],
+      "bytes": 1092122,
+      "sha256": "61ba2afa3834c2628f754a9c94004931d1fb71178cd5a9f02d183b8498ab023c"
+    },
+    {
+      "language": "zh-TW",
+      "kind": "campaign",
+      "source": "chinese-promo-v1/campaign.zh-TW.png",
+      "src": "assets/campaign/clear-campaign.zh-TW-v1.webp",
+      "size": [
+        1536,
+        864
+      ],
+      "bytes": 326398,
+      "sha256": "78e56c4544e7b761e3a7d11461bed4ef3e43cb467e37672c32c532a5b0a7ad60"
+    }
+  ]
+}

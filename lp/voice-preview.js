@@ -3,9 +3,9 @@
   if (!section) return;
   const buttons = [...section.querySelectorAll('.voice-play')];
   const translations = [...section.querySelectorAll('[data-en]')];
-  const japanese = new Map(translations.map(node => [node, node.innerHTML]));
+  const japanese = new Map(translations.map(node => [node, node.dataset.ja ?? node.innerHTML]));
   const images = [...section.querySelectorAll('[data-alt-en]')];
-  const japaneseAlts = new Map(images.map(node => [node, node.alt]));
+  const japaneseAlts = new Map(images.map(node => [node, node.dataset.jaAlt ?? node.alt]));
   const audio = new Audio();
   audio.preload = 'none';
   audio.volume = 0.85;

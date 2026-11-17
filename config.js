@@ -24,10 +24,10 @@ const VN_CONFIG = {
 },
   releaseNotes: [
     { version: '1.4.7', date: '2026-11-17',
-      ja: ['中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。', '本編・おまけの中国語音声と、紹介ページの試聴に対応。'],
-      en: ['Added Simplified and Traditional Chinese story text, interface and website support.', 'Added Mandarin voices for the main story, bonus story and website samples.'],
-      'zh-CN': ['新增简体中文、繁体中文的故事文本、操作界面和作品介绍页。', '新增正文、番外及介绍页试听的普通话配音。'],
-      'zh-TW': ['新增簡體中文、繁體中文的故事文字、操作介面和作品介紹頁。', '新增本篇、番外及介紹頁試聽的華語配音。'] },
+      ja: ['中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。', '本編・おまけの中国語音声と、紹介ページの試聴に対応。', 'タイトル画像・ポスター・紹介ページの共有画像を中国語に対応。'],
+      en: ['Added Simplified and Traditional Chinese story text, interface and website support.', 'Added Mandarin voices for the main story, bonus story and website samples.', 'Added Chinese title artwork, posters and website share images.'],
+      'zh-CN': ['新增简体中文、繁体中文的故事文本、操作界面和作品介绍页。', '新增正文、番外及介绍页试听的普通话配音。', '标题图片、海报及介绍页分享图片支持中文。'],
+      'zh-TW': ['新增簡體中文、繁體中文的故事文字、操作介面和作品介紹頁。', '新增本篇、番外及介紹頁試聽的華語配音。', '標題圖片、海報及介紹頁分享圖片支援中文。'] },
     { version: '1.4.6', date: '2026-11-02',
       ja: ['おまけまで完走キャンペーンを開始し、公式告知ポストへのリンクを追加。'],
       en: ['Launched the extra completion campaign and added a link to the official announcement.'] },
@@ -788,6 +788,8 @@ const VN_CONFIG = {
   },
 
   titleLogos: {
+    'zh-CN': { src: 'assets/images/bg/title_logo_zh-CN-v1.webp', alt: '放学后的星光：谎言与愿望的边界' },
+    'zh-TW': { src: 'assets/images/bg/title_logo_zh-TW-v1.webp', alt: '放學後的星光：謊言與願望的邊界' },
     ja: {
       src: 'assets/images/bg/title_logo.webp',
       alt: '放課後のステラ',

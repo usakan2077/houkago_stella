@@ -31,6 +31,12 @@ for language in ['zh-CN', 'zh-TW']:
             raise ValueError('Changed HTML: '+original)
         dictionary[original] = translated
     dictionary.pop('中国語表示では日本語音声を再生。', None)
+    if language == 'zh-TW':
+        fixes = {'放學后': '放學後', '最后': '最後', '愿望': '願望'}
+        for key, value in dictionary.items():
+            for original, replacement in fixes.items():
+                value = value.replace(original, replacement)
+            dictionary[key] = value
     path.write_text(json.dumps(dictionary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     dictionaries[language] = dictionary
     for svg in (ROOT/'assets/bonus').glob('*_ja*.svg'):

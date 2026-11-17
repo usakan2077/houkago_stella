@@ -8,6 +8,7 @@ const translations = {
     text: {
       "#update-1-4-7 .update-points li:nth-child(1)": "中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。",
       "#update-1-4-7 .update-points li:nth-child(2)": "本編・おまけの中国語音声と、紹介ページの試聴に対応。",
+      "#update-1-4-7 .update-points li:nth-child(3)": "タイトル画像・ポスター・紹介ページの共有画像を中国語に対応。",
 
       "#film-title": "オープニングムービー",
       ".film-lead": "主題歌とともに、三人の放課後へ。",
@@ -174,12 +175,13 @@ const translations = {
     text: {
       "#update-1-4-7 .update-points li:nth-child(1)": "Added Simplified and Traditional Chinese story text, interface and website support.",
       "#update-1-4-7 .update-points li:nth-child(2)": "Added Mandarin voices for the main story, bonus story and website samples.",
+      "#update-1-4-7 .update-points li:nth-child(3)": "Added Chinese title artwork, posters and website share images.",
 
       "#film-title": "Opening Movie",
       ".film-lead": "Step into their after-school world with the theme song.",
       ".film-duration": "Opening with theme song / about 1 min 43 sec",
       ".film-fallback": "Watch the opening movie",
-      ".hero-voiceheadline .voice-lang": "JAPANESE & ENGLISH",
+      ".hero-voiceheadline .voice-lang": "JAPANESE / ENGLISH / MANDARIN",
       ".hero-voiceheadline .voice-title": "FULL VOICE",
       ".brand span": "After School Stella",
       '.site-nav a[href="#story"]': "Story",
@@ -360,6 +362,7 @@ function applyLanguage(language) {
 
   if (languageToggle) languageToggle.value = language;
   StellaI18n.localizeDocument(language);
+  StellaMedia.apply(language, {updateUrl:true});
   if (languageCurrent) {
     languageCurrent.textContent = locale.current;
   }
@@ -368,8 +371,7 @@ function applyLanguage(language) {
 }
 
 // 既存ユーザー向け: 旧キー (houkagoStellaLanguage) が残っていれば一度だけ移行
-let savedLanguage = StellaI18n.browserLanguage();
-try { savedLanguage = localStorage.getItem('vn_language') || localStorage.getItem('houkagoStellaLanguage') || savedLanguage; localStorage.removeItem('houkagoStellaLanguage'); } catch (_) {}
+let savedLanguage = StellaMedia.initialLanguage();
 applyLanguage(savedLanguage);
 languageToggle?.addEventListener('change', () => applyLanguage(languageToggle.value));
 

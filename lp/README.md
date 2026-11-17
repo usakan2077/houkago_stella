@@ -44,3 +44,7 @@ voice-preview.css／voice-preview.jsが両LP共通の試聴表示・操作です
 通常LPにも冒頭の次にOPムービー再生セクションを追加。既存assets/video/stella-op.mp4を参照し、controls／playsinline／preload=noneで手動再生。試聴とOPは互いに再生を停止し、音が重ならないようにしています。
 
 2026-10-20：ver 1.3.1の更新履歴を日英で統一。ボイス修正・音量、場面のつながり、まひるの屋上への走行、全7ENDとタイトルの改善を掲載。両LPの試聴音声は現行manifestの章別パス・補正音量へ更新。
+
+2026-11-17：中国語（簡体字・繁体字）の本文・配音・タイトルロゴ・ポスター・キャンペーン画像・OG画像に対応。中国語では該当manifestから試聴音声を取得する。画像の切替とプレイ言語の引継ぎは共通の `localized-media.js` で行う。
+
+共有用の静的入口は `index.zh-CN.html` / `index.zh-TW.html`、制作紹介版は `ai/index.zh-CN.html` / `ai/index.zh-TW.html`。画像と文言を編集した後はゲームルートで `py tools/build_chinese_landing_pages.py` を実行する。手順と画像記録は [中国語対応](../docs/chinese-localization.md) を参照。生成した中国語HTMLは直接編集しない。
