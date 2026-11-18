@@ -49,6 +49,6 @@ voice-preview.css／voice-preview.jsが両LP共通の試聴表示・操作です
 
 共有用の静的入口は `index.en.html` / `index.zh-CN.html` / `index.zh-TW.html`。制作紹介版も `ai/` に同名で用意する。画像と文言を編集した後はゲームルートで `py tools/build_chinese_landing_pages.py` を実行する。手順と画像記録は [中国語対応](../docs/chinese-localization.md)、対応状況は [英語・中国語の棚卸し](../docs/localization-audit-20261117.md) を参照。生成したHTMLは直接編集しない。
 
-## 韓国語版（1.4.8作業版）
+## 韓国語版（1.4.8）
 
 `index.ko.html` / `ai/index.ko.html` は韓国語の静的ページ。画像・共有情報・音声試聴・OP・字幕・ホーム画面名と本編への言語引継ぎに対応。中国語と韓国語の試聴は採用manifestから取得する。元のHTMLと辞書を編集し `py tools/build_chinese_landing_pages.py` で英語・中国語・韓国語の8ページを再出力する。キャンペーンは日本で日本語選択時だけ表示する。[検証・制限](../docs/korean-localization.md)
