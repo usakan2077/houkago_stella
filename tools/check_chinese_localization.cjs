@@ -7,7 +7,7 @@ const root = path.join(__dirname, '..');
 const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 function setup() {
   const scope = vm.createContext({ navigator: { language: 'zh-HK' }, setTimeout, clearTimeout, AbortController });
-  vm.runInContext(read('chinese-locales.js') + read('config.js') + ';this.config=VN_CONFIG;', scope);
+  vm.runInContext(read('chinese-locales.js') + read('korean-locales.js') + read('config.js') + ';this.config=VN_CONFIG;', scope);
   vm.runInContext(read('game.js').replace('const engine = new VNEngine();', 'this.Engine=VNEngine;'), scope);
   return scope;
 }
@@ -17,7 +17,7 @@ test('Chinese browser locales select a regional script and preserve Japanese/Eng
   for (const value of ['zh', 'zh-CN', 'zh-SG', 'zh-Hans', 'zh-Hans-CN']) assert.equal(i18n.normalize(value), 'zh-CN');
   assert.equal(i18n.normalize('en-US'), 'en');
   assert.equal(i18n.normalize('ja-JP'), 'ja');
-  assert.equal(i18n.normalize('ko-KR'), 'ja');
+  assert.equal(i18n.normalize('ko-KR'), 'ko');
   assert.equal(i18n.browserLanguage(), 'zh-TW');
 });
 

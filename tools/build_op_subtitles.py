@@ -11,7 +11,7 @@ def main(check=False):
         assert match,cue
         a=int(match[1])*3600+int(match[2])*60+float(match[3]);b=int(match[4])*3600+int(match[5])*60+float(match[6])
         assert previous<=a<b<=102.867,(a,b);previous=b
-    for language in ['ja','en','zh-CN','zh-TW']:
+    for language in ['ja','en','zh-CN','zh-TW','ko']:
         assert all(cue[language].strip() for cue in cues)
         content='WEBVTT\n\n'+'\n\n'.join(str(i+1)+'\n'+cue['timing']+' line:8% position:50% align:center\n'+cue[language] for i,cue in enumerate(cues))+'\n'
         target=ROOT/f'assets/video/subtitles/op.{language}-v1.vtt'

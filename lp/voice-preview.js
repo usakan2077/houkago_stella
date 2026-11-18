@@ -11,7 +11,7 @@
   audio.volume = 0.85;
   let active = null, sequence = 0, context = null, gain = null;
   const language = () => document.documentElement.lang;
-  const audioLanguage = () => language().startsWith('zh-') ? language() : language() === 'en' ? 'en' : 'ja';
+  const audioLanguage = () => (language() === 'ko' || language().startsWith('zh-')) ? language() : language() === 'en' ? 'en' : 'ja';
   const labelLanguage = () => language() === 'en' ? 'en' : 'ja';
   const labels = {ja: {play:'声を聴く', stop:'停止する', loading:'読み込み中', error:'音声を再生できませんでした。もう一度お試しください。'}, en: {play:'Listen', stop:'Stop', loading:'Loading', error:'Unable to play the sample. Please try again.'}};
   const status = section.querySelector('.voice-status');
@@ -67,7 +67,7 @@
       }
       const lang = audioLanguage();
       let src = button.dataset[lang + 'Src'], gainDb = Number(button.dataset[lang + 'Gain'] || 0);
-      if (lang.startsWith('zh-')) {
+      if (lang === 'ko' || lang.startsWith('zh-')) {
         const base = new URL(document.currentScript?.src || document.querySelector('script[src*="voice-preview.js"]').src);
         const root = new URL('../', base);
         const response = await fetch(new URL(`assets/voice/${lang}/manifest.json`, root));

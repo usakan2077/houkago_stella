@@ -60,7 +60,7 @@ def main():
             source=(ROOT/folder/'index.html').read_text(encoding='utf-8')
             ja_title=html.unescape(re.search(r'<title>(.*?)</title>',source,re.S)[1])
             ja_description=html.unescape(re.search(r'<meta name="description" content="([^"]*)"',source)[1])
-            for language in ['en','zh-CN','zh-TW']:
+            for language in ['en','zh-CN','zh-TW','ko']:
                 client.send('Page.navigate',{'url':base+'/'+folder+'/?lang='+language})
                 client.wait("document.readyState==='complete' && document.documentElement.lang==="+json.dumps(language),60)
                 client.wait("document.querySelector('meta[property=\"og:image\"]').content.includes('og."+language+"-v1.png')")

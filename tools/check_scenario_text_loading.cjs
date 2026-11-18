@@ -31,7 +31,7 @@ function setup(language = 'ja', intercept = () => null) {
   return {engine, scope, requests, warnings};
 }
 
-for (const language of ['ja', 'en', 'zh-CN', 'zh-TW']) {
+for (const language of ['ja', 'en', 'zh-CN', 'zh-TW', 'ko']) {
   test(language + ': every actual main/bonus dialogue, choice, ending and coda resolves to text', async () => {
     const {engine, requests, scope} = setup(language);
     assert.equal(await engine._loadScenarioBundle(), true);
@@ -48,7 +48,7 @@ for (const language of ['ja', 'en', 'zh-CN', 'zh-TW']) {
     assert.ok(count > 3600);
     for (const suffix of ['pack_up', 'pack_up.s002']) {
       const text = engine._resolveScenarioText('$chapter1.chapter1_lunch.' + suffix);
-      assert.match(text, language === 'ja' ? /チャイム|教科書/ : language.startsWith('zh-') ? /铃声|鈴聲|课本|課本/ : /bell|textbook/);
+      assert.match(text, language === 'ja' ? /チャイム|教科書/ : language === 'ko' ? /종|교과서/ : language.startsWith('zh-') ? /铃声|鈴聲|课本|課本/ : /bell|textbook/);
     }
     assert.ok(requests.every(({url, options}) => options.cache === 'no-store' && url.endsWith('v=' + scope.config.version)));
   });

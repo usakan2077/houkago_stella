@@ -1,11 +1,14 @@
 const translations = {
   ja: {
-    title: "放課後のステラ｜日英中フルボイス・無料ブラウザノベル",
-    description: "日本語・英語・中国語フルボイスの無料ブラウザ恋愛アドベンチャー『放課後のステラ』。三人のヒロインの声を試聴して、最後まで無料でプレイ。",
+    title: "放課後のステラ｜日英中韓フルボイス・無料ブラウザノベル",
+    description: "日本語・英語・中国語・韓国語フルボイスの無料ブラウザ恋愛アドベンチャー『放課後のステラ』。三人のヒロインの声を試聴して、最後まで無料でプレイ。",
     current: "JP",
     pressed: "false",
     lang: "ja",
     text: {
+      "#update-1-4-8 .update-points li:nth-child(1)": "韓国語の本文・操作画面・紹介ページに対応。",
+      "#update-1-4-8 .update-points li:nth-child(2)": "本編・おまけの韓国語音声と、紹介ページの試聴に対応。",
+      "#update-1-4-8 .update-points li:nth-child(3)": "韓国語のロゴ・紹介画像・OP・字幕・ホーム画面表示に対応。",
       "#update-1-4-7 .update-points li:nth-child(1)": "中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。",
       "#update-1-4-7 .update-points li:nth-child(2)": "本編・おまけの中国語音声と、紹介ページの試聴に対応。",
       "#update-1-4-7 .update-points li:nth-child(3)": "英語・中国語の紹介画像・OP・字幕・ホーム画面表示に対応。",
@@ -14,7 +17,7 @@ const translations = {
       ".film-lead": "主題歌とともに、三人の放課後へ。",
       ".film-duration": "主題歌付きOP ／ 約1分43秒",
       ".film-fallback": "OP動画を開く",
-      ".hero-voiceheadline .voice-lang": "日本語・英語・中国語対応",
+      ".hero-voiceheadline .voice-lang": "日本語・英語・中国語・韓国語対応",
       ".hero-voiceheadline .voice-title": "フルボイス",
       ".brand span": "放課後のステラ",
       '.site-nav a[href="#story"]': "物語",
@@ -63,8 +66,8 @@ const translations = {
       ".feature-list article:nth-child(2) p": "気になる選択の前で保存し、別の未来を確かめられる。",
       ".feature-list article:nth-child(3) h3": "CGギャラリー",
       ".feature-list article:nth-child(3) p": "読後に印象的なスチルを振り返れるコレクション機能。",
-      ".feature-list article:nth-child(4) h3": "日英中ボイス / BGM / SE",
-      ".feature-list article:nth-child(4) p": "主人公以外の全台詞に日本語・英語・中国語ボイスを収録。BGM・SEとともに、放課後の空気を届けます。",
+      ".feature-list article:nth-child(4) h3": "日英中韓ボイス / BGM / SE",
+      ".feature-list article:nth-child(4) p": "主人公以外の全台詞に日本語・英語・中国語・韓国語ボイスを収録。BGM・SEとともに、放課後の空気を届けます。",
       ".feature-list article:nth-child(5) h3": "無料プレイ",
       ".feature-list article:nth-child(5) p": "インストール不要。公開ページからそのまま最後まで無料でプレイできます。",
       ".feature-list article:nth-child(6) h3": "全年齢対象",
@@ -167,12 +170,15 @@ const translations = {
     },
   },
   en: {
-    title: "After School Stella | Japanese, English & Mandarin Full Voice",
-    description: "Japanese, English and Mandarin full voice. Hear three heroines, then play their complete story free in your browser.",
+    title: "After School Stella | Japanese, English, Mandarin & Korean Full Voice",
+    description: "Japanese, English, Mandarin and Korean full voice. Hear three heroines, then play their complete story free in your browser.",
     current: "EN",
     pressed: "true",
     lang: "en",
     text: {
+      "#update-1-4-8 .update-points li:nth-child(1)": "Added Korean story text, interface and landing pages.",
+      "#update-1-4-8 .update-points li:nth-child(2)": "Added Korean voices for the main story, extra and website samples.",
+      "#update-1-4-8 .update-points li:nth-child(3)": "Added Korean logos, artwork, opening movie, subtitles and home-screen labels.",
       "#update-1-4-7 .update-points li:nth-child(1)": "Added Simplified and Traditional Chinese story text, interface and website support.",
       "#update-1-4-7 .update-points li:nth-child(2)": "Added Mandarin voices for the main story, bonus story and website samples.",
       "#update-1-4-7 .update-points li:nth-child(3)": "Completed English and Chinese artwork, opening localization, subtitles and home-screen labels.",
@@ -181,7 +187,7 @@ const translations = {
       ".film-lead": "Step into their after-school world with the theme song.",
       ".film-duration": "Opening with theme song / about 1 min 43 sec",
       ".film-fallback": "Watch the opening movie",
-      ".hero-voiceheadline .voice-lang": "JAPANESE / ENGLISH / MANDARIN",
+      ".hero-voiceheadline .voice-lang": "JAPANESE / ENGLISH / MANDARIN / KOREAN",
       ".hero-voiceheadline .voice-title": "FULL VOICE",
       ".brand span": "After School Stella",
       '.site-nav a[href="#story"]': "Story",
@@ -230,8 +236,8 @@ const translations = {
       ".feature-list article:nth-child(2) p": "Save before a choice and return to explore another future.",
       ".feature-list article:nth-child(3) h3": "CG Gallery",
       ".feature-list article:nth-child(3) p": "Revisit memorable stills after reading through the story.",
-      ".feature-list article:nth-child(4) h3": "Japanese, English & Mandarin Voices / BGM / SE",
-      ".feature-list article:nth-child(4) p": "All dialogue except the protagonist’s is voiced in Japanese, English and Mandarin, alongside music and sound effects that bring the after-school atmosphere to life.",
+      ".feature-list article:nth-child(4) h3": "Japanese, English, Mandarin & Korean Voices / BGM / SE",
+      ".feature-list article:nth-child(4) p": "All dialogue except the protagonist’s is voiced in Japanese, English, Mandarin and Korean, alongside music and sound effects that bring the after-school atmosphere to life.",
       ".feature-list article:nth-child(5) h3": "Free to Play",
       ".feature-list article:nth-child(5) p": "No installation required. Play through the public web version for free.",
       ".feature-list article:nth-child(6) h3": "All Ages",
@@ -341,7 +347,7 @@ const languageCurrent = document.querySelector(".language-toggle-current");
 function applyLanguage(language) {
   language = StellaI18n.normalize(language);
   const locale = translations[language] || translations.ja;
-  const chinese = language.startsWith("zh-");
+  const chinese = language === "ko" || language.startsWith("zh-");
   const localize = text => chinese ? StellaI18n.text(text, language) : text;
   document.documentElement.lang = language;
   document.querySelector("#lp-op")?.setAttribute("aria-label", locale.lang === "en" ? "After School Stella opening movie" : "放課後のステラ オープニングムービー");
@@ -360,7 +366,10 @@ function applyLanguage(language) {
     }
   });
 
-  if (languageToggle) languageToggle.value = language;
+  if (languageToggle) {
+    languageToggle.value = language;
+    languageToggle.setAttribute('aria-label', language === 'en' ? 'Language' : StellaI18n.text('言語を選択', language));
+  }
   StellaI18n.localizeDocument(language);
   StellaMedia.apply(language, {updateUrl:true});
   if (languageCurrent) {

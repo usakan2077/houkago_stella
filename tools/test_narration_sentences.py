@@ -43,6 +43,14 @@ class SentenceTests(unittest.TestCase):
     def test_english_closing_quote(self):
         self.assert_split('He said, "Fine." Nobody asked.', "en", ['He said, "Fine." ', 'Nobody asked.'])
 
+    def test_korean_quoted_messages_and_reporting_clause(self):
+        self.assert_split('“야간 근무라 저녁은 냉장고에 있어. 무리하지 마.”', 'ko',
+                          ['“야간 근무라 저녁은 냉장고에 있어. 무리하지 마.”'])
+        self.assert_split('집에 도착해서 “돌아갔어?” 하고 보냈다. 답을 기다렸다.', 'ko',
+                          ['집에 도착해서 “돌아갔어?” 하고 보냈다. ', '답을 기다렸다.'])
+        self.assert_split('“콘소메.” “아니, 그쪽 얘기야?” 하는 답이 왔다.', 'ko',
+                          ['“콘소메.” “아니, 그쪽 얘기야?” 하는 답이 왔다.'])
+
     def test_bilingual_sentence_counts_can_differ(self):
         ja = ["> $scene.r001", "> $scene.r001.s002", "@se bell.mp3", "sakura: $scene.r002"]
         en = ["> $scene.r001", "> $scene.r001.s002", "> $scene.r001.s003", "@se bell.mp3", "sakura: $scene.r002"]
