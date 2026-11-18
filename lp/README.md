@@ -1,5 +1,7 @@
 # LPの比較用バリエーション
 
+初回表示のスクリプト・画像・X埋め込みは [読み込み改善の記録](../docs/lp-loading.md) を参照。LP画像は `py tools/optimize_lp_images.py`、各言語の静的ページは `py tools/build_chinese_landing_pages.py` で再出力する。
+
 | URL | 訴求 | 計測値 `lp_variant` |
 | --- | --- | --- |
 | `/lp/` | 物語・キャラクターから入る既存版 | `story` |

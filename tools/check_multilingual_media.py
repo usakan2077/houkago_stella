@@ -16,8 +16,11 @@ def main(pages_only=False):
     def passed(value):checks.append(value);print('PASS',value,flush=True)
     try:
         deadline=time.monotonic()+30
-        while not (profile/'DevToolsActivePort').exists():assert time.monotonic()<deadline;time.sleep(.1)
-        port=int((profile/'DevToolsActivePort').read_text().splitlines()[0]);targets=json.load(urllib.request.urlopen(f'http://127.0.0.1:{port}/json/list'))
+        while True:
+            assert time.monotonic()<deadline,'Edge startup timeout'
+            try:
+                port=int((profile/'DevToolsActivePort').read_text().splitlines()[0]);targets=json.load(urllib.request.urlopen(f'http://127.0.0.1:{port}/json/list'));break
+            except (OSError,IndexError,ValueError):time.sleep(.1)
         c=browser.CDP(next(t['webSocketDebuggerUrl'] for t in targets if t['type']=='page'))
         c.send('Page.enable');c.send('Runtime.enable');c.send('Network.enable');c.send('Network.setBlockedURLs',{'urls':['https://*']})
         c.send('Page.addScriptToEvaluateOnNewDocument',{'source':"localStorage.setItem('vn_language','ja')"})
