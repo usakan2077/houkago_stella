@@ -84,3 +84,9 @@
 試聴で承認された日本語16台詞（さくら11・まひる5）を、名前だけ「コトハ」として再生成した版へ差し替え。花園ことは本人の「花園ことはです。よろしくお願いします」は元のLeira版を維持する。一般表現「ことはあります」、ほかの日本語1,024台詞、英語1,040台詞は変更しない。
 
 演技タグ・前後文脈・Voice・設定を維持。新URLは*.kotoha-name-v1.mp3。役別の補正後RMSを基準にゲインを調整し、各ファイルの補正後サンプルピークを-1 dBFS以下に制限。旧音声は保持。[比較・修正台本・登録記録](../../houkago-stella-voice/samples/kotoha-name-v1/README.md)を参照。本編とLPの現行バージョン表示を1.3へそろえた。
+
+## 韓国語版（2026-11-18、1.4.8）
+
+本編1,040＋おまけ156、12役の1,196台詞をElevenLabs eleven_v4 / `language_code=ko` で生成し、`assets/voice/ko/manifest.json` に登録。全件をローカルでデコードし、既存日本語の役別有声音RMSを目標に補正。補正後サンプルピークは-1 dBFS以下。LUFS・真のピーク・聴感の評価ではない。STTは16件のみ照合し、2件を要試聴として保持。母語話者の校閲と全件の演技・発音試聴は未完了。
+
+[検証記録](korean-localization.md)、[全件の測定と本文ハッシュ](korean-voice-audit.json)、[STT結果](korean-voice-sample-review.json)、[生成時の台本と現在の文脈の対応](korean-recording-provenance.json)を参照。制作台本は隣接フォルダーの `acting-scripts/korean-v1-20261118/` と `korean-v2-20261118/`、試聴ページは `samples/korean-v1-20261118/audition.html`。改稿時は旧計画を再利用せず現在の本文から新しい計画を作る。

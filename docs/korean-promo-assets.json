@@ -1,0 +1,45 @@
+{
+  "version": "korean-release-20261118",
+  "method": "Built-in imagegen text localization; Pillow size/format conversion",
+  "assets": [
+    {
+      "language": "ko",
+      "kind": "title_logo",
+      "src": "assets/images/bg/title_logo_ko-v1.webp",
+      "source": "korean-release-20261118/title_logo.ko.png",
+      "source_sha256": "3b56345334c2769443c204f0c9479d285b5c4e58577e415b30c0012b520aef8f",
+      "size": [
+        2172,
+        724
+      ],
+      "bytes": 460966,
+      "sha256": "85ddbf54b0611c20e6f3715e37af98d65413f982d56ce79965437dba628d998b"
+    },
+    {
+      "language": "ko",
+      "kind": "poster",
+      "src": "assets/images/promo/poster.ko-v1.webp",
+      "source": "korean-release-20261118/poster.ko.png",
+      "source_sha256": "5185ef867a5841fd071e91ebf1461ee770058dc86698b4d3d656330f195f3bcf",
+      "size": [
+        848,
+        1264
+      ],
+      "bytes": 215796,
+      "sha256": "c984d5d0390189ea4254a8adc2247a944edd349e6c1cbe9777e6f9151a2b48db"
+    },
+    {
+      "language": "ko",
+      "kind": "og",
+      "src": "assets/images/promo/og.ko-v1.png",
+      "source": "korean-release-20261118/og.ko.png",
+      "source_sha256": "73d8fa0a96dd043460098bea62e9b0e563c409f976130cf2706387c12d5e8945",
+      "size": [
+        1200,
+        630
+      ],
+      "bytes": 1059647,
+      "sha256": "07dc06e22b24e9c40ca93468fdc3723f173990e15f7e8001907daeba2088b8b4"
+    }
+  ]
+}

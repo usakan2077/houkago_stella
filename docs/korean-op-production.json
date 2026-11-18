@@ -1,0 +1,41 @@
+{
+  "version": "korean-release-20261118",
+  "original_audio_preserved": true,
+  "localization": {
+    "ko": {
+      "names": {
+        "sakura": "사쿠라자키 사쿠라",
+        "kotoha": "하나조노 코토하",
+        "mahiru": "츠키요노 마히루"
+      },
+      "quotes": {
+        "sakura": "……웃지 못해도 곁에 있어 줄래?",
+        "kotoha": "키리시마……포기한 게 있어?",
+        "mahiru": "이사무……오늘도 잘 버텼어?"
+      }
+    }
+  },
+  "movies": [
+    {
+      "language": "ko",
+      "src": "assets/video/stella-op-ko-v148.mp4",
+      "bytes": 81163107,
+      "sha256": "aacb2e8011b66cc4c174708365ae20015e9a56ab87a7bfd4e53bf3047a2b884a",
+      "frames": 3086,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "audio_stream_sha256": "SHA256=65d487c279bd30500a71a1e25da1525f400eb57d1f9167c4a4e9d20a0f11e09a",
+      "protected_samples_pixel_identical": true,
+      "localized_elements": [
+        "names",
+        "dialogue",
+        "notebook",
+        "title logo"
+      ],
+      "lyrics_subtitles": "external WebVTT"
+    }
+  ]
+}

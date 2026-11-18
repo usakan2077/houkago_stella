@@ -14,7 +14,7 @@ def narration_key(key):
 
 
 def split_sentences(text, language):
-    """Keep the exact text; split Japanese outside brackets and protect English abbreviations."""
+    """Keep exact text; protect quoted passages and English abbreviations."""
     parts, stack, start = [], [], 0
     for index, char in enumerate(text):
         if char == '"':
@@ -33,6 +33,10 @@ def split_sentences(text, language):
             if stack or char != "。":
                 continue
         else:
+            # Korean quotations can contain several messages or a question
+            # followed by a reporting clause, all within one narration block.
+            if language == "ko" and stack:
+                continue
             if char not in ".!?":
                 continue
             if char == ".":

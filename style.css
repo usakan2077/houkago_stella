@@ -2745,6 +2745,8 @@ html[lang="en"] #char-name {
 /* Chinese glyphs use installed regional fonts without another network dependency. */
 html[lang="zh-CN"] { --vn-serif-font: 'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif; }
 html[lang="zh-TW"] { --vn-serif-font: 'Songti TC', 'PMingLiU', 'Noto Serif CJK TC', serif; }
+html[lang="ko"] { --vn-serif-font: 'Noto Serif KR', 'Batang', 'AppleMyungjo', serif; word-break: keep-all; overflow-wrap: anywhere; }
+html[lang="ko"] .language-btn, html[lang="ko"] .settings-opt { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif; }
 html:lang(zh) #text-box { line-break: strict; overflow-wrap: anywhere; }
 #language-options { flex-wrap: wrap; }
 html:lang(zh) .language-btn, html:lang(zh) .settings-opt { font-family: system-ui, sans-serif; }

@@ -10,11 +10,11 @@
 
 ## 現在の言語別OP
 
-日本語は `stella-op-ja-v143.mp4`、英語は `stella-op-en-v143.mp4`。簡体字は `stella-op-zh-CN-v147.mp4`、繁体字は `stella-op-zh-TW-v147.mp4`。ゲームと両LPで選択言語へ切り替える。
+日本語は `stella-op-ja-v143.mp4`、英語は `stella-op-en-v143.mp4`。簡体字は `stella-op-zh-CN-v147.mp4`、繁体字は `stella-op-zh-TW-v147.mp4`、韓国語は `stella-op-ko-v148.mp4`。ゲームと両LPで選択言語へ切り替える。
 
 中国語版は既存の編集データから人物名・台詞・ノート・タイトルを差し替え、1920×1080／30fps／3,086フレームで書き出した。元のAACを再エンコードせずコピーする。寸法・デコード・音源・共通区間の照合は `docs/chinese-op-production.json` を参照。
 
-`subtitles/op.{ja,en,zh-CN,zh-TW}-v1.vtt` は16区間の歌詞字幕。曲は元の日本語歌唱。字幕は映像下部の台詞と重ならないよう上部へ配置する。英語・中国語では字幕を初期表示し、日本語では任意でオンにする。ゲームの「歌詞字幕」ボタンとLPの標準動画コントロールでオン・オフできる。
+`subtitles/op.{ja,en,zh-CN,zh-TW,ko}-v1.vtt` は16区間の歌詞字幕。曲は元の日本語歌唱。字幕は映像下部の台詞と重ならないよう上部へ配置する。英語・中国語・韓国語では字幕を初期表示し、日本語では任意でオンにする。ゲームの「歌詞字幕」ボタンとLPの標準動画コントロールでオン・オフできる。
 
 ## おまけの隕石動画
 
@@ -25,3 +25,5 @@
 - 出典と取得情報：`bonus-meteor.source.json`
 - 取得原本：素材リポジトリの `assets-src/bonus_video_20261018/`
 - 再生制御：`bonus-scenario.js`。HTML5 videoで再生し、終了・スキップで会話へ復帰する。再生中のBGM/SEは停止し、動画の音量はBGM設定に従う。
+
+韓国語版も人物名・台詞・ノート・ロゴを差し替え、元AACをコピー。3,086フレーム、1920×1080、30fps。全デコード・音源ハッシュ・共通区間の画素を照合した。詳細は `docs/korean-op-production.json` と `docs/korean-localization.md`。

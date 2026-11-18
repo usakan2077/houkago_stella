@@ -2,8 +2,8 @@
 globalThis.StellaMedia = (() => {
   const root = new URL('.', document.currentScript.src);
   const originalSources = new WeakMap();
-  const languages = ['ja', 'en', 'zh-CN', 'zh-TW'];
-  const supported = value => /^(ja|en|zh)(?:[-_]|$)/i.test(value || '');
+  const languages = ['ja', 'en', 'zh-CN', 'zh-TW', 'ko'];
+  const supported = value => /^(ja|en|zh|ko)(?:[-_]|$)/i.test(value || '');
   function initialLanguage() {
     const requested = new URL(location.href).searchParams.get('lang');
     if (supported(requested)) return StellaI18n.normalize(requested);
@@ -17,6 +17,7 @@ globalThis.StellaMedia = (() => {
   }
   function asset(kind, language) {
     if (language === 'ja') return null;
+    if (kind === 'campaign' && language === 'ko') return 'assets/campaign/clear-campaign-v1.webp';
     if (language === 'en' && kind === 'logo') return 'assets/images/bg/title_logo_en.webp';
     return {
       logo: `assets/images/bg/title_logo_${language}-v1.webp`,
@@ -26,6 +27,7 @@ globalThis.StellaMedia = (() => {
     }[kind] || null;
   }
   function openingMovie(language) {
+    if (language === 'ko') return 'assets/video/stella-op-ko-v148.mp4';
     return `assets/video/stella-op-${language}-${language.startsWith('zh-') ? 'v147' : 'v143'}.mp4`;
   }
   function subtitles(video, language) {
@@ -33,7 +35,7 @@ globalThis.StellaMedia = (() => {
     for (const track of video.querySelectorAll('track[data-stella-subtitles]')) { track.track.mode = 'disabled'; track.remove(); }
     const track = document.createElement('track');
     track.dataset.stellaSubtitles = ''; track.kind = 'subtitles'; track.srclang = language;
-    track.label = ({ja:'日本語',en:'English','zh-CN':'简体中文','zh-TW':'繁體中文'})[language];
+    track.label = ({ja:'日本語',en:'English',ko:'한국어','zh-CN':'简体中文','zh-TW':'繁體中文'})[language];
     track.src = new URL(`assets/video/subtitles/op.${language}-v1.vtt`, root).href;
     track.default = language !== 'ja'; video.append(track); track.track.mode = track.default ? 'showing' : 'disabled';
     video.dataset.subtitleLanguage = language;
@@ -48,6 +50,7 @@ globalThis.StellaMedia = (() => {
     const keywords = document.querySelector('meta[name="keywords"]');
     if (keywords) keywords.content = ({
       ja: '放課後のステラ,無料ゲーム,ブラウザゲーム,恋愛アドベンチャー,ノベルゲーム,全年齢,ビジュアルノベル',
+      ko: '방과 후의 스텔라,무료 게임,브라우저 게임,연애 어드벤처,비주얼 노벨,한국어 음성',
       en: 'After School Stella,free game,browser game,romance,visual novel',
       'zh-CN': '放学后的星光,免费游戏,浏览器游戏,恋爱冒险,视觉小说,普通话配音',
       'zh-TW': '放學後的星光,免費遊戲,瀏覽器遊戲,戀愛冒險,視覺小說,華語配音',
@@ -64,7 +67,7 @@ globalThis.StellaMedia = (() => {
     const share = new URL(asset('share', language) || 'og.png', publicRoot).href;
     document.querySelectorAll('meta[property="og:image"],meta[property="og:image:secure_url"],meta[name="twitter:image"]').forEach(node => node.content = share);
     const locale = document.querySelector('meta[property="og:locale"]');
-    if (locale) locale.content = ({ja:'ja_JP',en:'en_US','zh-CN':'zh_CN','zh-TW':'zh_TW'})[language];
+    if (locale) locale.content = ({ja:'ja_JP',en:'en_US',ko:'ko_KR','zh-CN':'zh_CN','zh-TW':'zh_TW'})[language];
     if (lp) {
       const folder = lp === 'ai_solo' ? 'lp/ai/' : 'lp/';
       const canonical = new URL(folder + (language !== 'ja' ? `index.${language}.html` : ''), publicRoot).href;

@@ -17,3 +17,7 @@ html[lang="zh-TW"] body { font-family: 'Microsoft JhengHei', 'PingFang TC', sans
 /* Keep the Chinese title and all four characters inside the poster frame. */
 html:not([lang="ja"]) .poster-frame { height: auto; max-height: none; aspect-ratio: 848 / 1264; }
 html:not([lang="ja"]) .poster-frame img { object-fit: contain; object-position: center; }
+
+/* Use installed Korean fonts and keep Hangul words together. */
+html[lang="ko"] { font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif; word-break: keep-all; overflow-wrap: anywhere; }
+html[lang="ko"] h1, html[lang="ko"] h2, html[lang="ko"] h3 { font-family: "Noto Serif KR", "Batang", "AppleMyungjo", serif; }

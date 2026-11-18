@@ -1,0 +1,20 @@
+{
+  "name": "방과 후의 스텔라: 거짓과 소원의 경계",
+  "short_name": "방과 후의 스텔라",
+  "description": "무료·전체 이용가 브라우저 연애 비주얼 노벨.",
+  "start_url": "index.html?lang=ko",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101526",
+  "theme_color": "#101526",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "./",
+  "lang": "ko"
+}

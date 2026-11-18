@@ -1140,3 +1140,7 @@ h3 {
 .stella-language-select { max-width: 132px; min-width: 88px; padding: 8px 5px; border: 1px solid #8888; border-radius: 4px; background: #18182b; color: #fff; font: 13px system-ui, sans-serif; }
 html[lang="zh-CN"] body { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; }
 html[lang="zh-TW"] body { font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif; }
+
+/* Use installed Korean fonts and keep Hangul words together. */
+html[lang="ko"] { font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif; word-break: keep-all; overflow-wrap: anywhere; }
+html[lang="ko"] h1, html[lang="ko"] h2, html[lang="ko"] h3 { font-family: "Noto Serif KR", "Batang", "AppleMyungjo", serif; }

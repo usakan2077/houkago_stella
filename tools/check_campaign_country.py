@@ -8,13 +8,13 @@ HIDDEN = "[...document.querySelectorAll('[data-japan-campaign]')].every(n=>n.hid
 
 def run(c,passed,out,base,mock):
     paths=['index.html','lp/index.html','lp/ai/index.html']
-    paths += [f'{folder}/index.{lang}.html' for folder in ['lp','lp/ai'] for lang in ['en','zh-CN','zh-TW']]
+    paths += [f'{folder}/index.{lang}.html' for folder in ['lp','lp/ai'] for lang in ['en','zh-CN','zh-TW','ko']]
     for path in paths:
         raw=urllib.request.urlopen(base+'/'+path).read().decode('utf-8')
         regions=re.findall(r'<[^>]*\bdata-japan-campaign\b[^>]*>',raw)
         assert regions and all(re.search(r'\bhidden(?:[\s=>])',node) for node in regions),path
         assert 'campaign.js?v=1.4.7-ja1' in raw,path
-    passed('All 9 static entries start with hidden campaign regions before JavaScript or country lookup')
+    passed('All 11 static entries start with hidden campaign regions before JavaScript or country lookup')
 
     c.evaluate('StellaCampaignVisibility.ready')
     assert c.evaluate('StellaCampaignVisibility.allowed')
@@ -22,7 +22,7 @@ def run(c,passed,out,base,mock):
     receipt=c.evaluate('engine.bonus.clearReceipt()')
     assert '#キャンペーン応募' in c.evaluate('engine.bonus.receiptText(engine.bonus.readClearReceipt())')
     c.evaluate("window._languageReceiptPanel=engine.bonus.createReceiptPanel(engine.bonus.readClearReceipt());document.body.append(_languageReceiptPanel)")
-    for lang in ['en','zh-CN','zh-TW','ja']:
+    for lang in ['en','zh-CN','zh-TW','ko','ja']:
         c.evaluate('document.documentElement.lang='+json.dumps(lang))
         campaign=lang=='ja'
         c.wait("_languageReceiptPanel.querySelector('code').hidden==="+json.dumps(not campaign))
@@ -32,13 +32,13 @@ def run(c,passed,out,base,mock):
         c.evaluate('navigator.clipboard.writeText=async text=>{window._languageReceiptCopy=text};_languageReceiptPanel.querySelector("button").click()')
         assert c.evaluate('_languageReceiptCopy')==share
     c.evaluate('_languageReceiptPanel.remove()')
-    passed('Open completion panels, share links and copied text update immediately when switching JA/EN/CN/TW and back')
+    passed('Open completion panels, share links and copied text update immediately when switching JA/EN/CN/TW/KO and back')
     for path in paths[1:]:
         c.send('Page.navigate',{'url':base+'/'+path})
         c.wait("document.readyState==='complete'&&!!window.StellaCampaignVisibility",40)
         assert c.evaluate('StellaCampaignVisibility.ready')
         if c.evaluate("document.documentElement.lang!=='ja'"):assert c.evaluate(HIDDEN),path
-        for lang in ['ja','en','zh-CN','zh-TW','ja']:
+        for lang in ['ja','en','zh-CN','zh-TW','ko','ja']:
             c.evaluate("(()=>{const s=document.querySelector('.stella-language-select');s.value="+json.dumps(lang)+";s.dispatchEvent(new Event('change',{bubbles:true}))})()")
             c.wait('document.documentElement.lang==='+json.dumps(lang))
             assert c.evaluate('StellaCampaignVisibility.allowed')==(lang=='ja'),[path,lang]
