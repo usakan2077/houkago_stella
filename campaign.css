@@ -1,4 +1,7 @@
 .campaign-banner { position: relative; display: flex; align-items: center; gap: 18px; width: 100%; padding: 0 24px 0 0; overflow: hidden; border: 1px solid #d8b979aa; border-radius: 12px; color: #fff5e5; background: linear-gradient(110deg,#22223f,#302039 75%,#412b44); box-shadow: 0 12px 35px #080a1733; text-align: left; cursor: pointer; font-family: sans-serif; line-height: 1.45; }
+/* Keep campaign regions out of layout until an access country of JP is confirmed. */
+[data-japan-campaign][hidden] { display: none !important; }
+:root:not([lang="ja"]) [data-japan-campaign] { display: none !important; }
 .campaign-banner img { width: 150px; height: 104px; object-fit: cover; object-position: right center; flex-shrink: 0; }
 .campaign-banner-copy { display: grid; gap: 3px; flex: 1; min-width: 0; }
 .campaign-banner [data-campaign-status] { color: #efce94; font-size: 12px; letter-spacing: .09em; }

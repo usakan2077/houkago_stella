@@ -6,6 +6,14 @@ class OpeningMovie {
     this.video = document.getElementById('op-movie');
     this.playButton = document.getElementById('op-movie-play');
     this.skipButton = document.getElementById('op-movie-skip');
+    this.captionsButton = document.getElementById('op-movie-captions');
+    this.captionsButton?.addEventListener('click', e => {
+      e.stopPropagation();
+      const track = this.video.querySelector('track[data-stella-subtitles]')?.track;
+      if (!track) return;
+      track.mode = track.mode === 'showing' ? 'disabled' : 'showing';
+      this.captionsButton.setAttribute('aria-pressed', String(track.mode === 'showing'));
+    });
     this.phase = 'idle';
     this.idleSince = null;
     this.focused = document.hasFocus();
@@ -29,6 +37,11 @@ class OpeningMovie {
       if (this.phase === 'idle') return;
       // Do not let skipping also activate a title button or a game shortcut.
       e.stopImmediatePropagation();
+      if (document.activeElement === this.captionsButton && ['Space', 'Enter'].includes(e.code)) {
+        e.preventDefault();
+        if (!e.repeat) this.captionsButton.click();
+        return;
+      }
       if (['Space', 'Enter', 'Escape'].includes(e.code)) {
         e.preventDefault();
         if (e.repeat) return;
@@ -36,7 +49,9 @@ class OpeningMovie {
         else this.finish();
       } else if (e.code === 'Tab') {
         e.preventDefault();
-        (this.playButton.hidden ? this.skipButton : this.playButton).focus();
+        const controls = [this.playButton, this.captionsButton, this.skipButton].filter(button => button && !button.hidden);
+        const index = controls.indexOf(document.activeElement);
+        controls[(index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length].focus();
       }
     }, true);
     for (const name of ['pointermove', 'pointerdown', 'keydown', 'wheel']) {
@@ -74,6 +89,8 @@ class OpeningMovie {
     clearTimeout(this.bufferTimer);
     this.video.pause();
     this.video.src = this.engine._assetURL?.(source) || source;
+    globalThis.StellaMedia?.subtitles(this.video, this.engine.currentLanguage);
+    this.captionsButton?.setAttribute('aria-pressed', String(this.video.querySelector('track[data-stella-subtitles]')?.track.mode === 'showing'));
     this.video.load();
   }
 
@@ -100,8 +117,10 @@ class OpeningMovie {
     document.getElementById('title-screen').classList.add('hidden');
     this.screen.classList.remove('hidden', 'op-black', 'op-reveal');
     const english = this.engine.currentLanguage === 'en';
-    this.playButton.textContent = english ? 'Play opening' : 'OPを再生';
-    this.skipButton.textContent = english ? 'Skip to title' : 'タイトルへスキップ';
+    const label = (ja, en) => english ? en : (globalThis.StellaI18n?.text(ja, this.engine.currentLanguage) ?? ja);
+    this.playButton.textContent = label('OPを再生', 'Play opening');
+    this.skipButton.textContent = label('タイトルへスキップ', 'Skip to title');
+    this.screen.setAttribute('aria-label', label('オープニングムービー', 'Opening movie'));
     this.video.currentTime = 0;
     this.video.muted = VN_CONFIG.settings.bgmVolume === 0;
     try { this.video.volume = Math.max(0, Math.min(1, VN_CONFIG.settings.bgmVolume)); } catch (_) {}

@@ -23,12 +23,14 @@
 
   <!-- ファビコン -->
   <link rel="icon" type="image/png" href="icon.png">
+  <link rel="manifest" href="manifest.ja.webmanifest">
 
   <!-- OGP (SNSシェア用) -->
   <meta property="og:title" content="放課後のステラ">
   <meta property="og:description" content="言えなかったことと、間に合わなかったことの物語。三人の少女と、一つの選択。">
   <meta property="og:image" content="https://usakan2077.github.io/houkago_stella/og.png">
   <meta property="og:url" content="https://usakan2077.github.io/houkago_stella/">
+  <meta property="og:locale" content="ja_JP">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="放課後のステラ">
@@ -61,10 +63,12 @@
       });
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=1.4.6">
-  <link rel="stylesheet" href="bonus-scenario.css?v=1.4.6">
-  <link rel="stylesheet" href="campaign.css?v=1.4.6">
+  <link rel="stylesheet" href="style.css?v=1.4.7">
+  <link rel="stylesheet" href="bonus-scenario.css?v=1.4.7">
+  <link rel="stylesheet" href="campaign.css?v=1.4.7-ja1">
 <link rel="stylesheet" href="character-emotes.css">
+<script src="chinese-locales.js?v=1.4.7-art1"></script>
+<script src="localized-media.js?v=1.4.7-art1"></script>
 </head>
 <body>
 
@@ -185,12 +189,12 @@
 <!-- ======= 縦向き回転促しオーバーレイ ======= -->
 <div id="rotate-overlay">
   <div class="rotate-icon">📱</div>
-  <p>横向きでプレイしてください</p>
+  <p data-orientation-ja="横向きでプレイしてください" data-orientation-en="Please play in landscape orientation.">横向きでプレイしてください</p>
   <div class="home-guide">
-    <strong>スマホではホーム画面からの起動がおすすめです</strong>
-    <span>iPhone: Safariの共有ボタン →「ホーム画面に追加」→「追加」</span>
-    <span>Android: Chromeのメニュー →「ホーム画面に追加」→「追加」</span>
-    <span>追加後は、ホーム画面のアイコンから起動してください。</span>
+    <strong data-orientation-ja="スマホではホーム画面からの起動がおすすめです" data-orientation-en="On phones, we recommend launching from your home screen.">スマホではホーム画面からの起動がおすすめです</strong>
+    <span data-orientation-ja="iPhone: Safariの共有ボタン →「ホーム画面に追加」→「追加」" data-orientation-en="iPhone: Safari share button → Add to Home Screen → Add">iPhone: Safariの共有ボタン →「ホーム画面に追加」→「追加」</span>
+    <span data-orientation-ja="Android: Chromeのメニュー →「ホーム画面に追加」→「追加」" data-orientation-en="Android: Chrome menu → Add to Home Screen → Add">Android: Chromeのメニュー →「ホーム画面に追加」→「追加」</span>
+    <span data-orientation-ja="追加後は、ホーム画面のアイコンから起動してください。" data-orientation-en="After adding it, launch the game using the home-screen icon.">追加後は、ホーム画面のアイコンから起動してください。</span>
   </div>
 </div>
 
@@ -257,7 +261,14 @@
     // （メインスクリプト読込前に走らせることでチラつきを防ぐ）
     (function () {
       try {
-        var lang = localStorage.getItem('vn_language');
+        var lang = StellaMedia.initialLanguage();
+        lang = StellaI18n.normalize(lang);
+        if (lang === 'zh-CN' || lang === 'zh-TW') {
+          document.documentElement.lang = lang;
+          document.getElementById('loading-game-title').textContent = StellaI18n.text('放課後のステラ', lang);
+          document.getElementById('loading-notice').innerHTML = StellaI18n.text('このゲームは音楽・効果音が流れます。<br>あらかじめ音量をご確認ください。', lang);
+          return;
+        }
         if (lang !== 'en') return;
         var title = document.getElementById('loading-game-title');
         var notice = document.getElementById('loading-notice');
@@ -282,6 +293,7 @@
   <div id="op-movie-screen" class="hidden" role="dialog" aria-modal="true" aria-label="Opening movie">
     <video id="op-movie" playsinline preload="metadata"></video>
     <button id="op-movie-play" hidden>OPを再生</button>
+    <button id="op-movie-captions" data-i18n="opLyricsSubtitles" aria-pressed="false">歌詞字幕</button>
     <button id="op-movie-skip">タイトルへスキップ</button>
   </div>
 
@@ -315,7 +327,7 @@
         <button class="title-btn" id="btn-debug" style="margin-top:1.2em;opacity:.55;font-size:.78em;letter-spacing:.15em;display:none;">⚙ DEBUG JUMP</button>
       </nav>
     </div>
-    <button type="button" class="campaign-banner" data-campaign-open aria-haspopup="dialog" aria-controls="stella-campaign-dialog">
+    <button type="button" class="campaign-banner" data-japan-campaign hidden data-campaign-open aria-haspopup="dialog" aria-controls="stella-campaign-dialog">
       <span data-campaign-compact>完走キャンペーン開催中！</span>
       <img src="assets/campaign/clear-campaign-v1.webp" alt="" width="150" height="104" loading="lazy">
       <span class="campaign-banner-copy"><span data-campaign-status>キャンペーン開催中 · 日本国内在住者限定</span><strong data-campaign-title>おまけまで完走キャンペーン</strong><span data-campaign-prize>Amazonギフトカード 5,000円分 × 2名</span></span>
@@ -325,6 +337,8 @@
     <div id="title-language-switch" class="language-switch" aria-label="Language">
       <button class="language-btn" type="button" data-language="ja">日本語</button>
       <button class="language-btn" type="button" data-language="en">EN</button>
+      <button class="language-btn" type="button" data-language="zh-CN">简体中文</button>
+      <button class="language-btn" type="button" data-language="zh-TW">繁體中文</button>
     </div>
     <details id="title-updates">
       <summary id="title-version" aria-controls="title-updates-panel"></summary>
@@ -531,6 +545,8 @@
           <div class="settings-options" id="language-options">
             <button class="settings-opt" data-language="ja">日本語</button>
             <button class="settings-opt" data-language="en">English</button>
+            <button class="settings-opt" data-language="zh-CN">简体中文</button>
+            <button class="settings-opt" data-language="zh-TW">繁體中文</button>
           </div>
         </div>
         <div class="settings-row">
@@ -626,21 +642,21 @@
 
 </div><!-- /game-container -->
 
-<script src="config.js?v=1.4.6"></script>
-<script src="font-loader.js?v=1.4.6"></script>
-<script src="asset-loader.js?v=1.4.6"></script>
-<script src="parser.js?v=1.4.6"></script>
-<script src="opening-movie.js?v=1.4.6"></script>
-<script src="voice.js?v=1.4.6"></script>
-<script src="character-emotes.js?v=1.4.6"></script>
-<script src="bonus-scenario-data.js?v=1.4.6"></script>
-<script src="clear-phrase.js?v=1.4.6"></script>
-<script src="bonus-scenario.js?v=1.4.6"></script>
-<script src="sound-mode-visuals.js?v=1.4.6"></script>
-<script src="sound-mode.js?v=1.4.6"></script>
-<script src="play-history.js?v=1.4.6"></script>
-<script src="game.js?v=1.4.6"></script>
-<script src="campaign-config.js?v=1.4.6"></script>
-<script src="campaign.js?v=1.4.6"></script>
+<script src="config.js?v=1.4.7"></script>
+<script src="font-loader.js?v=1.4.7"></script>
+<script src="asset-loader.js?v=1.4.7"></script>
+<script src="parser.js?v=1.4.7"></script>
+<script src="opening-movie.js?v=1.4.7"></script>
+<script src="voice.js?v=1.4.7"></script>
+<script src="character-emotes.js?v=1.4.7"></script>
+<script src="bonus-scenario-data.js?v=1.4.7"></script>
+<script src="clear-phrase.js?v=1.4.7"></script>
+<script src="bonus-scenario.js?v=1.4.7-ja1"></script>
+<script src="sound-mode-visuals.js?v=1.4.7"></script>
+<script src="sound-mode.js?v=1.4.7"></script>
+<script src="play-history.js?v=1.4.7"></script>
+<script src="game.js?v=1.4.7-art1"></script>
+<script src="campaign-config.js?v=1.4.7"></script>
+<script src="campaign.js?v=1.4.7-ja1"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 (() => {
   const variant = document.body.dataset.lpVariant || 'story';
   const gamePath = new URL('../index.html', document.currentScript.src).pathname;
+  const mediaRoot = new URL('../', document.currentScript.src);
   const send = (name, params = {}) => {
     if (typeof window.gtag !== 'function') return;
     window.gtag('event', name, {
@@ -24,8 +25,9 @@
   const syncMovieLanguage = () => {
     if (!movie) return;
     const source = movie.querySelector('source');
-    const language = document.documentElement.lang === 'en' ? 'en' : 'ja';
-    const target = movie.dataset[language === 'en' ? 'srcEn' : 'srcJa'];
+    const language = document.documentElement.lang;
+    const target = new URL(globalThis.StellaMedia.openingMovie(language), mediaRoot).href;
+    globalThis.StellaMedia.subtitles(movie, language);
     if (!source || !target || source.getAttribute('src') === target) return;
     const time = movie.currentTime;
     movie.pause();

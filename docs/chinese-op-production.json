@@ -1,0 +1,74 @@
+{
+  "version": "multilingual-release-20261117",
+  "original_audio_preserved": true,
+  "localization": {
+    "zh-CN": {
+      "names": {
+        "sakura": "樱咲樱",
+        "kotoha": "花园琴叶",
+        "mahiru": "月夜野真昼"
+      },
+      "quotes": {
+        "sakura": "……就算我笑不出来，你也会留下吗？",
+        "kotoha": "桐岛……你有没有放弃过什么？",
+        "mahiru": "勇……今天，你也撑过来了吗？"
+      }
+    },
+    "zh-TW": {
+      "names": {
+        "sakura": "櫻咲櫻",
+        "kotoha": "花園琴葉",
+        "mahiru": "月夜野真晝"
+      },
+      "quotes": {
+        "sakura": "……就算我笑不出來，你也會留下嗎？",
+        "kotoha": "桐島……你有沒有放棄過什麼？",
+        "mahiru": "勇……今天，你也撐過來了嗎？"
+      }
+    }
+  },
+  "movies": [
+    {
+      "language": "zh-CN",
+      "src": "assets/video/stella-op-zh-CN-v147.mp4",
+      "bytes": 81751703,
+      "sha256": "c191382a7a9284ace63167e5b355d8a9efd8c59985ec4065b7702b5075071dbd",
+      "frames": 3086,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "audio_stream_sha256": "SHA256=65d487c279bd30500a71a1e25da1525f400eb57d1f9167c4a4e9d20a0f11e09a",
+      "protected_samples_pixel_identical": true,
+      "localized_elements": [
+        "names",
+        "dialogue",
+        "notebook",
+        "title logo"
+      ],
+      "lyrics_subtitles": "external WebVTT"
+    },
+    {
+      "language": "zh-TW",
+      "src": "assets/video/stella-op-zh-TW-v147.mp4",
+      "bytes": 81943411,
+      "sha256": "32b541a225642008fd07e508c322233b990a44a94e5f135aac6775d41bce5cfd",
+      "frames": 3086,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "audio_stream_sha256": "SHA256=65d487c279bd30500a71a1e25da1525f400eb57d1f9167c4a4e9d20a0f11e09a",
+      "protected_samples_pixel_identical": true,
+      "localized_elements": [
+        "names",
+        "dialogue",
+        "notebook",
+        "title logo"
+      ],
+      "lyrics_subtitles": "external WebVTT"
+    }
+  ]
+}

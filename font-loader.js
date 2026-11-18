@@ -3,6 +3,7 @@
 async function prepareStellaFonts(texts = {}, options = {}) {
   const doc = options.document || document;
   const root = doc.documentElement;
+  if (root.lang?.startsWith('zh-')) return 'system';
   if (root.classList.contains('vn-system-fonts')) return 'system';
   let timer;
   const system = () => { root.classList.add('vn-system-fonts'); return 'system'; };

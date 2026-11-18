@@ -41,8 +41,10 @@ def main() -> int:
         print("FAILED: language file configuration not found")
         return 1
     files = {lang: re.findall(r"'([^']+)'", body) for lang, body in
-             re.findall(r"(\w+):\s*\[(.*?)\]", files_block[1], re.S)}
-    text_files = dict(re.findall(r"(\w+):\s*'([^']+)'", text_block[1]))
+             re.findall(r"['\"]?([\w-]+)['\"]?:\s*\[(.*?)\]", files_block[1], re.S)}
+    text_files = dict(re.findall(r"['\"]?([\w-]+)['\"]?:\s*'([^']+)'", text_block[1]))
+    if set(files) != set(text_files):
+        errors.append('Scenario file languages differ from text dictionary languages')
     known_commands = set(re.findall(r"case '([^']+)':", (ROOT / "parser.js").read_text(encoding="utf-8")))
     emotes = set(re.findall(r"^\s{4}(\w+):\{label:", (ROOT / "character-emotes.js").read_text(encoding="utf-8"), re.M)) | {"clear"}
     bg_block = config.split("  backgrounds: {", 1)[1].split("  settings:", 1)[0]
@@ -219,6 +221,15 @@ def main() -> int:
             errors.append(f"English primary text keys differ from Japanese: {len(missing)} missing, {len(extra)} extra")
     if "ja" in presentations and "en" in presentations and presentations["ja"] != presentations["en"]:
         errors.append("Japanese and English presentation/text order differ (check speakers, stills and scene cues)")
+    for language in files:
+        if language in ('ja', 'en'):
+            continue
+        if flows.get(language) != flows.get('ja'):
+            errors.append(f'{language}: branch structure/flags differ from Japanese')
+        if presentations.get(language) != presentations.get('ja'):
+            errors.append(f'{language}: speakers, presentation or text order differ from Japanese')
+        if locale_keys.get(language) != locale_keys.get('ja'):
+            errors.append(f'{language}: complete text ID set differs from Japanese')
     if errors:
         print("FAILED")
         for error in errors[:60]:

@@ -51,6 +51,7 @@ class VNVoicePlayer {
   }
 
   async loadManifest(language, url) {
+    language = this.options.languageMap?.[language] || language;
     const token = ++this.manifestToken;
     this.manifestController?.abort();
     this.reset();
@@ -72,6 +73,7 @@ class VNVoicePlayer {
   }
 
   has(id, language = this.language) {
+    language = this.options.languageMap?.[language] || language;
     return language === this.language && typeof this.clips[id]?.src === 'string';
   }
 

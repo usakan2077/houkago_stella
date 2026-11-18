@@ -24,7 +24,7 @@ class VNEngine {
     this._longPressTriggered = false;
     this._resizeRaf = null;
     this.currentLanguage = this._normalizeLanguage(
-      localStorage.getItem('vn_language') || VN_CONFIG.i18n?.defaultLanguage || 'ja'
+      globalThis.StellaMedia?.initialLanguage() || localStorage.getItem('vn_language') || globalThis.StellaI18n?.browserLanguage() || VN_CONFIG.i18n?.defaultLanguage || 'ja'
     );
 
     // 入力待ち / モード
@@ -197,6 +197,7 @@ class VNEngine {
   }
 
   _normalizeLanguage(language) {
+    language = globalThis.StellaI18n?.normalize(language) || language;
     const supported = VN_CONFIG.i18n?.supportedLanguages || ['ja'];
     return supported.includes(language) ? language : (VN_CONFIG.i18n?.defaultLanguage || 'ja');
   }
@@ -206,7 +207,11 @@ class VNEngine {
     const current = labels[this.currentLanguage] || labels.ja || {};
     const fallback = labels[VN_CONFIG.i18n?.defaultLanguage || 'ja'] || labels.ja || {};
     const resolve = (obj) => path.split('.').reduce((acc, key) => acc && acc[key], obj);
-    return resolve(current) ?? resolve(fallback) ?? path;
+    return this._localize(resolve(current) ?? resolve(fallback) ?? path);
+  }
+
+  _localize(text) {
+    return globalThis.StellaI18n?.text(text, this.currentLanguage) ?? text;
   }
 
   _tf(path, vars = {}) {
@@ -224,9 +229,9 @@ class VNEngine {
   }
 
   _getOpeningLines() {
-    return (VN_CONFIG.openingLinesByLanguage || {})[this.currentLanguage]
+    return ((VN_CONFIG.openingLinesByLanguage || {})[this.currentLanguage]
       || VN_CONFIG.openingLines
-      || [];
+      || []).map(text => this._localize(text));
   }
 
   _getCharacterDisplayName(charKey) {
@@ -234,11 +239,11 @@ class VNEngine {
     const cfg = VN_CONFIG.characters[charKey];
     if (!cfg) {
       const speaker = VN_CONFIG.speakerNames?.[charKey];
-      if (speaker) return speaker[this.currentLanguage] || speaker.ja || charKey;
+      if (speaker) return this._localize(speaker[this.currentLanguage] || speaker.ja || charKey);
       return '';
     }
     if (this.currentLanguage === 'en' && cfg.nameEn) return cfg.nameEn;
-    return cfg.name || '';
+    return this._localize(cfg.name || '');
   }
 
   _scrollDialogTextToBottom(targetEl = null) {
@@ -252,7 +257,9 @@ class VNEngine {
   }
 
   _applyStaticI18n() {
-    document.documentElement.lang = this.currentLanguage === 'en' ? 'en' : 'ja';
+    document.documentElement.lang = this.currentLanguage;
+    globalThis.StellaMedia?.apply(this.currentLanguage, {updateUrl: new URL(location.href).searchParams.has('lang')});
+    document.title = this._t('loadingGameTitle');
     const setText = (id, text) => {
       const el = document.getElementById(id);
       if (el) el.textContent = text;
@@ -344,7 +351,7 @@ class VNEngine {
   _getLocalizedConfigText(item, key = 'text') {
     if (!item) return '';
     if (this.currentLanguage === 'en' && item[`${key}En`]) return item[`${key}En`];
-    return item[key] || '';
+    return this._localize(item[key] || '');
   }
 
   _applyTextLayoutMode() {
@@ -913,7 +920,7 @@ class VNEngine {
       const list = document.createElement('ul');
       for (const note of release[this.currentLanguage] || release.ja || []) {
         const item = document.createElement('li');
-        item.textContent = note;
+        item.textContent = this._localize(note);
         list.appendChild(item);
       }
       entries.append(heading, list);
@@ -3037,14 +3044,14 @@ class VNEngine {
       if (this.currentLanguage === 'en') {
         if (entry.romaji && entry.romaji.length) lines.push(...entry.romaji);
         if (entry.en && entry.en.length) lines.push('', ...entry.en);
-        if (lines.length === 0) lines.push(...(entry.ja || []));
+        if (lines.length === 0) lines.push(...(entry.ja || []).map(text => this._localize(text)));
       } else {
-        lines.push(...(entry.ja || []));
+        lines.push(...(entry.ja || []).map(text => this._localize(text)));
       }
-      lyricsEl.textContent = lines.join('\n');
+      lyricsEl.textContent = lines.map(text => this._localize(text)).join('\n');
     } else {
       const lines = Array.isArray(entry) ? entry : [entry];
-      lyricsEl.textContent = lines.join('\n');
+      lyricsEl.textContent = lines.map(text => this._localize(text)).join('\n');
     }
 
     // 非表示状態を解除してフェードイン

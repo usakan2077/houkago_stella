@@ -34,12 +34,12 @@ def run(c, passed, out, base):
     assert c.evaluate("document.querySelector('.campaign-eligibility').textContent.includes('日本国内在住')")
     passed('Live campaign shows the announcement link, four entry steps and JST dates; Escape restores focus')
 
-    c.evaluate("document.documentElement.lang='en'")
-    c.wait("document.querySelector('[data-campaign-more]').textContent==='View rules'")
-    check_modal('campaign-game-dialog-en')
-    assert c.evaluate("document.querySelector('#stella-campaign-dialog h2').textContent==='Extra completion campaign'")
-    assert c.evaluate("document.querySelector('.campaign-eligibility').textContent.includes('residents of Japan')&&document.querySelector('[data-campaign-status]').textContent.includes('Japan residents only')")
-    passed('Game campaign copy and rules switch to English')
+    for lang in ['en','zh-CN','zh-TW']:
+        c.evaluate('document.documentElement.lang='+repr(lang))
+        c.wait("document.querySelector('[data-campaign-open]').hidden")
+        c.evaluate("document.querySelector('[data-campaign-open]').click()")
+        assert c.evaluate("!document.querySelector('#stella-campaign-dialog[open]')")
+    passed('Game campaign stays hidden in English and both Chinese editions')
 
     c.evaluate("window._campaignOriginal={...STELLA_CAMPAIGN};STELLA_CAMPAIGN.startsAt=null;STELLA_CAMPAIGN.announcementUrl=null;document.documentElement.lang='ja'")
     c.wait("document.querySelector('[data-campaign-status]').textContent.startsWith('開催準備中')")
@@ -52,8 +52,8 @@ def run(c, passed, out, base):
     assert c.evaluate("document.querySelector('#stella-campaign-dialog .campaign-status').textContent==='応募受付終了'")
     c.key('Escape')
     c.wait("!document.getElementById('stella-campaign-dialog').open")
-    c.evaluate("STELLA_CAMPAIGN.startsAt='2999-01-01T00:00:00Z';STELLA_CAMPAIGN.endsAt='3000-01-01T00:00:00Z';STELLA_CAMPAIGN.announcementUrl='https://x.com/houkago_stella/status/1';document.documentElement.lang='en'")
-    c.wait("document.querySelector('[data-campaign-status]').textContent.startsWith('Starts soon')")
+    c.evaluate("STELLA_CAMPAIGN.startsAt='2999-01-01T00:00:00Z';STELLA_CAMPAIGN.endsAt='3000-01-01T00:00:00Z';STELLA_CAMPAIGN.announcementUrl='https://x.com/houkago_stella/status/1';document.documentElement.lang='ja'")
+    c.wait("document.querySelector('[data-campaign-status]').textContent.startsWith('開催予告')")
     c.evaluate("Object.assign(STELLA_CAMPAIGN,_campaignOriginal)")
     passed('Deadline closes entries even without a launch date; a future launch shows scheduled status')
 

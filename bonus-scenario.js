@@ -18,7 +18,7 @@ class BonusScenario {
   get canStart() { return this.engine._hasAllGoodEndsSeen(); }
 
   get english() { return this.engine.currentLanguage === 'en'; }
-  text(ja, en) { return this.english ? en : ja; }
+  text(ja, en) { return this.english ? en : (this.engine._localize?.(ja) ?? ja); }
 
   install() {
     const e = this.engine;
@@ -26,7 +26,7 @@ class BonusScenario {
       VN_CONFIG.characters[key] = { ...VN_CONFIG.characters[actor.speakerKey], ...actor, bonusOnly: true };
     }
     Object.assign(e.labels, e.parser.parse(VN_BONUS.script));
-    for (const [key, value] of Object.entries(VN_BONUS.texts[this.english ? 'en' : 'ja'])) {
+    for (const [key, value] of Object.entries(VN_BONUS.texts[this.engine.currentLanguage] || VN_BONUS.texts.ja)) {
       e.scenarioTexts['bonus.' + key] = value;
     }
   }
@@ -96,20 +96,19 @@ class BonusScenario {
   }
 
   receiptText(receipt) {
+    const campaign = !!globalThis.StellaCampaignVisibility?.allowed;
     return this.text('『放課後のステラ』のおまけまでクリアしました！', 'I finished Houkago Stella, including the extra!')
-      + '\n' + (receipt.clear_phrase ? this.text('合言葉：', 'Passphrase: ') : this.text('クリアコード：', 'Clear code: ')) + (receipt.clear_phrase || receipt.code)
+      + (campaign ? '\n' + (receipt.clear_phrase ? this.text('合言葉：', 'Passphrase: ') : this.text('クリアコード：', 'Clear code: ')) + (receipt.clear_phrase || receipt.code) : '')
       + '\n' + this.text('クリア日時：', 'Completed: ') + receipt.clearedAt
-      + '\n@houkago_stella #放課後のステラ #キャンペーン応募\nhttps://www.houkago-stella.com/';
+      + '\n@houkago_stella #放課後のステラ' + (campaign ? ' #キャンペーン応募' : '') + '\nhttps://www.houkago-stella.com/';
   }
 
   createReceiptPanel(receipt) {
     const panel = document.createElement('section');
     panel.className = 'bonus-clear-receipt';
+    panel.dataset.campaignReceipt = '';
     const details = document.createElement('div');
     const label = document.createElement('p');
-    label.textContent = receipt.clear_phrase
-      ? this.text('あなたの完走川柳（合言葉）。スクショで保存できます。', 'Your completion poem (passphrase). Save this screen as a screenshot.')
-      : this.text('おまけまでクリア！ この画面はスクショで保存できます。', 'Extra completed! You can save this screen as a screenshot.');
     const code = document.createElement('code');
     code.textContent = receipt.clear_phrase || receipt.code;
     if (receipt.clear_phrase) code.className = 'bonus-clear-phrase';
@@ -121,7 +120,6 @@ class BonusScenario {
     actions.className = 'bonus-clear-actions';
     const share = document.createElement('a');
     share.textContent = this.text('感想を添えてXに投稿', 'Share your thoughts on X');
-    share.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.receiptText(receipt));
     share.target = '_blank';
     share.rel = 'noopener noreferrer';
     const copy = document.createElement('button');
@@ -135,11 +133,23 @@ class BonusScenario {
         await navigator.clipboard.writeText(this.receiptText(receipt));
         status.textContent = this.text('コピーしました。感想を書き足して投稿してください。', 'Copied. Add your thoughts before posting.');
       } catch {
-        status.textContent = this.text('コピーできませんでした。コードを控えるかスクショで保存してください。', 'Copy unavailable. Note the code or save a screenshot.');
+        status.textContent = this.text('コピーできませんでした。スクショで保存してください。', 'Copy unavailable. Save a screenshot.');
       }
     };
     actions.append(share, copy, status);
     panel.append(details, actions);
+    const refresh = () => {
+      const campaign = !!globalThis.StellaCampaignVisibility?.allowed;
+      label.textContent = campaign && receipt.clear_phrase
+        ? this.text('あなたの完走川柳（合言葉）。スクショで保存できます。', 'Your completion poem (passphrase). Save this screen as a screenshot.')
+        : this.text('おまけまでクリア！ この画面はスクショで保存できます。', 'Extra completed! You can save this screen as a screenshot.');
+      code.hidden = !campaign;
+      code.toggleAttribute('data-japan-campaign', true);
+      share.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.receiptText(receipt));
+    };
+    refresh();
+    panel.addEventListener('stella-campaign-visibility', () => { refresh(); status.textContent = ''; });
+    globalThis.StellaCampaignVisibility?.ready.then(() => { if (panel.isConnected) refresh(); });
     return panel;
   }
 
@@ -343,7 +353,8 @@ class BonusScenario {
     if (mode === 'newspaper') {
       const picture = document.createElement('img');
       picture.className = 'bonus-board-picture bonus-newspaper-picture';
-      picture.src = this.engine._assetURL?.(VN_BONUS.newspapers[this.english ? 'en' : 'ja']) || VN_BONUS.newspapers[this.english ? 'en' : 'ja'];
+      const newspaper = VN_BONUS.newspapers[this.engine.currentLanguage] || VN_BONUS.newspapers.ja;
+      picture.src = this.engine._assetURL?.(newspaper) || newspaper;
       picture.alt = this.text('学園新聞号外：実況者、選手転向直後に不正。写真提供・まひる。', 'School newspaper extra: Commentator caught cheating on debut. Photo by Mahiru.');
       this.layer.appendChild(picture);
     }
@@ -363,7 +374,8 @@ class BonusScenario {
     this.layer.replaceChildren();
     const picture = document.createElement('img');
     picture.className = 'bonus-board-picture';
-    picture.src = this.engine._assetURL?.(VN_BONUS.boards[this.english ? 'en' : 'ja'][view]) || VN_BONUS.boards[this.english ? 'en' : 'ja'][view];
+    const board = (VN_BONUS.boards[this.engine.currentLanguage] || VN_BONUS.boards.ja)[view];
+    picture.src = this.engine._assetURL?.(board) || board;
     picture.alt = view === 'index'
       ? this.text('VIP風のスレッド一覧', 'Early imageboard thread index')
       : this.text('文化祭の相談スレ：詳細キボンヌとギコねこ', 'Anonymous festival thread: pics, sage and faces');
@@ -413,7 +425,7 @@ class BonusScenario {
     this.layer.querySelectorAll('.bonus-impact').forEach(node => node.remove());
     const word = document.createElement('div');
     word.className = 'bonus-impact bonus-impact-' + kind;
-    word.textContent = (words[kind] || words.switch)[this.english ? 1 : 0];
+    word.textContent = this.engine._localize((words[kind] || words.switch)[this.english ? 1 : 0]);
     this.layer.appendChild(word);
     this.later(() => word.remove(), 900);
     this.animate(word, [{ transform: 'scale(2.2) rotate(-12deg)', opacity: 0 }, { transform: 'scale(1) rotate(-5deg)', opacity: 1, offset: .25 }, { transform: 'scale(1.08) rotate(-5deg)', opacity: 0 }], { duration: 900, easing: 'ease-out' });

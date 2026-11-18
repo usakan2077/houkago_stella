@@ -8,7 +8,7 @@ def run(c,passed,out):
         c.evaluate('(async()=>{await engine._setLanguage('+json.dumps(language)+",{returnToTitle:true});VN_CONFIG.settings.bgmVolume=.27;engine.openingMovie.play()})()")
         c.wait("engine.openingMovie.phase==='playing'&&engine.openingMovie.video.currentTime>.4",25)
         state=c.evaluate("(()=>{const o=engine.openingMovie,v=o.video;return {language:engine.currentLanguage,source:v.currentSrc,width:v.videoWidth,height:v.videoHeight,duration:v.duration,time:v.currentTime,volume:v.volume,audioBytes:v.webkitAudioDecodedByteCount}})()")
-        assert state['source'].endswith('stella-op-'+language+'-v143.mp4'),state
+        assert state['source'].split('?',1)[0].endswith('stella-op-'+language+'-v143.mp4'),state
         assert state['width']==1920 and state['height']==1080 and abs(state['duration']-102.8667)<.1,state
         assert abs(state['volume']-.27)<.01 and state['audioBytes']>0,state
         c.evaluate('engine.openingMovie.video.currentTime=95')
@@ -21,10 +21,10 @@ def run(c,passed,out):
     c.evaluate("localStorage.setItem('vn_language','en');window._opBeforeReload=true;engine._resetGameState();engine._showTitleScreen()")
     c.send('Page.reload',dict(ignoreCache=True));time.sleep(.5)
     c.wait("!window._opBeforeReload&&typeof engine!=='undefined'&&document.querySelector('#btn-loading-ok')?.style.visibility===''",150)
-    assert c.evaluate("engine.currentLanguage==='en'&&engine.openingMovie.currentSource===VN_CONFIG.openingMovies.en")
+    assert c.evaluate("engine.currentLanguage==='en'&&engine.openingMovie.source===VN_CONFIG.openingMovies.en")
     c.click('#btn-loading-ok')
     c.wait("engine.openingMovie.phase==='playing'&&engine.openingMovie.video.currentTime>.4",25)
-    assert c.evaluate("engine.openingMovie.video.currentSrc.endsWith('stella-op-en-v143.mp4')&&document.getElementById('op-movie-skip').textContent==='Skip to title'")
+    assert c.evaluate("new URL(engine.openingMovie.video.currentSrc).pathname.endsWith('stella-op-en-v143.mp4')&&document.getElementById('op-movie-skip').textContent==='Skip to title'")
     c.key('Escape');c.wait("engine.openingMovie.phase==='idle'")
     c.evaluate('VN_CONFIG.openingMovieIdleMs=3600000')
     passed('Persisted English starts the English OP immediately after loading, including English skip controls')
@@ -36,7 +36,7 @@ def run(c,passed,out):
     passed('A missing language-specific movie falls back to the title without a retry loop')
     c.evaluate("engine.currentLanguage='en';VN_CONFIG.openingMovieIdleMs=3600000;engine.openingMovie.play()")
     c.wait("engine.openingMovie.phase==='playing'&&engine.openingMovie.video.currentTime>.3",25)
-    assert c.evaluate("!engine.openingMovie.failed&&engine.openingMovie.video.currentSrc.endsWith('stella-op-en-v143.mp4')")
+    assert c.evaluate("!engine.openingMovie.failed&&new URL(engine.openingMovie.video.currentSrc).pathname.endsWith('stella-op-en-v143.mp4')")
     c.key('Escape');c.wait("engine.openingMovie.phase==='idle'")
     passed('Switching languages recovers from another language’s failed movie and plays the available OP')
     (out/'bilingual-op-media.json').write_text(json.dumps(results,ensure_ascii=False,indent=2),encoding='utf8')

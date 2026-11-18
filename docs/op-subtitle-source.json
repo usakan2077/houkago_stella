@@ -1,0 +1,119 @@
+{
+  "timing_source": "houkago-stella-op/試作_v14/歌詞_音源タイミング.srt",
+  "audio_prelude_already_in_timing": true,
+  "caption_position": "8% from top to avoid bottom dialogue",
+  "cues": [
+    {
+      "timing": "00:00:16.684 --> 00:00:20.913",
+      "ja": "教室の窓に映る",
+      "en": "Reflected in the classroom window",
+      "zh-CN": "映在教室的窗上",
+      "zh-TW": "映在教室的窗上"
+    },
+    {
+      "timing": "00:00:20.913 --> 00:00:25.141",
+      "ja": "笑顔はいつも変わらなくて",
+      "en": "My smile always looked the same",
+      "zh-CN": "笑容总是一如既往",
+      "zh-TW": "笑容總是一如既往"
+    },
+    {
+      "timing": "00:00:25.141 --> 00:00:29.131",
+      "ja": "平気だって言葉だけ",
+      "en": "Only the words \"I’m fine\"",
+      "zh-CN": "只有那句“我没事”",
+      "zh-TW": "只有那句「我沒事」"
+    },
+    {
+      "timing": "00:00:29.131 --> 00:00:34.237",
+      "ja": "上手になっていった",
+      "en": "Became easier to say",
+      "zh-CN": "说得越来越熟练",
+      "zh-TW": "說得越來越熟練"
+    },
+    {
+      "timing": "00:00:34.237 --> 00:00:38.705",
+      "ja": "届かないままの声がある",
+      "en": "Some voices never reach their destination",
+      "zh-CN": "有些声音始终无法传达",
+      "zh-TW": "有些聲音始終無法傳達"
+    },
+    {
+      "timing": "00:00:38.705 --> 00:00:43.333",
+      "ja": "言えないままの夜がある",
+      "en": "Some nights pass with words left unsaid",
+      "zh-CN": "有些夜晚始终没能开口",
+      "zh-TW": "有些夜晚始終沒能開口"
+    },
+    {
+      "timing": "00:00:43.333 --> 00:00:47.243",
+      "ja": "気づけなかった昨日を",
+      "en": "All I failed to notice yesterday",
+      "zh-CN": "昨天没能察觉的事",
+      "zh-TW": "昨天沒能察覺的事"
+    },
+    {
+      "timing": "00:00:47.243 --> 00:00:52.030",
+      "ja": "まだ抱えたまま",
+      "en": "I’m still carrying it with me",
+      "zh-CN": "至今仍抱在心里",
+      "zh-TW": "至今仍抱在心裡"
+    },
+    {
+      "timing": "00:00:52.030 --> 00:00:53.147",
+      "ja": "ねえ",
+      "en": "Hey",
+      "zh-CN": "呐",
+      "zh-TW": "吶"
+    },
+    {
+      "timing": "00:00:53.147 --> 00:00:57.296",
+      "ja": "流れ星ひとつ消える前に",
+      "en": "Before this shooting star fades away",
+      "zh-CN": "在这颗流星消失之前",
+      "zh-TW": "在這顆流星消失之前"
+    },
+    {
+      "timing": "00:00:57.296 --> 00:01:01.923",
+      "ja": "隠した痛みを聞かせてよ",
+      "en": "Let me hear the pain you’ve hidden",
+      "zh-CN": "让我听听你藏起的痛",
+      "zh-TW": "讓我聽聽你藏起的痛"
+    },
+    {
+      "timing": "00:01:01.923 --> 00:01:06.152",
+      "ja": "強がることに慣れた君の",
+      "en": "You’ve grown so used to acting strong",
+      "zh-CN": "你已经习惯了逞强",
+      "zh-TW": "你已經習慣了逞強"
+    },
+    {
+      "timing": "00:01:06.152 --> 00:01:10.141",
+      "ja": "その手を離したくない",
+      "en": "I don’t want to let go of your hand",
+      "zh-CN": "我不想放开你的手",
+      "zh-TW": "我不想放開你的手"
+    },
+    {
+      "timing": "00:01:10.141 --> 00:01:15.567",
+      "ja": "星のない空を見上げても",
+      "en": "Even beneath a sky without stars",
+      "zh-CN": "即使抬头望向没有星星的天空",
+      "zh-TW": "即使抬頭望向沒有星星的天空"
+    },
+    {
+      "timing": "00:01:15.567 --> 00:01:20.035",
+      "ja": "君となら明日を信じられる",
+      "en": "With you, I can believe in tomorrow",
+      "zh-CN": "只要和你在一起，就能相信明天",
+      "zh-TW": "只要和你在一起，就能相信明天"
+    },
+    {
+      "timing": "00:01:20.035 --> 00:01:25.141",
+      "ja": "願いはいつも 嘘の隣で 光ってる",
+      "en": "Wishes always shine beside our lies",
+      "zh-CN": "愿望总在谎言身旁闪光",
+      "zh-TW": "願望總在謊言身旁閃光"
+    }
+  ]
+}

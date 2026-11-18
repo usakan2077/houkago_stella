@@ -59,7 +59,7 @@ class SoundMode {
     if (!unlocked && this.isOpen) this.close();
   }
 
-  title(track) { return this.engine.currentLanguage === 'en' ? track.titleEn : track.title; }
+  title(track) { return this.engine._getLocalizedConfigText(track, 'title'); }
 
   localize() {
     this.audio.setAttribute('aria-label', this.engine._t('soundPlayer'));

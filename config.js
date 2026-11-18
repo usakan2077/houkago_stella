@@ -4,7 +4,7 @@
  */
 const VN_CONFIG = {
 
-  version: '1.4.6',
+  version: '1.4.7',
   endingCoda: {
   "kotoha_good_end": [
     "$route_kotoha.kotoha_ch12_good_end.coda001",
@@ -23,6 +23,11 @@ const VN_CONFIG = {
   ]
 },
   releaseNotes: [
+    { version: '1.4.7', date: '2026-11-17',
+      ja: ['中国語（簡体字・繁体字）の本文・操作画面・紹介ページに対応。', '本編・おまけの中国語音声と、紹介ページの試聴に対応。', '英語・中国語の紹介画像・OP・字幕・ホーム画面表示に対応。'],
+      en: ['Added Simplified and Traditional Chinese story text, interface and website support.', 'Added Mandarin voices for the main story, bonus story and website samples.', 'Completed English and Chinese artwork, opening localization, subtitles and home-screen labels.'],
+      'zh-CN': ['新增简体中文、繁体中文的故事文本、操作界面和作品介绍页。', '新增正文、番外及介绍页试听的普通话配音。', '补齐英语、中文的宣传图片、片头动画、字幕及主屏幕显示。'],
+      'zh-TW': ['新增簡體中文、繁體中文的故事文字、操作介面和作品介紹頁。', '新增本篇、番外及介紹頁試聽的華語配音。', '補齊英語、中文的宣傳圖片、片頭動畫、字幕及主畫面顯示。'] },
     { version: '1.4.6', date: '2026-11-02',
       ja: ['おまけまで完走キャンペーンを開始し、公式告知ポストへのリンクを追加。'],
       en: ['Launched the extra completion campaign and added a link to the official announcement.'] },
@@ -93,9 +98,10 @@ const VN_CONFIG = {
 
   i18n: {
     defaultLanguage: 'ja',
-    supportedLanguages: ['ja', 'en'],
+    supportedLanguages: ['ja', 'en', 'zh-CN', 'zh-TW'],
     labels: {
       ja: {
+        opLyricsSubtitles: '歌詞字幕',
         updateHistory: '更新履歴',
         visitWebsite: '作品紹介サイトへ',
         openUpdateHistory: '更新履歴を開く',
@@ -168,6 +174,7 @@ const VN_CONFIG = {
         },
       },
       en: {
+        opLyricsSubtitles: 'Lyrics subtitles',
         updateHistory: 'Update history',
         visitWebsite: 'Visit the game website',
         openUpdateHistory: 'Open update history',
@@ -635,7 +642,8 @@ const VN_CONFIG = {
 
   voice: {
     baseGainDb: 3,      // ボイス全体の基準音量。保存済みのスライダー設定にも適用
-    manifests: { ja: 'assets/voice/ja/manifest.json', en: 'assets/voice/en/manifest.json' },
+    languageMap: {},
+    manifests: { ja: 'assets/voice/ja/manifest.json', en: 'assets/voice/en/manifest.json', 'zh-CN': 'assets/voice/zh-CN/manifest.json', 'zh-TW': 'assets/voice/zh-TW/manifest.json' },
     lookAhead: 3,       // 分岐までの次の3台詞（主人公・地の文を除く）
     cacheEntries: 12,
     cacheBytes: 32 * 1024 * 1024,
@@ -716,6 +724,34 @@ const VN_CONFIG = {
   ],
 
   scenarioFilesByLanguage: {
+    'zh-CN': [
+      'scenarios/chapter1.md',
+      'scenarios/chapter2.md',
+      'scenarios/chapter3.md',
+      'scenarios/chapter4.md',
+      'scenarios/chapter5.md',
+      'scenarios/chapter6.md',
+      'scenarios/chapter7.md',
+      'scenarios/chapter8.md',
+      'scenarios/bad_end.md',
+      'scenarios/route_sakura.md',
+      'scenarios/route_kotoha.md',
+      'scenarios/route_mahiru.md',
+    ],
+    'zh-TW': [
+      'scenarios/chapter1.md',
+      'scenarios/chapter2.md',
+      'scenarios/chapter3.md',
+      'scenarios/chapter4.md',
+      'scenarios/chapter5.md',
+      'scenarios/chapter6.md',
+      'scenarios/chapter7.md',
+      'scenarios/chapter8.md',
+      'scenarios/bad_end.md',
+      'scenarios/route_sakura.md',
+      'scenarios/route_kotoha.md',
+      'scenarios/route_mahiru.md',
+    ],
     ja: [
       'scenarios/chapter1.md',
       'scenarios/chapter2.md',
@@ -747,11 +783,15 @@ const VN_CONFIG = {
   },
 
   scenarioTextFiles: {
+    'zh-CN': 'locales/scenario.zh-CN.json',
+    'zh-TW': 'locales/scenario.zh-TW.json',
     ja: 'locales/scenario.ja.json',
     en: 'locales/scenario.en.json',
   },
 
   titleLogos: {
+    'zh-CN': { src: 'assets/images/bg/title_logo_zh-CN-v1.webp', alt: '放学后的星光：谎言与愿望的边界' },
+    'zh-TW': { src: 'assets/images/bg/title_logo_zh-TW-v1.webp', alt: '放學後的星光：謊言與願望的邊界' },
     ja: {
       src: 'assets/images/bg/title_logo.webp',
       alt: '放課後のステラ',
@@ -881,6 +921,8 @@ const VN_CONFIG = {
   openingMovies: {
     ja: 'assets/video/stella-op-ja-v143.mp4',
     en: 'assets/video/stella-op-en-v143.mp4',
+    'zh-CN': 'assets/video/stella-op-zh-CN-v147.mp4',
+    'zh-TW': 'assets/video/stella-op-zh-TW-v147.mp4',
   },
   openingMovieIdleMs: 30000,
 

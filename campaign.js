@@ -2,11 +2,38 @@
   const base = new URL('.', document.currentScript.src);
   const config = window.STELLA_CAMPAIGN;
   if (!config) return;
+  // Fail closed: language and timezone do not establish access from Japan.
+  // Read only the country field; never log or persist the trace (which includes an IP).
+  let japanAccess = false;
+  const allowed = () => japanAccess && document.documentElement.lang === 'ja';
+  const ready = (async () => {
+    const controller = new AbortController();
+    let timer;
+    try {
+      const country = await Promise.race([
+        (async () => {
+          const response = await fetch('https://www.cloudflare.com/cdn-cgi/trace', {
+            signal: controller.signal, credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer',
+          });
+          if (!response.ok) return null;
+          const body = await response.text();
+          if (body.length > 16384) return null;
+          const fields = body.split(/\r?\n/).filter(line => line.startsWith('loc='));
+          return fields.length === 1 && /^loc=[A-Z]{2}$/.test(fields[0]) ? fields[0].slice(4) : null;
+        })(),
+        new Promise(resolve => { timer = setTimeout(() => resolve(null), 3000); }),
+      ]);
+      japanAccess = country === 'JP';
+    } catch { /* Offline, blocked and unknown countries keep promotions hidden. */ }
+    finally { clearTimeout(timer); controller.abort(); }
+    return japanAccess;
+  })();
+  window.StellaCampaignVisibility = Object.freeze({ get allowed() { return allowed(); }, ready });
   const buttons = [...document.querySelectorAll('[data-campaign-open]')];
   if (!buttons.length) return;
   let dialog, opener, previousOverflow;
   const english = () => document.documentElement.lang === 'en';
-  const text = (ja, en) => english() ? en : ja;
+  const text = (ja, en) => english() ? en : (globalThis.StellaI18n?.text(ja, document.documentElement.lang) ?? ja);
   const phase = () => {
     const start = Date.parse(config.startsAt), end = Date.parse(config.endsAt);
     if (Number.isFinite(end) && Date.now() > end) return 'ended';
@@ -29,6 +56,14 @@
     return link;
   }
   function render() {
+    for (const node of document.querySelectorAll('[data-japan-campaign]')) node.hidden = !allowed();
+    for (const panel of document.querySelectorAll('[data-campaign-receipt]')) panel.dispatchEvent(new Event('stella-campaign-visibility'));
+    if (!allowed() && dialog) {
+      if (dialog.open) dialog.close();
+      dialog.remove(); dialog = null;
+      document.body.style.overflow = previousOverflow;
+    }
+    globalThis.StellaMedia?.apply(document.documentElement.lang);
     for (const button of buttons) {
       button.setAttribute('aria-label', text('おまけまで完走キャンペーンの詳細・応募ルールを見る', 'View completion campaign details and rules'));
       button.querySelector('[data-campaign-status]').textContent = status() + ' · ' + text('日本国内在住者限定', 'Japan residents only');
@@ -49,7 +84,8 @@
     const close = el('button', text('閉じる ×', 'Close ×'), 'campaign-close');
     close.type = 'button'; close.onclick = () => dialog.close();
     const image = el('img');
-    image.src = new URL('assets/campaign/clear-campaign-v1.webp', base).href;
+    const language = document.documentElement.lang;
+    image.src = new URL(globalThis.StellaMedia?.asset('campaign', language) || 'assets/campaign/clear-campaign-v1.webp', base).href;
     image.alt = text('放課後のステラ おまけまで完走キャンペーン。抽選で2名にAmazonギフトカード5,000円分。', 'Houkago Stella completion campaign: two winners receive a ¥5,000 Amazon.co.jp Gift Card.');
     image.className = 'campaign-poster'; image.width = 1536; image.height = 864;
     const content = el('div', null, 'campaign-rules');
@@ -57,14 +93,14 @@
     heading.id = 'stella-campaign-heading';
     content.append(el('p', status(), 'campaign-status'), heading,
       el('p', text('最後まで遊んでくれた方の中から、抽選で2名にAmazonギフトカード5,000円分をプレゼント！', 'Complete the extra and enter a random draw. Two winners will each receive a ¥5,000 Amazon.co.jp Gift Card.'), 'campaign-lead'));
-    const format = value => new Intl.DateTimeFormat(english() ? 'en-GB' : 'ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(value));
+    const format = value => new Intl.DateTimeFormat(english() ? 'en-GB' : document.documentElement.lang.startsWith('zh-') ? document.documentElement.lang : 'ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(value));
     if (Number.isFinite(Date.parse(config.endsAt))) content.append(el('p', text('応募締切：', 'Entry deadline: ') + format(config.endsAt) + ' (JST)', 'campaign-deadline'));
     if (phase() === 'preparing') {
       content.append(el('p', text('開催期間と告知ポストは準備中です。応募受付の開始は、公式Xでお知らせします。', 'Dates and the announcement post are being prepared. Applications are not open yet. Follow the official X account for updates.'), 'campaign-notice'));
     } else if (Number.isFinite(Date.parse(config.startsAt))) {
       content.append(el('p', text('応募期間：', 'Entry period: ') + format(config.startsAt) + ' – ' + format(config.endsAt) + ' (JST)', 'campaign-notice'));
     }
-    content.append(el('p', text('応募対象：日本国内在住の方。国籍・プレイ言語は問いません。日本語・英語どちらでのプレイも対象です。', 'Eligibility: residents of Japan, regardless of nationality. Both Japanese and English playthroughs qualify.'), 'campaign-eligibility'),
+    content.append(el('p', text('応募対象：日本国内在住の方。国籍・プレイ言語は問いません。', 'Eligibility: residents of Japan, regardless of nationality or play language.'), 'campaign-eligibility'),
       el('h3', text('応募方法', 'How to enter')));
     const steps = el('ol');
     [text('公式Xアカウント @houkago_stella をフォロー。', 'Follow @houkago_stella on X.'),
@@ -93,6 +129,7 @@
     dialog.scrollTop = scroll;
   }
   for (const button of buttons) button.onclick = () => {
+    if (!allowed()) return;
     if (!dialog) {
       dialog = document.createElement('dialog');
       dialog.id = 'stella-campaign-dialog';
@@ -106,7 +143,10 @@
         const rect = dialog.getBoundingClientRect();
         if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
       });
-      dialog.addEventListener('close', () => { dialog.classList.add('hidden'); document.body.style.overflow = previousOverflow; opener?.focus({ preventScroll: true }); });
+      dialog.addEventListener('close', event => {
+        event.currentTarget.classList.add('hidden'); document.body.style.overflow = previousOverflow;
+        if (opener?.getClientRects().length) opener.focus({ preventScroll: true });
+      });
     }
     opener = button; previousOverflow = document.body.style.overflow;
     render(); dialog.classList.remove('hidden'); dialog.showModal(); dialog.scrollTop = 0;
@@ -114,4 +154,5 @@
   };
   new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   render();
+  ready.then(render);
 })();

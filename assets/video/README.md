@@ -8,6 +8,14 @@
 
 再生の設定は `config.js` の `openingMovie` / `openingMovieIdleMs`、制御は `opening-movie.js` にあります。NEW GAME後の導入動画 `assets/images/bg/title.mp4` とは用途が異なります。
 
+## 現在の言語別OP
+
+日本語は `stella-op-ja-v143.mp4`、英語は `stella-op-en-v143.mp4`。簡体字は `stella-op-zh-CN-v147.mp4`、繁体字は `stella-op-zh-TW-v147.mp4`。ゲームと両LPで選択言語へ切り替える。
+
+中国語版は既存の編集データから人物名・台詞・ノート・タイトルを差し替え、1920×1080／30fps／3,086フレームで書き出した。元のAACを再エンコードせずコピーする。寸法・デコード・音源・共通区間の照合は `docs/chinese-op-production.json` を参照。
+
+`subtitles/op.{ja,en,zh-CN,zh-TW}-v1.vtt` は16区間の歌詞字幕。曲は元の日本語歌唱。字幕は映像下部の台詞と重ならないよう上部へ配置する。英語・中国語では字幕を初期表示し、日本語では任意でオンにする。ゲームの「歌詞字幕」ボタンとLPの標準動画コントロールでオン・オフできる。
+
 ## おまけの隕石動画
 
 `bonus-meteor.mp4` はユーザー指定の [隕石衝突動画](https://www.youtube.com/watch?v=MRNLgJSQKMQ) を取得し、H.264 / AACを再エンコードせずfaststart付きMP4へ再梱包したもの。0秒から全編再生する。

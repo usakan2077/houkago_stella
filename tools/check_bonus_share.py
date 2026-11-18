@@ -53,7 +53,8 @@ def run(c, passed, out):
         assert c.evaluate('engine.bonus.clearReceipt()') == receipt
         assert c.evaluate("_clearEvents.filter(e=>e[1]==='bonus_clear').length") == len(events)
         share = c.evaluate("(()=>{const a=document.querySelector('#bonus-endcard .bonus-clear-actions a');const u=new URL(a.href);return {host:u.host,text:u.searchParams.get('text'),target:a.target,rel:a.rel}})()")
-        assert share['host'] == 'twitter.com' and receipt['clear_phrase'] in share['text'] and receipt['code'] not in share['text'] and receipt['clearedAt'] in share['text']
+        assert share['host'] == 'twitter.com' and (receipt['clear_phrase'] in share['text']) == (lang == 'ja') and receipt['code'] not in share['text'] and receipt['clearedAt'] in share['text']
+        assert ('#キャンペーン応募' in share['text']) == (lang == 'ja')
         assert '@houkago_stella' in share['text'] and '#放課後のステラ' in share['text']
         assert share['target'] == '_blank' and 'noopener' in share['rel']
         assert c.evaluate("(()=>{const a=document.querySelector('#bonus-endcard .bonus-clear-actions a').getBoundingClientRect(),b=document.getElementById('bonus-endcard-back').getBoundingClientRect();return a.right<=b.left&&a.bottom<=innerHeight})()")
@@ -68,6 +69,7 @@ def run(c, passed, out):
         c.click('#bonus-endcard-back')
         c.click('#btn-bonus-receipt')
         assert c.evaluate("document.querySelector('#bonus-receipt-modal code').textContent") == receipt['clear_phrase']
+        assert c.evaluate("document.querySelector('#bonus-receipt-modal code').hidden") == (lang != 'ja')
         c.key('Escape')
         assert c.evaluate("!document.getElementById('bonus-receipt-modal')&&document.activeElement.id==='btn-bonus-receipt'")
         passed(lang+': real final scene issues one receipt/event, safe editable X link, screenshot and title recovery')

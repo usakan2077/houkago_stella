@@ -1,0 +1,20 @@
+{
+  "name": "放学后的星光 — 谎言与愿望的边界",
+  "short_name": "放学后的星光",
+  "description": "免费游玩的全年龄浏览器恋爱视觉小说。",
+  "start_url": "index.zh-CN.html?lang=zh-CN",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101526",
+  "theme_color": "#101526",
+  "icons": [
+    {
+      "src": "../icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "./",
+  "lang": "zh-CN"
+}

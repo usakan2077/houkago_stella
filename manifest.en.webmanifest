@@ -1,0 +1,20 @@
+{
+  "name": "After School Stella — Between a Lie and a Wish",
+  "short_name": "After School Stella",
+  "description": "A free, all-ages browser romance visual novel.",
+  "start_url": "index.html?lang=en",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101526",
+  "theme_color": "#101526",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "./",
+  "lang": "en"
+}

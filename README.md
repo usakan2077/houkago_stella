@@ -146,8 +146,8 @@ narrator セリフ（地の文）
 | `backgrounds` | 背景キー → フォールバックグラデーション |
 | `settings` | タイプ速度・音量・フェード時間・デバッグフラグ |
 | `scenarioFiles` | 読み込むシナリオファイルの順序 |
-| `scenarioFilesByLanguage` | 日英それぞれのシナリオ読み込み先 |
-| `scenarioTextFiles` | 日英の本文JSON（`locales/scenario.ja.json` / `scenario.en.json`） |
+| `scenarioFilesByLanguage` | 言語別の進行スクリプト。中国語は日本語版と共有 |
+| `scenarioTextFiles` | 日英・簡体字・繁体字の本文JSON（`locales/scenario.*.json`） |
 | `titleBGM` | タイトル画面 BGM |
 | `clickSE` | ボタンクリック SE |
 | `introVideo` | NEW GAME 後に流す動画 |
@@ -157,6 +157,10 @@ narrator セリフ（地の文）
 | `openingLines` | オープニングモノローグのテキスト配列 |
 
 日本語の `scenarios/*.md` と英語の `scenarios/en/*.md` は、同じテキストキー・話者・分岐・演出を使用します。本文は各言語のJSONで編集します。変更後は `python tools/check_scenarios_i18n.py` を実行し、翻訳の参照漏れや表示指示のずれを確認してください。改稿の方針は [改稿メモ](docs/scenario-rewrite-ja.md) にあります。
+
+1.4.7で簡体字・繁体字を追加。本編・おまけに中国語音声を収録し、紹介ページでも試聴できます。原稿の編集・生成・検証は [中国語対応](docs/chinese-localization.md) を参照。
+
+英語版の紹介画像・共有ページ・読み上げラベル・ホーム画面表示も補完。OPは4言語の映像と歌詞字幕に対応します。対応済みと残る確認項目は [英語・中国語対応の棚卸し](docs/localization-audit-20261117.md) を参照。
 
 ---
 
