@@ -28,7 +28,7 @@
     const language = document.documentElement.lang;
     const target = new URL(globalThis.StellaMedia.openingMovie(language), mediaRoot).href;
     globalThis.StellaMedia.subtitles(movie, language);
-    if (!source || !target || source.getAttribute('src') === target) return;
+    if (!source || !target || source.src === target) return;
     const time = movie.currentTime;
     movie.pause();
     source.src = target;

@@ -75,9 +75,9 @@
   <link rel="stylesheet" href="styles.css?v=1.4.8-ko1">
   <link rel="stylesheet" href="voice-preview.css">
   <link rel="stylesheet" href="../campaign.css?v=1.4.7-ja1">
-<script src="../chinese-locales.js?v=1.4.8-ko1"></script>
-<script src="../korean-locales.js?v=1.4.8-ko1"></script>
-<script src="../localized-media.js?v=1.4.8-ko1"></script>
+<script defer="" src="../chinese-locales.js?v=1.4.8-lp2"></script>
+<script defer="" src="../korean-locales.js?v=1.4.8-lp2"></script>
+<script defer="" src="../localized-media.js?v=1.4.8-lp2"></script>
   <link rel="alternate" hreflang="ko" href="https://www.houkago-stella.com/lp/index.ko.html">
   <link rel="alternate" hreflang="zh-CN" href="https://www.houkago-stella.com/lp/index.zh-CN.html">
   <link rel="alternate" hreflang="zh-TW" href="https://www.houkago-stella.com/lp/index.zh-TW.html">
@@ -86,7 +86,7 @@
 <body data-lp-variant="story">
   <header class="site-header" aria-label="网站页首" data-ja-label="サイトヘッダー">
     <a class="brand" href="#top" aria-label="放学后的星光：首页" data-ja-label="放課後のステラ トップ">
-      <img data-stella-media="logo" data-original-src="assets/images/title_logo.webp" src="../assets/images/bg/title_logo_zh-CN-v1.webp" alt="" class="brand-logo" data-ja-alt="">
+      <img data-stella-media="logo" data-original-src="assets/images/logo.ja-v1.webp" src="assets/images/logo.zh-CN-v1.webp" alt="" class="brand-logo" fetchpriority="high" decoding="async" data-ja-alt="">
       <span>放学后的星光</span>
     </a>
     <nav class="site-nav" aria-label="页面导航" data-ja-label="ページ内ナビゲーション">
@@ -104,7 +104,7 @@
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-art" aria-hidden="true"></div>
-      <img class="hero-poster" data-stella-media="poster" data-original-src="assets/images/poster.png" src="../assets/images/promo/poster.zh-CN-v1.webp" alt="" aria-hidden="true" data-ja-alt="">
+      <img class="hero-poster" data-stella-media="poster" data-original-src="assets/images/poster-v1.webp" src="../assets/images/promo/poster.zh-CN-v1.webp" alt="" aria-hidden="true" fetchpriority="high" decoding="async" data-ja-alt="">
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-inner">
         <p class="eyebrow">Browser Visual Novel</p>
@@ -131,7 +131,7 @@
 
     <section class="campaign-lp" data-japan-campaign="" hidden="" aria-label="活动" data-ja-label="キャンペーン">
       <button type="button" class="campaign-banner" data-japan-campaign="" hidden="" data-campaign-open="" aria-haspopup="dialog" aria-controls="stella-campaign-dialog" aria-label="查看番外通关活动详情与参与规则" data-ja-label="查看番外通关活动详情与参与规则">
-        <img data-stella-media="campaign" data-original-src="../assets/campaign/clear-campaign-v1.webp" src="../assets/campaign/clear-campaign.zh-CN-v1.webp" alt="" width="150" height="104" loading="lazy" data-ja-alt="">
+        <img data-stella-media="campaign" data-original-src="../assets/campaign/clear-campaign-v1.webp" src="../assets/campaign/clear-campaign.zh-CN-v1.webp" alt="" width="150" height="104" loading="lazy" decoding="async" data-ja-alt="">
         <span class="campaign-banner-copy"><span data-campaign-status="">活动进行中 · 仅限日本国内居住者</span><strong data-campaign-title="">番外通关活动</strong><span data-campaign-prize="">5,000日元Amazon礼品卡，共2名</span></span>
         <span data-campaign-more="">查看参与规则</span>
       </button>
@@ -160,7 +160,7 @@
           <p>从共同路线出发，通过选择走进樱咲樱、花园琴叶和月夜野真昼各自的故事。触碰她们的“谎言”与“愿望”，越过彼此之间的边界。</p>
         </div>
         <figure class="feature-image reveal">
-          <img src="assets/images/stills/rooftop_shooting_star.webp" alt="四人在天台仰望流星" data-ja-alt="屋上で流れ星を見上げる四人">
+          <img src="assets/images/stills/rooftop_shooting_star.webp" alt="四人在天台仰望流星" loading="lazy" decoding="async" data-ja-alt="屋上で流れ星を見上げる四人">
           <figcaption>从仰望星空的放学后，故事静静展开。</figcaption>
         </figure>
       </div>
@@ -198,7 +198,7 @@
         <div class="character-grid">
           <article class="character-card sakura reveal" data-voice-character="" data-role="sakura" data-name-ja="桜咲さくら" data-name-en="Sakura Sakurazaki">
             <div class="character-portrait">
-              <img src="assets/images/chars/sakura-voice.webp" alt="樱咲樱" data-ja-alt="桜咲さくら">
+              <img src="assets/images/chars/sakura-voice.webp" alt="樱咲樱" loading="lazy" decoding="async" data-ja-alt="桜咲さくら">
             </div>
             <div class="character-text">
               <p class="role">Badminton Club</p>
@@ -211,7 +211,7 @@
 
           <article class="character-card kotoha reveal" data-voice-character="" data-role="kotoha" data-name-ja="花園ことは" data-name-en="Kotoha Hanazono">
             <div class="character-portrait">
-              <img src="assets/images/chars/kotoha-voice.webp" alt="花园琴叶" data-ja-alt="花園ことは">
+              <img src="assets/images/chars/kotoha-voice.webp" alt="花园琴叶" loading="lazy" decoding="async" data-ja-alt="花園ことは">
             </div>
             <div class="character-text">
               <p class="role">Quiet Melody</p>
@@ -224,7 +224,7 @@
 
           <article class="character-card mahiru reveal" data-voice-character="" data-role="mahiru" data-name-ja="月夜野まひる" data-name-en="Mahiru Tsukiyono">
             <div class="character-portrait">
-              <img src="assets/images/chars/mahiru-voice.webp" alt="月夜野真昼" data-ja-alt="月夜野まひる">
+              <img src="assets/images/chars/mahiru-voice.webp" alt="月夜野真昼" loading="lazy" decoding="async" data-ja-alt="月夜野まひる">
             </div>
             <div class="character-text">
               <p class="role">Dawn Notebook</p>
@@ -247,28 +247,28 @@
         </div>
         <div class="gallery-grid" aria-label="游戏内事件CG" data-ja-label="ゲーム内スチル">
           <figure class="gallery-item wide reveal">
-            <img src="assets/images/stills/rooftop_four_wishes.webp" alt="四人在天台说出愿望" data-ja-alt="屋上で願いを語る四人">
+            <img src="assets/images/stills/rooftop_four_wishes.webp" alt="四人在天台说出愿望" loading="lazy" decoding="async" data-ja-alt="屋上で願いを語る四人">
           </figure>
           <figure class="gallery-item reveal">
-            <img src="assets/images/stills/kotoha_piano_trembling.webp" alt="钢琴旁颤抖的琴叶" data-ja-alt="ピアノのそばで震えることは">
+            <img src="assets/images/stills/kotoha_piano_trembling.webp" alt="钢琴旁颤抖的琴叶" loading="lazy" decoding="async" data-ja-alt="ピアノのそばで震えることは">
           </figure>
           <figure class="gallery-item reveal">
-            <img src="assets/images/stills/kotoha_library_headphones.webp" alt="图书室里戴着耳机的琴叶" data-ja-alt="図書室でヘッドホンをつけることは">
+            <img src="assets/images/stills/kotoha_library_headphones.webp" alt="图书室里戴着耳机的琴叶" loading="lazy" decoding="async" data-ja-alt="図書室でヘッドホンをつけることは">
           </figure>
           <figure class="gallery-item reveal">
-            <img src="assets/images/stills/sakura_embrace.webp" alt="体育馆仓库里相拥的樱" data-ja-alt="体育館の倉庫で抱き合うさくら">
+            <img src="assets/images/stills/sakura_embrace.webp" alt="体育馆仓库里相拥的樱" loading="lazy" decoding="async" data-ja-alt="体育館の倉庫で抱き合うさくら">
           </figure>
           <figure class="gallery-item wide reveal">
-            <img src="assets/images/stills/sakura_after_match.webp" alt="比赛后的樱" data-ja-alt="試合後のさくら">
+            <img src="assets/images/stills/sakura_after_match.webp" alt="比赛后的樱" loading="lazy" decoding="async" data-ja-alt="試合後のさくら">
           </figure>
           <figure class="gallery-item tall reveal">
-            <img src="assets/images/stills/kotoha_window_ch1.webp" alt="站在窗边的琴叶" data-ja-alt="窓辺に立つことは">
+            <img src="assets/images/stills/kotoha_window_ch1.webp" alt="站在窗边的琴叶" loading="lazy" decoding="async" data-ja-alt="窓辺に立つことは">
           </figure>
           <figure class="gallery-item reveal">
-            <img src="assets/images/stills/evening_walk_two.webp" alt="黄昏并肩散步的两人" data-ja-alt="夕方に並んで歩く二人">
+            <img src="assets/images/stills/evening_walk_two.webp" alt="黄昏并肩散步的两人" loading="lazy" decoding="async" data-ja-alt="夕方に並んで歩く二人">
           </figure>
           <figure class="gallery-item wide reveal">
-            <img src="assets/images/stills/mahiru_rooftop_photo.webp" alt="在天台拍照的真昼" data-ja-alt="屋上で写真を撮るまひる">
+            <img src="assets/images/stills/mahiru_rooftop_photo.webp" alt="在天台拍照的真昼" loading="lazy" decoding="async" data-ja-alt="屋上で写真を撮るまひる">
           </figure>
         </div>
       </div>
@@ -546,12 +546,12 @@
     <a href="#top">返回页首</a>
   </footer>
 
-  <script src="voice-preview.js?v=1.4.8-ko1"></script>
-  <script src="script.js?v=1.4.8-ko1"></script>
-  <script src="experiment.js?v=1.4.7"></script>
-  <script src="../campaign-config.js?v=1.4.8-ko1"></script>
-  <script src="../campaign.js?v=1.4.7-ja1"></script>
-  <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script defer="" src="voice-preview.js?v=1.4.8-ko1"></script>
+  <script defer="" src="script.js?v=1.4.8-lp2"></script>
+  <script defer="" src="experiment.js?v=1.4.8-lp2"></script>
+  <script defer="" src="../campaign-config.js?v=1.4.8-ko1"></script>
+  <script defer="" src="../campaign.js?v=1.4.7-ja1"></script>
+  <script defer="" src="social-embed.js?v=1.4.8-lp2"></script>
 
 
 </body></html>

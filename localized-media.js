@@ -55,13 +55,14 @@ globalThis.StellaMedia = (() => {
       'zh-CN': '放学后的星光,免费游戏,浏览器游戏,恋爱冒险,视觉小说,普通话配音',
       'zh-TW': '放學後的星光,免費遊戲,瀏覽器遊戲,戀愛冒險,視覺小說,華語配音',
     })[language];
+    const lp = document.body?.dataset.lpVariant;
     document.querySelectorAll('img[data-stella-media]').forEach(image => {
       if (!originalSources.has(image)) originalSources.set(image, image.dataset.originalSrc || image.getAttribute('src'));
-      const target = asset(image.dataset.stellaMedia, language);
+      const target = lp && image.dataset.stellaMedia === 'logo'
+        ? `lp/assets/images/logo.${language}-v1.webp` : asset(image.dataset.stellaMedia, language);
       const src = target ? new URL(target, root).href : originalSources.get(image);
-      if (image.getAttribute('src') !== src) image.setAttribute('src', src);
+      if (image.src !== new URL(src, document.baseURI).href) image.setAttribute('src', src);
     });
-    const lp = document.body?.dataset.lpVariant;
     document.querySelector('link[rel="manifest"]')?.setAttribute('href', new URL(lp ? `lp/site${language === 'ja' ? '' : '.' + language}.webmanifest` : `manifest.${language}.webmanifest`, root).href);
     const publicRoot = 'https://www.houkago-stella.com/';
     const share = new URL(asset('share', language) || 'og.png', publicRoot).href;

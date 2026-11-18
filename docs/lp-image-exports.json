@@ -1,0 +1,68 @@
+[
+  {
+    "source": "lp/assets/images/poster.png",
+    "src": "lp/assets/images/poster-v1.webp",
+    "size": [
+      848,
+      1264
+    ],
+    "source_bytes": 2038394,
+    "bytes": 207428,
+    "sha256": "a089155d25fe8accf287e5e189a885ee711879006854befa7b4aed6ebadc296c"
+  },
+  {
+    "source": "lp/assets/images/title_logo.webp",
+    "src": "lp/assets/images/logo.ja-v1.webp",
+    "size": [
+      384,
+      120
+    ],
+    "source_bytes": 293376,
+    "bytes": 37212,
+    "sha256": "8422040e04fd7c3132bd3d004a8b9df4173e5353d9c73e9705524908bc3e03c3"
+  },
+  {
+    "source": "assets/images/bg/title_logo_en.webp",
+    "src": "lp/assets/images/logo.en-v1.webp",
+    "size": [
+      384,
+      120
+    ],
+    "source_bytes": 510320,
+    "bytes": 26700,
+    "sha256": "d2f098c84d22710990cfea28706f1b5c64b8aea24cc429267bcdc6ed6e19e4f9"
+  },
+  {
+    "source": "assets/images/bg/title_logo_zh-CN-v1.webp",
+    "src": "lp/assets/images/logo.zh-CN-v1.webp",
+    "size": [
+      384,
+      128
+    ],
+    "source_bytes": 171378,
+    "bytes": 26366,
+    "sha256": "d3105ae0f6a7fca95e8c9ee98252dd2e00cd6bb79a61cd17f59e37b8a6b3dbd7"
+  },
+  {
+    "source": "assets/images/bg/title_logo_zh-TW-v1.webp",
+    "src": "lp/assets/images/logo.zh-TW-v1.webp",
+    "size": [
+      384,
+      128
+    ],
+    "source_bytes": 168558,
+    "bytes": 26216,
+    "sha256": "6d46511640337326acd378eb381f4e9f53496d6ff076edf8233ba5ff54778570"
+  },
+  {
+    "source": "assets/images/bg/title_logo_ko-v1.webp",
+    "src": "lp/assets/images/logo.ko-v1.webp",
+    "size": [
+      384,
+      128
+    ],
+    "source_bytes": 460966,
+    "bytes": 29288,
+    "sha256": "f50de2d0810d8d138a3acce87af82346974ab24d15dbe7d38ed2ec88f81ef8e9"
+  }
+]
